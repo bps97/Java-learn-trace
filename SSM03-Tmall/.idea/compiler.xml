@@ -6,8 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="SSM02-SimpleStudentManage" />
-        <module name="SSM-02-SimpleStudentManage" />
+        <module name="SSM03-Tmall" />
       </profile>
     </annotationProcessing>
   </component>
