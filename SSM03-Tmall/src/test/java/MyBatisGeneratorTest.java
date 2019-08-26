@@ -1,5 +1,8 @@
-import cn.bps.dao.Category;
+
 import cn.bps.mapper.CategoryMapper;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.api.ShellCallback;
@@ -8,7 +11,6 @@ import org.mybatis.generator.config.xml.ConfigurationParser;
 import org.mybatis.generator.exception.InvalidConfigurationException;
 import org.mybatis.generator.exception.XMLParserException;
 import org.mybatis.generator.internal.DefaultShellCallback;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,12 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyBatisGeneratorTest {
-    /*
-    public static void main(String[] args) throws
-            URISyntaxException, IOException,
-            XMLParserException, InvalidConfigurationException,
-            SQLException, InterruptedException {
 
+
+    @Test
+    public void generatorTest() throws URISyntaxException, IOException, XMLParserException, InvalidConfigurationException, SQLException, InterruptedException {
         List<String > warnings = new ArrayList<String >();
 
         boolean overwrite = true;
@@ -42,19 +42,8 @@ public class MyBatisGeneratorTest {
         myBatisGenerator.generate(null);
 
         System.out.println("succeed");
-
     }
 
-      */
 
-    @Autowired
-    private CategoryMapper categoryMapper;
 
-    @Test
-    public void test(){
-        Category category = new Category();
-        category.setName("分类1");
-        categoryMapper.insert(category);
-
-    }
 }
