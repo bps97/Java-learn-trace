@@ -61,7 +61,10 @@
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> pc
 
         <table tableName="category_demo" domainObjectName="CategoryDemo"
                 enableSelectByExample="false" enableUpdateByExample="fasle"
@@ -71,6 +74,9 @@
             <property name="my.isgen.userkeys" value="true"/>
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
+<<<<<<< HEAD
+>>>>>>> pc
+=======
 >>>>>>> pc
         <table tableName="property" domainObjectName="Property"
                enableCountByExample="false" enableUpdateByExample="false"
@@ -153,6 +159,12 @@
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        
+
+        
+>>>>>>> pc
 =======
         
 

@@ -10,6 +10,12 @@
       </profile>
     </annotationProcessing>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <bytecodeTargetLevel>
+      <module name="SSM03-Tmall" target="1.8" />
+    </bytecodeTargetLevel>
+>>>>>>> pc
 =======
     <bytecodeTargetLevel>
       <module name="SSM03-Tmall" target="1.8" />

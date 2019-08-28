@@ -20,8 +20,11 @@
     <mvc:default-servlet-handler/>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     <!-- 配置jsp 显示ViewResolver -->
 =======
+=======
+>>>>>>> pc
     <mvc:resources mapping="/css/**" location="/WEB-INF/css/" />
     <mvc:resources mapping="/img/**" location="/WEB-INF/img/" />
     <mvc:resources mapping="/fonts/**" location="/WEB-INF/fonts/" />
@@ -80,6 +83,9 @@
 
 
     <!--viewResolver-->
+<<<<<<< HEAD
+>>>>>>> pc
+=======
 >>>>>>> pc
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
@@ -88,6 +94,11 @@
     </bean>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> pc
 =======
 
 
