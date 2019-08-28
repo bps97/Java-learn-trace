@@ -11,7 +11,7 @@ public class Review {
 
     private Integer product_id;
 
-    private Date review_time;
+    private Date createDate;
 
     public Integer getId() {
         return id;
@@ -45,11 +45,11 @@ public class Review {
         this.product_id = product_id;
     }
 
-    public Date getReview_time() {
-        return review_time;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setReview_time(Date review_time) {
-        this.review_time = review_time;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 }

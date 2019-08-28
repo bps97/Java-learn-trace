@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="ChangeListManager">
     <list default="true" id="03f54aee-d0c0-4343-8082-9b9554fae554" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/../SSM02-SimpleStudentManage/.idea/vcs.xml" afterDir="false" />
@@ -53,6 +54,36 @@
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSM02-SimpleStudentManage/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM02-SimpleStudentManage/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSM02-SimpleStudentManage/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM02-SimpleStudentManage/.idea/workspace.xml" afterDir="false" />
+=======
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="SSM03-Tmall:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="03f54aee-d0c0-4343-8082-9b9554fae554" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/bps/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSM02-SimpleStudentManage/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM02-SimpleStudentManage/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSM02-SimpleStudentManage/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM02-SimpleStudentManage/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SSM03-Tmall.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SSM03-Tmall.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/SSM03_Tmall_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/SSM03_Tmall_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/controller/DemoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/controller/DemoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/mapper/CategoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/mapper/CategoryMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/pojo/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/pojo/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/pojo/CategoryExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/pojo/CategoryExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/pojo/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/pojo/Review.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/pojo/ReviewExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/pojo/ReviewExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/CategoryMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/CategoryMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ReviewMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ReviewMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/hmstyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/hmstyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/CategoryMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CategoryMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MyBatisGeneratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MyBatisGeneratorTest.java" afterDir="false" />
+>>>>>>> pc
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -71,6 +102,7 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mybatis.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="510">
@@ -78,11 +110,18 @@
               <folding>
                 <element signature="e#1447#1472#0" expanded="true" />
               </folding>
+=======
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="426">
+              <caret line="274" column="32" selection-start-line="274" selection-start-column="32" selection-end-line="274" selection-end-column="32" />
+>>>>>>> pc
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/SSM03-Tmall.iml">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -92,42 +131,82 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-2159">
               <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/css/demo.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="233">
+              <caret line="639" column="18" selection-start-line="639" selection-start-column="18" selection-end-line="639" selection-end-column="18" />
+>>>>>>> pc
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/generatorConfig.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
               <caret line="39" selection-start-line="39" selection-end-line="39" />
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/css/hmstyle.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="1554" column="23" selection-start-line="1554" selection-start-column="23" selection-end-line="1554" selection-end-column="23" />
+>>>>>>> pc
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/main/resources/jdbc.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
               <caret line="2" column="98" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="98" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-401">
+              <caret line="225" column="42" lean-forward="true" selection-start-line="225" selection-start-column="42" selection-end-line="225" selection-end-column="42" />
+>>>>>>> pc
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="510">
               <caret line="30" selection-start-line="30" selection-end-line="30" />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/service/CategoryService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="433">
+              <caret line="33" column="32" lean-forward="true" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#615#631#0" expanded="true" />
+              </folding>
+>>>>>>> pc
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/test/java/MyBatisGeneratorTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="199">
               <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/controller/DemoController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+>>>>>>> pc
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -136,6 +215,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/test/java/CategoryMapperTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
@@ -143,15 +223,37 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+=======
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/mapper/ReviewMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+>>>>>>> pc
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.4.1/mybatis-3.4.1.jar!/org/apache/ibatis/io/Resources.class">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
               <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/mapper/UserMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/mapper/CategoryDemoMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+>>>>>>> pc
             </state>
           </provider>
         </entry>
@@ -159,8 +261,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/mapper/CategoryMapper.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="306">
               <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+=======
+            <state relative-caret-position="68">
+              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+>>>>>>> pc
             </state>
           </provider>
         </entry>
@@ -177,10 +284,36 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>entity</find>
+<<<<<<< HEAD
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="UPDATE_TYPE" value="MERGE" />
+=======
+      <find>web-inf/css/</find>
+      <find>WEB-INF/css/</find>
+      <find>WEB-INF/img</find>
+      <find>weixin</find>
+      <find>weix</find>
+      <find>ad1</find>
+      <find>悬浮</find>
+      <find>fontawesome-w</find>
+      <find>static/</find>
+      <find>WEB-INF/views</find>
+      <find>家用电器</find>
+      <find>long</find>
+      <find>index</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+      <replace>/../css/</replace>
+      <replace>img</replace>
+      <replace>.jsp</replace>
+      <replace>views</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+>>>>>>> pc
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -205,6 +338,7 @@
         <option value="$PROJECT_DIR$/src/main/resourece/generatorConfig.xml" />
         <option value="$PROJECT_DIR$/src/main/resoureces/generatorConfig.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/spring-mybatis.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/bps/mapper/CategoryMapper.java" />
@@ -216,6 +350,44 @@
       </list>
     </option>
   </component>
+=======
+        <option value="$PROJECT_DIR$/src/main/resources/spring-mybatis.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/jdbc.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/freemarker.properties" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/mobile.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/pay.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/shopCart.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/shopInfo.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/shopList.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/index.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/basic.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/mobile.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/MyBatisGeneratorTest.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/CategoryMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/bps/mapper/CategoryMapper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/CategoryMapperTest.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/demo.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/hmstyle.css" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/bps/controller/DemoController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/bps/service/CategoryService.java" />
+      </list>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+>>>>>>> pc
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -231,6 +403,7 @@
       </MavenImportingSettings>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="ProjectConfigurationFiles">
     <option name="files">
       <list>
@@ -245,6 +418,13 @@
     <option name="y" value="98" />
     <option name="width" value="1224" />
     <option name="height" value="1100" />
+=======
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="716" />
+    <option name="y" value="54" />
+    <option name="width" value="1180" />
+    <option name="height" value="1096" />
+>>>>>>> pc
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -254,6 +434,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
+=======
+      <pane id="Scope" />
+>>>>>>> pc
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -292,7 +476,31 @@
               <item name="SSM03-Tmall" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bps" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SSM03-Tmall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSM03-Tmall" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bps" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SSM03-Tmall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSM03-Tmall" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bps" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+>>>>>>> pc
             </path>
             <path>
               <item name="SSM03-Tmall" type="b2602c69:ProjectViewProjectNode" />
@@ -313,6 +521,18 @@
               <item name="SSM03-Tmall" type="b2602c69:ProjectViewProjectNode" />
               <item name="SSM03-Tmall" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+=======
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SSM03-Tmall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSM03-Tmall" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+>>>>>>> pc
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -327,11 +547,15 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+<<<<<<< HEAD
       <pane id="Scope" />
+=======
+>>>>>>> pc
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+<<<<<<< HEAD
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
@@ -346,6 +570,31 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Workspace\JAVA\IDEA\SSM\SSM03-Tmall\src\main\webapp\WEB-INF\views" />
+=======
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF/img" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Workspace\JAVA\IDEA\SSM\SSM03-Tmall\src\main\webapp\WEB-INF\img" />
+      <recent name="E:\Workspace\JAVA\IDEA\SSM\SSM03-Tmall\src\main\webapp\WEB-INF\views" />
+      <recent name="E:\Workspace\JAVA\IDEA\SSM\SSM03-Tmall\src\main\webapp\WEB-INF" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Workspace\JAVA\IDEA\SSM\SSM03-Tmall\src\main\webapp\WEB-INF\views" />
+      <recent name="E:\Workspace\JAVA\IDEA\SSM\SSM03-Tmall\src\main\webapp" />
+      <recent name="E:\Workspace\JAVA\IDEA\SSM\SSM03-Tmall\src\main\webapp\WEB-INF" />
+      <recent name="E:\Workspace\JAVA\IDEA\SSM\SSM03-Tmall\src\main\webapp\WEB-INF\static" />
+>>>>>>> pc
       <recent name="E:\Workspace\JAVA\IDEA\SSM\SSM03-Tmall\src\main" />
     </key>
   </component>
@@ -361,10 +610,19 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="JUnit.CategoryMapperTest.test">
     <configuration name="MyBatisGeneratorTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MyBatisGeneratorTest" />
       <module name="SSM03-Tmall" />
+=======
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.22">
+    <configuration name="CategoryMapperTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SSM03-Tmall" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CategoryMapperTest" />
+      <option name="TEST_OBJECT" value="class" />
+>>>>>>> pc
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -409,12 +667,21 @@
       </method>
     </configuration>
     <configuration name="Tomcat 9.0.22" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.22" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+<<<<<<< HEAD
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Tmall/" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="SSM03-Tmall:war exploded">
           <settings>
             <option name="CONTEXT_PATH" value="/Tmall" />
+=======
+      <option name="OPEN_IN_BROWSER" value="false" />
+      <option name="UPDATING_POLICY" value="update-resources" />
+      <deployment>
+        <artifact name="SSM03-Tmall:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+>>>>>>> pc
           </settings>
         </artifact>
       </deployment>
@@ -481,6 +748,7 @@
         </option>
       </method>
     </configuration>
+<<<<<<< HEAD
     <list>
       <item itemvalue="Application.MyBatisGeneratorTest" />
       <item itemvalue="JUnit.MyBatisGeneratorTest" />
@@ -488,14 +756,103 @@
       <item itemvalue="JUnit.MyBatisGeneratorTest.test" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.22" />
       <item itemvalue="JUnit.CategoryMapperTest.test" />
+=======
+    <configuration name="Tomcat 9.0.22" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 9.0.22" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/index.html" />
+      <option name="UPDATING_POLICY" value="hot-swap-classes" />
+      <deployment>
+        <artifact name="SSM03-Tmall:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="index_html_SSM03-Tmall" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="13268" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="SSM03-Tmall:war" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.MyBatisGeneratorTest" />
+      <item itemvalue="JUnit.MyBatisGeneratorTest.generatorTest" />
+      <item itemvalue="JUnit.MyBatisGeneratorTest.test" />
+      <item itemvalue="JUnit.CategoryMapperTest.test" />
+      <item itemvalue="JUnit.CategoryMapperTest" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.22" />
+>>>>>>> pc
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.CategoryMapperTest.test" />
+<<<<<<< HEAD
         <item itemvalue="JUnit.MyBatisGeneratorTest.test" />
         <item itemvalue="JUnit.MyBatisGeneratorTest.generatorTest" />
         <item itemvalue="JUnit.MyBatisGeneratorTest" />
         <item itemvalue="Application.MyBatisGeneratorTest" />
+=======
+        <item itemvalue="JUnit.CategoryMapperTest" />
+        <item itemvalue="JUnit.MyBatisGeneratorTest.generatorTest" />
+        <item itemvalue="JUnit.MyBatisGeneratorTest" />
+        <item itemvalue="Tomcat Server.Tomcat 9.0.22" />
+>>>>>>> pc
       </list>
     </recent_temporary>
   </component>
@@ -516,11 +873,20 @@
       <workItem from="1566736018884" duration="74000" />
       <workItem from="1566782762539" duration="362000" />
       <workItem from="1566783155890" duration="1313000" />
+<<<<<<< HEAD
       <workItem from="1566794210610" duration="5433000" />
+=======
+      <workItem from="1566794210610" duration="8584000" />
+      <workItem from="1566806784077" duration="7077000" />
+      <workItem from="1566820207405" duration="9573000" />
+      <workItem from="1566868130748" duration="2175000" />
+      <workItem from="1566875538370" duration="6093000" />
+>>>>>>> pc
     </task>
     <servers />
   </component>
   <component name="TestHistory">
+<<<<<<< HEAD
     <history-entry file="MyBatisGeneratorTest_test - 2019.08.26 at 13h 09m 17s.xml">
       <configuration name="MyBatisGeneratorTest.test" configurationId="JUnit" />
     </history-entry>
@@ -549,11 +915,45 @@
       <configuration name="CategoryMapperTest.test" configurationId="JUnit" />
     </history-entry>
     <history-entry file="CategoryMapperTest_test - 2019.08.26 at 14h 01m 15s.xml">
+=======
+    <history-entry file="CategoryMapperTest_test - 2019.08.27 at 11h 56m 34s.xml">
+      <configuration name="CategoryMapperTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CategoryMapperTest_test - 2019.08.27 at 11h 56m 54s.xml">
+      <configuration name="CategoryMapperTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CategoryMapperTest_test - 2019.08.27 at 11h 58m 11s.xml">
+      <configuration name="CategoryMapperTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CategoryMapperTest_test - 2019.08.27 at 12h 08m 31s.xml">
+      <configuration name="CategoryMapperTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CategoryMapperTest_test - 2019.08.27 at 12h 09m 22s.xml">
+      <configuration name="CategoryMapperTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CategoryMapperTest_test - 2019.08.27 at 12h 10m 45s.xml">
+      <configuration name="CategoryMapperTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CategoryMapperTest_test - 2019.08.27 at 12h 12m 51s.xml">
+      <configuration name="CategoryMapperTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CategoryMapperTest_test - 2019.08.27 at 12h 13m 14s.xml">
+      <configuration name="CategoryMapperTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CategoryMapperTest_test - 2019.08.27 at 12h 16m 22s.xml">
+      <configuration name="CategoryMapperTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CategoryMapperTest_test - 2019.08.27 at 12h 17m 54s.xml">
+>>>>>>> pc
       <configuration name="CategoryMapperTest.test" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="20032000" />
+=======
+    <option name="totallyTimeSpent" value="48101000" />
+>>>>>>> pc
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -565,20 +965,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="914" y="98" width="1224" height="1100" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49844238" visible="true" weight="0.2547332" />
+=======
+    <frame x="-8" y="-8" width="1874" height="1096" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49714285" visible="true" weight="0.205298" />
       <window_info id="Structure" order="1" sideWeight="0.50155765" side_tool="true" weight="0.17439294" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" sideWeight="0.50155765" side_tool="true" weight="0.17439294" />
+      <window_info id="Favorites" order="6" sideWeight="0.50285715" side_tool="true" weight="0.205298" />
       <window_info id="Web" order="7" sideWeight="0.50155765" side_tool="true" weight="0.17439294" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.88189846" visible="true" weight="0.32120582" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.94260484" weight="0.39874738" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32881" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.88189846" visible="true" weight="0.26931107" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.94260484" weight="0.34446764" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49908593" weight="0.32982087" />
@@ -589,7 +994,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="11" sideWeight="0.49817184" weight="0.2455216" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.49817184" weight="0.32982087" />
-      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.4971623" weight="0.32982087" />
+      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.4971623" weight="0.32881" />
       <window_info anchor="bottom" id="Application Servers" order="15" weight="0.32985386" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -604,10 +1009,63 @@
       <window_info anchor="right" id="CDI" order="10" />
       <window_info anchor="right" id="Bean Validation" order="11" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49844238" visible="true" weight="0.18377483" />
+>>>>>>> pc
+      <window_info id="Structure" order="1" sideWeight="0.50155765" side_tool="true" weight="0.17439294" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" sideWeight="0.50155765" side_tool="true" weight="0.17439294" />
+      <window_info id="Web" order="7" sideWeight="0.50155765" side_tool="true" weight="0.17439294" />
+      <window_info anchor="bottom" id="Message" order="0" />
+<<<<<<< HEAD
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.88189846" visible="true" weight="0.32120582" />
+=======
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32881" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.88189846" visible="true" weight="0.32254696" />
+>>>>>>> pc
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.94260484" weight="0.39874738" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49908593" weight="0.32982087" />
+      <window_info anchor="bottom" id="Spring" order="7" sideWeight="0.49817184" weight="0.32982087" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49944812" weight="0.32985386" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.057395145" side_tool="true" weight="0.39874738" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" sideWeight="0.49817184" weight="0.2455216" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.49817184" weight="0.32982087" />
+<<<<<<< HEAD
+      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.4971623" weight="0.32982087" />
+=======
+      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.4971623" weight="0.32881" />
+>>>>>>> pc
+      <window_info anchor="bottom" id="Application Servers" order="15" weight="0.32985386" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="JSF" order="6" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+      <window_info anchor="right" id="CDI" order="10" />
+      <window_info anchor="right" id="Bean Validation" order="11" />
+<<<<<<< HEAD
+    </layout>
+=======
+    </layout-to-restore>
+>>>>>>> pc
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+<<<<<<< HEAD
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/dao/ReferalLink.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/dao/Property.java" />
@@ -792,23 +1250,154 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+=======
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/pojo/Review.java" />
+    <entry file="jar://D:/Env/Java/jdk1.8.0_211/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/mapper/CategoryMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/pojo/User.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/pojo/Category.java" />
+    <entry file="file://$PROJECT_DIR$/SSM03-Tmall.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.4.1/mybatis-3.4.1.jar!/org/apache/ibatis/io/Resources.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+        <state relative-caret-position="102">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1105">
+          <caret line="65" column="14" selection-start-line="65" selection-start-column="14" selection-end-line="65" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/freemarker.properties" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3689">
+          <caret line="217" selection-start-line="217" selection-end-line="217" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/mapper/ProductImageMapper.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ProductMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ProductImageMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/OrderMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ReferalLinkMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ReviewMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="39" column="42" lean-forward="true" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/mobile.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="84" selection-start-line="1" selection-start-column="84" selection-end-line="1" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/pay.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="84" selection-start-line="1" selection-start-column="84" selection-end-line="1" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="84" selection-start-line="1" selection-start-column="84" selection-end-line="1" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/shopCart.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="84" selection-start-line="1" selection-start-column="84" selection-end-line="1" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/shopInfo.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="84" selection-start-line="1" selection-start-column="84" selection-end-line="1" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/shopList.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="295" column="12" lean-forward="true" selection-start-line="295" selection-start-column="12" selection-end-line="295" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/img/wdsc.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/img/weizhifu.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/img/weixincode.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/img/ad1.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/css/admin.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/css/basic.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="4585" column="66" lean-forward="true" selection-start-line="4585" selection-start-column="66" selection-end-line="4585" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/pojo/CategoryExample.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="78" selection-start-line="29" selection-start-column="78" selection-end-line="29" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/css/mobile.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2091">
+          <caret line="123" column="22" selection-start-line="123" selection-start-column="22" selection-end-line="123" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/CategoryMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mybatis.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="42" column="29" selection-start-line="42" selection-start-column="29" selection-end-line="42" selection-end-column="29" />
-          <folding>
-            <element signature="e#1447#1472#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="501">
+          <caret line="49" column="11" lean-forward="true" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -821,8 +1410,145 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/generatorConfig.xml">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="45" column="30" lean-forward="true" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/MyBatisGeneratorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="614">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/CategoryMapperTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="44" column="9" lean-forward="true" selection-start-line="31" selection-start-column="8" selection-end-line="44" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#817#833#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/css/infoStyle.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="84" selection-start-line="1" selection-start-column="84" selection-end-line="1" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-401">
+          <caret line="225" column="42" lean-forward="true" selection-start-line="225" selection-start-column="42" selection-end-line="225" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/css/demo.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="639" column="18" selection-start-line="639" selection-start-column="18" selection-end-line="639" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="274" column="32" selection-start-line="274" selection-start-column="32" selection-end-line="274" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/css/hmstyle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="1554" column="23" selection-start-line="1554" selection-start-column="23" selection-end-line="1554" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/mapper/CategoryDemoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+>>>>>>> pc
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/mapper/CategoryMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="306">
+          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mybatis.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="42" column="29" selection-start-line="42" selection-start-column="29" selection-end-line="42" selection-end-column="29" />
+          <folding>
+            <element signature="e#1447#1472#0" expanded="true" />
+=======
+        <state relative-caret-position="68">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/controller/DemoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+>>>>>>> pc
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/main/resources/jdbc.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="98" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/generatorConfig.xml">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="39" selection-start-line="39" selection-end-line="39" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/mapper/UserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/mapper/ReviewMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/service/CategoryService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="33" column="32" lean-forward="true" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#615#631#0" expanded="true" />
+          </folding>
+>>>>>>> pc
         </state>
       </provider>
     </entry>
@@ -865,6 +1591,10 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
+<<<<<<< HEAD
+=======
+          <last-edited>1.8</last-edited>
+>>>>>>> pc
           <splitter-proportions>
             <option name="proportions">
               <list>

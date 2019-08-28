@@ -4,6 +4,10 @@
   <resultMap id="BaseResultMap" type="cn.bps.pojo.Category">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
+<<<<<<< HEAD
+=======
+    <result column="group_id" jdbcType="INTEGER" property="group_id" />
+>>>>>>> pc
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -35,7 +39,11 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
+<<<<<<< HEAD
     id, name
+=======
+    id, name, group_id
+>>>>>>> pc
   </sql>
   <select id="selectByExample" parameterType="cn.bps.pojo.CategoryExample" resultMap="BaseResultMap">
     select
@@ -58,13 +66,26 @@
     from category
     where id = #{id,jdbcType=INTEGER}
   </select>
+<<<<<<< HEAD
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+=======
+    <select id="getMaxGroupId" resultType="java.lang.Integer">
+      select max(group_id)
+      from category
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+>>>>>>> pc
     delete from category
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.Category" useGeneratedKeys="true">
+<<<<<<< HEAD
     insert into category (name)
     values (#{name,jdbcType=VARCHAR})
+=======
+    insert into category (name, group_id)
+    values (#{name,jdbcType=VARCHAR}, #{group_id,jdbcType=INTEGER})
+>>>>>>> pc
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.Category" useGeneratedKeys="true">
     insert into category
@@ -72,11 +93,23 @@
       <if test="name != null">
         name,
       </if>
+<<<<<<< HEAD
+=======
+      <if test="group_id != null">
+        group_id,
+      </if>
+>>>>>>> pc
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
+<<<<<<< HEAD
+=======
+      <if test="group_id != null">
+        #{group_id,jdbcType=INTEGER},
+      </if>
+>>>>>>> pc
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cn.bps.pojo.Category">
@@ -85,12 +118,23 @@
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
+<<<<<<< HEAD
+=======
+      <if test="group_id != null">
+        group_id = #{group_id,jdbcType=INTEGER},
+      </if>
+>>>>>>> pc
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.bps.pojo.Category">
     update category
+<<<<<<< HEAD
     set name = #{name,jdbcType=VARCHAR}
+=======
+    set name = #{name,jdbcType=VARCHAR},
+      group_id = #{group_id,jdbcType=INTEGER}
+>>>>>>> pc
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

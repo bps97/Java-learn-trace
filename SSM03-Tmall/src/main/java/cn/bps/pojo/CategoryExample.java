@@ -233,6 +233,66 @@ public class CategoryExample {
             addCriterion("name not between", value1, value2, "name");
             return (Criteria) this;
         }
+
+        public Criteria andGroup_idIsNull() {
+            addCriterion("group_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroup_idIsNotNull() {
+            addCriterion("group_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroup_idEqualTo(Integer value) {
+            addCriterion("group_id =", value, "group_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroup_idNotEqualTo(Integer value) {
+            addCriterion("group_id <>", value, "group_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroup_idGreaterThan(Integer value) {
+            addCriterion("group_id >", value, "group_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroup_idGreaterThanOrEqualTo(Integer value) {
+            addCriterion("group_id >=", value, "group_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroup_idLessThan(Integer value) {
+            addCriterion("group_id <", value, "group_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroup_idLessThanOrEqualTo(Integer value) {
+            addCriterion("group_id <=", value, "group_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroup_idIn(List<Integer> values) {
+            addCriterion("group_id in", values, "group_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroup_idNotIn(List<Integer> values) {
+            addCriterion("group_id not in", values, "group_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroup_idBetween(Integer value1, Integer value2) {
+            addCriterion("group_id between", value1, value2, "group_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroup_idNotBetween(Integer value1, Integer value2) {
+            addCriterion("group_id not between", value1, value2, "group_id");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

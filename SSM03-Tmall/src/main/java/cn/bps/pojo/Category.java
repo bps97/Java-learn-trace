@@ -5,6 +5,8 @@ public class Category {
 
     private String name;
 
+    private Integer group_id;
+
     public Integer getId() {
         return id;
     }
@@ -19,5 +21,13 @@ public class Category {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public Integer getGroup_id() {
+        return group_id;
+    }
+
+    public void setGroup_id(Integer group_id) {
+        this.group_id = group_id;
     }
 }

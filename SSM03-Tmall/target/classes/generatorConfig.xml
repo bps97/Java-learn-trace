@@ -60,6 +60,18 @@
             <property name="my.isgen.usekeys" value="true"/>
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
+<<<<<<< HEAD
+=======
+
+        <table tableName="category_demo" domainObjectName="CategoryDemo"
+                enableSelectByExample="false" enableUpdateByExample="fasle"
+               enableDeleteByExample="false" enableSelectByPrimaryKey="true"
+               selectByExampleQueryId="false">
+            <property name="useActualColunmNames" value="true"/>
+            <property name="my.isgen.userkeys" value="true"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+>>>>>>> pc
         <table tableName="property" domainObjectName="Property"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="true"
@@ -140,6 +152,12 @@
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
+<<<<<<< HEAD
+=======
+        
+
+        
+>>>>>>> pc
     </context>
 
 </generatorConfiguration>

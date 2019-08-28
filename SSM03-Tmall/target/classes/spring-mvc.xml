@@ -19,12 +19,78 @@
     <!-- 静态资源默认servlet配置 -->
     <mvc:default-servlet-handler/>
 
+<<<<<<< HEAD
     <!-- 配置jsp 显示ViewResolver -->
+=======
+    <mvc:resources mapping="/css/**" location="/WEB-INF/css/" />
+    <mvc:resources mapping="/img/**" location="/WEB-INF/img/" />
+    <mvc:resources mapping="/fonts/**" location="/WEB-INF/fonts/" />
+
+
+<!--    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">-->
+<!--        <property name="viewResolvers">-->
+<!--            <list>-->
+<!--                <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />-->
+<!--                &lt;!&ndash; 配置jsp 显示ViewResolver &ndash;&gt;-->
+<!--                <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+<!--                    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>-->
+<!--                    <property name="prefix" value="/WEB-INF/views/"/>-->
+<!--                    <property name="suffix" value=".jsp"/>-->
+<!--                    <property name="order" value="1"/>-->
+<!--                </bean>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--&lt;!&ndash;        <property name="defaultViews">&ndash;&gt;-->
+<!--&lt;!&ndash;            <list>&ndash;&gt;-->
+<!--&lt;!&ndash;                &ndash;&gt;-->
+<!--&lt;!&ndash;            </list>&ndash;&gt;-->
+<!--&lt;!&ndash;        </property>&ndash;&gt;-->
+<!--    </bean>-->
+
+
+<!--    html的freeMarker的视图解析器-->
+    <bean id="htmlViewResolver"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="viewClass"
+                  value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
+        <property name="contentType" value="text/html; charset=utf-8"/>
+        <property name="cache" value="true"/>
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".html"/>
+        <property name="order" value="0"/>
+    </bean>
+
+
+    <bean id="freemarkerConfig"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/"/>
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="freemarkerVariables">
+            <map>
+                <entry key="xml_escape" value-ref="fmXmlEscape"/>
+            </map>
+        </property>
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">3600</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape"/>
+
+
+    <!--viewResolver-->
+>>>>>>> pc
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> pc
 </beans>
 

@@ -6,7 +6,11 @@
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="user_id" jdbcType="INTEGER" property="user_id" />
     <result column="product_id" jdbcType="INTEGER" property="product_id" />
+<<<<<<< HEAD
     <result column="review_time" jdbcType="TIMESTAMP" property="review_time" />
+=======
+    <result column="createDate" jdbcType="TIMESTAMP" property="createDate" />
+>>>>>>> pc
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -38,7 +42,11 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
+<<<<<<< HEAD
     id, content, user_id, product_id, review_time
+=======
+    id, content, user_id, product_id, createDate
+>>>>>>> pc
   </sql>
   <select id="selectByExample" parameterType="cn.bps.pojo.ReviewExample" resultMap="BaseResultMap">
     select
@@ -67,9 +75,15 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.Review" useGeneratedKeys="true">
     insert into review (content, user_id, product_id, 
+<<<<<<< HEAD
       review_time)
     values (#{content,jdbcType=VARCHAR}, #{user_id,jdbcType=INTEGER}, #{product_id,jdbcType=INTEGER}, 
       #{review_time,jdbcType=TIMESTAMP})
+=======
+      createDate)
+    values (#{content,jdbcType=VARCHAR}, #{user_id,jdbcType=INTEGER}, #{product_id,jdbcType=INTEGER}, 
+      #{createDate,jdbcType=TIMESTAMP})
+>>>>>>> pc
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.Review" useGeneratedKeys="true">
     insert into review
@@ -83,8 +97,13 @@
       <if test="product_id != null">
         product_id,
       </if>
+<<<<<<< HEAD
       <if test="review_time != null">
         review_time,
+=======
+      <if test="createDate != null">
+        createDate,
+>>>>>>> pc
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -97,8 +116,13 @@
       <if test="product_id != null">
         #{product_id,jdbcType=INTEGER},
       </if>
+<<<<<<< HEAD
       <if test="review_time != null">
         #{review_time,jdbcType=TIMESTAMP},
+=======
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+>>>>>>> pc
       </if>
     </trim>
   </insert>
@@ -114,8 +138,13 @@
       <if test="product_id != null">
         product_id = #{product_id,jdbcType=INTEGER},
       </if>
+<<<<<<< HEAD
       <if test="review_time != null">
         review_time = #{review_time,jdbcType=TIMESTAMP},
+=======
+      <if test="createDate != null">
+        createDate = #{createDate,jdbcType=TIMESTAMP},
+>>>>>>> pc
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -125,7 +154,11 @@
     set content = #{content,jdbcType=VARCHAR},
       user_id = #{user_id,jdbcType=INTEGER},
       product_id = #{product_id,jdbcType=INTEGER},
+<<<<<<< HEAD
       review_time = #{review_time,jdbcType=TIMESTAMP}
+=======
+      createDate = #{createDate,jdbcType=TIMESTAMP}
+>>>>>>> pc
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
