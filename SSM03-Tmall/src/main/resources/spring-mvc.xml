@@ -21,10 +21,12 @@
 
     <mvc:resources mapping="/css/**" location="/WEB-INF/css/" />
     <mvc:resources mapping="/img/**" location="/WEB-INF/img/" />
+    <mvc:resources mapping="/js/**" location="/WEB-INF/js/" />
     <mvc:resources mapping="/fonts/**" location="/WEB-INF/fonts/" />
 
 
-<!--    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">-->
+
+    <!--    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">-->
 <!--        <property name="viewResolvers">-->
 <!--            <list>-->
 <!--                <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />-->

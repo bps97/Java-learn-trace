@@ -5,23 +5,14 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>登录</title>
-    <script type="text/javascript">
-    	window.onload=function(){
-    function login(){
-        var user=document.getElementById("user");           //获取账户信息
-        var password=document.getElementById("password");  //获取密码信息
-        if(user.value!=='mr' && password.value!=='mrsoft' ){
-            alert('您输入的账户或密码错误！');
-        }else{
-            alert('登录成功！');
-        }
-    }
-    }
-</script>
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="../css/basic.css"/>
     <link href="../css/login.css" rel="stylesheet" type="text/css">
+
+
+
 </head>
 
 <body>
@@ -37,27 +28,28 @@
             <h3 class="title">登录</h3>
             <div class="clear"></div>
             <div class="login-form">
-                <form>
+                <form method="post" action="/logining" >
                     <div class="user-name">
-                        <label for="user"><i class="mr-icon-user"></i></label>
-                        <input type="text" name="" id="user" placeholder="邮箱/手机/用户名">
+                        <label for="loginName"><i class="mr-icon-user"></i></label>
+                        <input type="text" name="loginName" id="loginName" placeholder="邮箱/手机" >
                     </div>
                     <div class="user-pass">
                         <label for="password"><i class="mr-icon-lock"></i></label>
-                        <input type="password" name="" id="password" placeholder="请输入密码">
+                        <input type="password" name="password" id="password" placeholder="请输入密码">
                     </div>
+
+
+                    <a href="../register.html" class="mr-fr">注册</a>
+                    <br/>
+
+                <div class="mr-cf">
+                    <input type="submit" name="" value="登 录"  class="mr-btn mr-btn-primary mr-btn-sm">
+                </div>
                 </form>
+
             </div>
 
-            <div class="login-links">
-                <label for="remember-me"><input id="remember-me" type="checkbox">记住密码</label>
-                <a href="../register.html" class="mr-fr">注册</a>
-                <br/>
-            </div>
 
-            <div class="mr-cf">
-                <input type="submit" name="" value="登 录" onclick="login()" class="mr-btn mr-btn-primary mr-btn-sm">
-            </div>
             <div class="partner">
                 <h3>合作账号</h3>
                 <div class="mr-btn-group">
@@ -95,5 +87,6 @@
     </div>
 </div>
 </body>
+
 
 </html>

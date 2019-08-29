@@ -19,6 +19,5 @@ public interface CategoryMapper {
 
     int updateByPrimaryKey(Category record);
 
-    //自己写的
     int getMaxGroupId();
 }

@@ -6,72 +6,38 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>首页</title>
+    <script type="text/javascript" src="js/ready.js" />
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript">
-    	window.onload=function(){
-    //alert(window.innerWidth);
-    var box=document.getElementById('box');
-    var imagesUI=document.getElementById('imagesUI');
-    var btnUI=document.getElementById('btnUI');
-    var imgs=imagesUI.getElementsByTagName('li');
-    var btn=btnUI.getElementsByTagName('li');
-    var i=index=0; //中间量，统一声明；
-    var play=null;
-    console.log(box,imgs,imgs,btn);//获取正确
+        //鼠标滑出事件
 
-    autoPlay();//马上调用，我试过用window.onload调用这个方法，但是调用之后影响到了其他方法，使用autoPlay所以只能这样调用了
+        var mouseOver = function(obj){
+            obj.className="appliance js_toggle relative hover";     //设置当前事件对象样式
+            var menu=obj.childNodes;                                   //寻找该事件子节点（商品子类别）
+            menu[3].style.display='block';                            //设置子节点显示
 
-    //div的鼠标移入移出事件
-    box.onmouseover=function(){
-        clearInterval(play);
-    };
-    box.onmouseout=function(){
-        autoPlay();
-    };
-    //自动轮播方法
-    function autoPlay(){
-        play=setInterval(function(){ //定时器处理
-            index++;
-            index>=imgs.length&&(index=0);
-            show(index);
-        },3000)
-    }
 
-    //图片切换方法
-    function show(a){
-        for(i=0;i<btn.length;i++ ){
-            btn[i].className='';    //显示当前设置按钮。
-            btn[a].className='current';
+            var url = "LoadSubCategory.do";
+            $.post(url,{'phone':phone},function (responseDate,status,xhr) {
+                if(status == 'success'){
+                    if(responseDate == "0"){
+                        alert("该电话已经注册过账号");
+                    }else{
+                        console.log(responseDate);
+                    }
+                }
+            })
+
+
         }
-        for(i=0;i<imgs.length;i++){ //把图片的效果设置和按钮相同
-            imgs[i].style.opacity=0;
-            imgs[a].style.opacity=1;
+
+        //鼠标滑入事件
+        function mouseOut(obj){
+            obj.className="appliance js_toggle relative";           //设置当前事件对象样式
+            var menu=obj.childNodes;                                  //寻找该事件子节点（商品子类别）
+            menu[3].style.display='none';                            //设置子节点隐藏
         }
-    }
-    //切换按钮功能
-    for(i=0;i<btn.length;i++){
-        btn[i].index=i;
-        btn[i].onmouseover=function(){
-            show(this.index);
-            clearInterval(play);
-        }
-    }
-    //鼠标滑出事件
-    function mouseOver(obj){
-        obj.className="appliance js_toggle relative hover";     //设置当前事件对象样式
-        var menu=obj.childNodes;                                   //寻找该事件子节点（商品子类别）
-        menu[3].style.display='block';                            //设置子节点显示
-    }
-
-    //鼠标滑入事件
-    function mouseOut(obj){
-        obj.className="appliance js_toggle relative";           //设置当前事件对象样式
-        var menu=obj.childNodes;                                  //寻找该事件子节点（商品子类别）
-        menu[3].style.display='none';                            //设置子节点隐藏
-       }
-
-
-}
-</script>
+    </script>
 
     <style type="text/css">
         #box {
@@ -169,8 +135,8 @@
         <ul class="message-l">
             <div class="topMessage">
                 <div class="menu-hd">
-                    <a href="views/login.jsp" target="_top" class="h" style="color: red">亲，请登录</a>
-                    <a href="views/register.jsp" target="_top" style="color: red">免费注册</a>
+                    <a href="/login" target="_top" class="h" style="color: red">亲，请登录</a>
+                    <a href="/register" target="_top" style="color: red">免费注册</a>
                 </div>
             </div>
         </ul>
@@ -199,6 +165,8 @@
     </div>
 
     <!--悬浮搜索框-->
+
+
     <div class="nav white">
         <div class="logo"><a href="index.jsp"><img src="img/logo.png"/></a></div>
         <div class="logoBig">
@@ -214,7 +182,10 @@
     </div>
     <div class="clear"></div>
 </div>
+
+
 <div class="banner">
+
         <!--轮播 -->
     <div class="mr-slider mr-slider-default scoll" data-mr-flexslider id="demo-slider-0">
         <div id="box">
@@ -239,14 +210,13 @@
 
 
 <div class="shopNav">
-<div class="slideall">
 
-<div class="long-title"><span class="all-goods">全部分类</span></div>
-<div class="nav-cont">
+    <div class="slideall">
+
+    <div class="long-title"><span class="all-goods">全部分类</span></div>
+
+    <div class="nav-cont">
     <ul>
-
-
-
         <li class="index"><a href="#">首页</a></li>
         <li class="qc"><a href="#">闪购</a></li>
         <li class="qc"><a href="#">生鲜</a></li>
@@ -263,98 +233,69 @@
 <div id="nav" class="navfull">
 <div class="area clearfix">
 <div class="category-content" id="guide_2">
+    <div class="category">
+        <ul class="category-list" id="js_climit_li">
 
-<div class="category">
-<ul class="category-list" id="js_climit_li">
+        <c:forEach items="${categoryGroup}" var="categories">
+            <li class="appliance js_toggle relative " onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" >
+                <div class="category-info">
+                    <h3 class="category-name b-category-name">
+                        <i><img src="img/cake.png"></i>
+                        <a class="ml-22" title="家用电器">
+                            <c:forEach items="${categories}" var="category"><c:out value="${category.getName()}"/></c:forEach>
+                        </a>
+                    </h3>
+                </div>
+                <div class="menu-item menu-in top" >
+                    <div class="area-in">
+                        <div class="area-bg">
+                            <div class="menu-srot">
+                                <div class="sort-side">
+                                    <c:forEach items="${categories}" var="category">
+                                        <dl class="dl-sort">
+                                        <dt><span>${category.getName()}</span></dt>
+                                        <c:forEach items="${categoryDict.get(category.getId())}" var="categoryDemo">
+                                        <dd><a  href="views/shopInfo.jsp"><span><c:out value="${categoryDemo.getName()}"/></span></a></dd>
+                                        </c:forEach>
+                                        </dl>
+                                    </c:forEach>
 
-    <c:forEach items="${categorieslist}" var="categories">
-        <li class="appliance js_toggle relative " onmouseover="mouseOver(this)" onmouseout="mouseOut(this)"  >
-            <div class="category-info">
-                <h3 class="category-name b-category-name">
-                    <i><img src="img/cake.png"></i>
-                    <a class="ml-22" title="家用电器">
-                        <c:forEach items="${categories}" var="category"><c:out value="${category.getName()}"/></c:forEach>
-                    </a>
-                </h3>
-                <em>&gt;</em>
-            </div>
-            <div class="menu-item menu-in top" >
-                <div class="area-in">
-                    <div class="area-bg">
-                        <div class="menu-srot">
-                            <div class="sort-side">
 
+
+
+                                </div>
+                                <div class="brand-side">
                                     <dl class="dl-sort">
-                                    <dt><span >生活电器</span></dt>
-                                    <dd><a  href="views/shopInfo.jsp"><span>取暖电器</span></a></dd>
-                                    <dd><a  href="views/shopInfo.jsp"><span>吸尘器</span></a></dd>
-                                    <dd><a  href="views/shopInfo.jsp"><span>净化器</span></a></dd>
-                                    <dd><a  href="views/shopInfo.jsp"><span>扫地机器人</span></a></dd>
-                                    <dd><a  href="views/shopInfo.jsp"><span>加湿器</span></a></dd>
-                                    <dd><a  href="views/shopInfo.jsp"><span>熨斗</span></a></dd>
-                                    <dd><a  href="views/shopInfo.jsp"><span>电风扇</span></a></dd>
-                                    <dd><a  href="views/shopInfo.jsp"><span>冷风扇</span></a></dd>
-                                    <dd><a  href="views/shopInfo.jsp"><span>插座</span></a></dd>
-                                </dl>
-                                <dl class="dl-sort">
-                                    <dt><span >厨房小电</span></dt>
-                                    <dd><a  href="#"><span>电饭煲</span></a></dd>
-                                    <dd><a  href="#"><span>微波炉</span></a></dd>
-                                    <dd><a  href="#"><span>电烤箱</span></a></dd>
-                                    <dd><a  href="#"><span>电磁炉</span></a></dd>
-                                    <dd><a  href="#"><span>电压力锅</span></a></dd>
-                                    <dd><a  href="#"><span>豆浆机</span></a></dd>
-                                    <dd><a  href="#"><span>咖啡机</span></a></dd>
-                                    <dd><a  href="#"><span>面包机</span></a></dd>
-                                    <dd><a  href="#"><span>榨汁机</span></a></dd>
-                                </dl>
-                            </div>
-                            <div class="brand-side">
-                                <dl class="dl-sort">
-                                    <dt><span>实力商家</span></dt>
-                                    <dd><a rel="nofollow" title="海尔" target="_blank" href="#" rel="nofollow">
-                                        <span class="red">海尔</span></a></dd>
-                                    <dd><a rel="nofollow" title="三星" target="_blank" href="#" rel="nofollow">
-                                        <span >三星</span></a></dd>
-                                    <dd><a rel="nofollow" title="飞利浦" target="_blank" href="#" rel="nofollow">
-                                        <span class="red">飞利浦</span></a></dd>
-                                    <dd><a rel="nofollow" title="九阳" target="_blank" href="#" rel="nofollow">
-                                        <span>九阳</span></a></dd>
-                                    <dd><a rel="nofollow" title="海信" target="_blank" href="#" rel="nofollow">
-                                        <span class="red">海信</span></a></dd>
+                                        <dt><span>实力商家</span></dt>
+                                        <dd><a rel="nofollow" title="海尔" target="_blank" href="#" rel="nofollow">
+                                            <span class="red">海尔</span></a></dd>
+                                        <dd><a rel="nofollow" title="三星" target="_blank" href="#" rel="nofollow">
+                                            <span >三星</span></a></dd>
+                                        <dd><a rel="nofollow" title="飞利浦" target="_blank" href="#" rel="nofollow">
+                                            <span class="red">飞利浦</span></a></dd>
+                                        <dd><a rel="nofollow" title="九阳" target="_blank" href="#" rel="nofollow">
+                                            <span>九阳</span></a></dd>
+                                        <dd><a rel="nofollow" title="海信" target="_blank" href="#" rel="nofollow">
+                                            <span class="red">海信</span></a></dd>
 
-                                </dl>
+                                    </dl>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <b class="arrow"></b>
-        </li>
-
-
-
-
-
-
-
-    </c:forEach>
-
-
-
-
-
-
-
-
-</ul>
-</div>
+                <b class="arrow"></b>
+            </li>
+1
+        </c:forEach>
+        </ul>
+    </div>
 </div>
 
 </div>
 </div>
 
-<!--小导航 -->
+<!--小导航
 <div class="mr-g mr-g-fixed smallnav">
     <div class="mr-u-sm-3">
         <a href="views/shopList.jsp"><img src="img/navsmall.jpg"/>
@@ -378,8 +319,8 @@
         </a>
     </div>
 </div>
-
-<!--走马灯 -->
+-->
+<!--走马灯
 
 <div class="marqueen">
     <span class="marqueen-title">商城头条</span>
@@ -432,8 +373,8 @@
 </div>
 <div class="shopMainbg">
 <div class="shopMain" id="shopmain">
-
-<!--今日推荐 -->
+ -->
+<!--今日推荐
 <div class="mr-g mr-g-fixed recommendation">
     <div class="clock mr-u-sm-3">
         <img src="img/2016.png "></img>
@@ -470,7 +411,8 @@
 
 </div>
 <div class="clear "></div>
-<!--热门活动 -->
+-->
+<!--热门活动
 <div class="mr-container activity ">
     <div class="shopTitle ">
         <h4>活动</h4>
@@ -530,8 +472,8 @@
     </div>
 </div>
 <div class="clear "></div>
-
-<!--手机-->
+-->
+<!--手机
 <div id="f1">
     <div class="mr-container ">
         <div class="shopTitle ">
@@ -655,8 +597,8 @@
     </div>
     <div class="clear "></div>
 </div>
-
-<!--电脑-->
+-->
+<!--电脑
 <div id="f2">
     <div class="mr-container ">
         <div class="shopTitle ">
@@ -784,8 +726,8 @@
     </div>
     <div class="clear "></div>
 </div>
-
-<!--甜点-->
+-->
+<!--甜点
 <div id="f3">
     <div class="mr-container ">
         <div class="shopTitle ">
@@ -910,8 +852,8 @@
 
     <div class="clear "></div>
 </div>
-
-<!--坚果-->
+-->
+<!--坚果
 <div id="f4">
 
     <div class="mr-container ">
@@ -1040,30 +982,30 @@
     </div>
     <div class="clear "></div>
 </div>
+-->
 
-
-<div class="footer ">
-    <div class="footer-hd ">
-        <p>
-            <a href="http://www.mingrisoft.com/" target="_blank">明日科技</a>
-            <b>|</b>
-            <a href="index.jsp">商城首页</a>
-            <b>|</b>
-            <a href="#">支付宝</a>
-            <b>|</b>
-            <a href="#">物流</a>
-        </p>
+    <div class="footer ">
+        <div class="footer-hd ">
+            <p>
+                <a href="http://www.mingrisoft.com/" target="_blank">明日科技</a>
+                <b>|</b>
+                <a href="index.jsp">商城首页</a>
+                <b>|</b>
+                <a href="#">支付宝</a>
+                <b>|</b>
+                <a href="#">物流</a>
+            </p>
+        </div>
+        <div class="footer-bd ">
+            <p>
+                <a href="http://www.mingrisoft.com/Index/ServiceCenter/aboutus.jsp" target="_blank">关于明日</a>
+                <a href="#">合作伙伴</a>
+                <a href="#">联系我们</a>
+                <a href="#">网站地图</a>
+                <em>© 2016-2025 mingrisoft.com 版权所有</em>
+            </p>
+        </div>
     </div>
-    <div class="footer-bd ">
-        <p>
-            <a href="http://www.mingrisoft.com/Index/ServiceCenter/aboutus.jsp" target="_blank">关于明日</a>
-            <a href="#">合作伙伴</a>
-            <a href="#">联系我们</a>
-            <a href="#">网站地图</a>
-            <em>© 2016-2025 mingrisoft.com 版权所有</em>
-        </p>
-    </div>
-</div>
 
 
 </div>
@@ -1238,4 +1180,6 @@
 </div>
 
 </body>
+
+
 </html>

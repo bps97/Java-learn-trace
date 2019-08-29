@@ -60,8 +60,7 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
     <select id="getMaxGroupId" resultType="java.lang.Integer">
-      select max(group_id)
-      from category
+      select max(group_id) from category
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from category

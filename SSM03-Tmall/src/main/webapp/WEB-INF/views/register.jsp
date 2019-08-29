@@ -5,63 +5,75 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>注册</title>
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+        function checkPhone() {
+            var phone = $('#tel').val();
+            console.log(phone);
+            if(phone == ""){
+
+                alert("电话不能为空");
+                return;
+            }
+            var url="checkPhone.do";
+            $.post(url,{'phone':phone},function (responseDate,status,xhr) {
+                if(status == 'success'){
+                    if(responseDate == "0"){
+                        alert("该电话已经注册过账号");
+                    }else{
+                        console.log(responseDate);
+                    }
+                }
+            })
+
+        }
+
+    </script>
+
     <script type="text/javascript">    	
-    	window.onload=function(){
-    function mr_verify(){
+        function mr_verify(){
 
-        //获取表单对象
-        var email=document.getElementById("email");
-        var password=document.getElementById("password");
-        var passwordRepeat=document.getElementById("passwordRepeat");
-        var tel=document.getElementById("tel");
+            //获取表单对象
+            var password=document.getElementById("password");
+            var passwordRepeat=document.getElementById("passwordRepeat");
+            var tel=document.getElementById("tel");
 
-        //验证项目是否为空
-        if(email.value==='' || email.value===null){
-            alert("邮箱不能为空！");
-            return;
-        }
-        if(password.value==='' || password.value===null){
-            alert("密码不能为空！");
-            return;
-        }
-        if(passwordRepeat.value==='' || passwordRepeat.value===null){
-            alert("确认密码不能为空！");
-            return;
-        }
-        if(tel.value==='' || tel.value===null){
-            alert("手机号码不能为空！");
-            return;
-        }
+            //验证项目是否为空
+            if(password.value==='' || password.value===null){
+                alert("密码不能为空！");
+                return;
+            }
+            if(passwordRepeat.value==='' || passwordRepeat.value===null){
+                alert("确认密码不能为空！");
+                return;
+            }
+            if(tel.value==='' || tel.value===null){
+                alert("手机号码不能为空！");
+                return;
+            }
 
-        if(password.value!==passwordRepeat.value ){
-            alert("密码设置前后不一致！");
-            return;
-        }
-        //验证邮件格式
-        apos = email.value.indexOf("@")
-        dotpos = email.value.lastIndexOf(".")
-        if (apos < 1 || dotpos - apos < 2) {
-            alert("邮箱格式错误！");
-        }
-        else {
-            alert("邮箱格式正确！");
-        }
+            if(password.value!==passwordRepeat.value ){
+                alert("密码设置前后不一致！");
+                return;
+            }
 
-        //验证手机号格式
-        if(isNaN(tel.value)){
-            alert("手机号请输入数字！");
-            return;
-        }
-        if(tel.value.length!==11){
-            alert("手机号是11个数字！");
-            return;
-        }
+            //验证手机号格式
+            if(isNaN(tel.value)){
+                alert("手机号请输入数字！");
+                return;
+            }
+            if(tel.value.length!==11){
+                alert("手机号是11个数字！");
+                return;
+            }
 
-        alert('注册成功！');
+            alert('注册成功！');
 
-    }
-   }
-</script>
+       }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="../css/basic.css"/>
     <link href="../css/login.css" rel="stylesheet" type="text/css">
@@ -87,23 +99,20 @@
                     <div class="mr-tab-panel mr-active">
                         <form method="post">
 
-                            <div class="user-email">
-                                <label for="email"><i class="mr-icon-envelope-o"></i></label>
-                                <input type="email" name="" id="email" placeholder="请输入邮箱账号">
+                            <div class="user-pass">
+                                <label for="passwordRepeat"><i class="mr-icon-mobile"></i><span style="color:red;margin-left:5px">*</span></label>
+                                <input type="text" name="phone" id="tel" placeholder="请输入手机号" onblur="checkPhone()">
                             </div>
                             <div class="user-pass">
                                 <label for="password"><i class="mr-icon-lock"></i></label>
-                                <input type="password" name="" id="password" placeholder="设置密码">
+                                <input type="password" name="password" id="password" placeholder="设置密码">
                             </div>
                             <div class="user-pass">
                                 <label for="passwordRepeat"><i class="mr-icon-lock"></i></label>
-                                <input type="password" name="" id="passwordRepeat" placeholder="确认密码">
+                                <input type="password" name="password2" id="passwordRepeat" placeholder="确认密码">
                             </div>
 
-                            <div class="user-pass">
-                                <label for="passwordRepeat"><i class="mr-icon-mobile"></i><span style="color:red;margin-left:5px">*</span></label>
-                                <input type="text" name="" id="tel" placeholder="请输入手机号">
-                            </div>
+
 
                         </form>
 

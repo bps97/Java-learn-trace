@@ -67,10 +67,10 @@ h3.title {
 }
 
 /*主题*/
-.login-form {
-    background: #fff;
-    width: 100%;
-}
+/*.login-form {*/
+/*    background: #fff;*/
+/*    width: 100%;*/
+/*}*/
 
 form {
     max-width: 320px;
