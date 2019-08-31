@@ -19,7 +19,7 @@ public class CategoryServiceImp implements CategoryService{
     public List<List<Category>> getCategories(int size){
 
         CategoryExample categoryExample = new CategoryExample();
-        int gourpNumber = categoryMapper.getMaxGroupId();
+        long gourpNumber = categoryMapper.countByExample(categoryExample);
         List<List<Category>> lists = new ArrayList<List<Category>>();
         List<Category> categories = categoryMapper.selectByExample(categoryExample);
         int start = 1;

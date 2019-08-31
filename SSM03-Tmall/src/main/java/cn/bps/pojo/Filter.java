@@ -1,11 +1,9 @@
 package cn.bps.pojo;
 
-public class CategoryDemo {
+public class Filter {
     private Integer id;
 
     private String name;
-
-    private Integer categoryId;
 
     public Integer getId() {
         return id;
@@ -21,13 +19,5 @@ public class CategoryDemo {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
-    }
-
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
     }
 }

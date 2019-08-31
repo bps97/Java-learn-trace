@@ -1,9 +1,9 @@
 package cn.bps.service;
 
-        import cn.bps.mapper.CategoryDemoMapper;
+        import cn.bps.mapper.SubCategoryMapper;
         import cn.bps.pojo.Category;
-        import cn.bps.pojo.CategoryDemo;
-        import cn.bps.pojo.CategoryDemoExample;
+        import cn.bps.pojo.SubCategory;
+        import cn.bps.pojo.SubCategoryExample;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.stereotype.Service;
 
@@ -12,26 +12,26 @@ package cn.bps.service;
         import java.util.Map;
 
 @Service
-public class CategoryDemoServiceImp implements CategoryDemoSerivce {
+public class SubCategoryServiceImp implements SubCategorySerivce {
 
     @Autowired
-    CategoryDemoMapper categoryDemoMapper;
+    SubCategoryMapper subcategoryMapper;
 
     @Autowired
     CategoryService categoryService;
 
-    public List<CategoryDemo> getCategoryDemos(int id){
+    public List<SubCategory> getCategoryDemos(int id){
 
-        CategoryDemoExample categoryDemoExample = new CategoryDemoExample();
-        categoryDemoExample.createCriteria().andCategoryIdEqualTo(id);
-        List<CategoryDemo> list = categoryDemoMapper.selectByExample(categoryDemoExample);
+        SubCategoryExample subCategoryExample = new SubCategoryExample();
+        subCategoryExample.createCriteria().andCategoryIdEqualTo(id);
+        List<SubCategory> list = subcategoryMapper.selectByExample(subCategoryExample);
 
         return list;
     }
 
-    public Map<Integer,List<CategoryDemo>> getCategoryProduct(){
+    public Map<Integer,List<SubCategory>> getCategoryProduct(){
         List<Category> categories = categoryService.getCategories();
-        Map<Integer,List<CategoryDemo>> container = new HashMap<>();
+        Map<Integer,List<SubCategory>> container = new HashMap<>();
         for(Category category: categories){
             container.put(category.getId(),getCategoryDemos(category.getId()));
         }

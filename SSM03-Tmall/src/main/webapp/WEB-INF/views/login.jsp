@@ -11,7 +11,43 @@
     <link rel="stylesheet" href="../css/basic.css"/>
     <link href="../css/login.css" rel="stylesheet" type="text/css">
 
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
 
+        var url = "postLogin.do";
+
+        var login = function( ) {
+            var loginNumber = $("#loginNumber").val();
+            var password = $("#loginPassword").val();
+
+            if(loginNumber == "" || loginNumber == null || password == "" || password == null){
+                $("#loginBlock").text("      账户或密码不能为空");
+                $("#loginBlock").show();
+                return;
+            }
+
+            var data = {"loginNumber":loginNumber,"password":password};
+            $.post(url, data, function (responseBody, status, xhr) {
+                if(status == "success"){
+                    if(responseBody == 0){
+                        $("#loginBlock").text("     账户或密码错误")
+                        $("#loginBlock").show();
+                        return;
+                    }else{
+                        $("#loginBlock").hide();
+                        $("#hiddenName").attr("value",responseBody);
+                        $("#loginForm").submit();
+                        return;
+                    }
+
+                }
+            })
+        }
+        var hideError = function () {
+            $("#loginBlock").hide();
+        }
+
+    </script>
 
 </head>
 
@@ -28,25 +64,30 @@
             <h3 class="title">登录</h3>
             <div class="clear"></div>
             <div class="login-form">
-                <form method="post" action="/logining" >
+                <form id="loginForm" action="/postLogin" method="post">
                     <div class="user-name">
-                        <label for="loginName"><i class="mr-icon-user"></i></label>
-                        <input type="text" name="loginName" id="loginName" placeholder="邮箱/手机" >
+                        <label for="loginNumber"><i class="mr-icon-user"></i></label>
+                        <input type="text" name="loginNumber" id="loginNumber" placeholder="你的手机号/邮箱" onblur="hideError()">
                     </div>
+                    <div id="loginBlock" style="color: red;display: block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
                     <div class="user-pass">
-                        <label for="password"><i class="mr-icon-lock"></i></label>
-                        <input type="password" name="password" id="password" placeholder="请输入密码">
+                        <label for="LoginPassword"><i class="mr-icon-lock"></i></label>
+                        <input type="password" name="password" id="loginPassword" placeholder="请输入密码">
                     </div>
-
-
-                    <a href="../register.html" class="mr-fr">注册</a>
-                    <br/>
-
-                <div class="mr-cf">
-                    <input type="submit" name="" value="登 录"  class="mr-btn mr-btn-primary mr-btn-sm">
-                </div>
+                    <input type="hidden" id="hiddenName" name="hiddenName">
                 </form>
+            </div>
 
+
+            <div class="login-links">
+
+                <label for="remember-me"><input id="remember-me" type="checkbox">记住密码</label>
+                <a href="/register" class="mr-fr">注册</a>
+                <br/>
+            </div>
+
+            <div class="mr-cf">
+                <input type="submit" name="" value="登 录" onclick="login()" class="mr-btn mr-btn-primary mr-btn-sm">
             </div>
 
 

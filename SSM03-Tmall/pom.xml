@@ -82,6 +82,14 @@
 
   <dependencies>
 
+    <!-- https://mvnrepository.com/artifact/com.googlecode.rapid-framework/rapid-core -->
+    <dependency>
+      <groupId>com.googlecode.rapid-framework</groupId>
+      <artifactId>rapid-core</artifactId>
+      <version>4.0.5</version>
+    </dependency>
+
+
     <!-- pageHelper -->
     <dependency>
       <groupId>com.github.pagehelper</groupId>

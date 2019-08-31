@@ -53,4 +53,16 @@ public class UserServiceImp implements UserService{
 
         return userMapper.insert(user);
     }
+
+    @Override
+    public User getUserById(int id) {
+
+        return userMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public void updateInfo(User user) {
+        userMapper.updateByPrimaryKey(user);
+        return;
+    }
 }

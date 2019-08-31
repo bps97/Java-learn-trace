@@ -13,9 +13,9 @@
         <div class="app-container">
             <div class="display-area">
                 <div class="mobile-simulator"><h3 class="title ellipse">手机端展示</h3>
-                    <iframe id="app-iframe" src="../../index.html" class="iframe"></iframe>
+                    <iframe id="app-iframe" src="index" class="iframe"></iframe>
                 </div>
-                <a href="../../index.html" class="enter-editor">返回 PC端</a>
+                <a href="/index" class="enter-editor">返回 PC端</a>
             </div>
         </div>
     </div>

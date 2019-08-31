@@ -5,6 +5,8 @@ import cn.bps.pojo.CategoryExample;
 import java.util.List;
 
 public interface CategoryMapper {
+    long countByExample(CategoryExample example);
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(Category record);
@@ -18,6 +20,4 @@ public interface CategoryMapper {
     int updateByPrimaryKeySelective(Category record);
 
     int updateByPrimaryKey(Category record);
-
-    int getMaxGroupId();
 }

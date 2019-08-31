@@ -13,15 +13,10 @@
         function checkPhone() {
             var phone = $('#tel').val();
             console.log(phone);
-            if(phone == ""){
-
-                alert("电话不能为空");
-                return;
-            }
             var url="checkPhone.do";
             $.post(url,{'phone':phone},function (responseDate,status,xhr) {
                 if(status == 'success'){
-                    if(responseDate == "0"){
+                    if(responseDate == 0){
                         alert("该电话已经注册过账号");
                     }else{
                         console.log(responseDate);
@@ -37,40 +32,55 @@
         function mr_verify(){
 
             //获取表单对象
-            var password=document.getElementById("password");
-            var passwordRepeat=document.getElementById("passwordRepeat");
-            var tel=document.getElementById("tel");
+            var regPassword = $("#regPassword").val();
+            var passwordRepeat = $("#passwordRepeat").val();
+            var tel= $("#tel").val();
+
+            console.log(regPassword);
+            console.log(passwordRepeat);
+            console.log(tel);
 
             //验证项目是否为空
-            if(password.value==='' || password.value===null){
+            if(regPassword==='' || regPassword===null){
                 alert("密码不能为空！");
                 return;
             }
-            if(passwordRepeat.value==='' || passwordRepeat.value===null){
+            if(passwordRepeat==='' || passwordRepeat===null){
                 alert("确认密码不能为空！");
                 return;
             }
-            if(tel.value==='' || tel.value===null){
+            if(tel==='' || tel===null){
                 alert("手机号码不能为空！");
                 return;
             }
 
-            if(password.value!==passwordRepeat.value ){
+            if(regPassword !== passwordRepeat ){
                 alert("密码设置前后不一致！");
                 return;
             }
 
             //验证手机号格式
-            if(isNaN(tel.value)){
+            if(isNaN(tel)){
                 alert("手机号请输入数字！");
                 return;
             }
-            if(tel.value.length!==11){
+            if(tel.length!==11){
                 alert("手机号是11个数字！");
                 return;
             }
 
-            alert('注册成功！');
+            var url = "postReg.do";
+            var data = {"phone":tel,"password":regPassword};
+            $.post(url, data, function (responseBody, status, xhr) {
+                if(status == "success"){
+                    if(responseBody == '1'){
+                        window.location.href='/index';
+                    }else{
+                        alert("注册失败");
+                    }
+                }
+            })
+
 
        }
     </script>
@@ -97,15 +107,15 @@
 
                 <div class="mr-tabs-bd">
                     <div class="mr-tab-panel mr-active">
-                        <form method="post">
+                        <form>
 
                             <div class="user-pass">
                                 <label for="passwordRepeat"><i class="mr-icon-mobile"></i><span style="color:red;margin-left:5px">*</span></label>
                                 <input type="text" name="phone" id="tel" placeholder="请输入手机号" onblur="checkPhone()">
                             </div>
                             <div class="user-pass">
-                                <label for="password"><i class="mr-icon-lock"></i></label>
-                                <input type="password" name="password" id="password" placeholder="设置密码">
+                                <label for="regPassword"><i class="mr-icon-lock"></i></label>
+                                <input type="password" name="password" id="regPassword" placeholder="设置密码">
                             </div>
                             <div class="user-pass">
                                 <label for="passwordRepeat"><i class="mr-icon-lock"></i></label>

@@ -1,4 +1,13 @@
-window.onload=function(){
+
+
+$(document).ready(function () {
+
+    var temp = $("a[href=\\/login]").text();
+    if(temp != '欢迎！亲，请登录'){
+        $("a[href=\\/login]").attr('href','/mySpace');
+        console.log(temp);
+    }
+
     //alert(window.innerWidth);
     var box=document.getElementById('box');
     var imagesUI=document.getElementById('imagesUI');
@@ -7,7 +16,7 @@ window.onload=function(){
     var btn=btnUI.getElementsByTagName('li');
     var i=index=0; //中间量，统一声明；
     var play=null;
-    console.log(box,imgs,imgs,btn);//获取正确
+    // console.log(box,imgs,imgs,btn);//获取正确
 
     autoPlay();//马上调用，我试过用window.onload调用这个方法，但是调用之后影响到了其他方法，使用autoPlay所以只能这样调用了
 
@@ -18,6 +27,22 @@ window.onload=function(){
     box.onmouseout=function(){
         autoPlay();
     };
+    //切换按钮功能
+    for(i=0;i<btn.length;i++){
+        btn[i].index=i;
+        btn[i].onmouseover=function(){
+            show(this.index);
+            clearInterval(play);
+        }
+    }
+
+
+
+
+
+
+
+
     //自动轮播方法
     function autoPlay(){
         play=setInterval(function(){ //定时器处理
@@ -38,16 +63,12 @@ window.onload=function(){
             imgs[a].style.opacity=1;
         }
     }
-    //切换按钮功能
-    for(i=0;i<btn.length;i++){
-        btn[i].index=i;
-        btn[i].onmouseover=function(){
-            show(this.index);
-            clearInterval(play);
-        }
-    }
 
 
 
 
-}
+
+
+
+
+})
