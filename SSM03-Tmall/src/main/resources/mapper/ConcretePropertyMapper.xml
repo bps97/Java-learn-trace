@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.bps.mapper.ProductImageMapper">
-  <resultMap id="BaseResultMap" type="cn.bps.pojo.ProductImage">
+<mapper namespace="cn.bps.mapper.ConcretePropertyMapper">
+  <resultMap id="BaseResultMap" type="cn.bps.pojo.ConcreteProperty">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="product_id" jdbcType="INTEGER" property="product_id" />
-    <result column="image_link" jdbcType="VARCHAR" property="image_link" />
+    <result column="properti_id" jdbcType="INTEGER" property="properti_id" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -36,16 +37,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, product_id, image_link
+    id, product_id, properti_id, value
   </sql>
-  <select id="selectByExample" parameterType="cn.bps.pojo.ProductImageExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.bps.pojo.ConcretePropertyExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'false' as QUERYID,
     <include refid="Base_Column_List" />
-    from product_image
+    from concrete_property
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -56,52 +57,64 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from product_image
+    from concrete_property
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from product_image
+    delete from concrete_property
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.ProductImage" useGeneratedKeys="true">
-    insert into product_image (product_id, image_link)
-    values (#{product_id,jdbcType=INTEGER}, #{image_link,jdbcType=VARCHAR})
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.ConcreteProperty" useGeneratedKeys="true">
+    insert into concrete_property (product_id, properti_id, value
+      )
+    values (#{product_id,jdbcType=INTEGER}, #{properti_id,jdbcType=INTEGER}, #{value,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.ProductImage" useGeneratedKeys="true">
-    insert into product_image
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.ConcreteProperty" useGeneratedKeys="true">
+    insert into concrete_property
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="product_id != null">
         product_id,
       </if>
-      <if test="image_link != null">
-        image_link,
+      <if test="properti_id != null">
+        properti_id,
+      </if>
+      <if test="value != null">
+        value,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="product_id != null">
         #{product_id,jdbcType=INTEGER},
       </if>
-      <if test="image_link != null">
-        #{image_link,jdbcType=VARCHAR},
+      <if test="properti_id != null">
+        #{properti_id,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.bps.pojo.ProductImage">
-    update product_image
+  <update id="updateByPrimaryKeySelective" parameterType="cn.bps.pojo.ConcreteProperty">
+    update concrete_property
     <set>
       <if test="product_id != null">
         product_id = #{product_id,jdbcType=INTEGER},
       </if>
-      <if test="image_link != null">
-        image_link = #{image_link,jdbcType=VARCHAR},
+      <if test="properti_id != null">
+        properti_id = #{properti_id,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        value = #{value,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.bps.pojo.ProductImage">
-    update product_image
+  <update id="updateByPrimaryKey" parameterType="cn.bps.pojo.ConcreteProperty">
+    update concrete_property
     set product_id = #{product_id,jdbcType=INTEGER},
-      image_link = #{image_link,jdbcType=VARCHAR}
+      properti_id = #{properti_id,jdbcType=INTEGER},
+      value = #{value,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

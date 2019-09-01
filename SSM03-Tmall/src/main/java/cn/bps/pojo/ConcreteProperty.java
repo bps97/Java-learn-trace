@@ -1,6 +1,6 @@
 package cn.bps.pojo;
 
-public class PropertyValue {
+public class ConcreteProperty {
     private Integer id;
 
     private Integer product_id;

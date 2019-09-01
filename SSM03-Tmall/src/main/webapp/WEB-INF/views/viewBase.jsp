@@ -10,8 +10,7 @@
 <%@ taglib uri="http://www.rapid-framework.org.cn/rapid" prefix="rapid" %>
 <html>
 <head>
-    <meta charset="UTF-8">
-
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
 
     <link rel="stylesheet" type="text/css" href="css/basic.css"/>
@@ -118,7 +117,7 @@
 <!--引导 mobile底部-->
 <div class="navCir">
     <li class="active"><a href="/index"><i class="mr-icon-home "></i>首页</a></li>
-    <li><a href="/shopList"><i class="mr-icon-list"></i>商品</a></li>
+    <li><a href="/goods"><i class="mr-icon-list"></i>商品</a></li>
     <li><a href="/shopCart"><i class="mr-icon-shopping-basket"></i>购物车</a></li>
     <li><a href="/mySpace"><i class="mr-icon-user"></i>我的</a></li>
 </div>
@@ -290,6 +289,7 @@
         var url = '/userInfo.do';
         var userId = $("input.userId").val();
 
+        // $('#prof').hide();
 
 
         if(userId != ""){
@@ -307,6 +307,11 @@
                 }
             })
 
+        }
+
+        var temp = $("a[href=\\/login]").text();
+        if(temp != '欢迎！亲，请登录'){
+            $("a[href=\\/login]").attr('href','/mySpace');
         }
 
 

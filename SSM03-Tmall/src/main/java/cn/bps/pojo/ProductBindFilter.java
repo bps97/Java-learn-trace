@@ -1,11 +1,11 @@
 package cn.bps.pojo;
 
-public class ProductImage {
+public class ProductBindFilter {
     private Integer id;
 
     private Integer product_id;
 
-    private String image_link;
+    private Integer filter_value_id;
 
     public Integer getId() {
         return id;
@@ -23,11 +23,11 @@ public class ProductImage {
         this.product_id = product_id;
     }
 
-    public String getImage_link() {
-        return image_link;
+    public Integer getFilter_value_id() {
+        return filter_value_id;
     }
 
-    public void setImage_link(String image_link) {
-        this.image_link = image_link == null ? null : image_link.trim();
+    public void setFilter_value_id(Integer filter_value_id) {
+        this.filter_value_id = filter_value_id;
     }
 }

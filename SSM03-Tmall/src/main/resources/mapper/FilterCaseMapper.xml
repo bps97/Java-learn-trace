@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.bps.mapper.FilterMapper">
-  <resultMap id="BaseResultMap" type="cn.bps.pojo.Filter">
+<mapper namespace="cn.bps.mapper.FilterCaseMapper">
+  <resultMap id="BaseResultMap" type="cn.bps.pojo.FilterCase">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
   </resultMap>
@@ -37,14 +37,14 @@
   <sql id="Base_Column_List">
     id, name
   </sql>
-  <select id="selectByExample" parameterType="cn.bps.pojo.FilterExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.bps.pojo.FilterCaseExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'false' as QUERYID,
     <include refid="Base_Column_List" />
-    from filter
+    from filter_case
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -55,19 +55,19 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from filter
+    from filter_case
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from filter
+    delete from filter_case
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.Filter" useGeneratedKeys="true">
-    insert into filter (name)
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.FilterCase" useGeneratedKeys="true">
+    insert into filter_case (name)
     values (#{name,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.Filter" useGeneratedKeys="true">
-    insert into filter
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.FilterCase" useGeneratedKeys="true">
+    insert into filter_case
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="name != null">
         name,
@@ -79,8 +79,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.bps.pojo.Filter">
-    update filter
+  <update id="updateByPrimaryKeySelective" parameterType="cn.bps.pojo.FilterCase">
+    update filter_case
     <set>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
@@ -88,8 +88,8 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.bps.pojo.Filter">
-    update filter
+  <update id="updateByPrimaryKey" parameterType="cn.bps.pojo.FilterCase">
+    update filter_case
     set name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

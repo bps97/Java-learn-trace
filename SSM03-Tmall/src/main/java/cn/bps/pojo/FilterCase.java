@@ -1,6 +1,6 @@
 package cn.bps.pojo;
 
-public class Filter {
+public class FilterCase {
     private Integer id;
 
     private String name;

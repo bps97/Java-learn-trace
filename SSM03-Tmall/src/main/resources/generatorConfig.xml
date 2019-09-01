@@ -96,7 +96,7 @@
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
 
-        <table tableName="filter" domainObjectName="Filter"
+        <table tableName="filter_case" domainObjectName="FilterCase"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByPrimaryKey="true"
                selectByExampleQueryId="false">
@@ -106,7 +106,7 @@
 
         </table>
 
-        <table tableName="filter_value" domainObjectName="FilterValue"
+        <table tableName="concrete_filter" domainObjectName="ConcreteFilter"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByPrimaryKey="true"
                selectByExampleQueryId="false" enableSelectByExample="true" >
@@ -115,6 +115,15 @@
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
 
+
+        <table tableName="product_bind_filter" domainObjectName="ProductBindFilter"
+               enableCountByExample="true" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByPrimaryKey="true"
+               selectByExampleQueryId="false" enableSelectByExample="true" >
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
 
         <table tableName="order_" domainObjectName="Order"
                enableCountByExample="false" enableUpdateByExample="false"
@@ -125,7 +134,7 @@
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
 
-        <table tableName="property_value" domainObjectName="PropertyValue"
+        <table tableName="concrete_property" domainObjectName="ConcreteProperty"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="true"
                selectByExampleQueryId="false">

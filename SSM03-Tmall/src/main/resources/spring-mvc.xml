@@ -37,12 +37,12 @@
 <!--                    <property name="suffix" value=".jsp"/>-->
 <!--                    <property name="order" value="1"/>-->
 <!--                </bean>-->
-<!--            </list>-->
+<!--            </goods>-->
 <!--        </property>-->
 <!--&lt;!&ndash;        <property name="defaultViews">&ndash;&gt;-->
 <!--&lt;!&ndash;            <list>&ndash;&gt;-->
 <!--&lt;!&ndash;                &ndash;&gt;-->
-<!--&lt;!&ndash;            </list>&ndash;&gt;-->
+<!--&lt;!&ndash;            </goods>&ndash;&gt;-->
 <!--&lt;!&ndash;        </property>&ndash;&gt;-->
 <!--    </bean>-->
 

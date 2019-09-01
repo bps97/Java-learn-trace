@@ -5,13 +5,15 @@ import cn.bps.pojo.Category;
 import cn.bps.pojo.SubCategory;
 import cn.bps.service.SubCategoryServiceImp;
 import cn.bps.service.CategoryServiceImp;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
+
+import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +29,8 @@ public class DemoController {
 
     @Autowired
     private SubCategoryServiceImp categoryDemoServiceImp;
+
+
 
 
     @RequestMapping(value = "/test")
@@ -53,6 +57,26 @@ public class DemoController {
 
     }
 
+    @RequestMapping(value = "/base")
+    public String showList(){
+        return "goods";
+    }
+
+
+    @RequestMapping(value = "/pay")
+    public  String pay(){
+        return "pay";
+
+    }
+
+
+
+    @RequestMapping(value = "/good")
+    public String showgood(){
+        return "shopInfo";
+    }
+
+
 
     @RequestMapping(value = "/mobile")
     public ModelAndView showmobile(){ return new ModelAndView("mobile"); }
@@ -64,34 +88,6 @@ public class DemoController {
         return "shopCart";
     }
 
-//    @RequestMapping(value = "/loadSubCategory.do")
-//    @ResponseBody
-//    public String checkName(@RequestParam(value = "categoryGroup",defaultValue = "hhh")String category,
-//                           Model model){
-//        return "index";
-//    }
 
-
-    @RequestMapping(value = "/base")
-    public String showList(){
-        return "shopList";
-    }
-
-
-    @RequestMapping(value = "/pay")
-    public  String pay(){
-        return "pay";
-
-    }
-
-    @RequestMapping(value = "/list")
-    public String list(){
-        return "shopList";
-    }
-
-    @RequestMapping(value = "/goods")
-    public String showgood(){
-        return "shopInfo";
-    }
 
 }

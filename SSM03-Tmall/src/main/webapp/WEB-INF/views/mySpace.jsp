@@ -10,13 +10,19 @@
 	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
 	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.css" rel="stylesheet">
+
+
+	<style>
+
+	</style>
+
 </rapid:block>
 
 
 
 <rapid:override name="main_content">
 
-
+<%--这里bootstrap会让个人信息窗口显示出来--%>
 
 
 

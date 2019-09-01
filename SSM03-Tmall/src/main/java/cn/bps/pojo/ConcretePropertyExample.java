@@ -3,14 +3,14 @@ package cn.bps.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PropertyValueExample {
+public class ConcretePropertyExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public PropertyValueExample() {
+    public ConcretePropertyExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

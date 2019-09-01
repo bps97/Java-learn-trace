@@ -2,11 +2,7 @@
 
 $(document).ready(function () {
 
-    var temp = $("a[href=\\/login]").text();
-    if(temp != '欢迎！亲，请登录'){
-        $("a[href=\\/login]").attr('href','/mySpace');
-        console.log(temp);
-    }
+
 
     //alert(window.innerWidth);
     var box=document.getElementById('box');

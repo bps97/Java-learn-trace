@@ -3,14 +3,14 @@ package cn.bps.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductImageExample {
+public class ProductBindFilterExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public ProductImageExample() {
+    public ProductBindFilterExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -224,73 +224,63 @@ public class ProductImageExample {
             return (Criteria) this;
         }
 
-        public Criteria andImage_linkIsNull() {
-            addCriterion("image_link is null");
+        public Criteria andFilter_value_idIsNull() {
+            addCriterion("filter_value_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andImage_linkIsNotNull() {
-            addCriterion("image_link is not null");
+        public Criteria andFilter_value_idIsNotNull() {
+            addCriterion("filter_value_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andImage_linkEqualTo(String value) {
-            addCriterion("image_link =", value, "image_link");
+        public Criteria andFilter_value_idEqualTo(Integer value) {
+            addCriterion("filter_value_id =", value, "filter_value_id");
             return (Criteria) this;
         }
 
-        public Criteria andImage_linkNotEqualTo(String value) {
-            addCriterion("image_link <>", value, "image_link");
+        public Criteria andFilter_value_idNotEqualTo(Integer value) {
+            addCriterion("filter_value_id <>", value, "filter_value_id");
             return (Criteria) this;
         }
 
-        public Criteria andImage_linkGreaterThan(String value) {
-            addCriterion("image_link >", value, "image_link");
+        public Criteria andFilter_value_idGreaterThan(Integer value) {
+            addCriterion("filter_value_id >", value, "filter_value_id");
             return (Criteria) this;
         }
 
-        public Criteria andImage_linkGreaterThanOrEqualTo(String value) {
-            addCriterion("image_link >=", value, "image_link");
+        public Criteria andFilter_value_idGreaterThanOrEqualTo(Integer value) {
+            addCriterion("filter_value_id >=", value, "filter_value_id");
             return (Criteria) this;
         }
 
-        public Criteria andImage_linkLessThan(String value) {
-            addCriterion("image_link <", value, "image_link");
+        public Criteria andFilter_value_idLessThan(Integer value) {
+            addCriterion("filter_value_id <", value, "filter_value_id");
             return (Criteria) this;
         }
 
-        public Criteria andImage_linkLessThanOrEqualTo(String value) {
-            addCriterion("image_link <=", value, "image_link");
+        public Criteria andFilter_value_idLessThanOrEqualTo(Integer value) {
+            addCriterion("filter_value_id <=", value, "filter_value_id");
             return (Criteria) this;
         }
 
-        public Criteria andImage_linkLike(String value) {
-            addCriterion("image_link like", value, "image_link");
+        public Criteria andFilter_value_idIn(List<Integer> values) {
+            addCriterion("filter_value_id in", values, "filter_value_id");
             return (Criteria) this;
         }
 
-        public Criteria andImage_linkNotLike(String value) {
-            addCriterion("image_link not like", value, "image_link");
+        public Criteria andFilter_value_idNotIn(List<Integer> values) {
+            addCriterion("filter_value_id not in", values, "filter_value_id");
             return (Criteria) this;
         }
 
-        public Criteria andImage_linkIn(List<String> values) {
-            addCriterion("image_link in", values, "image_link");
+        public Criteria andFilter_value_idBetween(Integer value1, Integer value2) {
+            addCriterion("filter_value_id between", value1, value2, "filter_value_id");
             return (Criteria) this;
         }
 
-        public Criteria andImage_linkNotIn(List<String> values) {
-            addCriterion("image_link not in", values, "image_link");
-            return (Criteria) this;
-        }
-
-        public Criteria andImage_linkBetween(String value1, String value2) {
-            addCriterion("image_link between", value1, value2, "image_link");
-            return (Criteria) this;
-        }
-
-        public Criteria andImage_linkNotBetween(String value1, String value2) {
-            addCriterion("image_link not between", value1, value2, "image_link");
+        public Criteria andFilter_value_idNotBetween(Integer value1, Integer value2) {
+            addCriterion("filter_value_id not between", value1, value2, "filter_value_id");
             return (Criteria) this;
         }
     }

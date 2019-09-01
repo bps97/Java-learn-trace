@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.bps.mapper.PropertyValueMapper">
-  <resultMap id="BaseResultMap" type="cn.bps.pojo.PropertyValue">
+<mapper namespace="cn.bps.mapper.ConcreteFilterMapper">
+  <resultMap id="BaseResultMap" type="cn.bps.pojo.ConcreteFilter">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="product_id" jdbcType="INTEGER" property="product_id" />
-    <result column="properti_id" jdbcType="INTEGER" property="properti_id" />
+    <result column="filter_case_id" jdbcType="INTEGER" property="filter_case_id" />
     <result column="value" jdbcType="VARCHAR" property="value" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -37,16 +36,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, product_id, properti_id, value
+    id, filter_case_id, value
   </sql>
-  <select id="selectByExample" parameterType="cn.bps.pojo.PropertyValueExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.bps.pojo.ConcreteFilterExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'false' as QUERYID,
     <include refid="Base_Column_List" />
-    from property_value
+    from concrete_filter
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -57,52 +56,41 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from property_value
+    from concrete_filter
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from property_value
+    delete from concrete_filter
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.PropertyValue" useGeneratedKeys="true">
-    insert into property_value (product_id, properti_id, value
-      )
-    values (#{product_id,jdbcType=INTEGER}, #{properti_id,jdbcType=INTEGER}, #{value,jdbcType=VARCHAR}
-      )
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.ConcreteFilter" useGeneratedKeys="true">
+    insert into concrete_filter (filter_case_id, value)
+    values (#{filter_case_id,jdbcType=INTEGER}, #{value,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.PropertyValue" useGeneratedKeys="true">
-    insert into property_value
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.ConcreteFilter" useGeneratedKeys="true">
+    insert into concrete_filter
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="product_id != null">
-        product_id,
-      </if>
-      <if test="properti_id != null">
-        properti_id,
+      <if test="filter_case_id != null">
+        filter_case_id,
       </if>
       <if test="value != null">
         value,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="product_id != null">
-        #{product_id,jdbcType=INTEGER},
-      </if>
-      <if test="properti_id != null">
-        #{properti_id,jdbcType=INTEGER},
+      <if test="filter_case_id != null">
+        #{filter_case_id,jdbcType=INTEGER},
       </if>
       <if test="value != null">
         #{value,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.bps.pojo.PropertyValue">
-    update property_value
+  <update id="updateByPrimaryKeySelective" parameterType="cn.bps.pojo.ConcreteFilter">
+    update concrete_filter
     <set>
-      <if test="product_id != null">
-        product_id = #{product_id,jdbcType=INTEGER},
-      </if>
-      <if test="properti_id != null">
-        properti_id = #{properti_id,jdbcType=INTEGER},
+      <if test="filter_case_id != null">
+        filter_case_id = #{filter_case_id,jdbcType=INTEGER},
       </if>
       <if test="value != null">
         value = #{value,jdbcType=VARCHAR},
@@ -110,10 +98,9 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.bps.pojo.PropertyValue">
-    update property_value
-    set product_id = #{product_id,jdbcType=INTEGER},
-      properti_id = #{properti_id,jdbcType=INTEGER},
+  <update id="updateByPrimaryKey" parameterType="cn.bps.pojo.ConcreteFilter">
+    update concrete_filter
+    set filter_case_id = #{filter_case_id,jdbcType=INTEGER},
       value = #{value,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
