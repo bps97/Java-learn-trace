@@ -9,7 +9,7 @@
 
     <title>商品列表</title>
 
-    <link href="css/seastyle.css" rel="stylesheet" type="text/css" />
+    <link href="/css/seastyle.css" rel="stylesheet" type="text/css" />
 
 
     <style>
@@ -82,27 +82,32 @@
             <dl id="select1">
                 <dt class=" mr-round"><c:out value="${fCase.getName()}" /></dt>
                 <div class="dd-conent">
+
                     <dd class="select-all selected">
                         <a href="#">全部</a>
                     </dd>
+
+
+                    <c:forEach items="${filterMap.get(fCase.getId())}" var="concreteFilter">
                     <dd>
-                        <a href="#">2GB</a>
+                        <a href="#"><c:out value="${concreteFilter.getValue()}"/></a>
                     </dd>
-                    <dd>
-                        <a href="#">3GB</a>
-                    </dd>
-                    <dd>
-                        <a href="#">4GB</a>
-                    </dd>
-                    <dd>
-                        <a href="#">6GB</a>
-                    </dd>
-                    <dd>
-                        <a href="#">无</a>
-                    </dd>
-                    <dd>
-                        <a href="#">其他</a>
-                    </dd>
+                    </c:forEach>
+<%--                    <dd>--%>
+<%--                        <a href="#">3GB</a>--%>
+<%--                    </dd>--%>
+<%--                    <dd>--%>
+<%--                        <a href="#">4GB</a>--%>
+<%--                    </dd>--%>
+<%--                    <dd>--%>
+<%--                        <a href="#">6GB</a>--%>
+<%--                    </dd>--%>
+<%--                    <dd>--%>
+<%--                        <a href="#">无</a>--%>
+<%--                    </dd>--%>
+<%--                    <dd>--%>
+<%--                        <a href="#">其他</a>--%>
+<%--                    </dd>--%>
                 </div>
             </dl>
         </li>
@@ -139,90 +144,20 @@
     </div>
     <div class="clear"></div>
     <ul class="mr-avg-sm-2 mr-avg-md-3 mr-avg-lg-4 boxes">
+        <c:forEach items="${products}" var="product">
+
         <li>
             <div class="i-pic limit">
                 <a href="shopInfo.jsp"><img src="../img/shopcartImg.jpg" /></a>
-                <p class="title fl">华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                <p class="price fl"> <b>&yen;</b> <strong>499.00</strong> </p>
-                <p class="number fl"> 销量<span>1110</span> </p>
-            </div> </li>
-        <li>
-            <div class="i-pic limit">
-                <a href="shopInfo.jsp"><img src="../img/shopcartImg.jpg" /></a>
-                <p class="title fl">华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                <p class="price fl"> <b>&yen;</b> <strong>499.00</strong> </p>
-                <p class="number fl"> 销量<span>1110</span> </p>
-            </div> </li>
-        <li>
-            <div class="i-pic limit">
-                <a href="shopInfo.jsp"><img src="../img/shopcartImg.jpg" /></a>
-                <p class="title fl">华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                <p class="price fl"> <b>&yen;</b> <strong>499.00</strong> </p>
-                <p class="number fl"> 销量<span>1110</span> </p>
-            </div> </li>
-        <li>
-            <div class="i-pic limit">
-                <a href="shopInfo.jsp"><img src="../img/shopcartImg.jpg" /></a>
-                <p class="title fl">华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                <p class="price fl"> <b>&yen;</b> <strong>499.00</strong> </p>
-                <p class="number fl"> 销量<span>1110</span> </p>
-            </div> </li>
-        <li>
-            <div class="i-pic limit">
-                <a href="shopInfo.jsp"><img src="../img/shopcartImg.jpg" /></a>
-                <p class="title fl">华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                <p class="price fl"> <b>&yen;</b> <strong>499.00</strong> </p>
-                <p class="number fl"> 销量<span>1110</span> </p>
-            </div> </li>
-        <li>
-            <div class="i-pic limit">
-                <a href="shopInfo.jsp"><img src="../img/shopcartImg.jpg" /></a>
-                <p class="title fl">华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                <p class="price fl"> <b>&yen;</b> <strong>499.00</strong> </p>
-                <p class="number fl"> 销量<span>1110</span> </p>
-            </div> </li>
-        <li>
-            <div class="i-pic limit">
-                <a href="shopInfo.jsp"><img src="../img/shopcartImg.jpg" /></a>
-                <p class="title fl">华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                <p class="price fl"> <b>&yen;</b> <strong>499.00</strong> </p>
-                <p class="number fl"> 销量<span>1110</span> </p>
-            </div> </li>
-        <li>
-            <div class="i-pic limit">
-                <a href="shopInfo.jsp"><img src="../img/shopcartImg.jpg" /></a>
-                <p class="title fl">华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                <p class="price fl"> <b>&yen;</b> <strong>499.00</strong> </p>
-                <p class="number fl"> 销量<span>1110</span> </p>
-            </div> </li>
-        <li>
-            <div class="i-pic limit">
-                <a href="shopInfo.jsp"><img src="../img/shopcartImg.jpg" /></a>
-                <p class="title fl">华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                <p class="price fl"> <b>&yen;</b> <strong>499.00</strong> </p>
-                <p class="number fl"> 销量<span>1110</span> </p>
-            </div> </li>
-        <li>
-            <div class="i-pic limit">
-                <a href="shopInfo.jsp"><img src="../img/shopcartImg.jpg" /></a>
-                <p class="title fl">华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                <p class="price fl"> <b>&yen;</b> <strong>499.00</strong> </p>
-                <p class="number fl"> 销量<span>1110</span> </p>
-            </div> </li>
-        <li>
-            <div class="i-pic limit">
-                <a href="shopInfo.jsp"><img src="../img/shopcartImg.jpg" /></a>
-                <p class="title fl">华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                <p class="price fl"> <b>&yen;</b> <strong>499.00</strong> </p>
-                <p class="number fl"> 销量<span>1110</span> </p>
-            </div> </li>
-        <li>
-            <div class="i-pic limit">
-                <a href="shopInfo.jsp"><img src="../img/shopcartImg.jpg" /></a>
-                <p class="title fl">华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                <p class="price fl"> <b>&yen;</b> <strong>499.00</strong> </p>
-                <p class="number fl"> 销量<span>1110</span> </p>
-            </div> </li>
+                <p class="title fl"><c:out value="${product.getName()}"/></p>
+                <p class="price fl"> <b>&yen;</b> <strong><c:out value="${product.getPrice()}"/></strong> </p>
+                <p class="number fl"> 销量<span><c:out value="${product.getSale()}"/></span> </p>
+            </div>
+        </li>
+
+        </c:forEach>
+
+
     </ul>
 </div>
 <div class="search-side">

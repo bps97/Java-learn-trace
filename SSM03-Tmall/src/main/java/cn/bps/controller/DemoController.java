@@ -3,10 +3,10 @@ package cn.bps.controller;
 
 import cn.bps.pojo.Category;
 import cn.bps.pojo.SubCategory;
-import cn.bps.service.SubCategoryServiceImp;
-import cn.bps.service.CategoryServiceImp;
+import cn.bps.service.CategoryService;
 
 
+import cn.bps.service.SubCategorySerivce;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,10 +25,10 @@ public class DemoController {
 
 
     @Autowired
-    private CategoryServiceImp categoryServiceImp;
+    private CategoryService categoryService;
 
     @Autowired
-    private SubCategoryServiceImp categoryDemoServiceImp;
+    private SubCategorySerivce subCategorySerivce;
 
 
 
@@ -44,10 +44,10 @@ public class DemoController {
 
         //获取十个分组
 
-        List<List<Category>> categoryGroup = categoryServiceImp.getCategories(10);
+        List<List<Category>> categoryGroup = categoryService.getCategories(10);
         model.addAttribute("categoryGroup", categoryGroup);
 
-        Map<Integer,List<SubCategory>> con = categoryDemoServiceImp.getCategoryProduct();
+        Map<Integer,List<SubCategory>> con = subCategorySerivce.getCategoryProduct();
         model.addAttribute("categoryDict",con);
 
 

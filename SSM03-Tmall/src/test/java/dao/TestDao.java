@@ -1,10 +1,7 @@
 package dao;
 
 
-import cn.bps.mapper.CategoryMapper;
-import cn.bps.mapper.FilterCaseMapper;
-import cn.bps.mapper.SubCategoryMapper;
-import cn.bps.mapper.UserMapper;
+import cn.bps.mapper.*;
 import cn.bps.pojo.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,7 +10,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})
@@ -31,6 +31,24 @@ public class TestDao {
     @Autowired
     private FilterCaseMapper filterCaseMapper;
 
+    @Autowired
+    private ProductBindFilterMapper productBindFilterMapper;
+
+
+
+    @Test
+    public void productBindFilterTest(){
+        ProductBindFilterExample productBindFilterExample = new ProductBindFilterExample();
+        List<ProductBindFilter> productBindFilter = productBindFilterMapper.selectByExample(productBindFilterExample);
+        Set<Integer> productIdSet = new HashSet();
+        for(ProductBindFilter pbf:productBindFilter){
+            productIdSet.add(pbf.getProduct_id());
+        }
+
+        System.out.println(productIdSet);
+    }
+
+
 
 
     @Test
@@ -42,6 +60,8 @@ public class TestDao {
             System.out.println(ca.getName());
         }
     }
+
+
 
 
 

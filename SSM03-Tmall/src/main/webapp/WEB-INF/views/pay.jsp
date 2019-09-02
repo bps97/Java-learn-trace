@@ -10,8 +10,8 @@
     <title>付款</title>
 
 
-    <link href="css/cartstyle.css" rel="stylesheet" type="text/css"/>
-    <link href="css/jsstyle.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/cartstyle.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/jsstyle.css" rel="stylesheet" type="text/css"/>
 
 
     <style>
