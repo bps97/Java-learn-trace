@@ -5,9 +5,9 @@
 
 <rapid:block name="head_content">
     <title>首页</title>
-    <link rel="stylesheet" type="text/css" href="css/box.css"/>
-    <link rel="stylesheet" type="text/css" href="css/admin.css"/>
-    <link rel="stylesheet" type="text/css" href="css/hmstyle.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/box.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/admin.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/hmstyle.css"/>
 
 </rapid:block>
 
@@ -21,11 +21,11 @@
             <div id="box">
                 <ul id="imagesUI" class="list">
                     <li class="current" style="opacity: 1;">
-                        <img src="img/ad01.png">
+                        <img src="/img/ad01.png">
                     </li>
-                    <li style="opacity: 0;"><img src="img/ad02.png"></li>
-                    <li style="opacity: 0;"><img src="img/ad03.png"></li>
-                    <li style="opacity: 0;"><img src="img/ad04.png"></li>
+                    <li style="opacity: 0;"><img src="/img/ad02.png"></li>
+                    <li style="opacity: 0;"><img src="/img/ad03.png"></li>
+                    <li style="opacity: 0;"><img src="/img/ad04.png"></li>
                 </ul>
                 <ul id="btnUI" class="count">
                     <li class="current">1</li>
@@ -72,7 +72,7 @@
                                         onmouseout="mouseOut(this)">
                                         <div class="category-info">
                                             <h3 class="category-name b-category-name">
-                                                <i><img src="img/cake.png"></i>
+                                                <i><img src="/img/cake.png"></i>
                                                 <a class="ml-22" title="家用电器">
                                                     <c:forEach items="${categories}" var="category"><c:out
                                                             value="${category.getName()} "/></c:forEach>
@@ -133,23 +133,23 @@
             <!--小导航   mobile -->
             <div class="mr-g mr-g-fixed smallnav">
                 <div class="mr-u-sm-3">
-                    <a href="views/shopList.jsp"><img src="img/navsmall.jpg"/>
+                    <a href="views/shopList.jsp"><img src="/img/navsmall.jpg"/>
                         <div class="title">商品分类</div>
                     </a>
                 </div>
                 <div class="mr-u-sm-3">
-                    <a href="views/shopList.jsp"><img src="img/huismall.jpg"/>
+                    <a href="views/shopList.jsp"><img src="/img/huismall.jpg"/>
                         <div class="title">大聚惠</div>
                     </a>
                 </div>
                 <div class="mr-u-sm-3">
-                    <a href="views/shopList.jsp"><img src="img/mansmall.jpg"/>
+                    <a href="views/shopList.jsp"><img src="/img/mansmall.jpg"/>
 
                         <div class="title">个人中心</div>
                     </a>
                 </div>
                 <div class="mr-u-sm-3">
-                    <a href="views/shopList.jsp"><img src="img/moneysmall.jpg"/>
+                    <a href="views/shopList.jsp"><img src="/img/moneysmall.jpg"/>
                         <div class="title">投资理财</div>
                     </a>
                 </div>
@@ -162,19 +162,19 @@
                 <div class="demo">
                     <ul>
                         <li class="title-first"><a href="views/shopInfo.jsp">
-                            <img src="img/TJ2.jpg"></img>
+                            <img src="/img/TJ2.jpg"></img>
                             <span>[特惠]</span>商城爆品1分秒
                         </a></li>
                         <li class="title-first"><a target="_blank" href="#">
                             <span>[公告]</span>商城与长春市签署战略合作协议
-                            <img src="img/TJ.jpg"></img>
+                            <img src="/img/TJ.jpg"></img>
                             <p>XXXXXXXXXXXXXXXXXX</p>
                         </a></li>
 
                         <div class="mod-vip">
                             <div class="m-baseinfo">
                                 <a href="/index">
-                                    <img src="img/getAvatar.do.jpg">
+                                    <img src="/img/getAvatar.do.jpg">
                                 </a>
                                 <em>
                                     Hi,<span class="s-name">小叮当</span>
@@ -199,7 +199,7 @@
                         <li><a target="_blank" href="#"><span>[特惠]</span>家电狂欢千亿礼券 买1送1！</a></li>
 
                     </ul>
-                    <div class="advTip"><img src="img/advTip.jpg"/></div>
+                    <div class="advTip"><img src="/img/advTip.jpg"/></div>
                 </div>
             </div>
 
@@ -213,7 +213,7 @@
             <!--今日推荐 -->
             <div class="mr-g mr-g-fixed recommendation">
                 <div class="clock mr-u-sm-3">
-                    <img src="img/2016.png "></img>
+                    <img src="/img/2016.png "></img>
 
                     <p>今日<br>推荐</p>
                 </div>
@@ -223,7 +223,7 @@
                         <h4>开年福利篇</h4>
                     </div>
                     <div class="recommendationMain one">
-                        <a href="shopList.html"><img src="img/tj.png "></a>
+                        <a href="shopList.html"><img src="/img/tj.png "></a>
                     </div>
                 </div>
                 <div class="mr-u-sm-4 mr-u-lg-3 ">
@@ -232,7 +232,7 @@
                         <h4>让爱早回家</h4>
                     </div>
                     <div class="recommendationMain two">
-                        <a href="shopList.html"><img src="img/tj1.png "></a>
+                        <a href="shopList.html"><img src="/img/tj1.png "></a>
                     </div>
                 </div>
                 <div class="mr-u-sm-4 mr-u-lg-3 ">
@@ -241,7 +241,7 @@
                         <h4>甜甜蜜蜜</h4>
                     </div>
                     <div class="recommendationMain three ">
-                        <a href="shopList.html"><img src="img/tj2.png "></a>
+                        <a href="shopList.html"><img src="/img/tj2.png "></a>
                     </div>
                 </div>
             </div>

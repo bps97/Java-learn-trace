@@ -12,7 +12,7 @@
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="css/menu.css" >
+    <link rel="stylesheet" type="text/css" href="/css/menu.css" >
 
 </head>
 <body>
