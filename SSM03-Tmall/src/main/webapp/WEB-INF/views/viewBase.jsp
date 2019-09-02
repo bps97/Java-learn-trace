@@ -13,8 +13,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
 
-    <link rel="stylesheet" type="text/css" href="/css/basic.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/demo.css"/>
+    <link rel="stylesheet" type="text/css" href="css/basic.css"/>
+    <link rel="stylesheet" type="text/css" href="css/demo.css"/>
 
 
     <rapid:block name="head_content">
@@ -66,12 +66,12 @@
 
     <!--悬浮搜索框-->
     <div class="nav white">
-        <div class="logo"><a href="index.jsp"><img src="/img/logo.png"/></a></div>
+        <div class="logo"><a href="index.jsp"><img src="img/logo.png"/></a></div>
         <div class="logoBig">
-            <li><img src="/img/logobig.png"/></li>
+            <li><img src="img/logobig.png"/></li>
         </div>
         <div class="search-bar pr">
-            <a name="index_none_header" href="#"></a>
+            <a name="index_none_header_sysc" href="#"></a>
             <form>
                 <input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
                 <input id="ai-topsearch" class="submit mr-btn" value="搜索" index="1" type="submit">
@@ -93,7 +93,7 @@
 <div class="footer ">
     <div class="footer-hd ">
         <p>
-            <a href="http://www.mingrisoft.com/" target="_blank">bpsCopyright</a>
+            <a href="http://www.mingrisoft.com/" target="_blank">明日科技</a>
             <b>|</b>
             <a href="index.jsp">商城首页</a>
             <b>|</b>
@@ -130,7 +130,7 @@
                 <input type="hidden" class="userId" value="${sessionScope.get("userId")}"/>
                 <div class="ibar_login_box status_login show">
                     <div class="avatar_box">
-                        <p class="avatar_imgbox"><img src="/img/no-img_mid_.jpg"/></p>
+                        <p class="avatar_imgbox"><img src="img/no-img_mid_.jpg"/></p>
                         <ul class="user_info">
                             <li>用户名：<strong>mingriSoft</strong></li>
                             <li>级&nbsp;别：<strong>金牌会员</strong></li>
@@ -167,7 +167,7 @@
                 </div>
             </div>
             <div id="brand" class="item">
-                <a href="#"> <span class="wdsc"><img src="/img/wdsc.png"/></span> </a>
+                <a href="#"> <span class="wdsc"><img src="img/wdsc.png"/></span> </a>
 
                 <div class="mp_tooltip show">
                     我的收藏
@@ -175,7 +175,7 @@
                 </div>
             </div>
             <div id="broadcast" class="item">
-                <a href="#"> <span class="chongzhi"><img src="/img/chongzhi.png"/></span> </a>
+                <a href="#"> <span class="chongzhi"><img src="img/chongzhi.png"/></span> </a>
 
                 <div class="mp_tooltip show">
                     我要充值
@@ -194,7 +194,7 @@
                 <li class="qtitem"><a href="#none"><span class="mpbtn_qrcode"></span></a>
 
                     <div class="mp_qrcode" style="display:none;">
-                        <img src="/img/weixincode.png"/>
+                        <img src="img/weixincode.png"/>
                         <i class="icon_arrow_white"></i>
                     </div>
                 </li>

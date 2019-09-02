@@ -1,7 +1,7 @@
 package cn.bps.controller;
 
 import cn.bps.pojo.User;
-import cn.bps.service.UserService;
+import cn.bps.service.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 public class MemberController {
 
     @Autowired
-    private UserService userService;
+    private UserServiceImp userServiceImp;
 
 
 
@@ -35,8 +35,8 @@ public class MemberController {
     public String postLogin(@RequestParam("loginNumber") String loginNumber,
                             @RequestParam("password") String password){
 
-        User user1 = userService.getUserByPhone(loginNumber);
-        User user2=  userService.getUserByEmail(loginNumber);
+        User user1 = userServiceImp.getUserByPhone(loginNumber);
+        User user2=  userServiceImp.getUserByEmail(loginNumber);
 
         if(user1!=null && user1.getPassword().equals(password)){
             return user1.getId().toString();
@@ -51,7 +51,7 @@ public class MemberController {
 
     @RequestMapping(value = "/postLogin")
     public String postLogin(@RequestParam(value = "hiddenName") int id,HttpSession session){
-        User user = userService.getUserById(id);
+        User user = userServiceImp.getUserById(id);
         String username = user.getName();
         if(username == null) username="游客，请设置用户名";
         session.setAttribute("username",username);
@@ -64,7 +64,7 @@ public class MemberController {
         Object id = (session.getAttribute("userId"));
         if(id == null)
             return "redirect:/login";
-        User user = userService.getUserById((int)id);
+        User user = userServiceImp.getUserById((int)id);
         model.addAttribute("user",user);
         return "mySpace";
     }
@@ -74,13 +74,13 @@ public class MemberController {
                                  @RequestParam("email")String email,
                                  @RequestParam("phone")String phone,
                                  HttpSession session){
-        User user = userService.getUserByPhone(phone);
+        User user = userServiceImp.getUserByPhone(phone);
         user.setEmail(email);
         user.setName(name);
         session.setAttribute("username", name);
         session.setAttribute("userId",user.getId());
 
-        userService.updateInfo(user);
+        userServiceImp.updateInfo(user);
 
         return "redirect:/mySpace";
     }
@@ -95,7 +95,7 @@ public class MemberController {
         user.setPassword(password);
         user.setPhone(phone);
 
-        if(userService.InsertOne(user) == 1){
+        if(userServiceImp.InsertOne(user) == 1){
             session.setAttribute("username",user.getName());
             session.setAttribute("userId",user.getId());
             return "1";
@@ -111,7 +111,7 @@ public class MemberController {
     @RequestMapping(value = "/checkPhone.do")
     @ResponseBody
     public String checkName(@RequestParam("phone")String phone){
-        User user = userService.getUserByPhone(phone);
+        User user = userServiceImp.getUserByPhone(phone);
 
         if(user!=null) {
             return "0";
@@ -124,7 +124,7 @@ public class MemberController {
 
     @RequestMapping(value = "/userInfo.do")
     public @ResponseBody User getUserInfo(@RequestParam("userId") int id){
-        return userService.getUserById(id);
+        return userServiceImp.getUserById(id);
     }
 
 

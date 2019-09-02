@@ -9,8 +9,8 @@
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>购物车</title>
 
-    <link href="/css/cartstyle.css" rel="stylesheet" type="text/css"/>
-    <link href="/css/optstyle.css" rel="stylesheet" type="text/css"/>
+    <link href="css/cartstyle.css" rel="stylesheet" type="text/css"/>
+    <link href="css/optstyle.css" rel="stylesheet" type="text/css"/>
 
 
 </rapid:block>
