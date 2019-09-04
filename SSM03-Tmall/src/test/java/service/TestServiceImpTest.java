@@ -1,9 +1,6 @@
 package service;
 
-        import cn.bps.pojo.ConcreteFilter;
-        import cn.bps.pojo.FilterCase;
-        import cn.bps.pojo.Product;
-        import cn.bps.pojo.User;
+        import cn.bps.pojo.*;
         import cn.bps.service.*;
         import org.junit.Test;
         import org.junit.runner.RunWith;
@@ -34,6 +31,18 @@ public class TestServiceImpTest {
     @Autowired
     ProductBindFilterService productBindFilterService;
 
+    @Autowired
+    ProductImageService productImageService;
+
+
+    @Test
+    public void ProductImageTest(){
+        Map<Integer, String> map = productImageService.getImageUrl(productService.getProductList(1, 3));
+        for(String url:map.values()){
+            System.out.println(url);
+        }
+    }
+
 
     @Test
     public void ProductTest(){
@@ -44,7 +53,7 @@ public class TestServiceImpTest {
         }
 
         System.out.println("-------------------");
-        List<Product> products2 = productService.getProductListByFilter(productBindFilterService.getProductIdSet());
+        List<Product> products2 = productService.getProductListByFilter(productBindFilterService.getProductIdSet(null));
         for(Product product: products){
             System.out.println(product.getId());
 
@@ -66,7 +75,8 @@ public class TestServiceImpTest {
 
     @Test
     public void ConcreteFilterTest(){
-        Map<Integer, List<ConcreteFilter>> map = concreteFilterService.getFilterMap();
+        List<Integer> list = filterCaseService.getFilterIdList();
+        Map<Integer, List<ConcreteFilter>> map = concreteFilterService.getFilterMap(list);
         for (ConcreteFilter con : map.get(1)){
             System.out.println(con.getValue());
         }

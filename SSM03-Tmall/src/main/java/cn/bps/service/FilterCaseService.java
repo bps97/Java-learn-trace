@@ -8,4 +8,6 @@ public interface FilterCaseService {
 
     List<FilterCase> getFilterList();
 
+    List<Integer> getFilterIdList();
+
 }

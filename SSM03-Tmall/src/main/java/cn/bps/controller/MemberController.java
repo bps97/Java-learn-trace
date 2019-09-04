@@ -123,7 +123,8 @@ public class MemberController {
 
 
     @RequestMapping(value = "/userInfo.do")
-    public @ResponseBody User getUserInfo(@RequestParam("userId") int id){
+    @ResponseBody
+    public User getUserInfo(@RequestParam("userId") int id){
         return userService.getUserById(id);
     }
 

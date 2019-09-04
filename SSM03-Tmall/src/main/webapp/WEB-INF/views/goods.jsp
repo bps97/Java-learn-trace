@@ -61,7 +61,7 @@
         <a title="鸡腿" href="#">豆干</a>
     </div>
     <ul class="select">
-        <p class="title font-normal"> <span class="fl">手机</span> <span class="total fl">搜索到<strong class="num">997</strong>件相关商品</span> </p>
+        <p class="title font-normal"> <span class="fl">手机</span> <span class="total fl">搜索到<strong class="num">${products.size()}</strong>件相关商品</span> </p>
         <div class="clear"></div>
         <li class="select-result">
             <dl>
@@ -90,24 +90,10 @@
 
                     <c:forEach items="${filterMap.get(fCase.getId())}" var="concreteFilter">
                     <dd>
-                        <a href="#"><c:out value="${concreteFilter.getValue()}"/></a>
+                        <a href="javascript:void(0)"><c:out value="${concreteFilter.getValue()}"/></a>
                     </dd>
                     </c:forEach>
-<%--                    <dd>--%>
-<%--                        <a href="#">3GB</a>--%>
-<%--                    </dd>--%>
-<%--                    <dd>--%>
-<%--                        <a href="#">4GB</a>--%>
-<%--                    </dd>--%>
-<%--                    <dd>--%>
-<%--                        <a href="#">6GB</a>--%>
-<%--                    </dd>--%>
-<%--                    <dd>--%>
-<%--                        <a href="#">无</a>--%>
-<%--                    </dd>--%>
-<%--                    <dd>--%>
-<%--                        <a href="#">其他</a>--%>
-<%--                    </dd>--%>
+
                 </div>
             </dl>
         </li>
@@ -148,7 +134,7 @@
 
         <li>
             <div class="i-pic limit">
-                <a href="shopInfo.jsp"><img src="../img/shopcartImg.jpg" /></a>
+                <a href="#"><img src="${urlMap.get(product.getId())}" /></a>
                 <p class="title fl"><c:out value="${product.getName()}"/></p>
                 <p class="price fl"> <b>&yen;</b> <strong><c:out value="${product.getPrice()}"/></strong> </p>
                 <p class="number fl"> 销量<span><c:out value="${product.getSale()}"/></span> </p>
@@ -160,33 +146,33 @@
 
     </ul>
 </div>
-<div class="search-side">
-    <div class="side-title">
-        经典搭配
-    </div>
-    <li>
-        <div class="i-pic check">
-            <a href="shopInfo.jsp"><img src="../img/shopcartImg-01.jpg" /></a>
-            <p class="check-title">送耳机+送手机壳</p>
-            <p class="price fl"> <b>&yen;</b> <strong>299.00</strong> </p>
-            <p class="number fl"> 销量<span>1110</span> </p>
-        </div> </li>
-    <li>
-        <div class="i-pic check">
-            <a href="shopInfo.jsp"><img src="../img/shopcartImg-01.jpg" /></a>
-            <p class="check-title">送耳机+送手机壳</p>
-            <p class="price fl"> <b>&yen;</b> <strong>299.00</strong> </p>
-            <p class="number fl"> 销量<span>1110</span> </p>
-        </div> </li>
-    <li>
-        <div class="i-pic check">
-            <a href="shopInfo.jsp"><img src="../img/shopcartImg-01.jpg" /></a>
-            <p class="check-title">送耳机+送手机壳</p>
-            <p class="price fl"> <b>&yen;</b> <strong>299.00</strong> </p>
-            <p class="number fl"> 销量<span>1110</span> </p>
-        </div> </li>
+<%--<div class="search-side">--%>
+<%--    <div class="side-title">--%>
+<%--        经典搭配--%>
+<%--    </div>--%>
+<%--&lt;%&ndash;    <li>&ndash;%&gt;--%>
+<%--&lt;%&ndash;        <div class="i-pic check">&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <a href="shopInfo.jsp"><img src="../img/shopcartImg-01.jpg" /></a>&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <p class="check-title">送耳机+送手机壳</p>&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <p class="price fl"> <b>&yen;</b> <strong>299.00</strong> </p>&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <p class="number fl"> 销量<span>1110</span> </p>&ndash;%&gt;--%>
+<%--&lt;%&ndash;        </div> </li>&ndash;%&gt;--%>
+<%--&lt;%&ndash;    <li>&ndash;%&gt;--%>
+<%--&lt;%&ndash;        <div class="i-pic check">&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <a href="shopInfo.jsp"><img src="../img/shopcartImg-01.jpg" /></a>&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <p class="check-title">送耳机+送手机壳</p>&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <p class="price fl"> <b>&yen;</b> <strong>299.00</strong> </p>&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <p class="number fl"> 销量<span>1110</span> </p>&ndash;%&gt;--%>
+<%--&lt;%&ndash;        </div> </li>&ndash;%&gt;--%>
+<%--&lt;%&ndash;    <li>&ndash;%&gt;--%>
+<%--&lt;%&ndash;        <div class="i-pic check">&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <a href="shopInfo.jsp"><img src="../img/shopcartImg-01.jpg" /></a>&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <p class="check-title">送耳机+送手机壳</p>&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <p class="price fl"> <b>&yen;</b> <strong>299.00</strong> </p>&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <p class="number fl"> 销量<span>1110</span> </p>&ndash;%&gt;--%>
+<%--&lt;%&ndash;        </div> </li>&ndash;%&gt;--%>
 
-</div>
+<%--</div>--%>
 <div class="clear"></div>
 <!--分页 -->
 <ul class="mr-pagination mr-pagination-right">
@@ -203,6 +189,59 @@
 </div>
 
 <div class="theme-popover-mask"></div>
+</rapid:override>
+
+
+<rapid:override name="script_content">
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+
+            $('dd.select-all').click(function () {
+                $(this).attr('class','select-all selected');
+                $(this).nextAll().removeAttr('class');
+            })
+
+            $('li.select-list dl div dd a').click(function () {
+                $(this).parent().parent().find('dd.select-all').removeAttr('class');
+
+
+                $(this).parent().attr("class",'selected')
+
+                var fCase =$(this).parent().parent().find('dd.selected').text();
+                var fCases = fCase.split('   \n');
+
+                for(var index in fCases){
+                    fCases[index] = fCases[index].trim();
+                }
+
+                // console.log(fCases);
+
+                url = "showGoods.do"
+
+                $.ajax({
+                    url:url,
+                    type:'get',
+                    traditional: true,
+                    data:{'fCases':fCases},
+                    datetype:'json',
+                    success:function (resp) {
+                        console.log(resp);
+                        for(var index in resp){
+                            console.log(resp[index]);
+                        }
+                    }
+                })
+
+            })
+
+
+        })
+
+
+    </script>
+
 </rapid:override>
 
 <%@ include file="viewBase.jsp" %>

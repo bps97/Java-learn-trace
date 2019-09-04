@@ -19,8 +19,15 @@ public class ProductBindFilterServiceImp implements ProductBindFilterService {
 
 
     @Override
-    public Set<Integer> getProductIdSet() {
+    public Set<Integer> getProductIdSet(Set<Integer> filterIdSet) {
         ProductBindFilterExample productBindFilterExample = new ProductBindFilterExample();
+        ProductBindFilterExample.Criteria criteria = productBindFilterExample.createCriteria();
+
+        if(filterIdSet != null)
+        for(Integer id: filterIdSet){
+            criteria.andFilter_value_idEqualTo(id);
+        }
+
         List<ProductBindFilter> productBindFilter = productBindFilterMapper.selectByExample(productBindFilterExample);
         Set<Integer> productIdSet = new HashSet();
         for(ProductBindFilter pbf:productBindFilter){

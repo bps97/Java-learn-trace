@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html>
-<html>
 <head lang="en">
     <meta charset="UTF-8">
     <title>注册</title>
@@ -13,12 +12,12 @@
         function checkPhone() {
             var phone = $('#tel').val();
             console.log(phone);
-            var url="checkPhone.do";
-            $.post(url,{'phone':phone},function (responseDate,status,xhr) {
-                if(status == 'success'){
-                    if(responseDate == 0){
+            var url = "checkPhone.do";
+            $.post(url, {'phone': phone}, function (responseDate, status, xhr) {
+                if (status == 'success') {
+                    if (responseDate == 0) {
                         alert("该电话已经注册过账号");
-                    }else{
+                    } else {
                         console.log(responseDate);
                     }
                 }
@@ -28,68 +27,68 @@
 
     </script>
 
-    <script type="text/javascript">    	
-        function mr_verify(){
+    <script type="text/javascript">
+        function mr_verify() {
 
             //获取表单对象
             var regPassword = $("#regPassword").val();
             var passwordRepeat = $("#passwordRepeat").val();
-            var tel= $("#tel").val();
+            var tel = $("#tel").val();
 
             console.log(regPassword);
             console.log(passwordRepeat);
             console.log(tel);
 
             //验证项目是否为空
-            if(regPassword==='' || regPassword===null){
+            if (regPassword === '' || regPassword === null) {
                 alert("密码不能为空！");
                 return;
             }
-            if(passwordRepeat==='' || passwordRepeat===null){
+            if (passwordRepeat === '' || passwordRepeat === null) {
                 alert("确认密码不能为空！");
                 return;
             }
-            if(tel==='' || tel===null){
+            if (tel === '' || tel === null) {
                 alert("手机号码不能为空！");
                 return;
             }
 
-            if(regPassword !== passwordRepeat ){
+            if (regPassword !== passwordRepeat) {
                 alert("密码设置前后不一致！");
                 return;
             }
 
             //验证手机号格式
-            if(isNaN(tel)){
+            if (isNaN(tel)) {
                 alert("手机号请输入数字！");
                 return;
             }
-            if(tel.length!==11){
+            if (tel.length !== 11) {
                 alert("手机号是11个数字！");
                 return;
             }
 
             var url = "postReg.do";
-            var data = {"phone":tel,"password":regPassword};
+            var data = {"phone": tel, "password": regPassword};
             $.post(url, data, function (responseBody, status, xhr) {
-                if(status == "success"){
-                    if(responseBody == '1'){
-                        window.location.href='/index';
-                    }else{
+                if (status == "success") {
+                    if (responseBody == '1') {
+                        window.location.href = '/index';
+                    } else {
                         alert("注册失败");
                     }
                 }
             })
 
 
-       }
+        }
     </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="../css/basic.css"/>
     <link href="../css/login.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
 
 <div class="login-boxtitle">
     <a href="../../index.html"><img alt="" src="../img/logobig.png"/></a>
@@ -110,7 +109,8 @@
                         <form>
 
                             <div class="user-pass">
-                                <label for="passwordRepeat"><i class="mr-icon-mobile"></i><span style="color:red;margin-left:5px">*</span></label>
+                                <label for="passwordRepeat"><i class="mr-icon-mobile"></i><span
+                                        style="color:red;margin-left:5px">*</span></label>
                                 <input type="text" name="phone" id="tel" placeholder="请输入手机号" onblur="checkPhone()">
                             </div>
                             <div class="user-pass">
@@ -123,7 +123,6 @@
                             </div>
 
 
-
                         </form>
 
                         <div class="login-links">
@@ -134,7 +133,8 @@
                             <a href="login.jsp" class="mr-fr">登录</a>
                         </div>
                         <div class="mr-cf">
-                            <input type="submit" name="" onclick="mr_verify()" value="注册" class="mr-btn mr-btn-primary mr-btn-sm mr-fl">
+                            <input type="submit" name="" onclick="mr_verify()" value="注册"
+                                   class="mr-btn mr-btn-primary mr-btn-sm mr-fl">
                         </div>
                     </div>
 
@@ -167,6 +167,6 @@
             </p>
         </div>
     </div>
+</div>
 </body>
-
 </html>

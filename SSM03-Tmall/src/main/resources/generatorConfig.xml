@@ -8,48 +8,42 @@
 
     <context id="DB2Tables" targetRuntime="MyBatis3">
 
-<!--        除去自动生成的注释-->
+        <!--        除去自动生成的注释-->
         <commentGenerator>
             <property name="suppressDate" value="true"/>
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
 
-<!--        数据源信息-->
+        <!--        数据源信息-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/tmall_ssm?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false"
                         userId="root" password="123456">
         </jdbcConnection>
 
-<!--        生成代码数据库内类型转化为java中类型-->
+        <!--        生成代码数据库内类型转化为java中类型-->
         <javaTypeResolver>
-            <property name="forceBigDecimals" value="false" />
+            <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-<!--        生成pojo类的位置-->
+        <!--        生成pojo类的位置-->
         <javaModelGenerator targetPackage="cn.bps.pojo"
                             targetProject="src/main/java">
-            <property name="enableSubPackages" value="false" />
-            <property name="trimStrings" value="true" />
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-<!--        生成xml映射文件的位置-->
+        <!--        生成xml映射文件的位置-->
         <sqlMapGenerator targetPackage="mapper"
                          targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-<!--        生成mapper类的位置-->
+        <!--        生成mapper类的位置-->
         <javaClientGenerator type="XMLMAPPER"
                              targetPackage="cn.bps.mapper"
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
-
-
-
-
-
-
 
 
         <table tableName="category" domainObjectName="Category"
@@ -64,7 +58,7 @@
         <table tableName="sub_category" domainObjectName="SubCategory"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="true"
-               selectByExampleQueryId="false" >
+               selectByExampleQueryId="false">
             <property name="useActualColunmNames" value="true"/>
             <property name="my.isgen.userkeys" value="true"/>
             <generatedKey column="id" sqlStatement="JDBC"/>
@@ -109,7 +103,7 @@
         <table tableName="concrete_filter" domainObjectName="ConcreteFilter"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByPrimaryKey="true"
-               selectByExampleQueryId="false" enableSelectByExample="true" >
+               selectByExampleQueryId="false" enableSelectByExample="true">
             <property name="my.isgen.usekeys" value="true"/>
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="JDBC"/>
@@ -119,7 +113,7 @@
         <table tableName="product_bind_filter" domainObjectName="ProductBindFilter"
                enableCountByExample="true" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByPrimaryKey="true"
-               selectByExampleQueryId="false" enableSelectByExample="true" >
+               selectByExampleQueryId="false" enableSelectByExample="true">
             <property name="my.isgen.usekeys" value="true"/>
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="JDBC"/>
@@ -178,9 +172,12 @@
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
-        
 
-        
+
+    </context>
+    <context id="mysqlgenerator" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
+        ...
     </context>
 
 </generatorConfiguration>
