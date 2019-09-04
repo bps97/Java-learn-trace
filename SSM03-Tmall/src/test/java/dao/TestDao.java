@@ -3,6 +3,7 @@ package dao;
 
 import cn.bps.mapper.*;
 import cn.bps.pojo.*;
+import org.apache.ibatis.session.RowBounds;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})
@@ -34,6 +34,19 @@ public class TestDao {
     @Autowired
     private ProductBindFilterMapper productBindFilterMapper;
 
+    @Autowired
+    private ProductMapper productMapper;
+
+    @Test
+    public void ProductTest(){
+        ProductExample productExample = new ProductExample();
+        RowBounds rowBounds = new RowBounds(0,2);
+        List<Product> products = productMapper.selectByExampleWithRowbounds(productExample, rowBounds);
+
+        for(Product product:products){
+            System.out.println(product.getId()+":"+product.getName());
+        }
+    }
 
 
     @Test

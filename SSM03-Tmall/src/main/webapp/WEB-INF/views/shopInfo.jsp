@@ -149,15 +149,15 @@
                     <!--销量-->
                     <ul class="tm-ind-panel">
                         <li class="tm-ind-item tm-ind-sellCount canClick">
-                            <div class="tm-indcon"><span class="tm-label">月销量</span><span class="tm-count">1015</span>
+                            <div class="tm-indcon"><span class="tm-label">月销量</span><span class="tm-step">1015</span>
                             </div>
                         </li>
                         <li class="tm-ind-item tm-ind-sumCount canClick">
-                            <div class="tm-indcon"><span class="tm-label">累计销量</span><span class="tm-count">6015</span>
+                            <div class="tm-indcon"><span class="tm-label">累计销量</span><span class="tm-step">6015</span>
                             </div>
                         </li>
                         <li class="tm-ind-item tm-ind-reviewCount canClick tm-line3">
-                            <div class="tm-indcon"><span class="tm-label">累计评价</span><span class="tm-count">640</span>
+                            <div class="tm-indcon"><span class="tm-label">累计评价</span><span class="tm-step">640</span>
                             </div>
                         </li>
                     </ul>

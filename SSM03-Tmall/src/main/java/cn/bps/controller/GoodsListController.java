@@ -4,13 +4,11 @@ import cn.bps.pojo.ConcreteFilter;
 import cn.bps.pojo.FilterCase;
 import cn.bps.pojo.Product;
 import cn.bps.service.*;
+import cn.bps.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -70,6 +68,8 @@ public class GoodsListController {
 
     @RequestMapping(value = "/goods",method = RequestMethod.GET)
     public String listGoodsAjax(@RequestParam(value = "caseList",defaultValue = "")String caseList,
+                                @RequestParam(value = "start",defaultValue = "0")int start,
+                                @RequestParam(value = "step",defaultValue = "20")int step,
                                 Model model){
 
 
@@ -79,6 +79,13 @@ public class GoodsListController {
         List<Integer> filterIdList = filterCaseService.getFilterIdList();//获取筛选情况的字典表
         Map<Integer, List<ConcreteFilter>> map = concreteFilterService.getFilterMap(filterIdList);
         model.addAttribute("filterMap",map);
+
+
+
+        /*分页*/
+
+        Page page = new Page(start,step);
+        model.addAttribute("page",page);
 
 
 
@@ -93,15 +100,13 @@ public class GoodsListController {
         Set<Integer> filterIdSet = concreteFilterService.getFilterIdByValues(temp);//获取筛选条件
         productIdSet = productBindFilterService.getProductIdSet(filterIdSet);//根据筛选条件获取产品id
         model.addAttribute("filterCases",concreteFilterService.getFilterIds(filterIdSet));
-
-
-
         }
-        List<Product> products = productService.getProductListByProductIdSet(productIdSet);
+//        List<Product> products = productService.getProductListByProductIdSet(productIdSet);
+        List<Product> products = productService.rowBoundsProduct(productIdSet,page.getStart(),page.getStep());
+
         model.addAttribute("products",products);
         Map<Integer, String> urlMap = productImageService.getImageUrl(products);//获取产品图片链接
         model.addAttribute("urlMap",urlMap);
-
 
 
 

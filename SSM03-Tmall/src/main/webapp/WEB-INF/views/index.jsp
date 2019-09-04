@@ -27,7 +27,7 @@
                     <li style="opacity: 0;"><img src="/img/ad03.png"></li>
                     <li style="opacity: 0;"><img src="/img/ad04.png"></li>
                 </ul>
-                <ul id="btnUI" class="count">
+                <ul id="btnUI" class="step">
                     <li class="current">1</li>
                     <li class="">2</li>
                     <li class="">3</li>

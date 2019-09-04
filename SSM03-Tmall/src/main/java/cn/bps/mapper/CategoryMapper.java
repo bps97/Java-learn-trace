@@ -3,6 +3,7 @@ package cn.bps.mapper;
 import cn.bps.pojo.Category;
 import cn.bps.pojo.CategoryExample;
 import java.util.List;
+import org.apache.ibatis.session.RowBounds;
 
 public interface CategoryMapper {
     long countByExample(CategoryExample example);
@@ -12,6 +13,8 @@ public interface CategoryMapper {
     int insert(Category record);
 
     int insertSelective(Category record);
+
+    List<Category> selectByExampleWithRowbounds(CategoryExample example, RowBounds rowBounds);
 
     List<Category> selectByExample(CategoryExample example);
 

@@ -5,6 +5,7 @@ import cn.bps.mapper.ProductMapper;
 import cn.bps.pojo.Product;
 import cn.bps.pojo.ProductBindFilter;
 import cn.bps.pojo.ProductExample;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +24,8 @@ public class ProductServiceImp implements ProductService {
     @Override
     public List<Product> getProductList(int start, int step) {
         ProductExample productExample = new ProductExample();
-        productExample.createCriteria().andIdBetween(start,step+start);
-        return productMapper.selectByExample(productExample);
+        RowBounds rowBounds = new RowBounds(start-1,start+step);
+        return productMapper.selectByExampleWithRowbounds(productExample,rowBounds);
 
     }
 
@@ -35,6 +36,19 @@ public class ProductServiceImp implements ProductService {
         if (set.size() > 0) {
             productExample.createCriteria().andIdIn(new ArrayList(set));
             return productMapper.selectByExample(productExample);
+
+        }
+        return new ArrayList<>();
+    }
+
+    @Override
+    public List<Product> rowBoundsProduct(Set<Integer> set, Integer start, Integer step) {
+        ProductExample productExample = new ProductExample();
+        RowBounds rowBounds = new RowBounds(start,start+step);
+
+        if (set.size() > 0) {
+            productExample.createCriteria().andIdIn(new ArrayList(set));
+            return productMapper.selectByExampleWithRowbounds(productExample,rowBounds);
 
         }
         return new ArrayList<>();

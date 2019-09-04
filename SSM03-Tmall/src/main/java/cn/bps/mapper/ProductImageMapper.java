@@ -3,6 +3,7 @@ package cn.bps.mapper;
 import cn.bps.pojo.ProductImage;
 import cn.bps.pojo.ProductImageExample;
 import java.util.List;
+import org.apache.ibatis.session.RowBounds;
 
 public interface ProductImageMapper {
     int deleteByPrimaryKey(Integer id);
@@ -10,6 +11,8 @@ public interface ProductImageMapper {
     int insert(ProductImage record);
 
     int insertSelective(ProductImage record);
+
+    List<ProductImage> selectByExampleWithRowbounds(ProductImageExample example, RowBounds rowBounds);
 
     List<ProductImage> selectByExample(ProductImageExample example);
 
