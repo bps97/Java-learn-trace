@@ -16,4 +16,6 @@ public interface ConcreteFilterService {
 
     Set<Integer> getFilterIdByValues(String[] values);
 
+    String getFilterIds(Set<Integer> filterSet);
+
 }

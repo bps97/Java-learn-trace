@@ -7,6 +7,9 @@
 
 
     <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!--        RowBoundsPlugin插件   -->
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
+
 
         <!--        除去自动生成的注释-->
         <commentGenerator>
@@ -175,9 +178,6 @@
 
 
     </context>
-    <context id="mysqlgenerator" targetRuntime="MyBatis3">
-        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
-        ...
-    </context>
+
 
 </generatorConfiguration>

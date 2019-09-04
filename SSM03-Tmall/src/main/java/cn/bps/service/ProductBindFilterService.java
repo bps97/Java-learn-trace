@@ -7,5 +7,7 @@ import java.util.Set;
 
 public interface ProductBindFilterService {
     Set<Integer> getProductIdSet(Set<Integer> filterIdSet);
+    Set<Integer> getProductIdSetByFilterId(Integer filterId);
+    Set<Integer> getProductIdSet();
 
 }

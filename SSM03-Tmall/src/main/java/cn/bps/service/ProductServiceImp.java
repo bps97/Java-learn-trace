@@ -29,13 +29,15 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
-    public List<Product> getProductListByFilter(Set<Integer> set) {
-
-
+    public List<Product> getProductListByProductIdSet(Set<Integer> set) {
         ProductExample productExample = new ProductExample();
-        productExample.createCriteria().andIdIn(new ArrayList(set));
 
-        return productMapper.selectByExample(productExample);
+        if (set.size() > 0) {
+            productExample.createCriteria().andIdIn(new ArrayList(set));
+            return productMapper.selectByExample(productExample);
+
+        }
+        return new ArrayList<>();
     }
 
 

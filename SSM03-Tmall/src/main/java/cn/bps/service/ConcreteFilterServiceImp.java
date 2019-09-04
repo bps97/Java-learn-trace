@@ -55,8 +55,31 @@ public class ConcreteFilterServiceImp implements ConcreteFilterService {
     public Set<Integer> getFilterIdByValues(String[] values) {
         Set<Integer> set  = new HashSet<>();
         for(int i=0; i< values.length; ++i){
-            set.add(getFilterIdByValue(values[i]));
+            if(!values[i].equals("全部"))
+                set.add(getFilterIdByValue(values[i]));
+//            else{
+//                ConcreteFilterExample concreteFilterExample = new ConcreteFilterExample();
+//                concreteFilterExample.createCriteria().andFilter_case_idEqualTo(i+1);
+//                List<ConcreteFilter> concreteFilterList = concreteFilterMapper.selectByExample(concreteFilterExample);
+//                for(ConcreteFilter cf:concreteFilterList){
+//                    set.add(cf.getId());
+//                }
+//            }
         }
         return set;
+    }
+
+    @Override
+    public String getFilterIds(Set<Integer> filterSet) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        int first = 0;
+        for(Integer i :filterSet){
+            if(++first != 1)
+                stringBuilder.append(",");
+            stringBuilder.append(i);
+        }
+        return stringBuilder.toString();
+
     }
 }

@@ -55,13 +55,13 @@
 <div class="mr-u-sm-12 mr-u-md-12">
 <div class="theme-popover">
     <div class="searchAbout">
-        <span class="font-pale">相关搜索：</span>
-        <a title="坚果" href="#">坚果</a>
-        <a title="瓜子" href="#">瓜子</a>
-        <a title="鸡腿" href="#">豆干</a>
+<%--        <span class="font-pale">相关搜索：</span>--%>
+<%--        <a title="坚果" href="#">坚果</a>--%>
+<%--        <a title="瓜子" href="#">瓜子</a>--%>
+<%--        <a title="鸡腿" href="#">豆干</a>--%>
     </div>
     <ul class="select">
-        <p class="title font-normal"> <span class="fl">手机</span> <span class="total fl">搜索到<strong class="num">${products.size()}</strong>件相关商品</span> </p>
+        <p class="title font-normal"> <span class="fl"></span> <span class="total fl">筛选到<strong class="num" style="color:red;">&nbsp;${products.size()}&nbsp;</strong>件相关商品</span> </p>
         <div class="clear"></div>
         <li class="select-result">
             <dl>
@@ -74,12 +74,15 @@
         </li>
         <div class="clear"></div>
 
+        <form id="fCaseForm" method="get" action="/goods">
+            <input type="hidden" name="caseList" id="fCaseHidden">
+            <input type="hidden"  id="fCaseIdHidden" value="<c:out value='${filterCases}'/>">
 
-
+        </form>
 
         <c:forEach items="${filterCase}" var="fCase">
         <li class="select-list">
-            <dl id="select1">
+            <dl>
                 <dt class=" mr-round"><c:out value="${fCase.getName()}" /></dt>
                 <div class="dd-conent">
 
@@ -90,7 +93,7 @@
 
                     <c:forEach items="${filterMap.get(fCase.getId())}" var="concreteFilter">
                     <dd>
-                        <a href="javascript:void(0)"><c:out value="${concreteFilter.getValue()}"/></a>
+                        <a href="javascript:void(0)" class="fCase-<c:out value='${concreteFilter.getId()}'/>"><c:out value="${concreteFilter.getValue()}"/></a>
                     </dd>
                     </c:forEach>
 
@@ -98,26 +101,6 @@
             </dl>
         </li>
         </c:forEach>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </ul>
     <div class="clear"></div>
 </div>
@@ -142,6 +125,7 @@
         </li>
 
         </c:forEach>
+
 
 
     </ul>
@@ -197,44 +181,46 @@
 
         $(document).ready(function () {
 
+            var str_case_o = $('#fCaseIdHidden').attr("value").toString();
+            console.log(str_case_o);
+            if(str_case_o != 0){
+                var str_case = str_case_o.split(",");
+                for(var index in str_case){
+                    var $fCase = $('.fCase-'+str_case[index]);
+                    $fCase.parent().parent().children("dd.selected").removeAttr("class");
+                    $fCase.parent().attr('class','selected');
 
-            $('dd.select-all').click(function () {
-                $(this).attr('class','select-all selected');
-                $(this).nextAll().removeAttr('class');
-            })
-
-            $('li.select-list dl div dd a').click(function () {
-                $(this).parent().parent().find('dd.select-all').removeAttr('class');
-
-
-                $(this).parent().attr("class",'selected')
-
-                var fCase =$(this).parent().parent().find('dd.selected').text();
-                var fCases = fCase.split('   \n');
-
-                for(var index in fCases){
-                    fCases[index] = fCases[index].trim();
                 }
+            }
 
-                // console.log(fCases);
 
-                url = "showGoods.do"
 
-                $.ajax({
-                    url:url,
-                    type:'get',
-                    traditional: true,
-                    data:{'fCases':fCases},
-                    datetype:'json',
-                    success:function (resp) {
-                        console.log(resp);
-                        for(var index in resp){
-                            console.log(resp[index]);
-                        }
+
+
+            $('ul.select li.select-list dl div.dd-conent dd ').click(function () {
+                var $dd = $(this).children();
+                console.log($dd.text())
+                $(this).parent().children("dd.selected").removeAttr("class");
+                $(this).attr("class",'selected');
+
+                var fCase = $(this).parent().parent().parent().parent().find('dd.selected').text();
+                var caseList = fCase.split('   \n');
+
+                    for(var index in caseList){
+                        caseList[index] = caseList[index].trim();
                     }
-                })
+
+
+                console.log(caseList);
+
+                $('#fCaseHidden').attr("value",caseList);
+                $('#fCaseForm').submit();
+
+
 
             })
+
+
 
 
         })

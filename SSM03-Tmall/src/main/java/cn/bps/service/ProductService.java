@@ -8,5 +8,5 @@ import java.util.Set;
 public interface ProductService {
     List<Product> getProductList(int start, int step);
 
-    List<Product> getProductListByFilter(Set<Integer> set);
+    List<Product> getProductListByProductIdSet(Set<Integer> set);
 }

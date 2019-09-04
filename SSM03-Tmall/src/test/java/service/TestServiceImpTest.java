@@ -8,8 +8,10 @@ package service;
         import org.springframework.test.context.ContextConfiguration;
         import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+        import java.util.HashSet;
         import java.util.List;
         import java.util.Map;
+        import java.util.Set;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -36,6 +38,34 @@ public class TestServiceImpTest {
 
 
     @Test
+    public void productBindFilterTest(){
+//        Set<Integer> set = new HashSet<>();
+//        set.add(6);
+//        set.add(15);
+//        Set<Integer> xx = productBindFilterService.getProductIdSet(set);
+//        for(Integer i: xx){
+//            System.out.println(i);
+//        }
+
+
+        Set<Integer> xx = productBindFilterService.getProductIdSetByFilterId(1);
+        for(Integer i: xx){
+            System.out.print(i+" ");
+        }
+        System.out.println("");
+        Set<Integer> yy = productBindFilterService.getProductIdSetByFilterId(20);
+        for(Integer i: yy){
+            System.out.print(i+" ");
+        }
+        System.out.println("");
+        xx.retainAll(yy);
+        for(Integer i: xx){
+            System.out.print(i+" ");
+        }
+    }
+
+
+    @Test
     public void ProductImageTest(){
         Map<Integer, String> map = productImageService.getImageUrl(productService.getProductList(1, 3));
         for(String url:map.values()){
@@ -53,7 +83,7 @@ public class TestServiceImpTest {
         }
 
         System.out.println("-------------------");
-        List<Product> products2 = productService.getProductListByFilter(productBindFilterService.getProductIdSet(null));
+        List<Product> products2 = productService.getProductListByProductIdSet(productBindFilterService.getProductIdSet());
         for(Product product: products){
             System.out.println(product.getId());
 
