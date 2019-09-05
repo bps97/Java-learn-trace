@@ -85,61 +85,54 @@
     </script>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="../css/basic.css"/>
-    <link href="../css/login.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/basic.css"/>
+    <link href="/css/login.css" rel="stylesheet" type="text/css">
 </head>
 
 
 <div class="login-boxtitle">
-    <a href="../../index.html"><img alt="" src="../img/logobig.png"/></a>
+    <a href="/index.html"><img alt="" src="/img/logobig.png"/></a>
 </div>
 
 <div class="res-banner">
     <div class="res-main">
-        <div class="login-banner-bg"><span></span><img src="../img/big.png"/></div>
+        <div class="login-banner-bg"><span></span><img src="/img/big.png"/></div>
         <div class="login-box">
 
-            <div class="mr-tabs" id="doc-my-tabs">
-                <ul class="mr-tabs-nav mr-nav mr-nav-tabs mr-nav-justify">
-                    <li class="mr-active"><a href="">注册</a></li>
-                </ul>
 
-                <div class="mr-tabs-bd">
-                    <div class="mr-tab-panel mr-active">
-                        <form>
-
-                            <div class="user-pass">
-                                <label for="passwordRepeat"><i class="mr-icon-mobile"></i><span
-                                        style="color:red;margin-left:5px">*</span></label>
-                                <input type="text" name="phone" id="tel" placeholder="请输入手机号" onblur="checkPhone()">
-                            </div>
-                            <div class="user-pass">
-                                <label for="regPassword"><i class="mr-icon-lock"></i></label>
-                                <input type="password" name="password" id="regPassword" placeholder="设置密码">
-                            </div>
-                            <div class="user-pass">
-                                <label for="passwordRepeat"><i class="mr-icon-lock"></i></label>
-                                <input type="password" name="password2" id="passwordRepeat" placeholder="确认密码">
-                            </div>
+            <h3 class="title">注册</h3>
+            <div class="clear"></div>
 
 
-                        </form>
-
-                        <div class="login-links">
-                            <label for="reader-me">
-                                <input id="reader-me" type="checkbox"> 点击表示您同意商城《服务协议》
-
-                            </label>
-                            <a href="login.jsp" class="mr-fr">登录</a>
-                        </div>
-                        <div class="mr-cf">
-                            <input type="submit" name="" onclick="mr_verify()" value="注册"
-                                   class="mr-btn mr-btn-primary mr-btn-sm mr-fl">
-                        </div>
+            <div class="login-form">
+                <form id="loginForm" action="/postLogin" method="post">
+                    <div class="user-pass">
+                        <label for="tel"><i class="mr-icon-mobile"></i></label>
+                        <input type="text" name="phone" id="tel" placeholder="请输入手机号" onblur="checkPhone()">
                     </div>
+                    <div id="regBlock" style="color: red;display: block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div class="user-pass">
+                        <label for="regPassword"><i class="mr-icon-lock"></i></label>
+                        <input type="password" name="password" id="regPassword" placeholder="设置密码">
+                    </div>
+                    <div class="user-pass">
+                        <label for="passwordRepeat"><i class="mr-icon-lock"></i></label>
+                        <input type="password" name="password2" id="passwordRepeat" placeholder="确认密码">
+                    </div>
+                </form>
+            </div>
 
+            <div class="login-links">
+                <label for="reader-me">
+                    <input id="reader-me" type="checkbox"> 点击表示您同意商城《服务协议》
 
-                </div>
+                </label>
+                <a href="/login" class="mr-fr">登录</a>
+            </div>
+            <div class="mr-cf">
+                <input type="submit" name="" onclick="mr_verify()" value="注册"
+                       class="mr-btn mr-btn-primary mr-btn-sm mr-fl" style="background-color: #3db922
+">
             </div>
 
         </div>
@@ -150,7 +143,7 @@
             <p>
                 <a href="http://www.mingrisoft.com/" target="_blank">明日科技</a>
                 <b>|</b>
-                <a href="../../index.html">商城首页</a>
+                <a href="//index.html">商城首页</a>
                 <b>|</b>
                 <a href="#">支付宝</a>
                 <b>|</b>

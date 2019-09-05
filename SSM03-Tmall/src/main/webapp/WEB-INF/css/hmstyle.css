@@ -373,7 +373,7 @@ dt + dd {
     display: block;
     width: 60px;
     height: 46px;
-    background: url(../img/sale-t_clock.jpg);
+    background: url(/img/sale-t_clock.jpg);
     background-size: 100%
 }
 
@@ -390,7 +390,7 @@ dt + dd {
     width: 112px;
     height: 27px;
     position: relative;
-    background: url(../img/icon-sale.png);
+    background: url(/img/icon-sale.png);
     background-size: 100%;
     margin-top: 10px;
     margin-right: 10px;
@@ -1035,7 +1035,7 @@ dt + dd {
         display: block;
         width: 380px;
         height: 93px;
-        background: url(../images/sale-t.jpg) no-repeat;
+        background: url(/images/sale-t.jpg) no-repeat;
     }
 
     .sale-mt .sale-title {
@@ -1049,7 +1049,7 @@ dt + dd {
         position: relative;
         margin-top: 24px;
         margin-right: 18px;
-        background: url(../img/icon-sale.png);
+        background: url(/img/icon-sale.png);
     }
 
     .sale-mt .s-time span {
@@ -1338,6 +1338,7 @@ dt + dd {
         position: absolute;
         display: block;
         z-index: 10002;
+
     }
 
     /*第一套轮播图布局*/
@@ -1501,7 +1502,9 @@ dt + dd {
         border: 1px solid #2b2b2b;
         border-top: none;
         background: #2b2b2b;
-        box-shadow: 8px 0 7px -3px rgba(0, 0, 0, .3)
+        box-shadow: 8px 0 7px -3px rgba(0, 0, 0, .3);
+
+
     }
 
     .category-content .down-ico {
@@ -1542,11 +1545,11 @@ dt + dd {
 
     .category-content .category-name i img {
         position: absolute;
-        top: 6px;
+        top: 10px;
         width: 25px;
         height: 25px;
         border-radius: 25px;
-        left: 6px;
+        left: 1px;
         display: block;
     }
 
@@ -1605,6 +1608,7 @@ dt + dd {
         padding-left: 12px;
         width: 152px;
         overflow: hidden;
+        opacity:0.8
     }
 
     .category-content .category-info em {
@@ -1635,7 +1639,7 @@ dt + dd {
         height: 100%;
         z-index: 11;
         padding: 0 0 0 2px;
-        width: 770px;
+        width: 790px;
         background: #fff;
         border: none;
         border-top: 1px solid #bbb;
@@ -1869,7 +1873,7 @@ dt + dd {
     .clock {
         display: block;
         height: 145px;
-        background: url(../img/clockbg.png) repeat;
+        background: url(/img/clockbg.png) repeat;
         position: relative;
     }
 
@@ -3018,25 +3022,25 @@ dt + dd {
     }
 
     #nav .category-content .all-goods {
-        width: 180px;
+        width: 200px;
     }
 
     .category-content .category {
-        width: 180px;
+        width: 200px;
     }
 
     .category-content .category-info {
         padding-left: 12px;
-        width: 182px;
+        width: 200px;
         overflow: hidden;
     }
 
     .category-content .menu-item {
-        left: 173px;
+        left: 200px;
     }
 
     .category-content .category-list li {
-        height: 45px;
+        height: 40px;
     }
 
     /*推荐*/
@@ -3082,9 +3086,6 @@ dt + dd {
         top: 6px
     }
 
-    .category-content .category-info em {
-        top: 9px
-    }
 
     .floodThree .big, .floodThree .list, .floodFour .big, .floodFour .list, .floodFive .big, .floodFive .list {
         height: 480px !important;

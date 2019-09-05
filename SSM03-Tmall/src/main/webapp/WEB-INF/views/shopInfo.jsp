@@ -10,8 +10,8 @@
     <title>商品详情</title>
 
 
-    <link rel="stylesheet" type="text/css" href="../css/optstyle.css"/>
-    <link rel="stylesheet" type="text/css" href="../css/infoStyle.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/optstyle.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/infoStyle.css"/>
 
 
 </rapid:block>
@@ -52,13 +52,13 @@
                 <div class="flexslider">
                     <ul class="slides">
                         <li>
-                            <img src="../img/01.jpg" title="pic"/>
+                            <img src="/img/01.jpg" title="pic"/>
                         </li>
                         <li>
-                            <img src="../img/02.jpg"/>
+                            <img src="/img/02.jpg"/>
                         </li>
                         <li>
-                            <img src="../img/03.jpg"/>
+                            <img src="/img/03.jpg"/>
                         </li>
                     </ul>
                 </div>
@@ -73,23 +73,23 @@
                 <div class="box">
 
                     <div class="tb-booth tb-pic tb-s310">
-                        <a href="../img/01.jpg"><img src="../img/01.jpg" alt="细节展示放大镜特效" rel="../img/01.jpg"
+                        <a href="/img/01.jpg"><img src="/img/01.jpg" alt="细节展示放大镜特效" rel="/img/01.jpg"
                                                      class="jqzoom"/></a>
                     </div>
                     <ul class="tb-thumb" id="thumblist">
                         <li class="tb-selected">
                             <div class="tb-pic tb-s40">
-                                <a href="#"><img src="../img/01_small.jpg" mid="../img/01_mid.jpg" big="../img/01.jpg"></a>
+                                <a href="#"><img src="/img/01_small.jpg" mid="/img/01_mid.jpg" big="/img/01.jpg"></a>
                             </div>
                         </li>
                         <li>
                             <div class="tb-pic tb-s40">
-                                <a href="#"><img src="../img/02_small.jpg" mid="../img/02_mid.jpg" big="../img/02.jpg"></a>
+                                <a href="#"><img src="/img/02_small.jpg" mid="/img/02_mid.jpg" big="/img/02.jpg"></a>
                             </div>
                         </li>
                         <li>
                             <div class="tb-pic tb-s40">
-                                <a href="#"><img src="../img/03_small.jpg" mid="../img/03_mid.jpg" big="../img/03.jpg"></a>
+                                <a href="#"><img src="/img/03_small.jpg" mid="/img/03_mid.jpg" big="/img/03.jpg"></a>
                             </div>
                         </li>
                     </ul>
@@ -218,7 +218,7 @@
             </div>
             <div class="theme-signin-right">
                 <div class="img-info">
-                    <img src="../img/songzi.jpg"/>
+                    <img src="/img/songzi.jpg"/>
                 </div>
                 <div class="text-info">
                     <span class="J_Price price-now">¥39.00</span>
@@ -247,7 +247,7 @@
 
     <div class="pay">
         <div class="pay-opt">
-            <a href="../../index.html"><span class="mr-icon-home mr-icon-fw">首页</span></a>
+            <a href="//index.html"><span class="mr-icon-home mr-icon-fw">首页</span></a>
             <a><span class="mr-icon-heart mr-icon-fw">收藏</span></a>
 
         </div>
@@ -276,7 +276,7 @@
             <ul class="like_list">
                 <li>
                     <div class="s_picBox">
-                        <a class="s_pic" href="#"><img src="../img/taozhuang01.jpg"></a>
+                        <a class="s_pic" href="#"><img src="/img/taozhuang01.jpg"></a>
                     </div>
                     <a class="txt" target="_blank" href="#">防爆玻璃钢化膜</a>
 
@@ -286,7 +286,7 @@
                 <li class="plus_icon"><i>+</i></li>
                 <li>
                     <div class="s_picBox">
-                        <a class="s_pic" href="#"><img src="../img/taozhuang02.jpg"></a>
+                        <a class="s_pic" href="#"><img src="/img/taozhuang02.jpg"></a>
                     </div>
                     <a class="txt" target="_blank" href="#"> usb快速充电线</a>
 
@@ -316,7 +316,7 @@
 
                     <li class="first">
                         <div class="p-img">
-                            <a href="#"> <img class="" src="../img/shopcartImg.jpg"> </a>
+                            <a href="#"> <img class="" src="/img/shopcartImg.jpg"> </a>
                         </div>
                         <div class="p-name"><a href="#">
                             华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待
@@ -326,7 +326,7 @@
                     </li>
                     <li class="first">
                         <div class="p-img">
-                            <a href="#"> <img class="" src="../img/shopcartImg.jpg"> </a>
+                            <a href="#"> <img class="" src="/img/shopcartImg.jpg"> </a>
                         </div>
                         <div class="p-name"><a href="#">
                             华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待
@@ -336,7 +336,7 @@
                     </li>
                     <li class="first">
                         <div class="p-img">
-                            <a href="#"> <img class="" src="../img/shopcartImg.jpg"> </a>
+                            <a href="#"> <img class="" src="/img/shopcartImg.jpg"> </a>
                         </div>
                         <div class="p-name"><a href="#">
                             华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待
@@ -346,7 +346,7 @@
                     </li>
                     <li class="first">
                         <div class="p-img">
-                            <a href="#"> <img class="" src="../img/shopcartImg.jpg"> </a>
+                            <a href="#"> <img class="" src="/img/shopcartImg.jpg"> </a>
                         </div>
                         <div class="p-name"><a href="#">
                             华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待
@@ -356,7 +356,7 @@
                     </li>
                     <li class="first">
                         <div class="p-img">
-                            <a href="#"> <img class="" src="../img/shopcartImg.jpg"> </a>
+                            <a href="#"> <img class="" src="/img/shopcartImg.jpg"> </a>
                         </div>
                         <div class="p-name"><a href="#">
                             华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待
@@ -414,11 +414,11 @@
                                 <h4>商品细节</h4>
                             </div>
                             <div class="twlistNews">
-                                <img src="../img/tw1.jpg"/>
-                                <img src="../img/tw2.jpg"/>
-                                <img src="../img/tw3.jpg"/>
-                                <img src="../img/tw4.jpg"/>
-                                <img src="../img/tw5.jpg"/>
+                                <img src="/img/tw1.jpg"/>
+                                <img src="/img/tw2.jpg"/>
+                                <img src="/img/tw3.jpg"/>
+                                <img src="/img/tw4.jpg"/>
+                                <img src="/img/tw5.jpg"/>
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -484,7 +484,7 @@
                             <li class="mr-comment">
                                 <!-- 评论容器 -->
                                 <a href="">
-                                    <img class="mr-comment-avatar" src="../img/hwbn40x40.jpg"/>
+                                    <img class="mr-comment-avatar" src="/img/hwbn40x40.jpg"/>
                                     <!-- 评论者头像 -->
                                 </a>
 
@@ -518,7 +518,7 @@
                             <li class="mr-comment">
                                 <!-- 评论容器 -->
                                 <a href="">
-                                    <img class="mr-comment-avatar" src="../img/hwbn40x40.jpg"/>
+                                    <img class="mr-comment-avatar" src="/img/hwbn40x40.jpg"/>
                                     <!-- 评论者头像 -->
                                 </a>
 
@@ -549,7 +549,7 @@
                             <li class="mr-comment">
                                 <!-- 评论容器 -->
                                 <a href="">
-                                    <img class="mr-comment-avatar" src="../img/hwbn40x40.jpg"/>
+                                    <img class="mr-comment-avatar" src="/img/hwbn40x40.jpg"/>
                                     <!-- 评论者头像 -->
                                 </a>
 
@@ -581,7 +581,7 @@
                             <li class="mr-comment">
                                 <!-- 评论容器 -->
                                 <a href="">
-                                    <img class="mr-comment-avatar" src="../img/hwbn40x40.jpg"/>
+                                    <img class="mr-comment-avatar" src="/img/hwbn40x40.jpg"/>
                                     <!-- 评论者头像 -->
                                 </a>
 
@@ -613,7 +613,7 @@
                             <li class="mr-comment">
                                 <!-- 评论容器 -->
                                 <a href="">
-                                    <img class="mr-comment-avatar" src="../img/hwbn40x40.jpg"/>
+                                    <img class="mr-comment-avatar" src="/img/hwbn40x40.jpg"/>
                                     <!-- 评论者头像 -->
                                 </a>
 
@@ -647,7 +647,7 @@
                             <li class="mr-comment">
                                 <!-- 评论容器 -->
                                 <a href="">
-                                    <img class="mr-comment-avatar" src="../img/hwbn40x40.jpg"/>
+                                    <img class="mr-comment-avatar" src="/img/hwbn40x40.jpg"/>
                                     <!-- 评论者头像 -->
                                 </a>
 
@@ -681,7 +681,7 @@
                             <li class="mr-comment">
                                 <!-- 评论容器 -->
                                 <a href="">
-                                    <img class="mr-comment-avatar" src="../img/hwbn40x40.jpg"/>
+                                    <img class="mr-comment-avatar" src="/img/hwbn40x40.jpg"/>
                                     <!-- 评论者头像 -->
                                 </a>
 
@@ -715,7 +715,7 @@
                             <li class="mr-comment">
                                 <!-- 评论容器 -->
                                 <a href="">
-                                    <img class="mr-comment-avatar" src="../img/hwbn40x40.jpg"/>
+                                    <img class="mr-comment-avatar" src="/img/hwbn40x40.jpg"/>
                                     <!-- 评论者头像 -->
                                 </a>
 
@@ -749,7 +749,7 @@
                             <li class="mr-comment">
                                 <!-- 评论容器 -->
                                 <a href="">
-                                    <img class="mr-comment-avatar" src="../img/hwbn40x40.jpg"/>
+                                    <img class="mr-comment-avatar" src="/img/hwbn40x40.jpg"/>
                                     <!-- 评论者头像 -->
                                 </a>
 
@@ -783,7 +783,7 @@
                             <li class="mr-comment">
                                 <!-- 评论容器 -->
                                 <a href="">
-                                    <img class="mr-comment-avatar" src="../img/hwbn40x40.jpg"/>
+                                    <img class="mr-comment-avatar" src="/img/hwbn40x40.jpg"/>
                                     <!-- 评论者头像 -->
                                 </a>
 
@@ -817,7 +817,7 @@
                             <li class="mr-comment">
                                 <!-- 评论容器 -->
                                 <a href="">
-                                    <img class="mr-comment-avatar" src="../img/hwbn40x40.jpg"/>
+                                    <img class="mr-comment-avatar" src="/img/hwbn40x40.jpg"/>
                                     <!-- 评论者头像 -->
                                 </a>
 
@@ -876,7 +876,7 @@
                             <ul class="mr-avg-sm-2 mr-avg-md-3 mr-avg-lg-4 boxes">
                                 <li>
                                     <div class="i-pic limit">
-                                        <img src="../img/shopcartImg.jpg"/>
+                                        <img src="/img/shopcartImg.jpg"/>
                                         <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
                                         <p class="price fl">
                                             <b>¥</b>
@@ -886,7 +886,7 @@
                                 </li>
                                 <li>
                                     <div class="i-pic limit">
-                                        <img src="../img/shopcartImg.jpg"/>
+                                        <img src="/img/shopcartImg.jpg"/>
                                         <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
                                         <p class="price fl">
                                             <b>¥</b>
@@ -896,7 +896,7 @@
                                 </li>
                                 <li>
                                     <div class="i-pic limit">
-                                        <img src="../img/shopcartImg.jpg"/>
+                                        <img src="/img/shopcartImg.jpg"/>
                                         <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
                                         <p class="price fl">
                                             <b>¥</b>
@@ -906,7 +906,7 @@
                                 </li>
                                 <li>
                                     <div class="i-pic limit">
-                                        <img src="../img/shopcartImg.jpg"/>
+                                        <img src="/img/shopcartImg.jpg"/>
                                         <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
                                         <p class="price fl">
                                             <b>¥</b>
@@ -916,7 +916,7 @@
                                 </li>
                                 <li>
                                     <div class="i-pic limit">
-                                        <img src="../img/shopcartImg.jpg"/>
+                                        <img src="/img/shopcartImg.jpg"/>
                                         <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
                                         <p class="price fl">
                                             <b>¥</b>
@@ -926,7 +926,7 @@
                                 </li>
                                 <li>
                                     <div class="i-pic limit">
-                                        <img src="../img/shopcartImg.jpg"/>
+                                        <img src="/img/shopcartImg.jpg"/>
                                         <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
                                         <p class="price fl">
                                             <b>¥</b>
@@ -936,7 +936,7 @@
                                 </li>
                                 <li>
                                     <div class="i-pic limit">
-                                        <img src="../img/shopcartImg.jpg"/>
+                                        <img src="/img/shopcartImg.jpg"/>
                                         <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
                                         <p class="price fl">
                                             <b>¥</b>
@@ -946,7 +946,7 @@
                                 </li>
                                 <li>
                                     <div class="i-pic limit">
-                                        <img src="../img/shopcartImg.jpg"/>
+                                        <img src="/img/shopcartImg.jpg"/>
                                         <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
                                         <p class="price fl">
                                             <b>¥</b>
@@ -956,7 +956,7 @@
                                 </li>
                                 <li>
                                     <div class="i-pic limit">
-                                        <img src="../img/shopcartImg.jpg"/>
+                                        <img src="/img/shopcartImg.jpg"/>
                                         <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
                                         <p class="price fl">
                                             <b>¥</b>
@@ -966,7 +966,7 @@
                                 </li>
                                 <li>
                                     <div class="i-pic limit">
-                                        <img src="../img/shopcartImg.jpg"/>
+                                        <img src="/img/shopcartImg.jpg"/>
                                         <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
                                         <p class="price fl">
                                             <b>¥</b>
@@ -976,7 +976,7 @@
                                 </li>
                                 <li>
                                     <div class="i-pic limit">
-                                        <img src="../img/shopcartImg.jpg"/>
+                                        <img src="/img/shopcartImg.jpg"/>
                                         <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
                                         <p class="price fl">
                                             <b>¥</b>
@@ -986,7 +986,7 @@
                                 </li>
                                 <li>
                                     <div class="i-pic limit">
-                                        <img src="../img/shopcartImg.jpg"/>
+                                        <img src="/img/shopcartImg.jpg"/>
                                         <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
                                         <p class="price fl">
                                             <b>¥</b>

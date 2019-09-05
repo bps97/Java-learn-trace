@@ -582,7 +582,7 @@ input.add, input.min {
         height: 33px;
         width: 160px;
         text-align: center;
-        background: url(../img/extra.png);
+        background: url(/img/extra.png);
         cursor: pointer;
     }
 
@@ -638,11 +638,11 @@ input.add, input.min {
     }
 
     .long-title {
-        width: 180px;
+        width: 200px;
     }
 
     .nav-cont {
-        padding-left: 180px;
+        padding-left: 200px;
     }
 
 }
@@ -686,7 +686,7 @@ input.add, input.min {
     line-height: 38px;
     width: 35px;
     height: 38px;
-    background: url(../img/ibar_sprites.png) no-repeat;
+    background: url(/img/ibar_sprites.png) no-repeat;
 }
 
 /*图标定位*/
@@ -824,7 +824,7 @@ p.cart_num {
     position: absolute;
     top: 12px;
     left: 12px;
-    background: url(../img/ibar_sprites.png) no-repeat;
+    background: url(/img/ibar_sprites.png) no-repeat;
 }
 
 .quick_toggle .kfzx {
@@ -944,7 +944,7 @@ p.cart_num {
     top: 15px;
     width: 5px;
     height: 9px;
-    background: url(../img/ibar_sprites.png) no-repeat;
+    background: url(/img/ibar_sprites.png) no-repeat;
     background-position: 0 -253px;
 }
 
@@ -954,7 +954,7 @@ p.cart_num {
     top: 15px;
     width: 5px;
     height: 9px;
-    background: url(../img/ibar_sprites.png) no-repeat;
+    background: url(/img/ibar_sprites.png) no-repeat;
     background-position: 0px -234px;
     overflow: hidden;
 }

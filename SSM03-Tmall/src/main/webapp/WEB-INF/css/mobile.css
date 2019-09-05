@@ -119,7 +119,7 @@ body .main-container {
 .main-container .app-container .mobile-simulator {
     width: 323px;
     height: 675px;
-    background: url(../img/mobile.png) no-repeat center center;
+    background: url(/img/mobile.png) no-repeat center center;
     margin: 15px auto;
     position: relative
 }

@@ -8,8 +8,9 @@
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="../css/basic.css"/>
-    <link href="../css/login.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/basic.css"/>
+    <link href="/css/login.css" rel="stylesheet" type="text/css">
+
 
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -54,15 +55,17 @@
 <body>
 
 <div class="login-boxtitle">
-    <a href="../../index.html"><img alt="logo" src="../img/logobig.png"/></a>
+    <a href="/index"><img alt="logo" src="/img/logobig.png"/></a>
 </div>
 
 <div class="login-banner">
     <div class="login-main">
-        <div class="login-banner-bg"><span></span><img src="../img/big.png"/></div>
+        <div class="login-banner-bg"><span></span><img src="/img/big.png"/></div>
         <div class="login-box">
+
             <h3 class="title">登录</h3>
             <div class="clear"></div>
+
             <div class="login-form">
                 <form id="loginForm" action="/postLogin" method="post">
                     <div class="user-name">
@@ -110,7 +113,7 @@
         <p>
             <a href="http://www.mingrisoft.com/" target="_blank">明日科技</a>
             <b>|</b>
-            <a href="../../index.html">商城首页</a>
+            <a href="//index">商城首页</a>
             <b>|</b>
             <a href="#">支付宝</a>
             <b>|</b>
@@ -119,7 +122,7 @@
     </div>
     <div class="footer-bd ">
         <p>
-            <a href="http://www.mingrisoft.com/Index/ServiceCenter/aboutus.html" target="_blank">关于明日</a>
+            <a href="http://www.mingrisoft.com/Index/ServiceCenter/aboutus" target="_blank">关于明日</a>
             <a href="#">合作伙伴</a>
             <a href="#">联系我们</a>
             <a href="#">网站地图</a>

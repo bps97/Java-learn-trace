@@ -18,7 +18,7 @@
 
 
     <rapid:block name="head_content">
-        <%--        这里是叠层样式表等内容--%>
+        <%--        这里是叠层样式表等头文件内容--%>
     </rapid:block>
 
 </head>

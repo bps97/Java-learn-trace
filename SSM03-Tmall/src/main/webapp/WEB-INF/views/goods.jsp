@@ -136,21 +136,21 @@
 <%--    </div>--%>
 <%--&lt;%&ndash;    <li>&ndash;%&gt;--%>
 <%--&lt;%&ndash;        <div class="i-pic check">&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <a href="shopInfo.jsp"><img src="../img/shopcartImg-01.jpg" /></a>&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <a href="shopInfo.jsp"><img src="/img/shopcartImg-01.jpg" /></a>&ndash;%&gt;--%>
 <%--&lt;%&ndash;            <p class="check-title">送耳机+送手机壳</p>&ndash;%&gt;--%>
 <%--&lt;%&ndash;            <p class="price fl"> <b>&yen;</b> <strong>299.00</strong> </p>&ndash;%&gt;--%>
 <%--&lt;%&ndash;            <p class="number fl"> 销量<span>1110</span> </p>&ndash;%&gt;--%>
 <%--&lt;%&ndash;        </div> </li>&ndash;%&gt;--%>
 <%--&lt;%&ndash;    <li>&ndash;%&gt;--%>
 <%--&lt;%&ndash;        <div class="i-pic check">&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <a href="shopInfo.jsp"><img src="../img/shopcartImg-01.jpg" /></a>&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <a href="shopInfo.jsp"><img src="/img/shopcartImg-01.jpg" /></a>&ndash;%&gt;--%>
 <%--&lt;%&ndash;            <p class="check-title">送耳机+送手机壳</p>&ndash;%&gt;--%>
 <%--&lt;%&ndash;            <p class="price fl"> <b>&yen;</b> <strong>299.00</strong> </p>&ndash;%&gt;--%>
 <%--&lt;%&ndash;            <p class="number fl"> 销量<span>1110</span> </p>&ndash;%&gt;--%>
 <%--&lt;%&ndash;        </div> </li>&ndash;%&gt;--%>
 <%--&lt;%&ndash;    <li>&ndash;%&gt;--%>
 <%--&lt;%&ndash;        <div class="i-pic check">&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <a href="shopInfo.jsp"><img src="../img/shopcartImg-01.jpg" /></a>&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <a href="shopInfo.jsp"><img src="/img/shopcartImg-01.jpg" /></a>&ndash;%&gt;--%>
 <%--&lt;%&ndash;            <p class="check-title">送耳机+送手机壳</p>&ndash;%&gt;--%>
 <%--&lt;%&ndash;            <p class="price fl"> <b>&yen;</b> <strong>299.00</strong> </p>&ndash;%&gt;--%>
 <%--&lt;%&ndash;            <p class="number fl"> 销量<span>1110</span> </p>&ndash;%&gt;--%>

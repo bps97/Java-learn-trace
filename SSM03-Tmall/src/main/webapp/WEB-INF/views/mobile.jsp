@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <title>手机端演示</title>
-    <link rel="stylesheet" href="../css/mobile.css"/>
+    <link rel="stylesheet" href="/css/mobile.css"/>
 </head>
 <body>
 <div class="main-container">

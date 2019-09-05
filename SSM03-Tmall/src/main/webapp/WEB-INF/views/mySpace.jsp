@@ -7,13 +7,27 @@
 	<title>个人中心</title>
 
 	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.slim.min.js"></script>
-	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
-	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.css" rel="stylesheet">
+<%--	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>--%>
+<%--	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">--%>
+<%--	<link href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.css" rel="stylesheet">--%>
+	<link href="/css/login.css" rel="stylesheet" type="text/css">
 
 
 	<style>
-
+		form label{
+			background-color:#0c79b1;
+			color: #ffffff;
+			border-radius: 14px;
+		}
+		form input{
+			background-color: #f7f7f7;
+			border-color: #c8c8c8;
+			border-radius: 14px;
+			color: #969696;
+		}
+		.login-box{
+			background-color: #ffffff;
+		}
 	</style>
 
 </rapid:block>
@@ -27,57 +41,43 @@
 
 
 
+	<div class="login-banner" style="background-color: #c4dfb8">
+		<div class="login-main">
+			<div class="login-banner-bg"><span></span><img src="/img/big.png"/></div>
+			<div class="login-box" >
+				<br>
+				<h3 class="title">信息修改</h3>
+				<div class="clear"></div>
 
+				<br><br>
 
-<div class="container">
-	<div class="row">
-		<div class="col-md-1">&nbsp;</div>
-	</div>
-	<div class="row">
-
-		<div class="col-md-4 col-md-offset-4">
-
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4>用户信息修改</h4>
-				</div>
-				<div class="panel-body" >
-
-					<form action="/postSubmitInfo" class="form-horizontal">
-						<div class="form-group ">
-							<lable for="name_3" class="control_label" class="col-md-2">昵称</lable>
-							<div class="col-md-10" >
-								<input type="text" class="form-control" id="name_3" name="name" placeholder="昵称" value="${user.name}">
-							</div>
+				<div class="login-form">
+					<form id="userInfoForm" action="/postSubmitInfo" method="post">
+						<div class="user-name">
+							<label for="name_3"  >昵称</label>
+							<input type="text" name="name" id="name_3" placeholder="你的昵称" value="${user.name}" >
 						</div>
-						<div class="form-group ">
-							<lable for="email_3" class="control_label" class="col-md-2">邮箱</lable>
-							<div class="col-md-10">
-								<input type="email" class="form-control" id="email_3" name="email" placeholder="邮箱" value="${user.email}">
-							</div>
+						<div class="user-name">
+							<label for="email_3" >邮箱</label>
+							<input type="email" name="email" id="email_3" placeholder="你的邮箱" value="${user.email}" >
 						</div>
-						<div class="form-group ">
-							<lable for="email_3" class="control_label" class="col-md-2">电话</lable>
-							<div class="col-md-10">
-								<input type="text" class="form-control" id="phone_3" name="phone" placeholder="电话号码" value="${user.phone}" readonly>
-							</div>
-						</div>
-						<div class="form-group " >
-							<div class="btn btn-group col-md-offset-1"></div>
-								<input type="submit" class="btn btn-primary" value="提交修改" >
-								<a  class="btn btn-success" href="/index">点击返回</a>
+						<div class="user-name">
+							<label for="phone_3" >手机</label>
+							<input type="text" name="phone" id="phone_3" placeholder="你的手机号" readonly value="${user.phone}">
 						</div>
 					</form>
-
 				</div>
+
+				<div class="mr-cf">
+					<input type="submit" name="" value="提 交" onclick="submitInfo()" class="mr-btn mr-btn-primary mr-btn-sm " style="border-radius: 14px;">
+				</div>
+
+
+
+
 			</div>
 		</div>
-
 	</div>
-</div>
-
-<div class="container">
-
 
 </div>
 </rapid:override>
@@ -88,6 +88,9 @@
 		var gohome = function () {
 			window.location.href='/index';
 
+		}
+		var submitInfo = function () {
+			$("#userInfoForm").submit();
 		}
 	</script>
 </rapid:override>

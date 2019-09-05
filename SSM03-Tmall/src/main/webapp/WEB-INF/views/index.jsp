@@ -73,7 +73,7 @@
                                         <div class="category-info">
                                             <h3 class="category-name b-category-name">
                                                 <i><img src="/img/cake.png"></i>
-                                                <a class="ml-22" title="家用电器">
+                                                <a class="ml-22">
                                                     <c:forEach items="${categories}" var="category"><c:out
                                                             value="${category.getName()} "/></c:forEach>
                                                 </a>
@@ -265,7 +265,7 @@
 
         }
 
-        //鼠标滑入事件
+        // 鼠标滑入事件
         function mouseOut(obj) {
             obj.className = "appliance js_toggle relative";           //设置当前事件对象样式
             var menu = obj.childNodes;                                  //寻找该事件子节点（商品子类别）

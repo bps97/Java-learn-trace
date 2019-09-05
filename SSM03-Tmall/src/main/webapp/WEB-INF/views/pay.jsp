@@ -63,7 +63,7 @@
                             <ins class="deftip">默认地址</ins>
                         </div>
                         <div class="address-right">
-                            <a href="../person/address.html">
+                            <a href="/person/address.html">
                                 <span class="mr-icon-angle-right mr-icon-lg"></span></a>
                         </div>
                         <div class="clear"></div>
@@ -145,9 +145,9 @@
             <div class="logistics">
                 <h3>选择支付方式</h3>
                 <ul class="pay-list">
-                    <li class="pay card"><img src="../img/wangyin.jpg"/>银联<span></span></li>
-                    <li class="pay qq"><img src="../img/weizhifu.jpg"/>微信<span></span></li>
-                    <li class="pay taobao"><img src="../img/zhifubao.jpg"/>支付宝<span></span></li>
+                    <li class="pay card"><img src="/img/wangyin.jpg"/>银联<span></span></li>
+                    <li class="pay qq"><img src="/img/weizhifu.jpg"/>微信<span></span></li>
+                    <li class="pay taobao"><img src="/img/zhifubao.jpg"/>支付宝<span></span></li>
                 </ul>
             </div>
             <div class="clear"></div>
@@ -189,7 +189,7 @@
                                         <li class="td td-item">
                                             <div class="item-pic">
                                                 <a href="#" class="J_MakePoint">
-                                                    <img src="../img/shopcartImg.jpg" width="80px" height="80px"
+                                                    <img src="/img/shopcartImg.jpg" width="80px" height="80px"
                                                          class="itempic J_ItemImg"></a>
                                             </div>
                                             <div class="item-info">
@@ -259,7 +259,7 @@
                                     <li class="td td-item">
                                         <div class="item-pic">
                                             <a href="#" class="J_MakePoint">
-                                                <img src="../img/shopcartImg.jpg" width="80px" height="80px"
+                                                <img src="/img/shopcartImg.jpg" width="80px" height="80px"
                                                      class="itempic J_ItemImg"></a>
                                         </div>
                                         <div class="item-info">
@@ -432,7 +432,7 @@
 
                     <div id="holyshit269" class="submitOrder">
                         <div class="go-btn-wrap">
-                            <a id="J_Go" href="../../index.html" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
+                            <a id="J_Go" href="//index.html" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
                         </div>
                     </div>
                     <div class="clear"></div>

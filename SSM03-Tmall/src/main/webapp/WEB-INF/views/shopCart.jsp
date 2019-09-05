@@ -71,7 +71,7 @@
                                 <div class="item-pic">
                                     <a href="#" target="_blank" data-title="华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待"
                                        class="J_MakePoint" data-point="tbcart.8.12">
-                                        <img src="../img/shopcartImg.jpg" width="80px" height="80px"
+                                        <img src="/img/shopcartImg.jpg" width="80px" height="80px"
                                              class="itempic J_ItemImg"></a>
                                 </div>
                                 <div class="item-info">
@@ -141,7 +141,7 @@
                                 <div class="item-pic">
                                     <a href="#" target="_blank" data-title="华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待"
                                        class="J_MakePoint" data-point="tbcart.8.12">
-                                        <img src="../img/shopcartImg.jpg" width="80px" height="80px"
+                                        <img src="/img/shopcartImg.jpg" width="80px" height="80px"
                                              class="itempic J_ItemImg"></a>
                                 </div>
                                 <div class="item-info">
@@ -227,7 +227,7 @@
                                 <div class="item-pic">
                                     <a href="#" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆"
                                        class="J_MakePoint" data-point="tbcart.8.12">
-                                        <img src="../img/shopcartImg.jpg" width="80px" height="80px"
+                                        <img src="/img/shopcartImg.jpg" width="80px" height="80px"
                                              class="itempic J_ItemImg"></a>
                                 </div>
                                 <div class="item-info">
@@ -371,7 +371,7 @@
                 </div>
                 <div class="theme-signin-right">
                     <div class="img-info">
-                        <img src="../img/kouhong.jpg_80x80.jpg"/>
+                        <img src="/img/kouhong.jpg_80x80.jpg"/>
                     </div>
                     <div class="text-info">
                         <span class="J_Price price-now">¥39.00</span>
