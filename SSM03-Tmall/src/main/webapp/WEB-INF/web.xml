@@ -35,12 +35,15 @@
     </init-param>
     <load-on-startup>1</load-on-startup>
     <async-supported>true</async-supported>
+
   </servlet>
   <servlet-mapping>
     <servlet-name>SpringMVC</servlet-name>
     <!-- 匹配所有请求 -->
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+
+
 
 
 </web-app>

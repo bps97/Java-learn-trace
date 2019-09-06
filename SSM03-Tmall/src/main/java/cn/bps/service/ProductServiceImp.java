@@ -24,7 +24,7 @@ public class ProductServiceImp implements ProductService {
     @Override
     public List<Product> getProductList(int start, int step) {
         ProductExample productExample = new ProductExample();
-        RowBounds rowBounds = new RowBounds(start-1,start+step);
+        RowBounds rowBounds = new RowBounds(start-1,step);
         return productMapper.selectByExampleWithRowbounds(productExample,rowBounds);
 
     }
@@ -44,7 +44,7 @@ public class ProductServiceImp implements ProductService {
     @Override
     public List<Product> rowBoundsProduct(Set<Integer> set, Integer start, Integer step) {
         ProductExample productExample = new ProductExample();
-        RowBounds rowBounds = new RowBounds(start,start+step);
+        RowBounds rowBounds = new RowBounds(start,step);
 
         if (set.size() > 0) {
             productExample.createCriteria().andIdIn(new ArrayList(set));
@@ -52,6 +52,26 @@ public class ProductServiceImp implements ProductService {
 
         }
         return new ArrayList<>();
+    }
+
+    @Override
+    public Product getProductById(Integer id) {
+        return productMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int deleteOneById(Integer id) {
+        return productMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int insertOne(Product product) {
+        return productMapper.insert(product);
+    }
+
+    @Override
+    public int updateOne(Product product) {
+        return productMapper.updateByPrimaryKey(product);
     }
 
 

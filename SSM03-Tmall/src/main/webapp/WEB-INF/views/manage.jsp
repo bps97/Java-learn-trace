@@ -1,132 +1,79 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
+<%@ taglib uri="http://www.rapid-framework.org.cn/rapid" prefix="rapid" %>
 
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.slim.min.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.css" rel="stylesheet">
+<rapid:override name="main_content">
 
-    <link rel="stylesheet" type="text/css" href="/css/menu.css" >
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <form action="FBListServlet" class="form-inline" id="key-form">
 
-</head>
-<body>
+                <input type="text" class="form-control" name="key" id="key">
+                <input type="submit" class="form-control btn-primary" value="搜索">
 
-<nav class="navbar navbar-default">
-    <div class="navbar-header">
-        <button data-target="#xxx_nav" data-toggle="collapse" class="navbar-toggle" >
-            <span class="sr-only"> </span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a href="#" class="navbar-brand">XX后台</a>
-    </div>
-    <div id="xxx_nav" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-            <li  class="active"><a href="#">首页</a></li>
-            <li><a href="#">电力</a></li>
-            <li><a href="#">水力</a></li>
-            <li><a href="#">道路</a></li>
-        </ul>
-        <!-- <form action="#" class="navbar-form ">
-            <div class="form-group">
-                <input type="text" class="form-control">
+                <a href="/manage/add" class="btn btn-success">添加</a>
+            </form>
+
+        </div><!-- panel-heading -->
+
+        <div class="panel-body">
+            <table class="table table-hover">
+                <tr>
+                    <th>ID</th>
+                    <th>主题</th>
+                    <th>副标题</th>
+                    <th>价格</th>
+                    <th>分类</th>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;操作</th>
+                </tr>
+                <c:forEach items="${products}" var="product">
+                    <tr>
+                        <td><span class="label label-info"><c:out value="${product.id}"/></span></td>
+                        <td style="width: 25%"><c:out value="${product.name}"/></td>
+                        <td style="width: 25%"><c:out value="${product.sub_title}"/></td>
+                        <td ><c:out value="${product.price}"/></td>
+
+
+                        <td><c:out value="${categoryMap.get(product.getCategory_id())}"/></td>
+                        <td>
+                            <div class="btn btn-group">
+                                <a href="/manage/info/${product.id}" class="btn btn-default btn-sm" title="查看"><i
+                                        class="fa fa-search"></i></a>
+                                <a href="/manage/edit/${product.id}" class="btn btn-default btn-sm" title="编辑"><i
+                                        class="fa fa-edit"></i></a>
+                                <a href="FBDelServlet?id=" class="btn btn-default btn-sm" title="删除"><i
+                                        class="fa fa-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div><!-- panel-body -->
+
+        <div class="panel-footer">
+            <div class="btn-group col-md-offset-6 col-sm-offset-6" role="group" aria-label="...">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                <c:forEach begin="0" end="${page.getTotalPage()}" varStatus="status">
+                    <c:if test="${status.step*page.step-page.start<=30 && status.count*page.step-page.start>=-10}"><!--只显示最近三个-->
+                        <li <c:if test='${status.index*page.step==page.start}'>class="mr-active"</c:if>>  <!--当前页面-->
+                            <a href="?start=${status.index*page.step}"<c:if test="${status.index*page.step==page.start}">class="mr-active"</c:if>>${status.count}</a>
+                        </li>
+                    </c:if>
+                </c:forEach>
+                    </ul>
+                </nav>
             </div>
-        </form> -->
-        <ul class="nav navbar-nav navbar-right">
-
-            <li><a href="#">登陆</a></li>
-            <!-- 下拉菜单 -->
-            <li class="dropdown" >
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">HH<b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-<div class="container-fluid">
-    <nav class="navbar navbar-vertical-left">
-        <ul class="nav navbar-nav">
-            <li>
-                <a href select>
-                    <i class="fa fa-fw fa-lg fa-home"></i>
-                    <span>主页</span>
-                </a>
-            </li>
-            <li>
-                <a href>
-                    <i class="fa fa-fw fa-lg fa-download "></i>
-                    <span>Menu 2</span>
-                </a>
-            </li>
-            <li>
-                <a href>
-                    <i class="fa fa-fw fa-lg fa-comments-o"></i>
-                    <span>Menu 3</span>
-                </a>
-            </li>
-            <li>
-                <a href>
-                    <i class="fa fa-fw fa-lg fa-desktop"></i>
-                    <span>Menu 4</span>
-                </a>
-            </li>
-            <li>
-                <a href>
-                    <i class="fa fa-fw fa-lg fa-tablet"></i>
-                    <span>Menu 5</span>
-                </a>
-            </li>
-            <li>
-                <a href>
-                    <i class="fa fa-fw fa-lg fa-laptop"></i>
-                    <span>Menu 6</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-
-
-
-    <div class=" col-xs-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-8">
-    </div>
-
-    <div class=" col-xs-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-8">
-
-        <div class="panel panel-default">
-            <div class="panel-heading">heading</div>
-            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet ullam maiores excepturi officiis perferendis corporis est enim vel. Quidem odio velit saepe quasi ipsam soluta ullam esse quaerat architecto sit.</div>
-            <div class="panel-footer">footer</div>
         </div>
+        <!--panel-footer-->
+
+
+
 
     </div>
+    <!-- panel panel-default -->
 
-</div>
-
-
-
+</rapid:override>
 
 
-
-
-
-
-
-
-
-
-
-</body>
-</html>
+<%@ include file="base.jsp" %>

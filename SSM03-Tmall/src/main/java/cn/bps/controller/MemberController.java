@@ -33,7 +33,8 @@ public class MemberController {
     @RequestMapping(value = "/postLogin.do")
     @ResponseBody
     public String postLogin(@RequestParam("loginNumber") String loginNumber,
-                            @RequestParam("password") String password){
+                            @RequestParam("password") String password)
+    {
 
         User user1 = userService.getUserByPhone(loginNumber);
         User user2=  userService.getUserByEmail(loginNumber);
@@ -50,7 +51,8 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/postLogin")
-    public String postLogin(@RequestParam(value = "hiddenName") int id,HttpSession session){
+    public String postLogin(@RequestParam(value = "hiddenName") int id,HttpSession session)
+    {
         User user = userService.getUserById(id);
         String username = user.getName();
         if(username == null) username="游客，请设置用户名";
@@ -60,7 +62,8 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/mySpace")
-    public String userSpace(HttpSession session, Model model){
+    public String userSpace(HttpSession session, Model model)
+    {
         Object id = (session.getAttribute("userId"));
         if(id == null)
             return "redirect:/login";
@@ -73,7 +76,8 @@ public class MemberController {
     public String UpdateUserInfo(@RequestParam("name")String name,
                                  @RequestParam("email")String email,
                                  @RequestParam("phone")String phone,
-                                 HttpSession session){
+                                 HttpSession session)
+    {
         User user = userService.getUserByPhone(phone);
         user.setEmail(email);
         user.setName(name);
@@ -90,7 +94,8 @@ public class MemberController {
     @ResponseBody
     public String postRegister(@RequestParam("password") String password,
                                @RequestParam("phone") String phone,
-                               HttpSession session){
+                               HttpSession session)
+    {
         User user = new User();
         user.setPassword(password);
         user.setPhone(phone);
@@ -110,7 +115,8 @@ public class MemberController {
 
     @RequestMapping(value = "/checkPhone.do")
     @ResponseBody
-    public String checkName(@RequestParam("phone")String phone){
+    public String checkName(@RequestParam("phone")String phone)
+    {
         User user = userService.getUserByPhone(phone);
 
         if(user!=null) {
@@ -124,7 +130,8 @@ public class MemberController {
 
     @RequestMapping(value = "/userInfo.do")
     @ResponseBody
-    public User getUserInfo(@RequestParam("userId") int id){
+    public User getUserInfo(@RequestParam("userId") int id)
+    {
         return userService.getUserById(id);
     }
 

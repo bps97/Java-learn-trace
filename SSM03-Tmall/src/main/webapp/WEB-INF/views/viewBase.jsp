@@ -43,7 +43,7 @@
                 <div class="menu-hd"><a href="/mobile" style="color:red">手机端</a></div>
             </div>
             <div class="topMessage home">
-                <div class="menu-hd"><a href="/index" target="_top" class="h" style="color:red">商城首页</a></div>
+                <div class="menu-hd"><a href="/goods" target="_top" class="h" style="color:red">商城首页</a></div>
             </div>
             <div class="topMessage my-shangcheng">
                 <div class="menu-hd MyShangcheng"><a href="/mySpace" target="_top"><i

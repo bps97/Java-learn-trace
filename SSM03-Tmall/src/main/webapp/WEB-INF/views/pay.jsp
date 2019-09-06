@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.rapid-framework.org.cn/rapid" prefix="rapid" %>
 
 
-<rapid:block name="head_content">
+<rapid:override name="head_content">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -21,7 +21,7 @@
             }
         }
     </style>
-</rapid:block>
+</rapid:override>
 
 
 <rapid:override name="main_content">

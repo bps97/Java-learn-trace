@@ -3,13 +3,13 @@
 <%@ taglib uri="http://www.rapid-framework.org.cn/rapid" prefix="rapid" %>
 
 
-<rapid:block name="head_content">
+<rapid:override name="head_content">
     <title>首页</title>
     <link rel="stylesheet" type="text/css" href="/css/box.css"/>
     <link rel="stylesheet" type="text/css" href="/css/admin.css"/>
     <link rel="stylesheet" type="text/css" href="/css/hmstyle.css"/>
 
-</rapid:block>
+</rapid:override>
 
 
 <rapid:override name="main_content">

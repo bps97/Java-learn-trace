@@ -18,7 +18,7 @@
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
     <!-- spring版本号 -->
-    <spring.version>4.3.5.RELEASE</spring.version>
+    <spring.version>4.3.7.RELEASE</spring.version>
     <!-- mybatis版本号 -->
     <mybatis.version>3.4.1</mybatis.version>
   </properties>
@@ -58,22 +58,6 @@
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
         </plugin>
-        <plugin>
-          <groupId>org.mortbay.jetty</groupId>
-          <artifactId>maven-jetty-plugin</artifactId>
-          <version>6.1.7</version>
-          <configuration>
-            <connectors>
-              <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-                <port>8888</port>
-                <maxIdleTime>30000</maxIdleTime>
-              </connector>
-            </connectors>
-            <webAppSourceDirectory>${project.build.directory}/${pom.artifactId}-${pom.version}
-            </webAppSourceDirectory>
-            <contextPath>/</contextPath>
-          </configuration>
-        </plugin>
       </plugins>
     </pluginManagement>
   </build>
@@ -81,6 +65,22 @@
 
 
   <dependencies>
+
+
+    <!--    commons-os-->
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.6</version>
+    </dependency>
+    <!--文件上传-->
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+      <version>1.4</version>
+    </dependency>
+
+
 
     <!-- https://mvnrepository.com/artifact/com.googlecode.rapid-framework/rapid-core -->
     <dependency>
@@ -226,12 +226,13 @@
 
 
 
-    <!--jstl-->
+    <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
     <dependency>
-      <groupId>javax.servlet.jsp.jstl</groupId>
+      <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
       <version>1.2</version>
     </dependency>
+
 
     <!--standard-->
     <dependency>

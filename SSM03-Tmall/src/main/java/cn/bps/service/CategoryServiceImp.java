@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CategoryServiceImp implements CategoryService{
@@ -46,6 +48,16 @@ public class CategoryServiceImp implements CategoryService{
 
         CategoryExample categoryExample = new CategoryExample();
         return categoryMapper.selectByExample(categoryExample);
+    }
+
+    @Override
+    public Map<Integer, String> getCategoryMap() {
+        List<Category> categories = getCategories();
+        Map<Integer,String> categoryMap = new HashMap<>();
+        for(Category category : categories){
+            categoryMap.put(category.getId(),category.getName());
+        }
+        return categoryMap;
     }
 
 }

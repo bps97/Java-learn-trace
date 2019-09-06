@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.rapid-framework.org.cn/rapid" prefix="rapid" %>
 
 
-<rapid:block name="head_content">
+<rapid:override name="head_content">
 	<title>个人中心</title>
 
 	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.slim.min.js"></script>
@@ -30,7 +30,7 @@
 		}
 	</style>
 
-</rapid:block>
+</rapid:override>
 
 
 

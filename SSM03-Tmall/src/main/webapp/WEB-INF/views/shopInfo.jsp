@@ -1,9 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.rapid-framework.org.cn/rapid" prefix="rapid" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 
-<rapid:block name="head_content">
+<rapid:override name="head_content">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -14,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="/css/infoStyle.css"/>
 
 
-</rapid:block>
+</rapid:override>
 
 
 <rapid:override name="main_content">
@@ -73,7 +74,7 @@
                 <div class="box">
 
                     <div class="tb-booth tb-pic tb-s310">
-                        <a href="/img/01.jpg"><img src="/img/01.jpg" alt="细节展示放大镜特效" rel="/img/01.jpg"
+                        <a href="${imgUrl}"><img src="${imgUrl}" alt="细节展示放大镜特效" rel="${imgUrl}"
                                                      class="jqzoom"/></a>
                     </div>
                     <ul class="tb-thumb" id="thumblist">
@@ -103,20 +104,18 @@
                 <!--规格属性-->
                 <!--名称-->
                 <div class="tb-detail-hd">
-                    <h1>
-                        华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待
-                    </h1>
+                    <h1><c:out value="${product.name}"/></h1>
                 </div>
                 <div class="tb-detail-list">
                     <!--价格-->
                     <div class="tb-detail-price">
                         <li class="price iteminfo_price">
                             <dt>促销价</dt>
-                            <dd><em>¥</em><b class="sys_item_price">499.00</b></dd>
+                            <dd><em>¥</em><b class="sys_item_price"><c:out value="${product.price}"/></b></dd>
                         </li>
                         <li class="price iteminfo_mktprice">
                             <dt>原价</dt>
-                            <dd><em>¥</em><b class="sys_item_mktprice">599.00</b></dd>
+                            <dd><em>¥</em><b class="sys_item_mktprice"><c:out value="${product.price*1.2}"/></b></dd>
                         </li>
                         <div class="clear"></div>
                     </div>
@@ -149,11 +148,11 @@
                     <!--销量-->
                     <ul class="tm-ind-panel">
                         <li class="tm-ind-item tm-ind-sellCount canClick">
-                            <div class="tm-indcon"><span class="tm-label">月销量</span><span class="tm-step">1015</span>
+                            <div class="tm-indcon"><span class="tm-label">月销量</span><span class="tm-step"><c:out value="${fn:substringBefore(product.sale/12,'.')}" /></span>
                             </div>
                         </li>
                         <li class="tm-ind-item tm-ind-sumCount canClick">
-                            <div class="tm-indcon"><span class="tm-label">累计销量</span><span class="tm-step">6015</span>
+                            <div class="tm-indcon"><span class="tm-label">累计销量</span><span class="tm-step"><c:out value="${product.sale}"/></span>
                             </div>
                         </li>
                         <li class="tm-ind-item tm-ind-reviewCount canClick tm-line3">
@@ -208,7 +207,7 @@
                             <span id="Stock" class="tb-hidden">库存<span class="stock">1000</span>件</span>
                         </dd>
 
-                </div>
+<%--                </div>--%>
                 <div class="clear"></div>
 
                 <div class="btn-op">
@@ -222,7 +221,7 @@
                 </div>
                 <div class="text-info">
                     <span class="J_Price price-now">¥39.00</span>
-                    <span id="Stock" class="tb-hidden">库存<span class="stock">1000</span>件</span>
+                    <span class="tb-hidden">库存<span class="stock">1000</span>件</span>
                 </div>
             </div>
 

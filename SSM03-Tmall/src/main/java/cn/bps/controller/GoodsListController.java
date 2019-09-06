@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
+
+@RequestMapping(value = "/good")
 @Controller
 public class GoodsListController {
 
@@ -30,44 +32,23 @@ public class GoodsListController {
     @Autowired
     private ProductImageService productImageService;
 
+    @RequestMapping(value = "{id}")
+    public String showgood(@PathVariable(value = "id")int id,
+                           Model model){
 
-//    @RequestMapping(value = "/goods")
-//    public String list(Model model){
-//
-//        List<FilterCase> list = filterCaseService.getFilterList();
-//        model.addAttribute("filterCase",list);
-//
-//        List<Integer> filterIdList = filterCaseService.getFilterIdList();
-//        Map<Integer, List<ConcreteFilter>> map = concreteFilterService.getFilterMap(filterIdList);
-//        model.addAttribute("filterMap",map);
-//
-//
-//        Set<Integer> set = productBindFilterService.getProductIdSet();
-//        List<Product> products = productService.getProductListByProductIdSet(set);
-//        model.addAttribute("products",products);
-//
-//
-//        Map<Integer, String> urlMap = productImageService.getImageUrl(products);
-//        model.addAttribute("urlMap",urlMap);
-//
-//        return "goods";
-//    }
+        Product product = productService.getProductById(id);
 
+        model.addAttribute("product",product);
 
-    @RequestMapping(value = "/postCases/")
-    public String listGoods(@RequestParam(defaultValue = "")String fCases,
-                            Model model){
+        String imgeUrl = productImageService.getImageUrl(product.getId());
+        model.addAttribute("imgUrl",imgeUrl);
 
-
-
-
-
-        return "/goods";
+        return "shopInfo";
     }
 
 
-    @RequestMapping(value = "/goods",method = RequestMethod.GET)
-    public String listGoodsAjax(@RequestParam(value = "caseList",defaultValue = "")String caseList,
+    @RequestMapping(value = {"/list",""},method = RequestMethod.GET)
+    public String listGoods(@RequestParam(value = "caseList",defaultValue = "")String caseList,
                                 @RequestParam(value = "start",defaultValue = "0")int start,
                                 @RequestParam(value = "step",defaultValue = "20")int step,
                                 Model model){
@@ -105,12 +86,8 @@ public class GoodsListController {
         List<Product> products = productService.rowBoundsProduct(productIdSet,page.getStart(),page.getStep());
 
         model.addAttribute("products",products);
-        Map<Integer, String> urlMap = productImageService.getImageUrl(products);//获取产品图片链接
+        Map<Integer, String> urlMap = productImageService.getImageUrls(products);//获取产品图片链接
         model.addAttribute("urlMap",urlMap);
-
-
-
-
 
 
 

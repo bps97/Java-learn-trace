@@ -20,7 +20,7 @@ public class ProductImageServiceImp implements ProductImageService {
 
 
     @Override
-    public Map<Integer, String> getImageUrl(List<Product> products) {
+    public Map<Integer, String> getImageUrls(List<Product> products) {
         Map<Integer, String> map = new HashMap();
 
         for(Product product:products){
@@ -38,4 +38,26 @@ public class ProductImageServiceImp implements ProductImageService {
 
         return map;
     }
+
+    @Override
+    public String getImageUrl(Integer productId) {
+        ProductImageExample productImageExample = new ProductImageExample();
+        productImageExample.createCriteria().andProduct_idEqualTo(productId);
+        List<ProductImage> productImages = productImageMapper.selectByExample(productImageExample);
+
+        return productImages.get(0).getImage_link();
+    }
+
+    @Override
+    public int addProductImage(Integer productId, String imgUrl) {
+
+        ProductImage productImage = new ProductImage();
+        productImage.setImage_link(imgUrl);
+        productImage.setProduct_id(productId);
+
+
+        return productImageMapper.insert(productImage);
+}
+
+
 }

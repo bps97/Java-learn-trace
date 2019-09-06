@@ -10,5 +10,14 @@ public interface ProductService {
 
     List<Product> getProductListByProductIdSet(Set<Integer> set);
 
-    List<Product> rowBoundsProduct(Set<Integer> set,Integer start,Integer step);
+    List<Product> rowBoundsProduct(Set<Integer> idSet,Integer start,Integer step);
+
+    Product getProductById(Integer id);
+
+    int deleteOneById(Integer id);
+
+    int insertOne(Product product);
+
+    int updateOne(Product product);
+
 }

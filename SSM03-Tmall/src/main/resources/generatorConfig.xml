@@ -78,7 +78,7 @@
         <table tableName="product" domainObjectName="Product"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="true"
-               selectByExampleQueryId="false">
+               selectByExampleQueryId="false" enableDeleteByPrimaryKey="true">
             <property name="my.isgen.usekeys" value="true"/>
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="JDBC"/>

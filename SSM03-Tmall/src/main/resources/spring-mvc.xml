@@ -26,28 +26,6 @@
 
 
 
-    <!--    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">-->
-<!--        <property name="viewResolvers">-->
-<!--            <list>-->
-<!--                <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />-->
-<!--                &lt;!&ndash; 配置jsp 显示ViewResolver &ndash;&gt;-->
-<!--                <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
-<!--                    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>-->
-<!--                    <property name="prefix" value="/WEB-INF/views/"/>-->
-<!--                    <property name="suffix" value=".jsp"/>-->
-<!--                    <property name="order" value="1"/>-->
-<!--                </bean>-->
-<!--            </goods>-->
-<!--        </property>-->
-<!--&lt;!&ndash;        <property name="defaultViews">&ndash;&gt;-->
-<!--&lt;!&ndash;            <list>&ndash;&gt;-->
-<!--&lt;!&ndash;                &ndash;&gt;-->
-<!--&lt;!&ndash;            </goods>&ndash;&gt;-->
-<!--&lt;!&ndash;        </property>&ndash;&gt;-->
-<!--    </bean>-->
-
-
-<!--    html的freeMarker的视图解析器-->
     <bean id="htmlViewResolver"
           class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
         <property name="viewClass"
@@ -85,6 +63,11 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+
+    <!--    multipartResolver-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="6000000"/>
+    </bean>
 
 
 </beans>
