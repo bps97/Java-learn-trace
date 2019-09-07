@@ -114,7 +114,6 @@
 <%--            </div>--%>
 
 <%--        </nav>--%>
-    <hr/>
     <rapid:block name="main_content">
         <!-- 注意这里是内容 -->
     </rapid:block>

@@ -14,7 +14,7 @@
         <div class="panel panel-default">
             <div class="panel-heading"><h4>添加商品</h4></div>
             <div class="panel-body">
-                <form action="/manage/postProduct" method="post" class="form-horizontal" enctype="multipart/form-data">
+                <form action="/manage/postProduct/${product.id}" method="post" class="form-horizontal" enctype="multipart/form-data">
 
 
                     <div class="form-group">

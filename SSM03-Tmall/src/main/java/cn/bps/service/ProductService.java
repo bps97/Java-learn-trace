@@ -10,7 +10,7 @@ public interface ProductService {
 
     List<Product> getProductListByProductIdSet(Set<Integer> set);
 
-    List<Product> rowBoundsProduct(Set<Integer> idSet,Integer start,Integer step);
+    List<Product> rowBoundsProduct(Set<Integer> idSet, Integer start, Integer step);
 
     Product getProductById(Integer id);
 
@@ -19,5 +19,7 @@ public interface ProductService {
     int insertOne(Product product);
 
     int updateOne(Product product);
+
+    int getIdByProduct(Product product);
 
 }

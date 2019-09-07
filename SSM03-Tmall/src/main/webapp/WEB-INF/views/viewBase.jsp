@@ -43,7 +43,7 @@
                 <div class="menu-hd"><a href="/mobile" style="color:red">手机端</a></div>
             </div>
             <div class="topMessage home">
-                <div class="menu-hd"><a href="/goods" target="_top" class="h" style="color:red">商城首页</a></div>
+                <div class="menu-hd"><a href="/good" target="_top" class="h" style="color:red">商城首页</a></div>
             </div>
             <div class="topMessage my-shangcheng">
                 <div class="menu-hd MyShangcheng"><a href="/mySpace" target="_top"><i
@@ -88,8 +88,9 @@
 </rapid:block>
 
 
-<br>
+
 <%--尾部--%>
+<div class="clear"></div>
 <div class="footer ">
     <div class="footer-hd ">
         <p>
@@ -117,7 +118,7 @@
 <!--引导 mobile底部-->
 <div class="navCir">
     <li class="active"><a href="/index"><i class="mr-icon-home "></i>首页</a></li>
-    <li><a href="/goods"><i class="mr-icon-list"></i>商品</a></li>
+    <li><a href="/good"><i class="mr-icon-list"></i>商品</a></li>
     <li><a href="/shopCart"><i class="mr-icon-shopping-basket"></i>购物车</a></li>
     <li><a href="/mySpace"><i class="mr-icon-user"></i>我的</a></li>
 </div>
@@ -148,7 +149,7 @@
 
                 <p> 购物车 </p>
 
-                <p class="cart_num">0</p>
+                <p class="cart_num">1</p>
             </div>
             <div id="asset" class="item">
                 <a href="#"> <span class="view"></span> </a>
@@ -279,6 +280,10 @@
         </div>
     </div>
 </div>
+
+
+
+
 
 </body>
 <script type="text/javascript">

@@ -21,10 +21,12 @@
                 <form action="/post_feedback/" method="post" class="form-horizontal">
                     <div class="media ">
                         <div class="media-left">
-                            <img src="http://temp.im/88x88" style="width:100px;height:100px;" alt="" class="media-object">
+
+
+                            <img src="${image}" style="width:100px;height:100px;" alt="" class="media-object">
                         </div>
                         <div class="media-body ">
-                            <span class="meadia.heading"><%=(String)request.getAttribute("body") %></span>
+                            <span class="meadia.heading"><c:out value="${product.name}"/></span>
                         </div>
                     </div>
 
@@ -40,7 +42,7 @@
     </div>
 
 
-</rapid:override>
+    </rapid:override>
 
 
-<%@ include file="base.jsp" %>
+    <%@ include file="base.jsp" %>

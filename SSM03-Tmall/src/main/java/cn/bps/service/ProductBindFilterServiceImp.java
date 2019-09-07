@@ -61,4 +61,19 @@ public class ProductBindFilterServiceImp implements ProductBindFilterService {
         return productIdSet;
     }
 
+    @Override
+    public void insertProductBindFilter(List<ProductBindFilter> productBindFilters) {
+        for(ProductBindFilter productBindFilter : productBindFilters){
+            productBindFilterMapper.insertSelective(productBindFilter);
+        }
+        return ;
+    }
+
+    @Override
+    public int delDemos(int productId) {
+
+        ProductBindFilterExample productBindFilterExample = new ProductBindFilterExample();
+        productBindFilterExample.createCriteria().andProduct_idEqualTo(productId);
+        return productBindFilterMapper.deleteByExample(productBindFilterExample);
+    }
 }

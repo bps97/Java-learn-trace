@@ -3,6 +3,7 @@ package cn.bps.controller;
 import cn.bps.pojo.ConcreteFilter;
 import cn.bps.pojo.FilterCase;
 import cn.bps.pojo.Product;
+import cn.bps.pojo.Property;
 import cn.bps.service.*;
 import cn.bps.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,18 +33,32 @@ public class GoodsListController {
     @Autowired
     private ProductImageService productImageService;
 
+    @Autowired
+    private PropertyService propertyService;
+
+    @RequestMapping(value = "/shopCart")
+    public String showShopCart(){
+
+        return "shopCart";
+    }
+
+
+
     @RequestMapping(value = "{id}")
-    public String showgood(@PathVariable(value = "id")int id,
+    public String showGood(@PathVariable(value = "id")int id,
                            Model model){
 
         Product product = productService.getProductById(id);
 
-        model.addAttribute("product",product);
+        model.addAttribute("product", product);
 
-        String imgeUrl = productImageService.getImageUrl(product.getId());
-        model.addAttribute("imgUrl",imgeUrl);
+        String imgUrl = productImageService.getImageUrl(product.getId());
+        model.addAttribute("imgUrl", imgUrl);
 
-        return "shopInfo";
+        List<Property> properties = propertyService.getPropertyListByCategoryId(product.getCategory_id());
+        model.addAttribute("properties", properties);
+
+        return "goodInfo";
     }
 
 

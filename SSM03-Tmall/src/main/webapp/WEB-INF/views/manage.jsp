@@ -17,34 +17,56 @@
         </div><!-- panel-heading -->
 
         <div class="panel-body">
-            <table class="table table-hover">
+            <table class="table table-hover table-striped">
                 <tr>
                     <th>ID</th>
+
                     <th>主题</th>
                     <th>副标题</th>
                     <th>价格</th>
                     <th>分类</th>
+
                     <th>&nbsp;&nbsp;&nbsp;&nbsp;操作</th>
+
                 </tr>
-                <c:forEach items="${products}" var="product">
+                <c:forEach items="${products}" var="product" varStatus="status">
                     <tr>
-                        <td><span class="label label-info"><c:out value="${product.id}"/></span></td>
+
+                        <td>
+
+                            <span class="label label-info"><c:out value="${status.count+page.start}"/></span>
+
+                        </td>
+
                         <td style="width: 25%"><c:out value="${product.name}"/></td>
                         <td style="width: 25%"><c:out value="${product.sub_title}"/></td>
                         <td ><c:out value="${product.price}"/></td>
 
 
                         <td><c:out value="${categoryMap.get(product.getCategory_id())}"/></td>
+
+
+
                         <td>
+
+
                             <div class="btn btn-group">
                                 <a href="/manage/info/${product.id}" class="btn btn-default btn-sm" title="查看"><i
                                         class="fa fa-search"></i></a>
                                 <a href="/manage/edit/${product.id}" class="btn btn-default btn-sm" title="编辑"><i
                                         class="fa fa-edit"></i></a>
-                                <a href="FBDelServlet?id=" class="btn btn-default btn-sm" title="删除"><i
+                                <a href="/manage/del/${product.id}" class="btn btn-default btn-sm" title="删除"><i
                                         class="fa fa-trash"></i></a>
                             </div>
+
                         </td>
+<%--                        <div class="col-xs-6 col-md-4">--%>
+<%--                            <a href="#" class="thumbnail">--%>
+<%--                                <img src="${images.get(product.id)}" alt="...">--%>
+<%--                            </a>--%>
+<%--                        </div>--%>
+
+
                     </tr>
                 </c:forEach>
             </table>
@@ -54,8 +76,8 @@
             <div class="btn-group col-md-offset-6 col-sm-offset-6" role="group" aria-label="...">
                 <nav aria-label="Page navigation">
                     <ul class="pagination">
-                <c:forEach begin="0" end="${page.getTotalPage()}" varStatus="status">
-                    <c:if test="${status.step*page.step-page.start<=30 && status.count*page.step-page.start>=-10}"><!--只显示最近三个-->
+                <c:forEach begin="0" end="${page.getTotalPage()-1}" varStatus="status">
+                    <c:if test="${status.step*page.step-page.start<=30 && status.count*page.step-page.start>=-20}"><!--只显示最近四个-->
                         <li <c:if test='${status.index*page.step==page.start}'>class="mr-active"</c:if>>  <!--当前页面-->
                             <a href="?start=${status.index*page.step}"<c:if test="${status.index*page.step==page.start}">class="mr-active"</c:if>>${status.count}</a>
                         </li>

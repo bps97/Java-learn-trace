@@ -74,5 +74,13 @@ public class ProductServiceImp implements ProductService {
         return productMapper.updateByPrimaryKey(product);
     }
 
+    @Override
+    public int getIdByProduct(Product product) {
+        ProductExample productExample = new ProductExample();
+        productExample.createCriteria().andIdIsNotNull();
+        List<Product> products = productMapper.selectByExample(productExample);
+        return products.get(0).getId();
+    }
+
 
 }

@@ -75,25 +75,8 @@
 
                     <div class="tb-booth tb-pic tb-s310">
                         <a href="${imgUrl}"><img src="${imgUrl}" alt="细节展示放大镜特效" rel="${imgUrl}"
-                                                     class="jqzoom"/></a>
+                                                 class="jqzoom"/></a>
                     </div>
-                    <ul class="tb-thumb" id="thumblist">
-                        <li class="tb-selected">
-                            <div class="tb-pic tb-s40">
-                                <a href="#"><img src="/img/01_small.jpg" mid="/img/01_mid.jpg" big="/img/01.jpg"></a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="tb-pic tb-s40">
-                                <a href="#"><img src="/img/02_small.jpg" mid="/img/02_mid.jpg" big="/img/02.jpg"></a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="tb-pic tb-s40">
-                                <a href="#"><img src="/img/03_small.jpg" mid="/img/03_mid.jpg" big="/img/03.jpg"></a>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
 
                 <div class="clear"></div>
@@ -105,6 +88,7 @@
                 <!--名称-->
                 <div class="tb-detail-hd">
                     <h1><c:out value="${product.name}"/></h1>
+                    <p style="color: red">${product.sub_title}</p>
                 </div>
                 <div class="tb-detail-list">
                     <!--价格-->
@@ -115,7 +99,8 @@
                         </li>
                         <li class="price iteminfo_mktprice">
                             <dt>原价</dt>
-                            <dd><em>¥</em><b class="sys_item_mktprice"><c:out value="${product.price*1.2}"/></b></dd>
+                            <dd><em>¥</em><b class="sys_item_mktprice"><c:out
+                                    value="${fn:substringBefore(product.price*1.2,'.')}"/></b></dd>
                         </li>
                         <div class="clear"></div>
                     </div>
@@ -148,11 +133,13 @@
                     <!--销量-->
                     <ul class="tm-ind-panel">
                         <li class="tm-ind-item tm-ind-sellCount canClick">
-                            <div class="tm-indcon"><span class="tm-label">月销量</span><span class="tm-step"><c:out value="${fn:substringBefore(product.sale/12,'.')}" /></span>
+                            <div class="tm-indcon"><span class="tm-label">月销量</span><span class="tm-step"><c:out
+                                    value="${fn:substringBefore(product.sale/12,'.')}"/></span>
                             </div>
                         </li>
                         <li class="tm-ind-item tm-ind-sumCount canClick">
-                            <div class="tm-indcon"><span class="tm-label">累计销量</span><span class="tm-step"><c:out value="${product.sale}"/></span>
+                            <div class="tm-indcon"><span class="tm-label">累计销量</span><span class="tm-step"><c:out
+                                    value="${product.sale}"/></span>
                             </div>
                         </li>
                         <li class="tm-ind-item tm-ind-reviewCount canClick tm-line3">
@@ -182,22 +169,7 @@
 
                                         <div class="theme-signin-left">
 
-                                            <div class="theme-options">
-                                                <div class="cart-title">颜色</div>
-                                                <ul>
-                                                    <li class="sku-line selected">荣耀金<i></i></li>
-                                                    <li class="sku-line">冰河银<i></i></li>
-                                                    <li class="sku-line">雅典灰<i></i></li>
-                                                </ul>
-                                            </div>
-                                            <div class="theme-options">
-                                                <div class="cart-title">套装</div>
-                                                <ul>
-                                                    <li class="sku-line selected">保护套装<i></i></li>
-                                                    <li class="sku-line">原厂电源<i></i></li>
-                                                    <li class="sku-line">存储套装<i></i></li>
-                                                </ul>
-                                            </div>
+
                                             <div class="theme-options">
                                                 <div class="cart-title number">数量</div>
                         <dd>
@@ -207,41 +179,41 @@
                             <span id="Stock" class="tb-hidden">库存<span class="stock">1000</span>件</span>
                         </dd>
 
-<%--                </div>--%>
-                <div class="clear"></div>
+                            <%--                </div>--%>
+                        <div class="clear"></div>
 
-                <div class="btn-op">
-                    <div class="btn mr-btn mr-btn-warning">确认</div>
-                    <div class="btn close mr-btn mr-btn-warning">取消</div>
+                        <div class="btn-op">
+                            <div class="btn mr-btn mr-btn-warning">确认</div>
+                            <div class="btn close mr-btn mr-btn-warning">取消</div>
+                        </div>
                 </div>
-            </div>
-            <div class="theme-signin-right">
-                <div class="img-info">
-                    <img src="/img/songzi.jpg"/>
+                <div class="theme-signin-right">
+                    <div class="img-info">
+                        <img src="/img/songzi.jpg"/>
+                    </div>
+                    <div class="text-info">
+                        <span class="J_Price price-now">¥39.00</span>
+                        <span class="tb-hidden">库存<span class="stock">1000</span>件</span>
+                    </div>
                 </div>
-                <div class="text-info">
-                    <span class="J_Price price-now">¥39.00</span>
-                    <span class="tb-hidden">库存<span class="stock">1000</span>件</span>
-                </div>
-            </div>
 
-            </form>
-        </div>
-    </div>
-
-    </dd>
-    </dl>
-    <div class="clear"></div>
-    <!--活动 -->
-    <div class="shopPromotion gold">
-        <div class="hot">
-            <dt class="tb-metatit">店铺优惠</dt>
-            <div class="gold-list">
-                <p>购物满2件打8折，满3件7折</p>
+                </form>
             </div>
         </div>
+
+        </dd>
+        </dl>
         <div class="clear"></div>
-    </div>
+        <!--活动 -->
+        <div class="shopPromotion gold">
+            <div class="hot">
+                <dt class="tb-metatit">店铺优惠</dt>
+                <div class="gold-list">
+                    <p>购物满2件打8折，满3件7折</p>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
     </div>
 
     <div class="pay">
@@ -252,7 +224,7 @@
         </div>
         <li>
             <div class="clearfix tb-btn tb-btn-buy theme-login">
-                <a id="LikBuy" title="点此按钮到下一步确认购买信息" href="shopCart.jsp">立即购买</a>
+                <a id="LikBuy" title="点此按钮到下一步确认购买信息" href="/good/shopCart">立即购买</a>
             </div>
         </li>
         <li>
@@ -296,7 +268,7 @@
                 <li class="total_price">
                     <p class="combo_price"><span class="c-title">套餐价:</span><span>￥35.00</span></p>
 
-                    <p class="save_all">共省:<span>￥463.00</span></p> <a href="#" class="buy_now">立即购买</a></li>
+                    <p class="save_all">共省:<span>￥463.00</span></p> <a href="<c:url value='/good/shopCart'/> " class="buy_now">立即购买</a></li>
                 <li class="plus_icon"><i class="mr-icon-angle-right"></i></li>
             </ul>
         </div>
@@ -306,67 +278,7 @@
 
     <!-- introduce-->
     <div class="introduce">
-        <div class="browse">
-            <div class="mc">
-                <ul>
-                    <div class="mt">
-                        <h2>看了又看</h2>
-                    </div>
 
-                    <li class="first">
-                        <div class="p-img">
-                            <a href="#"> <img class="" src="/img/shopcartImg.jpg"> </a>
-                        </div>
-                        <div class="p-name"><a href="#">
-                            华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待
-                        </a>
-                        </div>
-                        <div class="p-price"><strong>￥399.00</strong></div>
-                    </li>
-                    <li class="first">
-                        <div class="p-img">
-                            <a href="#"> <img class="" src="/img/shopcartImg.jpg"> </a>
-                        </div>
-                        <div class="p-name"><a href="#">
-                            华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待
-                        </a>
-                        </div>
-                        <div class="p-price"><strong>￥399.00</strong></div>
-                    </li>
-                    <li class="first">
-                        <div class="p-img">
-                            <a href="#"> <img class="" src="/img/shopcartImg.jpg"> </a>
-                        </div>
-                        <div class="p-name"><a href="#">
-                            华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待
-                        </a>
-                        </div>
-                        <div class="p-price"><strong>￥399.00</strong></div>
-                    </li>
-                    <li class="first">
-                        <div class="p-img">
-                            <a href="#"> <img class="" src="/img/shopcartImg.jpg"> </a>
-                        </div>
-                        <div class="p-name"><a href="#">
-                            华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待
-                        </a>
-                        </div>
-                        <div class="p-price"><strong>￥399.00</strong></div>
-                    </li>
-                    <li class="first">
-                        <div class="p-img">
-                            <a href="#"> <img class="" src="/img/shopcartImg.jpg"> </a>
-                        </div>
-                        <div class="p-name"><a href="#">
-                            华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待
-                        </a>
-                        </div>
-                        <div class="p-price"><strong>￥399.00</strong></div>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
         <div class="introduceMain">
             <div class="mr-tabs" data-mr-tabs>
                 <ul class="mr-avg-sm-3 mr-tabs-nav mr-nav mr-nav-tabs">
@@ -395,15 +307,9 @@
                                 <h4>产品参数：</h4></div>
                             <div class="clear"></div>
                             <ul id="J_AttrUL">
-                                <li title="">商品名称:&nbsp;华为荣耀7(PLK-AL10)</li>
-                                <li title="">商品编号:&nbsp;1684485</li>
-                                <li title="">商品毛重:&nbsp;157.00g</li>
-                                <li title="">商品产地:&nbsp;中国大陆</li>
-                                <li title="">系统:&nbsp;安卓（Android）</li>
-                                <li title="">运行内存:&nbsp;3GB</li>
-                                <li title="">像素:&nbsp;1600万以上</li>
-                                <li title="">电池容量：&nbsp;3000mAh-3999mAh</li>
-                                <li title="">机身颜色：&nbsp;金色</li>
+                                <c:forEach items="${properties}" var="property">
+                                    <li title=""><c:out value="${property.name}"/></li>
+                                </c:forEach>
                             </ul>
                             <div class="clear"></div>
                         </div>
@@ -873,126 +779,7 @@
                     <div id="youLike" class="mr-tab-panel mr-fade ">
                         <div class="like">
                             <ul class="mr-avg-sm-2 mr-avg-md-3 mr-avg-lg-4 boxes">
-                                <li>
-                                    <div class="i-pic limit">
-                                        <img src="/img/shopcartImg.jpg"/>
-                                        <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                                        <p class="price fl">
-                                            <b>¥</b>
-                                            <strong>498.00</strong>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="i-pic limit">
-                                        <img src="/img/shopcartImg.jpg"/>
-                                        <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                                        <p class="price fl">
-                                            <b>¥</b>
-                                            <strong>498.00</strong>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="i-pic limit">
-                                        <img src="/img/shopcartImg.jpg"/>
-                                        <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                                        <p class="price fl">
-                                            <b>¥</b>
-                                            <strong>498.00</strong>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="i-pic limit">
-                                        <img src="/img/shopcartImg.jpg"/>
-                                        <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                                        <p class="price fl">
-                                            <b>¥</b>
-                                            <strong>498.00</strong>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="i-pic limit">
-                                        <img src="/img/shopcartImg.jpg"/>
-                                        <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                                        <p class="price fl">
-                                            <b>¥</b>
-                                            <strong>498.00</strong>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="i-pic limit">
-                                        <img src="/img/shopcartImg.jpg"/>
-                                        <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                                        <p class="price fl">
-                                            <b>¥</b>
-                                            <strong>498.00</strong>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="i-pic limit">
-                                        <img src="/img/shopcartImg.jpg"/>
-                                        <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                                        <p class="price fl">
-                                            <b>¥</b>
-                                            <strong>498.00</strong>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="i-pic limit">
-                                        <img src="/img/shopcartImg.jpg"/>
-                                        <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                                        <p class="price fl">
-                                            <b>¥</b>
-                                            <strong>498.00</strong>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="i-pic limit">
-                                        <img src="/img/shopcartImg.jpg"/>
-                                        <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                                        <p class="price fl">
-                                            <b>¥</b>
-                                            <strong>498.00</strong>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="i-pic limit">
-                                        <img src="/img/shopcartImg.jpg"/>
-                                        <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                                        <p class="price fl">
-                                            <b>¥</b>
-                                            <strong>498.00</strong>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="i-pic limit">
-                                        <img src="/img/shopcartImg.jpg"/>
-                                        <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                                        <p class="price fl">
-                                            <b>¥</b>
-                                            <strong>498.00</strong>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="i-pic limit">
-                                        <img src="/img/shopcartImg.jpg"/>
-                                        <p>华为 荣耀 畅玩4X 白色 移动4G手机 双卡双待</p>
-                                        <p class="price fl">
-                                            <b>¥</b>
-                                            <strong>498.00</strong>
-                                        </p>
-                                    </div>
-                                </li>
+
                             </ul>
                         </div>
                         <div class="clear"></div>
@@ -1021,8 +808,6 @@
 
     </div>
     </div>
-
-
 
 
 </rapid:override>

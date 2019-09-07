@@ -63,6 +63,12 @@
     delete from product_bind_filter
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  <delete id="deleteByExample" parameterType="cn.bps.pojo.ProductBindFilterExample">
+    delete from product_bind_filter
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.ProductBindFilter" useGeneratedKeys="true">
     insert into product_bind_filter (product_id, filter_value_id)
     values (#{product_id,jdbcType=INTEGER}, #{filter_value_id,jdbcType=INTEGER})

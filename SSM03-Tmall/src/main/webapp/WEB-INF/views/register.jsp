@@ -106,7 +106,7 @@
 
             <div class="login-form">
                 <form id="loginForm" action="/postLogin" method="post">
-                    <div class="user-pass">
+                    <div class="user-name">
                         <label for="tel"><i class="mr-icon-mobile"></i></label>
                         <input type="text" name="phone" id="tel" placeholder="请输入手机号" onblur="checkPhone()">
                     </div>

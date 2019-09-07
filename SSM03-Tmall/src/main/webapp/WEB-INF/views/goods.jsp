@@ -118,7 +118,7 @@
 
                                 <li>
                                     <div class="i-pic limit">
-                                        <a href="#"><img src="${urlMap.get(product.getId())}"/></a>
+                                        <a href="/good/${product.id}"><img src="${urlMap.get(product.getId())}"/></a>
                                         <p class="title fl"><c:out value="${product.getName()}"/></p>
                                         <p class="price fl"><b>&yen;</b> <strong><c:out
                                                 value="${product.getPrice()}"/></strong></p>
@@ -137,21 +137,21 @@
                         <%--    </div>--%>
                         <%--&lt;%&ndash;    <li>&ndash;%&gt;--%>
                         <%--&lt;%&ndash;        <div class="i-pic check">&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;            <a href="shopInfo.jsp"><img src="/img/shopcartImg-01.jpg" /></a>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;            <a href="goodInfo.jsp"><img src="/img/shopcartImg-01.jpg" /></a>&ndash;%&gt;--%>
                         <%--&lt;%&ndash;            <p class="check-title">送耳机+送手机壳</p>&ndash;%&gt;--%>
                         <%--&lt;%&ndash;            <p class="price fl"> <b>&yen;</b> <strong>299.00</strong> </p>&ndash;%&gt;--%>
                         <%--&lt;%&ndash;            <p class="number fl"> 销量<span>1110</span> </p>&ndash;%&gt;--%>
                         <%--&lt;%&ndash;        </div> </li>&ndash;%&gt;--%>
                         <%--&lt;%&ndash;    <li>&ndash;%&gt;--%>
                         <%--&lt;%&ndash;        <div class="i-pic check">&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;            <a href="shopInfo.jsp"><img src="/img/shopcartImg-01.jpg" /></a>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;            <a href="goodInfo.jsp"><img src="/img/shopcartImg-01.jpg" /></a>&ndash;%&gt;--%>
                         <%--&lt;%&ndash;            <p class="check-title">送耳机+送手机壳</p>&ndash;%&gt;--%>
                         <%--&lt;%&ndash;            <p class="price fl"> <b>&yen;</b> <strong>299.00</strong> </p>&ndash;%&gt;--%>
                         <%--&lt;%&ndash;            <p class="number fl"> 销量<span>1110</span> </p>&ndash;%&gt;--%>
                         <%--&lt;%&ndash;        </div> </li>&ndash;%&gt;--%>
                         <%--&lt;%&ndash;    <li>&ndash;%&gt;--%>
                         <%--&lt;%&ndash;        <div class="i-pic check">&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;            <a href="shopInfo.jsp"><img src="/img/shopcartImg-01.jpg" /></a>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;            <a href="goodInfo.jsp"><img src="/img/shopcartImg-01.jpg" /></a>&ndash;%&gt;--%>
                         <%--&lt;%&ndash;            <p class="check-title">送耳机+送手机壳</p>&ndash;%&gt;--%>
                         <%--&lt;%&ndash;            <p class="price fl"> <b>&yen;</b> <strong>299.00</strong> </p>&ndash;%&gt;--%>
                         <%--&lt;%&ndash;            <p class="number fl"> 销量<span>1110</span> </p>&ndash;%&gt;--%>
@@ -163,8 +163,8 @@
                     <ul class="mr-pagination mr-pagination-right">
                         <li class="mr-disabled"><a href="#">&laquo;</a></li>
                             <%--    <li class=""><a href="#">1</a></li>--%>
-                        <c:forEach begin="0" end="${page.getTotalPage()}" varStatus="status">
-                            <c:if test="${status.step*page.step-page.start<=30 && status.count*page.step-page.start>=-10}">
+                        <c:forEach begin="0" end="${page.getTotalPage()-1}" varStatus="status">
+                            <c:if test="${status.step*page.step-page.start<=50 && status.count*page.step-page.start>=-10}">
                                 <li <c:if test="${status.index*page.step==page.start}">class="mr-active"</c:if>>
                                     <a
                                             href="?start=${status.index*page.step}"

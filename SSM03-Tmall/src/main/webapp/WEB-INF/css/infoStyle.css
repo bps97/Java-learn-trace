@@ -319,7 +319,7 @@ li.mr-comment{ width:100%}
 
 
     /*介绍*/
-    .introduceMain{width:80%;float:left;background:#fff ;}
+    .introduceMain{width:100%;float:left;background:#fff ;}
     .browse{display:block; float:left;width:20% ;}
     .browse ul{border:1px solid #D4D4D4 ;width: 90%;}
     .browse ul .mt{background-color: #f7f7f7}
@@ -328,7 +328,7 @@ li.mr-comment{ width:100%}
     .browse li img{width:100% ;}
     .browse li .p-price strong {color: #E4393C;font-weight: 600;}
     /*导航固定*/
-    ul.mr-tabs-nav.mr-nav.mr-nav-tabs {left:20% ;max-width:960px ;background: #F5F5F5;right: 40px;}
+    ul.mr-tabs-nav.mr-nav.mr-nav-tabs {left:20% ;max-width:1200px ;background: #F5F5F5;right: 40px;}
     .mr-nav-tabs > li.mr-active {border-top: 2px solid #F03726;border-bottom: none;}
 
     /*评论*/
@@ -338,7 +338,7 @@ li.mr-comment{ width:100%}
 }
 
 
-@media only screen and (min-width:1260px)
+@media only screen and (min-width:1200px)
 
 {
     .item-inform ,.match,.introduceMain,.mr-breadcrumb-slash{max-width: 1200px;}
@@ -348,7 +348,7 @@ li.mr-comment{ width:100%}
     .clearfixRight {width: 700px;}
 
     /*导航固定*/
-    ul.mr-tabs-nav.mr-nav.mr-nav-tabs {left:auto;right:auto;width:960px ;}
+    ul.mr-tabs-nav.mr-nav.mr-nav-tabs {left:auto;right:auto;width:1260px ;}
 
 
 }

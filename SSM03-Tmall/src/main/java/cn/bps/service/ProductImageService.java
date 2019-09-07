@@ -10,5 +10,5 @@ public interface ProductImageService {
     Map<Integer,String> getImageUrls(List<Product> products);
     String getImageUrl(Integer productId);
 
-    int addProductImage(Integer productId,String imgUrl);
+    int addProductImage(Integer productId, String imgUrl);
 }

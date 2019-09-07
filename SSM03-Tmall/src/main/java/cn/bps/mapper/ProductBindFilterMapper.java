@@ -8,6 +8,8 @@ import org.apache.ibatis.session.RowBounds;
 public interface ProductBindFilterMapper {
     long countByExample(ProductBindFilterExample example);
 
+    int deleteByExample(ProductBindFilterExample example);
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(ProductBindFilter record);

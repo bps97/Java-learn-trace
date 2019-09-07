@@ -73,7 +73,7 @@ public class DemoController {
 
     @RequestMapping(value = "/good")
     public String showgood(){
-        return "shopInfo";
+        return "goodInfo";
     }
 
 
@@ -82,11 +82,6 @@ public class DemoController {
     public ModelAndView showmobile(){ return new ModelAndView("mobile"); }
 
 
-    @RequestMapping(value = "/shopCart")
-    public String showShopCart(){
-
-        return "shopCart";
-    }
 
 
 

@@ -1,12 +1,12 @@
 package cn.bps.controller;
 
+import cn.bps.domain.CompleteProduct;
 import cn.bps.domain.Product;
 import cn.bps.pojo.Category;
-import cn.bps.pojo.ProductImage;
-import cn.bps.service.CategoryService;
-import cn.bps.service.ProductBindFilterService;
-import cn.bps.service.ProductImageService;
-import cn.bps.service.ProductService;
+import cn.bps.pojo.ConcreteFilter;
+import cn.bps.pojo.FilterCase;
+import cn.bps.pojo.ProductBindFilter;
+import cn.bps.service.*;
 import cn.bps.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,7 +37,13 @@ public class ManageController {
     @Autowired
     ProductImageService productImageService;
 
-    @RequestMapping(value = {"","/list"})
+    @Autowired
+    FilterCaseService filterCaseService;
+
+    @Autowired
+    ConcreteFilterService concreteFilterService;
+
+    @RequestMapping(value = {"","/list","s"})
     public String showManage(Model model,
                              @RequestParam(value = "start",defaultValue = "0")int start)
     {
@@ -53,19 +59,30 @@ public class ManageController {
         Map<Integer,String> categoryMap =categoryService.getCategoryMap();
         model.addAttribute("categoryMap",categoryMap);
 
+
+
+
+
         model.addAttribute("page",page);
 
         return "manage";
     }
 
-//
-//    @RequestMapping(value = "/add")
-//    public String addProduct(Model model){
-//        List<Category> categories = categoryService.getCategories();
-//        model.addAttribute("categories",categories);
-//
-//        return "productEdit";
-//    }
+
+    @RequestMapping(value = "/add")
+    public String addProduct(Model model){
+        List<Category> categories = categoryService.getCategories();
+        model.addAttribute("categories",categories);
+
+
+        List<FilterCase> filterCases = filterCaseService.getFilterList();
+        List<Integer> filterIdList = filterCaseService.getFilterIdList();
+        Map<Integer, List<ConcreteFilter>> filterMap = concreteFilterService.getFilterMap(filterIdList);
+        model.addAttribute("filterMap",filterMap);
+        model.addAttribute("filterCases",filterCases);
+
+        return "AddProduct";
+    }
 
     @RequestMapping(value = "/edit/{id}")
     public String productInfoEdit(@PathVariable(value = "id")int id,
@@ -93,6 +110,10 @@ public class ManageController {
 
         model.addAttribute("product", product);
 
+
+        String imageUrl = productImageService.getImageUrl(product.getId());
+        model.addAttribute("image",imageUrl);
+
         List<Category> categories = categoryService.getCategories();
         model.addAttribute("categories",categories);
 
@@ -106,6 +127,8 @@ public class ManageController {
 
 
         cn.bps.pojo.Product product = productService.getProductById(id);
+        productBindFilterService.delDemos(id);
+
         if(productService.deleteOneById(id)==id){
             return "redirect:/manage";
         }
@@ -141,7 +164,22 @@ public class ManageController {
 
 
 
-        return "redirect:/list";
+        return "redirect:/manage/list";
     }
 
+
+    @RequestMapping(value = "/postProduct", method = RequestMethod.POST)
+    public String addProduct(@ModelAttribute CompleteProduct completeProduct)
+    {
+
+        cn.bps.pojo.Product product = completeProduct.generatorProduct();
+        completeProduct.init();
+
+        productService.getProductById(0);
+        productService.insertOne(product);
+        List<ProductBindFilter> productBindFilters = completeProduct.generatorProductBindFilter(product.getId());
+        productBindFilterService.insertProductBindFilter(productBindFilters);
+
+        return "redirect:/manage/list";
+    }
 }
