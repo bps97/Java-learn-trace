@@ -9,8 +9,8 @@ import java.util.Set;
 public interface ProductBindFilterService {
     Set<Integer> getProductIdSet(Set<Integer> filterIdSet);
     Set<Integer> getProductIdSetByFilterId(Integer filterId);
-    Set<Integer> getProductIdSet();
+    Set<Integer> getAllProductIdSet();
     void insertProductBindFilter(List<ProductBindFilter> productBindFilters);
-    int delDemos(int productId);
+    int deleteDemos(int productId);
 
 }

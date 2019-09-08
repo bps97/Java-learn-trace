@@ -73,7 +73,7 @@
                             </li>
                             <div class="clear"></div>
 
-                            <form id="fCaseForm" method="get" action="/goods">
+                            <form id="fCaseForm" method="get" action="/good">
                                 <input type="hidden" name="caseList" id="fCaseHidden">
                                 <input type="hidden" id="fCaseIdHidden" value="<c:out value='${filterCases}'/>">
 

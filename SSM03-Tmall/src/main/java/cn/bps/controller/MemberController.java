@@ -7,7 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 @Controller
@@ -51,8 +57,8 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/postLogin")
-    public String postLogin(@RequestParam(value = "hiddenName") int id,HttpSession session)
-    {
+    public String postLogin(@RequestParam(value = "hiddenName") int id,
+                            HttpSession session){
         User user = userService.getUserById(id);
         String username = user.getName();
         if(username == null) username="游客，请设置用户名";
@@ -76,11 +82,23 @@ public class MemberController {
     public String UpdateUserInfo(@RequestParam("name")String name,
                                  @RequestParam("email")String email,
                                  @RequestParam("phone")String phone,
+                                 @RequestParam("birthday")String birthday,
                                  HttpSession session)
     {
+
         User user = userService.getUserByPhone(phone);
         user.setEmail(email);
         user.setName(name);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try{
+            Date birth = sdf.parse(birthday);
+            user.setBirthday(birth);
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+
+
         session.setAttribute("username", name);
         session.setAttribute("userId",user.getId());
 

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -75,11 +76,17 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
-    public int getIdByProduct(Product product) {
+    public Set<Integer> getProductIDSetByProductName(String name) {
+
         ProductExample productExample = new ProductExample();
-        productExample.createCriteria().andIdIsNotNull();
+        productExample.createCriteria().andNameLike("%"+name+"%");
         List<Product> products = productMapper.selectByExample(productExample);
-        return products.get(0).getId();
+        Set<Integer> productIdSet = new HashSet<>();
+        for(Product product: products){
+            productIdSet.add(product.getId());
+        }
+
+        return productIdSet;
     }
 
 

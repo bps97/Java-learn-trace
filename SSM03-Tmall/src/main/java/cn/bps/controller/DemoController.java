@@ -59,7 +59,7 @@ public class DemoController {
 
     @RequestMapping(value = "/base")
     public String showList(){
-        return "goods";
+        return "viewBase";
     }
 
 

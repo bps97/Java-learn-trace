@@ -100,23 +100,7 @@
 
                                                         </div>
 
-                                                            <%--实力商家--%>
-                                                            <%--                                <div class="brand-side">--%>
-                                                            <%--                                    <dl class="dl-sort">--%>
-                                                            <%--                                        <dt><span>实力商家</span></dt>--%>
-                                                            <%--                                        <dd><a rel="nofollow" title="海尔" target="_blank" href="#" rel="nofollow">--%>
-                                                            <%--                                            <span class="red">海尔</span></a></dd>--%>
-                                                            <%--                                        <dd><a rel="nofollow" title="三星" target="_blank" href="#" rel="nofollow">--%>
-                                                            <%--                                            <span >三星</span></a></dd>--%>
-                                                            <%--                                        <dd><a rel="nofollow" title="飞利浦" target="_blank" href="#" rel="nofollow">--%>
-                                                            <%--                                            <span class="red">飞利浦</span></a></dd>--%>
-                                                            <%--                                        <dd><a rel="nofollow" title="九阳" target="_blank" href="#" rel="nofollow">--%>
-                                                            <%--                                            <span>九阳</span></a></dd>--%>
-                                                            <%--                                        <dd><a rel="nofollow" title="海信" target="_blank" href="#" rel="nofollow">--%>
-                                                            <%--                                            <span class="red">海信</span></a></dd>--%>
 
-                                                            <%--                                    </dl>--%>
-                                                            <%--                                </div>--%>
                                                     </div>
                                                 </div>
                                             </div>
@@ -158,18 +142,9 @@
             <!--走马灯-->
 
             <div class="marqueen">
-                <span class="marqueen-title">商城头条</span>
                 <div class="demo">
                     <ul>
-                        <li class="title-first"><a href="views/shopInfo.jsp">
-                            <img src="/img/TJ2.jpg"></img>
-                            <span>[特惠]</span>商城爆品1分秒
-                        </a></li>
-                        <li class="title-first"><a target="_blank" href="#">
-                            <span>[公告]</span>商城与长春市签署战略合作协议
-                            <img src="/img/TJ.jpg"></img>
-                            <p>XXXXXXXXXXXXXXXXXX</p>
-                        </a></li>
+
 
                         <div class="mod-vip">
                             <div class="m-baseinfo">
@@ -177,7 +152,7 @@
                                     <img src="/img/getAvatar.do.jpg">
                                 </a>
                                 <em>
-                                    Hi,<span class="s-name">小叮当</span>
+                                    Hi,<span class="s-name">${(sessionScope.get("username") != null)?(sessionScope.get("username")):"请登录"}</span>
                                     <a href="#"><p>点击更多优惠活动</p></a>
                                 </em>
                             </div>
@@ -271,6 +246,15 @@
             var menu = obj.childNodes;                                  //寻找该事件子节点（商品子类别）
             menu[3].style.display = 'none';                            //设置子节点隐藏
         }
+
+
+        $(document).ready(function () {
+            if($("div.mod-vip em span").text() != "请登录"){
+                $("div.mod-vip div.member-logout:first").hide();
+                $("div.mod-vip div.member-login:first").show();
+            }
+
+        })
 
     </script>
     <script type="text/javascript" src="js/ready.js"></script>

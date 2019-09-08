@@ -47,14 +47,15 @@
 						<label for="name_3"  ><i class="mr-icon-user"></i></label>
 						<input type="text" name="name" id="name_3" placeholder="你的昵称" value="${user.name}" >
 					</div>
-					<div class="user-email">
-						<label for="email_3" ><i class="mr-icon-google"></i></label>
-						<input type="email" name="email" id="email_3" placeholder="你的邮箱" value="${user.email}" >
-					</div>
 					<div class="user-phone">
 						<label for="phone_3" ><i class="mr-icon-phone"></i></label>
 						<input type="text" name="phone" id="phone_3" placeholder="你的手机号" readonly value="${user.phone}">
 					</div>
+					<div class="user-email">
+						<label for="email_3" ><i class="mr-icon-google"></i></label>
+						<input type="email" name="email" id="email_3" placeholder="你的邮箱" value="${user.email}" >
+					</div>
+
 					<div class="user-pass">
 						<label for="birthday_3"><i class="mr-icon-birthday-cake"></i></label>
 						<input type="date" name="birthday" id="birthday_3" placeholder="你的生日">
@@ -69,7 +70,7 @@
 			</div>
 
 			<div class="mr-cf">
-				<input type="submit" name="" value="提 交" onclick="submitInfo()" class="mr-btn mr-btn-primary mr-btn-sm " style="border-radius: 14px;">
+				<input type="submit" name="" value="提 交"  onclick="submitInfo()" class="mr-btn mr-btn-primary mr-btn-sm " style="border-radius: 14px;">
 			</div>
 
 

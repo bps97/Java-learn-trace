@@ -66,6 +66,7 @@ public class GoodsListController {
     public String listGoods(@RequestParam(value = "caseList",defaultValue = "")String caseList,
                                 @RequestParam(value = "start",defaultValue = "0")int start,
                                 @RequestParam(value = "step",defaultValue = "20")int step,
+                                @RequestParam(value = "index_none_header_sysc",defaultValue = "")String key,
                                 Model model){
 
 
@@ -88,7 +89,11 @@ public class GoodsListController {
         /* 产品 */
         Set<Integer> productIdSet = null;
         if(caseList.equals("") || caseList.equals("全部,全部,全部,全部,全部,全部") ){
-            productIdSet = productBindFilterService.getProductIdSet();
+            if(key.equals("")) {
+                productIdSet = productBindFilterService.getAllProductIdSet();
+            }else {
+                productIdSet = productService.getProductIDSetByProductName(key);
+            }
 
         }else{
 

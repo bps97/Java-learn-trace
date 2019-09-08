@@ -50,7 +50,7 @@ public class ManageController {
 
 
         Page page = new Page(start,8);
-        Set<Integer> productIdSet = productBindFilterService.getProductIdSet();
+        Set<Integer> productIdSet = productBindFilterService.getAllProductIdSet();
         page.setTotal(productIdSet.size());
 
         List<cn.bps.pojo.Product> products = productService.rowBoundsProduct(productIdSet, page.getStart(), page.getStep());
@@ -127,7 +127,7 @@ public class ManageController {
 
 
         cn.bps.pojo.Product product = productService.getProductById(id);
-        productBindFilterService.delDemos(id);
+        productBindFilterService.deleteDemos(id);
 
         if(productService.deleteOneById(id)==id){
             return "redirect:/manage";

@@ -178,6 +178,13 @@
         </table>
 
 
+        <table tableName="shopping_cart" domainObjectName="ShoppingCart"
+               >
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+
     </context>
 
 

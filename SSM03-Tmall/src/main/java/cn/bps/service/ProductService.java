@@ -20,6 +20,7 @@ public interface ProductService {
 
     int updateOne(Product product);
 
-    int getIdByProduct(Product product);
+    Set<Integer> getProductIDSetByProductName(String name);
+
 
 }

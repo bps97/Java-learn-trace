@@ -43,7 +43,7 @@
                 <div class="menu-hd"><a href="/mobile" style="color:red">手机端</a></div>
             </div>
             <div class="topMessage home">
-                <div class="menu-hd"><a href="/good" target="_top" class="h" style="color:red">商城首页</a></div>
+                <div class="menu-hd"><a href="/index" target="_top" class="h" style="color:red">商城首页</a></div>
             </div>
             <div class="topMessage my-shangcheng">
                 <div class="menu-hd MyShangcheng"><a href="/mySpace" target="_top"><i
@@ -72,7 +72,7 @@
         </div>
         <div class="search-bar pr">
             <a name="index_none_header" href="#"></a>
-            <form>
+            <form action="/good">
                 <input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
                 <input id="ai-topsearch" class="submit mr-btn" value="搜索" index="1" type="submit">
             </form>

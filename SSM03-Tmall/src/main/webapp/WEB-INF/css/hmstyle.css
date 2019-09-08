@@ -33,7 +33,7 @@ ul, li, ol {
 }
 
 img {
-    width: 100%;
+    width: 89%;
 }
 
 .slideall {
@@ -1635,11 +1635,11 @@ dt + dd {
 
     .category-content .menu-item {
         position: absolute;
-        left: 143px;
+        left: 150px;
         height: 100%;
         z-index: 11;
         padding: 0 0 0 2px;
-        width: 790px;
+        width: 774px;
         background: #fff;
         border: none;
         border-top: 1px solid #bbb;
@@ -2853,10 +2853,10 @@ dt + dd {
 
     /*公告布局*/
     .marqueen {
-        width: 220px;
+        width: 210px;
         height: 455px;
         text-align: left;
-        top: 45px;
+        top: 50px;
         padding: 10px;
     }
 
@@ -2914,7 +2914,7 @@ dt + dd {
     }
 
     .member-logout .btn {
-        width: 95px;
+        width: 80px;
         margin-right: 3px;
         height: 25px;
         display: inline-block;
@@ -2946,9 +2946,10 @@ dt + dd {
     .advTip {
         display: block;
         width: 100%;
-        position: absolute;
-        bottom: 2px;
+        position: relative;
+        /*bottom:39px;*/
         left: 0px
+
     }
 
     .advTip img {

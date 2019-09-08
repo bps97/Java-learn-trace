@@ -19,7 +19,6 @@ public class ProductBindFilterServiceImp implements ProductBindFilterService {
     ProductBindFilterMapper productBindFilterMapper;
 
 
-    @Override
     public Set<Integer> getProductIdSet(Set<Integer> filterIdSet) {
 
         Set<Integer> productIdSet = null;
@@ -51,7 +50,7 @@ public class ProductBindFilterServiceImp implements ProductBindFilterService {
     }
 
     @Override
-    public Set<Integer> getProductIdSet() {
+    public Set<Integer> getAllProductIdSet() {
         ProductBindFilterExample productBindFilterExample = new ProductBindFilterExample();
         List<ProductBindFilter> productBindFilter = productBindFilterMapper.selectByExample(productBindFilterExample);
         Set<Integer> productIdSet = new HashSet();
@@ -70,7 +69,7 @@ public class ProductBindFilterServiceImp implements ProductBindFilterService {
     }
 
     @Override
-    public int delDemos(int productId) {
+    public int deleteDemos(int productId) {
 
         ProductBindFilterExample productBindFilterExample = new ProductBindFilterExample();
         productBindFilterExample.createCriteria().andProduct_idEqualTo(productId);
