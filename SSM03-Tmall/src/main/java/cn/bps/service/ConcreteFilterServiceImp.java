@@ -3,7 +3,6 @@ package cn.bps.service;
 import cn.bps.mapper.ConcreteFilterMapper;
 import cn.bps.pojo.ConcreteFilter;
 import cn.bps.pojo.ConcreteFilterExample;
-import cn.bps.pojo.FilterCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +17,7 @@ public class ConcreteFilterServiceImp implements ConcreteFilterService {
 
 
     @Override
-    public Map<Integer, List<ConcreteFilter>> getFilterMap(List<Integer> filterIdList) {
+    public Map<Integer, List<ConcreteFilter>> getFilterMap(Collection<Integer> filterIdList) {
 
 
         Map<Integer, List<ConcreteFilter>> map = new HashMap<>();
@@ -70,7 +69,7 @@ public class ConcreteFilterServiceImp implements ConcreteFilterService {
     }
 
     @Override
-    public String getFilterIds(Set<Integer> filterSet) {
+    public String getFilterIds(Collection<Integer> filterSet) {
         StringBuilder stringBuilder = new StringBuilder();
 
         int first = 0;

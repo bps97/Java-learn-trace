@@ -1,8 +1,10 @@
 package cn.bps.service;
 
 import cn.bps.pojo.Product;
+import cn.bps.pojo.ShoppingCart;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public interface ProductService {
@@ -21,6 +23,8 @@ public interface ProductService {
     int updateOne(Product product);
 
     Set<Integer> getProductIDSetByProductName(String name);
+
+    Map<Integer,Product> getProductMapByShoppingCartList(List<ShoppingCart> shoppingCarts);
 
 
 }

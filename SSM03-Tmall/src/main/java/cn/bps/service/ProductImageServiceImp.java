@@ -7,6 +7,7 @@ import cn.bps.pojo.ProductImageExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +21,7 @@ public class ProductImageServiceImp implements ProductImageService {
 
 
     @Override
-    public Map<Integer, String> getImageUrls(List<Product> products) {
+    public Map<Integer, String> getImageUrls(Collection<Product> products) {
         Map<Integer, String> map = new HashMap();
 
         for(Product product:products){

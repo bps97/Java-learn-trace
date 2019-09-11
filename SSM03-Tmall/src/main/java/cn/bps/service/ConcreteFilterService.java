@@ -2,13 +2,14 @@ package cn.bps.service;
 
 import cn.bps.pojo.ConcreteFilter;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public interface ConcreteFilterService {
 
-    Map<Integer, List<ConcreteFilter>> getFilterMap(List<Integer> filterIdList);
+    Map<Integer, List<ConcreteFilter>> getFilterMap(Collection<Integer> filterIdList);
 
     List<ConcreteFilter> getFilterListById(int id);
 
@@ -16,6 +17,6 @@ public interface ConcreteFilterService {
 
     Set<Integer> getFilterIdByValues(String[] values);
 
-    String getFilterIds(Set<Integer> filterSet);
+    String getFilterIds(Collection<Integer> filterSet);
 
 }

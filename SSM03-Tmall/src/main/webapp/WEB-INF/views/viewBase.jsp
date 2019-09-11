@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="topMessage mini-cart">
-                <div class="menu-hd"><a id="mc-menu-hd" href="/shopCart" target="_top"><i
+                <div class="menu-hd"><a id="mc-menu-hd" href="/shoppingCart" target="_top"><i
                         class="mr-icon-shopping-cart  mr-icon-fw"></i><span style="color:red">购物车</span><strong
                         id="J_MiniCartNum"
                         class="h">0</strong></a>
@@ -119,7 +119,7 @@
 <div class="navCir">
     <li class="active"><a href="/index"><i class="mr-icon-home "></i>首页</a></li>
     <li><a href="/good"><i class="mr-icon-list"></i>商品</a></li>
-    <li><a href="/shopCart"><i class="mr-icon-shopping-basket"></i>购物车</a></li>
+    <li><a href="/shoppingCart"><i class="mr-icon-shopping-basket"></i>购物车</a></li>
     <li><a href="/mySpace"><i class="mr-icon-user"></i>我的</a></li>
 </div>
 <!--菜单 -->
@@ -144,8 +144,8 @@
                     <i class="icon_arrow_white"></i>
                 </div>
             </div>
-            <div id="shopCart" class="item">
-                <a href="/shopCart"> <span class="message"></span> </a>
+            <div id="shoppingCart" class="item">
+                <a href="/shoppingCart"> <span class="message"></span> </a>
 
                 <p> 购物车 </p>
 
@@ -213,7 +213,7 @@
             我
         </div>
     </div>
-    <div id="shopCart-content" class="nav-content">
+    <div id="shoppingCart-content" class="nav-content">
         <div class="nav-con-close">
             <i class="mr-icon-angle-right mr-icon-fw"></i>
         </div>

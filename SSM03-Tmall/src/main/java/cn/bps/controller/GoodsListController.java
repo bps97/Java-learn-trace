@@ -1,16 +1,15 @@
 package cn.bps.controller;
 
-import cn.bps.pojo.ConcreteFilter;
-import cn.bps.pojo.FilterCase;
-import cn.bps.pojo.Product;
-import cn.bps.pojo.Property;
+import cn.bps.pojo.*;
 import cn.bps.service.*;
 import cn.bps.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.*;
 
 
@@ -36,11 +35,7 @@ public class GoodsListController {
     @Autowired
     private PropertyService propertyService;
 
-    @RequestMapping(value = "/shopCart")
-    public String showShopCart(){
 
-        return "shopCart";
-    }
 
 
 

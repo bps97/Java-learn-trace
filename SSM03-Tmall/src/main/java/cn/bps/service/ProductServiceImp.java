@@ -1,18 +1,14 @@
 package cn.bps.service;
 
-import cn.bps.mapper.ProductBindFilterMapper;
 import cn.bps.mapper.ProductMapper;
 import cn.bps.pojo.Product;
-import cn.bps.pojo.ProductBindFilter;
 import cn.bps.pojo.ProductExample;
+import cn.bps.pojo.ShoppingCart;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 @Service
@@ -87,6 +83,18 @@ public class ProductServiceImp implements ProductService {
         }
 
         return productIdSet;
+    }
+
+    @Override
+    public Map<Integer, Product> getProductMapByShoppingCartList(List<ShoppingCart> shoppingCarts) {
+
+        Map<Integer, Product> map = new HashMap<>();
+
+        for(ShoppingCart shoppingCart : shoppingCarts){
+            map.put(shoppingCart.getProduct_id(),productMapper.selectByPrimaryKey(shoppingCart.getProduct_id()));
+        }
+
+        return map;
     }
 
 

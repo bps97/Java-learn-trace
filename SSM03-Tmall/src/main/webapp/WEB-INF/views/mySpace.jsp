@@ -58,8 +58,7 @@
 
 					<div class="user-pass">
 						<label for="birthday_3"><i class="mr-icon-birthday-cake"></i></label>
-						<input type="date" name="birthday" id="birthday_3" placeholder="你的生日">
-
+						<input type="date" name="birthday" id="birthday_3" placeholder="你的生日" value="${user.birthday.toString()}">
 					</div>
 
 				<%--					<div class="user-name">--%>
@@ -104,6 +103,14 @@
 	</div>
 </div>
 </body>
-
+<%--<script>--%>
+<%--	$(document).ready(function () {--%>
+<%--		var time = new Date();--%>
+<%--		var day = ("0" + time.getDate()).slice(-2);--%>
+<%--		var month = ("0" + (time.getMonth() + 1)).slice(-2);--%>
+<%--		var today = time.getFullYear() + "-" + (month) + "-" + (day);--%>
+<%--		$('#birthday_3').val(today);--%>
+<%--	})--%>
+<%--</script>--%>
 
 </html>
