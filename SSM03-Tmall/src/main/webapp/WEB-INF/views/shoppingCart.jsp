@@ -65,9 +65,9 @@
                             <ul class="item-content clearfix">
                                 <li class="td td-chk">
                                     <div class="cart-checkbox ">
-                                        <input class="check" id="" name="items[]"
+                                        <input class="check" id="shop_${shoppingCart.id}" name="items"
                                                value="170037950254" type="checkbox">
-                                        <label for=""></label>
+                                        <label for="shop_${shoppingCart.id}"></label>
                                     </div>
                                 </li>
                                 <li class="td td-item">
@@ -149,8 +149,8 @@
         <div class="float-bar-wrapper">
             <div id="J_SelectAll2" class="select-all J_SelectAll">
                 <div class="cart-checkbox">
-                    <input class="check-all check" id="J_SelectAllCbx2" name="select-all" value="true" type="checkbox">
-                    <label for="J_SelectAllCbx2"></label>
+                    <input class="check-all check" id="J_SelectAll" name="select-all" value="true" type="checkbox">
+                    <label for="J_SelectAll"></label>
                 </div>
 
                 <span>全选</span>
@@ -162,7 +162,7 @@
             <div class="float-bar-right">
                 <div class="amount-sum">
                     <span class="txt">已选商品</span>
-                    <em id="J_SelectedItemsCount">0</em><span class="txt">件</span>
+                    <em id="J_SelectedCount">0</em><span class="txt">件</span>
                     <div class="arrow-box">
                         <span class="selected-items-arrow"></span>
                         <span class="arrow"></span>
@@ -170,7 +170,7 @@
                 </div>
                 <div class="price-sum">
                     <span class="txt">合计:</span>
-                    <strong class="price">¥<em id="J_Total"><c:out value="${totalPrice}"/></em></strong>
+                    <strong class="price">¥<em id="J_Total">0</em></strong>
                 </div>
                 <div class="btn-area">
                     <a href="/pay" id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
@@ -261,6 +261,62 @@
             quality = $("#text_box").val();
             $("#text_box").attr("value",Number(quality)+1);
         })
+
+
+        $('input[id=J_SelectAll]').click(function () {
+            if($(this).prop('checked')){
+                $('input[name=items]').each(function () {
+                    $(this).prop("checked",true);
+                })
+            }else{
+                $('input[name=items]').each(function () {
+                    $(this).prop("checked",false);
+                })
+            }
+
+
+        })
+
+
+
+
+        $("input.check").click(function () {
+            var arr = new Array();
+
+
+            $('li div.cart-checkbox input[name=items]:checked').each(function () {
+                arr.push($(this).attr("id").toString().charAt(5));
+            })
+
+            url = "countTotal.do";
+            if(arr.length>0){
+                $.ajax({
+                    url:url,
+                    type:'get',
+                    data:{'shopId':arr},
+                    datatype:'json',
+                    traditional:true,
+                    success:function (resp) {
+                        $("#J_Total").text(resp);
+
+                        $("#J_SelectedCount").text(arr.length);
+                    },
+                    error:function () {
+                        alert("error");
+                    }
+                })
+            }else{
+                $("#J_Total").text(0.00);
+                $("#J_SelectedCount").text(0);
+            }
+
+            // for(var i in arr){
+            //     console.log(arr[i])
+            // }
+
+
+
+    })
 
     })
 

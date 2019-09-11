@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +30,20 @@ public class ShoppingCartController {
 
     @Autowired
     ProductImageService productImageService;
+
+
+
+    @RequestMapping(value = "countTotal.do")
+    @ResponseBody
+    public Float countTotalPrice(Integer[] shopId){
+        if(shopId.length==0){
+            return 0f;
+        }
+        List<Integer> list = Arrays.asList(shopId);
+
+        return shoppingCartService.countTotalPrice(list);
+    }
+
 
     @RequestMapping(value = "/shoppingCart")
     public String showShopCart(HttpSession session,
@@ -51,8 +66,8 @@ public class ShoppingCartController {
         Map<Integer, String> urls = productImageService.getImageUrls(productMap.values());
         model.addAttribute("images",urls);
 
-        Float totalPrice = shoppingCartService.countTotalPrice(userId);
-        model.addAttribute("totalPrice",totalPrice);
+//        Float totalPrice = shoppingCartService.countTotalPrice(userId);
+//        model.addAttribute("totalPrice",totalPrice);
 
         return "shoppingCart";
     }

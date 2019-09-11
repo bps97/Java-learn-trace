@@ -302,7 +302,7 @@
                 url:url,
                 type:'get',
                 data:{'userId':userId},
-                datetype:'json',
+                datatype:'json',
                 success:function (resp) {
                     var name = resp.name;
                     $('#prof div div ul li:first strong').text(name);

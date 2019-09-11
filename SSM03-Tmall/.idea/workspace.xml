@@ -10,32 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea57d8ea-b489-4dc6-a19e-d9bd604e040a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/bps/controller/ShoppingCartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSM02-SimpleStudentManage/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM02-SimpleStudentManage/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSM02-SimpleStudentManage/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM02-SimpleStudentManage/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/controller/GoodsListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/controller/GoodsListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/pojo/UserExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/pojo/UserExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/service/ConcreteFilterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/service/ConcreteFilterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/service/ConcreteFilterServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/service/ConcreteFilterServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/service/ProductBindFilterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/service/ProductBindFilterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/service/ProductBindFilterServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/service/ProductBindFilterServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/service/ProductImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/service/ProductImageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/service/ProductImageServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/service/ProductImageServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/service/ProductServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/service/ProductServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/controller/ShoppingCartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/controller/ShoppingCartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/service/ShoppingCartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/service/ShoppingCartService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/service/ShoppingCartServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/service/ShoppingCartServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/service/SubCategoryServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/service/SubCategoryServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/bps/service/UserServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/bps/service/UserServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/jdbc.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/demo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/demo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/goodInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/goodInfo.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/mySpace.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/mySpace.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/shopCart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/shoppingCart.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/shoppingCart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/shoppingCart.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/viewBase.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/viewBase.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,24 +48,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/controller/MemberController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1343">
-              <caret line="94" column="45" selection-start-line="94" selection-start-column="45" selection-end-line="94" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/goodInfo.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15113">
-              <caret line="889" column="10" selection-start-line="871" selection-start-column="8" selection-end-line="889" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/jdbc.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
@@ -93,11 +56,54 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/goodInfo.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="218">
+              <caret line="887" lean-forward="true" selection-start-line="887" selection-end-line="887" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/shoppingCart.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="243" selection-start-line="243" selection-end-line="243" />
+            <state relative-caret-position="508">
+              <caret line="309" column="44" selection-start-line="309" selection-start-column="44" selection-end-line="309" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/viewBase.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="434">
+              <caret line="315" lean-forward="true" selection-start-line="315" selection-end-line="315" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/productInfo.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-388" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/manage.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1326">
+              <caret line="78" column="65" selection-start-line="78" selection-start-column="65" selection-end-line="78" selection-end-column="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/goods.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2301">
+              <caret line="75" column="75" selection-start-line="75" selection-start-column="75" selection-end-line="75" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -105,11 +111,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/controller/ShoppingCartController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="42" />
+            <state relative-caret-position="-88">
+              <caret line="39" column="20" lean-forward="true" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
               <folding>
-                <element signature="method#showShopCart#0;class#ShoppingCartController#0" />
                 <element signature="e#1858#1909#0" />
+                <element signature="method#ajaxAddShoppingCart#0;class#ShoppingCartController#0" />
+                <element signature="method#addTOShoppingCart#0;class#ShoppingCartController#0" />
               </folding>
             </state>
           </provider>
@@ -118,8 +125,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/service/ShoppingCartServiceImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="935">
-              <caret line="61" selection-start-line="61" selection-end-line="61" />
+            <state relative-caret-position="419">
+              <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -128,7 +135,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/service/ShoppingCartService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -148,11 +155,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mr-icon</find>
-      <find>mr-icon-</find>
-      <find>mr-icon-t</find>
-      <find>mr-icon-google</find>
-      <find>商品</find>
       <find>mr-icon-inst</find>
       <find>assocaition</find>
       <find>tion</find>
@@ -178,6 +180,11 @@
       <find>theme-signin</find>
       <find>good/</find>
       <find>goods</find>
+      <find>$</find>
+      <find>$.aj</find>
+      <find>countTotal</find>
+      <find>￥</find>
+      <find>收藏夹</find>
     </findStrings>
     <replaceStrings>
       <replace>gradientType=0</replace>
@@ -243,15 +250,15 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/bps/service/SubCategoryServiceImp.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/bps/service/UserServiceImp.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/bps/service/FilterCaseServiceImp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/bps/controller/ShoppingCartController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/bps/controller/GoodsListController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/goodInfo.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/viewBase.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/mySpace.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/cn/bps/pojo/User.java" />
         <option value="$PROJECT_DIR$/src/main/resources/jdbc.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/bps/service/ShoppingCartService.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/viewBase.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/cn/bps/service/ShoppingCartServiceImp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/bps/service/ShoppingCartService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/bps/controller/ShoppingCartController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/goodInfo.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/shoppingCart.jsp" />
       </list>
     </option>
@@ -342,6 +349,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="bps" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SSM03-Tmall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSM03-Tmall" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bps" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SSM03-Tmall" type="b2602c69:ProjectViewProjectNode" />
@@ -664,7 +680,7 @@
       <workItem from="1567829455949" duration="21714000" />
       <workItem from="1567903525823" duration="20839000" />
       <workItem from="1567995682516" duration="14086000" />
-      <workItem from="1568205450664" duration="299000" />
+      <workItem from="1568205450664" duration="8635000" />
     </task>
     <servers />
   </component>
@@ -701,7 +717,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="262193000" />
+    <option name="totallyTimeSpent" value="270529000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1874" height="1096" extended-state="6" />
@@ -717,7 +733,7 @@
       <window_info id="Web" order="7" sideWeight="0.50912106" side_tool="true" weight="0.16059603" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32985386" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49944812" visible="true" weight="0.41022965" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49944812" weight="0.29227558" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49944812" weight="0.3308977" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -833,6 +849,20 @@
           <properties />
           <option name="timeStamp" value="54" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/bps/controller/ShoppingCartController.java</url>
+          <line>44</line>
+          <properties />
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/bps/controller/ShoppingCartController.java</url>
+          <line>37</line>
+          <properties class="cn.bps.controller.ShoppingCartController" method="countTotalPrice">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -918,23 +948,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/goods.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="75" column="75" selection-start-line="75" selection-start-column="75" selection-end-line="75" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/productInfo.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/manage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="78" column="65" selection-start-line="78" selection-start-column="65" selection-end-line="78" selection-end-column="65" />
         </state>
       </provider>
     </entry>
@@ -1087,13 +1100,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="949">
-          <caret line="83" column="9" lean-forward="true" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1020" />
@@ -1110,13 +1116,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="580">
           <caret line="207" column="26" selection-start-line="207" selection-start-column="26" selection-end-line="207" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/viewBase.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="53" column="63" selection-start-line="53" selection-start-column="63" selection-end-line="53" selection-end-column="63" />
         </state>
       </provider>
     </entry>
@@ -1180,13 +1179,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/goodInfo.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15113">
-          <caret line="889" column="10" selection-start-line="871" selection-start-column="8" selection-end-line="889" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/jdbc.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -1194,35 +1186,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/controller/ShoppingCartController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/productInfo.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="42" />
-          <folding>
-            <element signature="method#showShopCart#0;class#ShoppingCartController#0" />
-            <element signature="e#1858#1909#0" />
-          </folding>
+        <state relative-caret-position="-388" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1371">
+          <caret line="83" column="9" lean-forward="true" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/manage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1326">
+          <caret line="78" column="65" selection-start-line="78" selection-start-column="65" selection-end-line="78" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/goods.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2301">
+          <caret line="75" column="75" selection-start-line="75" selection-start-column="75" selection-end-line="75" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/viewBase.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="315" lean-forward="true" selection-start-line="315" selection-end-line="315" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/service/ShoppingCartServiceImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        <state relative-caret-position="419">
+          <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/service/ShoppingCartService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/bps/controller/ShoppingCartController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-88">
+          <caret line="39" column="20" lean-forward="true" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
+          <folding>
+            <element signature="e#1858#1909#0" />
+            <element signature="method#ajaxAddShoppingCart#0;class#ShoppingCartController#0" />
+            <element signature="method#addTOShoppingCart#0;class#ShoppingCartController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/goodInfo.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="887" lean-forward="true" selection-start-line="887" selection-end-line="887" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/shoppingCart.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="243" selection-start-line="243" selection-end-line="243" />
+        <state relative-caret-position="508">
+          <caret line="309" column="44" selection-start-line="309" selection-start-column="44" selection-end-line="309" selection-end-column="44" />
         </state>
       </provider>
     </entry>

@@ -56,6 +56,16 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
     }
 
     @Override
+    public float countTotalPrice(List<Integer> shoppingCartIDs) {
+        int count=0;
+        for(Integer id:shoppingCartIDs){
+            Integer productId = shoppingCartMapper.selectByPrimaryKey(id).getProduct_id();
+            count += productService.getProductById(productId).getPrice();
+        }
+        return count;
+    }
+
+    @Override
     public int removeOne(int shopId) {
 
         return shoppingCartMapper.deleteByPrimaryKey(shopId);
