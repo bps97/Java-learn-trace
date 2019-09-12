@@ -15,7 +15,7 @@ import java.util.*;
 public class ProductServiceImp implements ProductService {
 
     @Autowired
-    ProductMapper productMapper;
+    private ProductMapper productMapper;
 
 
     @Override

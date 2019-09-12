@@ -12,7 +12,7 @@ import java.util.*;
 public class ProductBindFilterServiceImp implements ProductBindFilterService {
 
     @Autowired
-    ProductBindFilterMapper productBindFilterMapper;
+    private ProductBindFilterMapper productBindFilterMapper;
 
 
     public Set<Integer> getProductIdSet(Collection<Integer> filterIdSet) {

@@ -954,6 +954,66 @@ public class OrderExample {
             addCriterion("status not between", value1, value2, "status");
             return (Criteria) this;
         }
+
+        public Criteria andProduct_item_idIsNull() {
+            addCriterion("product_item_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduct_item_idIsNotNull() {
+            addCriterion("product_item_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduct_item_idEqualTo(Integer value) {
+            addCriterion("product_item_id =", value, "product_item_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduct_item_idNotEqualTo(Integer value) {
+            addCriterion("product_item_id <>", value, "product_item_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduct_item_idGreaterThan(Integer value) {
+            addCriterion("product_item_id >", value, "product_item_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduct_item_idGreaterThanOrEqualTo(Integer value) {
+            addCriterion("product_item_id >=", value, "product_item_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduct_item_idLessThan(Integer value) {
+            addCriterion("product_item_id <", value, "product_item_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduct_item_idLessThanOrEqualTo(Integer value) {
+            addCriterion("product_item_id <=", value, "product_item_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduct_item_idIn(List<Integer> values) {
+            addCriterion("product_item_id in", values, "product_item_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduct_item_idNotIn(List<Integer> values) {
+            addCriterion("product_item_id not in", values, "product_item_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduct_item_idBetween(Integer value1, Integer value2) {
+            addCriterion("product_item_id between", value1, value2, "product_item_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduct_item_idNotBetween(Integer value1, Integer value2) {
+            addCriterion("product_item_id not between", value1, value2, "product_item_id");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -24,13 +24,13 @@ public class ShoppingCartController {
 
 
     @Autowired
-    ShoppingCartService shoppingCartService;
+    private ShoppingCartService shoppingCartService;
 
     @Autowired
-    ProductService productService;
+    private ProductService productService;
 
     @Autowired
-    ProductImageService productImageService;
+    private ProductImageService productImageService;
 
 
 
@@ -93,6 +93,21 @@ public class ShoppingCartController {
     }
 
 
+    @RequestMapping(value = "/del.do")
+    @ResponseBody
+    public Integer ajaxDelShoppingCart(HttpSession session,
+                                       @RequestParam(value = "itemId",defaultValue = "0") int itemId){
+
+
+        if(session.getAttribute("userId") == null)
+            return 0;
+
+        Integer userId = (Integer) session.getAttribute("userId");
+        return shoppingCartService.removeOne(itemId);
+    }
+
+
+
     @RequestMapping(value = "/post/{id}")
     public String addTOShoppingCart(@PathVariable(value = "id")int productId,
                                     HttpSession session,
@@ -107,6 +122,9 @@ public class ShoppingCartController {
         return "redirect:/shop";
 
     }
+
+
+
 
 
 }

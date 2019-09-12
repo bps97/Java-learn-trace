@@ -61,104 +61,107 @@
                     <div class="clear"></div>
                     <div class="bundle-main">
                         <form action="/order" id="formSelectedGoods" method="post">
-                        <c:forEach items="${shoppingCarts}" var="shoppingCart">
-                            <ul class="item-content clearfix">
-                                <li class="td td-chk">
-                                    <div class="cart-checkbox ">
-                                        <input class="check" id="shop_${shoppingCart.id}" name="items"
-                                               value="${shoppingCart.id}" type="checkbox">
-                                        <label for="shop_${shoppingCart.id}"></label>
-                                    </div>
-                                </li>
-                                <li class="td td-item">
-                                    <div class="item-pic">
-                                        <a href="#" target="_blank"
-                                           data-title="${productMap.get(shoppingCart.product_id).name}"
-                                           class="J_MakePoint" data-point="tbcart.8.12">
-                                            <img src="${images.get(productMap.get(shoppingCart.product_id).id)}"
-                                                 width="80px" height="80px"
-                                                 class="itempic J_ItemImg">${productMap.get(shoppingCart.product_id).name}
-                                        </a>
-                                    </div>
-                                    <div class="item-info">
-                                        <div class="item-basic-info">
+                            <c:forEach items="${shoppingCarts}" var="shoppingCart">
+                                <ul class="item-content clearfix">
+                                    <li class="td td-chk">
+                                        <br>
+                                        <div class="cart-checkbox ">
+                                            <input class="check" id="shop_${shoppingCart.id}" name="items"
+                                                   value="${shoppingCart.id}" type="checkbox">
+                                            <label for="shop_${shoppingCart.id}"></label>
+                                        </div>
+                                    </li>
+                                    <li class="td td-item">
+                                        <div class="item-pic">
                                             <a href="#" target="_blank"
-                                               title="${productMap.get(shoppingCart.product_id).name}"
-                                               class="item-title J_MakePoint"
-                                               data-point="tbcart.8.11">${productMap.get(shoppingCart.product_id).name}</a>
+                                               data-title="${productMap.get(shoppingCart.product_id).name}"
+                                               class="J_MakePoint" data-point="tbcart.8.12">
+                                                <img src="${images.get(productMap.get(shoppingCart.product_id).id)}"
+                                                     width="80px" height="80px"
+                                                     class="itempic J_ItemImg">${productMap.get(shoppingCart.product_id).name}
+                                            </a>
                                         </div>
-                                    </div>
-                                </li>
-                                <li class="td td-info">
-                                    <div class="item-props item-props-can">
-                                        <span class="sku-line">颜色：白色</span>
-                                        <span class="sku-line">包装：裸装</span>
-                                        <span tabindex="0" class="btn-edit-sku theme-login">修改</span>
-                                        <i class="theme-login mr-icon-sort-desc"></i>
-                                    </div>
-                                </li>
-                                <li class="td td-price">
-                                    <div class="item-price price-promo-promo">
-                                        <div class="price-content">
-                                            <div class="price-line">
-                                                <em class="price-original">${fn:substringBefore(productMap.get(shoppingCart.product_id).price*1.2,'.')}</em>
-                                            </div>
-                                            <div class="price-line">
-                                                <em class="J_Price price-now" tabindex="0">${productMap.get(shoppingCart.product_id).price}</em>
+                                        <div class="item-info">
+                                            <div class="item-basic-info">
+                                                <a href="#" target="_blank"
+                                                   title="${productMap.get(shoppingCart.product_id).name}"
+                                                   class="item-title J_MakePoint"
+                                                   data-point="tbcart.8.11">${productMap.get(shoppingCart.product_id).name}</a>
                                             </div>
                                         </div>
-                                    </div>
-                                </li>
-                                <li class="td td-amount">
-                                    <div class="amount-wrapper ">
-                                        <div class="item-amount ">
-                                            <div class="sl">
-                                                <input id="min${shoppingCart.id}" class="min mr-btn" name="" type="button" value="-"/>
-                                                <input id="text_box${shoppingCart.id}" class="text_box" name="" type="text" value="${shoppingCart.quality}"
-                                                       style="width:30px;"/>
-                                                <input id=add${shoppingCart.id}" class="add mr-btn" name="" type="button" value="+"/>
+                                    </li>
+                                    <li class="td td-info">
+                                        <div class="item-props item-props-can">
+                                            <span class="sku-line">颜色：白色</span>
+                                            <span class="sku-line">包装：裸装</span>
+                                            <span tabindex="0" class="btn-edit-sku theme-login">修改</span>
+                                            <i class="theme-login mr-icon-sort-desc"></i>
+                                        </div>
+                                    </li>
+                                    <li class="td td-price">
+                                        <div class="item-price price-promo-promo">
+                                            <div class="price-content">
+                                                <div class="price-line">
+                                                    <em class="price-original">${fn:substringBefore(productMap.get(shoppingCart.product_id).price*1.2,'.')}</em>
+                                                </div>
+                                                <div class="price-line">
+                                                    <em class="J_Price price-now"
+                                                        tabindex="0">${productMap.get(shoppingCart.product_id).price}</em>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </li>
-                                <li class="td td-sum">
-                                    <div class="td-inner">
-                                        <em tabindex="0" class="J_ItemSum number">${productMap.get(shoppingCart.product_id).price}</em>
-                                    </div>
-                                </li>
-                                <li class="td td-op">
-                                    <div class="td-inner">
-                                        <a title="移入收藏夹" class="btn-fav" href="#">
-                                            移入收藏夹</a>
-                                        <a href="javascript:;" data-point-url="#" class="delete">
-                                            删除</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </c:forEach>
+                                    </li>
+                                    <li class="td td-amount">
+                                        <div class="amount-wrapper ">
+                                            <div class="item-amount ">
+                                                <div class="sl">
+                                                    <input id="min${shoppingCart.id}" class="min mr-btn" name=""
+                                                           type="button"
+                                                           value="-"/>
+                                                    <input id="text_box${shoppingCart.id}" class="text_box" name=""
+                                                           type="text"
+                                                           value="${shoppingCart.quality}"
+                                                           style="width:30px;"/>
+                                                    <input id=add${shoppingCart.id}" class="add mr-btn" name=""
+                                                           type="button"
+                                                           value="+"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="td td-sum">
+                                        <div class="td-inner">
+                                            <em tabindex="0"
+                                                class="J_ItemSum number">${productMap.get(shoppingCart.product_id).price}</em>
+                                        </div>
+                                    </li>
+                                    <li class="td td-op">
+                                        <div class="td-inner">
+                                            <a title="移入收藏夹" class="btn-fav" href="#">
+                                                移入收藏夹</a>
+                                            <a href="javascript:void(0)" data-point-url="#" class="delete"
+                                               value="${shoppingCart.id}">删除</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </c:forEach>
                         </form>
 
                     </div>
                 </div>
             </tr>
-            <div class="clear"></div>
+            <div class=" clear">
+            </div>
 
         </div>
         <div class="clear"></div>
 
         <div class="float-bar-wrapper">
             <div id="J_SelectAll2" class="select-all J_SelectAll">
-                <div class="cart-checkbox">
-                    <input class="check-all check" id="J_SelectAll" name="select-all" value="true" type="checkbox">
-                    <label for="J_SelectAll"></label>
-                </div>
+                    <input class="check" id="J_SelectAll" name="select-all" value="true" type="checkbox">
+                    <label for="J_SelectAll"><span>&nbsp;&nbsp;全选</span></label>
+            </div>
 
-                <span>全选</span>
-            </div>
-            <div class="operations">
-                <a href="#" hidefocus="true" class="deleteAll">删除</a>
-                <a href="#" hidefocus="true" class="J_BatchFav">移入收藏夹</a>
-            </div>
             <div class="float-bar-right">
                 <div class="amount-sum">
                     <span class="txt">已选商品</span>
@@ -172,10 +175,11 @@
                     <span class="txt">合计:</span>
                     <strong class="price">¥<em id="J_Total">0</em></strong>
                 </div>
-                <div class="btn-area">
-                    <a href="javascript:submitOrder()" id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
-                        <span>结&nbsp;算</span></a>
-                </div>
+                <a href="#" id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
+                    <div class="btn-area">
+                        <span style="color: #f5f5f2">结&nbsp;算</span>
+                    </div>
+                </a>
             </div>
         </div>
 
@@ -246,85 +250,114 @@
 
 <rapid:override name="script_content">
 
-<script>
+    <script>
 
-    var submitOrder = function(){
-        $("#formSelectedGoods").submit();
-    }
+        var submitOrder = function () {
+            $("#formSelectedGoods").submit();
+        }
 
-    $(document).ready(function () {
 
-        var quality = 1;
+        $("a.delete").click(function () {
+            var productItemId = $(this).attr("value");
+            url ="/shop/del.do/";
+            $.ajax({
+                url: url,
+                type: 'get',
+                data: {'itemId': productItemId},
+                datatype: 'json',
+                success: function (resp) {
+                    if(resp!=0){
+                        window.location.reload();
+                    }
+                },
+                error: function () {
+                    alert("error");
+                }
 
-        $("#min").click(function () {
-            quality = $("#text_box").val();
-            if(quality>1)
-                $("#text_box").attr("value",quality-1);
+            })
         })
-        $("#add").click(function () {
-            quality = $("#text_box").val();
-            $("#text_box").attr("value",Number(quality)+1);
-        })
 
-
-        $('input[id=J_SelectAll]').click(function () {
-            if($(this).prop('checked')){
-                $('input[name=items]').each(function () {
-                    $(this).prop("checked",true);
-                })
-            }else{
-                $('input[name=items]').each(function () {
-                    $(this).prop("checked",false);
-                })
+        $("#J_Go").hover(function () {
+            if ($("#J_Total").text() == 0) {
+                $(this).attr("href", "javascript:void(0)");
+            } else {
+                $(this).attr("href", "javascript:submitOrder()");
             }
-
-
         })
 
+        $(document).ready(function () {
 
-
-
-        $("input.check").click(function () {
-            var arr = new Array();
-
-
-            $('li div.cart-checkbox input[name=items]:checked').each(function () {
-                arr.push($(this).attr("id").toString().charAt(5));
+            var quality = 1;
+            $(".min").click(function () {
+                var $prev = $(this).parent().children('input[type=text]');
+                quality = $prev.val();
+                if (quality > 1)
+                    $prev.attr("value", quality - 1);
+            })
+            $(".add").click(function () {
+                var $next = $(this).parent().children('input[type=text]');
+                quality = $next.val();
+                $next.attr("value", Number(quality) + 1);
             })
 
-            url = "shop/countTotal.do";
-            if(arr.length>0){
-                $.ajax({
-                    url:url,
-                    type:'get',
-                    data:{'shopId':arr},
-                    datatype:'json',
-                    traditional:true,
-                    success:function (resp) {
-                        $("#J_Total").text(resp);
 
-                        $("#J_SelectedCount").text(arr.length);
-                    },
-                    error:function () {
-                        alert("error");
-                    }
+            $('input[id=J_SelectAll]').click(function () {
+                if ($(this).prop('checked')) {
+                    $('input[name=items]').each(function () {
+                        $(this).prop("checked", true);
+                    })
+                } else {
+                    $('input[name=items]').each(function () {
+                        $(this).prop("checked", false);
+                    })
+                }
+
+
+            })
+
+
+            $("input.check").click(function () {
+                var arr = new Array();
+
+
+                $('li div.cart-checkbox input[name=items]:checked').each(function () {
+                    arr.push($(this).attr("id").toString().substr(5));
                 })
-            }else{
-                $("#J_Total").text(0.00);
-                $("#J_SelectedCount").text(0);
-            }
 
-            // for(var i in arr){
-            //     console.log(arr[i])
-            // }
+                url = "shop/countTotal.do";
+                if (arr.length > 0) {
+                    $.ajax({
+                        url: url,
+                        type: 'post',
+                        data: {'shopId': arr},
+                        datatype: 'json',
+                        traditional: true,
+                        success: function (resp) {
+                            $("#J_Total").text(resp);
+
+                            $("#J_SelectedCount").text(arr.length);
+                        },
+                        error: function () {
+                            alert("error");
+                        }
+                    })
+                } else {
+                    $("#J_Total").text(0.00);
+                    $("#J_SelectedCount").text(0);
+                }
+
+                // for(var i in arr){
+                //     console.log(arr[i])
+                // }
+
+
+            })
 
 
 
-    })
+        })
 
-    })
-
-</script>
+    </script>
 
 </rapid:override>
 

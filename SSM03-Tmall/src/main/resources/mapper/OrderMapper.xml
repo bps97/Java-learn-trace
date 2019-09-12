@@ -15,6 +15,7 @@
     <result column="confirm_date" jdbcType="TIMESTAMP" property="confirm_date" />
     <result column="user_id" jdbcType="INTEGER" property="user_id" />
     <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="product_item_id" jdbcType="INTEGER" property="product_item_id" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -47,7 +48,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, order_code, address, post, receiver, mobile, user_message, create_date, pay_date, 
-    delivery_date, confirm_date, user_id, status
+    delivery_date, confirm_date, user_id, status, product_item_id
   </sql>
   <select id="selectByExample" parameterType="cn.bps.pojo.OrderExample" resultMap="BaseResultMap">
     select
@@ -78,13 +79,13 @@
     insert into order_ (order_code, address, post, 
       receiver, mobile, user_message, 
       create_date, pay_date, delivery_date, 
-      confirm_date, user_id, status
-      )
+      confirm_date, user_id, status, 
+      product_item_id)
     values (#{order_code,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{post,jdbcType=VARCHAR}, 
       #{receiver,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{user_message,jdbcType=VARCHAR}, 
       #{create_date,jdbcType=TIMESTAMP}, #{pay_date,jdbcType=TIMESTAMP}, #{delivery_date,jdbcType=TIMESTAMP}, 
-      #{confirm_date,jdbcType=TIMESTAMP}, #{user_id,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}
-      )
+      #{confirm_date,jdbcType=TIMESTAMP}, #{user_id,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, 
+      #{product_item_id,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.Order" useGeneratedKeys="true">
     insert into order_
@@ -125,6 +126,9 @@
       <if test="status != null">
         status,
       </if>
+      <if test="product_item_id != null">
+        product_item_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="order_code != null">
@@ -162,6 +166,9 @@
       </if>
       <if test="status != null">
         #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="product_item_id != null">
+        #{product_item_id,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -204,6 +211,9 @@
       <if test="status != null">
         status = #{status,jdbcType=VARCHAR},
       </if>
+      <if test="product_item_id != null">
+        product_item_id = #{product_item_id,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -220,7 +230,8 @@
       delivery_date = #{delivery_date,jdbcType=TIMESTAMP},
       confirm_date = #{confirm_date,jdbcType=TIMESTAMP},
       user_id = #{user_id,jdbcType=INTEGER},
-      status = #{status,jdbcType=VARCHAR}
+      status = #{status,jdbcType=VARCHAR},
+      product_item_id = #{product_item_id,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByExampleWithRowbounds" parameterType="cn.bps.pojo.OrderExample" resultMap="BaseResultMap">

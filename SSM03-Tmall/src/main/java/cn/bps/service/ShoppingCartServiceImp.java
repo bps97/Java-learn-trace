@@ -13,10 +13,10 @@ import java.util.List;
 @Service
 public class ShoppingCartServiceImp implements ShoppingCartService {
     @Autowired
-    ShoppingCartMapper shoppingCartMapper;
+    private ShoppingCartMapper shoppingCartMapper;
 
     @Autowired
-    ProductService productService;
+    private ProductService productService;
 
     @Override
     public List<ShoppingCart> getShoppingCartProductByUserId(int userId) {
@@ -89,5 +89,14 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
         shoppingCart.setUser_id(userId);
         return insertOne(shoppingCart);
     }
+
+    @Override
+    public List<ShoppingCart> getShoppingCartByIds(List<Integer> itemIds) {
+
+        ShoppingCartExample shoppingCartExample = new ShoppingCartExample();
+        shoppingCartExample.createCriteria().andIdIn(itemIds);
+        return shoppingCartMapper.selectByExample(shoppingCartExample);
+    }
+
 
 }

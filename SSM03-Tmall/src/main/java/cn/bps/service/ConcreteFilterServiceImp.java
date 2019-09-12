@@ -13,7 +13,7 @@ import java.util.*;
 public class ConcreteFilterServiceImp implements ConcreteFilterService {
 
     @Autowired
-    ConcreteFilterMapper concreteFilterMapper;
+    private ConcreteFilterMapper concreteFilterMapper;
 
 
     @Override

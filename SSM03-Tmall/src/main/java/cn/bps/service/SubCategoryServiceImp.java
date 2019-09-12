@@ -15,10 +15,10 @@ import java.util.Map;
 public class SubCategoryServiceImp implements SubCategorySerivce {
 
     @Autowired
-    SubCategoryMapper subcategoryMapper;
+    private SubCategoryMapper subcategoryMapper;
 
     @Autowired
-    CategoryService categoryService;
+    private CategoryService categoryService;
 
     public List<SubCategory> getCategoryDemos(int id){
 

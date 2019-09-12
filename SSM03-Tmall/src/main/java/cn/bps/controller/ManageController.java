@@ -26,22 +26,22 @@ import java.util.Set;
 public class ManageController {
 
     @Autowired
-    ProductService productService;
+    private ProductService productService;
 
     @Autowired
-    ProductBindFilterService productBindFilterService;
+    private ProductBindFilterService productBindFilterService;
 
     @Autowired
-    CategoryService categoryService;
+    private CategoryService categoryService;
 
     @Autowired
-    ProductImageService productImageService;
+    private ProductImageService productImageService;
 
     @Autowired
-    FilterCaseService filterCaseService;
+    private FilterCaseService filterCaseService;
 
     @Autowired
-    ConcreteFilterService concreteFilterService;
+    private ConcreteFilterService concreteFilterService;
 
     @RequestMapping(value = {"","/list","s"})
     public String showManage(Model model,

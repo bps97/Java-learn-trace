@@ -16,7 +16,7 @@ import java.util.Map;
 public class ProductImageServiceImp implements ProductImageService {
 
     @Autowired
-    ProductImageMapper productImageMapper;
+    private ProductImageMapper productImageMapper;
 
 
 

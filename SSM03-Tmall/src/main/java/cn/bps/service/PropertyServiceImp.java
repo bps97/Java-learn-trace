@@ -12,7 +12,7 @@ import java.util.List;
 public class PropertyServiceImp implements PropertyService {
 
     @Autowired
-    PropertyMapper propertyMapper;
+    private PropertyMapper propertyMapper;
 
 
 

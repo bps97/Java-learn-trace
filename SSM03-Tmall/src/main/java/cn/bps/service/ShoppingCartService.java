@@ -23,5 +23,8 @@ public interface ShoppingCartService {
     int insertOne(int productId, int userId, int quality);
 
 
+    List<ShoppingCart> getShoppingCartByIds(List<Integer> itemIds);
+
+
 //    boolean isProductExist(int productId);
 }
