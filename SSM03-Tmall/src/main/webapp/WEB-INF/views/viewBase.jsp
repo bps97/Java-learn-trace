@@ -105,11 +105,11 @@
     </div>
     <div class="footer-bd ">
         <p>
-            <a href="http://www.mingrisoft.com/Index/ServiceCenter/aboutus.jsp" target="_blank">关于明日</a>
+            <a href="http://www.mingrisoft.com/Index/ServiceCenter/aboutus.jsp" target="_blank">关于Bps</a>
             <a href="#">合作伙伴</a>
             <a href="#">联系我们</a>
             <a href="#">网站地图</a>
-            <em>© 2016-2025 mingrisoft.com 版权所有</em>
+            <em>© 1997-2020 github/bps97 版权所有</em>
         </p>
     </div>
 </div>
@@ -147,7 +147,7 @@
             <div id="shoppingCart" class="item">
                 <a href="/shop"> <span class="message"></span> </a>
 
-                <p> 购物车 </p>
+                <p id="shoppingCart_p"> 购物车 </p>
 
                 <p class="cart_num">1</p>
             </div>

@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" type="text/css" href="/css/optstyle.css"/>
     <link rel="stylesheet" type="text/css" href="/css/infoStyle.css"/>
-    <script src="/js/jquery.fly.min.js"></script>
+
 
 </rapid:override>
 
@@ -53,7 +53,7 @@
                 <div class="flexslider">
                     <ul class="slides">
                         <li>
-                            <img src="/img/01.jpg" title="pic" id="imgxx"/>
+                            <img src="/img/01.jpg" title="pic"/>
                         </li>
                         <li>
                             <img src="/img/02.jpg"/>
@@ -72,8 +72,8 @@
             <div class="clearfixLeft" id="clearcontent">
                 <div class="box">
                     <div class="tb-booth tb-pic tb-s310">
-                        <a href="${imgUrl}"><img src="${imgUrl}" alt="细节展示放大镜特效" rel="${imgUrl} "
-                                                 class="jqzoom" id="goodImg"/></a>
+                        <a href="${imgUrl}"><img src="${imgUrl}" alt="细节展示放大镜特效" rel="${imgUrl}"
+                                                 class="jqzoom"/></a>
                     </div>
                 </div>
                 <div class="clear"></div>
@@ -162,8 +162,7 @@
                                     <a href="javascript:;" title="关闭" class="close">×</a>
                                 </div>
                                 <div class="theme-popbod dform">
-                                    <form class="theme-signin" name="loginform" method="post"
-                                          action="<c:url value='/post/${product.id}' context='/shop' /> ">
+                                    <form class="theme-signin"  name="loginform" method="post" action="<c:url value='/post/${product.id}' context='/shop' /> ">
 
                                         <div class="theme-signin-left">
                                             <div class="theme-options">
@@ -172,8 +171,7 @@
 
                                                 <input id="min" class="mr-btn mr-btn-default" name="" type="button"
                                                        value="-"/>
-                                                <input id="text_box" name="quality" type="text" value="1"
-                                                       style="width:30px;"/>
+                                                <input id="text_box" name="quality" type="text" value="1" style="width:30px;"/>
                                                 <input id="add" class="mr-btn mr-btn-default" name="" type="button"
                                                        value="+"/>
                                                 <span id="Stock" class="tb-hidden">库存<span
@@ -189,7 +187,7 @@
                                         </div>
                                         <div class="theme-signin-right">
                                             <div class="img-info">
-<%--                                                <img src="/img/songzi.jpg"/>--%>
+                                                <img src="/img/songzi.jpg"/>
                                             </div>
                                             <div class="text-info">
                                                 <span class="J_Price price-now">¥39.00</span>
@@ -229,7 +227,7 @@
                     </li>
                     <li>
                         <div class="clearfix tb-btn tb-btn-basket theme-login">
-                            <a id="LikBasket" title="加入购物车" href="javascript:void(0)"><i></i>加入购物车</a>
+                            <a id="LikBasket" title="加入购物车" href="javascript:likeBasket()"><i></i>加入购物车</a>
                         </div>
                     </li>
                 </div>
@@ -242,8 +240,38 @@
 
         <!--优惠套装-->
         <div class="match">
-            <div class="match-title"></div>
+            <div class="match-title">优惠套装</div>
             <div class="match-comment">
+                <ul class="like_list">
+                    <li>
+                        <div class="s_picBox">
+                            <a class="s_pic" href="#"><img src="/img/taozhuang01.jpg"></a>
+                        </div>
+                        <a class="txt" target="_blank" href="#">防爆玻璃钢化膜</a>
+
+                        <div class="info-box"><span class="info-box-price">¥ 29.90</span> <span
+                                class="info-original-price">￥ 199.00</span>
+                        </div>
+                    </li>
+                    <li class="plus_icon"><i>+</i></li>
+                    <li>
+                        <div class="s_picBox">
+                            <a class="s_pic" href="#"><img src="/img/taozhuang02.jpg"></a>
+                        </div>
+                        <a class="txt" target="_blank" href="#"> usb快速充电线</a>
+
+                        <div class="info-box"><span class="info-box-price">¥ 8.90</span> <span
+                                class="info-original-price">￥ 299.00</span>
+                        </div>
+                    </li>
+                    <li class="plus_icon"><i>=</i></li>
+                    <li class="total_price">
+                        <p class="combo_price"><span class="c-title">套餐价:</span><span>￥35.00</span></p>
+
+                        <p class="save_all">共省:<span>￥463.00</span></p> <a href="<c:url value='/shoppingCart'/> "
+                                                                           class="buy_now">立即购买</a></li>
+                    <li class="plus_icon"><i class="mr-icon-angle-right"></i></li>
+                </ul>
             </div>
         </div>
         <div class="clear"></div>
@@ -840,60 +868,26 @@
             youLike.className = "mr-tab-panel mr-fade mr-in mr-active";
         }
 
-
+        
         $(document).ready(function () {
 
             var quality = 1;
 
             $("#min").click(function () {
                 quality = $("#text_box").val();
-                if (quality > 1)
-                    $("#text_box").attr("value", quality - 1);
+                if(quality>1)
+                    $("#text_box").attr("value",quality-1);
             })
             $("#add").click(function () {
                 quality = $("#text_box").val();
-                $("#text_box").attr("value", Number(quality) + 1);
+                $("#text_box").attr("value",Number(quality)+1);
             })
 
 
 
-            var offset = $('#shoppingCart').offset();
-            $("#LikBasket").click(function (event) {
-               flyToCart($(this))
-            })
-            function flyToCart($this) {
-                // var LikBasket = $(this);
-                var img = $("#goodImg").attr('src');
-                var flyer = $('<img class="flyer-img" src="' + img + '">');
-                // var left=$('#goodImg').offset().left;
-                // var top=$('#goodImg').offset().top-$(document).scrollTop();
-                flyer.fly({
-                    start: {
-                        left:$this.offset().left-450, //开始位置（必填）#fly元素会被设置成position: fixed
-                        top: $this.offset().top-$(document).scrollTop()-260//开始位置（必填）
-
-                    },
-                    end: {
-                        left: offset.left, //结束位置（必填）
-                        top: offset.top+100, //结束位置（必填）
-                        width: 0, //结束时宽度
-                        height: 0, //结束时高度
-                    },
-                    onEnd: function () { //结束回调
-                        $("#tip").show().animate({width: '250px'}, 2000).fadeOut(1000); //提示信息
-                        // LikBasket.css("cursor","default").removeClass('orange').unbind('click');
-                        this.destroy(); //移除dom
-                    }
-                });
-                // console.log(event.pageX)
 
 
-                likeBasket();
-            }
         })
-
-
-
 
 
         var likeBasket = function () {
@@ -901,16 +895,16 @@
             var quality = 1;
             quality = $("#text_box").val();
             $.ajax({
-                url: url,
-                type: 'get',
-                data: {'quality': quality},
-                datetype: 'json',
-                success: function (resp) {
-                    if (resp == -1) {
+                url:url,
+                type:'get',
+                data:{'quality':quality},
+                datetype:'json',
+                success:function (resp) {
+                    if(resp == -1){
                         alert("购物车已满！");
                     }
                 },
-                error: function () {
+                error:function () {
                     alert("error");
                 }
             })
@@ -918,7 +912,7 @@
         var likeBuy = function () {
             $("form.theme-signin").submit();
         }
-
+        
     </script>
 </rapid:override>
 <%@ include file="viewBase.jsp" %>

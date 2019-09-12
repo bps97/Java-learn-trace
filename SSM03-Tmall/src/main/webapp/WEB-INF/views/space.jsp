@@ -58,7 +58,7 @@
 
 					<div class="user-pass">
 						<label for="birthday_3"><i class="mr-icon-birthday-cake"></i></label>
-						<input type="date" name="birthday" id="birthday_3" placeholder="你的生日" value="${user.birthday.toString()}">
+						<input type="date" name="birthday" id="birthday_3" placeholder="你的生日" value="${user.birthday}">
 					</div>
 
 				<%--					<div class="user-name">--%>

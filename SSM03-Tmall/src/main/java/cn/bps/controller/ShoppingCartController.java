@@ -34,16 +34,6 @@ public class ShoppingCartController {
 
 
 
-    @RequestMapping(value = "countTotal.do")
-    @ResponseBody
-    public Float countTotalPrice(Integer[] shopId){
-        if(shopId.length==0){
-            return 0f;
-        }
-        List<Integer> list = Arrays.asList(shopId);
-
-        return shoppingCartService.countTotalPrice(list);
-    }
 
 
     @RequestMapping(value = {"","/"})
@@ -106,6 +96,22 @@ public class ShoppingCartController {
         return shoppingCartService.removeOne(itemId);
     }
 
+
+    @RequestMapping(value = "/update.do")
+    @ResponseBody
+    public Integer ajaxAddShoppingCart(HttpSession session,
+                                       @RequestParam(value = "itemId",defaultValue = "0") int itemId,
+                                       @RequestParam(value = "quality",defaultValue = "1") int quality){
+
+
+        if(session.getAttribute("userId") == null)
+            return 0;
+
+        Integer userId = (Integer) session.getAttribute("userId");
+        return shoppingCartService.updateItemQualityByItemId(itemId,quality);
+
+
+    }
 
 
     @RequestMapping(value = "/post/{id}")

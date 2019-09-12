@@ -12,6 +12,9 @@
 
     <link href="/css/cartstyle.css" rel="stylesheet" type="text/css"/>
     <link href="/css/optstyle.css" rel="stylesheet" type="text/css"/>
+    <style type="text/css">
+        input.text{text-align:center;}
+    </style>
 
 
 </rapid:override>
@@ -118,7 +121,7 @@
                                                     <input id="min${shoppingCart.id}" class="min mr-btn" name=""
                                                            type="button"
                                                            value="-"/>
-                                                    <input id="text_box${shoppingCart.id}" class="text_box" name=""
+                                                    <input id="text_box${shoppingCart.id}" class="text_box" name="quality"
                                                            type="text"
                                                            value="${shoppingCart.quality}"
                                                            style="width:30px;"/>
@@ -140,7 +143,7 @@
                                             <a title="移入收藏夹" class="btn-fav" href="#">
                                                 移入收藏夹</a>
                                             <a href="javascript:void(0)" data-point-url="#" class="delete"
-                                               value="${shoppingCart.id}">删除</a>
+                                               value="${shoppingCart.id}">移出购物车</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -158,8 +161,8 @@
 
         <div class="float-bar-wrapper">
             <div id="J_SelectAll2" class="select-all J_SelectAll">
-                    <input class="check" id="J_SelectAll" name="select-all" value="true" type="checkbox">
-                    <label for="J_SelectAll"><span>&nbsp;&nbsp;全选</span></label>
+                <input class="check" id="J_SelectAll" name="select-all" value="true" type="checkbox">
+                <label for="J_SelectAll"><span>&nbsp;&nbsp;全选</span></label>
             </div>
 
             <div class="float-bar-right">
@@ -250,57 +253,53 @@
 
 <rapid:override name="script_content">
 
-    <script>
 
-        var submitOrder = function () {
-            $("#formSelectedGoods").submit();
-        }
-
-
-        $("a.delete").click(function () {
-            var productItemId = $(this).attr("value");
-            url ="/shop/del.do/";
-            $.ajax({
-                url: url,
-                type: 'get',
-                data: {'itemId': productItemId},
-                datatype: 'json',
-                success: function (resp) {
-                    if(resp!=0){
-                        window.location.reload();
-                    }
-                },
-                error: function () {
-                    alert("error");
-                }
-
-            })
-        })
-
-        $("#J_Go").hover(function () {
-            if ($("#J_Total").text() == 0) {
-                $(this).attr("href", "javascript:void(0)");
-            } else {
-                $(this).attr("href", "javascript:submitOrder()");
-            }
-        })
-
+    <script type="text/javascript">
         $(document).ready(function () {
+            var quality = 1;//某项商品数量
+            var uprice = 0.00;//某项商品价格
+            var number = 0.00;
 
-            var quality = 1;
+            updateTotalPrice();
+
             $(".min").click(function () {
+                // 修改数量
                 var $prev = $(this).parent().children('input[type=text]');
                 quality = $prev.val();
                 if (quality > 1)
                     $prev.attr("value", quality - 1);
             })
             $(".add").click(function () {
+                // 修改数量
                 var $next = $(this).parent().children('input[type=text]');
                 quality = $next.val();
                 $next.attr("value", Number(quality) + 1);
             })
+            $('.mr-btn').click(function () {
+                var $parentUl = $(this).parents('ul.item-content');//商品项最外层父标签
+                var $uprice = $parentUl.children("li.td-price").find("em.J_Price");  //单价标签
+                var $number = $parentUl.children('li.td-sum').find("em.number"); //单元合计价格标签
+                var $quality = $(this).parent().children('input[type=text]');
+                quality = $quality.val();
+                uprice = $uprice.text();
+                number = (uprice * quality).toFixed(1);
+                $number.text(number);
+                updateTotalPrice();
 
+                //ajax修改订单
+                var url = "/shop/update.do";
+                var itemId = $parentUl.children('li.td-chk').find("input.check").val();
+                $.ajax({
+                    url:url,
+                    type:'get',
+                    data:{'itemId':itemId,'quality':quality},
+                    datatype:'json',
+                    success:function () {
+                        console.log("xx");
+                    }
+                })
 
+            })
             $('input[id=J_SelectAll]').click(function () {
                 if ($(this).prop('checked')) {
                     $('input[name=items]').each(function () {
@@ -311,51 +310,51 @@
                         $(this).prop("checked", false);
                     })
                 }
-
-
             })
-
-
             $("input.check").click(function () {
-                var arr = new Array();
-
-
-                $('li div.cart-checkbox input[name=items]:checked').each(function () {
-                    arr.push($(this).attr("id").toString().substr(5));
-                })
-
-                url = "shop/countTotal.do";
-                if (arr.length > 0) {
-                    $.ajax({
-                        url: url,
-                        type: 'post',
-                        data: {'shopId': arr},
-                        datatype: 'json',
-                        traditional: true,
-                        success: function (resp) {
-                            $("#J_Total").text(resp);
-
-                            $("#J_SelectedCount").text(arr.length);
-                        },
-                        error: function () {
-                            alert("error");
-                        }
-                    })
-                } else {
-                    $("#J_Total").text(0.00);
-                    $("#J_SelectedCount").text(0);
-                }
-
-                // for(var i in arr){
-                //     console.log(arr[i])
-                // }
-
-
+                updateTotalPrice();
             })
-
-
-
         })
+
+        $("a.delete").click(function () {
+            var productItemId = $(this).attr("value");
+            url = "/shop/del.do/";
+            $.ajax({
+                url: url,
+                type: 'get',
+                data: {'itemId': productItemId},
+                datatype: 'json',
+                success: function (resp) {
+                    if (resp != 0) {
+                        window.location.reload();
+                    }
+                },
+                error: function () {
+                    alert("error");
+                }
+            })
+        })
+        $("#J_Go").hover(function () {
+            if ($("#J_Total").text() == 0) {
+                $(this).attr("href", "javascript:void(0)");
+            } else {
+                $(this).attr("href", "javascript:submitOrder()");
+            }
+        })
+        var submitOrder = function () {
+            $("#formSelectedGoods").submit();
+        }
+        var updateTotalPrice = function () {
+            var totalPrice = 0.00; //总价全局变量
+            var i = 0;
+            $('li div.cart-checkbox input[name=items]:checked').each(function () {
+                var $number = $(this).parent().parent().parent().children("li.td-sum").find("em.number");
+                totalPrice = Number(totalPrice) + Number($number.text());
+                ++i;
+            })
+            $("#J_Total").text(totalPrice.toFixed(1));
+            $("#J_SelectedCount").text(i);
+        }
 
     </script>
 

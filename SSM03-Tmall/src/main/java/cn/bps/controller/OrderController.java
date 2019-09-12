@@ -36,9 +36,6 @@ public class OrderController {
     public String generatorOrder(@RequestParam(defaultValue = "0")Integer[] items,
                                  Model model){
         if(items[0] == 0){
-
-
-
             return "1";
         }
         List<Integer> itemlist = Arrays.asList(items);

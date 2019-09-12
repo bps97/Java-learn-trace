@@ -1,6 +1,7 @@
 package cn.bps.service;
 
 import cn.bps.mapper.ShoppingCartMapper;
+import cn.bps.pojo.Product;
 import cn.bps.pojo.ShoppingCart;
 import cn.bps.pojo.ShoppingCartExample;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,15 +49,16 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
     public float countTotalPrice(List<Integer> shoppingCartIDs) {
         int count=0;
         for(Integer id:shoppingCartIDs){
-            Integer productId = shoppingCartMapper.selectByPrimaryKey(id).getProduct_id();
-            count += productService.getProductById(productId).getPrice();
+            ShoppingCart item = shoppingCartMapper.selectByPrimaryKey(id);
+            Integer productId = item.getProduct_id();
+            Product product = productService.getProductById(productId);
+            count += product.getPrice()*item.getQuality();
         }
         return count;
     }
 
     @Override
     public int removeOne(int shopId) {
-
         return shoppingCartMapper.deleteByPrimaryKey(shopId);
 
     }
@@ -96,6 +98,18 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
         ShoppingCartExample shoppingCartExample = new ShoppingCartExample();
         shoppingCartExample.createCriteria().andIdIn(itemIds);
         return shoppingCartMapper.selectByExample(shoppingCartExample);
+    }
+
+    //通过id去修改数量
+    @Override
+    public Integer updateItemQualityByItemId(int itemId, int quality) {
+
+        ShoppingCartExample shoppingCartExample = new ShoppingCartExample();
+        shoppingCartExample.createCriteria().andIdEqualTo(itemId);
+        ShoppingCart item = shoppingCartMapper.selectByExample(shoppingCartExample).get(0);
+        item.setQuality(quality);
+
+        return shoppingCartMapper.updateByPrimaryKey(item);
     }
 
 

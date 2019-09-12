@@ -25,6 +25,8 @@ public interface ShoppingCartService {
 
     List<ShoppingCart> getShoppingCartByIds(List<Integer> itemIds);
 
+    Integer updateItemQualityByItemId(int itemId, int quality);
+
 
 //    boolean isProductExist(int productId);
 }
