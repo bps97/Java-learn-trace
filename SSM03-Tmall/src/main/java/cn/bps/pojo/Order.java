@@ -1,6 +1,6 @@
 package cn.bps.pojo;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Order {
     private Integer id;

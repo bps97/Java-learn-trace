@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 @Controller
@@ -82,7 +82,7 @@ public class MemberController {
     public String UpdateUserInfo(@RequestParam("name")String name,
                                  @RequestParam("email")String email,
                                  @RequestParam("phone")String phone,
-                                 @RequestParam("birthday")String birthday,
+                                 @RequestParam("birthday") Date birthday,
                                  HttpSession session)
     {
 
@@ -90,13 +90,15 @@ public class MemberController {
         user.setEmail(email);
         user.setName(name);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        try{
-            Date birth = sdf.parse(birthday);
-            user.setBirthday(birth);
-        }catch (ParseException e){
-            e.printStackTrace();
-        }
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//        try{
+//            Date birth = sdf.parse(birthday);
+//            user.setBirthday(birth);
+//        }catch (ParseException e){
+//            e.printStackTrace();
+//        }
+
+        user.setBirthday(birthday);
 
 
         session.setAttribute("username", name);

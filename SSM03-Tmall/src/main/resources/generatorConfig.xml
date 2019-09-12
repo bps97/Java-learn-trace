@@ -130,6 +130,7 @@
             <property name="my.isgen.usekeys" value="true"/>
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="JDBC"/>
+            <columnOverride column="RECORD_DATE" jdbcType="TIMESTAMP"/>
         </table>
 
         <table tableName="concrete_property" domainObjectName="ConcreteProperty"
@@ -157,6 +158,7 @@
             <property name="my.isgen.usekeys" value="true"/>
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="JDBC"/>
+            <columnOverride column="RECORD_DATE" jdbcType="DATE"/>
         </table>
 
         <table tableName="order_item" domainObjectName="OrderItem"

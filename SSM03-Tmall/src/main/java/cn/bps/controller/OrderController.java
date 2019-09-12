@@ -38,9 +38,9 @@ public class OrderController {
         if(items[0] == 0){
             return "1";
         }
-        List<Integer> itemlist = Arrays.asList(items);
+        List<Integer> itemList = Arrays.asList(items);
 
-        List<ProductItem> productItems =  orderService.getProductItemByItemIds(itemlist);
+        List<ProductItem> productItems =  shoppingCartService.getShoppingCartByIds(itemList);
         model.addAttribute("productItems",productItems);
 
         Map<Integer, Product> productMap = productService.getProductMapByShoppingCartList(productItems);
@@ -49,10 +49,11 @@ public class OrderController {
         Map<Integer, String> urls = productImageService.getImageUrls(productMap.values());
         model.addAttribute("images",urls);
 
-        Float totalCost = shoppingCartService.countTotalPrice(itemlist);
+        Float totalCost = shoppingCartService.countTotalPrice(itemList);
         model.addAttribute("totalCost",totalCost);
 
 
+        //生成订单
 
         return "/pay";
     }
