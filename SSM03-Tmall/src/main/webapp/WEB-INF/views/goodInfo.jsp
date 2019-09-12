@@ -162,7 +162,7 @@
                                     <a href="javascript:;" title="关闭" class="close">×</a>
                                 </div>
                                 <div class="theme-popbod dform">
-                                    <form class="theme-signin"  name="loginform" method="post" action="/postShoppingCart/${product.id}">
+                                    <form class="theme-signin"  name="loginform" method="post" action="<c:url value='/post/${product.id}' context='/shop' /> ">
 
                                         <div class="theme-signin-left">
                                             <div class="theme-options">
@@ -891,7 +891,7 @@
 
 
         var likeBasket = function () {
-            url = "addShoppingCart.do/${product.id}";
+            url = "/shop/add.do/${product.id}";
             var quality = 1;
             quality = $("#text_box").val();
             $.ajax({
@@ -900,7 +900,9 @@
                 data:{'quality':quality},
                 datetype:'json',
                 success:function (resp) {
-                    console.log(resp);
+                    if(resp == -1){
+                        alert("购物车已满！");
+                    }
                 },
                 error:function () {
                     alert("error");

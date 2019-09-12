@@ -60,13 +60,13 @@
                     </div>
                     <div class="clear"></div>
                     <div class="bundle-main">
-
+                        <form action="/order" id="formSelectedGoods" method="post">
                         <c:forEach items="${shoppingCarts}" var="shoppingCart">
                             <ul class="item-content clearfix">
                                 <li class="td td-chk">
                                     <div class="cart-checkbox ">
                                         <input class="check" id="shop_${shoppingCart.id}" name="items"
-                                               value="170037950254" type="checkbox">
+                                               value="${shoppingCart.id}" type="checkbox">
                                         <label for="shop_${shoppingCart.id}"></label>
                                     </div>
                                 </li>
@@ -136,7 +136,7 @@
                                 </li>
                             </ul>
                         </c:forEach>
-
+                        </form>
 
                     </div>
                 </div>
@@ -173,7 +173,7 @@
                     <strong class="price">¥<em id="J_Total">0</em></strong>
                 </div>
                 <div class="btn-area">
-                    <a href="/pay" id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
+                    <a href="javascript:submitOrder()" id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
                         <span>结&nbsp;算</span></a>
                 </div>
             </div>
@@ -248,6 +248,10 @@
 
 <script>
 
+    var submitOrder = function(){
+        $("#formSelectedGoods").submit();
+    }
+
     $(document).ready(function () {
 
         var quality = 1;
@@ -288,7 +292,7 @@
                 arr.push($(this).attr("id").toString().charAt(5));
             })
 
-            url = "countTotal.do";
+            url = "shop/countTotal.do";
             if(arr.length>0){
                 $.ajax({
                     url:url,

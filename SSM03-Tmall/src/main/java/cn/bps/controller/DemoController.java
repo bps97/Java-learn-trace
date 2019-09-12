@@ -63,11 +63,7 @@ public class DemoController {
     }
 
 
-    @RequestMapping(value = "/pay")
-    public  String pay(){
-        return "pay";
 
-    }
 
 
 

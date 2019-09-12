@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@RequestMapping(value = "/shop")
 public class ShoppingCartController {
 
 
@@ -45,7 +46,7 @@ public class ShoppingCartController {
     }
 
 
-    @RequestMapping(value = "/shoppingCart")
+    @RequestMapping(value = {"","/"})
     public String showShopCart(HttpSession session,
                                Model model){
 
@@ -74,48 +75,38 @@ public class ShoppingCartController {
 
 
 
-    @RequestMapping(value = "/addShoppingCart.do/{id}")
+    @RequestMapping(value = "/add.do/{id}")
     @ResponseBody
-    public String ajaxAddShoppingCart(@PathVariable(value = "id")int id,
+    public Integer ajaxAddShoppingCart(@PathVariable(value = "id")int productId,
                                       HttpSession session,
                                       @RequestParam(value = "quality",defaultValue = "1") int quality){
 
 
         if(session.getAttribute("userId") == null)
-            return "0";
+            return 0;
+
+        Integer userId = (Integer) session.getAttribute("userId");
+        return shoppingCartService.insertOne(productId, userId, quality);
 
 
-        int userId = (Integer)session.getAttribute("userId");
-
-        ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.setProduct_id(id);
-        shoppingCart.setQuality(quality);
-        shoppingCart.setUser_id(userId);
-        shoppingCartService.insertOne(shoppingCart);
-
-
-        return "1";
 
     }
 
 
-    @RequestMapping(value = "/postShoppingCart/{id}")
-    public String addTOShoppingCart(@PathVariable(value = "id")int id,
+    @RequestMapping(value = "/post/{id}")
+    public String addTOShoppingCart(@PathVariable(value = "id")int productId,
                                     HttpSession session,
                                     @RequestParam(value = "quality",defaultValue = "1") int quality){
         if(session.getAttribute("userId") == null){
             return "redirect:/login";
         }
-        int userId = (Integer)session.getAttribute("userId");
-
-        ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.setProduct_id(id);
-        shoppingCart.setQuality(quality);
-        shoppingCart.setUser_id(userId);
-        shoppingCartService.insertOne(shoppingCart);
+        Integer userId = (Integer) session.getAttribute("userId");
+        shoppingCartService.insertOne(productId, userId, quality);
 
 
-        return "redirect:/good/shoppingCart";
+        return "redirect:/shop";
 
     }
+
+
 }

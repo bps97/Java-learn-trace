@@ -67,7 +67,7 @@ public class MemberController {
         return "redirect:/index";
     }
 
-    @RequestMapping(value = "/mySpace")
+    @RequestMapping(value = "/space")
     public String userSpace(HttpSession session, Model model)
     {
         Object id = (session.getAttribute("userId"));
@@ -75,7 +75,7 @@ public class MemberController {
             return "redirect:/login";
         User user = userService.getUserById((int)id);
         model.addAttribute("user",user);
-        return "mySpace";
+        return "space";
     }
 
     @RequestMapping(value = "/postSubmitInfo")
@@ -104,7 +104,7 @@ public class MemberController {
 
         userService.updateInfo(user);
 
-        return "redirect:/mySpace";
+        return "redirect:/space";
     }
 
 

@@ -46,12 +46,12 @@
                 <div class="menu-hd"><a href="/index" target="_top" class="h" style="color:red">商城首页</a></div>
             </div>
             <div class="topMessage my-shangcheng">
-                <div class="menu-hd MyShangcheng"><a href="/mySpace" target="_top"><i
+                <div class="menu-hd MyShangcheng"><a href="/space" target="_top"><i
                         class="mr-icon-user mr-icon-fw"></i>个人中心</a>
                 </div>
             </div>
             <div class="topMessage mini-cart">
-                <div class="menu-hd"><a id="mc-menu-hd" href="/shoppingCart" target="_top"><i
+                <div class="menu-hd"><a id="mc-menu-hd" href="/shop" target="_top"><i
                         class="mr-icon-shopping-cart  mr-icon-fw"></i><span style="color:red">购物车</span><strong
                         id="J_MiniCartNum"
                         class="h">0</strong></a>
@@ -119,8 +119,8 @@
 <div class="navCir">
     <li class="active"><a href="/index"><i class="mr-icon-home "></i>首页</a></li>
     <li><a href="/good"><i class="mr-icon-list"></i>商品</a></li>
-    <li><a href="/shoppingCart"><i class="mr-icon-shopping-basket"></i>购物车</a></li>
-    <li><a href="/mySpace"><i class="mr-icon-user"></i>我的</a></li>
+    <li><a href="/shop"><i class="mr-icon-shopping-basket"></i>购物车</a></li>
+    <li><a href="/space"><i class="mr-icon-user"></i>我的</a></li>
 </div>
 <!--菜单 -->
 <div class="tip">
@@ -145,7 +145,7 @@
                 </div>
             </div>
             <div id="shoppingCart" class="item">
-                <a href="/shoppingCart"> <span class="message"></span> </a>
+                <a href="/shop"> <span class="message"></span> </a>
 
                 <p> 购物车 </p>
 

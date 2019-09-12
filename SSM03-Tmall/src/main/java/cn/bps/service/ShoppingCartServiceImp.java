@@ -6,6 +6,7 @@ import cn.bps.pojo.ShoppingCartExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -27,19 +28,7 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
         return shoppingCartMapper.selectByExample(shoppingCartExample);
     }
 
-    @Override
-    public int insertOne(ShoppingCart shoppingCart) {
 
-        ShoppingCartExample shoppingCartExample = new ShoppingCartExample();
-        shoppingCartExample.createCriteria().andUser_idEqualTo(shoppingCart.getUser_id());
-        long count = shoppingCartMapper.countByExample(shoppingCartExample);
-        if(count >= 10){
-            return  -1;
-        }
-
-
-        return shoppingCartMapper.insert(shoppingCart);
-    }
 
     @Override
     public float countTotalPrice(int userId) {
@@ -71,4 +60,34 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
         return shoppingCartMapper.deleteByPrimaryKey(shopId);
 
     }
+
+
+    @Override
+    public int insertOne(ShoppingCart shoppingCart) {
+
+        ShoppingCartExample shoppingCartExample = new ShoppingCartExample();
+        shoppingCartExample.createCriteria().andUser_idEqualTo(shoppingCart.getUser_id());
+        long count = shoppingCartMapper.countByExample(shoppingCartExample);
+        if(count >= 10){
+            return  -1;
+        }
+
+
+        return shoppingCartMapper.insert(shoppingCart);
+    }
+
+    @Override
+    public int insertOne(int productId, int userId, int quality) {
+
+//        if(isProductExist(productId)){
+//
+//        }
+
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.setProduct_id(productId);
+        shoppingCart.setQuality(quality);
+        shoppingCart.setUser_id(userId);
+        return insertOne(shoppingCart);
+    }
+
 }
