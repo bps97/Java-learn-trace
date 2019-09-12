@@ -1,7 +1,7 @@
 package cn.bps.controller;
 
 import cn.bps.pojo.Product;
-import cn.bps.pojo.ShoppingCart;
+import cn.bps.pojo.ProductItem;
 import cn.bps.service.ProductImageService;
 import cn.bps.service.ProductService;
 import cn.bps.service.ShoppingCartService;
@@ -48,10 +48,10 @@ public class ShoppingCartController {
 
 
 
-        List<ShoppingCart> shoppingCarts = shoppingCartService.getShoppingCartProductByUserId(userId);
-        model.addAttribute("shoppingCarts", shoppingCarts);
+        List<ProductItem> productItems = shoppingCartService.getShoppingCartProductByUserId(userId);
+        model.addAttribute("shoppingCarts", productItems);
 
-        Map<Integer, Product> productMap = productService.getProductMapByShoppingCartList(shoppingCarts);
+        Map<Integer, Product> productMap = productService.getProductMapByShoppingCartList(productItems);
         model.addAttribute("productMap",productMap);
 
         Map<Integer, String> urls = productImageService.getImageUrls(productMap.values());

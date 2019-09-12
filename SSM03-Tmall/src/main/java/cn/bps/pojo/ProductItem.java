@@ -1,6 +1,6 @@
 package cn.bps.pojo;
 
-public class ShoppingCart {
+public class ProductItem {
     private Integer id;
 
     private Integer product_id;

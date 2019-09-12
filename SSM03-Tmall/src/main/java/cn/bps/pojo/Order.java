@@ -29,8 +29,6 @@ public class Order {
 
     private String status;
 
-    private Integer product_item_id;
-
     public Integer getId() {
         return id;
     }
@@ -133,13 +131,5 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status == null ? null : status.trim();
-    }
-
-    public Integer getProduct_item_id() {
-        return product_item_id;
-    }
-
-    public void setProduct_item_id(Integer product_item_id) {
-        this.product_item_id = product_item_id;
     }
 }

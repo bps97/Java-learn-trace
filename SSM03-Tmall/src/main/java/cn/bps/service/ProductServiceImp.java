@@ -3,7 +3,7 @@ package cn.bps.service;
 import cn.bps.mapper.ProductMapper;
 import cn.bps.pojo.Product;
 import cn.bps.pojo.ProductExample;
-import cn.bps.pojo.ShoppingCart;
+import cn.bps.pojo.ProductItem;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -86,11 +86,11 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
-    public Map<Integer, Product> getProductMapByShoppingCartList(List<ShoppingCart> shoppingCarts) {
+    public Map<Integer, Product> getProductMapByShoppingCartList(List<ProductItem> shoppingCarts) {
 
         Map<Integer, Product> map = new HashMap<>();
 
-        for(ShoppingCart shoppingCart : shoppingCarts){
+        for(ProductItem shoppingCart : shoppingCarts){
             map.put(shoppingCart.getProduct_id(),productMapper.selectByPrimaryKey(shoppingCart.getProduct_id()));
         }
 

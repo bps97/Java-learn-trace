@@ -1,32 +1,31 @@
 package cn.bps.service;
 
-import cn.bps.mapper.ShoppingCartMapper;
+import cn.bps.mapper.ProductItemMapper;
 import cn.bps.pojo.Product;
-import cn.bps.pojo.ShoppingCart;
-import cn.bps.pojo.ShoppingCartExample;
+import cn.bps.pojo.ProductItem;
+import cn.bps.pojo.ProductItemExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
 @Service
 public class ShoppingCartServiceImp implements ShoppingCartService {
     @Autowired
-    private ShoppingCartMapper shoppingCartMapper;
+    private ProductItemMapper productItemMapper;
 
     @Autowired
     private ProductService productService;
 
     @Override
-    public List<ShoppingCart> getShoppingCartProductByUserId(int userId) {
+    public List<ProductItem> getShoppingCartProductByUserId(int userId) {
 
-        ShoppingCartExample shoppingCartExample = new ShoppingCartExample();
+        ProductItemExample shoppingCartExample = new ProductItemExample();
         shoppingCartExample.setOrderByClause("user_id");
         shoppingCartExample.createCriteria().andUser_idEqualTo(userId);
 
-        return shoppingCartMapper.selectByExample(shoppingCartExample);
+        return productItemMapper.selectByExample(shoppingCartExample);
     }
 
 
@@ -34,10 +33,10 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
     @Override
     public float countTotalPrice(int userId) {
 
-        List<ShoppingCart> shoppingCarts = getShoppingCartProductByUserId(userId);
+        List<ProductItem> productItems = getShoppingCartProductByUserId(userId);
         int count = 0;
 
-        for(ShoppingCart shoppingCart : shoppingCarts){
+        for(ProductItem shoppingCart : productItems){
             count += shoppingCart.getQuality() * productService.getProductById(shoppingCart.getProduct_id()).getPrice();
         }
 
@@ -49,7 +48,7 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
     public float countTotalPrice(List<Integer> shoppingCartIDs) {
         int count=0;
         for(Integer id:shoppingCartIDs){
-            ShoppingCart item = shoppingCartMapper.selectByPrimaryKey(id);
+            ProductItem item = productItemMapper.selectByPrimaryKey(id);
             Integer productId = item.getProduct_id();
             Product product = productService.getProductById(productId);
             count += product.getPrice()*item.getQuality();
@@ -59,23 +58,23 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
 
     @Override
     public int removeOne(int shopId) {
-        return shoppingCartMapper.deleteByPrimaryKey(shopId);
+        return productItemMapper.deleteByPrimaryKey(shopId);
 
     }
 
 
     @Override
-    public int insertOne(ShoppingCart shoppingCart) {
+    public int insertOne(ProductItem productItem) {
 
-        ShoppingCartExample shoppingCartExample = new ShoppingCartExample();
-        shoppingCartExample.createCriteria().andUser_idEqualTo(shoppingCart.getUser_id());
-        long count = shoppingCartMapper.countByExample(shoppingCartExample);
+        ProductItemExample shoppingCartExample = new ProductItemExample();
+        shoppingCartExample.createCriteria().andUser_idEqualTo(productItem.getUser_id());
+        long count = productItemMapper.countByExample(shoppingCartExample);
         if(count >= 10){
             return  -1;
         }
 
 
-        return shoppingCartMapper.insert(shoppingCart);
+        return productItemMapper.insert(productItem);
     }
 
     @Override
@@ -85,7 +84,7 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
 //
 //        }
 
-        ShoppingCart shoppingCart = new ShoppingCart();
+        ProductItem shoppingCart = new ProductItem();
         shoppingCart.setProduct_id(productId);
         shoppingCart.setQuality(quality);
         shoppingCart.setUser_id(userId);
@@ -93,23 +92,23 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
     }
 
     @Override
-    public List<ShoppingCart> getShoppingCartByIds(List<Integer> itemIds) {
+    public List<ProductItem> getShoppingCartByIds(List<Integer> itemIds) {
 
-        ShoppingCartExample shoppingCartExample = new ShoppingCartExample();
+        ProductItemExample shoppingCartExample = new ProductItemExample();
         shoppingCartExample.createCriteria().andIdIn(itemIds);
-        return shoppingCartMapper.selectByExample(shoppingCartExample);
+        return productItemMapper.selectByExample(shoppingCartExample);
     }
 
     //通过id去修改数量
     @Override
     public Integer updateItemQualityByItemId(int itemId, int quality) {
 
-        ShoppingCartExample shoppingCartExample = new ShoppingCartExample();
+        ProductItemExample shoppingCartExample = new ProductItemExample();
         shoppingCartExample.createCriteria().andIdEqualTo(itemId);
-        ShoppingCart item = shoppingCartMapper.selectByExample(shoppingCartExample).get(0);
+        ProductItem item = productItemMapper.selectByExample(shoppingCartExample).get(0);
         item.setQuality(quality);
 
-        return shoppingCartMapper.updateByPrimaryKey(item);
+        return productItemMapper.updateByPrimaryKey(item);
     }
 
 
