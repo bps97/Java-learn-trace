@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -36,6 +37,25 @@ public class TestDao {
 
     @Autowired
     private ProductMapper productMapper;
+
+
+    @Autowired
+    private AdministrativeAreaMapper administrativeAreaMapper;
+
+
+    @Test
+    public void AdministrativeAreaTest(){
+        AdministrativeAreaExample administrativeAreaExample = new AdministrativeAreaExample();
+        administrativeAreaExample.createCriteria().andLevel_typeEqualTo(1);
+        List<AdministrativeArea> administrativeAreas = administrativeAreaMapper.selectByExample(administrativeAreaExample);
+
+        for(AdministrativeArea administrativeArea:administrativeAreas){
+            System.out.println(administrativeArea.getName());
+        }
+
+
+    }
+
 
     @Test
     public void ProductTest(){

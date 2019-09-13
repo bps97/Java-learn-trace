@@ -596,10 +596,10 @@ h3 {
     .theme-popover {
         z-index: 10000009;
         position: fixed;
-        bottom: 50%;
+        bottom: 30%;
         left: 50%;
-        width: 500px;
-        height: 400px;
+        width: 40%;
+        height: 40%;
         margin-bottom: -200px;
         margin-left: -250px;
         display: none;

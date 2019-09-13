@@ -68,8 +68,8 @@ public class ShoppingCartController {
     @RequestMapping(value = "/add.do/{id}")
     @ResponseBody
     public Integer ajaxAddShoppingCart(@PathVariable(value = "id")int productId,
-                                       @RequestParam(value = "quality",defaultValue = "1") int quality,
-                                       HttpSession session){
+                                      HttpSession session,
+                                      @RequestParam(value = "quality",defaultValue = "1") int quality){
 
 
         if(session.getAttribute("userId") == null)
@@ -77,6 +77,8 @@ public class ShoppingCartController {
 
         Integer userId = (Integer) session.getAttribute("userId");
         return shoppingCartService.insertOne(productId, userId, quality);
+
+
 
     }
 

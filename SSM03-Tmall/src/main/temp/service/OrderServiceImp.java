@@ -3,7 +3,6 @@ package cn.bps.service;
 
 import cn.bps.mapper.OrderMapper;
 import cn.bps.pojo.Order;
-import cn.bps.util.OrderCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,24 +17,13 @@ public class OrderServiceImp implements OrderService{
 
 
     @Override
-    public int generatorOrder(int userId) {
+    public Order generatorOrder() {
 
         Order order = new Order();
-
-        String orderCode = OrderCode.getOrderCode();
-        order.setOrder_code(orderCode);
-
-        order.setUser_id(userId);
-
         Date now = new Date();
-        java.sql.Date sqlNow = new java.sql.Date(now.getTime());
+        String orderCode = "";
+        order.setOrder_code("xx");
 
-        order.setCreate_date(sqlNow);
-
-        order.setStatus("未提交");
-
-
-
-        return orderMapper.insertSelective(order);
+        return null;
     }
 }

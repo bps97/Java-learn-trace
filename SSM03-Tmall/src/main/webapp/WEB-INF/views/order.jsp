@@ -34,7 +34,7 @@
                 <h3>确认收货地址 </h3>
 
                 <div class="control">
-                    <div class="tc-btn createAddr theme-login mr-btn mr-btn-danger">使用新地址</div>
+                    <div class="tc-btn createAddr theme-login mr-btn mr-btn-danger" onclick="addAddress()">使用新地址</div>
                 </div>
                 <div class="clear"></div>
                 <ul>
@@ -119,37 +119,10 @@
                 <div class="clear"></div>
             </div>
             <!--物流 -->
-            <div class="logistics">
-                <h3>选择物流方式</h3>
-                <ul class="op_express_delivery_hot">
-                    <li data-value="yuantong" class="OP_LOG_BTN  "><i class="c-gap-right"
-                                                                      style="background-position:0px -468px"></i>圆通<span></span>
-                    </li>
-                    <li data-value="shentong" class="OP_LOG_BTN  "><i class="c-gap-right"
-                                                                      style="background-position:0px -1008px"></i>申通<span></span>
-                    </li>
-                    <li data-value="yunda" class="OP_LOG_BTN  "><i class="c-gap-right"
-                                                                   style="background-position:0px -576px"></i>韵达<span></span>
-                    </li>
-                    <li data-value="zhongtong" class="OP_LOG_BTN op_express_delivery_hot_last "><i class="c-gap-right"
-                                                                                                   style="background-position:0px -324px"></i>中通<span></span>
-                    </li>
-                    <li data-value="shunfeng" class="OP_LOG_BTN  op_express_delivery_hot_bottom"><i class="c-gap-right"
-                                                                                                    style="background-position:0px -180px"></i>顺丰<span></span>
-                    </li>
-                </ul>
-            </div>
+
             <div class="clear"></div>
 
-            <!--支付方式-->
-            <div class="logistics">
-                <h3>选择支付方式</h3>
-                <ul class="pay-list">
-                    <li class="pay card"><img src="/img/wangyin.jpg"/>银联<span></span></li>
-                    <li class="pay qq"><img src="/img/weizhifu.jpg"/>微信<span></span></li>
-                    <li class="pay taobao"><img src="/img/zhifubao.jpg"/>支付宝<span></span></li>
-                </ul>
-            </div>
+
             <div class="clear"></div>
 
             <!--订单 -->
@@ -193,13 +166,16 @@
                                         <li class="td td-item">
                                             <div class="item-pic">
                                                 <a href="#" class="J_MakePoint">
-                                                    <img src="${images.get(productItem.product_id)}" width="80px" height="80px"
+                                                    <img src="${images.get(productItem.product_id)}" width="80px"
+                                                         height="80px"
                                                          class="itempic J_ItemImg"></a>
                                             </div>
                                             <div class="item-info">
                                                 <div class="item-basic-info">
-                                                    <a href="#" target="_blank" title="${productMap.get(productItem.product_id).name}"
-                                                       class="item-title J_MakePoint" data-point="tbcart.8.11">${productMap.get(productItem.product_id).name}</a>
+                                                    <a href="#" target="_blank"
+                                                       title="${productMap.get(productItem.product_id).name}"
+                                                       class="item-title J_MakePoint"
+                                                       data-point="tbcart.8.11">${productMap.get(productItem.product_id).name}</a>
                                                 </div>
                                             </div>
                                         </li>
@@ -230,7 +206,8 @@
                                     </li>
                                     <li class="td td-sum">
                                         <div class="td-inner">
-                                            <em tabindex="0" class="J_ItemSum number">${productItem.quality*productMap.get(productItem.product_id).price}</em>
+                                            <em tabindex="0"
+                                                class="J_ItemSum number">${productItem.quality*productMap.get(productItem.product_id).price}</em>
                                         </div>
                                     </li>
                                     <li class="td td-oplist">
@@ -249,8 +226,6 @@
 
                         </div>
                     </div>
-
-
 
 
                 </tr>
@@ -366,7 +341,7 @@
 
                     <div id="holyshit269" class="submitOrder">
                         <div class="go-btn-wrap">
-                            <a id="J_Go" href="//index.html" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
+                            <a id="J_Go" href="/postOrder" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
                         </div>
                     </div>
                     <div class="clear"></div>
@@ -396,35 +371,36 @@
 
                 <div class="mr-form-group">
                     <label for="user-name" class="mr-form-label">收货人</label>
-
                     <div class="mr-form-content">
-                        <input type="text" id="user-name" placeholder="收货人">
+                        <input type="text" id="user-name" placeholder="收货人" name="receiver">
                     </div>
                 </div>
 
                 <div class="mr-form-group">
                     <label for="user-phone" class="mr-form-label">手机号码</label>
-
                     <div class="mr-form-content">
-                        <input id="user-phone" placeholder="手机号必填" type="email">
+                        <input id="user-phone" placeholder="手机号必填" type="email" name="mobile">
                     </div>
                 </div>
 
                 <div class="mr-form-group">
                     <label for="user-phone" class="mr-form-label">所在地</label>
-
                     <div class="mr-form-content address">
-                        <select data-mr-selected>
-                            <option value="a">浙江省</option>
-                            <option value="b">湖北省</option>
+                        <select data-mr-selected class="selected-city selected-province" onchange="selectFun1()">
+                            <c:forEach items="${province}" var="province">
+                                <option value="${province.code}">${province.name}</option>
+                            </c:forEach>
                         </select>
-                        <select data-mr-selected>
-                            <option value="a">温州市</option>
-                            <option value="b">武汉市</option>
+                        <select data-mr-selected class="selected-city selected-prefecture" onchange="selectFun2()">
+                            <c:forEach items="${prefectures}" var="prefecture">
+                                <option value="${prefecture.code}">${prefecture.name}</option>
+                            </c:forEach>
                         </select>
-                        <select data-mr-selected>
-                            <option value="a">瑞安区</option>
-                            <option value="b">洪山区</option>
+                        <select data-mr-selected class="selected-city selected-county" onchange="">
+
+                            <c:forEach items="${counties}" var="county">
+                                <option value="${county.code}">${county.name}</option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
@@ -433,14 +409,14 @@
                     <label for="user-intro" class="mr-form-label">详细地址</label>
 
                     <div class="mr-form-content">
-                        <textarea class="" rows="3" id="user-intro" placeholder="输入详细地址"></textarea>
+                        <textarea class="" rows="3" id="user-intro" placeholder="输入详细地址" name="address"></textarea>
                         <small>100字以内写出你的详细地址...</small>
                     </div>
                 </div>
 
                 <div class="mr-form-group theme-poptit">
-                    <div class="mr-u-sm-9 mr-u-sm-push-3">
-                        <div class="mr-btn mr-btn-danger">保存</div>
+                    <div class="mr-u-sm-9 mr-u-sm-push-4">
+                        <div class="mr-btn mr-btn-danger" >保存</div>
                         <div class="mr-btn mr-btn-danger close">取消</div>
                     </div>
                 </div>
@@ -451,5 +427,97 @@
 
     <div class="clear"></div>
 </rapid:override>
+<rapid:override name="script_content">
+
+    <script>
+
+        var addAddress = function () {
+
+            $blackGround = $("div.theme-popover-mask");
+            $addressTable =$("div.theme-popover");
+            console.log();
+            if($blackGround.css('display') == 'none'){
+                $blackGround.css('display',"inline");
+                $addressTable.css('display','table');
+                // $addressTable.css('overflow','visible');
+            }
+
+
+
+             console.log();
+
+        }
+
+        $(document).ready(function () {
+
+            $("div.theme-poptit div div").click(function () {
+                $blackGround = $("div.theme-popover-mask");
+                $addressTable =$("div.theme-popover");
+
+                $blackGround.css('display',"none");
+                $addressTable.css('display','none');
+
+            })
+
+
+
+
+
+        })
+
+        var selectFun1 = function () {
+            var parentCode = $("select.selected-province option:selected").val();
+
+            var url = "/order/addArea.do";
+            $.ajax({
+                method:"get",
+                url:url,
+                data:{"parentCode":parentCode},
+                datatype:'json',
+                success:function (resp) {
+
+                    var $prefecture =  $('select.selected-prefecture');
+                    var $county = $('select.selected-county');
+                    $prefecture.empty();
+                    $county.empty();
+                    $prefecture.append('<option value="0" selected="selected" style="display: none;">请选择</option>');
+                    for(var i in resp){
+                        $prefecture.append("<option value='"+i+"'>"+resp[i]+"</option>");
+                    }
+
+
+                }
+            })
+
+        }
+
+        var selectFun2 = function () {
+            var parentCode = $("select.selected-prefecture option:selected").val();
+
+            var url = "/order/addArea.do";
+            $.ajax({
+                method:"get",
+                url:url,
+                data:{"parentCode":parentCode},
+                datatype:'json',
+                success:function (resp) {
+
+                    var $county = $('select.selected-county');
+                    $county.empty();
+                    $county.append('<option value="0" selected="selected" style="display: none;">请选择</option>');
+                    for(var i in resp){
+                        $county.append("<option value='"+i+"'>"+resp[i]+"</option>");
+                    }
+
+
+                }
+            })
+
+        }
+
+    </script>
+
+</rapid:override>
+
 <%@ include file="viewBase.jsp" %>
 
