@@ -8,5 +8,8 @@ import java.util.List;
 public interface OrderService {
 
 
-    int generatorOrder(int userId);
+    String generatorOrder(int userId);
+    Order getOrderByOrderCode(String orderCode);
+
+    Order summitOrder(String orderCode, String message, Integer addressId);
 }

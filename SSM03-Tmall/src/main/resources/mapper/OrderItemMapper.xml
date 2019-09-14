@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.bps.mapper.OrderProductItemMapper">
-  <resultMap id="BaseResultMap" type="cn.bps.pojo.OrderProductItem">
+<mapper namespace="cn.bps.mapper.OrderItemMapper">
+  <resultMap id="BaseResultMap" type="cn.bps.pojo.OrderItem">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="order_id" jdbcType="INTEGER" property="order_id" />
+    <result column="order_code" jdbcType="VARCHAR" property="order_code" />
     <result column="product_item_id" jdbcType="INTEGER" property="product_item_id" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -36,16 +36,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, order_id, product_item_id
+    id, order_code, product_item_id
   </sql>
-  <select id="selectByExample" parameterType="cn.bps.pojo.OrderProductItemExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.bps.pojo.OrderItemExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'false' as QUERYID,
     <include refid="Base_Column_List" />
-    from order_product_item
+    from order_item
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -56,47 +56,47 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from order_product_item
+    from order_item
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from order_product_item
+    delete from order_item
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.bps.pojo.OrderProductItemExample">
-    delete from order_product_item
+  <delete id="deleteByExample" parameterType="cn.bps.pojo.OrderItemExample">
+    delete from order_item
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.OrderProductItem" useGeneratedKeys="true">
-    insert into order_product_item (order_id, product_item_id)
-    values (#{order_id,jdbcType=INTEGER}, #{product_item_id,jdbcType=INTEGER})
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.OrderItem" useGeneratedKeys="true">
+    insert into order_item (order_code, product_item_id)
+    values (#{order_code,jdbcType=VARCHAR}, #{product_item_id,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.OrderProductItem" useGeneratedKeys="true">
-    insert into order_product_item
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.OrderItem" useGeneratedKeys="true">
+    insert into order_item
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="order_id != null">
-        order_id,
+      <if test="order_code != null">
+        order_code,
       </if>
       <if test="product_item_id != null">
         product_item_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="order_id != null">
-        #{order_id,jdbcType=INTEGER},
+      <if test="order_code != null">
+        #{order_code,jdbcType=VARCHAR},
       </if>
       <if test="product_item_id != null">
         #{product_item_id,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.bps.pojo.OrderProductItem">
-    update order_product_item
+  <update id="updateByPrimaryKeySelective" parameterType="cn.bps.pojo.OrderItem">
+    update order_item
     <set>
-      <if test="order_id != null">
-        order_id = #{order_id,jdbcType=INTEGER},
+      <if test="order_code != null">
+        order_code = #{order_code,jdbcType=VARCHAR},
       </if>
       <if test="product_item_id != null">
         product_item_id = #{product_item_id,jdbcType=INTEGER},
@@ -104,20 +104,20 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.bps.pojo.OrderProductItem">
-    update order_product_item
-    set order_id = #{order_id,jdbcType=INTEGER},
+  <update id="updateByPrimaryKey" parameterType="cn.bps.pojo.OrderItem">
+    update order_item
+    set order_code = #{order_code,jdbcType=VARCHAR},
       product_item_id = #{product_item_id,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.pojo.OrderProductItemExample" resultMap="BaseResultMap">
+  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.pojo.OrderItemExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'false' as QUERYID,
     <include refid="Base_Column_List" />
-    from order_product_item
+    from order_item
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>

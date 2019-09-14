@@ -1,19 +1,13 @@
 package cn.bps.pojo;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Order {
     private Integer id;
 
     private String order_code;
 
-    private String address;
-
-    private String post;
-
-    private String receiver;
-
-    private String mobile;
+    private Integer address_id;
 
     private String user_message;
 
@@ -26,6 +20,8 @@ public class Order {
     private Date confirm_date;
 
     private Integer user_id;
+
+    private Float actual_payment;
 
     private String status;
 
@@ -45,36 +41,12 @@ public class Order {
         this.order_code = order_code == null ? null : order_code.trim();
     }
 
-    public String getAddress() {
-        return address;
+    public Integer getAddress_id() {
+        return address_id;
     }
 
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
-    }
-
-    public String getPost() {
-        return post;
-    }
-
-    public void setPost(String post) {
-        this.post = post == null ? null : post.trim();
-    }
-
-    public String getReceiver() {
-        return receiver;
-    }
-
-    public void setReceiver(String receiver) {
-        this.receiver = receiver == null ? null : receiver.trim();
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile == null ? null : mobile.trim();
+    public void setAddress_id(Integer address_id) {
+        this.address_id = address_id;
     }
 
     public String getUser_message() {
@@ -123,6 +95,14 @@ public class Order {
 
     public void setUser_id(Integer user_id) {
         this.user_id = user_id;
+    }
+
+    public Float getActual_payment() {
+        return actual_payment;
+    }
+
+    public void setActual_payment(Float actual_payment) {
+        this.actual_payment = actual_payment;
     }
 
     public String getStatus() {

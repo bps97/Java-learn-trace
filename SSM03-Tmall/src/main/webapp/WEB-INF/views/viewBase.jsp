@@ -109,7 +109,7 @@
             <a href="#">合作伙伴</a>
             <a href="#">联系我们</a>
             <a href="#">网站地图</a>
-            <em>© 1997-2020 github/bps97 版权所有</em>
+            <em>© 1997-2020 <a href="<c:url value='www.github/bps97.com'/>"/> 版权所有</em>
         </p>
     </div>
 </div>

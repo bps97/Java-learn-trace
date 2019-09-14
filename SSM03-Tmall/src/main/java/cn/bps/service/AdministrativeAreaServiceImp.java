@@ -42,5 +42,13 @@ public class AdministrativeAreaServiceImp implements AdministrativeAreaService {
         return tuple;
     }
 
+    @Override
+    public String getCityNameByCityCode(String cityCode) {
+        AdministrativeAreaExample administrativeAreaExample = new AdministrativeAreaExample();
+        administrativeAreaExample.createCriteria().andCodeEqualTo(cityCode);
+
+        return administrativeAreaMapper.selectByExample(administrativeAreaExample).get(0).getName();
+    }
+
 
 }

@@ -38,81 +38,85 @@
                 </div>
                 <div class="clear"></div>
                 <ul>
-                    <div class="per-border"></div>
-                    <li class="user-addresslist defaultAddr">
+                    <c:if test="${defaultAddress != null}">
+                        <div class="per-border"></div>
+                        <li class="user-addresslist defaultAddr" value="${defaultAddress.id}">
 
-                        <div class="address-left">
-                            <div class="user DefaultAddr">
+                            <div class="address-left">
+                                <div class="user DefaultAddr">
 
-										<span class="buy-address-detail">
-                   <span class="buy-user">李**  </span>
-										<span class="buy-phone">15*****5629</span>
-										</span>
-                            </div>
-                            <div class="default-address DefaultAddr">
-                                <span class="buy-line-title buy-line-title-type">收货地址：</span>
-                                <span class="buy--address-detail">
-								   <span class="province">吉林</span>省
-										<span class="city">长春</span>市
-										<span class="dist">南关区</span>区
-										<span class="street">卫星广场财富领域5A16室</span>
-										</span>
-
+                                <span class="buy-address-detail">
+                                    <span class="buy-user">${defaultAddress.receiver}</span>
+                                    <span class="buy-phone">${defaultAddress.mobile}</span>
                                 </span>
+                                </div>
+                                <div class="default-address DefaultAddr">
+                                    <span class="buy-line-title buy-line-title-type">收货地址：</span>
+                                    <span class="buy--address-detail">
+								   <span class="province">${defaultAddress.province}</span>
+										<span class="city">${defaultAddress.province}</span>
+										<span class="dist">${defaultAddress.county}</span>
+										<span class="street">${defaultAddress.address}</span>
+                                    </span>
+                                    </span>
+                                </div>
+                                <ins class="deftip">默认地址</ins>
                             </div>
-                            <ins class="deftip">默认地址</ins>
-                        </div>
-                        <div class="address-right">
-                            <a href="/person/address.html">
-                                <span class="mr-icon-angle-right mr-icon-lg"></span></a>
-                        </div>
-                        <div class="clear"></div>
-
-                        <div class="new-addr-btn">
-                            <a href="#" class="hidden">设为默认</a>
-                            <span class="new-addr-bar hidden">|</span>
-                            <a href="#">编辑</a>
-                            <span class="new-addr-bar">|</span>
-                            <a href="javascript:void(0);" onclick="delClick(this);">删除</a>
-                        </div>
-
-                    </li>
-                    <div class="per-border"></div>
-                    <li class="user-addresslist">
-                        <div class="address-left">
-                            <div class="user DefaultAddr">
-
-										<span class="buy-address-detail">
-                   <span class="buy-user">李**</span>
-										<span class="buy-phone">15*****5629</span>
-										</span>
+                            <div class="address-right">
+                                <a href="../person/address.html">
+                                    <span class="mr-icon-angle-right mr-icon-lg"></span></a>
                             </div>
-                            <div class="default-address DefaultAddr">
-                                <span class="buy-line-title buy-line-title-type">收货地址：</span>
-                                <span class="buy--address-detail">
-								   <span class="province">吉林</span>省
-										<span class="city">吉林</span>市
-										<span class="dist">船营</span>区
-										<span class="street">东湖路75号众环大厦2栋9层902</span>
-										</span>
+                            <div class="clear"></div>
+
+                            <div class="new-addr-btn">
+                                <a href="#" class="hidden">设为默认</a>
+                                <span class="new-addr-bar hidden">|</span>
+                                <a href="#">编辑</a>
+                                <span class="new-addr-bar">|</span>
+                                <a href="javascript:void(0);" onclick="delClick(this);">删除</a>
+                            </div>
+
+                        </li>
+                    </c:if>
+                    <c:forEach items="${addresses}" var="address">
+
+                        <div class="per-border"></div>
+                        <li class="user-addresslist">
+                            <div class="address-left">
+                                <div class="user DefaultAddr">
+
+                                    <span class="buy-address-detail">
+                                        <span class="buy-user">${address.receiver}</span>
+										<span class="buy-phone">${address.mobile}</span>
+                                    </span>
+                                </div>
+                                <div class="default-address DefaultAddr">
+                                    <span class="buy-line-title buy-line-title-type">收货地址：</span>
+                                    <span class="buy--address-detail">
+                                    <span class="province">${address.province}</span>
+                                    <span class="city">${address.prefecture}</span>
+                                    <span class="dist">${address.county}</span>
+                                    <span class="street">${address.address}</span>
                                 </span>
+                                    </span>
+                                </div>
+                                <ins class="deftip hidden">默认地址</ins>
                             </div>
-                            <ins class="deftip hidden">默认地址</ins>
-                        </div>
-                        <div class="address-right">
-                            <span class="mr-icon-angle-right mr-icon-lg"></span>
-                        </div>
-                        <div class="clear"></div>
+                            <div class="address-right">
+                                <span class="mr-icon-angle-right mr-icon-lg"></span>
+                            </div>
+                            <div class="clear"></div>
 
-                        <div class="new-addr-btn">
-                            <a href="#">设为默认</a>
-                            <span class="new-addr-bar">|</span>
-                            <a href="#">编辑</a>
-                            <span class="new-addr-bar">|</span>
-                            <a href="javascript:void(0);" onclick="delClick(this);">删除</a>
-                        </div>
+                            <div class="new-addr-btn">
+                                <a href="javascript:void(0);" onclick="setDefaultClick(this);" value="${address.id}">设为默认</a>
+                                <span class="new-addr-bar">|</span>
+                                <a href="javascript:void(0);" onclick="editClick(this);" value="${address.id}">编辑</a>
+                                <span class="new-addr-bar">|</span>
+                                <a href="javascript:void(0);" onclick="delClick(this);" value="${address.id}">删除</a>
+                            </div>
 
-                    </li>
+                        </li>
+                    </c:forEach>
 
                 </ul>
 
@@ -341,7 +345,7 @@
 
                     <div id="holyshit269" class="submitOrder">
                         <div class="go-btn-wrap">
-                            <a id="J_Go" href="/postOrder" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
+                            <a id="J_Go" href="javascript:submitOrder(this)" class="btn-go" tabindex="0" title="点击此按钮，提交订单" value="${orderCode}">提交订单</a>
                         </div>
                     </div>
                     <div class="clear"></div>
@@ -367,7 +371,7 @@
         <hr/>
 
         <div class="mr-u-md-12">
-            <form class="mr-form mr-form-horizontal">
+            <form class="mr-form mr-form-horizontal" id="form-address">
 
                 <div class="mr-form-group">
                     <label for="user-name" class="mr-form-label">收货人</label>
@@ -386,17 +390,19 @@
                 <div class="mr-form-group">
                     <label for="user-phone" class="mr-form-label">所在地</label>
                     <div class="mr-form-content address">
-                        <select data-mr-selected class="selected-city selected-province" onchange="selectFun1()">
+                        <select data-mr-selected class="selected-city selected-province" onchange="selectFun1()"
+                                name="province">
                             <c:forEach items="${province}" var="province">
                                 <option value="${province.code}">${province.name}</option>
                             </c:forEach>
                         </select>
-                        <select data-mr-selected class="selected-city selected-prefecture" onchange="selectFun2()">
+                        <select data-mr-selected class="selected-city selected-prefecture" onchange="selectFun2()"
+                                name="prefecture">
                             <c:forEach items="${prefectures}" var="prefecture">
                                 <option value="${prefecture.code}">${prefecture.name}</option>
                             </c:forEach>
                         </select>
-                        <select data-mr-selected class="selected-city selected-county" onchange="">
+                        <select data-mr-selected class="selected-city selected-county" name="county">
 
                             <c:forEach items="${counties}" var="county">
                                 <option value="${county.code}">${county.name}</option>
@@ -416,7 +422,7 @@
 
                 <div class="mr-form-group theme-poptit">
                     <div class="mr-u-sm-9 mr-u-sm-push-4">
-                        <div class="mr-btn mr-btn-danger" >保存</div>
+                        <div class="mr-btn mr-btn-danger">保存</div>
                         <div class="mr-btn mr-btn-danger close">取消</div>
                     </div>
                 </div>
@@ -434,17 +440,16 @@
         var addAddress = function () {
 
             $blackGround = $("div.theme-popover-mask");
-            $addressTable =$("div.theme-popover");
+            $addressTable = $("div.theme-popover");
             console.log();
-            if($blackGround.css('display') == 'none'){
-                $blackGround.css('display',"inline");
-                $addressTable.css('display','table');
+            if ($blackGround.css('display') == 'none') {
+                $blackGround.css('display', "inline");
+                $addressTable.css('display', 'table');
                 // $addressTable.css('overflow','visible');
             }
 
 
-
-             console.log();
+            console.log();
 
         }
 
@@ -452,37 +457,67 @@
 
             $("div.theme-poptit div div").click(function () {
                 $blackGround = $("div.theme-popover-mask");
-                $addressTable =$("div.theme-popover");
+                $addressTable = $("div.theme-popover");
 
-                $blackGround.css('display',"none");
-                $addressTable.css('display','none');
+                $blackGround.css('display', "none");
+                $addressTable.css('display', 'none');
 
             })
 
+            $("div.theme-poptit div div:first").click(function () {
+                var url = "/order/postAddress";
+                $.ajax({
+                    url: url,
+                    data: $('#form-address').serialize(),
+                    datatype: 'json',
+                    method: 'get',
+                    success: function (resp) {
+                        console.log(resp);
+                        window.location.reload();
+                    }
+                })
+            })
 
 
 
 
         })
 
+        
+        var submitOrder = function () {
+            var addressId = $('li.user-addresslist').attr('value');
+            var message = $('input.J_MakePoint').val();
+            var orderCode = $('#J_Go').attr('value');
+            url = '/order/submit';
+            $.post({
+                url:url,
+                data:{'addressId':addressId, 'message': message, 'orderCode':orderCode},
+                datatype:'json',
+                success:function (resp) {
+                    console.log(resp);
+                }
+            })
+
+        }
+        
         var selectFun1 = function () {
             var parentCode = $("select.selected-province option:selected").val();
 
             var url = "/order/addArea.do";
             $.ajax({
-                method:"get",
-                url:url,
-                data:{"parentCode":parentCode},
-                datatype:'json',
-                success:function (resp) {
+                method: "get",
+                url: url,
+                data: {"parentCode": parentCode},
+                datatype: 'json',
+                success: function (resp) {
 
-                    var $prefecture =  $('select.selected-prefecture');
+                    var $prefecture = $('select.selected-prefecture');
                     var $county = $('select.selected-county');
                     $prefecture.empty();
                     $county.empty();
                     $prefecture.append('<option value="0" selected="selected" style="display: none;">请选择</option>');
-                    for(var i in resp){
-                        $prefecture.append("<option value='"+i+"'>"+resp[i]+"</option>");
+                    for (var i in resp) {
+                        $prefecture.append("<option value='" + i + "'>" + resp[i] + "</option>");
                     }
 
 
@@ -496,17 +531,17 @@
 
             var url = "/order/addArea.do";
             $.ajax({
-                method:"get",
-                url:url,
-                data:{"parentCode":parentCode},
-                datatype:'json',
-                success:function (resp) {
+                method: "get",
+                url: url,
+                data: {"parentCode": parentCode},
+                datatype: 'json',
+                success: function (resp) {
 
                     var $county = $('select.selected-county');
                     $county.empty();
                     $county.append('<option value="0" selected="selected" style="display: none;">请选择</option>');
-                    for(var i in resp){
-                        $county.append("<option value='"+i+"'>"+resp[i]+"</option>");
+                    for (var i in resp) {
+                        $county.append("<option value='" + i + "'>" + resp[i] + "</option>");
                     }
 
 
@@ -515,6 +550,39 @@
 
         }
 
+
+        var delClick = function (del) {
+            var addressId = $(del).attr('value');
+            var url = '/order/delAddress';
+            $.ajax({
+                url:url,
+                data:{"addressId":addressId},
+                datatype:'json',
+                method:'get',
+                success:function (resp) {
+                    window.location.reload();
+                }
+            })
+        }
+
+        var EditClick = function (del) {
+            var addressId = $(del).attr('value');
+            //再写吧
+        }
+
+        var setDefaultClick = function (set) {
+            var addressId = $(set).attr('value');
+            var url = '/order/setDefaultAddress';
+            $.ajax({
+                url:url,
+                data:{"addressId":addressId},
+                datatype:'json',
+                method:'get',
+                success:function (resp) {
+                    window.location.reload();
+                }
+            })
+        }
     </script>
 
 </rapid:override>

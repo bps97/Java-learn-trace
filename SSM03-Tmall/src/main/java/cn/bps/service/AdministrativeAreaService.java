@@ -10,6 +10,7 @@ public interface AdministrativeAreaService {
     List<AdministrativeArea> getProvinces();
     List<AdministrativeArea> getChildrenCities(String parentCode);
     Map<String,String> toTuple(List<AdministrativeArea> administrativeAreas);
+    String getCityNameByCityCode(String cityCode);
 
 
 }

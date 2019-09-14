@@ -1,15 +1,11 @@
 package cn.bps.controller;
 
-import cn.bps.pojo.AdministrativeArea;
-import cn.bps.pojo.Product;
-import cn.bps.pojo.ProductItem;
+import cn.bps.pojo.*;
 import cn.bps.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
@@ -37,16 +33,49 @@ public class OrderController {
     @Autowired
     private AdministrativeAreaService administrativeAreaService;
 
+    @Autowired
+    private AddressService addressService;
 
-    @RequestMapping(value = "/post")
-    public String submitOrder(){
+    @Autowired
+    private OrderItemService orderItemService;
+
+    @RequestMapping(value = "/postAddress")
+    @ResponseBody
+    public String ajaxAddAddress(@ModelAttribute Address address,
+                                HttpSession session){
 
 
+        if(session.getAttribute("userId") == null)
+            return "0";
 
+        Integer userId = (Integer) session.getAttribute("userId");
 
+        address.setUser_id(userId);
+        address.setProvince(administrativeAreaService.getCityNameByCityCode(address.getProvince()));
+        address.setPrefecture(administrativeAreaService.getCityNameByCityCode(address.getPrefecture()));
+        address.setCounty(administrativeAreaService.getCityNameByCityCode(address.getCounty()));
 
-        return "succeed";
+        addressService.addAddress(address);
+
+        return "1";
     }
+
+    @RequestMapping(value = "/delAddress")
+    @ResponseBody
+    public Integer ajaxDelAddress(@RequestParam int addressId){
+        return addressService.delAddressByAddressID(addressId);
+    }
+    @RequestMapping(value = "/setDefaultAddress")
+    @ResponseBody
+    public Integer ajaxSetDefaultAddress(@RequestParam int addressId){
+
+        return addressService.updateSetDefaultAddressById(addressId);
+
+    }
+
+
+
+
 
     @RequestMapping(value = "/addArea.do")
     @ResponseBody
@@ -65,6 +94,7 @@ public class OrderController {
 
 
         if(session.getAttribute("userId") == null)
+
             return "0";
 
         if(items[0] == 0){
@@ -72,7 +102,7 @@ public class OrderController {
         }
 
         int userId = (Integer)session.getAttribute("userId");
-
+//        int userId = 1;
 
         List<Integer> itemList = Arrays.asList(items);
 
@@ -94,18 +124,40 @@ public class OrderController {
         List<AdministrativeArea> counties = administrativeAreaService.getChildrenCities(prefectures.get(0).getCode());
         model.addAttribute("counties",counties);
 
+        List<Address> addresses = addressService.getAddressesByUserIdExceptDefault(userId);
+        model.addAttribute("addresses",addresses);
 
-//        Float totalCost = shoppingCartService.countTotalPrice(itemList);
-//        model.addAttribute("totalCost",totalCost);
+        Address defaultAddress = addressService.getDefaultAddressByUserId(userId);
+        model.addAttribute("defaultAddress",defaultAddress);
 
+        String orderCode= orderService.generatorOrder(userId);
 
-        if(orderService.generatorOrder(userId)!=0)
+        orderItemService.addOrderItems(orderCode,productItems);
+
+        if(orderCode!=null){
+            model.addAttribute("orderCode", orderCode);
             return "/order";
+        }
 
         return "0";
 
     }
 
+
+    @RequestMapping(value = "/submit")
+    public String submitOrder(@RequestParam(value = "message",defaultValue = "")String message,
+                              @RequestParam("orderCode")String orderCode,
+                              @RequestParam("addressId")Integer addressId){
+        Order order = orderService.summitOrder(orderCode,message,addressId);
+
+
+
+        if(order != null){
+            return "1";
+        }
+
+        return "0";
+    }
 
 
 
