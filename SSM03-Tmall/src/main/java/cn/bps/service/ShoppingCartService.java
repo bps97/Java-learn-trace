@@ -1,5 +1,7 @@
 package cn.bps.service;
 
+import cn.bps.pojo.Product;
+import cn.bps.pojo.ProductImage;
 import cn.bps.pojo.ProductItem;
 
 import java.util.List;
@@ -10,7 +12,9 @@ public interface ShoppingCartService {
 
     float countTotalPrice(int userId);
 
-    float countTotalPrice(List<Integer> productItemIds);
+    float countTotalPriceByProductItemIds(List<Integer> productItemIds);
+
+    float countTotalPrice(List<ProductItem> productItems);
 
     int removeOne(int shopId);
 

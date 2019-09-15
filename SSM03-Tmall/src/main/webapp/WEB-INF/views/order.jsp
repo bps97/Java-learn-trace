@@ -40,7 +40,7 @@
                 <ul>
                     <c:if test="${defaultAddress != null}">
                         <div class="per-border"></div>
-                        <li class="user-addresslist defaultAddr" value="${defaultAddress.id}">
+                        <li class="user-addresslist defaultAddr">
 
                             <div class="address-left">
                                 <div class="user DefaultAddr">
@@ -237,20 +237,26 @@
             <div class="clear"></div>
             <div class="pay-total">
                 <!--留言-->
-                <div class="order-extra">
-                    <div class="order-user-info">
-                        <div id="holyshit257" class="memo">
-                            <label>买家留言：</label>
-                            <input type="text" title="选填,对本次交易的说明（建议填写已经和卖家达成一致的说明）" placeholder="选填,建议填写和卖家达成一致的说明"
-                                   class="memo-input J_MakePoint c2c-text-default memo-close">
+                <form action="/order/submit" method="post" id="form-order">
 
-                            <div class="msg hidden J-msg">
-                                <p class="error">最多输入500个字符</p>
+                    <div class="order-extra">
+                        <div class="order-user-info">
+                            <div id="holyshit257" class="memo">
+                                <label>买家留言：</label>
+                                <input type="hidden" name="addressId" value="${defaultAddress.id}">
+                                <input type="hidden" name="orderCode" value="${orderCode}">
+                                <input type="text" title="选填,对本次交易的说明（建议填写已经和卖家达成一致的说明）" placeholder="选填,建议填写和卖家达成一致的说明"
+                                       class="memo-input J_MakePoint c2c-text-default memo-close" name="message">
+                                <input type="hidden" name="payment" value="${totalPrice}">
+                                <div class="msg hidden J-msg">
+                                    <p class="error">最多输入500个字符</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                </div>
+                    </div>
+                </form>
+
                 <!--优惠券 -->
                 <div class="buy-agio">
                     <li class="td td-coupon">
@@ -306,7 +312,7 @@
             <!--含运费小计 -->
             <div class="buy-point-discharge ">
                 <p class="price g_price ">
-                    合计（含运费） <span>¥</span><em class="pay-sum">${totalCost}</em>
+                    合计（含运费） <span>¥</span><em class="pay-sum">${totalPrice}</em>
                 </p>
             </div>
 
@@ -345,7 +351,8 @@
 
                     <div id="holyshit269" class="submitOrder">
                         <div class="go-btn-wrap">
-                            <a id="J_Go" href="javascript:submitOrder(this)" class="btn-go" tabindex="0" title="点击此按钮，提交订单" value="${orderCode}">提交订单</a>
+                            <a id="J_Go" href="javascript:submitOrder(this)" class="btn-go" tabindex="0"
+                               title="点击此按钮，提交订单">提交订单</a>
                         </div>
                     </div>
                     <div class="clear"></div>
@@ -432,6 +439,8 @@
     </div>
 
     <div class="clear"></div>
+
+
 </rapid:override>
 <rapid:override name="script_content">
 
@@ -449,7 +458,6 @@
             }
 
 
-            console.log();
 
         }
 
@@ -479,27 +487,14 @@
             })
 
 
-
-
         })
 
-        
+
         var submitOrder = function () {
-            var addressId = $('li.user-addresslist').attr('value');
-            var message = $('input.J_MakePoint').val();
-            var orderCode = $('#J_Go').attr('value');
-            url = '/order/submit';
-            $.post({
-                url:url,
-                data:{'addressId':addressId, 'message': message, 'orderCode':orderCode},
-                datatype:'json',
-                success:function (resp) {
-                    console.log(resp);
-                }
-            })
+            $('#form-order').submit();
 
         }
-        
+
         var selectFun1 = function () {
             var parentCode = $("select.selected-province option:selected").val();
 
@@ -555,12 +550,15 @@
             var addressId = $(del).attr('value');
             var url = '/order/delAddress';
             $.ajax({
-                url:url,
-                data:{"addressId":addressId},
-                datatype:'json',
-                method:'get',
-                success:function (resp) {
+                url: url,
+                data: {"addressId": addressId},
+                datatype: 'json',
+                method: 'get',
+                success: function (resp) {
                     window.location.reload();
+                },
+                error:function () {
+                    alert("你已经订单使用该地址，暂时不能删除");
                 }
             })
         }
@@ -574,11 +572,11 @@
             var addressId = $(set).attr('value');
             var url = '/order/setDefaultAddress';
             $.ajax({
-                url:url,
-                data:{"addressId":addressId},
-                datatype:'json',
-                method:'get',
-                success:function (resp) {
+                url: url,
+                data: {"addressId": addressId},
+                datatype: 'json',
+                method: 'get',
+                success: function (resp) {
                     window.location.reload();
                 }
             })

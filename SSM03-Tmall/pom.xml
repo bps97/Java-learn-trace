@@ -67,6 +67,19 @@
   <dependencies>
 
 
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.47</version>
+    </dependency>
+
+    <dependency>
+    <groupId>com.alipay.sdk</groupId>
+    <artifactId>alipay-sdk-java</artifactId>
+    <version>3.0.1</version>
+    </dependency>
+
+
     <!--    commons-os-->
     <dependency>
       <groupId>commons-io</groupId>

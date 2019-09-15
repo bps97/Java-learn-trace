@@ -49,11 +49,12 @@ public class OrderServiceImp implements OrderService{
     }
 
     @Override
-    public Order summitOrder(String orderCode, String message, Integer addressId) {
+    public Order summitOrder(String orderCode, String message, Integer addressId, Float payment) {
 
         Order order = getOrderByOrderCode(orderCode);
         order.setUser_message(message);
         order.setAddress_id(addressId);
+        order.setActual_payment(payment);
 
         Date now = new Date();
         java.sql.Date sqlNow = new java.sql.Date(now.getTime());

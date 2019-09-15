@@ -56,8 +56,6 @@ public class ShoppingCartController {
         Map<Integer, String> urls = productImageService.getImageUrls(productMap.values());
         model.addAttribute("images",urls);
 
-//        Float totalPrice = shoppingCartService.countTotalPrice(userId);
-//        model.addAttribute("totalPrice",totalPrice);
 
         return "shoppingCart";
     }

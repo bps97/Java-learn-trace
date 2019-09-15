@@ -76,7 +76,7 @@
                             <form id="fCaseForm" method="get" action="/good">
                                 <input type="hidden" name="caseList" id="fCaseHidden">
                                 <input type="hidden" id="fCaseIdHidden" value="<c:out value='${filterCases}'/>">
-
+                                <input type="hidden" value="${key}" name="key">
                             </form>
 
                             <c:forEach items="${filterCase}" var="fCase">

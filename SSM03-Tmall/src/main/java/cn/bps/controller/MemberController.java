@@ -79,26 +79,20 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/postSubmitInfo")
-    public String UpdateUserInfo(@RequestParam("name")String name,
-                                 @RequestParam("email")String email,
-                                 @RequestParam("phone")String phone,
-                                 @RequestParam("birthday") Date birthday,
+    public String UpdateUserInfo(@RequestParam(value = "name",required=false)String name,
+                                 @RequestParam(value = "email",required=false)String email,
+                                 @RequestParam(value = "phone")String phone,
+                                 @RequestParam(value = "birthday", defaultValue = "1111-11-11") Date birthday,
                                  HttpSession session)
     {
 
         User user = userService.getUserByPhone(phone);
-        user.setEmail(email);
-        user.setName(name);
 
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//        try{
-//            Date birth = sdf.parse(birthday);
-//            user.setBirthday(birth);
-//        }catch (ParseException e){
-//            e.printStackTrace();
-//        }
+            user.setEmail(email);
+            user.setName(name);
 
-        user.setBirthday(birthday);
+        if(!birthday.toString().equals("1111-11-11"))
+            user.setBirthday(birthday);
 
 
         session.setAttribute("username", name);

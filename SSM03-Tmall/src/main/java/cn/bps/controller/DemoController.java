@@ -38,7 +38,7 @@ public class DemoController {
         return "viewBase";
     }
 
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = {"/index","/"})
     public String showdemo(Model model, HttpSession session){
 
 

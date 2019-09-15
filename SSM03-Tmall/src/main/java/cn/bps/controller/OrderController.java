@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
@@ -38,6 +39,7 @@ public class OrderController {
 
     @Autowired
     private OrderItemService orderItemService;
+
 
     @RequestMapping(value = "/postAddress")
     @ResponseBody
@@ -90,9 +92,6 @@ public class OrderController {
     public String generatorOrder(@RequestParam(defaultValue = "0")Integer[] items,
                                  Model model,HttpSession session){
 
-
-
-
         if(session.getAttribute("userId") == null)
 
             return "0";
@@ -130,6 +129,9 @@ public class OrderController {
         Address defaultAddress = addressService.getDefaultAddressByUserId(userId);
         model.addAttribute("defaultAddress",defaultAddress);
 
+        float totalPrice = shoppingCartService.countTotalPrice(productItems);
+        model.addAttribute("totalPrice",totalPrice);
+
         String orderCode= orderService.generatorOrder(userId);
 
         orderItemService.addOrderItems(orderCode,productItems);
@@ -144,19 +146,24 @@ public class OrderController {
     }
 
 
-    @RequestMapping(value = "/submit")
+    @RequestMapping(value = "/submit",method = RequestMethod.POST)
     public String submitOrder(@RequestParam(value = "message",defaultValue = "")String message,
                               @RequestParam("orderCode")String orderCode,
-                              @RequestParam("addressId")Integer addressId){
-        Order order = orderService.summitOrder(orderCode,message,addressId);
+                              @RequestParam("addressId")Integer addressId,
+                              @RequestParam("payment") Float payment,
+                              RedirectAttributes redirectAttributes){
+        Order order = orderService.summitOrder(orderCode,message,addressId,payment);
+
+
+        redirectAttributes.addAttribute("totalCost",order.getActual_payment());
 
 
 
         if(order != null){
-            return "1";
+            return "redirect:/pay";
         }
 
-        return "0";
+        return "redirect: /order";
     }
 
 

@@ -1,6 +1,5 @@
 package cn.bps.service;
 
-import cn.bps.pojo.Product;
 import cn.bps.pojo.ProductBindFilter;
 
 import java.util.Collection;
