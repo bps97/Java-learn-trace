@@ -70,6 +70,10 @@
 
 			<div class="mr-cf">
 				<input type="submit" name="" value="提 交"  onclick="submitInfo()" class="mr-btn mr-btn-primary mr-btn-sm " style="border-radius: 14px;">
+				<div class="clear"></div>
+				<br>
+				<input name="" value="返 回"  onclick="window.history.back(-1);" class="mr-btn mr-btn-primary mr-btn-sm " style="border-radius: 14px;background-color: #3db922
+">
 			</div>
 
 

@@ -160,22 +160,31 @@
                         <%--</div>--%>
                     <div class="clear"></div>
                     <!--分页 -->
+<%--                    <ul class="mr-pagination mr-pagination-right">--%>
+<%--                        <li class="mr-disabled"><a href="#">&laquo;</a></li>--%>
+<%--                            &lt;%&ndash;    <li class=""><a href="#">1</a></li>&ndash;%&gt;--%>
+<%--                        <c:forEach begin="0" end="${page.getTotalPage()-1}" varStatus="status">--%>
+<%--                            <c:if test="${status.step*page.step-page.start<=50 && status.count*page.step-page.start>=-10}">--%>
+<%--                                <li <c:if test="${status.index*page.step==page.start}">class="mr-active"</c:if>>--%>
+<%--                                    <a--%>
+<%--                                            href="?start=${status.index*page.step}"--%>
+<%--                                            <c:if test="${status.index*page.step==page.start}">class="mr-active"</c:if>--%>
+<%--                                    >${status.count}</a>--%>
+<%--                                </li>--%>
+<%--                            </c:if>--%>
+<%--                        </c:forEach>--%>
+<%--                        <li><a href="#">&raquo;</a></li>--%>
+
+
+<%--                    </ul>--%>
                     <ul class="mr-pagination mr-pagination-right">
-                        <li class="mr-disabled"><a href="#">&laquo;</a></li>
-                            <%--    <li class=""><a href="#">1</a></li>--%>
-                        <c:forEach begin="0" end="${page.getTotalPage()-1}" varStatus="status">
-                            <c:if test="${status.step*page.step-page.start<=50 && status.count*page.step-page.start>=-10}">
-                                <li <c:if test="${status.index*page.step==page.start}">class="mr-active"</c:if>>
-                                    <a
-                                            href="?start=${status.index*page.step}"
-                                            <c:if test="${status.index*page.step==page.start}">class="mr-active"</c:if>
-                                    >${status.count}</a>
+                        <c:forEach begin="0" end="${page.getTotalPage()}" varStatus="status">
+                            <c:if test="${status.step*page.step-page.start<=30 && status.count*page.step-page.start>=-20}"><!--只显示最近四个-->
+                                <li <c:if test='${status.index*page.step==page.start}'>class="mr-active"</c:if>>  <!--当前页面-->
+                                    <a href="?start=${status.index*page.step}"<c:if test="${status.index*page.step==page.start}">class="mr-active"</c:if>>${status.count}</a>
                                 </li>
                             </c:if>
                         </c:forEach>
-                        <li><a href="#">&raquo;</a></li>
-
-
                     </ul>
                 </div>
             </div>

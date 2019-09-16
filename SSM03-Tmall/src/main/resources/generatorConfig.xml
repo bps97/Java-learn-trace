@@ -123,19 +123,7 @@
 <!--            <generatedKey column="id" sqlStatement="JDBC"/>-->
 <!--        </table>-->
 
-<!--        <table tableName="order_" domainObjectName="Order"-->
-<!--               enableCountByExample="false" enableUpdateByExample="false"-->
-<!--               enableDeleteByExample="false" enableSelectByExample="true"-->
-<!--               selectByExampleQueryId="false">-->
-<!--            <property name="my.isgen.usekeys" value="true"/>-->
-<!--            <property name="useActualColumnNames" value="true"/>-->
-<!--            <generatedKey column="id" sqlStatement="JDBC"/>-->
-<!--            <columnOverride column="create_date" jdbcType="TIMESTAMP"/>-->
-<!--            <columnOverride column="pay_date" jdbcType="TIMESTAMP"/>-->
-<!--            <columnOverride column="delivery_date" jdbcType="TIMESTAMP"/>-->
-<!--            <columnOverride column="confirm_date" jdbcType="TIMESTAMP"/>-->
 
-<!--        </table>-->
 
 <!--        <table tableName="concrete_property" domainObjectName="ConcreteProperty"-->
 <!--               enableCountByExample="false" enableUpdateByExample="false"-->
@@ -190,6 +178,20 @@
 <!--            <property name="useActualColumnNames" value="true"/>-->
 <!--            <generatedKey column="id" sqlStatement="JDBC"/>-->
 <!--        </table>-->
+
+                <table tableName="order_" domainObjectName="Order"
+                       enableCountByExample="false" enableUpdateByExample="false"
+                       enableDeleteByExample="false" enableSelectByExample="true"
+                       selectByExampleQueryId="false">
+                    <property name="my.isgen.usekeys" value="true"/>
+                    <property name="useActualColumnNames" value="true"/>
+                    <generatedKey column="id" sqlStatement="JDBC"/>
+                    <columnOverride column="create_date" jdbcType="TIMESTAMP"/>
+                    <columnOverride column="pay_date" jdbcType="TIMESTAMP"/>
+                    <columnOverride column="delivery_date" jdbcType="TIMESTAMP"/>
+                    <columnOverride column="confirm_date" jdbcType="TIMESTAMP"/>
+
+                </table>
 
         <table tableName="order_item" domainObjectName="OrderItem"
                enableCountByExample="false" enableUpdateByExample="false"

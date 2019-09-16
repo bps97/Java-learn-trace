@@ -73,7 +73,7 @@
                                 <span class="new-addr-bar hidden">|</span>
                                 <a href="#">编辑</a>
                                 <span class="new-addr-bar">|</span>
-                                <a href="javascript:void(0);" onclick="delClick(this);">删除</a>
+                                <a href="javascript:void(0);" onclick="delClick(this);" value="${defaultAddress.id}">删除</a>
                             </div>
 
                         </li>
@@ -257,57 +257,6 @@
                     </div>
                 </form>
 
-                <!--优惠券 -->
-                <div class="buy-agio">
-                    <li class="td td-coupon">
-
-                        <span class="coupon-title">优惠券</span>
-                        <select data-mr-selected>
-                            <option value="a">
-                                <div class="c-price">
-                                    <strong>￥8</strong>
-                                </div>
-                                <div class="c-limit">
-                                    【消费满95元可用】
-                                </div>
-                            </option>
-                            <option value="b" selected>
-                                <div class="c-price">
-                                    <strong>￥3</strong>
-                                </div>
-                                <div class="c-limit">
-                                    【无使用门槛】
-                                </div>
-                            </option>
-                        </select>
-                    </li>
-
-                    <li class="td td-bonus">
-
-                        <span class="bonus-title">红包</span>
-                        <select data-mr-selected>
-                            <option value="a">
-                                <div class="item-info">
-                                    ¥50.00<span>元</span>
-                                </div>
-                                <div class="item-remainderprice">
-                                    <span>还剩</span>10.40<span>元</span>
-                                </div>
-                            </option>
-                            <option value="b" selected>
-                                <div class="item-info">
-                                    ¥50.00<span>元</span>
-                                </div>
-                                <div class="item-remainderprice">
-                                    <span>还剩</span>50.00<span>元</span>
-                                </div>
-                            </option>
-                        </select>
-
-                    </li>
-
-                </div>
-                <div class="clear"></div>
             </div>
             <!--含运费小计 -->
             <div class="buy-point-discharge ">
@@ -446,6 +395,18 @@
 
     <script>
 
+        var submitOrder = function () {
+            // console.log( $('#form-order input[name=addressId]').attr('value'));
+            if($('#form-order input[name=addressId]').attr('value') == ""){
+                addAddress();
+            }else{
+                $('#form-order').submit();
+            }
+
+
+        }
+
+
         var addAddress = function () {
 
             $blackGround = $("div.theme-popover-mask");
@@ -454,7 +415,6 @@
             if ($blackGround.css('display') == 'none') {
                 $blackGround.css('display', "inline");
                 $addressTable.css('display', 'table');
-                // $addressTable.css('overflow','visible');
             }
 
 
@@ -490,10 +450,7 @@
         })
 
 
-        var submitOrder = function () {
-            $('#form-order').submit();
 
-        }
 
         var selectFun1 = function () {
             var parentCode = $("select.selected-province option:selected").val();

@@ -1,5 +1,6 @@
 package cn.bps.service;
 
+import cn.bps.pojo.Address;
 import cn.bps.pojo.Order;
 
 public interface OrderService {
@@ -8,5 +9,5 @@ public interface OrderService {
     String generatorOrder(int userId);
     Order getOrderByOrderCode(String orderCode);
 
-    Order summitOrder(String orderCode, String message, Integer addressId, Float payment);
+    Order summitOrder(String orderCode, String message, Address address, Float payment);
 }

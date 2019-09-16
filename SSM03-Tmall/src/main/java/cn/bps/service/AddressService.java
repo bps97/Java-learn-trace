@@ -16,4 +16,6 @@ public interface AddressService {
     Integer delAddressByAddressID(int addressId);
 
     Integer updateSetDefaultAddressById(int addressId);
+
+    Address getAddressByAddressID(Integer addressId);
 }

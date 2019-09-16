@@ -1,5 +1,6 @@
 package cn.bps.controller;
 
+import cn.bps.pojo.Order;
 import com.alibaba.fastjson.JSON;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
@@ -50,9 +51,10 @@ public class AlipayController {
     public static String format = "JSON";
 
     @RequestMapping(value = "/pay")
-    public void pay(HttpServletRequest httpRequest, HttpServletResponse httpResponse,
-                    @RequestParam Float totalCost)
-            throws ServletException, IOException {
+    public void pay(HttpServletResponse httpResponse,
+                    @RequestParam String orderCode,
+                    @RequestParam String actualCost)
+            throws  IOException {
         AlipayClient alipayClient = new DefaultAlipayClient(
                 gatewayUrl, app_id, merchant_private_key, format, charset,
                 alipay_public_key, sign_type); // 获得初始化的AlipayClient
@@ -64,12 +66,14 @@ public class AlipayController {
         alipayRequest.setNotifyUrl(notify_url);// 在公共参数中设置回跳和通知地址
 
 
+
+
         Map map = new HashMap();
         map.put("out_trade_no","2016101200668109");
         map.put("product_code","FAST_INSTANT_TRADE_PAY");
-        map.put("total_amount",totalCost);
-        map.put("subject","xx");
-        map.put("body","xxx");
+        map.put("total_amount",actualCost);
+        map.put("subject","简单商城:"+orderCode);
+        map.put("body",orderCode);
 
 
         alipayRequest.setBizContent(JSON.toJSONString(map));
@@ -87,6 +91,7 @@ public class AlipayController {
         httpResponse.getWriter().write(form);// 直接将完整的表单html输出到页面
         httpResponse.getWriter().flush();
         httpResponse.getWriter().close();
+
 
     }
 

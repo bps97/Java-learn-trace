@@ -2,6 +2,7 @@ package cn.bps.service;
 
 
 import cn.bps.mapper.OrderMapper;
+import cn.bps.pojo.Address;
 import cn.bps.pojo.Order;
 import cn.bps.pojo.OrderExample;
 import cn.bps.util.OrderCode;
@@ -49,12 +50,21 @@ public class OrderServiceImp implements OrderService{
     }
 
     @Override
-    public Order summitOrder(String orderCode, String message, Integer addressId, Float payment) {
+    public Order summitOrder(String orderCode, String message, Address address, Float payment) {
 
         Order order = getOrderByOrderCode(orderCode);
         order.setUser_message(message);
-        order.setAddress_id(addressId);
         order.setActual_payment(payment);
+
+
+        StringBuffer completeAddress = new StringBuffer(address.getProvince());
+        completeAddress.append(address.getPrefecture());
+        completeAddress.append(address.getCounty());
+        completeAddress.append(address.getAddress());
+        order.setComplete_address(completeAddress.toString());
+
+        order.setReceiver(address.getReceiver());
+        order.setMobile(address.getMobile());
 
         Date now = new Date();
         java.sql.Date sqlNow = new java.sql.Date(now.getTime());

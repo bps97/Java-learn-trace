@@ -152,11 +152,17 @@ public class OrderController {
                               @RequestParam("addressId")Integer addressId,
                               @RequestParam("payment") Float payment,
                               RedirectAttributes redirectAttributes){
-        Order order = orderService.summitOrder(orderCode,message,addressId,payment);
 
 
-        redirectAttributes.addAttribute("totalCost",order.getActual_payment());
 
+        Address address = addressService.getAddressByAddressID(addressId);
+
+
+        Order order = orderService.summitOrder(orderCode,message, address,payment);
+
+
+        redirectAttributes.addAttribute("actualCost", order.getActual_payment());
+        redirectAttributes.addAttribute("orderCode", order.getOrder_code());
 
 
         if(order != null){

@@ -77,4 +77,11 @@ public class AddressServiceImp implements AddressService {
         return addressMapper.updateByPrimaryKey(address);
 
     }
+
+    @Override
+    public Address getAddressByAddressID(Integer addressId) {
+
+
+        return addressMapper.selectByPrimaryKey(addressId);
+    }
 }

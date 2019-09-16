@@ -57,7 +57,7 @@ public class GoodsListController {
     @RequestMapping(value = {"/list", ""}, method = RequestMethod.GET)
     public String listGoods(@RequestParam(value = "caseList", defaultValue = "") String caseList,
                             @RequestParam(value = "start", defaultValue = "0") int start,
-                            @RequestParam(value = "step", defaultValue = "20") int step,
+
                             @RequestParam(value = "key", defaultValue = "") String key,
                             Model model) {
 
@@ -73,7 +73,8 @@ public class GoodsListController {
 
         /*分页*/
 
-        Page page = new Page(start, step);
+        Page page = new Page(start, 20);
+
         model.addAttribute("page", page);
 
         model.addAttribute("key", key);

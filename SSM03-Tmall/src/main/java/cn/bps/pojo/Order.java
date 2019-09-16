@@ -7,7 +7,11 @@ public class Order {
 
     private String order_code;
 
-    private Integer address_id;
+    private String complete_address;
+
+    private String mobile;
+
+    private String receiver;
 
     private String user_message;
 
@@ -41,12 +45,28 @@ public class Order {
         this.order_code = order_code == null ? null : order_code.trim();
     }
 
-    public Integer getAddress_id() {
-        return address_id;
+    public String getComplete_address() {
+        return complete_address;
     }
 
-    public void setAddress_id(Integer address_id) {
-        this.address_id = address_id;
+    public void setComplete_address(String complete_address) {
+        this.complete_address = complete_address == null ? null : complete_address.trim();
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile == null ? null : mobile.trim();
+    }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver == null ? null : receiver.trim();
     }
 
     public String getUser_message() {

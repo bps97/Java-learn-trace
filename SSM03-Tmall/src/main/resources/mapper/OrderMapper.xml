@@ -4,7 +4,9 @@
   <resultMap id="BaseResultMap" type="cn.bps.pojo.Order">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="order_code" jdbcType="VARCHAR" property="order_code" />
-    <result column="address_id" jdbcType="INTEGER" property="address_id" />
+    <result column="complete_address" jdbcType="VARCHAR" property="complete_address" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="receiver" jdbcType="VARCHAR" property="receiver" />
     <result column="user_message" jdbcType="VARCHAR" property="user_message" />
     <result column="create_date" jdbcType="TIMESTAMP" property="create_date" />
     <result column="pay_date" jdbcType="TIMESTAMP" property="pay_date" />
@@ -44,8 +46,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, order_code, address_id, user_message, create_date, pay_date, delivery_date, confirm_date, 
-    user_id, actual_payment, status
+    id, order_code, complete_address, mobile, receiver, user_message, create_date, pay_date, 
+    delivery_date, confirm_date, user_id, actual_payment, status
   </sql>
   <select id="selectByExample" parameterType="cn.bps.pojo.OrderExample" resultMap="BaseResultMap">
     select
@@ -73,14 +75,16 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.Order" useGeneratedKeys="true">
-    insert into order_ (order_code, address_id, user_message, 
-      create_date, pay_date, delivery_date, 
-      confirm_date, user_id, actual_payment, 
-      status)
-    values (#{order_code,jdbcType=VARCHAR}, #{address_id,jdbcType=INTEGER}, #{user_message,jdbcType=VARCHAR}, 
-      #{create_date,jdbcType=TIMESTAMP}, #{pay_date,jdbcType=TIMESTAMP}, #{delivery_date,jdbcType=TIMESTAMP}, 
-      #{confirm_date,jdbcType=TIMESTAMP}, #{user_id,jdbcType=INTEGER}, #{actual_payment,jdbcType=REAL}, 
-      #{status,jdbcType=VARCHAR})
+    insert into order_ (order_code, complete_address, mobile, 
+      receiver, user_message, create_date, 
+      pay_date, delivery_date, confirm_date, 
+      user_id, actual_payment, status
+      )
+    values (#{order_code,jdbcType=VARCHAR}, #{complete_address,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{receiver,jdbcType=VARCHAR}, #{user_message,jdbcType=VARCHAR}, #{create_date,jdbcType=TIMESTAMP}, 
+      #{pay_date,jdbcType=TIMESTAMP}, #{delivery_date,jdbcType=TIMESTAMP}, #{confirm_date,jdbcType=TIMESTAMP}, 
+      #{user_id,jdbcType=INTEGER}, #{actual_payment,jdbcType=REAL}, #{status,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.Order" useGeneratedKeys="true">
     insert into order_
@@ -88,8 +92,14 @@
       <if test="order_code != null">
         order_code,
       </if>
-      <if test="address_id != null">
-        address_id,
+      <if test="complete_address != null">
+        complete_address,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="receiver != null">
+        receiver,
       </if>
       <if test="user_message != null">
         user_message,
@@ -120,8 +130,14 @@
       <if test="order_code != null">
         #{order_code,jdbcType=VARCHAR},
       </if>
-      <if test="address_id != null">
-        #{address_id,jdbcType=INTEGER},
+      <if test="complete_address != null">
+        #{complete_address,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="receiver != null">
+        #{receiver,jdbcType=VARCHAR},
       </if>
       <if test="user_message != null">
         #{user_message,jdbcType=VARCHAR},
@@ -155,8 +171,14 @@
       <if test="order_code != null">
         order_code = #{order_code,jdbcType=VARCHAR},
       </if>
-      <if test="address_id != null">
-        address_id = #{address_id,jdbcType=INTEGER},
+      <if test="complete_address != null">
+        complete_address = #{complete_address,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="receiver != null">
+        receiver = #{receiver,jdbcType=VARCHAR},
       </if>
       <if test="user_message != null">
         user_message = #{user_message,jdbcType=VARCHAR},
@@ -188,7 +210,9 @@
   <update id="updateByPrimaryKey" parameterType="cn.bps.pojo.Order">
     update order_
     set order_code = #{order_code,jdbcType=VARCHAR},
-      address_id = #{address_id,jdbcType=INTEGER},
+      complete_address = #{complete_address,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      receiver = #{receiver,jdbcType=VARCHAR},
       user_message = #{user_message,jdbcType=VARCHAR},
       create_date = #{create_date,jdbcType=TIMESTAMP},
       pay_date = #{pay_date,jdbcType=TIMESTAMP},
