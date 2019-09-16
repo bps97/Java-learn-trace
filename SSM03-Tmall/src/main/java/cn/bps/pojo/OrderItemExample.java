@@ -234,63 +234,123 @@ public class OrderItemExample {
             return (Criteria) this;
         }
 
-        public Criteria andProduct_item_idIsNull() {
-            addCriterion("product_item_id is null");
+        public Criteria andProduct_idIsNull() {
+            addCriterion("product_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andProduct_item_idIsNotNull() {
-            addCriterion("product_item_id is not null");
+        public Criteria andProduct_idIsNotNull() {
+            addCriterion("product_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andProduct_item_idEqualTo(Integer value) {
-            addCriterion("product_item_id =", value, "product_item_id");
+        public Criteria andProduct_idEqualTo(Integer value) {
+            addCriterion("product_id =", value, "product_id");
             return (Criteria) this;
         }
 
-        public Criteria andProduct_item_idNotEqualTo(Integer value) {
-            addCriterion("product_item_id <>", value, "product_item_id");
+        public Criteria andProduct_idNotEqualTo(Integer value) {
+            addCriterion("product_id <>", value, "product_id");
             return (Criteria) this;
         }
 
-        public Criteria andProduct_item_idGreaterThan(Integer value) {
-            addCriterion("product_item_id >", value, "product_item_id");
+        public Criteria andProduct_idGreaterThan(Integer value) {
+            addCriterion("product_id >", value, "product_id");
             return (Criteria) this;
         }
 
-        public Criteria andProduct_item_idGreaterThanOrEqualTo(Integer value) {
-            addCriterion("product_item_id >=", value, "product_item_id");
+        public Criteria andProduct_idGreaterThanOrEqualTo(Integer value) {
+            addCriterion("product_id >=", value, "product_id");
             return (Criteria) this;
         }
 
-        public Criteria andProduct_item_idLessThan(Integer value) {
-            addCriterion("product_item_id <", value, "product_item_id");
+        public Criteria andProduct_idLessThan(Integer value) {
+            addCriterion("product_id <", value, "product_id");
             return (Criteria) this;
         }
 
-        public Criteria andProduct_item_idLessThanOrEqualTo(Integer value) {
-            addCriterion("product_item_id <=", value, "product_item_id");
+        public Criteria andProduct_idLessThanOrEqualTo(Integer value) {
+            addCriterion("product_id <=", value, "product_id");
             return (Criteria) this;
         }
 
-        public Criteria andProduct_item_idIn(List<Integer> values) {
-            addCriterion("product_item_id in", values, "product_item_id");
+        public Criteria andProduct_idIn(List<Integer> values) {
+            addCriterion("product_id in", values, "product_id");
             return (Criteria) this;
         }
 
-        public Criteria andProduct_item_idNotIn(List<Integer> values) {
-            addCriterion("product_item_id not in", values, "product_item_id");
+        public Criteria andProduct_idNotIn(List<Integer> values) {
+            addCriterion("product_id not in", values, "product_id");
             return (Criteria) this;
         }
 
-        public Criteria andProduct_item_idBetween(Integer value1, Integer value2) {
-            addCriterion("product_item_id between", value1, value2, "product_item_id");
+        public Criteria andProduct_idBetween(Integer value1, Integer value2) {
+            addCriterion("product_id between", value1, value2, "product_id");
             return (Criteria) this;
         }
 
-        public Criteria andProduct_item_idNotBetween(Integer value1, Integer value2) {
-            addCriterion("product_item_id not between", value1, value2, "product_item_id");
+        public Criteria andProduct_idNotBetween(Integer value1, Integer value2) {
+            addCriterion("product_id not between", value1, value2, "product_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andQualityIsNull() {
+            addCriterion("quality is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQualityIsNotNull() {
+            addCriterion("quality is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQualityEqualTo(Integer value) {
+            addCriterion("quality =", value, "quality");
+            return (Criteria) this;
+        }
+
+        public Criteria andQualityNotEqualTo(Integer value) {
+            addCriterion("quality <>", value, "quality");
+            return (Criteria) this;
+        }
+
+        public Criteria andQualityGreaterThan(Integer value) {
+            addCriterion("quality >", value, "quality");
+            return (Criteria) this;
+        }
+
+        public Criteria andQualityGreaterThanOrEqualTo(Integer value) {
+            addCriterion("quality >=", value, "quality");
+            return (Criteria) this;
+        }
+
+        public Criteria andQualityLessThan(Integer value) {
+            addCriterion("quality <", value, "quality");
+            return (Criteria) this;
+        }
+
+        public Criteria andQualityLessThanOrEqualTo(Integer value) {
+            addCriterion("quality <=", value, "quality");
+            return (Criteria) this;
+        }
+
+        public Criteria andQualityIn(List<Integer> values) {
+            addCriterion("quality in", values, "quality");
+            return (Criteria) this;
+        }
+
+        public Criteria andQualityNotIn(List<Integer> values) {
+            addCriterion("quality not in", values, "quality");
+            return (Criteria) this;
+        }
+
+        public Criteria andQualityBetween(Integer value1, Integer value2) {
+            addCriterion("quality between", value1, value2, "quality");
+            return (Criteria) this;
+        }
+
+        public Criteria andQualityNotBetween(Integer value1, Integer value2) {
+            addCriterion("quality not between", value1, value2, "quality");
             return (Criteria) this;
         }
     }

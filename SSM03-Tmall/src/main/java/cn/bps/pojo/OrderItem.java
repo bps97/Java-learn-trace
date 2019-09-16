@@ -5,7 +5,9 @@ public class OrderItem {
 
     private String order_code;
 
-    private Integer product_item_id;
+    private Integer product_id;
+
+    private Integer quality;
 
     public Integer getId() {
         return id;
@@ -23,11 +25,19 @@ public class OrderItem {
         this.order_code = order_code == null ? null : order_code.trim();
     }
 
-    public Integer getProduct_item_id() {
-        return product_item_id;
+    public Integer getProduct_id() {
+        return product_id;
     }
 
-    public void setProduct_item_id(Integer product_item_id) {
-        this.product_item_id = product_item_id;
+    public void setProduct_id(Integer product_id) {
+        this.product_id = product_id;
+    }
+
+    public Integer getQuality() {
+        return quality;
+    }
+
+    public void setQuality(Integer quality) {
+        this.quality = quality;
     }
 }

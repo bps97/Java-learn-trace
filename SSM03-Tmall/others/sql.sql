@@ -133,6 +133,26 @@ CREATE TABLE address (
   PRIMARY KEY (id)
 )
 
+CREATE TABLE order_ (
+  id int(11) NOT NULL AUTO_INCREMENT COMMENT '唯一索引id',
+  order_code varchar(255) NOT NULL UNIQUE COMMENT '订单号',
+  address_id int(11) DEFAULT NULL COMMENT '收货地址id',
+  user_message varchar(255) DEFAULT NULL COMMENT '用户备注的信息',
+  create_date datetime NOT NULL COMMENT '订单创建时间',
+  pay_date datetime DEFAULT NULL COMMENT '订单支付时间',
+  delivery_date datetime DEFAULT NULL COMMENT '发货日期',
+  confirm_date datetime DEFAULT NULL COMMENT '确认收货日期',
+  user_id int(11) NOT NULL COMMENT '对应的用户id',
+  actual_payment float COMMENT '订单实付款',
+  status varchar(255) NOT NULL COMMENT '订单状态',
+  PRIMARY KEY (id),
+  CONSTRAINT fk_order_address FOREIGN KEY (address_id) REFERENCES address (id),
+  CONSTRAINT fk_order_user FOREIGN KEY (user_id) REFERENCES user (id)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+
+
+
 -- 购物车内的产品项
 CREATE TABLE product_item(
   id int(11) NOT NULL AUTO_INCREMENT COMMENT '唯一索引id',
@@ -143,30 +163,6 @@ CREATE TABLE product_item(
   CONSTRAINT fl_shopping_cart_product FOREIGN KEY (product_id) REFERENCES product (id),
   CONSTRAINT fl_shopping_cart_user FOREIGN KEY (user_id) REFERENCES user (id)
 )ENGINE=InnoDB  DEFAULT CHARSET=utf8;
-
-
-
-
-CREATE TABLE order_ (
-  id int(11) NOT NULL AUTO_INCREMENT COMMENT '唯一索引id',
-  order_code varchar(255) NOT NULL UNIQUE COMMENT '订单号',
-  -- address_id int(11) DEFAULT NULL COMMENT '收货地址id',
-  complete_address varchar(255) DEFAULT NULL COMMENT '完整的地址',
-  mobile varchar(11) DEFAULT NULL COMMENT '用户电话号码', 
-  receiver varchar(255) DEFAULT NULL COMMENT '收货人',
-  user_message varchar(255) DEFAULT NULL COMMENT '用户备注的信息',
-  create_date datetime DEFAULT NULL COMMENT '订单创建时间',
-  pay_date datetime DEFAULT NULL COMMENT '订单支付时间',
-  delivery_date datetime DEFAULT NULL COMMENT '发货日期',
-  confirm_date datetime DEFAULT NULL COMMENT '确认收货日期',
-  user_id int(11) NOT NULL COMMENT '对应的用户id',
-  actual_payment float COMMENT '订单实付款',
-  status varchar(255) NOT NULL COMMENT '订单状态',
-  PRIMARY KEY (id),
-  CONSTRAINT fk_order_user FOREIGN KEY (user_id) REFERENCES user (id)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
-
-
 
 
 

@@ -69,6 +69,60 @@
     from administrative_area
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.bps.pojo.AdministrativeArea">
+    update administrative_area
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parent_id != null">
+        parent_id = #{parent_id,jdbcType=VARCHAR},
+      </if>
+      <if test="short_name != null">
+        short_name = #{short_name,jdbcType=VARCHAR},
+      </if>
+      <if test="level_type != null">
+        level_type = #{level_type,jdbcType=INTEGER},
+      </if>
+      <if test="city_code != null">
+        city_code = #{city_code,jdbcType=VARCHAR},
+      </if>
+      <if test="zip_code != null">
+        zip_code = #{zip_code,jdbcType=VARCHAR},
+      </if>
+      <if test="merge_name != null">
+        merge_name = #{merge_name,jdbcType=VARCHAR},
+      </if>
+      <if test="ing != null">
+        ing = #{ing,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null">
+        lat = #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyin != null">
+        pinyin = #{pinyin,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.bps.pojo.AdministrativeArea">
+    update administrative_area
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      parent_id = #{parent_id,jdbcType=VARCHAR},
+      short_name = #{short_name,jdbcType=VARCHAR},
+      level_type = #{level_type,jdbcType=INTEGER},
+      city_code = #{city_code,jdbcType=VARCHAR},
+      zip_code = #{zip_code,jdbcType=VARCHAR},
+      merge_name = #{merge_name,jdbcType=VARCHAR},
+      ing = #{ing,jdbcType=VARCHAR},
+      lat = #{lat,jdbcType=VARCHAR},
+      pinyin = #{pinyin,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
   <select id="selectByExampleWithRowbounds" parameterType="cn.bps.pojo.AdministrativeAreaExample" resultMap="BaseResultMap">
     select
     <if test="distinct">

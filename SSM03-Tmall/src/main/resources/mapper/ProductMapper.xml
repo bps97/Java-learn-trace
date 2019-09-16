@@ -9,6 +9,7 @@
     <result column="sale" jdbcType="INTEGER" property="sale" />
     <result column="stock" jdbcType="INTEGER" property="stock" />
     <result column="category_id" jdbcType="INTEGER" property="category_id" />
+    <result column="undercarriage" jdbcType="INTEGER" property="undercarriage" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -40,7 +41,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, sub_title, price, sale, stock, category_id
+    id, name, sub_title, price, sale, stock, category_id, undercarriage
   </sql>
   <select id="selectByExample" parameterType="cn.bps.pojo.ProductExample" resultMap="BaseResultMap">
     select
@@ -69,11 +70,11 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.Product" useGeneratedKeys="true">
     insert into product (name, sub_title, price, 
-      sale, stock, category_id
-      )
+      sale, stock, category_id, 
+      undercarriage)
     values (#{name,jdbcType=VARCHAR}, #{sub_title,jdbcType=VARCHAR}, #{price,jdbcType=REAL}, 
-      #{sale,jdbcType=INTEGER}, #{stock,jdbcType=INTEGER}, #{category_id,jdbcType=INTEGER}
-      )
+      #{sale,jdbcType=INTEGER}, #{stock,jdbcType=INTEGER}, #{category_id,jdbcType=INTEGER}, 
+      #{undercarriage,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.Product" useGeneratedKeys="true">
     insert into product
@@ -96,6 +97,9 @@
       <if test="category_id != null">
         category_id,
       </if>
+      <if test="undercarriage != null">
+        undercarriage,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="name != null">
@@ -115,6 +119,9 @@
       </if>
       <if test="category_id != null">
         #{category_id,jdbcType=INTEGER},
+      </if>
+      <if test="undercarriage != null">
+        #{undercarriage,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -139,6 +146,9 @@
       <if test="category_id != null">
         category_id = #{category_id,jdbcType=INTEGER},
       </if>
+      <if test="undercarriage != null">
+        undercarriage = #{undercarriage,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -149,7 +159,8 @@
       price = #{price,jdbcType=REAL},
       sale = #{sale,jdbcType=INTEGER},
       stock = #{stock,jdbcType=INTEGER},
-      category_id = #{category_id,jdbcType=INTEGER}
+      category_id = #{category_id,jdbcType=INTEGER},
+      undercarriage = #{undercarriage,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByExampleWithRowbounds" parameterType="cn.bps.pojo.ProductExample" resultMap="BaseResultMap">

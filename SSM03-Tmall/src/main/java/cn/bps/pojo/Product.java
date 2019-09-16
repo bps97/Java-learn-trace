@@ -15,6 +15,8 @@ public class Product {
 
     private Integer category_id;
 
+    private Integer undercarriage;
+
     public Integer getId() {
         return id;
     }
@@ -69,5 +71,13 @@ public class Product {
 
     public void setCategory_id(Integer category_id) {
         this.category_id = category_id;
+    }
+
+    public Integer getUndercarriage() {
+        return undercarriage;
+    }
+
+    public void setUndercarriage(Integer undercarriage) {
+        this.undercarriage = undercarriage;
     }
 }

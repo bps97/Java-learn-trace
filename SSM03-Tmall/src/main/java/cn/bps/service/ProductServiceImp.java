@@ -41,6 +41,7 @@ public class ProductServiceImp implements ProductService {
     @Override
     public List<Product> rowBoundsProduct(Set<Integer> set, Integer start, Integer step) {
         ProductExample productExample = new ProductExample();
+        productExample.createCriteria().andUndercarriageEqualTo(0);
         RowBounds rowBounds = new RowBounds(start,step);
 
         if (set.size() > 0) {

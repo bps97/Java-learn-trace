@@ -65,7 +65,7 @@ public class ManageController {
 
         model.addAttribute("page",page);
 
-        return "manage";
+        return "/admin/manage";
     }
 
 
@@ -81,7 +81,7 @@ public class ManageController {
         model.addAttribute("filterMap",filterMap);
         model.addAttribute("filterCases",filterCases);
 
-        return "AddProduct";
+        return "/adminAddProduct";
     }
 
     @RequestMapping(value = "/edit/{id}")
@@ -97,7 +97,7 @@ public class ManageController {
         List<Category> categories = categoryService.getCategories();
         model.addAttribute("categories",categories);
 
-        return "productEdit";
+        return "/admin/productEdit";
     }
 
     @RequestMapping(value = "/info/{id}")
@@ -117,7 +117,7 @@ public class ManageController {
         List<Category> categories = categoryService.getCategories();
         model.addAttribute("categories",categories);
 
-        return "productInfo";
+        return "/admin/productInfo";
     }
 
     @RequestMapping(value = "/del/{id}")
@@ -130,11 +130,11 @@ public class ManageController {
         productBindFilterService.deleteDemos(id);
 
         if(productService.deleteOneById(id)==id){
-            return "redirect:/manage";
+            return "redirect:/admin/manage";
         }
 
         //失败
-        return "redirect:/manage";
+        return "redirect:/admin/manage";
     }
 
     @RequestMapping(value = "/postProduct/{id}", method = RequestMethod.POST)
@@ -164,7 +164,7 @@ public class ManageController {
 
 
 
-        return "redirect:/manage/list";
+        return "redirect:/admin/manage/list";
     }
 
 
@@ -180,6 +180,6 @@ public class ManageController {
         List<ProductBindFilter> productBindFilters = completeProduct.generatorProductBindFilter(product.getId());
         productBindFilterService.insertProductBindFilter(productBindFilters);
 
-        return "redirect:/manage/list";
+        return "redirect:/admin/manage/list";
     }
 }

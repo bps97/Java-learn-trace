@@ -11,4 +11,8 @@ public interface AdministrativeAreaMapper {
     List<AdministrativeArea> selectByExample(AdministrativeAreaExample example);
 
     AdministrativeArea selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(AdministrativeArea record);
+
+    int updateByPrimaryKey(AdministrativeArea record);
 }

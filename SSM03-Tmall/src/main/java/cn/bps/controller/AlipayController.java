@@ -69,7 +69,7 @@ public class AlipayController {
 
 
         Map map = new HashMap();
-        map.put("out_trade_no","2016101200668109");
+        map.put("out_trade_no",orderCode);
         map.put("product_code","FAST_INSTANT_TRADE_PAY");
         map.put("total_amount",actualCost);
         map.put("subject","简单商城:"+orderCode);

@@ -34,7 +34,6 @@ public class ShoppingCartController {
 
 
 
-
     @RequestMapping(value = {"","/"})
     public String showShopCart(HttpSession session,
                                Model model){
@@ -72,8 +71,14 @@ public class ShoppingCartController {
         if(session.getAttribute("userId") == null)
             return 0;
 
-        Integer userId = (Integer) session.getAttribute("userId");
-        return shoppingCartService.insertOne(productId, userId, quality);
+        ProductItem productItem = shoppingCartService.findProductInShoppingCart(productId);
+
+        if(productItem == null){//购物车没有相似产品
+            Integer userId = (Integer) session.getAttribute("userId");
+            return shoppingCartService.insertOne(productId, userId, quality);
+        }
+
+        return shoppingCartService.ProductQualityAdd(productItem);
 
     }
 
@@ -116,10 +121,15 @@ public class ShoppingCartController {
         if(session.getAttribute("userId") == null){
             return "redirect:/login";
         }
-        Integer userId = (Integer) session.getAttribute("userId");
-        shoppingCartService.insertOne(productId, userId, quality);
 
+        ProductItem productItem = shoppingCartService.findProductInShoppingCart(productId);
+        if(productItem == null) {//购物车没有相似产品
+            Integer userId = (Integer) session.getAttribute("userId");
+            shoppingCartService.insertOne(productId, userId, quality);
+        }else{
+            shoppingCartService.ProductQualityAdd(productItem);
 
+        }
         return "redirect:/shop";
 
     }

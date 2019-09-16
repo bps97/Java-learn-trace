@@ -4,7 +4,8 @@
   <resultMap id="BaseResultMap" type="cn.bps.pojo.OrderItem">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="order_code" jdbcType="VARCHAR" property="order_code" />
-    <result column="product_item_id" jdbcType="INTEGER" property="product_item_id" />
+    <result column="product_id" jdbcType="INTEGER" property="product_id" />
+    <result column="quality" jdbcType="INTEGER" property="quality" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -36,7 +37,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, order_code, product_item_id
+    id, order_code, product_id, quality
   </sql>
   <select id="selectByExample" parameterType="cn.bps.pojo.OrderItemExample" resultMap="BaseResultMap">
     select
@@ -63,15 +64,11 @@
     delete from order_item
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.bps.pojo.OrderItemExample">
-    delete from order_item
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.OrderItem" useGeneratedKeys="true">
-    insert into order_item (order_code, product_item_id)
-    values (#{order_code,jdbcType=VARCHAR}, #{product_item_id,jdbcType=INTEGER})
+    insert into order_item (order_code, product_id, quality
+      )
+    values (#{order_code,jdbcType=VARCHAR}, #{product_id,jdbcType=INTEGER}, #{quality,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.OrderItem" useGeneratedKeys="true">
     insert into order_item
@@ -79,16 +76,22 @@
       <if test="order_code != null">
         order_code,
       </if>
-      <if test="product_item_id != null">
-        product_item_id,
+      <if test="product_id != null">
+        product_id,
+      </if>
+      <if test="quality != null">
+        quality,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="order_code != null">
         #{order_code,jdbcType=VARCHAR},
       </if>
-      <if test="product_item_id != null">
-        #{product_item_id,jdbcType=INTEGER},
+      <if test="product_id != null">
+        #{product_id,jdbcType=INTEGER},
+      </if>
+      <if test="quality != null">
+        #{quality,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -98,8 +101,11 @@
       <if test="order_code != null">
         order_code = #{order_code,jdbcType=VARCHAR},
       </if>
-      <if test="product_item_id != null">
-        product_item_id = #{product_item_id,jdbcType=INTEGER},
+      <if test="product_id != null">
+        product_id = #{product_id,jdbcType=INTEGER},
+      </if>
+      <if test="quality != null">
+        quality = #{quality,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -107,7 +113,8 @@
   <update id="updateByPrimaryKey" parameterType="cn.bps.pojo.OrderItem">
     update order_item
     set order_code = #{order_code,jdbcType=VARCHAR},
-      product_item_id = #{product_item_id,jdbcType=INTEGER}
+      product_id = #{product_id,jdbcType=INTEGER},
+      quality = #{quality,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByExampleWithRowbounds" parameterType="cn.bps.pojo.OrderItemExample" resultMap="BaseResultMap">

@@ -543,6 +543,66 @@ public class ProductExample {
             addCriterion("category_id not between", value1, value2, "category_id");
             return (Criteria) this;
         }
+
+        public Criteria andUndercarriageIsNull() {
+            addCriterion("undercarriage is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUndercarriageIsNotNull() {
+            addCriterion("undercarriage is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUndercarriageEqualTo(Integer value) {
+            addCriterion("undercarriage =", value, "undercarriage");
+            return (Criteria) this;
+        }
+
+        public Criteria andUndercarriageNotEqualTo(Integer value) {
+            addCriterion("undercarriage <>", value, "undercarriage");
+            return (Criteria) this;
+        }
+
+        public Criteria andUndercarriageGreaterThan(Integer value) {
+            addCriterion("undercarriage >", value, "undercarriage");
+            return (Criteria) this;
+        }
+
+        public Criteria andUndercarriageGreaterThanOrEqualTo(Integer value) {
+            addCriterion("undercarriage >=", value, "undercarriage");
+            return (Criteria) this;
+        }
+
+        public Criteria andUndercarriageLessThan(Integer value) {
+            addCriterion("undercarriage <", value, "undercarriage");
+            return (Criteria) this;
+        }
+
+        public Criteria andUndercarriageLessThanOrEqualTo(Integer value) {
+            addCriterion("undercarriage <=", value, "undercarriage");
+            return (Criteria) this;
+        }
+
+        public Criteria andUndercarriageIn(List<Integer> values) {
+            addCriterion("undercarriage in", values, "undercarriage");
+            return (Criteria) this;
+        }
+
+        public Criteria andUndercarriageNotIn(List<Integer> values) {
+            addCriterion("undercarriage not in", values, "undercarriage");
+            return (Criteria) this;
+        }
+
+        public Criteria andUndercarriageBetween(Integer value1, Integer value2) {
+            addCriterion("undercarriage between", value1, value2, "undercarriage");
+            return (Criteria) this;
+        }
+
+        public Criteria andUndercarriageNotBetween(Integer value1, Integer value2) {
+            addCriterion("undercarriage not between", value1, value2, "undercarriage");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

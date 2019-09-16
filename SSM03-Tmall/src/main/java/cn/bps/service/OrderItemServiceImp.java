@@ -21,20 +21,22 @@ public class OrderItemServiceImp implements OrderItemService {
     }
 
     @Override
-    public int addOrderItem(String orderCode, int productItemId) {
+    public int addOrderItem(String orderCode, ProductItem productItem) {
         OrderItem orderItem = new OrderItem();
         orderItem.setOrder_code(orderCode);
-        orderItem.setProduct_item_id(productItemId);
+        orderItem.setProduct_id(productItem.getProduct_id());
+        orderItem.setQuality(productItem.getQuality());
         return orderItemMapper.insert(orderItem);
     }
 
     @Override
-    public int addOrderItems(String orderCode, List<ProductItem> productItems) {
+    public void addOrderItems(String orderCode, List<ProductItem> productItems) {
 
         for(ProductItem productItem : productItems){
-            addOrderItem(orderCode,productItem.getId());
+            addOrderItem(orderCode,productItem);
         }
-
-        return 0;
+        return;
     }
+
+
 }

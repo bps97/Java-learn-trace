@@ -2,6 +2,7 @@ package cn.bps.service;
 
 import cn.bps.mapper.ProductItemMapper;
 import cn.bps.pojo.Product;
+import cn.bps.pojo.ProductExample;
 import cn.bps.pojo.ProductItem;
 import cn.bps.pojo.ProductItemExample;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -121,6 +122,29 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
         item.setQuality(quality);
 
         return productItemMapper.updateByPrimaryKey(item);
+    }
+
+    @Override
+    public ProductItem findProductInShoppingCart(int productId) {
+        ProductItemExample productItemExample = new ProductItemExample();
+        productItemExample.createCriteria().andProduct_idEqualTo(productId);
+        List<ProductItem> productItems = productItemMapper.selectByExample(productItemExample);
+        if(productItems.size()>0){
+            return productItems.get(0);
+        }
+        return null;
+    }
+
+
+//    产品数量加一
+    @Override
+    public Integer ProductQualityAdd(ProductItem productItem) {
+
+        productItem.setQuality(productItem.getQuality()+1);
+
+        productItemMapper.updateByPrimaryKey(productItem);
+
+        return null;
     }
 
 

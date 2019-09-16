@@ -6,8 +6,6 @@ import java.util.List;
 import org.apache.ibatis.session.RowBounds;
 
 public interface OrderItemMapper {
-    int deleteByExample(OrderItemExample example);
-
     int deleteByPrimaryKey(Integer id);
 
     int insert(OrderItem record);
