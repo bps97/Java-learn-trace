@@ -41,6 +41,8 @@ public class OrderController {
     private OrderItemService orderItemService;
 
 
+
+
     @RequestMapping(value = "/postAddress")
     @ResponseBody
     public String ajaxAddAddress(@ModelAttribute Address address,
@@ -133,12 +135,16 @@ public class OrderController {
         model.addAttribute("totalPrice",totalPrice);
 
         String orderCode= orderService.generatorOrder(userId);
-
+        //初始化订单
         orderItemService.addOrderItems(orderCode,productItems);
 
         if(orderCode!=null){
+            //除去购物车内对应商品
+            shoppingCartService.removeProductItemsByIds(itemList);
             model.addAttribute("orderCode", orderCode);
             return "/order";
+
+
         }
 
         return "0";
@@ -166,12 +172,31 @@ public class OrderController {
 
 
         if(order != null){
+
+
+
+
             return "redirect:/pay";
         }
 
         return "redirect: /order";
     }
 
+    @RequestMapping(value = "/confirm")
+    public String confirmOrder(@RequestParam("alipayInfo")String orderCode){
+
+
+        Order order = orderService.confirmOrder(orderCode);
+        if(order!=null){
+            return "redirect:/shop";
+        }
+
+
+        return null;
+
+
+
+    }
 
 
 }

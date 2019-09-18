@@ -1,10 +1,7 @@
 package cn.bps.service;
 
 import cn.bps.mapper.ProductItemMapper;
-import cn.bps.pojo.Product;
-import cn.bps.pojo.ProductExample;
-import cn.bps.pojo.ProductItem;
-import cn.bps.pojo.ProductItemExample;
+import cn.bps.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -145,6 +142,15 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
         productItemMapper.updateByPrimaryKey(productItem);
 
         return null;
+    }
+
+
+    @Override
+    public int removeProductItemsByIds(List<Integer> itemList) {
+
+        ProductItemExample shoppingCartExample = new ProductItemExample();
+        shoppingCartExample.createCriteria().andProduct_idIn(itemList);
+        return productItemMapper.deleteByExample(shoppingCartExample);
     }
 
 

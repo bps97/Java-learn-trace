@@ -96,3 +96,86 @@ var option = {
 
 // 为echarts对象加载数据
 myChart.setOption(option);
+
+
+
+
+// 基于准备好的dom，初始化echarts图表 #4ad2ff青色
+var myChart = echarts.init(document.getElementById('main1'));
+var option1 = {
+  title : {
+    text: '销售额和综合好评度占比图',
+    // subtext: '纯属虚构',
+    x:'center'
+  },
+  tooltip : {
+    trigger: 'item',
+    formatter: "{a} <br/>{b} : {c} ({d}%)"
+  },
+  legend: {
+    x : 'center',
+    y : 'bottom',
+    data:['电子类','生活用品类','饮食类']
+  },
+  toolbox: {
+    show : true,
+    feature : {
+      mark : {show: true},
+      dataView : {show: true, readOnly: false},
+      magicType : {
+        show: true,
+        type: ['pie', 'funnel']
+      },
+      restore : {show: true},
+      saveAsImage : {show: true}
+    }
+  },
+  calculable : true,
+  series : [
+    {
+      name:'产品销售额',
+      type:'pie',
+      radius : [20, 110],
+      center : ['25%', '50%'],
+      roseType : 'radius',
+      label: {
+        normal: {
+          show: false
+        },
+        emphasis: {
+          show: true
+        }
+      },
+      lableLine: {
+        normal: {
+          show: false
+        },
+        emphasis: {
+          show: true
+        }
+      },
+      data:[
+        {value:45, name:'电子类'},
+        {value:20, name:'生活用品类'},
+        {value:35, name:'饮食类'}
+      ]
+    },
+    {
+      name:'综合好评度',
+      type:'pie',
+      radius : [30, 110],
+      center : ['75%', '50%'],
+      roseType : 'area',
+      data:[
+        {value:40, name:'电子类'},
+        {value:45, name:'生活用品类'},
+        {value:15, name:'饮食类'}
+      ]
+    }
+  ]
+};
+
+
+
+// 为echarts对象加载数据
+myChart.setOption(option1);

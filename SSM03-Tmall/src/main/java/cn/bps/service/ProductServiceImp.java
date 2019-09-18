@@ -46,7 +46,8 @@ public class ProductServiceImp implements ProductService {
 
         if (set.size() > 0) {
             productExample.createCriteria().andIdIn(new ArrayList(set));
-            return productMapper.selectByExampleWithRowbounds(productExample,rowBounds);
+            List<Product> products = productMapper.selectByExampleWithRowbounds(productExample, rowBounds);
+            return products;
 
         }
         return new ArrayList<>();

@@ -48,6 +48,7 @@ public class CompleteProduct {
         product.setName(name);
         product.setPrice(price);
         product.setCategory_id(category);
+        product.setUndercarriage(0);
 
         return product;
     }

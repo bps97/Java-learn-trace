@@ -1,7 +1,9 @@
 package cn.bps.service;
 
 import cn.bps.mapper.OrderItemMapper;
+import cn.bps.pojo.Order;
 import cn.bps.pojo.OrderItem;
+import cn.bps.pojo.OrderItemExample;
 import cn.bps.pojo.ProductItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +38,15 @@ public class OrderItemServiceImp implements OrderItemService {
             addOrderItem(orderCode,productItem);
         }
         return;
+    }
+
+    @Override
+    public List<OrderItem> getProductIds(Order order) {
+
+        OrderItemExample orderItemExample = new OrderItemExample();
+        orderItemExample.createCriteria().andOrder_codeEqualTo(order.getOrder_code());
+        return  orderItemMapper.selectByExample(orderItemExample);
+
     }
 
 

@@ -84,7 +84,6 @@
 
             <div class="login-links">
 
-                <label for="remember-me"><input id="remember-me" type="checkbox">记住密码</label>
                 <a href="/register" class="mr-fr">注册</a>
                 <br/>
             </div>

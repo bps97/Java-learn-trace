@@ -1,5 +1,6 @@
 package cn.bps.service;
 
+import cn.bps.pojo.OrderItem;
 import cn.bps.pojo.Product;
 import cn.bps.pojo.ProductImage;
 import cn.bps.pojo.ProductItem;
@@ -30,6 +31,9 @@ public interface ShoppingCartService {
     ProductItem findProductInShoppingCart(int productId); //查看购物车内是否与该产品一致的产品，有则返回一致产品
 
     Integer ProductQualityAdd(ProductItem productItem);
+
+
+    int removeProductItemsByIds(List<Integer> itemList);
 
 
 //    boolean isProductExist(int productId);

@@ -14,4 +14,6 @@ public interface OrderItemService {
 
 
     void addOrderItems(String orderCode, List<ProductItem> productItems);
+
+    List<OrderItem> getProductIds(Order order);
 }

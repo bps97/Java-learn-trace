@@ -78,4 +78,22 @@ public class OrderServiceImp implements OrderService{
         return null;
 
     }
+
+    @Override
+    public Order confirmOrder(String orderCode) {
+
+
+        Order order = getOrderByOrderCode(orderCode);
+
+        Date now = new Date();
+        java.sql.Date sqlNow = new java.sql.Date(now.getTime());
+
+        order.setPay_date(sqlNow);
+        order.setStatus("待发货");
+
+        if(orderMapper.updateByPrimaryKey(order)!=0){
+            return order;
+        }
+        return null;
+    }
 }
