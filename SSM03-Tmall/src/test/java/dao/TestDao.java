@@ -90,10 +90,11 @@
 //    @Test
 //    public void filterCaseTest(){
 //        FilterCaseExample filterExample = new FilterCaseExample();
+//        filterExample.setOrderByClause("`id` DESC");
 //        List<FilterCase> list = filterCaseMapper.selectByExample(filterExample);
 //
 //        for(FilterCase ca:list){
-//            System.out.println(ca.getName());
+//            System.out.println(ca.getName()+":"+ca.getId());
 //        }
 //    }
 //

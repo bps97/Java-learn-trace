@@ -8,6 +8,7 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -39,7 +40,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, phone, email, password, birthday
+    id, name, phone, email, password, birthday, image
   </sql>
   <select id="selectByExample" parameterType="cn.bps.pojo.UserExample" resultMap="BaseResultMap">
     select
@@ -68,9 +69,11 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.User" useGeneratedKeys="true">
     insert into user (name, phone, email, 
-      password, birthday)
+      password, birthday, image
+      )
     values (#{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE})
+      #{password,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{image,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.bps.pojo.User" useGeneratedKeys="true">
     insert into user
@@ -90,6 +93,9 @@
       <if test="birthday != null">
         birthday,
       </if>
+      <if test="image != null">
+        image,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="name != null">
@@ -106,6 +112,9 @@
       </if>
       <if test="birthday != null">
         #{birthday,jdbcType=DATE},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -127,6 +136,9 @@
       <if test="birthday != null">
         birthday = #{birthday,jdbcType=DATE},
       </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -136,7 +148,8 @@
       phone = #{phone,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      birthday = #{birthday,jdbcType=DATE}
+      birthday = #{birthday,jdbcType=DATE},
+      image = #{image,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByExampleWithRowbounds" parameterType="cn.bps.pojo.UserExample" resultMap="BaseResultMap">

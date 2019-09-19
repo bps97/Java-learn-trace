@@ -47,4 +47,4 @@
     </rapid:override>
 
 
-    <%@ include file="base.jsp" %>
+    <%@ include file="../base.jsp" %>

@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.session.RowBounds;
 
 public interface ProductImageMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByExample(ProductImageExample example);
 
     int insert(ProductImage record);
 

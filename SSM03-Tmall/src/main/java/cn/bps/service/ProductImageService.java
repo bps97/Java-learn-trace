@@ -4,7 +4,6 @@ import cn.bps.pojo.Product;
 import cn.bps.pojo.ProductImage;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 public interface ProductImageService {
@@ -12,4 +11,10 @@ public interface ProductImageService {
     String getImageUrl(Integer productId);
 
     int addProductImage(Integer productId, String imgUrl);
+
+    int deleteOneByProductId(int id);
+
+    int updateProductImage(Integer productId, String imgUrl);
+
+    ProductImage getProductImageByProductId(Integer productId);
 }

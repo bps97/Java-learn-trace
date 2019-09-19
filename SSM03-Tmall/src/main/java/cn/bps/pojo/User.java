@@ -15,6 +15,8 @@ public class User {
 
     private Date birthday;
 
+    private String image;
+
     public Integer getId() {
         return id;
     }
@@ -61,5 +63,13 @@ public class User {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image == null ? null : image.trim();
     }
 }

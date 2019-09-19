@@ -74,6 +74,7 @@ public class Product {
         product.setPrice(price);
         product.setStock(stock);
         product.setSub_title(sub_title);
+        product.setUndercarriage(0);
         return product;
     }
 }

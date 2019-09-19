@@ -46,7 +46,10 @@ public class ProductImageServiceImp implements ProductImageService {
         productImageExample.createCriteria().andProduct_idEqualTo(productId);
         List<ProductImage> productImages = productImageMapper.selectByExample(productImageExample);
 
-        return productImages.get(0).getImage_link();
+        if(productImages.size()>0){
+            return productImages.get(0).getImage_link();
+        }
+        else return "http://temp.im/200x200";
     }
 
     @Override
@@ -59,6 +62,42 @@ public class ProductImageServiceImp implements ProductImageService {
 
         return productImageMapper.insert(productImage);
 }
+
+
+    //根据产品id删除对应图片
+    @Override
+    public int deleteOneByProductId(int id) {
+
+        ProductImageExample productImageExample = new ProductImageExample();
+        productImageExample.createCriteria().andProduct_idEqualTo(id);
+        return productImageMapper.deleteByExample(productImageExample);
+
+    }
+
+    @Override
+    public int updateProductImage(Integer productId, String imgUrl) {
+
+        ProductImage productImage = getProductImageByProductId(productId);
+
+        productImage.setImage_link(imgUrl);
+        return  productImageMapper.updateByPrimaryKey(productImage);
+
+    }
+
+    @Override
+    public ProductImage getProductImageByProductId(Integer productId) {
+
+        ProductImageExample productImageExample = new ProductImageExample();
+        productImageExample.createCriteria().andProduct_idEqualTo(productId);
+        List<ProductImage> productImages = productImageMapper.selectByExample(productImageExample);
+
+        if(productImages.size()>0)
+        {
+            return productImages.get(0);
+        }
+
+        return null;
+    }
 
 
 }

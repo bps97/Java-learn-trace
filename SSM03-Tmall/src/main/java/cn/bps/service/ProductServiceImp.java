@@ -39,9 +39,19 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
-    public List<Product> rowBoundsProduct(Set<Integer> set, Integer start, Integer step) {
+    public List<Product> rowBoundsProduct(Set<Integer> set, Integer start, Integer step ) {
+        return rowBoundsProduct(set,start,step,true);
+    }
+
+    //重载实现参数默认值
+    @Override
+    public List<Product> rowBoundsProduct(Set<Integer> set, Integer start, Integer step, boolean isUndercarriage) {
+
         ProductExample productExample = new ProductExample();
-        productExample.createCriteria().andUndercarriageEqualTo(0);
+        if(isUndercarriage){
+            productExample.createCriteria().andUndercarriageEqualTo(0);
+
+        }
         RowBounds rowBounds = new RowBounds(start,step);
 
         if (set.size() > 0) {
@@ -52,6 +62,7 @@ public class ProductServiceImp implements ProductService {
         }
         return new ArrayList<>();
     }
+
 
     @Override
     public Product getProductById(Integer id) {
@@ -71,6 +82,36 @@ public class ProductServiceImp implements ProductService {
     @Override
     public int updateOne(Product product) {
         return productMapper.updateByPrimaryKey(product);
+    }
+
+    @Override
+    public Product editOne(Product product) {
+
+        Product newProduct = clone(product);
+        if(undercarriage(product) > 0){//如果下架成功
+            if(insertOne(newProduct) > 0){//如果更新成果
+
+
+                return newProduct;
+            }
+            undercarriage(product);//重新上架
+            return null;
+        }
+
+
+        return null;
+    }
+
+    @Override
+    public int getRecentProductId(Product product) {
+        ProductExample productExample = new ProductExample();
+        productExample.createCriteria().andCategory_idEqualTo(product.getCategory_id()).andSub_titleEqualTo(product.getSub_title());
+        productExample.setOrderByClause("`id` DESC");
+
+        List<Product> products = productMapper.selectByExample(productExample);
+        if(products.size()>0)
+            return products.get(0).getId();
+        return 0;
     }
 
     @Override
@@ -97,6 +138,28 @@ public class ProductServiceImp implements ProductService {
         }
 
         return map;
+    }
+
+    @Override
+    public Product clone(Product product) {
+
+        Product newProduct = new Product();
+        newProduct.setUndercarriage(product.getUndercarriage());
+        newProduct.setCategory_id(product.getCategory_id());
+        newProduct.setPrice(product.getPrice());
+        newProduct.setSale(product.getSale());
+        newProduct.setName(product.getName());
+        newProduct.setStock(product.getStock());
+        newProduct.setSub_title(product.getSub_title());
+
+        return newProduct;
+    }
+
+    @Override
+    public int undercarriage(Product product) {
+        int flag = (product.getUndercarriage()==0)?1:0;
+        product.setUndercarriage(flag);
+        return productMapper.updateByPrimaryKey(product);
     }
 
 

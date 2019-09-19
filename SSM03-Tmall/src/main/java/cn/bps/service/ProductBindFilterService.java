@@ -13,4 +13,5 @@ public interface ProductBindFilterService {
     void insertProductBindFilter(List<ProductBindFilter> productBindFilters);
     int deleteDemos(int productId);
 
+    List<ProductBindFilter> cloneByProductId(Integer oldId, Integer newId);
 }

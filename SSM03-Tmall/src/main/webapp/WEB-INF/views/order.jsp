@@ -542,5 +542,5 @@
 
 </rapid:override>
 
-<%@ include file="viewBase.jsp" %>
+<%@ include file="base.jsp" %>
 

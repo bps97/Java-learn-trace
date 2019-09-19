@@ -5,7 +5,7 @@ import cn.bps.mapper.OrderMapper;
 import cn.bps.pojo.Address;
 import cn.bps.pojo.Order;
 import cn.bps.pojo.OrderExample;
-import cn.bps.util.OrderCode;
+import cn.bps.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,7 @@ public class OrderServiceImp implements OrderService{
 
         Order order = new Order();
 
-        String orderCode = OrderCode.getOrderCode();
+        String orderCode = Util.generatorRandomCode();
 
         order.setOrder_code(orderCode);
         order.setUser_id(userId);

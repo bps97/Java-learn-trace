@@ -35,7 +35,7 @@ public class DemoController {
 
     @RequestMapping(value = "/test")
     public String test(){
-        return "viewBase";
+        return "base";
     }
 
     @RequestMapping(value = {"/index","/"})
@@ -59,7 +59,7 @@ public class DemoController {
 
     @RequestMapping(value = "/base")
     public String showList(){
-        return "viewBase";
+        return "base";
     }
 
 

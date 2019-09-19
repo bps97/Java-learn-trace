@@ -1,6 +1,7 @@
 package cn.bps.service;
 
 import cn.bps.pojo.Product;
+import cn.bps.pojo.ProductImage;
 import cn.bps.pojo.ProductItem;
 
 import java.util.List;
@@ -14,6 +15,8 @@ public interface ProductService {
 
     List<Product> rowBoundsProduct(Set<Integer> idSet, Integer start, Integer step);
 
+    List<Product> rowBoundsProduct(Set<Integer> set, Integer start, Integer step, boolean isUndercarriage);
+
     Product getProductById(Integer id);
 
     int deleteOneById(Integer id);
@@ -22,9 +25,19 @@ public interface ProductService {
 
     int updateOne(Product product);
 
+    Product editOne(Product product);
+
+    int getRecentProductId(Product product);
+
     Set<Integer> getProductIDSetByProductName(String name);
 
     Map<Integer,Product> getProductMapByShoppingCartList(List<ProductItem> shoppingCarts);
 
+
+
+
+    Product clone(Product product);
+
+    int undercarriage(Product product);
 
 }

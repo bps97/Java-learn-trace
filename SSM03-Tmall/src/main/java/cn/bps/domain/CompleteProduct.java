@@ -1,6 +1,7 @@
 package cn.bps.domain;
 
 import cn.bps.pojo.ProductBindFilter;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -19,6 +20,9 @@ public class CompleteProduct {
     private Set<Integer> associate_6;
     private Set<Integer> concreteFilerIdList;
 
+
+
+    private MultipartFile image;
     private float price;
     private int stock;
 
@@ -161,5 +165,13 @@ public class CompleteProduct {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public MultipartFile getImage() {
+        return image;
+    }
+
+    public void setImage(MultipartFile image) {
+        this.image = image;
     }
 }

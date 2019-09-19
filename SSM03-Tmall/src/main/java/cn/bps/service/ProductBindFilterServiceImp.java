@@ -71,4 +71,23 @@ public class ProductBindFilterServiceImp implements ProductBindFilterService {
         productBindFilterExample.createCriteria().andProduct_idEqualTo(productId);
         return productBindFilterMapper.deleteByExample(productBindFilterExample);
     }
+
+    @Override
+    public List<ProductBindFilter> cloneByProductId(Integer oldId, Integer newId) {
+
+        ProductBindFilterExample productBindFilterExample = new ProductBindFilterExample();
+        productBindFilterExample.createCriteria().andProduct_idEqualTo(oldId);
+        List<ProductBindFilter> productBindFilters = productBindFilterMapper.selectByExample(productBindFilterExample);
+
+        List<ProductBindFilter> newProductBindFilters = new ArrayList<>();
+        for(ProductBindFilter productBindFilter : productBindFilters){
+            ProductBindFilter newProductBindFilter = new ProductBindFilter();
+            newProductBindFilter.setFilter_value_id(productBindFilter.getFilter_value_id());
+            newProductBindFilter.setProduct_id(newId);
+            newProductBindFilters.add(newProductBindFilter);
+
+        }
+
+        return newProductBindFilters;
+    }
 }
