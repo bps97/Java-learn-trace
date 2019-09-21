@@ -20,18 +20,16 @@
         <div class="mr-slider mr-slider-default scoll" data-mr-flexslider id="demo-slider-0">
             <div id="box">
                 <ul id="imagesUI" class="list">
-                    <li class="current" style="opacity: 1;">
-                        <img src="/img/ad01.png">
-                    </li>
-                    <li style="opacity: 0;"><img src="/img/ad02.png"></li>
-                    <li style="opacity: 0;"><img src="/img/ad03.png"></li>
-                    <li style="opacity: 0;"><img src="/img/ad04.png"></li>
+                    <c:forEach items="${ads}" var="ad" varStatus="status">
+                        <li style="opacity: 0;"><img  src="${ad.toString()}"/></li>
+                    </c:forEach>
                 </ul>
                 <ul id="btnUI" class="step">
-                    <li class="current">1</li>
-                    <li class="">2</li>
-                    <li class="">3</li>
-                    <li class="">4</li>
+
+
+                    <c:forEach items="${ads}" varStatus="status">
+                        <li class="">${status.index}</li>
+                    </c:forEach>
                 </ul>
             </div>
         </div>

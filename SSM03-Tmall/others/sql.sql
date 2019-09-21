@@ -88,7 +88,7 @@ CREATE TABLE product (
   CONSTRAINT fk_product_category FOREIGN KEY (category_id) REFERENCES category (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---属性值  引用produt property
+-- 属性值  引用produt property
 CREATE TABLE concrete_property (
   id int(11) NOT NULL AUTO_INCREMENT COMMENT '唯一索引id',
   product_id int(11) NOT NULL COMMENT '对应产品id',
@@ -97,9 +97,9 @@ CREATE TABLE concrete_property (
   PRIMARY KEY (id),
   CONSTRAINT fk_concrete_property_property FOREIGN KEY (properti_id) REFERENCES property (id),
   CONSTRAINT fk_concrete_property_product FOREIGN KEY (product_id) REFERENCES product (id)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---产品图片 引用product
+-- 产品图片 引用product
 CREATE TABLE product_image (
   id int(11) NOT NULL AUTO_INCREMENT COMMENT '唯一索引id',
   product_id int(11) NOT NULL COMMENT '对应的产品id',
@@ -185,17 +185,22 @@ CREATE TABLE order_item (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
--- 引用连接
--- CREATE TABLE referal_link (
---   id int(11) NOT NULL AUTO_INCREMENT COMMENT '唯一标识符',
---   text varchar(255) NOT NULL COMMENT '超链内容',
---   link varchar(255) NOT NULL COMMENT '超链地址',
---   PRIMARY KEY (id)
--- ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+-- 引用链接
+CREATE TABLE referal_link (
+  id int(11) NOT NULL AUTO_INCREMENT COMMENT '唯一标识符',
+  text varchar(255) NOT NULL COMMENT '超链内容',
+  link varchar(255) NOT NULL COMMENT '超链地址',
+  PRIMARY KEY (id)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 
 
+CREATE TABLE admin(
 
+  username varchar(30) NOT NULL AUTO_INCREMENT COMMENT '管理员账号',
+  password varchar(30) NOT NULL COMMENT '管理员密码',
+  PRIMARY KEY (username)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
 
 

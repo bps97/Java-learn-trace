@@ -11,7 +11,7 @@
 <rapid:override name="main_content">
 <div class="container">
     <div class="panel panel-default">
-        <div class="panel-heading"><h4>添加商品</h4></div>
+        <div class="panel-heading"><h4>添加商品</h4> </div>
         <div class="panel-body">
             <form action="/admin/product/add/post" method="post" class="form-horizontal" enctype="multipart/form-data">
                 <div class="form-group">

@@ -35,6 +35,7 @@
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
+
         <!--        生成xml映射文件的位置-->
         <sqlMapGenerator targetPackage="mapper"
                          targetProject="src/main/resources">
@@ -49,162 +50,178 @@
         </javaClientGenerator>
 
 
-        <table tableName="category" domainObjectName="Category"
-               enableCountByExample="true" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="true"
-               selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true"/>
-            <property name="my.isgen.usekeys" value="true"/>
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
+<!--        <table tableName="category" domainObjectName="Category"-->
+<!--               enableCountByExample="true" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="false">-->
+<!--            <property name="useActualColumnNames" value="true"/>-->
+<!--            <property name="my.isgen.usekeys" value="true"/>-->
+<!--            <generatedKey column="id" sqlStatement="JDBC"/>-->
+<!--        </table>-->
 
-        <table tableName="sub_category" domainObjectName="SubCategory"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="true"
-               selectByExampleQueryId="false">
-            <property name="useActualColunmNames" value="true"/>
-            <property name="my.isgen.userkeys" value="true"/>
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
-        <table tableName="property" domainObjectName="Property"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="true"
-               selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true"/>
-            <property name="my.isgen.usekeys" value="true"/>
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
+<!--        <table tableName="sub_category" domainObjectName="SubCategory"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="false">-->
+<!--            <property name="useActualColunmNames" value="true"/>-->
+<!--            <property name="my.isgen.userkeys" value="true"/>-->
+<!--            <generatedKey column="id" sqlStatement="JDBC"/>-->
+<!--        </table>-->
+<!--        <table tableName="property" domainObjectName="Property"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="false">-->
+<!--            <property name="useActualColumnNames" value="true"/>-->
+<!--            <property name="my.isgen.usekeys" value="true"/>-->
+<!--            <generatedKey column="id" sqlStatement="JDBC"/>-->
+<!--        </table>-->
 
-        <table tableName="product" domainObjectName="Product"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="true"
-               selectByExampleQueryId="false" enableDeleteByPrimaryKey="true">
-            <property name="my.isgen.usekeys" value="true"/>
-            <property name="useActualColumnNames" value="true"/>
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
+<!--        <table tableName="product" domainObjectName="Product"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="false" enableDeleteByPrimaryKey="true">-->
+<!--            <property name="my.isgen.usekeys" value="true"/>-->
+<!--            <property name="useActualColumnNames" value="true"/>-->
+<!--            <generatedKey column="id" sqlStatement="JDBC"/>-->
+<!--        </table>-->
 
-        <table tableName="product_image" domainObjectName="ProductImage"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="true" enableSelectByExample="true"
-               selectByExampleQueryId="false" enableDeleteByPrimaryKey="false">
-            <property name="my.isgen.usekeys" value="true"/>
-            <property name="useActualColumnNames" value="true"/>
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
+<!--        <table tableName="product_image" domainObjectName="ProductImage"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="false" enableDeleteByPrimaryKey="false">-->
+<!--            <property name="my.isgen.usekeys" value="true"/>-->
+<!--            <property name="useActualColumnNames" value="true"/>-->
+<!--            <generatedKey column="id" sqlStatement="JDBC"/>-->
+<!--        </table>-->
 
-        <table tableName="filter_case" domainObjectName="FilterCase"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByPrimaryKey="true"
-               selectByExampleQueryId="false">
-            <property name="my.isgen.usekeys" value="true"/>
-            <property name="useActualColumnNames" value="true"/>
-            <generatedKey column="id" sqlStatement="JDBC"/>
+<!--        <table tableName="filter_case" domainObjectName="FilterCase"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByPrimaryKey="true"-->
+<!--               selectByExampleQueryId="false">-->
+<!--            <property name="my.isgen.usekeys" value="true"/>-->
+<!--            <property name="useActualColumnNames" value="true"/>-->
+<!--            <generatedKey column="id" sqlStatement="JDBC"/>-->
 
-        </table>
+<!--        </table>-->
 
-        <table tableName="concrete_filter" domainObjectName="ConcreteFilter"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByPrimaryKey="true"
-               selectByExampleQueryId="false" enableSelectByExample="true">
-            <property name="my.isgen.usekeys" value="true"/>
-            <property name="useActualColumnNames" value="true"/>
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
-
-
-        <table tableName="product_bind_filter" domainObjectName="ProductBindFilter"
-               enableCountByExample="true" enableUpdateByExample="false"
-               enableDeleteByExample="true" enableSelectByPrimaryKey="true"
-               selectByExampleQueryId="false" enableSelectByExample="true"
-               enableInsert="true">
-            <property name="my.isgen.usekeys" value="true"/>
-            <property name="useActualColumnNames" value="true"/>
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
+<!--        <table tableName="concrete_filter" domainObjectName="ConcreteFilter"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByPrimaryKey="true"-->
+<!--               selectByExampleQueryId="false" enableSelectByExample="true">-->
+<!--            <property name="my.isgen.usekeys" value="true"/>-->
+<!--            <property name="useActualColumnNames" value="true"/>-->
+<!--            <generatedKey column="id" sqlStatement="JDBC"/>-->
+<!--        </table>-->
 
 
-
-        <table tableName="concrete_property" domainObjectName="ConcreteProperty"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="true"
-               selectByExampleQueryId="false">
-            <property name="my.isgen.usekeys" value="true"/>
-            <property name="useActualColumnNames" value="true"/>
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
-
-        <table tableName="review" domainObjectName="Review"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="true"
-               selectByExampleQueryId="false">
-            <property name="my.isgen.usekeys" value="true"/>
-            <property name="useActualColumnNames" value="true"/>
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
-
-        <table tableName="user" domainObjectName="User"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="true"
-               selectByExampleQueryId="false">
-            <property name="my.isgen.usekeys" value="true"/>
-            <property name="useActualColumnNames" value="true"/>
-            <generatedKey column="id" sqlStatement="JDBC"/>
-            <columnOverride column="birthday" jdbcType="DATE"/>
-        </table>
-
-        <table tableName="order_item" domainObjectName="OrderItem"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="true"
-               selectByExampleQueryId="false">
-            <property name="my.isgen.usekeys" value="true"/>
-            <property name="useActualColumnNames" value="true"/>
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
+<!--        <table tableName="product_bind_filter" domainObjectName="ProductBindFilter"-->
+<!--               enableCountByExample="true" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="true" enableSelectByPrimaryKey="true"-->
+<!--               selectByExampleQueryId="false" enableSelectByExample="true"-->
+<!--               enableInsert="true">-->
+<!--            <property name="my.isgen.usekeys" value="true"/>-->
+<!--            <property name="useActualColumnNames" value="true"/>-->
+<!--            <generatedKey column="id" sqlStatement="JDBC"/>-->
+<!--        </table>-->
 
 
 
-        <table tableName="product_item" domainObjectName="ProductItem"
-               >
-            <property name="my.isgen.usekeys" value="true"/>
-            <property name="useActualColumnNames" value="true"/>
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
+<!--        <table tableName="concrete_property" domainObjectName="ConcreteProperty"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="false">-->
+<!--            <property name="my.isgen.usekeys" value="true"/>-->
+<!--            <property name="useActualColumnNames" value="true"/>-->
+<!--            <generatedKey column="id" sqlStatement="JDBC"/>-->
+<!--        </table>-->
 
-        <table tableName="order_" domainObjectName="Order"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="true"
-               selectByExampleQueryId="false">
-            <property name="my.isgen.usekeys" value="true"/>
-            <property name="useActualColumnNames" value="true"/>
-            <generatedKey column="id" sqlStatement="JDBC"/>
-            <columnOverride column="create_date" jdbcType="TIMESTAMP"/>
-            <columnOverride column="pay_date" jdbcType="TIMESTAMP"/>
-            <columnOverride column="delivery_date" jdbcType="TIMESTAMP"/>
-            <columnOverride column="confirm_date" jdbcType="TIMESTAMP"/>
+<!--        <table tableName="review" domainObjectName="Review"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="false">-->
+<!--            <property name="my.isgen.usekeys" value="true"/>-->
+<!--            <property name="useActualColumnNames" value="true"/>-->
+<!--            <generatedKey column="id" sqlStatement="JDBC"/>-->
+<!--        </table>-->
 
-        </table>
+<!--        <table tableName="user" domainObjectName="User"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="false">-->
+<!--            <property name="my.isgen.usekeys" value="true"/>-->
+<!--            <property name="useActualColumnNames" value="true"/>-->
+<!--            <generatedKey column="id" sqlStatement="JDBC"/>-->
+<!--            <columnOverride column="birthday" jdbcType="DATE"/>-->
+<!--        </table>-->
+
+<!--        <table tableName="order_item" domainObjectName="OrderItem"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="false">-->
+<!--            <property name="my.isgen.usekeys" value="true"/>-->
+<!--            <property name="useActualColumnNames" value="true"/>-->
+<!--            <generatedKey column="id" sqlStatement="JDBC"/>-->
+<!--        </table>-->
 
 
-        <table tableName="administrative_area" domainObjectName="AdministrativeArea"
-                       enableCountByExample="false" enableUpdateByExample="false"
+
+<!--        <table tableName="product_item" domainObjectName="ProductItem"-->
+<!--        >-->
+<!--            <property name="my.isgen.usekeys" value="true"/>-->
+<!--            <property name="useActualColumnNames" value="true"/>-->
+<!--            <generatedKey column="id" sqlStatement="JDBC"/>-->
+<!--        </table>-->
+
+<!--        <table tableName="order_" domainObjectName="Order"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="false">-->
+<!--            <property name="my.isgen.usekeys" value="true"/>-->
+<!--            <property name="useActualColumnNames" value="true"/>-->
+<!--            <generatedKey column="id" sqlStatement="JDBC"/>-->
+<!--            <columnOverride column="create_date" jdbcType="TIMESTAMP"/>-->
+<!--            <columnOverride column="pay_date" jdbcType="TIMESTAMP"/>-->
+<!--            <columnOverride column="delivery_date" jdbcType="TIMESTAMP"/>-->
+<!--            <columnOverride column="confirm_date" jdbcType="TIMESTAMP"/>-->
+
+<!--        </table>-->
+
+
+<!--        <table tableName="administrative_area" domainObjectName="AdministrativeArea"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="false" enableInsert="false"-->
+<!--               enableDeleteByPrimaryKey="false" enableSelectByPrimaryKey="true">-->
+<!--            <property name="my.isgen.usekeys" value="true"/>-->
+<!--            <property name="useActualColumnNames" value="true"/>-->
+<!--            <generatedKey column="id" sqlStatement="JDBC"/>-->
+<!--        </table>-->
+
+<!--        <table tableName="address" domainObjectName="Address"-->
+<!--               enableCountByExample="false" enableUpdateByExample="true"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="false" enableInsert="true"-->
+<!--               enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true">-->
+<!--            <property name="my.isgen.usekeys" value="true"/>-->
+<!--            <property name="useActualColumnNames" value="true"/>-->
+<!--            <generatedKey column="id" sqlStatement="JDBC"/>-->
+<!--        </table>-->
+
+        <table tableName="scroll_ad" domainObjectName="ScrollAd"
+                       enableCountByExample="false" enableUpdateByExample="true"
                        enableDeleteByExample="false" enableSelectByExample="true"
-                       selectByExampleQueryId="false" enableInsert="false"
-                        enableDeleteByPrimaryKey="false" enableSelectByPrimaryKey="true">
+                       selectByExampleQueryId="false" enableInsert="true"
+        >
             <property name="my.isgen.usekeys" value="true"/>
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
+<!--        <table tableName="admin" domainObjectName="Administrator">-->
+<!--            <property name="my.isgen.usekeys" value="true"/>-->
+<!--            <property name="useActualColumnNames" value="true"/>-->
+<!--            <generatedKey column="id" sqlStatement="JDBC"/>-->
 
-        <table tableName="address" domainObjectName="Address"
-               enableCountByExample="false" enableUpdateByExample="true"
-               enableDeleteByExample="false" enableSelectByExample="true"
-               selectByExampleQueryId="false" enableInsert="true"
-               enableDeleteByPrimaryKey="true" enableSelectByPrimaryKey="true">
-            <property name="my.isgen.usekeys" value="true"/>
-            <property name="useActualColumnNames" value="true"/>
-            <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
+<!--        </table>-->
 
     </context>
 

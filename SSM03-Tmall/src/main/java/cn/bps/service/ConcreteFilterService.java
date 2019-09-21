@@ -19,4 +19,5 @@ public interface ConcreteFilterService {
 
     String getFilterIds(Collection<Integer> filterSet);
 
+    List<ConcreteFilter> getConcreteFilterByIds(List<Integer> filterIdList);
 }

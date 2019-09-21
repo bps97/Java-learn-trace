@@ -131,57 +131,17 @@
 
                         </ul>
                     </div>
-                        <%--<div class="search-side">--%>
-                        <%--    <div class="side-title">--%>
-                        <%--        经典搭配--%>
-                        <%--    </div>--%>
-                        <%--&lt;%&ndash;    <li>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;        <div class="i-pic check">&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;            <a href="goodInfo.jsp"><img src="/img/shopcartImg-01.jpg" /></a>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;            <p class="check-title">送耳机+送手机壳</p>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;            <p class="price fl"> <b>&yen;</b> <strong>299.00</strong> </p>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;            <p class="number fl"> 销量<span>1110</span> </p>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;        </div> </li>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;    <li>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;        <div class="i-pic check">&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;            <a href="goodInfo.jsp"><img src="/img/shopcartImg-01.jpg" /></a>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;            <p class="check-title">送耳机+送手机壳</p>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;            <p class="price fl"> <b>&yen;</b> <strong>299.00</strong> </p>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;            <p class="number fl"> 销量<span>1110</span> </p>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;        </div> </li>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;    <li>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;        <div class="i-pic check">&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;            <a href="goodInfo.jsp"><img src="/img/shopcartImg-01.jpg" /></a>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;            <p class="check-title">送耳机+送手机壳</p>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;            <p class="price fl"> <b>&yen;</b> <strong>299.00</strong> </p>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;            <p class="number fl"> 销量<span>1110</span> </p>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;        </div> </li>&ndash;%&gt;--%>
 
-                        <%--</div>--%>
                     <div class="clear"></div>
                     <!--分页 -->
-<%--                    <ul class="mr-pagination mr-pagination-right">--%>
-<%--                        <li class="mr-disabled"><a href="#">&laquo;</a></li>--%>
-<%--                            &lt;%&ndash;    <li class=""><a href="#">1</a></li>&ndash;%&gt;--%>
-<%--                        <c:forEach begin="0" end="${page.getTotalPage()-1}" varStatus="status">--%>
-<%--                            <c:if test="${status.step*page.step-page.start<=50 && status.count*page.step-page.start>=-10}">--%>
-<%--                                <li <c:if test="${status.index*page.step==page.start}">class="mr-active"</c:if>>--%>
-<%--                                    <a--%>
-<%--                                            href="?start=${status.index*page.step}"--%>
-<%--                                            <c:if test="${status.index*page.step==page.start}">class="mr-active"</c:if>--%>
-<%--                                    >${status.count}</a>--%>
-<%--                                </li>--%>
-<%--                            </c:if>--%>
-<%--                        </c:forEach>--%>
-<%--                        <li><a href="#">&raquo;</a></li>--%>
 
-
-<%--                    </ul>--%>
                     <ul class="mr-pagination mr-pagination-right">
                         <c:forEach begin="0" end="${page.getTotalPage()}" varStatus="status">
                             <c:if test="${status.step*page.step-page.start<=30 && status.count*page.step-page.start>=-20}"><!--只显示最近四个-->
-                                <li <c:if test='${status.index*page.step==page.start}'>class="mr-active"</c:if>>  <!--当前页面-->
-                                    <a href="?start=${status.index*page.step}"<c:if test="${status.index*page.step==page.start}">class="mr-active"</c:if>>${status.count}</a>
+                                <li <c:if test='${status.index*page.step==page.start}'>class="mr-active"</c:if>>
+                                    <!--当前页面-->
+                                    <a href="?start=${status.index*page.step}"
+                                       <c:if test="${status.index*page.step==page.start}">class="mr-active"</c:if>>${status.count}</a>
                                 </li>
                             </c:if>
                         </c:forEach>

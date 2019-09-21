@@ -1,5 +1,6 @@
 package cn.bps.service;
 
+import cn.bps.pojo.Product;
 import cn.bps.pojo.ProductBindFilter;
 
 import java.util.Collection;
@@ -14,4 +15,7 @@ public interface ProductBindFilterService {
     int deleteDemos(int productId);
 
     List<ProductBindFilter> cloneByProductId(Integer oldId, Integer newId);
+
+    List<Integer> getConcreteFilterIdsByProductId(Integer id);
+    List<Integer> getConcreteFilterIdsByProduct(Product product);
 }

@@ -15,7 +15,7 @@ public interface ProductService {
 
     List<Product> rowBoundsProduct(Set<Integer> idSet, Integer start, Integer step);
 
-    List<Product> rowBoundsProduct(Set<Integer> set, Integer start, Integer step, boolean isUndercarriage);
+    List<Product> rowBoundsProduct(Set<Integer> set, Integer start, Integer step, boolean visual);
 
     Product getProductById(Integer id);
 

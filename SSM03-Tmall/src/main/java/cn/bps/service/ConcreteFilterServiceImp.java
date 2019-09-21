@@ -81,4 +81,12 @@ public class ConcreteFilterServiceImp implements ConcreteFilterService {
         return stringBuilder.toString();
 
     }
+
+    @Override
+    public List<ConcreteFilter> getConcreteFilterByIds(List<Integer> filterIdList) {
+
+        ConcreteFilterExample concreteFilterExample = new ConcreteFilterExample();
+        concreteFilterExample.createCriteria().andIdIn(filterIdList);
+        return concreteFilterMapper.selectByExample(concreteFilterExample);
+    }
 }

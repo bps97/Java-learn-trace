@@ -1,6 +1,7 @@
 package cn.bps.service;
 
 import cn.bps.mapper.ProductBindFilterMapper;
+import cn.bps.pojo.Product;
 import cn.bps.pojo.ProductBindFilter;
 import cn.bps.pojo.ProductBindFilterExample;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,5 +90,30 @@ public class ProductBindFilterServiceImp implements ProductBindFilterService {
         }
 
         return newProductBindFilters;
+    }
+
+    @Override
+    public List<Integer> getConcreteFilterIdsByProductId(Integer id) {
+
+        ProductBindFilterExample productBindFilterExample = new ProductBindFilterExample();
+        productBindFilterExample.createCriteria().andProduct_idEqualTo(id);
+
+        List<ProductBindFilter> productBindFilters = productBindFilterMapper.selectByExample(productBindFilterExample);
+        List<Integer> concreteFilterIds = new ArrayList<>();
+
+        if(productBindFilters.size()>0){
+
+            for(ProductBindFilter productBindFilter : productBindFilters){
+                concreteFilterIds.add(productBindFilter.getFilter_value_id());
+            }
+            return concreteFilterIds;
+        }
+
+        return concreteFilterIds;
+    }
+
+    @Override
+    public List<Integer> getConcreteFilterIdsByProduct(Product product) {
+        return getConcreteFilterIdsByProductId(product.getId());
     }
 }

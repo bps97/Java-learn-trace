@@ -28,10 +28,10 @@ public class AlipayController {
     // 支付宝公钥,查看地址：https://openhome.alipay.com/platform/keyManage.htm 对应APPID下的支付宝公钥。
     public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkl9DPgC7Sj4P1tYpPKAwmiv/pzquRrtRb0luOvo7aAfzV00u2obi8nnPudGnmdFcNDld9inEaLnvfP8R/Bd2ZHJSidDK6C0RJVq6M5GAzdy9SaS6HxfZHQOpSwcTSThyJTM8+bymRpOVqHMkxtd8VTpKy8XOV+wsRXa2JBmDCvvipkmr7z0qp01cNP2mpUvErQWmQMGsLq7lnz+gIIjZxqDGaUz08QVU+RqoOB5vHcB/TO9wmoStZfnOZZCUzQIr+oPpRcTOI68ecQTSDeqOUAykd5hesYLdk7Wbfjo6r3+IF8SMbVJMNm47/2R1i5JsEHgoTNZdFxADzWVPI6DuKwIDAQAB";
     // 服务器异步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String notify_url = "http://bskcgh.natappfree.cc/notifyUrl";
+    public static String notify_url = "http://6gdfem.natappfree.cc/notifyUrl";
 
     // 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String return_url = "http://bskcgh.natappfree.cc/returnUrl";
+    public static String return_url = "http://6gdfem.natappfree.cc/returnUrl";
 
     // 签名方式
     public static String sign_type = "RSA2";

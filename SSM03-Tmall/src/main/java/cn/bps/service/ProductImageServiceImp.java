@@ -78,6 +78,7 @@ public class ProductImageServiceImp implements ProductImageService {
     public int updateProductImage(Integer productId, String imgUrl) {
 
         ProductImage productImage = getProductImageByProductId(productId);
+        if(productId==null) return 0;
 
         productImage.setImage_link(imgUrl);
         return  productImageMapper.updateByPrimaryKey(productImage);

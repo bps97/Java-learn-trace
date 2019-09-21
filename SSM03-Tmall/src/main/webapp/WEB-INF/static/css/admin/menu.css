@@ -1,29 +1,41 @@
+/* *{margin: 0;padding: 0;border: 0;} */
+.navbar{padding-top: 0px;}
+.panel{padding: 0px;}
 .navbar-vertical-left {
   position: fixed;/*悬浮式布局*/
   left: 0; /*靠左 */
   top: 53px; /*靠上*/
-  height: 100%; /*高度占页面比*/
+  height: 55%; /*高度占页面比*/
   width: 160px; /*宽度*/
   overflow: hidden; /*文字过多溢出的话隐藏溢出的部分*/
-  border: none;/*无边框*/
-  border-radius: 0; /*无圆角*/
+  border: 1px;/*无边框*/
+  border-radius: 4px; /*无圆角*/
   margin: 0;/*外边距为零*/
+  padding: 0px;
   z-index: 999;/*z轴优先级极高*/
 }
-
+/* .navbar-vertical-left ul.navbar-nav >div >div{
+ padding-left: 0px;
+padding-top: 0px;
+} */
+/* .navbar-vertical-left div.panel-default{
+  height: 80%;
+} */
+div#accordion.panel-group{
+  padding: 0 0;
+}
 .navbar-vertical-left ul.navbar-nav {/*祖孙选择器*/
   width: 100%;/*宽度占父元素的百分百,实际长度160+padding+border+margin*/  
-  height: 60%;
-  display: table;/*块级元素，自带回车*/
-  margin: 0;
+  height: 80%;
+  display: table-row-group;/*块级元素，自带回车*/
+  padding: 0px 0; 
 }
-
+a:link { text-decoration: none;
+}
 .navbar-vertical-left ul.navbar-nav:before,
 .navbar-vertical-left ul.navbar-nav:after {
   display: none;
 }
-
-
 .navbar-vertical-left ul.navbar-nav > li {
   display: table-row;/*table-row类似于tr*/
   float: none;/*元素不浮动*/
@@ -114,6 +126,7 @@
 
   .navbar-vertical-left ul.navbar-nav > li {
     display: table-cell;
+    
   }
 
   .navbar-vertical-left ul.navbar-nav > li > a {
@@ -131,4 +144,9 @@
   .navbar-vertical-left ul.navbar-nav > li > a > span {
     display: none;
   }
+
+  .container{
+    width:50%;
+  }
 }
+

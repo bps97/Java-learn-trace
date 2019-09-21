@@ -22,7 +22,7 @@
 
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/css/admin2/menu.css">
+    <link rel="stylesheet" type="text/css" href="/css/admin/menu.css">
 
 
     <style>
@@ -49,7 +49,7 @@
     </div>
     <div id="xxx_nav" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="./base.html">首页</a></li>
+            <li class="active"><a href="/admin">首页</a></li>
             <li><a href="#">用户信息</a></li>
             <li><a href="/admin/product">产品管理</a></li>
             <li><a href="./ddLiu.html">订单管理</a></li>
@@ -61,17 +61,14 @@
         </form> -->
         <ul class="nav navbar-nav navbar-right">
 
-            <li><a href="" >登录</a></li>
 
             <!-- 下拉菜单 -->
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">HH<b class="caret"></b>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">欢迎<b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
+                    <li><a href="/admin/logout/post">注销</a></li>
+                    <li><a href="/admin/switch/post">切换</a></li>
                 </ul>
             </li>
         </ul>
@@ -94,15 +91,15 @@
                 <div class="panel-heading">
                     <a  data-parent="#accordion" href="#collapseOne">
                         <i class="fa fa-user fa-lg "></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <span>用户</span>
+                        <span>广告</span>
                     </a>
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse" aria-disabled="true" style="text-align: center;">
                     <div class="panel-body">
-                        <a href="">用户信息</a>
+                        <a href="">广告信息</a>
                     </div>
                     <div class="panel-body">
-                        <a href="">用户添加</a>
+                        <a href="">广告添加</a>
                     </div>
                 </div>
             </div>

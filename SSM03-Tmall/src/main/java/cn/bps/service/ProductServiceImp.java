@@ -40,22 +40,21 @@ public class ProductServiceImp implements ProductService {
 
     @Override
     public List<Product> rowBoundsProduct(Set<Integer> set, Integer start, Integer step ) {
-        return rowBoundsProduct(set,start,step,true);
+        return rowBoundsProduct(set,start,step,false);  //默认不可见
     }
 
     //重载实现参数默认值
     @Override
-    public List<Product> rowBoundsProduct(Set<Integer> set, Integer start, Integer step, boolean isUndercarriage) {
+    public List<Product> rowBoundsProduct(Set<Integer> set, Integer start, Integer step, boolean visual) {
 
         ProductExample productExample = new ProductExample();
-        if(isUndercarriage){
-            productExample.createCriteria().andUndercarriageEqualTo(0);
 
-        }
+        int flag = (visual)?99:1;//可见时，查看所有非下架商品
+
         RowBounds rowBounds = new RowBounds(start,step);
 
         if (set.size() > 0) {
-            productExample.createCriteria().andIdIn(new ArrayList(set));
+            productExample.createCriteria().andIdIn(new ArrayList(set)).andUndercarriageNotEqualTo(flag);
             List<Product> products = productMapper.selectByExampleWithRowbounds(productExample, rowBounds);
             return products;
 

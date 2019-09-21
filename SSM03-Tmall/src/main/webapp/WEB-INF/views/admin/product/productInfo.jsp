@@ -22,12 +22,31 @@
                 <form action="/post_feedback/" method="post" class="form-horizontal">
                     <div class="media ">
                         <div class="media-left">
-
-
                             <img src="${image}" style="width:100px;height:100px;" alt="" class="media-object">
                         </div>
                         <div class="media-body ">
-                            <span class="meadia.heading"><c:out value="${product.name}"/></span>
+
+
+                            <div class="container">
+                                <div class="row">
+                                    <c:forEach items="${filters}" var="filter">
+                                            <span class="label label-success">${filter.value}</span>
+
+
+                                    </c:forEach>
+                                </div>
+                                <div class="row">
+                                        <h3>${product.sub_title}</h3>
+                                        <p>
+                                            <span class="meadia.heading"><c:out value="${product.name}"/></span>
+                                        </p>
+
+
+                                </div>
+                            </div>
+
+
+
                         </div>
                     </div>
 
@@ -41,6 +60,7 @@
         </div>
 
     </div>
+
 
 </div>
 
