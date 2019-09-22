@@ -25,7 +25,7 @@ public class GoodsListController {
     private ProductService productService;
 
     @Autowired
-    private ProductBindFilterService productBindFilterService;
+    private ProductBindLabelService productBindLabelService;
 
     @Autowired
     private ProductImageService productImageService;
@@ -81,7 +81,7 @@ public class GoodsListController {
         Set<Integer> labelProductIdSet = null;//由标签筛选之后的产品id集合
 
         if (caseList.equals("") || caseList.equals("全部,全部,全部,全部,全部,全部")) {//未选择其他标签时
-            labelProductIdSet = productBindFilterService.getAllProductIdSet();
+            labelProductIdSet = productBindLabelService.getAllProductIdSet();
 
             if (!key.equals("")) {
                 labelProductIdSet.retainAll(keyProductIdSet);
@@ -90,7 +90,7 @@ public class GoodsListController {
         } else {
             String[] temp = caseList.split(",");
             Set<Integer> labelIdSet = labelService.getLabelIds(temp);//获取筛选条件
-            labelProductIdSet = productBindFilterService.getProductIdSet(labelIdSet);//根据筛选条件获取产品id
+            labelProductIdSet = productBindLabelService.getProductIdSet(labelIdSet);//根据筛选条件获取产品id
             if (!key.equals("")) {
                 labelProductIdSet.retainAll(keyProductIdSet);
             }

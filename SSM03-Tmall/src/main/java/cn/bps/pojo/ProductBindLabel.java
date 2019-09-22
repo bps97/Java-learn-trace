@@ -1,11 +1,11 @@
 package cn.bps.pojo;
 
-public class ProductBindFilter {
+public class ProductBindLabel {
     private Integer id;
 
     private Integer product_id;
 
-    private Integer filter_value_id;
+    private Integer label_id;
 
     public Integer getId() {
         return id;
@@ -23,11 +23,11 @@ public class ProductBindFilter {
         this.product_id = product_id;
     }
 
-    public Integer getFilter_value_id() {
-        return filter_value_id;
+    public Integer getLabel_id() {
+        return label_id;
     }
 
-    public void setFilter_value_id(Integer filter_value_id) {
-        this.filter_value_id = filter_value_id;
+    public void setLabel_id(Integer label_id) {
+        this.label_id = label_id;
     }
 }

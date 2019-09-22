@@ -1,6 +1,6 @@
 package cn.bps.domain;
 
-import cn.bps.pojo.ProductBindFilter;
+import cn.bps.pojo.ProductBindLabel;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class CompleteProduct {
     private Set<Integer> associate_4;
     private Set<Integer> associate_5;
     private Set<Integer> associate_6;
-    private Set<Integer> concreteFilerIdList;
+    private Set<Integer> labelInfo;
 
 
 
@@ -30,17 +30,17 @@ public class CompleteProduct {
 
     public Set<Integer> init() {
         try {
-            concreteFilerIdList = new HashSet<>();
-            concreteFilerIdList.addAll(associate_1);
-            concreteFilerIdList.addAll(associate_2);
-            concreteFilerIdList.addAll(associate_3);
-            concreteFilerIdList.addAll(associate_4);
-            concreteFilerIdList.addAll(associate_5);
-            concreteFilerIdList.addAll(associate_6);
+            labelInfo = new HashSet<>();
+            labelInfo.addAll(associate_1);
+            labelInfo.addAll(associate_2);
+            labelInfo.addAll(associate_3);
+            labelInfo.addAll(associate_4);
+            labelInfo.addAll(associate_5);
+            labelInfo.addAll(associate_6);
         }catch (NullPointerException e){
             e.printStackTrace();
         }
-        return concreteFilerIdList;
+        return labelInfo;
     }
 
 
@@ -57,18 +57,17 @@ public class CompleteProduct {
         return product;
     }
 
-    public List<ProductBindFilter> generatorProductBindFilter(int productID){
-        List<ProductBindFilter> list = new ArrayList<>();
+    public List<ProductBindLabel> generatorProductBindLabel(int productID){
+        List<ProductBindLabel> productBindLabelList = new ArrayList<>();
 
-
-        for(Integer filterId : concreteFilerIdList){
-            ProductBindFilter productBindFilter = new ProductBindFilter();
-            productBindFilter.setProduct_id(productID);
-            productBindFilter.setFilter_value_id(filterId);
-            list.add(productBindFilter);
+        for(Integer labelId : labelInfo){
+            ProductBindLabel productBindLabel = new ProductBindLabel();
+            productBindLabel.setProduct_id(productID);
+            productBindLabel.setLabel_id(labelId);
+            productBindLabelList.add(productBindLabel);
         }
 
-        return list;
+        return productBindLabelList;
     }
 
     public String getName() {
@@ -143,12 +142,12 @@ public class CompleteProduct {
         this.associate_6 = associate_6;
     }
 
-    public Set<Integer> getConcreteFilerIdList() {
-        return concreteFilerIdList;
+    public Set<Integer> getLabelInfo() {
+        return labelInfo;
     }
 
-    public void setConcreteFilerIdList(Set<Integer> concreteFilerIdList) {
-        this.concreteFilerIdList = concreteFilerIdList;
+    public void setLabelInfo(Set<Integer> labelInfo) {
+        this.labelInfo = labelInfo;
     }
 
     public float getPrice() {

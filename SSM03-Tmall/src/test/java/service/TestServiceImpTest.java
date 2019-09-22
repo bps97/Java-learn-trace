@@ -30,7 +30,7 @@
 //    private ProductService productService;
 //
 //    @Autowired
-//    private ProductBindFilterService productBindFilterService;
+//    private ProductBindLabelService productBindLabelService;
 //
 //    @Autowired
 //    private ProductImageService productImageService;
@@ -67,22 +67,22 @@
 //
 //
 //    @Test
-//    public void productBindFilterTest(){
+//    public void productBindLabelTest(){
 ////        Set<Integer> set = new HashSet<>();
 ////        set.add(6);
 ////        set.add(15);
-////        Set<Integer> xx = productBindFilterService.getProductIdSet(set);
+////        Set<Integer> xx = productBindLabelService.getProductIdSet(set);
 ////        for(Integer i: xx){
 ////            System.out.println(i);
 ////        }
 //
 //
-////        Set<Integer> xx = productBindFilterService.getProductIdSetByFilterId(1);
+////        Set<Integer> xx = productBindLabelService.getProductIdSetByFilterId(1);
 ////        for(Integer i: xx){
 ////            System.out.print(i+" ");
 ////        }
 ////        System.out.println("");
-////        Set<Integer> yy = productBindFilterService.getProductIdSetByFilterId(20);
+////        Set<Integer> yy = productBindLabelService.getProductIdSetByFilterId(20);
 ////        for(Integer i: yy){
 ////            System.out.print(i+" ");
 ////        }
@@ -93,7 +93,7 @@
 ////        }
 //
 //
-//        Set<Integer> productIdSet = productBindFilterService.getAllProductIdSet();
+//        Set<Integer> productIdSet = productBindLabelService.getAllProductIdSet();
 //        List<Product> products = productService.rowBoundsProduct(productIdSet, 24, 8);
 //        for(Product product:products){
 //            System.out.println(product.getId()+":"+product.getName());
@@ -120,7 +120,7 @@
 //        }
 //
 //        System.out.println("-------------------");
-//        List<Product> products2 = productService.getProductListByProductIdSet(productBindFilterService.getAllProductIdSet());
+//        List<Product> products2 = productService.getProductListByProductIdSet(productBindLabelService.getAllProductIdSet());
 //        for(Product product: products){
 //            System.out.println(product.getId());
 //

@@ -33,7 +33,7 @@
 //    private LabelCategoryMapper labelCategoryMapper;
 //
 //    @Autowired
-//    private ProductBindFilterMapper productBindFilterMapper;
+//    private ProductBindLabelMapper productBindLabelMapper;
 //
 //    @Autowired
 //    private ProductMapper productMapper;
@@ -70,11 +70,11 @@
 //
 //
 //    @Test
-//    public void productBindFilterTest(){
-//        ProductBindFilterExample productBindFilterExample = new ProductBindFilterExample();
-//        List<ProductBindFilter> productBindFilter = productBindFilterMapper.selectByExample(productBindFilterExample);
+//    public void productBindLabelTest(){
+//        ProductBindLabelExample productBindLabelExample = new ProductBindLabelExample();
+//        List<ProductBindLabel> productBindLabel = productBindLabelMapper.selectByExample(productBindLabelExample);
 //        Set<Integer> productIdSet = new HashSet();
-//        for(ProductBindFilter pbf:productBindFilter){
+//        for(ProductBindLabel pbf:productBindLabel){
 //            productIdSet.add(pbf.getProduct_id());
 //        }
 //

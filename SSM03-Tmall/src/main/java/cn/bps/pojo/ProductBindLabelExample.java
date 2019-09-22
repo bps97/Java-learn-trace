@@ -3,14 +3,14 @@ package cn.bps.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductBindFilterExample {
+public class ProductBindLabelExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public ProductBindFilterExample() {
+    public ProductBindLabelExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -224,63 +224,63 @@ public class ProductBindFilterExample {
             return (Criteria) this;
         }
 
-        public Criteria andFilter_value_idIsNull() {
-            addCriterion("filter_value_id is null");
+        public Criteria andLabel_idIsNull() {
+            addCriterion("label_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andFilter_value_idIsNotNull() {
-            addCriterion("filter_value_id is not null");
+        public Criteria andLabel_idIsNotNull() {
+            addCriterion("label_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andFilter_value_idEqualTo(Integer value) {
-            addCriterion("filter_value_id =", value, "filter_value_id");
+        public Criteria andLabel_idEqualTo(Integer value) {
+            addCriterion("label_id =", value, "label_id");
             return (Criteria) this;
         }
 
-        public Criteria andFilter_value_idNotEqualTo(Integer value) {
-            addCriterion("filter_value_id <>", value, "filter_value_id");
+        public Criteria andLabel_idNotEqualTo(Integer value) {
+            addCriterion("label_id <>", value, "label_id");
             return (Criteria) this;
         }
 
-        public Criteria andFilter_value_idGreaterThan(Integer value) {
-            addCriterion("filter_value_id >", value, "filter_value_id");
+        public Criteria andLabel_idGreaterThan(Integer value) {
+            addCriterion("label_id >", value, "label_id");
             return (Criteria) this;
         }
 
-        public Criteria andFilter_value_idGreaterThanOrEqualTo(Integer value) {
-            addCriterion("filter_value_id >=", value, "filter_value_id");
+        public Criteria andLabel_idGreaterThanOrEqualTo(Integer value) {
+            addCriterion("label_id >=", value, "label_id");
             return (Criteria) this;
         }
 
-        public Criteria andFilter_value_idLessThan(Integer value) {
-            addCriterion("filter_value_id <", value, "filter_value_id");
+        public Criteria andLabel_idLessThan(Integer value) {
+            addCriterion("label_id <", value, "label_id");
             return (Criteria) this;
         }
 
-        public Criteria andFilter_value_idLessThanOrEqualTo(Integer value) {
-            addCriterion("filter_value_id <=", value, "filter_value_id");
+        public Criteria andLabel_idLessThanOrEqualTo(Integer value) {
+            addCriterion("label_id <=", value, "label_id");
             return (Criteria) this;
         }
 
-        public Criteria andFilter_value_idIn(List<Integer> values) {
-            addCriterion("filter_value_id in", values, "filter_value_id");
+        public Criteria andLabel_idIn(List<Integer> values) {
+            addCriterion("label_id in", values, "label_id");
             return (Criteria) this;
         }
 
-        public Criteria andFilter_value_idNotIn(List<Integer> values) {
-            addCriterion("filter_value_id not in", values, "filter_value_id");
+        public Criteria andLabel_idNotIn(List<Integer> values) {
+            addCriterion("label_id not in", values, "label_id");
             return (Criteria) this;
         }
 
-        public Criteria andFilter_value_idBetween(Integer value1, Integer value2) {
-            addCriterion("filter_value_id between", value1, value2, "filter_value_id");
+        public Criteria andLabel_idBetween(Integer value1, Integer value2) {
+            addCriterion("label_id between", value1, value2, "label_id");
             return (Criteria) this;
         }
 
-        public Criteria andFilter_value_idNotBetween(Integer value1, Integer value2) {
-            addCriterion("filter_value_id not between", value1, value2, "filter_value_id");
+        public Criteria andLabel_idNotBetween(Integer value1, Integer value2) {
+            addCriterion("label_id not between", value1, value2, "label_id");
             return (Criteria) this;
         }
     }

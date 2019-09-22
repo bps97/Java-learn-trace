@@ -114,7 +114,7 @@
         </table>
 
 
-        <table tableName="product_bind_filter" domainObjectName="ProductBindFilter"
+        <table tableName="product_bind_label" domainObjectName="ProductBindLabel"
                enableCountByExample="true" enableUpdateByExample="false"
                enableDeleteByExample="true" enableSelectByPrimaryKey="true"
                selectByExampleQueryId="false" enableSelectByExample="true"

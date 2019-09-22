@@ -26,7 +26,7 @@ public class AdminProductController {
 
 
     @Autowired
-    private ProductBindFilterService productBindFilterService;
+    private ProductBindLabelService productBindLabelService;
     @Autowired
     private ProductService productService;
     @Autowired
@@ -49,7 +49,7 @@ public class AdminProductController {
 
         /*分页*/
         Page page = new Page(start, 8);
-        Set<Integer> productIdSet = productBindFilterService.getAllProductIdSet();
+        Set<Integer> productIdSet = productBindLabelService.getAllProductIdSet();
         page.setTotal(productIdSet.size());
 
         Set<Integer> keyProductIdSet = productService.getProductIDSetByProductName(key);
@@ -130,8 +130,8 @@ public class AdminProductController {
         Product newProduct = productService.editOne(productPojo);
         Integer newProductId = productService.getRecentProductId(newProduct);
         //拷贝筛选标签给新商品
-        List<ProductBindFilter> productBindFilters = productBindFilterService.cloneByProductId(id, newProductId);
-        productBindFilterService.insertProductBindFilter(productBindFilters);
+        List<ProductBindLabel> productBindLabels = productBindLabelService.cloneByProductId(id, newProductId);
+        productBindLabelService.insertProductBindLabel(productBindLabels);
 
         if (filePath.equals("")) {
             String oldImg = productImageService.getImageUrl(productPojo.getId());
@@ -182,8 +182,8 @@ public class AdminProductController {
 
 
         productService.insertOne(product);
-        List<ProductBindFilter> productBindFilters = completeProduct.generatorProductBindFilter(product.getId());
-        productBindFilterService.insertProductBindFilter(productBindFilters);
+        List<ProductBindLabel> productBindLabels = completeProduct.generatorProductBindLabel(product.getId());
+        productBindLabelService.insertProductBindLabel(productBindLabels);
 
         productImageService.addProductImage(product.getId(), filePath);
 
@@ -209,7 +209,7 @@ public class AdminProductController {
         model.addAttribute("categories", categories);
 
 
-        List<Integer> labelIdList = productBindFilterService.getLabelIdsByProduct(product);
+        List<Integer> labelIdList = productBindLabelService.getLabelIdsByProduct(product);
 
         List<Label> labelList = labelService.getLabelListByCategoryId(labelIdList);
 
@@ -244,7 +244,7 @@ public class AdminProductController {
 
         //首先删除相关筛选
         cn.bps.pojo.Product product = productService.getProductById(id);
-        productBindFilterService.deleteDemos(id);
+        productBindLabelService.deleteDemos(id);
 
         if (productImageService.deleteOneByProductId(id) > 0) {
             int productId = productService.deleteOneById(id);
