@@ -34,10 +34,9 @@ public class AdminProductController {
     @Autowired
     private ProductImageService productImageService;
     @Autowired
-    private ConcreteFilterService concreteFilterService;
+    private LabelService labelService;
     @Autowired
-    private FilterCaseService filterCaseService;
-
+    private LabelCategoryService labelCategoryService;
 
 
     @RequestMapping("")
@@ -84,11 +83,10 @@ public class AdminProductController {
         model.addAttribute("categories", categories);
 
 
-        List<FilterCase> filterCases = filterCaseService.getFilterList();
-        List<Integer> filterIdList = filterCaseService.getFilterIdList();
-        Map<Integer, List<ConcreteFilter>> filterMap = concreteFilterService.getFilterMap(filterIdList);
-        model.addAttribute("filterMap", filterMap);
-        model.addAttribute("filterCases", filterCases);
+        List<LabelCategory> labelCategoryList = labelCategoryService.getAllLabelCategory();
+        Map<LabelCategory, List<Label>> labelMap = labelService.getLabelMap(labelCategoryList);
+        model.addAttribute("labelMap", labelMap);
+        model.addAttribute("labelCategory", labelCategoryList);
 
         return "admin/product/productAdd";
     }
@@ -108,7 +106,7 @@ public class AdminProductController {
         String text = multipartFile.getOriginalFilename();
         String suffix = Util.matchSuffix(text);
         String fileName = Util.generatorRandomCode() + suffix;
-        String filePath = null;
+        String filePath;
 
         if (text.equals("")) {
             filePath = "";
@@ -135,14 +133,14 @@ public class AdminProductController {
         List<ProductBindFilter> productBindFilters = productBindFilterService.cloneByProductId(id, newProductId);
         productBindFilterService.insertProductBindFilter(productBindFilters);
 
-        if(filePath.equals("")){
+        if (filePath.equals("")) {
             String oldImg = productImageService.getImageUrl(productPojo.getId());
-            productImageService.addProductImage(newProductId,oldImg);
+            productImageService.addProductImage(newProductId, oldImg);
         }
         //拷贝新商品的
         productImageService.addProductImage(newProductId, filePath);
 
-        return "redirect:/admin/product?start="+id;
+        return "redirect:/admin/product?start=" + id;
     }
 
     //提交添加的产品
@@ -211,11 +209,11 @@ public class AdminProductController {
         model.addAttribute("categories", categories);
 
 
-        List<Integer> filterIdList = productBindFilterService.getConcreteFilterIdsByProduct(product);
+        List<Integer> labelIdList = productBindFilterService.getLabelIdsByProduct(product);
 
-        List<ConcreteFilter> concreteFilterList = concreteFilterService.getConcreteFilterByIds(filterIdList);
+        List<Label> labelList = labelService.getLabelListByCategoryId(labelIdList);
 
-        model.addAttribute("filters",concreteFilterList);
+        model.addAttribute("filters", labelList);
 
         return "admin/product/productInfo";
     }
@@ -230,11 +228,10 @@ public class AdminProductController {
         cn.bps.pojo.Product product = productService.getProductById(id);
 
 
-
         model.addAttribute("product", product);
 
         List<Category> categories = categoryService.getCategories();
-        model.addAttribute("categories",categories);
+        model.addAttribute("categories", categories);
 
         return "admin/product/productEdit";
     }
@@ -249,7 +246,7 @@ public class AdminProductController {
         cn.bps.pojo.Product product = productService.getProductById(id);
         productBindFilterService.deleteDemos(id);
 
-        if (productImageService.deleteOneByProductId(id) > 0){
+        if (productImageService.deleteOneByProductId(id) > 0) {
             int productId = productService.deleteOneById(id);
             if (productId == id) {
                 return "redirect:/admin/manage";

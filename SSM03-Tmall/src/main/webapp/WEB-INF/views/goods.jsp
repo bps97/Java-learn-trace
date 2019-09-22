@@ -75,29 +75,26 @@
 
                             <form id="fCaseForm" method="get" action="/good">
                                 <input type="hidden" name="caseList" id="fCaseHidden">
-                                <input type="hidden" id="fCaseIdHidden" value="<c:out value='${filterCases}'/>">
+                                <input type="hidden" id="fCaseIdHidden" value="<c:out value='${labelInfo}'/>">
                                 <input type="hidden" value="${key}" name="key">
                             </form>
 
-                            <c:forEach items="${filterCase}" var="fCase">
+                            <c:forEach items="${labelCategory}" var="category">
                                 <li class="select-list">
                                     <dl>
-                                        <dt class=" mr-round"><c:out value="${fCase.getName()}"/></dt>
+                                        <dt class=" mr-round"><c:out value="${category.getName()}"/></dt>
                                         <div class="dd-conent">
 
                                             <dd class="select-all selected">
                                                 <a href="#">全部</a>
                                             </dd>
-
-
-                                            <c:forEach items="${filterMap.get(fCase.getId())}" var="concreteFilter">
+                                            <c:forEach items="${labelMap.get(category)}" var="label">
                                                 <dd>
                                                     <a href="javascript:void(0)"
-                                                       class="fCase-<c:out value='${concreteFilter.getId()}'/>"><c:out
-                                                            value="${concreteFilter.getValue()}"/></a>
+                                                       class="fCase-<c:out value='${label.id}'/>"><c:out
+                                                            value="${label.value}"/></a>
                                                 </dd>
                                             </c:forEach>
-
                                         </div>
                                     </dl>
                                 </li>

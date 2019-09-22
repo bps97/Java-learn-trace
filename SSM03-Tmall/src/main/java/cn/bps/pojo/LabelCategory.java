@@ -1,6 +1,6 @@
 package cn.bps.pojo;
 
-public class FilterCase {
+public class LabelCategory {
     private Integer id;
 
     private String name;

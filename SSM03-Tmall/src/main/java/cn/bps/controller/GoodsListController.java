@@ -4,12 +4,10 @@ import cn.bps.pojo.*;
 import cn.bps.service.*;
 import cn.bps.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
 import java.util.*;
 
 
@@ -18,10 +16,10 @@ import java.util.*;
 public class GoodsListController {
 
     @Autowired
-    private FilterCaseService filterCaseService;
+    private LabelCategoryService labelCategoryService;
 
     @Autowired
-    private ConcreteFilterService concreteFilterService;
+    private LabelService labelService;
 
     @Autowired
     private ProductService productService;
@@ -63,46 +61,43 @@ public class GoodsListController {
 
 
         /* 筛选条件 */
-        List<FilterCase> list = filterCaseService.getFilterList();//获取筛选情况分类
-        model.addAttribute("filterCase", list);
-        List<Integer> filterIdList = filterCaseService.getFilterIdList();//获取筛选情况的字典表
-        Map<Integer, List<ConcreteFilter>> map = concreteFilterService.getFilterMap(filterIdList);
-        model.addAttribute("filterMap", map);
-
+        List<LabelCategory> labelCategory = labelCategoryService.getAllLabelCategory();//获取所有的标签分类
+        Map<LabelCategory, List<Label>> map = labelService.getLabelMap(labelCategory);//获取标签分类和标签的字典表
+        model.addAttribute("labelMap", map);
+        model.addAttribute("labelCategory",labelCategory);  //考虑到map的keyset方法无序。。
 
 
         /*分页*/
 
         Page page = new Page(start, 20);
-
         model.addAttribute("page", page);
 
+        /*检索词*/
         model.addAttribute("key", key);
 
+
         /* 产品 */
-        Set<Integer> keyProductIdSet = productService.getProductIDSetByProductName(key);
+        Set<Integer> keyProductIdSet = productService.getProductIDSetByProductName(key);//由关键字筛选之后的产品id集合
+        Set<Integer> labelProductIdSet = null;//由标签筛选之后的产品id集合
 
-        Set<Integer> filterProductIdSet = null;
-
-        if (caseList.equals("") || caseList.equals("全部,全部,全部,全部,全部,全部")) {
-            filterProductIdSet = productBindFilterService.getAllProductIdSet();
+        if (caseList.equals("") || caseList.equals("全部,全部,全部,全部,全部,全部")) {//未选择其他标签时
+            labelProductIdSet = productBindFilterService.getAllProductIdSet();
 
             if (!key.equals("")) {
-                filterProductIdSet.retainAll(keyProductIdSet);
+                labelProductIdSet.retainAll(keyProductIdSet);
             }
 
         } else {
-
             String[] temp = caseList.split(",");
-            Set<Integer> filterIdSet = concreteFilterService.getFilterIdByValues(temp);//获取筛选条件
-            filterProductIdSet = productBindFilterService.getProductIdSet(filterIdSet);//根据筛选条件获取产品id
+            Set<Integer> labelIdSet = labelService.getLabelIds(temp);//获取筛选条件
+            labelProductIdSet = productBindFilterService.getProductIdSet(labelIdSet);//根据筛选条件获取产品id
             if (!key.equals("")) {
-                filterProductIdSet.retainAll(keyProductIdSet);
+                labelProductIdSet.retainAll(keyProductIdSet);
             }
 
-            model.addAttribute("filterCases", concreteFilterService.getFilterIds(filterIdSet));
+            model.addAttribute("labelInfo",labelService.labelIdSetToString(labelIdSet));
         }
-        List<Product> products = productService.rowBoundsProduct(filterProductIdSet, page.getStart(), page.getStep());
+        List<Product> products = productService.rowBoundsProduct(labelProductIdSet, page.getStart(), page.getStep());
 
         model.addAttribute("products", products);
         Map<Integer, String> urlMap = productImageService.getImageUrls(products);//获取产品图片链接

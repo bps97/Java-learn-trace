@@ -72,7 +72,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from admin
+    from administrator
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -83,25 +83,25 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from admin
+    from administrator
     where username = #{username,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from admin
+    delete from administrator
     where username = #{username,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="cn.bps.pojo.AdministratorExample">
-    delete from admin
+    delete from administrator
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="cn.bps.pojo.Administrator">
-    insert into admin (username, password)
+    insert into administrator (username, password)
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.bps.pojo.Administrator">
-    insert into admin
+    insert into administrator
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="username != null">
         username,
@@ -120,13 +120,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="cn.bps.pojo.AdministratorExample" resultType="java.lang.Long">
-    select count(*) from admin
+    select count(*) from administrator
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update admin
+    update administrator
     <set>
       <if test="record.username != null">
         username = #{record.username,jdbcType=VARCHAR},
@@ -140,7 +140,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update admin
+    update administrator
     set username = #{record.username,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -148,7 +148,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="cn.bps.pojo.Administrator">
-    update admin
+    update administrator
     <set>
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
@@ -157,7 +157,7 @@
     where username = #{username,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.bps.pojo.Administrator">
-    update admin
+    update administrator
     set password = #{password,jdbcType=VARCHAR}
     where username = #{username,jdbcType=VARCHAR}
   </update>
@@ -167,7 +167,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from admin
+    from administrator
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>

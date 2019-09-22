@@ -38,14 +38,14 @@
                         </select>
                     </div>
                 </div>
-                <c:forEach items="${filterCases}" var="filterCase">
+                <c:forEach items="${labelCategory}" var="labelCategory">
                     <div class="form-group">
-                        <label class="control-label col-md-2"><c:out value="${filterCase.name}"/></label>
+                        <label class="control-label col-md-2"><c:out value="${labelCategory.name}"/></label>
                         <div class="col-md-6 checkbox" >
-                            <c:forEach items="${filterMap.get(filterCase.id)}" var="cFilter">
+                            <c:forEach items="${labelMap.get(labelCategory)}" var="label">
                                 <label>
-                                    <input type="checkbox" name="associate_${filterCase.id}" value="${filterCase.id}">
-                                    <span class=""><c:out value="${cFilter.value}"/></span>
+                                    <input type="checkbox" name="associate_${label.id}" value="${label.id}">
+                                    <span class=""><c:out value="${label.value}"/></span>
                                 </label>
                             </c:forEach>
                         </div>

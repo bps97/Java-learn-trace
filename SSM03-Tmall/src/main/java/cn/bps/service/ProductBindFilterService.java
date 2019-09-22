@@ -16,6 +16,6 @@ public interface ProductBindFilterService {
 
     List<ProductBindFilter> cloneByProductId(Integer oldId, Integer newId);
 
-    List<Integer> getConcreteFilterIdsByProductId(Integer id);
-    List<Integer> getConcreteFilterIdsByProduct(Product product);
+    List<Integer> getLabelIdsByProductId(Integer id);
+    List<Integer> getLabelIdsByProduct(Product product);
 }

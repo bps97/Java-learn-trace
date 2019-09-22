@@ -1,9 +1,9 @@
 package cn.bps.pojo;
 
-public class ConcreteFilter {
+public class Label {
     private Integer id;
 
-    private Integer filter_case_id;
+    private Integer label_category_id;
 
     private String value;
 
@@ -15,12 +15,12 @@ public class ConcreteFilter {
         this.id = id;
     }
 
-    public Integer getFilter_case_id() {
-        return filter_case_id;
+    public Integer getLabel_category_id() {
+        return label_category_id;
     }
 
-    public void setFilter_case_id(Integer filter_case_id) {
-        this.filter_case_id = filter_case_id;
+    public void setLabel_category_id(Integer label_category_id) {
+        this.label_category_id = label_category_id;
     }
 
     public String getValue() {

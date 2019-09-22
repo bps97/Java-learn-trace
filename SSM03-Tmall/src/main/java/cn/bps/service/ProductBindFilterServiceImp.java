@@ -38,7 +38,7 @@ public class ProductBindFilterServiceImp implements ProductBindFilterService {
         productBindFilterExample.createCriteria().andFilter_value_idEqualTo(filterId);
         List<ProductBindFilter> productBindFilter = productBindFilterMapper.selectByExample(productBindFilterExample);
 
-        Set<Integer> productIdSet = new HashSet();
+        Set<Integer> productIdSet = new LinkedHashSet<>();
         for(ProductBindFilter pbf:productBindFilter){
             productIdSet.add(pbf.getProduct_id());
         }
@@ -93,27 +93,27 @@ public class ProductBindFilterServiceImp implements ProductBindFilterService {
     }
 
     @Override
-    public List<Integer> getConcreteFilterIdsByProductId(Integer id) {
+    public List<Integer> getLabelIdsByProductId(Integer id) {
 
         ProductBindFilterExample productBindFilterExample = new ProductBindFilterExample();
         productBindFilterExample.createCriteria().andProduct_idEqualTo(id);
 
         List<ProductBindFilter> productBindFilters = productBindFilterMapper.selectByExample(productBindFilterExample);
-        List<Integer> concreteFilterIds = new ArrayList<>();
+        List<Integer> labelIds = new ArrayList<>();
 
         if(productBindFilters.size()>0){
 
             for(ProductBindFilter productBindFilter : productBindFilters){
-                concreteFilterIds.add(productBindFilter.getFilter_value_id());
+                labelIds.add(productBindFilter.getFilter_value_id());
             }
-            return concreteFilterIds;
+            return labelIds;
         }
 
-        return concreteFilterIds;
+        return labelIds;
     }
 
     @Override
-    public List<Integer> getConcreteFilterIdsByProduct(Product product) {
-        return getConcreteFilterIdsByProductId(product.getId());
+    public List<Integer> getLabelIdsByProduct(Product product) {
+        return getLabelIdsByProductId(product.getId());
     }
 }

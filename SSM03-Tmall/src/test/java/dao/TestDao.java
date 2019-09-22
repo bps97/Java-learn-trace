@@ -30,7 +30,7 @@
 //    private UserMapper userMapper;
 //
 //    @Autowired
-//    private FilterCaseMapper filterCaseMapper;
+//    private LabelCategoryMapper labelCategoryMapper;
 //
 //    @Autowired
 //    private ProductBindFilterMapper productBindFilterMapper;
@@ -88,12 +88,12 @@
 //
 //
 //    @Test
-//    public void filterCaseTest(){
-//        FilterCaseExample filterExample = new FilterCaseExample();
+//    public void labelCategoryTest(){
+//        LabelCategoryExample filterExample = new LabelCategoryExample();
 //        filterExample.setOrderByClause("`id` DESC");
-//        List<FilterCase> list = filterCaseMapper.selectByExample(filterExample);
+//        List<LabelCategory> list = labelCategoryMapper.selectByExample(filterExample);
 //
-//        for(FilterCase ca:list){
+//        for(LabelCategory ca:list){
 //            System.out.println(ca.getName()+":"+ca.getId());
 //        }
 //    }

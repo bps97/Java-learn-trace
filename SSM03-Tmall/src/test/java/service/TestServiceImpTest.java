@@ -21,10 +21,10 @@
 //    private UserService userService;
 //
 //    @Autowired
-//    private FilterCaseService filterCaseService;
+//    private LabelCategoryService labelCategoryService;
 //
 //    @Autowired
-//    private ConcreteFilterService concreteFilterService;
+//    private LabelService labelService;
 //
 //    @Autowired
 //    private ProductService productService;
@@ -141,19 +141,19 @@
 //
 //
 //    @Test
-//    public void ConcreteFilterTest(){
-//        List<Integer> list = filterCaseService.getFilterIdList();
-//        Map<Integer, List<ConcreteFilter>> map = concreteFilterService.getFilterMap(list);
-//        for (ConcreteFilter con : map.get(1)){
+//    public void LabelTest(){
+//        List<Integer> list = labelCategoryService.getAllLabelCategoryIds();
+//        Map<Integer, List<Label>> map = labelService.getLabelMap(list);
+//        for (Label con : map.get(1)){
 //            System.out.println(con.getValue());
 //        }
 //    }
 //
 //    @Test
-//    public void filterCaseTest(){
-//        List<FilterCase> list = filterCaseService.getFilterList();
+//    public void labelCategoryTest(){
+//        List<LabelCategory> list = labelCategoryService.getAllLabelCategory();
 //
-//        for(FilterCase ca:list){
+//        for(LabelCategory ca:list){
 //            System.out.println(ca.getName());
 //        }
 //    }
