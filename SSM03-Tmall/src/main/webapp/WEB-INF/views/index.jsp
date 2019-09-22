@@ -88,7 +88,7 @@
                                                                     <c:forEach
                                                                             items="${categoryDict.get(category.getId())}"
                                                                             var="categoryDemo">
-                                                                        <dd><a href="views/shopInfo.jsp"><span><c:out
+                                                                        <dd><a href="/good?key=${categoryDemo.getName()}"><span><c:out
                                                                                 value="${categoryDemo.getName()}"/></span></a>
                                                                         </dd>
                                                                     </c:forEach>

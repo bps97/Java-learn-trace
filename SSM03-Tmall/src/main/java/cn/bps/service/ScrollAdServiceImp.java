@@ -63,4 +63,10 @@ public class ScrollAdServiceImp implements ScrollAdService {
 
         return scrollAdMapper.deleteByPrimaryKey(scrollAd.getId());
     }
+
+    @Override
+    public int addNewScrollAd(ScrollAd scrollAd) {
+
+        return scrollAdMapper.insert(scrollAd);
+    }
 }

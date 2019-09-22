@@ -15,4 +15,6 @@ public interface ScrollAdService {
     ScrollAd updateScrollAd(ScrollAd scrollAd);
 
     Integer removeScrollAd(ScrollAd scrollAd);
+
+    int addNewScrollAd(ScrollAd scrollAd);
 }

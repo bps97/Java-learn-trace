@@ -40,5 +40,16 @@ public class SubCategoryServiceImp implements SubCategorySerivce {
     }
 
 
+    public Map<Category,List<SubCategory>> getCategoryAndSubCategory(){
+        List<Category> categories = categoryService.getCategories();
+        Map<Category,List<SubCategory>> container = new HashMap<>();
+        for(Category category: categories){
+            container.put(category,getCategoryDemos(category.getId()));
+        }
+        return container;
+
+    }
+
+
 
 }

@@ -96,10 +96,10 @@
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse" aria-disabled="true" style="text-align: center;">
                     <div class="panel-body">
-                        <a href="">广告信息</a>
+                        <a href="/admin/ad/">广告信息</a>
                     </div>
                     <div class="panel-body">
-                        <a href="">广告添加</a>
+                        <a href="/admin/ad/add">广告添加</a>
                     </div>
                 </div>
             </div>

@@ -42,7 +42,7 @@
 
         <div class="panel panel-default">
             <div class="panel-heading text-right">
-                <a href="/admin/product/add" class="btn btn-success">添加</a>
+                <a href="/admin/ad/add" class="btn btn-success">添加</a>
             </div>
         </div>
         <!-- panel-heading -->
@@ -56,7 +56,7 @@
                     <div class="caption text-right">
                         <p>
                             <a href="javascript:Show()" class="btn btn-primary btn-alter" role="button" value="${ad.id} ">修改</a>
-                            <a href="#" class="btn btn-default" role="button">删除</a>
+                            <button onclick="delAd(this)" class="btn btn-default" role="button" value="${ad.id}" >删除</button>
                         </p>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
 
     <div class="panel panel-default">
         <div id="theme-popover-mask">
-            <div id="login" class="c1 hide" style="top:170px">
+            <div id="alter" class="c1 hide" style="top:170px">
                 <div class="panel panel-default" style="margin: 0">
                     <div class="panel-footer">
                         <i class="fa fa-times fa-lg" style="float:right;margin:6px" onclick="Hide()"></i>
@@ -111,13 +111,13 @@
 
         function Show() {
             showMask()
-            document.getElementById('login').classList.remove('hide');
+            document.getElementById('alter').classList.remove('hide');
         }
         function Hide() {
             hideMask()
-            document.getElementById('login').classList.add('hide');
+            document.getElementById('alter').classList.add('hide');
         }
-        
+
         
         $(document).ready(function () {
             $text = $('#text');
@@ -160,9 +160,20 @@
                     $img.attr('alt',resp['text']);
                     $h3.text(resp['text']);
                     $a.attr('value',resp['id']);
+                }
+            })
+        }
 
-
-
+        var delAd  = function (obj) {
+            console.log($(obj).attr('class'));
+            $.ajax({
+                data:{'id':$(obj).attr('value')},
+                datatype:'json',
+                url:'/admin/ad/del.do',
+                method:'get',
+                success:function (resp) {
+                    // console.log(resp);
+                    window.location.reload();
                 }
             })
         }
