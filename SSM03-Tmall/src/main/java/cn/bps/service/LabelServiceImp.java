@@ -15,9 +15,6 @@ public class LabelServiceImp implements LabelService {
 
     @Autowired
     private LabelMapper labelMapper;
-
-
-
     /*获得标签分类与标签的字典表*/
     @Override
     public Map<LabelCategory, List<Label>> getLabelMap(Collection<LabelCategory> labelCategories) {

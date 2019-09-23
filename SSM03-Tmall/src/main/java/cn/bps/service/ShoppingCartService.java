@@ -17,6 +17,8 @@ public interface ShoppingCartService {
 
     float countTotalPrice(List<ProductItem> productItems);
 
+    long countProductItem(int userId);
+
     int removeOne(int shopId);
 
     int insertOne(ProductItem productItem);
@@ -28,7 +30,7 @@ public interface ShoppingCartService {
 
     Integer updateItemQualityByItemId(int itemId, int quality);
 
-    ProductItem findProductInShoppingCart(int productId); //查看购物车内是否与该产品一致的产品，有则返回一致产品
+    ProductItem findProductInShoppingCart(int productId,int userId); //查看购物车内是否与该产品一致的产品，有则返回一致产品
 
     Integer ProductQualityAdd(ProductItem productItem);
 

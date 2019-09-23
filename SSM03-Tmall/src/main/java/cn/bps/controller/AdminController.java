@@ -26,8 +26,7 @@ public class AdminController {
         return "/admin/base";
     }
 
-
-    @RequestMapping(value = {"","/index"})
+	@RequestMapping(value = {"","/index"})
     public String showIndexView(@ModelAttribute("sessionUsername")String username){
 
         if(username.equals("")) return "redirect:/admin/login";
@@ -35,7 +34,7 @@ public class AdminController {
         return "/admin/index";
     }
 
-    @RequestMapping("/login")
+	@RequestMapping("/login")
     public String showLoginView(Model model,
                                 @RequestParam(value = "message",defaultValue = "")String message,
                                 @RequestParam(value = "username",defaultValue = "")String username){
@@ -46,7 +45,8 @@ public class AdminController {
         return "/admin/login";
 
     }
-    @RequestMapping("/login/post")
+
+	@RequestMapping("/login/post")
     public String postLoginView(@ModelAttribute Administrator administrator,
                                 HttpSession session,
                                 RedirectAttributes redirectAttributes){
@@ -61,7 +61,7 @@ public class AdminController {
 
     }
 
-    @RequestMapping(value = {"/logout/post","/switch/post"})
+	@RequestMapping(value = {"/logout/post","/switch/post"})
     public String postLogoutView(HttpSession session,
                                  RedirectAttributes redirectAttributes,
                                  @ModelAttribute("sessionUsername")String username){
@@ -72,9 +72,6 @@ public class AdminController {
         return "redirect:/admin/login";
     }
 
-
-
-
     //验证账号session
     @ModelAttribute("sessionUsername")
     public String BeforeAdminController(HttpSession session){
@@ -84,8 +81,5 @@ public class AdminController {
         }
         return "";
     }
-
-
-
 
 }

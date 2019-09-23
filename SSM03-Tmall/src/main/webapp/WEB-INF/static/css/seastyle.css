@@ -308,7 +308,7 @@ dl#select3 .dd-conent {
 }
 
 .footer {
-    margin-left: 0px;
+    /*margin-left: 0px;*/
 }
 
 .search-side {
@@ -468,7 +468,7 @@ dl#select3 .dd-conent {
     /*搜索结果*/
     .i-pic.limit {
         padding: 0px;
-        margin: 10px;
+        margin: 15px;
         border: 1px #e8e8e8 solid;
         background: #fff;
     }
@@ -554,7 +554,7 @@ dl#select3 .dd-conent {
 
     .search-content {
         float: left;
-        width: 80%;
+        width: 100%;
     }
 
     .search-side {

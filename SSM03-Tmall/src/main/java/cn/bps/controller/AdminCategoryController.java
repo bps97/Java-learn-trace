@@ -26,9 +26,6 @@ public class AdminCategoryController {
 
     @RequestMapping("")
     public String showCategoryView(Model model){
-
-
-
         Map<Category, List<SubCategory>> categoryMap = subCategorySerivce.getCategoryAndSubCategory();
 
         model.addAttribute("categoryMap",categoryMap);

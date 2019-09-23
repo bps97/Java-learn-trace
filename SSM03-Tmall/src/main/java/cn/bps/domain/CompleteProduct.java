@@ -19,15 +19,9 @@ public class CompleteProduct {
     private Set<Integer> associate_5;
     private Set<Integer> associate_6;
     private Set<Integer> labelInfo;
-
-
-
     private MultipartFile image;
     private float price;
     private int stock;
-
-
-
     public Set<Integer> init() {
         try {
             labelInfo = new HashSet<>();

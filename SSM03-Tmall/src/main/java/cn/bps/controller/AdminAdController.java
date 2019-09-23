@@ -35,8 +35,7 @@ public class AdminAdController {
         return "/admin/ad/ad";
     }
 
-
-    @RequestMapping("/ad.do")
+	@RequestMapping("/ad.do")
     @ResponseBody
     public ScrollAd ajaxGetAd(@RequestParam("adId")int id){
 
@@ -44,7 +43,7 @@ public class AdminAdController {
 
     }
 
-    @RequestMapping(value = "/edit.do")
+	@RequestMapping(value = "/edit.do")
     @ResponseBody
     public ScrollAd ajaxEditAd(@ModelAttribute ScrollAd scrollAd){
 
@@ -52,7 +51,7 @@ public class AdminAdController {
         return  scrollAdService.updateScrollAd(scrollAd);
     }
 
-    @RequestMapping(value = "/del.do")
+	@RequestMapping(value = "/del.do")
     @ResponseBody
     public Integer ajaxDelAd(@ModelAttribute ScrollAd scrollAd){
 
@@ -60,8 +59,7 @@ public class AdminAdController {
 
     }
 
-
-    @RequestMapping(value = "/add")
+	@RequestMapping(value = "/add")
     public String showAddView(Model model,
                               @RequestParam(defaultValue = "") String link,
                               @RequestParam(defaultValue = "") String text){
@@ -71,8 +69,7 @@ public class AdminAdController {
         return "/admin/ad/adAdd";
     }
 
-
-    @RequestMapping(value = "/add/post")
+	@RequestMapping(value = "/add/post")
     public String addScrollAd(@ModelAttribute ScrollAd scrollAd,
                               @RequestParam MultipartFile image,
                               HttpServletRequest request,

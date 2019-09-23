@@ -26,7 +26,7 @@ public class ProductServiceImp implements ProductService {
 
     }
 
-    @Override
+	@Override
     public List<Product> getProductListByProductIdSet(Set<Integer> set) {
         ProductExample productExample = new ProductExample();
 
@@ -38,7 +38,7 @@ public class ProductServiceImp implements ProductService {
         return new ArrayList<>();
     }
 
-    @Override
+	@Override
     public List<Product> rowBoundsProduct(Set<Integer> set, Integer start, Integer step ) {
         return rowBoundsProduct(set,start,step,false);  //默认不可见
     }
@@ -62,28 +62,27 @@ public class ProductServiceImp implements ProductService {
         return new ArrayList<>();
     }
 
-
-    @Override
+	@Override
     public Product getProductById(Integer id) {
         return productMapper.selectByPrimaryKey(id);
     }
 
-    @Override
+	@Override
     public int deleteOneById(Integer id) {
         return productMapper.deleteByPrimaryKey(id);
     }
 
-    @Override
+	@Override
     public int insertOne(Product product) {
         return productMapper.insert(product);
     }
 
-    @Override
+	@Override
     public int updateOne(Product product) {
         return productMapper.updateByPrimaryKey(product);
     }
 
-    @Override
+	@Override
     public Product editOne(Product product) {
 
         Product newProduct = clone(product);
@@ -101,7 +100,7 @@ public class ProductServiceImp implements ProductService {
         return null;
     }
 
-    @Override
+	@Override
     public int getRecentProductId(Product product) {
         ProductExample productExample = new ProductExample();
         productExample.createCriteria().andCategory_idEqualTo(product.getCategory_id()).andSub_titleEqualTo(product.getSub_title());
@@ -113,7 +112,7 @@ public class ProductServiceImp implements ProductService {
         return 0;
     }
 
-    @Override
+	@Override
     public Set<Integer> getProductIDSetByProductName(String name) {
 
         ProductExample productExample = new ProductExample();
@@ -127,7 +126,7 @@ public class ProductServiceImp implements ProductService {
         return productIdSet;
     }
 
-    @Override
+	@Override
     public Map<Integer, Product> getProductMapByShoppingCartList(List<ProductItem> shoppingCarts) {
 
         Map<Integer, Product> map = new HashMap<>();
@@ -139,7 +138,7 @@ public class ProductServiceImp implements ProductService {
         return map;
     }
 
-    @Override
+	@Override
     public Product clone(Product product) {
 
         Product newProduct = new Product();
@@ -154,7 +153,7 @@ public class ProductServiceImp implements ProductService {
         return newProduct;
     }
 
-    @Override
+	@Override
     public int undercarriage(Product product) {
         int flag = (product.getUndercarriage()==0)?1:0;
         product.setUndercarriage(flag);

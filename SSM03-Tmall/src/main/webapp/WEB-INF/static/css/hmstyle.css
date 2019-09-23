@@ -2857,7 +2857,7 @@ dt + dd {
         height: 455px;
         text-align: left;
         top: 50px;
-        padding: 10px;
+        /*padding: 10px;*/
     }
 
     .demo {

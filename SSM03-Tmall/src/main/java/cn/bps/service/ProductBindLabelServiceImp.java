@@ -31,7 +31,7 @@ public class ProductBindLabelServiceImp implements ProductBindLabelService {
         return null;
     }
 
-    @Override
+	@Override
     public Set<Integer> getProductIdSetByFilterId(Integer labelId){
 
         ProductBindLabelExample productBindLabelExample = new ProductBindLabelExample();
@@ -46,7 +46,7 @@ public class ProductBindLabelServiceImp implements ProductBindLabelService {
 
     }
 
-    @Override
+	@Override
     public Set<Integer> getAllProductIdSet() {
         ProductBindLabelExample productBindLabelExample = new ProductBindLabelExample();
         List<ProductBindLabel> productBindLabel = productBindLabelMapper.selectByExample(productBindLabelExample);
@@ -57,7 +57,7 @@ public class ProductBindLabelServiceImp implements ProductBindLabelService {
         return productIdSet;
     }
 
-    @Override
+	@Override
     public void insertProductBindLabel(List<ProductBindLabel> productBindLabels) {
         for(ProductBindLabel productBindLabel : productBindLabels){
             productBindLabelMapper.insertSelective(productBindLabel);
@@ -65,7 +65,7 @@ public class ProductBindLabelServiceImp implements ProductBindLabelService {
         return ;
     }
 
-    @Override
+	@Override
     public int deleteDemos(int productId) {
 
         ProductBindLabelExample productBindLabelExample = new ProductBindLabelExample();
@@ -73,7 +73,7 @@ public class ProductBindLabelServiceImp implements ProductBindLabelService {
         return productBindLabelMapper.deleteByExample(productBindLabelExample);
     }
 
-    @Override
+	@Override
     public List<ProductBindLabel> cloneByProductId(Integer oldId, Integer newId) {
 
         ProductBindLabelExample productBindLabelExample = new ProductBindLabelExample();
@@ -92,7 +92,7 @@ public class ProductBindLabelServiceImp implements ProductBindLabelService {
         return newProductBindLabels;
     }
 
-    @Override
+	@Override
     public List<Integer> getLabelIdsByProductId(Integer id) {
 
         ProductBindLabelExample productBindLabelExample = new ProductBindLabelExample();
@@ -112,7 +112,7 @@ public class ProductBindLabelServiceImp implements ProductBindLabelService {
         return labelIds;
     }
 
-    @Override
+	@Override
     public List<Integer> getLabelIdsByProduct(Product product) {
         return getLabelIdsByProductId(product.getId());
     }

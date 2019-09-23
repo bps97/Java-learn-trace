@@ -32,7 +32,7 @@ public class ScrollAdServiceImp implements ScrollAdService {
         return ads;
     }
 
-    @Override
+	@Override
     public List<ScrollAd> getAdObjectList() {
 
         ScrollAdExample scrollAdExample = new ScrollAdExample();
@@ -42,7 +42,7 @@ public class ScrollAdServiceImp implements ScrollAdService {
         return scrollAds;
     }
 
-    @Override
+	@Override
     public ScrollAd getAdById(int id) {
 
         ScrollAd scrollAd = scrollAdMapper.selectByPrimaryKey(id);
@@ -51,20 +51,20 @@ public class ScrollAdServiceImp implements ScrollAdService {
         return null;
     }
 
-    @Override
+	@Override
     public ScrollAd updateScrollAd(ScrollAd scrollAd) {
 
         scrollAdMapper.updateByPrimaryKey(scrollAd);
         return scrollAdMapper.selectByPrimaryKey(scrollAd.getId());
     }
 
-    @Override
+	@Override
     public Integer removeScrollAd(ScrollAd scrollAd) {
 
         return scrollAdMapper.deleteByPrimaryKey(scrollAd.getId());
     }
 
-    @Override
+	@Override
     public int addNewScrollAd(ScrollAd scrollAd) {
 
         return scrollAdMapper.insert(scrollAd);

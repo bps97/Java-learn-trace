@@ -13,9 +13,6 @@ public class PropertyServiceImp implements PropertyService {
 
     @Autowired
     private PropertyMapper propertyMapper;
-
-
-
     @Override
     public List<Property> getPropertyListByCategoryId(int categoryId) {
         PropertyExample propertyExample = new PropertyExample();

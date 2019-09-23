@@ -17,9 +17,6 @@ public class ProductImageServiceImp implements ProductImageService {
 
     @Autowired
     private ProductImageMapper productImageMapper;
-
-
-
     @Override
     public Map<Integer, String> getImageUrls(Collection<Product> products) {
         Map<Integer, String> map = new HashMap();
@@ -40,7 +37,7 @@ public class ProductImageServiceImp implements ProductImageService {
         return map;
     }
 
-    @Override
+	@Override
     public String getImageUrl(Integer productId) {
         ProductImageExample productImageExample = new ProductImageExample();
         productImageExample.createCriteria().andProduct_idEqualTo(productId);
@@ -52,7 +49,7 @@ public class ProductImageServiceImp implements ProductImageService {
         else return "http://temp.im/200x200";
     }
 
-    @Override
+	@Override
     public int addProductImage(Integer productId, String imgUrl) {
 
         ProductImage productImage = new ProductImage();
@@ -74,7 +71,7 @@ public class ProductImageServiceImp implements ProductImageService {
 
     }
 
-    @Override
+	@Override
     public int updateProductImage(Integer productId, String imgUrl) {
 
         ProductImage productImage = getProductImageByProductId(productId);
@@ -85,7 +82,7 @@ public class ProductImageServiceImp implements ProductImageService {
 
     }
 
-    @Override
+	@Override
     public ProductImage getProductImageByProductId(Integer productId) {
 
         ProductImageExample productImageExample = new ProductImageExample();

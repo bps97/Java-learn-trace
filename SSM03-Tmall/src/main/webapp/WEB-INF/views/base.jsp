@@ -28,16 +28,6 @@
 
 
     <div class="mr-container header">
-        <ul class="message-l">
-            <div class="topMessage">
-                <div class="menu-hd">
-                    <a href="/login" target="_top" class="h" style="color: red"
-                       class="a-login">欢迎！${(sessionScope.get("username") != null)?(sessionScope.get("username")):"亲，请登录"}</a>
-                    <a href="/register" target="_top" style="color: red" class="a-registor">免费注册</a>
-                    <%--                    <a href="/mySpace" target="_top" style="color: deepskyblue">个人中心</a>--%>
-                </div>
-            </div>
-        </ul>
         <ul class="message-r">
             <div class="topMessage home">
                 <div class="menu-hd"><a href="/mobile" style="color:red">手机端</a></div>
@@ -133,7 +123,7 @@
                     <div class="avatar_box">
                         <p class="avatar_imgbox"><img src="/img/no-img_mid_.jpg"/></p>
                         <ul class="user_info">
-                            <li>用户名：<strong>mingriSoft</strong></li>
+                            <li>用户名：<strong>${(sessionScope.get('username') != null)?(sessionScope.get('username')):'未登录'}</strong></li>
                             <li>级&nbsp;别：<strong>金牌会员</strong></li>
                         </ul>
                     </div>
@@ -149,7 +139,7 @@
 
                 <p id="shoppingCart_p"> 购物车 </p>
 
-                <p class="cart_num">1</p>
+                <p class="cart_num">${sessionScope.get("shoppingCartSize")}</p>
 
 
             </div>

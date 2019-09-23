@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.rapid-framework.org.cn/rapid" prefix="rapid" %>
+<%@ taglib prefix="if" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <rapid:override name="head_content">
@@ -21,7 +22,14 @@
             <div id="box">
                 <ul id="imagesUI" class="list">
                     <c:forEach items="${ads}" var="ad" varStatus="status">
-                        <li style="opacity: 0;"><img  src="${ad.toString()}"/></li>
+                        <c:if test='${status.index==0}'>
+                            <li style="opacity: 1;">
+                                <img  src="${ad.toString()}"/>
+                            </li>
+                        </c:if>
+                        <li style="opacity: 0;">
+                            <img  src="${ad.toString()}"/>
+                        </li>
                     </c:forEach>
                 </ul>
                 <ul id="btnUI" class="step">
@@ -146,8 +154,9 @@
 
                         <div class="mod-vip">
                             <div class="m-baseinfo">
-                                <a href="/index">
+                                <a href="/space">
                                     <img src="/img/getAvatar.do.jpg">
+
                                 </a>
                                 <em>
                                     Hi,<span class="s-name">${(sessionScope.get("username") != null)?(sessionScope.get("username")):"请登录"}</span>

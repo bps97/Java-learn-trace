@@ -26,9 +26,7 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
         return productItemMapper.selectByExample(shoppingCartExample);
     }
 
-
-
-    @Override
+	@Override
     public float countTotalPrice(int userId) {
 
         List<ProductItem> productItems = getShoppingCartProductByUserId(userId);
@@ -42,7 +40,7 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
         return count;
     }
 
-    @Override
+	@Override
     public float countTotalPriceByProductItemIds(List<Integer> productItemIds) {
         int count=0;
         for(Integer id: productItemIds){
@@ -54,7 +52,7 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
         return count;
     }
 
-    @Override
+	@Override
     public float countTotalPrice(List<ProductItem> productItems) {
         int count=0;
         for(ProductItem productItem: productItems){
@@ -66,14 +64,21 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
         return count;
     }
 
-    @Override
+	@Override
+    public long countProductItem(int userId) {
+
+        ProductItemExample productItemExample = new ProductItemExample();
+        productItemExample.createCriteria().andUser_idEqualTo(userId);
+        return productItemMapper.countByExample(productItemExample);
+    }
+
+	@Override
     public int removeOne(int shopId) {
         return productItemMapper.deleteByPrimaryKey(shopId);
 
     }
 
-
-    @Override
+	@Override
     public int insertOne(ProductItem productItem) {
 
         ProductItemExample shoppingCartExample = new ProductItemExample();
@@ -87,7 +92,7 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
         return productItemMapper.insert(productItem);
     }
 
-    @Override
+	@Override
     public int insertOne(int productId, int userId, int quality) {
 
 //        if(isProductExist(productId)){
@@ -101,7 +106,7 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
         return insertOne(shoppingCart);
     }
 
-    @Override
+	@Override
     public List<ProductItem> getShoppingCartByIds(List<Integer> itemIds) {
 
         ProductItemExample shoppingCartExample = new ProductItemExample();
@@ -121,10 +126,10 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
         return productItemMapper.updateByPrimaryKey(item);
     }
 
-    @Override
-    public ProductItem findProductInShoppingCart(int productId) {
+	@Override
+    public ProductItem findProductInShoppingCart(int productId, int userId) {
         ProductItemExample productItemExample = new ProductItemExample();
-        productItemExample.createCriteria().andProduct_idEqualTo(productId);
+        productItemExample.createCriteria().andProduct_idEqualTo(productId).andUser_idEqualTo(userId);
         List<ProductItem> productItems = productItemMapper.selectByExample(productItemExample);
         if(productItems.size()>0){
             return productItems.get(0);
@@ -144,8 +149,7 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
         return null;
     }
 
-
-    @Override
+	@Override
     public int removeProductItemsByIds(List<Integer> itemList) {
 
         ProductItemExample shoppingCartExample = new ProductItemExample();

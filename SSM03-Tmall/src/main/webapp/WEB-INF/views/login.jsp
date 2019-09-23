@@ -15,7 +15,7 @@
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript">
 
-        var url = "postLogin.do";
+        var url = "checkLogin.do";
 
         var login = function( ) {
             var loginNumber = $("#loginNumber").val();

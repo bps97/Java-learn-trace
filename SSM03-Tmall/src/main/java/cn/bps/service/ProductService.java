@@ -33,9 +33,6 @@ public interface ProductService {
 
     Map<Integer,Product> getProductMapByShoppingCartList(List<ProductItem> shoppingCarts);
 
-
-
-
     Product clone(Product product);
 
     int undercarriage(Product product);

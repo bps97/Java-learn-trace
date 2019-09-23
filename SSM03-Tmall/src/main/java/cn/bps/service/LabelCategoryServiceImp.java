@@ -21,7 +21,7 @@ public class LabelCategoryServiceImp implements LabelCategoryService {
         return labelCategoryMapper.selectByExample(filterExample);
     }
 
-    @Override
+	@Override
     public List<Integer> getAllLabelCategoryIds() {
         List<LabelCategory> allLabelCategory = getAllLabelCategory();
         List<Integer> labelCategoryList = new ArrayList<>();

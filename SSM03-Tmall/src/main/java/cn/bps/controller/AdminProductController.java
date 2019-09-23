@@ -74,7 +74,7 @@ public class AdminProductController {
         return "admin/product/product";
     }
 
-    @RequestMapping(value = "/add")
+	@RequestMapping(value = "/add")
     public String showProductAddingView(Model model, @ModelAttribute("sessionUsername") String username) {
 
         if (username.equals("")) return "redirect:/admin/login";
@@ -218,8 +218,7 @@ public class AdminProductController {
         return "admin/product/productInfo";
     }
 
-
-    @RequestMapping(value = "/edit/{id}")
+	@RequestMapping(value = "/edit/{id}")
     public String editProduct(@PathVariable(value = "id") int id,
                               Model model, @ModelAttribute("sessionUsername") String username) {
 
@@ -236,7 +235,7 @@ public class AdminProductController {
         return "admin/product/productEdit";
     }
 
-    @RequestMapping(value = "/del/{id}")
+	@RequestMapping(value = "/del/{id}")
     public String delProduct(@PathVariable(value = "id") int id,
                              @ModelAttribute("sessionUsername") String username) {
 
@@ -256,8 +255,7 @@ public class AdminProductController {
         return "redirect:/admin/product";
     }
 
-
-    @ModelAttribute("sessionUsername")
+	@ModelAttribute("sessionUsername")
     public String BeforeAdminController(HttpSession session) {
         String username = (String) session.getAttribute("username");
         if (username != null) {

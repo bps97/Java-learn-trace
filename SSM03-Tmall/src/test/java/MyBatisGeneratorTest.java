@@ -38,7 +38,4 @@ public class MyBatisGeneratorTest {
 
         System.out.println("succeed");
     }
-
-
-
 }

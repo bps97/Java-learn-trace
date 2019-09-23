@@ -49,7 +49,4 @@ public class SubCategoryServiceImp implements SubCategorySerivce {
         return container;
 
     }
-
-
-
 }

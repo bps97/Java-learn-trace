@@ -40,9 +40,6 @@ public class OrderController {
     @Autowired
     private OrderItemService orderItemService;
 
-
-
-
     @RequestMapping(value = "/postAddress")
     @ResponseBody
     public String ajaxAddAddress(@ModelAttribute Address address,
@@ -64,12 +61,13 @@ public class OrderController {
         return "1";
     }
 
-    @RequestMapping(value = "/delAddress")
+	@RequestMapping(value = "/delAddress")
     @ResponseBody
     public Integer ajaxDelAddress(@RequestParam int addressId){
         return addressService.delAddressByAddressID(addressId);
     }
-    @RequestMapping(value = "/setDefaultAddress")
+
+	@RequestMapping(value = "/setDefaultAddress")
     @ResponseBody
     public Integer ajaxSetDefaultAddress(@RequestParam int addressId){
 
@@ -77,11 +75,7 @@ public class OrderController {
 
     }
 
-
-
-
-
-    @RequestMapping(value = "/addArea.do")
+	@RequestMapping(value = "/addArea.do")
     @ResponseBody
     public Map<String, String> ajaxGetAdministrativeArea(@RequestParam(defaultValue = "0")String parentCode){
         List<AdministrativeArea> administrativeAreas = administrativeAreaService.getChildrenCities(parentCode);
@@ -89,8 +83,7 @@ public class OrderController {
         return administrativeAreaService.toTuple(administrativeAreas);
     }
 
-
-    @RequestMapping(value = "")
+	@RequestMapping(value = "")
     public String generatorOrder(@RequestParam(defaultValue = "0")Integer[] items,
                                  Model model,HttpSession session){
 
@@ -151,16 +144,12 @@ public class OrderController {
 
     }
 
-
-    @RequestMapping(value = "/submit",method = RequestMethod.POST)
+	@RequestMapping(value = "/submit",method = RequestMethod.POST)
     public String submitOrder(@RequestParam(value = "message",defaultValue = "")String message,
                               @RequestParam("orderCode")String orderCode,
                               @RequestParam("addressId")Integer addressId,
                               @RequestParam("payment") Float payment,
                               RedirectAttributes redirectAttributes){
-
-
-
         Address address = addressService.getAddressByAddressID(addressId);
 
 
@@ -173,16 +162,13 @@ public class OrderController {
 
         if(order != null){
 
-
-
-
             return "redirect:/pay";
         }
 
         return "redirect: /order";
     }
 
-    @RequestMapping(value = "/confirm")
+	@RequestMapping(value = "/confirm")
     public String confirmOrder(@RequestParam("alipayInfo")String orderCode){
 
 
@@ -193,9 +179,6 @@ public class OrderController {
 
 
         return null;
-
-
-
     }
 
 

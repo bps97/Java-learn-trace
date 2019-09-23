@@ -14,12 +14,6 @@ public class UserServiceImp implements UserService{
     @Autowired
     private UserMapper userMapper;
 
-
-
-
-
-
-
     @Override
     public User getUserByPhone(String phone) {
         UserExample userExample = new UserExample();
@@ -29,7 +23,7 @@ public class UserServiceImp implements UserService{
         return user;
     }
 
-    @Override
+	@Override
     public User getUserByUsername(String username) {
         UserExample userExample = new UserExample();
         userExample.createCriteria().andNameEqualTo(username);
@@ -38,7 +32,7 @@ public class UserServiceImp implements UserService{
         return user;
     }
 
-    @Override
+	@Override
     public User getUserByEmail(String email) {
         UserExample userExample = new UserExample();
         userExample.createCriteria().andEmailEqualTo(email);
@@ -47,19 +41,19 @@ public class UserServiceImp implements UserService{
         return user;
     }
 
-    @Override
+	@Override
     public int InsertOne(User user) {
 
         return userMapper.insert(user);
     }
 
-    @Override
+	@Override
     public User getUserById(int id) {
 
         return userMapper.selectByPrimaryKey(id);
     }
 
-    @Override
+	@Override
     public void updateInfo(User user) {
         userMapper.updateByPrimaryKey(user);
         return;

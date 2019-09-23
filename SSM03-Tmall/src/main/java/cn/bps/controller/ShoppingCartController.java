@@ -8,10 +8,7 @@ import cn.bps.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -20,8 +17,6 @@ import java.util.Map;
 @Controller
 @RequestMapping(value = "/shop")
 public class ShoppingCartController {
-
-
     @Autowired
     private ShoppingCartService shoppingCartService;
 
@@ -32,19 +27,9 @@ public class ShoppingCartController {
     private ProductImageService productImageService;
 
 
-
-
     @RequestMapping(value = {"","/"})
-    public String showShopCart(HttpSession session,
-                               Model model){
-
-
-        if(session.getAttribute("userId") == null){
-            return "redirect:/login";
-        }
-        int userId = (Integer)session.getAttribute("userId");
-
-
+    public String showShoppingCartView(@ModelAttribute("userId")int userId, Model model){
+        if(userId == 0) return "redirect:/login";
 
         List<ProductItem> productItems = shoppingCartService.getShoppingCartProductByUserId(userId);
         model.addAttribute("shoppingCarts", productItems);
@@ -54,27 +39,19 @@ public class ShoppingCartController {
 
         Map<Integer, String> urls = productImageService.getImageUrls(productMap.values());
         model.addAttribute("images",urls);
-
-
         return "shoppingCart";
     }
 
-
-
-    @RequestMapping(value = "/add.do/{id}")
+	@RequestMapping(value = "/add.do/{id}")
     @ResponseBody
-    public Integer ajaxAddShoppingCart(@PathVariable(value = "id")int productId,
-                                       @RequestParam(value = "quality",defaultValue = "1") int quality,
-                                       HttpSession session){
+    public Integer ajaxAddShoppingCart(@ModelAttribute("userId")int userId,
+                                       @PathVariable(value = "id")int productId,
+                                       @RequestParam(value = "quality",defaultValue = "1") int quality){
+        if(userId == 0) return 0;
 
-
-        if(session.getAttribute("userId") == null)
-            return 0;
-
-        ProductItem productItem = shoppingCartService.findProductInShoppingCart(productId);
+        ProductItem productItem = shoppingCartService.findProductInShoppingCart(productId,userId);
 
         if(productItem == null){//购物车没有相似产品
-            Integer userId = (Integer) session.getAttribute("userId");
             return shoppingCartService.insertOne(productId, userId, quality);
         }
 
@@ -82,49 +59,32 @@ public class ShoppingCartController {
 
     }
 
-
-    @RequestMapping(value = "/del.do")
+	@RequestMapping(value = "/del.do")
     @ResponseBody
-    public Integer ajaxDelShoppingCart(HttpSession session,
+    public Integer ajaxDelShoppingCart(@ModelAttribute("userId")int userId,
                                        @RequestParam(value = "itemId",defaultValue = "0") int itemId){
-
-
-        if(session.getAttribute("userId") == null)
-            return 0;
-
-        Integer userId = (Integer) session.getAttribute("userId");
+        if(userId == 0) return 0;
         return shoppingCartService.removeOne(itemId);
     }
 
-
-    @RequestMapping(value = "/update.do")
+	@RequestMapping(value = "/update.do")
     @ResponseBody
-    public Integer ajaxAddShoppingCart(HttpSession session,
+    public Integer ajaxUpdateShoppingCart(@ModelAttribute("userId")int userId,
                                        @RequestParam(value = "itemId",defaultValue = "0") int itemId,
                                        @RequestParam(value = "quality",defaultValue = "1") int quality){
-
-
-        if(session.getAttribute("userId") == null)
-            return 0;
-
-        Integer userId = (Integer) session.getAttribute("userId");
+        if(userId == 0) return 0;
         return shoppingCartService.updateItemQualityByItemId(itemId,quality);
-
-
     }
 
-
-    @RequestMapping(value = "/post/{id}")
-    public String addTOShoppingCart(@PathVariable(value = "id")int productId,
-                                    HttpSession session,
+	@RequestMapping(value = "/post/{id}")
+    public String addTOShoppingCart(@ModelAttribute("userId")int userId,
+                                    @PathVariable(value = "id")int productId,
                                     @RequestParam(value = "quality",defaultValue = "1") int quality){
-        if(session.getAttribute("userId") == null){
-            return "redirect:/login";
-        }
 
-        ProductItem productItem = shoppingCartService.findProductInShoppingCart(productId);
+        if(userId == 0) return "redirect:/login";
+
+        ProductItem productItem = shoppingCartService.findProductInShoppingCart(productId,userId);
         if(productItem == null) {//购物车没有相似产品
-            Integer userId = (Integer) session.getAttribute("userId");
             shoppingCartService.insertOne(productId, userId, quality);
         }else{
             shoppingCartService.ProductQualityAdd(productItem);
@@ -134,8 +94,14 @@ public class ShoppingCartController {
 
     }
 
-
-
-
+	@ModelAttribute("userId")
+    public int updateShoppingCartSize(HttpSession session){
+        if(session.getAttribute("userId")!=null){
+            int userId = (Integer)(session.getAttribute("userId"));
+            session.setAttribute("shoppingCartSize",shoppingCartService.countProductItem(userId));
+            return userId;
+        }
+        return 0;
+    }
 
 }

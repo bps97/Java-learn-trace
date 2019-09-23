@@ -53,9 +53,6 @@ public class AlipayController {
         AlipayClient alipayClient = new DefaultAlipayClient(
                 gatewayUrl, app_id, merchant_private_key, format, charset,
                 alipay_public_key, sign_type); // 获得初始化的AlipayClient
-
-
-
         AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();// 创建API对应的request
         alipayRequest.setReturnUrl(return_url);
         alipayRequest.setNotifyUrl(notify_url);// 在公共参数中设置回跳和通知地址
@@ -91,7 +88,7 @@ public class AlipayController {
 
     }
 
-    @RequestMapping(value = "/returnUrl", method = RequestMethod.GET)
+	@RequestMapping(value = "/returnUrl", method = RequestMethod.GET)
     public String returnUrl(HttpServletRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes)
             throws IOException, AlipayApiException {
         System.out.println("=================================同步回调=====================================");
@@ -142,7 +139,7 @@ public class AlipayController {
         return "/shop";
     }
 
-    @RequestMapping(value = "/notifyUrl", method = RequestMethod.POST)
+	@RequestMapping(value = "/notifyUrl", method = RequestMethod.POST)
     public void notifyUrl(HttpServletRequest request, HttpServletResponse response)
             throws AlipayApiException, IOException {
         System.out.println("#################################异步回调######################################");
@@ -216,8 +213,5 @@ public class AlipayController {
         response.getWriter().flush();
         response.getWriter().close();
     }
-
-
-
 
 }

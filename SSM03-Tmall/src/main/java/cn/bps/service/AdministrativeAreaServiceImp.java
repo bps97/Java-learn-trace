@@ -24,14 +24,14 @@ public class AdministrativeAreaServiceImp implements AdministrativeAreaService {
         return administrativeAreaMapper.selectByExample(administrativeAreaExample);
     }
 
-    @Override
+	@Override
     public List<AdministrativeArea> getChildrenCities(String parentCode) {
         AdministrativeAreaExample administrativeAreaExample = new AdministrativeAreaExample();
         administrativeAreaExample.createCriteria().andParent_idEqualTo(parentCode);
         return administrativeAreaMapper.selectByExample(administrativeAreaExample);
     }
 
-    @Override
+	@Override
     public Map<String, String> toTuple(List<AdministrativeArea> administrativeAreas) {
 
         Map<String,String> tuple = new HashMap<>();
@@ -42,7 +42,7 @@ public class AdministrativeAreaServiceImp implements AdministrativeAreaService {
         return tuple;
     }
 
-    @Override
+	@Override
     public String getCityNameByCityCode(String cityCode) {
         AdministrativeAreaExample administrativeAreaExample = new AdministrativeAreaExample();
         administrativeAreaExample.createCriteria().andCodeEqualTo(cityCode);

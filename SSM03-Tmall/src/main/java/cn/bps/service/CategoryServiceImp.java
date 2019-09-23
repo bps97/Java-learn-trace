@@ -43,14 +43,14 @@ public class CategoryServiceImp implements CategoryService{
         return lists;
     }
 
-    @Override
+	@Override
     public List<Category> getCategories() {
 
         CategoryExample categoryExample = new CategoryExample();
         return categoryMapper.selectByExample(categoryExample);
     }
 
-    @Override
+	@Override
     public Map<Integer, String> getCategoryMap() {
         List<Category> categories = getCategories();
         Map<Integer,String> categoryMap = new HashMap<>();

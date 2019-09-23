@@ -14,16 +14,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
 @Controller
-public class DemoController {
-
-
-
+public class IndexController {
 
     @Autowired
     private CategoryService categoryService;
@@ -33,16 +33,13 @@ public class DemoController {
 
     @Autowired
     private ScrollAdService scrollAdService;
-
-
-
     @RequestMapping(value = "/test")
     public String test(){
         return "base";
     }
 
-    @RequestMapping(value = {"/index","/"})
-    public String showdemo(Model model, HttpSession session){
+	@RequestMapping(value = {"/index","/"})
+    public String showDemo(Model model){
 
 
         //获取十个分组
@@ -58,34 +55,13 @@ public class DemoController {
         model.addAttribute("ads",ads);
 
 
-
         return "index";
 
 
     }
 
-    @RequestMapping(value = "/base")
-    public String showList(){
-        return "base";
-    }
-
-
-
-
-
-
-    @RequestMapping(value = "/good")
-    public String showgood(){
-        return "goodInfo";
-    }
-
-
-
-    @RequestMapping(value = "/mobile")
+	@RequestMapping(value = "/mobile")
     public ModelAndView showmobile(){ return new ModelAndView("mobile"); }
-
-
-
 
 
 }

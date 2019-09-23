@@ -51,8 +51,7 @@ public class GoodsListController {
         return "goodInfo";
     }
 
-
-    @RequestMapping(value = {"/list", ""}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/list", ""}, method = RequestMethod.GET)
     public String listGoods(@RequestParam(value = "caseList", defaultValue = "") String caseList,
                             @RequestParam(value = "start", defaultValue = "0") int start,
 
