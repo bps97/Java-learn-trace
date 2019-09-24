@@ -75,7 +75,7 @@ public class AdminAdController {
                               HttpServletRequest request,
                               RedirectAttributes redirectAttributes){
 
-        if(image !=null){
+        if(image.getSize() > 0){
 
             String text = image.getOriginalFilename();
             String suffix = Util.matchSuffix(text);

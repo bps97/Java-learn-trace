@@ -37,4 +37,6 @@ public interface ProductService {
 
     int undercarriage(Product product);
 
+    List<Product> sortProductList(List<Product> productList,String pattern);
+
 }

@@ -160,5 +160,13 @@ public class ProductServiceImp implements ProductService {
         return productMapper.updateByPrimaryKey(product);
     }
 
+    @Override
+    public List<Product> sortProductList(List<Product> productList, String pattern) {
+
+
+
+        return null;
+    }
+
 
 }
