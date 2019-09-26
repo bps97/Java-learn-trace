@@ -54,8 +54,8 @@ public class GoodsListController {
 	@RequestMapping(value = {"/list", ""}, method = RequestMethod.GET)
     public String listGoods(@RequestParam(value = "caseList", defaultValue = "") String caseList,
                             @RequestParam(value = "start", defaultValue = "0") int start,
-
                             @RequestParam(value = "key", defaultValue = "") String key,
+                            @RequestParam(value = "sort", defaultValue = "id") String sortPattern,
                             Model model) {
 
 
@@ -96,8 +96,7 @@ public class GoodsListController {
 
             model.addAttribute("labelInfo",labelService.labelIdSetToString(labelIdSet));
         }
-        List<Product> products = productService.rowBoundsProduct(labelProductIdSet, page.getStart(), page.getStep());
-
+        List<Product> products = productService.rowBoundsProduct(labelProductIdSet, page.getStart(), page.getStep() ,sortPattern);
         model.addAttribute("products", products);
         Map<Integer, String> urlMap = productImageService.getImageUrls(products);//获取产品图片链接
         model.addAttribute("urlMap", urlMap);

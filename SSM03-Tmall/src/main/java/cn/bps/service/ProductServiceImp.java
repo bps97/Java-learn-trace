@@ -8,6 +8,8 @@ import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.*;
 
 
@@ -38,14 +40,20 @@ public class ProductServiceImp implements ProductService {
         return new ArrayList<>();
     }
 
+
+    @Override
+    public List<Product> rowBoundsProduct(Set<Integer> set, Integer start,Integer step,boolean visual){
+        return rowBoundsProduct(set,start,step,"id",visual);  //默认不可见
+    }
+
 	@Override
-    public List<Product> rowBoundsProduct(Set<Integer> set, Integer start, Integer step ) {
-        return rowBoundsProduct(set,start,step,false);  //默认不可见
+    public List<Product> rowBoundsProduct(Set<Integer> set, Integer start,Integer step ,String sortPattern){
+        return rowBoundsProduct(set,start,step,sortPattern,false);  //默认不可见
     }
 
     //重载实现参数默认值
     @Override
-    public List<Product> rowBoundsProduct(Set<Integer> set, Integer start, Integer step, boolean visual) {
+    public List<Product> rowBoundsProduct(Set<Integer> set, Integer start, Integer step, String sortPattern, boolean visual) {
 
         ProductExample productExample = new ProductExample();
 
@@ -55,6 +63,7 @@ public class ProductServiceImp implements ProductService {
 
         if (set.size() > 0) {
             productExample.createCriteria().andIdIn(new ArrayList(set)).andUndercarriageNotEqualTo(flag);
+            productExample.setOrderByClause("`"+sortPattern+"`DESC");
             List<Product> products = productMapper.selectByExampleWithRowbounds(productExample, rowBounds);
             return products;
 
@@ -164,8 +173,45 @@ public class ProductServiceImp implements ProductService {
     public List<Product> sortProductList(List<Product> productList, String pattern) {
 
 
+        if(pattern == "price")
+            Collections.sort(productList, new Comparator<Product>() {
+                @Override
+                public int compare(Product o1, Product o2) {
+                    return o1.getPrice().compareTo(o2.getPrice());
+                }
+            });
+        if(pattern == "stock")
+            Collections.sort(productList, new Comparator<Product>() {
+                @Override
+                public int compare(Product o1, Product o2) {
+                    return o1.getStock().compareTo(o2.getStock());
+                }
+            });
+        if(pattern == "sale")
+            Collections.sort(productList, new Comparator<Product>() {
+                @Override
+                public int compare(Product o1, Product o2) {
+                    return o1.getSale().compareTo(o2.getSale());
+                }
+            });
+        if(pattern == "title")
+            Collections.sort(productList, new Comparator<Product>() {
+                @Override
+                public int compare(Product o1, Product o2) {
+                    return o1.getName().compareTo(o2.getName());
+                }
+            });
+        if(pattern == "category")
+            Collections.sort(productList, Collections.reverseOrder(new Comparator<Product>() {
+                @Override
+                public int compare(Product o1, Product o2) {
+                    return o1.getCategory_id().compareTo(o2.getCategory_id());
+                }  //其实我只要反过来比较就可以，但是想试试reverserOrder这个方法
+            }));
 
-        return null;
+
+        /*默认请*/
+        return productList;
     }
 
 

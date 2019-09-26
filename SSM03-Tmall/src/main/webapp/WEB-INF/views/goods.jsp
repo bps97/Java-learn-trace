@@ -75,14 +75,14 @@
 
                             <form id="fCaseForm" method="get" action="/good">
                                 <input type="hidden" name="caseList" id="fCaseHidden">
-                                <input type="hidden" id="fCaseIdHidden" value="<c:out value='${labelInfo}'/>">
+                                <input type="hidden" id="fCaseIdHidden" value="${labelInfo}">
                                 <input type="hidden" value="${key}" name="key">
                             </form>
 
                             <c:forEach items="${labelCategory}" var="category">
                                 <li class="select-list">
                                     <dl>
-                                        <dt class=" mr-round"><c:out value="${category.getName()}"/></dt>
+                                        <dt class=" mr-round">${category.getName()}</dt>
                                         <div class="dd-conent">
 
                                             <dd class="select-all selected">
@@ -90,9 +90,7 @@
                                             </dd>
                                             <c:forEach items="${labelMap.get(category)}" var="label">
                                                 <dd>
-                                                    <a href="javascript:void(0)"
-                                                       class="fCase-<c:out value='${label.id}'/>"><c:out
-                                                            value="${label.value}"/></a>
+                                                    <a href="javascript:void(0)" class="fCase-${label.id}">${label.value}</a>
                                                 </dd>
                                             </c:forEach>
                                         </div>
@@ -104,9 +102,9 @@
                     </div>
                     <div class="search-content">
                         <div class="sort">
-                            <li class="first"><a title="综合">综合排序</a></li>
-                            <li><a title="销量">销量排序</a></li>
-                            <li><a title="价格">价格优先</a></li>
+                            <li><a title="综合" href="/good?caseList=${param.get('caseList')}&key=${param.get('key')}">综合排序</a></li>
+                            <li><a title="销量" href="/good?caseList=${param.get('caseList')}&key=${param.get('key')}&sort=sale">销量排序</a></li>
+                            <li><a title="价格" href="/good?caseList=${param.get('caseList')}&key=${param.get('key')}&sort=price">价格优先</a></li>
                             <li class="big"><a title="评价" href="#">评价为主</a></li>
                         </div>
                         <div class="clear"></div>
@@ -192,6 +190,12 @@
 
             })
 
+
+            $('div.search-content div.sort li').click(function () {
+                $preLi = $(this).parent().find("li.first");
+                $preLi.removeAttr('class');
+                $(this).attr('class',"first");
+            })
 
         })
 

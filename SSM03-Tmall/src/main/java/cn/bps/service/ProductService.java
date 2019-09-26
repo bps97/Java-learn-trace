@@ -13,9 +13,11 @@ public interface ProductService {
 
     List<Product> getProductListByProductIdSet(Set<Integer> set);
 
-    List<Product> rowBoundsProduct(Set<Integer> idSet, Integer start, Integer step);
+    List<Product> rowBoundsProduct(Set<Integer> set, Integer start,Integer step,boolean visual);
 
-    List<Product> rowBoundsProduct(Set<Integer> set, Integer start, Integer step, boolean visual);
+    List<Product> rowBoundsProduct(Set<Integer> set, Integer start,Integer step ,String sortPattern);
+
+    List<Product> rowBoundsProduct(Set<Integer> set, Integer start, Integer step, String sortPattern, boolean visual);
 
     Product getProductById(Integer id);
 
