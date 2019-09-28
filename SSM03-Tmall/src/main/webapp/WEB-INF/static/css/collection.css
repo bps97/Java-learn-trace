@@ -1,9 +1,9 @@
-body {
-    font-family: "Microsoft YaHei","Microsoft JhengHei",SimSun,verdana,Tahoma,arial;
-    font-size: 12px;
-}
+/*body {*/
+/*    font-family: "Microsoft YaHei","Microsoft JhengHei",SimSun,verdana,Tahoma,arial;*/
+/*    font-size: 12px;*/
+/*}*/
 
-a:link { 
+a:link {
     text-decoration: none;
 }
 a:hover{
@@ -11,6 +11,7 @@ a:hover{
 }
 #shop-list{
     position: relative;
+    /*width: 50%;*/
     z-index: 3;
 }
 div {
@@ -18,13 +19,14 @@ div {
     font-size: 12px;
     font-family: "Microsoft YaHei","Microsoft JhengHei",SimSun,verdana,Tahoma,arial;
 }
-ul {
+div#shop-list ul {
     display: block;
     margin-block-start: 1em;
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     padding-inline-start: 40px;
+    padding-inline-end: 40px;
     font-size: 12px;
 }
 .shop-item{
@@ -56,7 +58,7 @@ li{
 }
 
 .delete-box{
-    text-align: center;
+    padding:6px 4px ;
     z-index: 10000000;
     height: 25px;
     width:25px;
@@ -92,12 +94,12 @@ li{
     background:#ccc;
 } */
 @media screen and (max-width: 150px){
-.shop-item .item-card {
- width: 150px;
-}
-.g-il-l-item {
-    margin-right: 18px;
-   }
+    .shop-item .item-card {
+        width: 150px;
+    }
+    .g-il-l-item {
+        margin-right: 18px;
+    }
 }
 .shop-item .item-title {
     line-height: 23px;
@@ -110,8 +112,8 @@ li{
     color: #3c3c3c;
 }
 .shop-item .item-card {
-float: left;
-margin-right: 13px;
+    float: left;
+    margin-right: 13px;
 }
 .shop-item .price-container {
     margin-bottom: 4px;
@@ -138,12 +140,13 @@ margin-right: 13px;
     color: #9c9c9c;
 }
 @media screen and (max-width: 1250px){
-.shop-item .item-list-box {
-    width: 655px;
+    .shop-item .item-list-box {
+        width: 655px;
+    }
 }
-}
 .shop-item .item-list-box {
-  right:0;
+    flex: 1;
+    height: 151px;
 }
 .shop-item .item-list-box-tools {
     padding-top: 9px;
@@ -160,7 +163,7 @@ margin-right: 13px;
     height: 26px;
     line-height: 26px;
     text-align: center;
-}   
+}
 .shop-item .disabled, .shop-item .disabled:hover {
     color: #9c9c9c;
     cursor: not-allowed;
@@ -172,20 +175,21 @@ margin-right: 13px;
     background-position: 53px -134px;
 }
 .shop-item .item-list {
+    height: 100px;
     overflow: hidden;
-    /* position: relative; */
+    position: relative;
 }
-    /* .shop-item .error-j-box {
-        background: 0 0;
-        color: #9c9c9c;
-    }
-    .error-j {
-        height: 78px;
-        padding-left: 80px;
-        width: 200px;
-        line-height: 78px;
-        margin: 0 auto;
-    } */
+/* .shop-item .error-j-box {
+    background: 0 0;
+    color: #9c9c9c;
+}
+.error-j {
+    height: 78px;
+    padding-left: 80px;
+    width: 200px;
+    line-height: 78px;
+    margin: 0 auto;
+} */
 .shop-item .findSimilar-select .item-list-findSimilar-ul {
     display: block;
 }
@@ -198,10 +202,10 @@ margin-right: 13px;
     float: left;
 }
 @media screen and (max-width: 1250px){
-.g-il-r-item {
-    width: 100px;
-    margin-right: 11px;
-}
+    .g-il-r-item {
+        width: 100px;
+        margin-right: 11px;
+    }
 }
 .item-price-box {
     position: relative;
@@ -210,6 +214,6 @@ margin-right: 13px;
     width: 98px;
     height: 98px;
     overflow: hidden;
-    margin-right: 11px;;
+    margin-right: 15px;;
     border: #eee 1px solid;
 }

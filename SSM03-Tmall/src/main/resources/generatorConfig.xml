@@ -165,8 +165,13 @@
 
 
 
-        <table tableName="product_item" domainObjectName="ProductItem"
-        >
+        <table tableName="product_item" domainObjectName="ProductItem">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+
+        <table tableName="collection_item" domainObjectName="CollectionItem">
             <property name="my.isgen.usekeys" value="true"/>
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="JDBC"/>

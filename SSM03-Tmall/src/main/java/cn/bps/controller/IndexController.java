@@ -58,13 +58,9 @@ public class IndexController {
     }
 
 	@RequestMapping(value = "/mobile")
-    public ModelAndView showmobile(){ return new ModelAndView("mobile"); }
+    public ModelAndView showMobile(){ return new ModelAndView("mobile"); }
 
 
-    @RequestMapping(value = "/favorites")
-    public String showFavoritesView(){
 
-        return "favorites";
-    }
 
 }
