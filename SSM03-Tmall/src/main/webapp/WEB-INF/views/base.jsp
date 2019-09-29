@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="topMessage favorite">
-                <div class="menu-hd"><a href="#" target="_top"><i class="mr-icon-heart mr-icon-fw"></i><span>收藏夹</span></a>
+                <div class="menu-hd"><a href="/collection" target="_top"><i class="mr-icon-heart mr-icon-fw"></i><span>收藏夹</span></a>
                 </div>
             </div>
         </ul>

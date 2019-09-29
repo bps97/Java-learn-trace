@@ -140,7 +140,7 @@
                                     </li>
                                     <li class="td td-op">
                                         <div class="td-inner">
-                                            <a title="移入收藏夹" class="btn-fav" href="#">
+                                            <a href="javascript:addToCollection(${shoppingCart.product_id})" title="移入收藏夹" class="btn-fav" href="#">
                                                 移入收藏夹</a>
                                             <a href="javascript:void(0)" data-point-url="#" class="delete"
                                                value="${shoppingCart.id}">移出购物车</a>
@@ -354,6 +354,19 @@
             })
             $("#J_Total").text(totalPrice.toFixed(1));
             $("#J_SelectedCount").text(i);
+        }
+
+        var addToCollection= function(productId){
+            url = '/collection/add.do';
+            $.ajax({
+                url:url,
+                data:{'productId':productId},
+                datatype:'json',
+                method:'get',
+                success:function (resp) {
+                    console.log(resp);
+                }
+            })
         }
 
     </script>
