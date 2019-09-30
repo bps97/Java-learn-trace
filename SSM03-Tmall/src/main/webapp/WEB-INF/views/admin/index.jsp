@@ -26,7 +26,7 @@
     <!-- ECharts单文件引入 -->
     <div class="container" id="main1" style="height:450px; width:60%; left: 20%"></div>
 
-    <script type="text/javascript" src="/js/admin2/indexechart.js"></script>
+    <script type="text/javascript" src="/js/admin/indexEChart.js"></script>
 
 
 </rapid:override>

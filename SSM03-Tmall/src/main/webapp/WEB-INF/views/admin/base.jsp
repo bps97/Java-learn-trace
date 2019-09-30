@@ -190,4 +190,3 @@
 </script>
 </html>
 
-<%--<script src="/js/admin2/indexechart.js" type="text/javascript"></script>--%>

@@ -142,6 +142,13 @@ public class MemberController {
         return 0;
     }
 
+    /*注销*/
+    @RequestMapping(value = "/logout")
+    public String doLogout(HttpSession session){
+        session.removeAttribute("userId");
+        session.removeAttribute("username");
+        return "redirect:/login";
+    }
 
     /*先把接口写好吧*/
     /*单独的头像上传*/

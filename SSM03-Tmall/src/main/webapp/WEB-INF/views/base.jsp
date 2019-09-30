@@ -51,6 +51,13 @@
                 <div class="menu-hd"><a href="/collection" target="_top"><i class="mr-icon-heart mr-icon-fw"></i><span>收藏夹</span></a>
                 </div>
             </div>
+            <c:if test="${sessionScope.get('userId')!=null}">
+                <div class="topMessage">
+                    <div class="menu-hd">
+                        <a href="#" target="_top" style="color: red">注销</a>
+                    </div>
+                </div>
+            </c:if>
         </ul>
     </div>
 
