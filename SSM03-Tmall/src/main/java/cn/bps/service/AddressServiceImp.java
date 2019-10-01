@@ -19,7 +19,7 @@ public class AddressServiceImp implements AddressService {
     @Override
     public int addAddress(Address address) {
 
-        List<Address> addresses = getAddressesByUserId(address.getUser_id());
+        List<Address> addresses = getAddressList(address.getUser_id());
         if(addresses.size()==0){
             address.setDefault_address(1);
         }else{
@@ -30,7 +30,7 @@ public class AddressServiceImp implements AddressService {
     }
 
 	@Override
-    public List<Address> getAddressesByUserId(int userId) {
+    public List<Address> getAddressList(int userId) {
 
         AddressExample addressExample = new AddressExample();
         addressExample.createCriteria().andUser_idEqualTo(userId);
@@ -39,7 +39,7 @@ public class AddressServiceImp implements AddressService {
     }
 
 	@Override
-    public List<Address> getAddressesByUserIdExceptDefault(int userId) {
+    public List<Address> getAddressListExceptDefault(int userId) {
         AddressExample addressExample = new AddressExample();
         addressExample.createCriteria().andUser_idEqualTo(userId).andDefault_addressEqualTo(0);
         return addressMapper.selectByExample(addressExample);
@@ -57,13 +57,13 @@ public class AddressServiceImp implements AddressService {
     }
 
 	@Override
-    public Integer delAddressByAddressID(int addressId) {
+    public int delAddressByAddressID(int addressId) {
         return addressMapper.deleteByPrimaryKey(addressId);
 
     }
 
 	@Override
-    public Integer updateSetDefaultAddressById(int addressId) {
+    public int setDefaultAddressById(int addressId) {
 
         AddressExample addressExample  = new AddressExample();
         addressExample.createCriteria().andIdEqualTo(addressId);

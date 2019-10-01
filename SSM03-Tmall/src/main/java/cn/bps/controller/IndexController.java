@@ -41,7 +41,7 @@ public class IndexController {
 
         //获取十个分组
 
-        List<List<Category>> categoryGroup = categoryService.getCategories(12);
+        List<List<Category>> categoryGroup = categoryService.getAllCategory(12);
         model.addAttribute("categoryGroup", categoryGroup);
 
         Map<Integer,List<SubCategory>> con = subCategorySerivce.getCategoryProduct();

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductBindLabelServiceImp implements ProductBindLabelService {
@@ -20,9 +21,9 @@ public class ProductBindLabelServiceImp implements ProductBindLabelService {
 
         Set<Integer> productIdSet = null;
         if(!filterIdSet.isEmpty()){
-            productIdSet = getProductIdSetByFilterId(filterIdSet.iterator().next());
+            productIdSet = getProductIdSet(filterIdSet.iterator().next());
             for(Integer i : filterIdSet){
-                productIdSet.retainAll(getProductIdSetByFilterId(i));
+                productIdSet.retainAll(getProductIdSet(i));
 
             }
             return productIdSet;
@@ -32,7 +33,7 @@ public class ProductBindLabelServiceImp implements ProductBindLabelService {
     }
 
 	@Override
-    public Set<Integer> getProductIdSetByFilterId(Integer labelId){
+    public Set<Integer> getProductIdSet(Integer labelId){
 
         ProductBindLabelExample productBindLabelExample = new ProductBindLabelExample();
         productBindLabelExample.createCriteria().andLabel_idEqualTo(labelId);
@@ -50,23 +51,20 @@ public class ProductBindLabelServiceImp implements ProductBindLabelService {
     public Set<Integer> getAllProductIdSet() {
         ProductBindLabelExample productBindLabelExample = new ProductBindLabelExample();
         List<ProductBindLabel> productBindLabel = productBindLabelMapper.selectByExample(productBindLabelExample);
-        Set<Integer> productIdSet = new HashSet();
-        for(ProductBindLabel pbf:productBindLabel){
-            productIdSet.add(pbf.getProduct_id());
-        }
-        return productIdSet;
+        return productBindLabel.stream().map(ele -> ele.getProduct_id()).collect(Collectors.toSet());
     }
 
 	@Override
-    public void insertProductBindLabel(List<ProductBindLabel> productBindLabels) {
+    public int addProductBindLabel(List<ProductBindLabel> productBindLabels) {
         for(ProductBindLabel productBindLabel : productBindLabels){
-            productBindLabelMapper.insertSelective(productBindLabel);
+            int result = productBindLabelMapper.insertSelective(productBindLabel);
+            if (result==0) return result;
         }
-        return ;
+        return 1;
     }
 
 	@Override
-    public int deleteDemos(int productId) {
+    public int deleteProductBindLabel(int productId) {
 
         ProductBindLabelExample productBindLabelExample = new ProductBindLabelExample();
         productBindLabelExample.createCriteria().andProduct_idEqualTo(productId);

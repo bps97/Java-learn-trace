@@ -10,15 +10,17 @@ import java.util.Set;
 
 public interface LabelService {
 
-    public Map<LabelCategory, List<Label>> getLabelMap(Collection<LabelCategory> labelCategories);
+    Map<LabelCategory, List<Label>> getLabelMap(Collection<LabelCategory> labelCategories);
 
-    List<Label> getLabelListByCategoryId(int id);
 
     Integer findIdByValue(String value);
 
-    Set<Integer> getLabelIds(String[] values);
+    Set<Integer> getLabelIdSet(String[] values);
 
     String labelIdSetToString(Collection<Integer> filterSet);
 
-    List<Label> getLabelListByCategoryId(List<Integer> filterIdList);
+    List<Label> getLabelList(List<Integer> filterIdList);
+
+    List<Label> getLabelList(int id);
+
 }

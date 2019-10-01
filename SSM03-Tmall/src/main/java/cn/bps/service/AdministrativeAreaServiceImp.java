@@ -43,7 +43,7 @@ public class AdministrativeAreaServiceImp implements AdministrativeAreaService {
     }
 
 	@Override
-    public String getCityNameByCityCode(String cityCode) {
+    public String getCityName(String cityCode) {
         AdministrativeAreaExample administrativeAreaExample = new AdministrativeAreaExample();
         administrativeAreaExample.createCriteria().andCodeEqualTo(cityCode);
 

@@ -38,6 +38,11 @@ public class CollectionItemServiceImp implements CollectionItemService {
     }
 
     @Override
+    public int removeCollectionItem(CollectionItem collectionItem) {
+        return removeCollectionItem(collectionItem.getProduct_id());
+    }
+
+    @Override
     public int addCollectionItem(CollectionItem collectionItem) {
         CollectionItemExample collectionItemExample = new CollectionItemExample();
         collectionItemExample.createCriteria().andProduct_idEqualTo(collectionItem.getProduct_id());

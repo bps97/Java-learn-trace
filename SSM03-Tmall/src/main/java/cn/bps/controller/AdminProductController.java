@@ -131,7 +131,7 @@ public class AdminProductController {
         Integer newProductId = productService.getRecentProductId(newProduct);
         //拷贝筛选标签给新商品
         List<ProductBindLabel> productBindLabels = productBindLabelService.cloneByProductId(id, newProductId);
-        productBindLabelService.insertProductBindLabel(productBindLabels);
+        productBindLabelService.addProductBindLabel(productBindLabels);
 
         if (filePath.equals("")) {
             String oldImg = productImageService.getImageUrl(productPojo.getId());
@@ -183,7 +183,7 @@ public class AdminProductController {
 
         productService.insertOne(product);
         List<ProductBindLabel> productBindLabels = completeProduct.generatorProductBindLabel(product.getId());
-        productBindLabelService.insertProductBindLabel(productBindLabels);
+        productBindLabelService.addProductBindLabel(productBindLabels);
 
         productImageService.addProductImage(product.getId(), filePath);
 
@@ -211,7 +211,7 @@ public class AdminProductController {
 
         List<Integer> labelIdList = productBindLabelService.getLabelIdsByProduct(product);
 
-        List<Label> labelList = labelService.getLabelListByCategoryId(labelIdList);
+        List<Label> labelList = labelService.getLabelList(labelIdList);
 
         model.addAttribute("filters", labelList);
 
@@ -243,7 +243,7 @@ public class AdminProductController {
 
         //首先删除相关筛选
         cn.bps.pojo.Product product = productService.getProductById(id);
-        productBindLabelService.deleteDemos(id);
+        productBindLabelService.deleteProductBindLabel(id);
 
         if (productImageService.deleteOneByProductId(id) > 0) {
             int productId = productService.deleteOneById(id);

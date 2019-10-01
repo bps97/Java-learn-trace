@@ -8,11 +8,12 @@ import java.util.Map;
 
 public interface ProductImageService {
     Map<Integer,String> getImageUrls(Collection<Product> products);
+
     String getImageUrl(Integer productId);
 
     int addProductImage(Integer productId, String imgUrl);
 
-    int deleteOneByProductId(int id);
+    int deleteOneByProductId(int productId);
 
     int updateProductImage(Integer productId, String imgUrl);
 

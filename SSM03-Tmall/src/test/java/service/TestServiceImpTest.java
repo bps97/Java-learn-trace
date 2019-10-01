@@ -82,12 +82,12 @@ public class TestServiceImpTest {
 //        }
 
 
-//        Set<Integer> xx = productBindLabelService.getProductIdSetByFilterId(1);
+//        Set<Integer> xx = productBindLabelService.getProductIdSet(1);
 //        for(Integer i: xx){
 //            System.out.print(i+" ");
 //        }
 //        System.out.println("");
-//        Set<Integer> yy = productBindLabelService.getProductIdSetByFilterId(20);
+//        Set<Integer> yy = productBindLabelService.getProductIdSet(20);
 //        for(Integer i: yy){
 //            System.out.print(i+" ");
 //        }

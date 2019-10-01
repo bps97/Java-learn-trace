@@ -21,7 +21,7 @@ public class LabelServiceImp implements LabelService {
 
         Map<LabelCategory,List<Label>> map = new HashMap<>();
         for(LabelCategory category: labelCategories){
-            map.put(category, getLabelListByCategoryId(category.getId()));
+            map.put(category, getLabelList(category.getId()));
         }
 
         return map;
@@ -31,7 +31,7 @@ public class LabelServiceImp implements LabelService {
 
     /*通过标签id获得标签列表*/
     @Override
-    public List<Label> getLabelListByCategoryId(int labelId) {
+    public List<Label> getLabelList(int labelId) {
 
         LabelExample labelExample = new LabelExample();
         labelExample.createCriteria().andLabel_category_idEqualTo(labelId);
@@ -62,7 +62,7 @@ public class LabelServiceImp implements LabelService {
 
     /*通过标签名数组获得标签id*/
     @Override
-    public Set<Integer> getLabelIds(String[] values) {
+    public Set<Integer> getLabelIdSet(String[] values) {
         Set<Integer> set  = new HashSet<>();
         for(int i=0; i< values.length; ++i){
             if(!values[i].equals("全部"))
@@ -89,7 +89,7 @@ public class LabelServiceImp implements LabelService {
 
     /*查找标签id列表中id对应的标签列表*/
     @Override
-    public List<Label> getLabelListByCategoryId(List<Integer> labelIdList) {
+    public List<Label> getLabelList(List<Integer> labelIdList) {
 
         LabelExample labelExample = new LabelExample();
         labelExample.createCriteria().andIdIn(labelIdList);

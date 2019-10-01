@@ -18,17 +18,17 @@ public class CategoryServiceImp implements CategoryService{
     @Autowired
     private CategoryMapper categoryMapper;
 
-    public List<List<Category>> getCategories(int size){
+    public List<List<Category>> getAllCategory(int size){
 
         CategoryExample categoryExample = new CategoryExample();
-        long gourpNumber = categoryMapper.countByExample(categoryExample);
-        List<List<Category>> lists = new ArrayList<List<Category>>();
+        long groupNumber = categoryMapper.countByExample(categoryExample);
+        List<List<Category>> lists = new ArrayList<>();
         List<Category> categories = categoryMapper.selectByExample(categoryExample);
         int start = 1;
         List<Category> list = new ArrayList<>();
         for(Category category:categories){
             if(start > size) return lists;
-            if(category.getGroup_id() == start && start <= gourpNumber){
+            if(category.getGroup_id() == start && start <= groupNumber){
                 list.add(category);
             }else {
 

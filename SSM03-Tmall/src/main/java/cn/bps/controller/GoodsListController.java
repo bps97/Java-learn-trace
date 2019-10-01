@@ -88,7 +88,7 @@ public class GoodsListController {
 
         } else {
             String[] temp = caseList.split(",");
-            Set<Integer> labelIdSet = labelService.getLabelIds(temp);//获取筛选条件
+            Set<Integer> labelIdSet = labelService.getLabelIdSet(temp);//获取筛选条件
             labelProductIdSet = productBindLabelService.getProductIdSet(labelIdSet);//根据筛选条件获取产品id
             if (!key.equals("")) {
                 labelProductIdSet.retainAll(keyProductIdSet);

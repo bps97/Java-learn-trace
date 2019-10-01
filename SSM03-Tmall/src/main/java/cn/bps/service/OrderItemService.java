@@ -10,8 +10,8 @@ import java.util.List;
 public interface OrderItemService {
 
     int addOrderItem(OrderItem orderItem);
-    int addOrderItem(String orderCode,ProductItem productItem);
 
+    int addOrderItem(String orderCode,ProductItem productItem);
 
     void addOrderItems(String orderCode, List<ProductItem> productItems);
 

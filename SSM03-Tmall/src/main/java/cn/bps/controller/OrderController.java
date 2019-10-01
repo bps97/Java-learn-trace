@@ -52,9 +52,9 @@ public class OrderController {
         Integer userId = (Integer) session.getAttribute("userId");
 
         address.setUser_id(userId);
-        address.setProvince(administrativeAreaService.getCityNameByCityCode(address.getProvince()));
-        address.setPrefecture(administrativeAreaService.getCityNameByCityCode(address.getPrefecture()));
-        address.setCounty(administrativeAreaService.getCityNameByCityCode(address.getCounty()));
+        address.setProvince(administrativeAreaService.getCityName(address.getProvince()));
+        address.setPrefecture(administrativeAreaService.getCityName(address.getPrefecture()));
+        address.setCounty(administrativeAreaService.getCityName(address.getCounty()));
 
         addressService.addAddress(address);
 
@@ -71,7 +71,7 @@ public class OrderController {
     @ResponseBody
     public Integer ajaxSetDefaultAddress(@RequestParam int addressId){
 
-        return addressService.updateSetDefaultAddressById(addressId);
+        return addressService.setDefaultAddressById(addressId);
 
     }
 
@@ -118,7 +118,7 @@ public class OrderController {
         List<AdministrativeArea> counties = administrativeAreaService.getChildrenCities(prefectures.get(0).getCode());
         model.addAttribute("counties",counties);
 
-        List<Address> addresses = addressService.getAddressesByUserIdExceptDefault(userId);
+        List<Address> addresses = addressService.getAddressListExceptDefault(userId);
         model.addAttribute("addresses",addresses);
 
         Address defaultAddress = addressService.getDefaultAddressByUserId(userId);

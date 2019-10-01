@@ -9,11 +9,13 @@ import java.util.Set;
 
 public interface CollectionItemService {
 
-    List<CollectionItem> getAllCollection();
-
     int removeCollectionItem(int collectionItemId);
 
+    int removeCollectionItem(CollectionItem collectionItem);
+
     int addCollectionItem(CollectionItem collectionItem);
+
+    List<CollectionItem> getAllCollection();
 
     Set<Integer> getAllProductIDSet();
 

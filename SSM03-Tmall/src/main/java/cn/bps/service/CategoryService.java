@@ -6,7 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 public interface CategoryService {
-    List<List<Category>> getCategories(int size);
+
+    List<List<Category>> getAllCategory(int size);
+
     List<Category> getCategories();
+
     Map<Integer,String> getCategoryMap();
 }
