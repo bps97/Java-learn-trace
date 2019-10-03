@@ -41,6 +41,14 @@ public class TestServiceImpTest {
     @Autowired
     private AdministrativeAreaService administrativeAreaService;
 
+    @Autowired
+    private ShoppingCartService shoppingCartService;
+
+    @Test
+    public void shoppingCartTest(){
+        float xx = shoppingCartService.countTotalPrice(1);
+        System.out.println(xx);
+    }
 
 
     @Test

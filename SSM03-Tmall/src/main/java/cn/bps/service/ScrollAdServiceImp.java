@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ScrollAdServiceImp implements ScrollAdService {
@@ -23,13 +24,7 @@ public class ScrollAdServiceImp implements ScrollAdService {
 
         List<ScrollAd> scrollAds = scrollAdMapper.selectByExample(scrollAdExample);
 
-        List<String> ads = new ArrayList<>();
-
-        for(ScrollAd scrollAd : scrollAds){
-            ads.add(scrollAd.getLink());
-        }
-
-        return ads;
+        return scrollAds.stream().map(ScrollAd::getLink).collect(Collectors.toList());
     }
 
 	@Override

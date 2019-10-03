@@ -52,7 +52,7 @@ public class AdminProductController {
         Set<Integer> productIdSet = productBindLabelService.getAllProductIdSet();
         page.setTotal(productIdSet.size());
 
-        Set<Integer> keyProductIdSet = productService.getProductIDSetByProductName(key);
+        Set<Integer> keyProductIdSet = productService.getProductIdSetByKey(key);
 
         if (!key.equals("")) { //如果设置了关键字检索
             productIdSet.retainAll(keyProductIdSet);

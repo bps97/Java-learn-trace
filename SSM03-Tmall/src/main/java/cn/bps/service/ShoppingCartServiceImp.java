@@ -28,16 +28,11 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
 
 	@Override
     public float countTotalPrice(int userId) {
-
-        List<ProductItem> productItems = getShoppingCartProductByUserId(userId);
-        int count = 0;
-
-        for(ProductItem shoppingCart : productItems){
-            count += shoppingCart.getQuality() * productService.getProductById(shoppingCart.getProduct_id()).getPrice();
-        }
-
-
-        return count;
+        /*先map再求和*/
+        return getShoppingCartProductByUserId(userId)
+                .stream()
+                .map(productItem -> productItem.getQuality() * productService.getProductById(productItem.getProduct_id()).getPrice())
+                .reduce(0.0F,(acc,element)->acc+element);
     }
 
 	@Override
@@ -49,6 +44,7 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
             Product product = productService.getProductById(productId);
             count += product.getPrice()*item.getQuality();
         }
+
         return count;
     }
 

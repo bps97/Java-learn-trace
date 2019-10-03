@@ -35,13 +35,13 @@ public class GoodsListController {
 
 
     @RequestMapping(value = "{id}")
-    public String showGood(@PathVariable(value = "id") int id,
-                           Model model) {
+    public String showProductView(@PathVariable(value = "id") int id, Model model) {
 
+        /*通过产品id查找产品*/
         Product product = productService.getProductById(id);
-
         model.addAttribute("product", product);
 
+        /*通过产品id查找对于产品图片链接*/
         String imgUrl = productImageService.getImageUrl(product.getId());
         model.addAttribute("imgUrl", imgUrl);
 
@@ -52,11 +52,11 @@ public class GoodsListController {
     }
 
 	@RequestMapping(value = {"/list", ""}, method = RequestMethod.GET)
-    public String listGoods(@RequestParam(value = "caseList", defaultValue = "") String caseList,
-                            @RequestParam(value = "start", defaultValue = "0") int start,
-                            @RequestParam(value = "key", defaultValue = "") String key,
-                            @RequestParam(value = "sort", defaultValue = "id") String sortPattern,
-                            Model model) {
+    public String showProductList(@RequestParam(value = "caseList", defaultValue = "") String caseList,
+                                  @RequestParam(value = "start", defaultValue = "0") int start,
+                                  @RequestParam(value = "key", defaultValue = "") String key,
+                                  @RequestParam(value = "sort", defaultValue = "id") String sortPattern,
+                                  Model model) {
 
 
         /* 筛选条件 */
@@ -76,7 +76,7 @@ public class GoodsListController {
 
 
         /* 产品 */
-        Set<Integer> keyProductIdSet = productService.getProductIDSetByProductName(key);//由关键字筛选之后的产品id集合
+        Set<Integer> keyProductIdSet = productService.getProductIdSetByKey(key);//由关键字筛选之后的产品id集合
         Set<Integer> labelProductIdSet = null;//由标签筛选之后的产品id集合
 
         if (caseList.equals("") || caseList.equals("全部,全部,全部,全部,全部,全部")) {//未选择其他标签时

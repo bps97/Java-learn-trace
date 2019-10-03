@@ -8,9 +8,8 @@ import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -122,17 +121,12 @@ public class ProductServiceImp implements ProductService {
     }
 
 	@Override
-    public Set<Integer> getProductIDSetByProductName(String name) {
+    public Set<Integer> getProductIdSetByKey(String key) {
 
         ProductExample productExample = new ProductExample();
-        productExample.createCriteria().andNameLike("%"+name+"%");
+        productExample.createCriteria().andNameLike("%"+ key +"%");
         List<Product> products = productMapper.selectByExample(productExample);
-        Set<Integer> productIdSet = new HashSet<>();
-        for(Product product: products){
-            productIdSet.add(product.getId());
-        }
-
-        return productIdSet;
+        return  products.stream().map(Product::getId).collect(Collectors.toSet());
     }
 
 	@Override

@@ -31,7 +31,7 @@ public interface ProductService {
 
     int getRecentProductId(Product product);
 
-    Set<Integer> getProductIDSetByProductName(String name);
+    Set<Integer> getProductIdSetByKey(String name);
 
     Map<Integer,Product> getProductMapByShoppingCartList(List<ProductItem> shoppingCarts);
 
