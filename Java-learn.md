@@ -28,6 +28,7 @@ long l = 40000L;
 	sdk  jdk的早期版本，软件开发工具
 	JAR java Archive File  java档案文件 一种兼容zip的压缩文件
 	jar cf test.jar test 创建jar包
+
 ###### 不同版本的区别在于JavaAPI库内容
 - Java SE java标准版
 - Java EE java企业版 	(相当于是API的超集)
@@ -47,7 +48,7 @@ long l = 40000L;
 `Array.copyOf(arr,length)` 将arr的值拷贝一份出来,arrLength新数组长度
 Object.clone  浅拷贝
 
-######关于克隆clone
+###### 关于克隆clone
 自定义类实现克隆的方法：
 >实现标记接口Cloneable
  实现Object clone()方法，通过(XX)super.clone()返回克隆对象
@@ -59,7 +60,8 @@ clone机制高效，比静态的copy方法快两倍。
 ---
 
 # 动态绑定和静态绑定
-######静态绑定
+
+###### 静态绑定
 > 程序运行前就知道方法所属了。
 
 ###### 动态绑定
@@ -70,14 +72,15 @@ clone机制高效，比静态的copy方法快两倍。
 
 ---
 
-#继承和多态
+
+# 继承和多态
 
 `Father one = new Son();` 
 此处引用one是用其子类构造，但是被**向上转型**成父类的类型了
 向下变型(父类转子类)类型转换会有个类型转换异常,因而常常使用`(one instanceof Father)`判断
 
 
-######多态
+###### 多态
 	overload和override是Java多态性的不同表现，前者称为重载后者称为重写，覆盖。
 	overload可以让改变返回值的类型——这称为可协变的返回类型
 	多态可以是使用一个父类型(接口)可以初始化不同行为(不同派生类)的对象
@@ -94,9 +97,7 @@ clone机制高效，比静态的copy方法快两倍。
 ###### 内联
 > 早期java中，如果一个方法没有被覆盖且很短，编译器会对其优化处理，即内联
 
-<br>
 - final类不能被覆盖,final方法不能覆盖
-
 - 接口中的default方法不需要被实现,相当于普通父类的普通方法。
   如果一个类继承了一个类并实现了一个接口，而其父类中有个和接口中默认方法同名(当然也同参)的普通方法。
   那么编译器要求实现该方法。当然两个接口也适用。
@@ -137,7 +138,8 @@ Class类用于访问这些信息
 ---
 
 # 接口和抽象类
-	接口所有普通方法都不能自己实现，可以有default,statc方法(Java8)这些被实现的方法，抽象类没有default关键字,有staic方法。
+	接口所有普通方法都不能自己实现，可以有default,statc方法(Java8)这些被实现的方法，
+	抽象类没有default关键字,有staic方法。
 	接口的域自动设为常量。
 	接口默认是default，一般设为public
 
@@ -172,7 +174,7 @@ valueOf(enumType,Stirng) 返回指定名称的枚举值
   同样，可以给枚举类安排一个抽象方法，让枚举实例通过匿名内部类分别实现。
 
 ---
-#内部类
+# 内部类
 内部类可以访问所在外部类的数据(这个概念叫**闭包**)，包括私有。对同包下其他类隐藏。
 内部类有个隐式引用，指向创建它的外部类对象,一般是Outer.this.xx引用外部类的域
 
@@ -188,20 +190,24 @@ valueOf(enumType,Stirng) 返回指定名称的枚举值
 
 ---
 # 异常类
-\- Throwable(基类)
-\- - Error		运行时系统内部错误
-\- - Exception
-\- - - RuntimeException 程序错误导致的异常 `错误的类型转换、数组访问越界、访问空指针`
-\- - - 其他异常 程序本身没问题，如I/O错误这些 `文件结尾读取数据、打开错误格式的URL、用不存在的class查找Class错误`
+```
+Throwable(基类)
+	Error		运行时系统内部错误
+	Exception
+		RuntimeException 程序错误导致的异常
+		 	错误的类型转换、数组访问越界、访问空指针
+		其他异常 程序本身没问题
+			如I/O错误这些 文件结尾读取数据、打开错误格式的URL、用不存在的class查找Class错误
+```
 >Error和RuntimeException称为为未检查异常。
 	其他为已检查异常，拥有异常处理器。
 	未检查异常要么不可控制(Error)，要么应该避免发生(RuntimeException)。
 
 
-#######堆栈跟踪，
+###### 堆栈跟踪
 >stack trace   一个方法调用的列表, 包含程序执行过程中方法调用的特定位置。
 
-######断言
+###### 断言
 >声称(断言)某个东西是某东西(符合某个要求)，若不是则抛出异常。
 
 
@@ -220,12 +226,12 @@ valueOf(enumType,Stirng) 返回指定名称的枚举值
 
 
 ---
-#泛型 
+# 泛型 
 >泛型程序设计 generic programming
 泛型类看作普通类的工厂。
 
 
-######泛型类
+###### 泛型类
 ```
 public class XX<T>{ 
 	public XX(){} 
@@ -247,7 +253,7 @@ class XX{
 
 
 
-######泛型类型变量的限定
+###### 泛型类型变量的限定
 	假如在一个泛型方法中，泛型变量的类型是限定的。
 	比如是实现某个接口的类型，这个类型的范围就缩小了，
 	这时候就需要在方法声明处修改,如：
@@ -256,7 +262,7 @@ class XX{
 	限定多个事，用&隔开。如T extends Comparable & Serializable>
 
 
-######擦除：删除类型参数后的泛型类型名。
+###### 擦除：删除类型参数后的泛型类型名。
 	如XX<T>的原始类型是XX,类定义其中的T用Object替换
 	因为T是一个无限定的变量，所以直接用Object替换。
 	如果是<T extends Comparable & Serialiizable>, 则用Comparable替换
@@ -277,7 +283,7 @@ XX xx = xx.getFirst();
 ```
 
 
-######类型变量的限定
+###### 类型变量的限定
 ```
 /*此处泛型限定为实现所有Comparable接口的类型*/
     public static <T extends  Comparable> Pair<T> minMax(T[] a){
@@ -294,7 +300,7 @@ XX xx = xx.getFirst();
 
 
 
-######泛型类型的继承规则和通配符类型
+###### 泛型类型的继承规则和通配符类型
 - Manager是Employee的子类
 那么`XX<Manager>` 和 `XX<Employee>`都是`XX<？ extends Employee>`的子类型，
 `XX<？ extends Employee>`是`XX<raw>`的子类型
@@ -313,7 +319,7 @@ XX xx = xx.getFirst();
 - 无限通配符 XX<?>
 
 
-######其他
+###### 其他
 - 泛型不能用基本类型的原因是擦除之后Object不能存储基本类型。
 - 运行时类型查询只适用于原始类型,泛型当做原始类型处理。
 - 泛型类拓展Throwable不合法,但throws异常可以使用类型变量，例如：
@@ -338,10 +344,10 @@ XX xx = xx.getFirst();
 
 
 ---
-#集合框架
+# 集合框架
 >基本接口 Colllection,Map
 
-######迭代器
+###### 迭代器
 - iterator.remove()  删除上次调用next返回的元素，在之前没用next的话就不合法，就会抛出异常
 - ListIterator
 >	add(E)
@@ -351,7 +357,7 @@ XX xx = xx.getFirst();
 
 
 
-######Set
+###### Set
 
 - 对于TreeSet的使用
 >通过实现Comparable<T>接口的compareTo方法来比较类的先后
@@ -393,7 +399,7 @@ Array.asList(xx[]) 返回的对象不算ArrayList实例，而是一个视图对�
 	比如 view 为 map key的集合子范围,map.keySet().removeAll(view);
 
 
-######Collections
+###### Collections
 Collections里有许多静态方法
 ```
 Collections.sort(list)
@@ -413,7 +419,7 @@ Collections.sort(list, Collections.reverseOrder(new Comparator))   逆序排序
 	Collections.addAll(con,valuel,value2...)
 	Collections.replaceAll(con,oldValue,newValue)
 
-######其他
+###### 其他
 - Hsahtable   小写table 与Vector一样同步
 - Enumeration  hasMoreElements nextElement  与迭代器相似
 - Properties 属性映射表  键值对都是字符串 可以保存在文件中，也可以从文件中加载
@@ -430,20 +436,20 @@ EnumMap 键类型为枚举类型
 
 
 
-#多线程和同步问题
+# 多线程和同步问题
 实现方式
 1. 类实现Runnable的run方法，并将类传给一个Thread对象  Thread(run)
 2. 类继承Thread并实现run方法 不推荐。
 >注意不要实现Thread类或者Runnable对象的run方法。直接调用run方法不会启动新线程
 应该使用Thread.start,将会创建一个执行run方法的新线程
 
-######中断线程
+###### 中断线程
 	正常情况下，run方法执行到最后一条语句，线程将中止。
 	interrupt中断线程。 调用时线程的中断状态将被置位。
 	thread.isInterrupted()查看线程中断状态
 	Thread.interrrupted清除终端状态
 	若线程被阻塞则无法检测。检测时产生InterruptedException
-######线程状态
+###### 线程状态
 >`Thread.State getState()`返回线程的状态
 
 - new 线程刚刚创建时的状态 
@@ -455,14 +461,14 @@ EnumMap 键类型为枚举类型
 - Terminated	自然死亡或者意外死亡
 
 
-######线程优先级
+###### 线程优先级
 >`setPriority(int)`设置线程优先级，线程优先级是依赖于系统的。
 
-######守护线程
+###### 守护线程
 >`thread.setDaemon(true)` 将线程设为守护线程,为其他线程提供服务，如计时线程，垃圾回收线程。
 	如果只有守护线程的话，那么程序也就结束了。
 
-######未捕获异常处理器
+###### 未捕获异常处理器
 >线程的run方法不能抛出任何被检测的异常，但是如果不检测的话会导致线程死亡。这时候可以:
 1. 安装一个处理器——一个实现Thread.UncaughtExceptionHandler接口uncaughtException方法的类。
 2. 用setUncaughtExceptionHandler方法为任何线程安装一个处理器
@@ -473,7 +479,7 @@ EnumMap 键类型为枚举类型
 	线程组是一个可以统一管理的线程集合，默认情况下所有线程属于同一个线程组。
 	ThradGroup实现了Thrad.UncaughtExceptionHandler接口
 
-#####同步
+##### 同步
 	锁对象 用来保护代码片段，使得任何时候只有一个线程执行被保护的代码。
 		  也可以管理视图进入被保护的代码片段的线程
 	      通过条件对象来管理那些已经进入被保护的代码片段
@@ -491,11 +497,11 @@ public synchronized void method(){
 客户端锁定:  不推荐使用
 `synchronized(obj){...} `线程获得obj的锁
 
-######线程安全
+###### 线程安全
 >当多线程访问一个类时，可以不用考虑这些线程在运行时环境下的调度和交替执行，
  并且不需要额外的同步及在调用方代码不必作其他的调度，这个类的行为仍然是正确的。
 
-######sleep方法和wait方法的联系和区别
+###### sleep方法和wait方法的联系和区别
 - sleep,wait方法都可以通过interrupt方法被打断线程的暂停状态，
 - 如果线程正在处于sleep，wait，join等状态，会立刻抛出InterruptedException
 - sleep方法没用释放锁，wait方法释放了锁，使得其他线程可以使用同步控制块
@@ -515,7 +521,7 @@ wait 方法使当前线程进入等待状态并释放锁
 	什么要在同步块内呢：因为不同线程之间会随机竞争资源，我们要对共享资源的操作定序
 
 
-#垃圾回收
+# 垃圾回收
 强制开始垃圾回收
 >System.gc()
 Runtime.getRuntime().gc()
