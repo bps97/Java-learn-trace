@@ -1,2 +1,4 @@
-*/target/*
-*/.idea/*
+SpringMVC/*/target/*
+SpringMVC/.idea/*
+SpringMVC/HelloSpringMVC/*
+SpringMVC/HelloSpringMVC_Annotate/*
