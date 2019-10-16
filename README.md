@@ -1,5 +1,3 @@
-# bps-springMVC
-This is the repository for bps to learn Spring MVC
 # Java基本类型
 ###### 强类型语言
 
