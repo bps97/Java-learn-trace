@@ -11,23 +11,23 @@ int oct = 0777;
 long l = 40000L;
 ```
 
-	如果 short byte 需要使用强制类型转换才能保持原类型
-	整数/0    Exception
-	非零浮点数/0 无穷大 Infinity
-	0.0/0    NaN (Not a number) 例如还有`sqrt(-1)`
-	浮点运算存在误差，如2.0-1.1=8.89....
-	使用BigDecimal计算没有误差
-	char类下是使用Unicode编码
-	boolean与int不能进行相互转换
+如果 short byte 需要使用强制类型转换才能保持原类型
+整数/0    Exception
+非零浮点数/0 无穷大 Infinity
+0.0/0    NaN (Not a number) 例如还有`sqrt(-1)`
+浮点运算存在误差，如2.0-1.1=8.89....
+使用BigDecimal计算没有误差
+char类下是使用Unicode编码
+boolean与int不能进行相互转换
 
 
 ---
 
 # Java相关概念
-	Java applet 在网页上运行的Java程序 (被JavaScript,flash取代)
-	sdk  jdk的早期版本，软件开发工具
-	JAR java Archive File  java档案文件 一种兼容zip的压缩文件
-	jar cf test.jar test 创建jar包
+**Java applet** 在网页上运行的Java程序 (被JavaScript,flash取代)
+**sdk**  jdk的早期版本，软件开发工具
+**JAR** java Archive File  java档案文件 一种兼容zip的压缩文件
+jar cf test.jar test 创建jar包
 
 ###### 不同版本的区别在于JavaAPI库内容
 - Java SE java标准版
@@ -67,7 +67,8 @@ clone机制高效，比静态的copy方法快两倍。
 ###### 动态绑定
 > 程序运行过程中，将函数调用和函数定义(绑定)对应起来。也可以说是找到方法是属于哪个类的。
 
-	在静态绑定中，绑定可以在运行时或编译时解析。所有static，final和private方法的绑定过程都在编译时完成。
+在静态绑定中，绑定可以在运行时或编译时解析。
+所有static，final和private方法的绑定过程都在编译时完成。
 
 
 ---
@@ -81,16 +82,15 @@ clone机制高效，比静态的copy方法快两倍。
 
 
 ###### 多态
-	overload和override是Java多态性的不同表现，前者称为重载后者称为重写，覆盖。
-	overload可以让改变返回值的类型——这称为可协变的返回类型
-	多态可以是使用一个父类型(接口)可以初始化不同行为(不同派生类)的对象
-	多态可以是同一个方法拥有不同的类型
+overload和override是Java多态性的不同表现，前者称为重载后者称为重写，覆盖。
+overload可以让改变返回值的类型——这称为可协变的返回类型
+多态可以是使用一个父类型(接口)可以初始化不同行为(不同派生类)的对象
+多态可以是同一个方法拥有不同的类型
 
 ###### 可协变的返回类型
-
-	子类方法覆盖父类方法，子类方法返回类型可以和父类方法不一致
-	但是返回类型限定为父类方法返回类型的子类型 参考<? extends Type>
-	因而这个限于引用类型，如果返回值是基本类型的话还是得保持一致的
+子类方法覆盖父类方法，子类方法返回类型可以和父类方法不一致
+但是返回类型限定为父类方法返回类型的子类型 参考<? extends Type>
+因而这个限于引用类型，如果返回值是基本类型的话还是得保持一致的
 
 
 
@@ -107,11 +107,11 @@ clone机制高效，比静态的copy方法快两倍。
 ---
 # 反射：获取Runtime类型信息的途径
 
-######常用功能：	
-	能够分析类能力的程序
-	在运行中分析类的能力
-	在运行中查看对象
-	实现数组的操作代码
+###### 常用功能：	
+- 能够分析类能力的程序
+- 在运行中分析类的能力
+- 在运行中查看对象
+- 实现数组的操作代码
 
 程序运行期间，Java Runtime系统为所有对象维护一个runtime，保存着对象所属的类足迹。
 虚拟机利用runtime信息选择相应的方法执行。
@@ -138,10 +138,10 @@ Class类用于访问这些信息
 ---
 
 # 接口和抽象类
-	接口所有普通方法都不能自己实现，可以有default,statc方法(Java8)这些被实现的方法，
-	抽象类没有default关键字,有staic方法。
-	接口的域自动设为常量。
-	接口默认是default，一般设为public
+接口所有普通方法都不能自己实现，可以有default,statc方法(Java8)这些被实现的方法，
+抽象类没有default关键字,有staic方法。
+接口的域自动设为常量。
+接口默认是default，一般设为public
 
 ###### 接口和抽象类的区别
 > 首先在意义上，接口是一种规范，定义了类的标准，而抽象类是类的高度抽象化。
@@ -179,14 +179,15 @@ valueOf(enumType,Stirng) 返回指定名称的枚举值
 内部类有个隐式引用，指向创建它的外部类对象,一般是Outer.this.xx引用外部类的域
 
 ###### 局部内部类
-	在局部作用域内的内部类，如方法体内。
-	不能被public、private,只能在局部内访问。
-	局部内部类可以访问局部变量，但是该局部变量必须是final的。可以不声明，但是这个局部变量的值一定不能改变。
+在局部作用域内的内部类，如方法体内。
+不能被public、private,只能在局部内访问。
+局部内部类可以访问局部变量，但是该局部变量必须是final的。可以不声明，但是这个局部变量的值一定不能改变。
 ###### 匿名内部类  
-	不命名直接创建类对象
-	常用定义实现某接口的类，如Comparator接口
+不命名直接创建类对象
+常用定义实现某接口的类，如Comparator接口
 ###### 静态内部类  
-	为了单纯地隐藏该类到另一个类内部，并不需要内部类引用外部类。static修饰类的话，只能是静态内部类。
+为了单纯地隐藏该类到另一个类内部，并不需要内部类引用外部类。
+static修饰类的话，只能是静态内部类。
 
 ---
 # 异常类
@@ -254,33 +255,35 @@ class XX{
 
 
 ###### 泛型类型变量的限定
-	假如在一个泛型方法中，泛型变量的类型是限定的。
-	比如是实现某个接口的类型，这个类型的范围就缩小了，
-	这时候就需要在方法声明处修改,如：
-	public static <T extends Comparable> T fun(){..}
-	此时，这个T表示的是所有实现Comparable接口的类型，
-	限定多个事，用&隔开。如T extends Comparable & Serializable>
+假如在一个泛型方法中，泛型变量的类型是限定的。
+比如是实现某个接口的类型，这个类型的范围就缩小了，
+这时候就需要在方法声明处修改,如：
+`public static <T extends Comparable> T fun(){..}`
+此时，这个T表示的是所有实现Comparable接口的类型，
+限定多个事，用&隔开。如`T extends Comparable & Serializable>`
 
 
 ###### 擦除：删除类型参数后的泛型类型名。
-	如XX<T>的原始类型是XX,类定义其中的T用Object替换
-	因为T是一个无限定的变量，所以直接用Object替换。
-	如果是<T extends Comparable & Serialiizable>, 则用Comparable替换
+如XX<T>的原始类型是XX,类定义其中的T用Object替换
+因为T是一个无限定的变量，所以直接用Object替换。
+如果是<T extends Comparable & Serialiizable>, 则用Comparable替换
+
+- 当程序调用泛型方法的时候，如果擦除返回类型，编译器将插入强制类型转换符。
 ```
-当程序调用泛型方法的时候，如果擦除返回类型，编译器将插入强制类型转换符。
 Pair<XX> xxs = ...;
 XX xx = xx.getFirst();
+```
 这里getFirst()返回的XX被擦除成Object，编译器自动插入强制转换成XX.
-```
 
-	虚拟机里没有泛型，只有普通的方法和类；
-	所有类型参数都用他们的限定类型替换；
-	为保持类型安全性，必要时插入强制类型转换。
-```
-泛型仅仅是java的一颗语法糖，它不会影响Java虚拟机生成的汇编代码。
+
+- 虚拟机里没有泛型，只有普通的方法和类；
+所有类型参数都用他们的限定类型替换；
+为保持类型安全性，必要时插入强制类型转换。
+
+- 泛型仅仅是java的一颗语法糖，它不会影响Java虚拟机生成的汇编代码。
 在编译阶段，虚拟机就会把泛型的类型擦除，还原成没有泛型的代码，
 顶多编译速度稍微慢一些，执行速度是完全没有什么区别的。
-```
+
 
 
 ###### 类型变量的限定
@@ -390,13 +393,13 @@ result.retainAll(b); //此时result便是ab的交集
 ```
 
 
-	视图：可以获得其他实现[集合接口和映射表接口]对象的对象  (可以结合数据库的视图理解)
-```
+视图：可以获得其他实现[集合接口和映射表接口]对象的对象  (可以结合数据库的视图理解)
+
 例如keySet()返回的集合。 它是返回实现Set接口的类对象，这个类的方法对原映射表进行操作。
 Array.asList(xx[]) 返回的对象不算ArrayList实例，而是一个视图对象，带有访问底层数组的get和set方法，改变数组大小的方法。
-```
-	通过视图删除原映射表的内容
-	比如 view 为 map key的集合子范围,map.keySet().removeAll(view);
+
+通过视图删除原映射表的内容
+比如 view 为 map key的集合子范围,map.keySet().removeAll(view);
 
 
 ###### Collections
@@ -407,18 +410,18 @@ Collections.sort(list,new Comparator);
 Collections.sort(list, Collections.reverseOrder(new Comparator))   逆序排序
 ```
 
-	Java的排序，基本类型使用快排，引用类型使用归并排序，是一个稳定排序
-	先将元素转成数组并使用归并排序的变体进行排序，然后再复制回列表。
+Java的排序，基本类型使用快排，引用类型使用归并排序，是一个稳定排序
+先将元素转成数组并使用归并排序的变体进行排序，然后再复制回列表。
 
-```
-	对于已排序的集合，可用Collections.binarySearch(容器,key/element) 也可以添加一个compartor对象的参数
+
+对于已排序的集合，可用Collections.binarySearch(容器,key/element) 也可以添加一个compartor对象的参数
 ```
 	Collections.min、Collections.max
 	Collectuons.copy(to,from)
 	Collections.fill(con,value)
 	Collections.addAll(con,valuel,value2...)
 	Collections.replaceAll(con,oldValue,newValue)
-
+```
 ###### 其他
 - Hsahtable   小写table 与Vector一样同步
 - Enumeration  hasMoreElements nextElement  与迭代器相似
@@ -436,29 +439,45 @@ EnumMap 键类型为枚举类型
 
 
 
-# 多线程和同步问题
-实现方式
-1. 类实现Runnable的run方法，并将类传给一个Thread对象  Thread(run)
-2. 类继承Thread并实现run方法 不推荐。
+# Java线程
+
+###### 创建线程 ######
+
+1. 类继承Thread并实现run方法 
 >注意不要实现Thread类或者Runnable对象的run方法。直接调用run方法不会启动新线程
 应该使用Thread.start,将会创建一个执行run方法的新线程
+2. 类实现Runnable的run方法，并将类传给一个Thread对象  Thread(run)
+
+创建来源于两个方法`Thread()` `Thread(Runable target)`，前者通过继承，后者通过传参
+Thread的源码中，只有含有Runnable类型的域，run方法才能执行，
+
+- 启动线程的实质是JVM运行线程，然后通过线程调度器调度
+- run方法是JVM直接调用的，因此在代码中使用线程的run方法，是运行在当前线程的，这违背了“多线程”的初衷
+- 父线程是守护线程，那么子线程也是；父子线程优先级默认保持一致，生命周期无关系
+- 一些方法
+```
+void join() 若线程A调用线程B的join方法，那么线程的A的运行将会被暂停，直到B线程执行结束
+static void yield() 尝试让当前线程暂停(让调度器重新调度)
+```
+
 
 ###### 中断线程
-	正常情况下，run方法执行到最后一条语句，线程将中止。
-	interrupt中断线程。 调用时线程的中断状态将被置位。
-	thread.isInterrupted()查看线程中断状态
-	Thread.interrrupted清除终端状态
-	若线程被阻塞则无法检测。检测时产生InterruptedException
+正常情况下，run方法执行到最后一条语句，线程将中止。
+interrupt中断线程。 调用时线程的中断状态将被置位。
+thread.isInterrupted()查看线程中断状态
+Thread.interrrupted清除终端状态
+若线程被阻塞则无法检测。检测时产生InterruptedException
 ###### 线程状态
 >`Thread.State getState()`返回线程的状态
 
-- new 线程刚刚创建时的状态 
-- Runable 调用了start方法，变为可运行状态，可能在运行也可能没用运行。
-- Blocked 被阻塞 不运行任何代码消耗最少的资源 直到线程调度器重新激活它
+- Thread.Status 一个枚举类，枚举了线程的状态信息
+1. new 线程刚刚创建时的状态 
+2. Runable 调用了start方法，变为可运行状态，可能在运行也可能没用运行。
+3. Blocked 被阻塞 不运行任何代码消耗最少的资源 直到线程调度器重新激活它
   想要获得锁，而锁被其他线程持有，那么该线程进入阻塞状态。
-- waiting 等待另一个线程通知调度器的状态
-- Timed waiting	超时之后，计时等待
-- Terminated	自然死亡或者意外死亡
+4. waiting 等待另一个线程通知调度器的状态
+5. Timed waiting	超时之后，计时等待
+6. Terminated	自然死亡或者意外死亡
 
 
 ###### 线程优先级
@@ -474,15 +493,58 @@ EnumMap 键类型为枚举类型
 2. 用setUncaughtExceptionHandler方法为任何线程安装一个处理器
 3. 用Thread的静态方法setDefaultUncaughtExceptionHandler为所有线程安装一个默认处理器。
 
-	如果不安装默认处理器，默认处理器为空。
-	如果不为独立的线程安装处理器，此时的处理器就是该线程的ThreadGroup对象。
-	线程组是一个可以统一管理的线程集合，默认情况下所有线程属于同一个线程组。
-	ThradGroup实现了Thrad.UncaughtExceptionHandler接口
+如果不安装默认处理器，默认处理器为空。
+如果不为独立的线程安装处理器，此时的处理器就是该线程的ThreadGroup对象。
+线程组是一个可以统一管理的线程集合，默认情况下所有线程属于同一个线程组。
+ThradGroup实现了Thrad.UncaughtExceptionHandler接口
 
-##### 同步
-	锁对象 用来保护代码片段，使得任何时候只有一个线程执行被保护的代码。
-		  也可以管理视图进入被保护的代码片段的线程
-	      通过条件对象来管理那些已经进入被保护的代码片段
+# 多线程和同步问题
+**concurrent** 并发
+**parallel** 并行 并发的极致
+- 高并发 处于Runnable的线程数量越多，并发程度越高
+
+###### 线程安全
+>一个类在单线程和多线程的情况下都能正常运行。
+
+###### Java实现原子操作的两种方式
+1. Lock接口	保证一个共享变量一个时刻只能被一个线程访问。
+2. CAS
+
+>除了long,double之外的其他类型变量的写操作都是源自操作(JVM实现的)
+>用volatile修饰后可保证其原子性
+
+######锁
+用来保护代码片段，使得任何时候只有一个线程执行被保护的代码。
+也可以管理视图进入被保护的代码片段的线程
+通过条件对象来管理那些已经进入被保护的代码片段
+
+- **锁的排他性** 一个锁只能被一个线程持有，称为互斥锁，mutex
+
+按照JVM来分，分为
+1. 内部锁 又称监视器
+2. 显式锁
+
+######内部锁
+使用synchronized修饰方法或者代码块，修饰的方法称为同步方法
+用以保证该方法一次只被一个线程执行，而代码块称为同步块
+```
+synchronized(锁句柄){
+...
+}
+```
+这里的锁句柄可以是this，此时会锁句柄为锁，对应的句柄为引导的锁
+- 同步静态方法相当于当前类对象XX.class为引导的同步块
+- 称为内部锁的原因：线程对内部锁的申请和释放由JVM代由实施
+
+######显式锁
+Lock接口的实例，默认实现类ReentrantLock
+常用方法
+```
+void lock() 获取锁
+void unlock() 释放锁  一般放在finally块里
+boolean tryLock() 尝试获得锁
+new ReentrantLock(true) 创建公平锁 （默认是非公平锁）公平锁增加了线程的暂停和唤醒
+```
 *synchronized*
 >java的每一个对象都有一个内部锁，一个方法用synchronized来声明，那么该对象的锁将保护整个方法。
 >对于静态同步方法，对应的便是类对象的内部锁。
@@ -509,16 +571,16 @@ public synchronized void method(){
 
 
 
-	await 释放锁并进入等待阻塞状态
-	signalAll 通知等待的线程，激活他们
-	若是一个线程进入await，而又没有其他等待的线程激活它，那么就进入了死锁
+await 释放锁并进入等待阻塞状态
+signalAll 通知等待的线程，激活他们
+若是一个线程进入await，而又没有其他等待的线程激活它，那么就进入了死锁
 
-```
+
 wait,notifyAll,notify都是final方法，来自Object
 wait 方法使当前线程进入等待状态并释放锁
-```
-	线程之间如何通信：通过notify和wait
-	什么要在同步块内呢：因为不同线程之间会随机竞争资源，我们要对共享资源的操作定序
+
+线程之间如何通信：通过notify和wait
+什么要在同步块内呢：因为不同线程之间会随机竞争资源，我们要对共享资源的操作定序
 
 
 # 垃圾回收
