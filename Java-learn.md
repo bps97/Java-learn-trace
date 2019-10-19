@@ -15,11 +15,12 @@ long l = 40000L;
 整数/0    Exception
 非零浮点数/0 无穷大 Infinity
 0.0/0    NaN (Not a number) 例如还有`sqrt(-1)`
-浮点运算存在误差，如2.0-1.1=8.89....
 使用BigDecimal计算没有误差
 char类下是使用Unicode编码
 boolean与int不能进行相互转换
-
+###### 浮点数计算误差问题
+浮点运算存在误差，如2.0-1.1=8.89....
+原因在于二进制小数无法精确的表达10进制小数，小数表示分为尾数，阶码
 
 ---
 
@@ -38,6 +39,11 @@ jar cf test.jar test 创建jar包
 
 
 ---
+# 值传递和引用传递
+
+值传递是对基本变量而言的，传递的是该变量的一个副本，改变副本不影响原变量。
+引用传递是对对象型变量而言的，传递的是对象地址的一个副本。
+一般认为Java内都是值传递，因为java传入的非基本类型值是引用。
 
 
 # 深拷贝和浅拷贝
@@ -73,7 +79,20 @@ clone机制高效，比静态的copy方法快两倍。
 
 ---
 
+# 类型比较
 
+Object的hashcode方法是本地方法，通过c或c++实现的，返回对象的内存地址。
+
+对于HashMap中的key的比较，需要重写hashCode和equals两个方法。
+在满足了hashcode值相等的前提下equals返回为true时，key才算相同。
+
+###### Comparable接口和Comparator接口
+`comparable`接口包含一个返回值为int的`compareTo(T t)`方法，常常表示这个类是可比较的，如包装类，枚举类。`Arrays.binarySerach()`就是需要一个实现Comparable接口的List，不然不能进行二分查询。
+`comparator`接口包含两个抽象方法，分别是返回值为int的`compara(T o1,T o2)`方法和返回值为boolean的`equals(Object obj)`方法。因为每个类默认实现Object，所以equals可以选择性覆盖。这个接口称为比较器。描述的是比较策略，与对象(类)无关。但是本人想不通这个接口里设立这个equals方法的意义是什么。`Collections.sort()`这个容器排序方法就可以传入一个比较策略(策略设计模式)来比较集合元素。同理`Collections.binarySearch`方法也是。
+
+
+
+------
 # 继承和多态
 
 `Father one = new Son();` 
@@ -105,48 +124,19 @@ overload可以让改变返回值的类型——这称为可协变的返回类型
 - 静态内部类可以去继承别的静态内部类，但是其父类的静态方法不能被重载。
 
 ---
-# 反射：获取Runtime类型信息的途径
 
-###### 常用功能：	
-- 能够分析类能力的程序
-- 在运行中分析类的能力
-- 在运行中查看对象
-- 实现数组的操作代码
-
-程序运行期间，Java Runtime系统为所有对象维护一个runtime，保存着对象所属的类足迹。
-虚拟机利用runtime信息选择相应的方法执行。
-
-Class类用于访问这些信息
-
-
-
-反射机制的内容
-1. 检查类的结构
-	`Field、Method、Constructor`
-	用以获取类的域，方法，构造器的相关信息。
-	在java.lang.Class中，
-	分别对应着`getFields() getDeclaredFields getMethods()`
-2. 查看编译时还不清楚的对象作用域
-	反射机制的默认行为受限于java的访问控制权限。
-	即private等静态域，通过getField.getName之类的访问会产生异常
-3. 使用反射编写泛型数组
-	如，数组扩展，扩展的新数组需要确定类型。通过Array.newInstance
-
-`method.invoke(object this,Object...args) `
-第一个参数是对应对象句柄，静态方法可省略，可设置为null，第二个方法是对应方法参数，返回值是Object
-
----
 
 # 接口和抽象类
+声明方法而不去实现它的类被称为抽象类。
 接口所有普通方法都不能自己实现，可以有default,statc方法(Java8)这些被实现的方法，
 抽象类没有default关键字,有staic方法。
-接口的域自动设为常量。
+接口的域自动设为静态常量。
 接口默认是default，一般设为public
 
 ###### 接口和抽象类的区别
 > 首先在意义上，接口是一种规范，定义了类的标准，而抽象类是类的高度抽象化。
 用法上，接口的一般方法(defalut,static)都不能自己实现。抽象类可以有可实现的方法。
-
+抽象类可以implements接口，继续抽象。抽象类的中的main入口可以被调用。
 
 **标记接口** 没有方法，唯一目的是可以用instanceof进行类型检查。如`xx instanceof Cloneable`
 
@@ -175,8 +165,12 @@ valueOf(enumType,Stirng) 返回指定名称的枚举值
 
 ---
 # 内部类
-内部类可以访问所在外部类的数据(这个概念叫**闭包**)，包括私有。对同包下其他类隐藏。
+内部类可以访问所在外部类的数据(这个概念叫**闭包**)，包括私有。但对同一个包下其他类隐藏。
 内部类有个隐式引用，指向创建它的外部类对象,一般是Outer.this.xx引用外部类的域
+外部类访问内部类 this.new Inner();
+
+普通类只有public和默认不修饰，内部类可以是static,protect,private
+内部类拥有独立的名称空间，当外部类被其他类继承的时候，内部类没有被继承。 
 
 ###### 局部内部类
 在局部作用域内的内部类，如方法体内。
@@ -186,7 +180,7 @@ valueOf(enumType,Stirng) 返回指定名称的枚举值
 不命名直接创建类对象
 常用定义实现某接口的类，如Comparator接口
 ###### 静态内部类  
-为了单纯地隐藏该类到另一个类内部，并不需要内部类引用外部类。
+为了单纯地隐藏该类到另一个类内部，并不需要内部类引用外部类。当然，外部类的静态域还是正常访问的。
 static修饰类的话，只能是静态内部类。
 
 ---
@@ -225,6 +219,39 @@ Throwable(基类)
 	throws 提前声明了可能会发生什么异常，那么运行时，将不会正常执行，构造器将会抛出异常对象，runtime就会开始搜索异常处理器。
 
 
+
+---
+# 反射：获取Runtime类型信息的途径
+
+###### 常用功能：	
+- 能够分析类能力的程序
+- 在运行中分析类的能力
+- 在运行中查看对象
+- 实现数组的操作代码
+
+程序运行期间，Java Runtime系统为所有对象维护一个runtime，保存着对象所属的类足迹。
+虚拟机利用runtime信息选择相应的方法执行。
+
+Class类用于访问这些信息
+
+
+
+反射机制的内容
+1. 检查类的结构
+	`Field、Method、Constructor`
+	用以获取类的域，方法，构造器的相关信息。
+	在java.lang.Class中，
+	分别对应着`getFields() getDeclaredFields getMethods()`
+2. 查看编译时还不清楚的对象作用域
+	反射机制的默认行为受限于java的访问控制权限。
+	即private等静态域，通过getField.getName之类的访问会产生异常
+3. 使用反射编写泛型数组
+	如，数组扩展，扩展的新数组需要确定类型。通过Array.newInstance
+
+`method.invoke(object this,Object...args) `
+第一个参数是对应对象句柄，静态方法可省略，可设置为null，第二个方法是对应方法参数，返回值是Object
+
+`getConstructor()`方法获得构造器对象，配合`newInstance()`方法可以创建对象
 
 ---
 # 泛型 
@@ -304,16 +331,25 @@ XX xx = xx.getFirst();
 
 
 ###### 泛型类型的继承规则和通配符类型
+```
+<？ extends Employee>  可能是Employee也可能是其派生类
+<XX<？ super Employee>  可能是Employee也可能是其超类
+```
+
 - Manager是Employee的子类
-那么`XX<Manager>` 和 `XX<Employee>`都是`XX<？ extends Employee>`的子类型，
-`XX<？ extends Employee>`是`XX<raw>`的子类型
-注意：对于`XX<? extends Manager>`类型的引用，不能使用set(参数)这样的方法，因为它不知道set方法的参数，但get可以
+那么`XX<Manager>` 和 `XX<Employee>`可以看做是`XX<？ extends Employee>`的子类型，
+`XX<？ extends Employee>`看做是`XX<raw>`的子类型
 使用：`XX<？ extends Employee> xx = new XX<Manager>();`
+注意：拿List作例子，对于`List<? extends Manager>`，不能使用add(T t)这样的方法，但get可以。
+>可以这么理解：这个容器存放的是所有实现Manager的类(包括自己)。我们不知道add的是什么类型，但是get方法却可以，因为我传出去的对象无论如何都能被Manager接收。可以add(null)
+
+
 
 - 同理，对于`XX<? super Manager>`, `XX<Employee>`和`XX<Object>`是`XX<? super Manager>`的子类
 是`XX<?>`的子类型，这里`XX<?>是XX<raw>`的子类型。
-注意：对于`XX<? super Manager>`类型不能使用get()这样的方法，set可以用任意的Manager对象调用
-使用：`XX<？ super Employee> xx = new XX<Object>();`
+使用：`<XX<？ super Employee> xx = new XX<Object>();`
+注意：拿List作例子，对于`List<? super Manager>`类型不能使用get()这样的方法，add可以。
+>可以这么理解：这个通配符类型代表的是所有Manager的超类(包括自己)。要是传入一个Manager的派生类(Manager的超类不行)，肯定都是能被Manager或者Manager的超类接收的，但是get方法却不可以，除了Object，其他都接收不了。
 
 
 - 总言之，带有超类型限定的通配符可以向泛型对象写入，
@@ -401,6 +437,15 @@ Array.asList(xx[]) 返回的对象不算ArrayList实例，而是一个视图对�
 通过视图删除原映射表的内容
 比如 view 为 map key的集合子范围,map.keySet().removeAll(view);
 
+
+###### Map
+Map接口有四个实现类，HashMap,HashTable,LinkedHashMap,TreeMap
+- HashMap 
+允许一条记录的键为null,多条记录的值为null；
+需要支持同步时可以用Collections的synchronizedMap方法使HashMap具有同步的能力，或者使用ConcurrentHashMap。遍历速度更容量有关。
+- HashTable 线程安全，继承Dictionary类，不运行键或值为null
+- LinkedHashMap	保存了记录的插入顺序，使用iterator遍历时按照插入顺序遍历。也可以在构造是用参数，按照指定规则排序。遍历速度跟实际数据有关。
+- TreeMap 实现了SortMap接口，能够将保存的记录根据键排序，默认按键值升序，也可以指定排序比较器`Comparator`。
 
 ###### Collections
 Collections里有许多静态方法
@@ -543,7 +588,7 @@ Lock接口的实例，默认实现类ReentrantLock
 void lock() 获取锁
 void unlock() 释放锁  一般放在finally块里
 boolean tryLock() 尝试获得锁
-new ReentrantLock(true) 创建公平锁 （默认是非公平锁）公平锁增加了线程的暂停和唤醒
+new ReentrantLock(true) 创建公平锁 （默认是非公平锁）公平锁增加了线程的暂停和唤
 ```
 *synchronized*
 >java的每一个对象都有一个内部锁，一个方法用synchronized来声明，那么该对象的锁将保护整个方法。
