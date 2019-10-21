@@ -18,9 +18,19 @@ long l = 40000L;
 使用BigDecimal计算没有误差
 char类下是使用Unicode编码
 boolean与int不能进行相互转换
+long，double类型不是线程安全的，加上volatile读写安全。
+
+很多基本类型的包装类具有常量池，但不包括Float,Double
+
 ###### 浮点数计算误差问题
 浮点运算存在误差，如2.0-1.1=8.89....
 原因在于二进制小数无法精确的表达10进制小数，小数表示分为尾数，阶码
+
+###### 关于移位运算符
+\>> 右移 移的过程中高位，正数补0，负数补1
+\<< 左移
+\>>> 无符号右移	即不把符号位当符号位处理，移的过程中高位补0
+
 
 ---
 
@@ -120,9 +130,9 @@ overload可以让改变返回值的类型——这称为可协变的返回类型
 - 接口中的default方法不需要被实现,相当于普通父类的普通方法。
   如果一个类继承了一个类并实现了一个接口，而其父类中有个和接口中默认方法同名(当然也同参)的普通方法。
   那么编译器要求实现该方法。当然两个接口也适用。
-- 父类throws的异常是子类throws异常的超集
+- 父类throws的异常是子类throws异常的超集,子类方法的访问权限不能少于父类
 - 静态内部类可以去继承别的静态内部类，但是其父类的静态方法不能被重载。
-
+- 因为方法覆盖是基于运行时动态绑定的
 ---
 
 
@@ -445,7 +455,7 @@ Map接口有四个实现类，HashMap,HashTable,LinkedHashMap,TreeMap
 需要支持同步时可以用Collections的synchronizedMap方法使HashMap具有同步的能力，或者使用ConcurrentHashMap。遍历速度更容量有关。
 - HashTable 线程安全，继承Dictionary类，不运行键或值为null
 - LinkedHashMap	保存了记录的插入顺序，使用iterator遍历时按照插入顺序遍历。也可以在构造是用参数，按照指定规则排序。遍历速度跟实际数据有关。
-- TreeMap 实现了SortMap接口，能够将保存的记录根据键排序，默认按键值升序，也可以指定排序比较器`Comparator`。
+- TreeMap 实现了SortMap接口，基于红黑树的NabigableMap实现，能够将保存的记录根据键排序，默认按键值升序，也可以指定排序比较器`Comparator`。
 
 ###### Collections
 Collections里有许多静态方法
@@ -482,6 +492,8 @@ ArrayList list = new ArrayList(15) 这样的话就直接指定
 EnumMap 键类型为枚举类型
 - NavigatableSet接口
 
+- Vector使用数组方式存储数据，相比链表插入删除比较慢。线程安全(添加了synchronized),性能比ArrayList差
+- LinkedList 使用双向链表实现存储。比ArrayList更吃内存。
 
 
 # Java线程
@@ -558,7 +570,7 @@ ThradGroup实现了Thrad.UncaughtExceptionHandler接口
 >除了long,double之外的其他类型变量的写操作都是源自操作(JVM实现的)
 >用volatile修饰后可保证其原子性
 
-######锁
+###### 锁
 用来保护代码片段，使得任何时候只有一个线程执行被保护的代码。
 也可以管理视图进入被保护的代码片段的线程
 通过条件对象来管理那些已经进入被保护的代码片段
@@ -569,7 +581,7 @@ ThradGroup实现了Thrad.UncaughtExceptionHandler接口
 1. 内部锁 又称监视器
 2. 显式锁
 
-######内部锁
+###### 内部锁
 使用synchronized修饰方法或者代码块，修饰的方法称为同步方法
 用以保证该方法一次只被一个线程执行，而代码块称为同步块
 ```
@@ -581,7 +593,7 @@ synchronized(锁句柄){
 - 同步静态方法相当于当前类对象XX.class为引导的同步块
 - 称为内部锁的原因：线程对内部锁的申请和释放由JVM代由实施
 
-######显式锁
+###### 显式锁
 Lock接口的实例，默认实现类ReentrantLock
 常用方法
 ```
@@ -620,6 +632,11 @@ await 释放锁并进入等待阻塞状态
 signalAll 通知等待的线程，激活他们
 若是一个线程进入await，而又没有其他等待的线程激活它，那么就进入了死锁
 
+```
+notify()	唤醒在此对象监视器上等待的单个线程。 
+notifyAll()	唤醒在此对象监视器上等待的所有线程。
+wait()		导致当前的线程等待，直到其他线程调用此对象的 notify() 方法或 notifyAll() 方法。
+```
 
 wait,notifyAll,notify都是final方法，来自Object
 wait 方法使当前线程进入等待状态并释放锁
@@ -641,3 +658,14 @@ finalize()方法返回后，对象消失，垃圾回收机制开始执行。
 软引用：用SoftReference类实现，一般不会轻易回收，只有内存不够才会回收。
 弱引用：用WeekReference类实现，一旦垃圾回收已启动，就会回收。
 虚引用：不能单独存在，必须和引用队列联合使用。主要作用是跟踪对象被回收的状态。
+
+
+# String
+不可变对象是指一个对象的状态在对象被创建之后就不再变化。
+String是一个final类，String底层是char[] 实现的，实现时char[]是final的
+
+不可变的好处：
+节省堆空间。
+不可变可保证安全性，比如数据库账户密码等，没有办法在不修改地址的情况下修改其值。
+线程安全。因为不可变，不可写，读一致。
+不可变保证了HashCode码的唯一性，不需要重新计算，适合作为字典的key
