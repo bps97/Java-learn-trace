@@ -44,6 +44,17 @@ public class TestServiceImpTest {
     @Autowired
     private ShoppingCartService shoppingCartService;
 
+    @Autowired
+    private CategoryLogoService categoryLogoService;
+
+
+    @Test
+    public void categoryLogoTest(){
+        Map<Integer, String> xx = categoryLogoService.getCategoryLogoMap();
+        System.out.println(xx.get(1));
+    }
+
+
     @Test
     public void shoppingCartTest(){
         float xx = shoppingCartService.countTotalPrice(1);

@@ -1818,11 +1818,13 @@ dt + dd {
 
     .sort-side .dl-sort {
         float: left;
-        width: 50%;
+        /*width: 50%;*/
     }
 
     .category-list li.hover .menu-in {
-        border: 1px solid #333;
+        border: 1px solid #eaeaea;
+        border-top: 2px solid #d2364c;
+
     }
 
     /*.category-list li.hover{border: 2px solid #d83e54; border-right: none; }*/

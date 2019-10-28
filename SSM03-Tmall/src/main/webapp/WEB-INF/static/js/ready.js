@@ -49,14 +49,22 @@ $(document).ready(function () {
     }
 
     //图片切换方法
-    function show(a){
-        for(i=0;i<btn.length;i++ ){
-            btn[i].className='';    //显示当前设置按钮。
-            btn[a].className='current';
+    function show(a) {
+        for (i = 0; i < btn.length; i++) {
+            btn[i].className = ''; //显示当前设置按钮。
+            btn[a].className = 'current';
         }
-        for(i=0;i<imgs.length;i++){ //把图片的效果设置和按钮相同
-            imgs[i].style.opacity=0;
-            imgs[a].style.opacity=1;
+        for (i = 0; i < imgs.length; i++) { //把图片的效果设置和按钮相同
+            imgs[i].style.opacity = 0;
+            imgs[a].style.opacity = 1;
+        }
+    }
+    //切换按钮功能
+    for (i = 0; i < btn.length; i++) {
+        btn[i].index = i;
+        btn[i].onmouseover = function() {
+            show(this.index);
+            clearInterval(play);
         }
     }
 

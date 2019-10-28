@@ -21,12 +21,10 @@
         <div class="mr-slider mr-slider-default scoll" data-mr-flexslider id="demo-slider-0">
             <div id="box">
                 <ul id="imagesUI" class="list">
-                    <c:forEach items="${ads}" var="ad" varStatus="status">
-                        <c:if test='${status.index==0}'>
-                            <li style="opacity: 1;">
-                                <img  src="${ad.toString()}"/>
-                            </li>
-                        </c:if>
+                    <li class="current" style="opacity: 1;">
+                        <img  src="${ads.get(0)}"/>
+                    </li>
+                    <c:forEach items="${ads}" var="ad" begin="1">
                         <li style="opacity: 0;">
                             <img  src="${ad.toString()}"/>
                         </li>
@@ -34,8 +32,8 @@
                 </ul>
                 <ul id="btnUI" class="step">
 
-
-                    <c:forEach items="${ads}" varStatus="status">
+                    <li class="current">1</li>
+                    <c:forEach items="${ads}" varStatus="status" begin="1">
                         <li class="">${status.index}</li>
                     </c:forEach>
                 </ul>
@@ -78,7 +76,7 @@
                                         onmouseout="mouseOut(this)">
                                         <div class="category-info">
                                             <h3 class="category-name b-category-name">
-                                                <i><img src="/img/cake.png"></i>
+                                                <i><img src="${categoryLogo.get(categories.get(0).group_id)}"></i>
                                                 <a class="ml-22">
                                                     <c:forEach items="${categories}" var="category"><c:out
                                                             value="${category.getName()} "/></c:forEach>

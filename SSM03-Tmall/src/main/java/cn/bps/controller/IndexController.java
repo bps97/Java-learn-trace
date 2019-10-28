@@ -2,7 +2,9 @@ package cn.bps.controller;
 
 
 import cn.bps.pojo.Category;
+import cn.bps.pojo.CategoryLogo;
 import cn.bps.pojo.SubCategory;
+import cn.bps.service.CategoryLogoService;
 import cn.bps.service.CategoryService;
 
 
@@ -30,6 +32,10 @@ public class IndexController {
 
     @Autowired
     private ScrollAdService scrollAdService;
+
+    @Autowired
+    private CategoryLogoService categoryLogoService;
+
     @RequestMapping(value = "/test")
     public String test(){
         return "base";
@@ -41,15 +47,13 @@ public class IndexController {
 
         //获取十个分组
 
-        List<List<Category>> categoryGroup = categoryService.getAllCategory(12);
-        model.addAttribute("categoryGroup", categoryGroup);
+        model.addAttribute("categoryGroup", categoryService.getAllCategory(10));
 
-        Map<Integer,List<SubCategory>> con = subCategorySerivce.getCategoryProduct();
-        model.addAttribute("categoryDict",con);
+        model.addAttribute("categoryLogo",categoryLogoService.getCategoryLogoMap());
 
+        model.addAttribute("categoryDict",subCategorySerivce.getCategoryProduct());
 
-        List<String> ads = scrollAdService.getAds();
-        model.addAttribute("ads",ads);
+        model.addAttribute("ads", scrollAdService.getAds());
 
 
         return "index";

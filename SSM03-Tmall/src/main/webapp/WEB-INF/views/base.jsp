@@ -146,7 +146,7 @@
 
                 <p id="shoppingCart_p"> 购物车 </p>
 
-                <p class="cart_num">${sessionScope.get("shoppingCartSize")}</p>
+                <p class="cart_num">${(sessionScope.get("shoppingCartSize") != "") ? 0 : sessionScope.get("shoppingCartSize")}</p>
 
 
             </div>
@@ -167,7 +167,7 @@
                 </div>
             </div>
             <div id="brand" class="item">
-                <a href="#"> <span class="wdsc"><img src="/img/wdsc.png"/></span> </a>
+                <a href="/collection"> <span class="wdsc"><img src="/img/wdsc.png"/></span> </a>
 
                 <div class="mp_tooltip show">
                     我的收藏
