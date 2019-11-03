@@ -55,7 +55,8 @@ CREATE TABLE `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '唯一标识符',
   `name` varchar(255) NOT NULL COMMENT '分类名称',
   `group_id` int(11) NOT NULL COMMENT '组号',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_category_category_logo` FOREIGN KEY (`group_id`) REFERENCES `category_logo` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 
@@ -250,6 +251,11 @@ CREATE TABLE `scroll_ad` (
 
  
 
-
+DROP TABLE IF EXISTS `category_logo`;
+CREATE TABLE `category_logo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '唯一标识符',
+  `link` varchar(255) COMMENT '超链地址',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 

@@ -25,9 +25,6 @@
 
 <div class="main">
     <div class="header">
-        <%--            <a href="/">--%>
-        <%--                <img src="/img/1.jpg" alt="">--%>
-        <%--            </a>--%>
         <h1>管理员登录</h1>
     </div>
 
