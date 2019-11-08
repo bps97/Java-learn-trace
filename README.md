@@ -7,4 +7,4 @@
 - SpringMVC
 - - FileUpload
 - - FileUpload2
-- **[Java-learn.md](https://github.com/bps97/bps-Java/blob/master/Java-learn.md "Java-learn.md")**
+- **[Java-learn.md](https://github.com/bps97/bps-Java/blob/master/notes/Java-learn.md "Java-learn.md")**
