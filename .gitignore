@@ -1,5 +1,6 @@
-SpringMVC/*/target/*
-SpringMVC/.idea/*
+**/target/*
+**/.idea/*
 SpringMVC/HelloSpringMVC/*
 SpringMVC/HelloSpringMVC_Annotate/*
 Test/*
+Spring/
