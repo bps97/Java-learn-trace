@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <bean id="now" class="java.util.Date"></bean>
+
+
+    <!--  通过构造器  -->
+    <bean id="bean1" class="cn.bps.spring.DI.constructor.BeanDemo">
+        <constructor-arg name="name" value="test"> </constructor-arg>
+        <constructor-arg name="age" value="18"></constructor-arg>
+        <constructor-arg name="birthday" ref="now"></constructor-arg>
+    </bean>
+
+    <!--  通过setter  -->
+    <bean id="bean2" class="cn.bps.spring.DI.setter.BeanDemo">
+        <property name="name" value="tom"></property>
+        <property name="age" value="29"></property>
+        <property name="birthday" ref="now"></property>
+    </bean>
+
+    <!--  复杂类型的注入  -->
+    <bean id="bean3" class="cn.bps.spring.DI.setter.ListsAndMaps">
+        <property name="arr">
+            <array>
+                <value>1</value>
+                <value>2</value>
+            </array>
+        </property>
+
+        <property name="list">
+            <array>
+                <value>"listE1"</value>
+                <value>"listE2"</value>
+            </array>
+        </property>
+
+        <property name="set">
+            <set>
+                <value>"setE1"</value>
+                <value>"setE2"</value>
+            </set>
+        </property>
+
+        <property name="map">
+            <map>
+                <entry key="a" value="123"></entry>
+                <entry key="b" value="456"></entry>
+            </map>
+        </property>
+
+        <property name="properties">
+            <props>
+                <prop key="c" >789</prop>
+                <prop key="d" >101</prop>
+            </props>
+        </property>
+
+    </bean>
+
+    <!--  注解法注入bean  -->
+    <context:component-scan base-package="cn.bps.spring.DI.annotation"></context:component-scan>
+
+</beans>
