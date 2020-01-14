@@ -1,0 +1,24 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+
+
+    <bean id="accountService" class="cn.bps.service.impl.AccountServiceImpl"></bean>
+    <bean id="logger" class="cn.bps.utils.Logger"></bean>
+
+
+    <!--配置AOP  第二部分 -->
+    <aop:config>
+        <aop:pointcut id="pc2" expression="execution(public void cn.bps.service.impl.AccountServiceImpl.saveAccount())"/>
+        <aop:aspect ref="logger">
+            <aop:around method="aroundAdvice" pointcut-ref="pc2"></aop:around>
+        </aop:aspect>
+
+    </aop:config>
+
+</beans>

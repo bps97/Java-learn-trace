@@ -1,0 +1,73 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+
+    <!-- springAOP配置步骤-->
+    <!--配置Spring的Ioc,配置service对象
+
+        1. 将通知Bean也交给Spring来管理
+        2. 使用aop:config标签表明开始AOP的配置
+        3. 使用aop:aspect标签表明配置切面
+                id属性：是给切面标识一个唯一标识符
+                ref属性：指定通知类的bean的Id.
+        4. 在aop:aspect标签的内部使用对应标签来配置通知的类型
+                aop:before 标签啊配置前置通知
+                    method属性: 用于指定通知类那个方法是前置通知
+                    pointcut属性：用于指定切入点表达式，该表达式的含义指的是对业务层哪些方法增强
+
+                切入点表达式的写法:
+                    关键字： execution(表达式)
+                    表达式：
+                        访问修饰符 返回类型 .....
+                    标准的表达式例子        public void cn.AccountServiceImpl.saveAccount()
+                    访问修饰符可以省略      void cn.AccountServiceImpl.saveAccount()
+                    返回值可以使用通配符     * cn.AccountServiceImpl.saveAccount()
+                    包名可以使用通配符，但层级确定  * *.*.*.*.*()
+                    可以使用..表示当前包及其子包    * *..*.*()
+
+                    参数列表：
+                        可以直接写数据类型：
+                            基本类型直接写名称           int
+                            引用类型写包名.类名的方式       java.lang.String
+                        类型可以用通配符表示，但必须有参数
+                        可以使用..表示有误参数均可
+
+                    全通配写法 * *..*.*(..)
+    -->
+
+
+    <bean id="accountService" class="cn.bps.service.impl.AccountServiceImpl"></bean>
+    <bean id="logger" class="cn.bps.utils.Logger"></bean>
+
+
+    <!--配置AOP  第一部分 -->
+    <aop:config>
+        <aop:pointcut id="pc" expression="execution( public void cn.bps.service.impl.AccountServiceImpl.saveAccount())"/>
+
+        <aop:aspect id="logAdvice" ref="logger">
+            <aop:before method="beforeAdvice" pointcut-ref="pc"></aop:before>
+        </aop:aspect>
+
+        <aop:aspect ref="logger">
+            <aop:after-returning method="returningAdvice" pointcut-ref="pc"></aop:after-returning>
+        </aop:aspect>
+
+        <aop:aspect  ref="logger">
+            <aop:after-throwing method="throwingAdvice" pointcut-ref="pc"></aop:after-throwing>
+        </aop:aspect>
+
+        <aop:aspect  ref="logger">
+            <aop:after method="finalAdvice" pointcut-ref="pc"></aop:after>
+        </aop:aspect>
+    </aop:config>
+
+
+
+
+
+</beans>
