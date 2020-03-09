@@ -17,28 +17,30 @@ public class ProductAttributeDictServiceImpl implements ProductAttributeDictServ
 
 
     @Autowired
-    private ProductAttributeDictMapper productAttributeDictMapper;
+    private ProductAttributeDictMapper attributeDictMapper;
+
+    /**********************************************************************/
 
     @Override
     public Map<String, String> getAttributeDict(String productId) {
 
-        ProductAttributeDictExample productAttributeDictExample = new ProductAttributeDictExample();
-        productAttributeDictExample.createCriteria().andAvailableEqualTo(true).andProductIdEqualTo(productId);
-        List<ProductAttributeDict> productAttributeDictList = productAttributeDictMapper.selectByExample(productAttributeDictExample);
+        ProductAttributeDictExample attributeDictExample = new ProductAttributeDictExample();
+        attributeDictExample.createCriteria().andAvailableEqualTo(true).andProductIdEqualTo(productId);
+        List<ProductAttributeDict> productAttributeDictList = attributeDictMapper.selectByExample(attributeDictExample);
         return productAttributeDictList
                 .stream().collect(Collectors.toMap(ProductAttributeDict::getAttributeKey,ProductAttributeDict::getAttributeValue));
     }
 
     @Override
     public List<ProductAttributeDict> listProductAttributeDicts() {
-        return productAttributeDictMapper.selectByExample(new ProductAttributeDictExample());
+        return attributeDictMapper.selectByExample(new ProductAttributeDictExample());
     }
 
     @Override
     public int saveProductAttributeDict(ProductAttributeDict dict) {
         int result = 0;
         try{
-            result = productAttributeDictMapper.insert(dict);
+            result = attributeDictMapper.insert(dict);
         }catch (org.springframework.dao.DuplicateKeyException e){ // 如果key重复
             String newUUID = null;
             List<String> uuidList = listProductAttributeDicts().stream().map(ProductAttributeDict::getId).collect(Collectors.toList());
@@ -46,7 +48,7 @@ public class ProductAttributeDictServiceImpl implements ProductAttributeDictServ
                 newUUID = Generator.getUUID();
             }while (uuidList.contains(newUUID));
             dict.setId(newUUID);
-            result = productAttributeDictMapper.insert(dict);
+            result = attributeDictMapper.insert(dict);
         }
         return result;
     }

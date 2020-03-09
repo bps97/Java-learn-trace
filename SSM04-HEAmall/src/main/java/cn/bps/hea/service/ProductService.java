@@ -11,13 +11,18 @@ public interface ProductService {
 
     Map<String,String> getAttributeDict(String productId);
 
+    List<String> listAttributes(String productId);
+
+    List<String> listAttributes(Product product);
+
     Product getProduct(String productId);
 
-    List<Product> getProducts(List<String> productIds);
+    List<Product> listProducts(List<String> productIds);
+
+    List<Product> listProducts();
 
     int saveProduct(Product product);
 
     int updateProduct(Product product);
 
-    List<Product> listProducts();
 }

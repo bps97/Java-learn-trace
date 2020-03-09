@@ -17,6 +17,8 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     @Autowired
     private ProductCategoryMapper categoryMapper;
 
+    /**********************************************************************/
+
     public List<ProductCategory> listProductCategories() {
         return categoryMapper.selectByExample(new ProductCategoryExample());
     }

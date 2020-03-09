@@ -19,6 +19,7 @@ public class ProductAttributeServiceImpl implements ProductAttributeService {
     @Autowired
     private ProductAttributeMapper productAttributeMapper;
 
+    /**********************************************************************/
 
     @Override
     public List<ProductAttribute> listProductAttributes() {

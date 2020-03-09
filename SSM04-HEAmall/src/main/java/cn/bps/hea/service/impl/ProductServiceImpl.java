@@ -1,9 +1,11 @@
 package cn.bps.hea.service.impl;
 
+import cn.bps.hea.domain.model.ProductAttribute;
 import cn.bps.hea.mapper.ProductMapper;
 import cn.bps.hea.domain.model.Product;
 import cn.bps.hea.domain.model.ProductExample;
 import cn.bps.hea.service.ProductAttributeDictService;
+import cn.bps.hea.service.ProductAttributeService;
 import cn.bps.hea.service.ProductService;
 import cn.bps.util.Generator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,13 @@ public class ProductServiceImpl implements ProductService {
     private ProductMapper productMapper;
 
     @Autowired
-    private ProductAttributeDictService productAttributeDictService;
+    private ProductAttributeDictService attributeDictService;
+
+    @Autowired
+    private ProductAttributeService attributeService;
+
+    /**********************************************************************/
+
 
     @Override
     public Map<String, String> getAttributeDict(Product product) {
@@ -29,7 +37,19 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Map<String, String> getAttributeDict(String productId) {
-        return productAttributeDictService.getAttributeDict(productId);
+        return attributeDictService.getAttributeDict(productId);
+    }
+
+    @Override
+    public List<String> listAttributes(String productId) {
+        listAttributes(getProduct(productId));
+        return null;
+    }
+
+    @Override
+    public List<String> listAttributes(Product product) {
+        return  attributeService.listProductAttributes(product.getCategoryId())
+                .stream().map(ProductAttribute::getAttributeName).collect(Collectors.toList());
     }
 
     @Override
@@ -39,7 +59,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getProducts(List<String> productIds) {
+    public List<Product> listProducts(List<String> productIds) {
         return null;
     }
 

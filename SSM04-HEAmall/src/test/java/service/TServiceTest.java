@@ -1,17 +1,21 @@
 package service;
 
+import cn.bps.hea.domain.model.Product;
 import cn.bps.hea.domain.model.ProductCategory;
 import cn.bps.hea.service.ProductCategoryService;
 import cn.bps.hea.service.ProductAttributeDictService;
 import cn.bps.hea.service.ProductAttributeService;
+import cn.bps.hea.service.ProductService;
 import cn.bps.util.Generator;
 import cn.bps.hea.domain.model.ProductAttribute;
+import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.swing.text.html.parser.Entity;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -29,21 +33,38 @@ public class TServiceTest {
     @Autowired
     private ProductAttributeDictService productAttributeDictService;
 
+    @Autowired
+    private ProductService productService;
+
+
     @Test
-    public void productAttributeDictTest(){
+    public void getProductAttributes(){
+        Product product = productService.listProducts().get(0);
+        List<String> attributes = productService.listAttributes(product);
+        System.out.println(attributes);
+    }
 
-        Map<String, String> map = productAttributeDictService.getAttributeDict("243be4c2585b11ea9ebc00ff");
-        System.out.println(map);
+    @Test
+    public void getProductAttributeDict(){
 
+        Product product = productService.listProducts().get(0);
+
+        Map<String, String> result = productService.getAttributeDict(product);
+
+        System.out.println(result.size());
+
+        for(Map.Entry<String,String> entity:result.entrySet()){
+            System.out.println(JSON.toJSONString(entity));
+        }
 
     }
 
 
-    @Test
-    public void  productAttributeTest(){
+    @Test /*获取产品属性列表*/
+    public void  listProductAttributes(){
 
         List<ProductAttribute> productAttributes = productAttributeService.listProductAttributes();
-        System.out.println(productAttributes);
+        productAttributes.stream().map(JSON::toJSONString).forEach(System.out::println);
 
     }
 
