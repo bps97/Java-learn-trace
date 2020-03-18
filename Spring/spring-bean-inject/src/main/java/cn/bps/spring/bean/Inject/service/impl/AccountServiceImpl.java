@@ -1,6 +1,6 @@
-package cn.bps.spring.bean.getter.service.impl;
+package cn.bps.spring.bean.Inject.service.impl;
 
-import cn.bps.spring.bean.getter.service.IAccountService;
+import cn.bps.spring.bean.Inject.service.IAccountService;
 
 public class AccountServiceImpl implements IAccountService {
 

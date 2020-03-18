@@ -11,14 +11,14 @@
 
     <!--  通过构造器  -->
     <bean id="bean1" class="cn.bps.spring.DI.constructor.BeanDemo">
-        <constructor-arg name="name" value="test"> </constructor-arg>
+        <constructor-arg name="name" value="constructor"> </constructor-arg>
         <constructor-arg name="age" value="18"></constructor-arg>
         <constructor-arg name="birthday" ref="now"></constructor-arg>
     </bean>
 
     <!--  通过setter  -->
     <bean id="bean2" class="cn.bps.spring.DI.setter.BeanDemo">
-        <property name="name" value="tom"></property>
+        <property name="name" value="setter"></property>
         <property name="age" value="29"></property>
         <property name="birthday" ref="now"></property>
     </bean>

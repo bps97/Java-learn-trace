@@ -66,6 +66,8 @@ transient Object[] elementData;
 一个类需要被序列化便实现标记接口`Serializable`
 这样代表这个类能被序列化。而被标记为`transient`的域不被序列化。
 
+(序列化一般用于存储临时数据，比如推箱子临时退出)
+
 这时候我们就开始思考，域作为一个类的属性而存在，几乎是不可缺少的一部分，都序列化一个类了为什么不把域也带进去。
 
 我们先来了解一下序列化以及反序列化的过程吧。
@@ -81,6 +83,7 @@ class Person implements Serializable{
 ```
 private static void output(String fileName, Person person) throws IOException {
 	FileOutputStream outputStream = new FileOutputStream(fileName);
+	// outputStream = System.out //序列化到标准输出
 	ObjectOutputStream out = new ObjectOutputStream(outputStream);
 	out.writeObject(person); 
 	out.close();
@@ -90,14 +93,14 @@ private static void output(String fileName, Person person) throws IOException {
 这里创建了一个`ObjectOutputStream`流，带有一个`wirteObject`方法，传入一个对象。
 这个writeObject就是序化的关键方法。
 
-反序列化的过程如下：
+反序列化(**Deserialize**)的过程如下：
 ```
-private static void output(String fileName, Person person) throws IOException {
-    FileOutputStream outputStream = new FileOutputStream(fileName);
-    ObjectOutputStream out = new ObjectOutputStream(outputStream);
-    out.writeObject(person);
-    out.close();
-    outputStream.close();
+private static void input(String fileName) throws IOException {
+    FileInputStream inputStream = new FileInputStream(fileName);
+    ObjectInputStream in = new ObjectInputStream(inputStream);
+    Person person = (Person)out.readObject();
+    in.close();
+    inputStream.close();
 }
 ```
 

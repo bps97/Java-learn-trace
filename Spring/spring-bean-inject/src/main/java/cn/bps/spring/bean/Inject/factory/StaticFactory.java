@@ -1,6 +1,6 @@
-package cn.bps.spring.bean.getter.factory;
+package cn.bps.spring.bean.Inject.factory;
 
-import cn.bps.spring.bean.getter.service.impl.AccountServiceImpl;
+import cn.bps.spring.bean.Inject.service.impl.AccountServiceImpl;
 
 public class StaticFactory {
 

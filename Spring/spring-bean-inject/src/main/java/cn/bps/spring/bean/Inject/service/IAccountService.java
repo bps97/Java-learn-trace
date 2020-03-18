@@ -1,4 +1,4 @@
-package cn.bps.spring.bean.getter.service;
+package cn.bps.spring.bean.Inject.service;
 
 public interface IAccountService {
     void saveAccount();

@@ -4,8 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="instanceFactory" class="cn.bps.spring.bean.getter.factory.InstanceFactory"></bean>
-    <bean id="accountService" factory-bean="instanceFactory" factory-method="getAccountService"></bean>
+    <bean id="accountService" class="cn.bps.spring.bean.Inject.service.impl.AccountServiceImpl"></bean>
+
 
 
 </beans>

@@ -1,6 +1,6 @@
-package cn.bps.spring.bean.getter.ui;
+package cn.bps.spring.bean.Inject.ui;
 
-import cn.bps.spring.bean.getter.service.impl.AccountServiceImpl;
+import cn.bps.spring.bean.Inject.service.impl.AccountServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,12 +14,21 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 
 public class Client {
+
     public static void main(String[] args) {
+        /**
+         * 该模块叫bean的注入
+         * 该测试方法内，都使用类路径的Ioc容器来获取Bean
+         * bean的注入有三个手段：
+         *         	1.采用默认构造函数创建，当类拥有默认构造函数，其没有除id和class以外的属性的配置。
+         * 	        2.采用普通工厂中的方法创建对象(使用类中的某个方法创建对象，并存入spring容器)
+         * 	        3.使用静态工厂中的静态方法创建对象（使用类中某个静态方法创建对象）
+         */
 
 
-//        AccountServiceImpl service =  (AccountServiceImpl)getBeanByConstruction();
+        AccountServiceImpl service =  (AccountServiceImpl)getBeanByConstruction();
 //        AccountServiceImpl service =  (AccountServiceImpl)getBeanByFactoryMethod();
-        AccountServiceImpl service =  (AccountServiceImpl) getBeanByStaticFactoryMethod();
+//        AccountServiceImpl service =  (AccountServiceImpl) getBeanByStaticFactoryMethod();
 
         service.saveAccount();
 
