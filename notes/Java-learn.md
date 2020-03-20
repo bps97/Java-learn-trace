@@ -1,537 +1,650 @@
-# Java基本类型
-###### 强类型语言
+# Java
+
+[TOC]
+
+## Java基本类型
+
+1. 强类型语言
 
 |Type|byte|short|int|long|double|float
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |Size(Byte)|1|2|4|8|8|4|
 
-``` 
+``` java
 int hex = 0xCAFE;
 int oct = 0777;
 long l = 40000L;
 ```
 
-如果 short byte 需要使用强制类型转换才能保持原类型
-整数/0    Exception
-非零浮点数/0 无穷大 Infinity
-0.0/0    NaN (Not a number) 例如还有`sqrt(-1)`
-使用BigDecimal计算没有误差
-char类下是使用Unicode编码
-boolean与int不能进行相互转换
-long，double类型不是线程安全的，加上volatile读写安全。
+2. short byte 的运算需要使用强制类型转换才能保持原类型
+``` java
+short s1 = (short)(1 + Short.MAX_VALUE);
+long l1 = 1L + Integer.MAX_VALUE;
+```
 
-很多基本类型的包装类具有常量池，但不包括Float,Double
 
-###### 浮点数计算误差问题
-浮点运算存在误差，如2.0-1.1=8.89....
-原因在于二进制小数无法精确的表达10进制小数，小数表示分为尾数，阶码
+3. 整数/0    Exception
 
-###### 关于移位运算符
-\>> 右移 移的过程中高位，正数补0，负数补1
-\<< 左移
-\>>> 无符号右移	即不把符号位当符号位处理，移的过程中高位补0
+4. 非零浮点数/0 无穷大 Infinity
 
+5. `0.0/0`    `NaN` (Not a number) 例如`sqrt(-1)`
+
+6. 使用`BigDecimal`计算没有误差
+
+7. `char`类型下是使用Unicode编码,因此包括了中文字符
+
+8. `boolean`与`int`不能进行相互转换
+
+9. `long, double`类型不是线程安全的，加上`volatile`读写安全。
+
+10. 很多基本类型的包装类具有常量池，但不包括`Float,Double`
+
+11. 浮点数计算误差问题
+
+    浮点运算存在误差，如2.0-1.1=8.89....
+    原因在于二进制小数无法精确的表达10进制小数，小数表示分为尾数，阶码
+
+12. 关于移位运算符
+    
+    `>>` 右移 移的过程中高位，正数补0，负数补1
+    
+    `<<` 左移
+    
+    `>>>` 无符号右移	即不把符号位当符号位处理，移的过程中高位补0
 
 ---
+## Java相关概念
 
-# Java相关概念
-**Java applet** 在网页上运行的Java程序 (被JavaScript,flash取代)
-**sdk**  jdk的早期版本，软件开发工具
-**JAR** java Archive File  java档案文件 一种兼容zip的压缩文件
-jar cf test.jar test 创建jar包
+1. **Java applet** 在网页上运行的Java程序 (被JavaScript,flash取代)
 
-###### 不同版本的区别在于JavaAPI库内容
-- Java SE java标准版
-- Java EE java企业版 	(相当于是API的超集)
-- Java ME java微型版
+2. **sdk**  jdk的早期版本，软件开发工具
 
+3. **JAR** java Archive File  java档案文件 一种兼容zip的压缩文件
 
+4. `jar cf test.jar test` 创建jar包
 
+5. 不同版本的区别在于JavaAPI库内容
+    - Java SE java标准版
+    - Java EE java企业版 	(相当于是API的超集)
+    - Java ME java微型版
 
 ---
-# 值传递和引用传递
+## 值传递和引用传递
 
-值传递是对基本变量而言的，传递的是该变量的一个副本，改变副本不影响原变量。
+1. 值传递是对基本变量而言的，传递的是该变量的一个副本，改变副本不影响原变量。
 引用传递是对对象型变量而言的，传递的是对象地址的一个副本。
 
 一般认为Java内都是值传递，因为java传入的非基本类型值是引用。
 
+## 深拷贝和浅拷贝
 
-# 深拷贝和浅拷贝
-###### 浅拷贝与深拷贝的区别
-> 浅拷贝与深拷贝的区别在于前者复制不了引用类型的域
+1. 浅拷贝与深拷贝的区别
+    浅拷贝与深拷贝的区别在于前者复制不了引用类型的域
 
-数组拷贝(深拷贝)
-`Array.copyOf(arr,length)` 将arr的值拷贝一份出来,arrLength新数组长度
-Object.clone  浅拷贝
+2. 数组拷贝(深拷贝)
+    `Array.copyOf(arr,length)` 将`arr`的值拷贝一份出来,`arrLength`新数组长度
+    
+3. `Object.clone`  浅拷贝
 
-###### 关于克隆clone
-自定义类实现克隆的方法：
->实现标记接口Cloneable
- 实现Object clone()方法，通过(XX)super.clone()返回克隆对象
+4.  关于克隆clone
 
-Object类提供的Clone机制只是简单的复制，存储的对象的域对象还是指向同一个地址。
-（浅拷贝）只是克隆对象的成员变量值，不会对引用的对象进行克隆。
-clone机制高效，比静态的copy方法快两倍。
+    自定义类实现克隆的方法：
+	> 实现标记接口`Cloneable`
+    实现`Object clone()`方法，通过`(XX)super.clone()`返回克隆对象
 
----
-
-# 动态绑定和静态绑定
-
-###### 静态绑定
-> 程序运行前就知道方法所属了。
-
-###### 动态绑定
-> 程序运行过程中，将函数调用和函数定义(绑定)对应起来。也可以说是找到方法是属于哪个类的。
-
-在静态绑定中，绑定可以在运行时或编译时解析。
-所有static，final和private方法的绑定过程都在编译时完成。
-
+5. `Object`类提供的Clone机制只是简单的复制，存储的对象的域对象还是指向同一个地址。
+   
+    （浅拷贝）只是克隆对象的成员变量值，不会对引用的对象进行克隆。
+    
+    `clone`机制高效，比静态的`copy`方法快两倍。
 
 ---
+## 动态绑定和静态绑定
 
-# 类型比较
+6. 静态绑定,程序运行前就知道方法所属了。
 
-Object的hashcode方法是本地方法，通过c或c++实现的，返回对象的内存地址。
+7.  动态绑定
+    程序运行过程中，将函数调用和函数定义(绑定)对应起来。也可以说是找到方法是属于哪个类的。
 
-对于HashMap中的key的比较，需要重写hashCode和equals两个方法。
-在满足了hashcode值相等的前提下equals返回为true时，key才算相同。
+8. 在静态绑定中，绑定可以在运行时或编译时解析。
 
-###### Comparable接口和Comparator接口
-`comparable`接口包含一个返回值为int的`compareTo(T t)`方法，常常表示这个类是可比较的，如包装类，枚举类。`Arrays.binarySerach()`就是需要一个实现Comparable接口的List，不然不能进行二分查询。
-`comparator`接口包含两个抽象方法，分别是返回值为int的`compara(T o1,T o2)`方法和返回值为boolean的`equals(Object obj)`方法。因为每个类默认实现Object，所以equals可以选择性覆盖。这个接口称为比较器。描述的是比较策略，与对象(类)无关。但是本人想不通这个接口里设立这个equals方法的意义是什么。`Collections.sort()`这个容器排序方法就可以传入一个比较策略(策略设计模式)来比较集合元素。同理`Collections.binarySearch`方法也是。
+    所有`static, final`和`private`方法的绑定过程都在编译时完成。
+
+---
+## 类型比较
+
+1. `Object`的`hashcode`方法是本地方法，通过c或c++实现的，返回对象的内存地址。
+
+2. 对于`HashMap`的key的比较，需要重写`hashCode`和`equals`两个方法。
+在满足了`hashcode`值相等的前提下`equals`返回为`true`时，key才算相同。
+
+#### **Comparable**接口和**Comparator**接口
+
+3. `comparable`接口包含一个返回值为`int`的`compareTo(T t)`方法，常常表示这个类是可比较的，如包装类，枚举类。
+
+    `Arrays.binarySerach()`就是需要一个实现Comparable接口的List，不然不能进行二分查询。
+    
+4. `comparator`接口包含两个抽象方法，分别是返回值为int的`compara(T o1,T o2)`方法和返回值为boolean的`equals(Object obj)`方法。因为每个类默认实现Object，所以equals可以选择性覆盖。这个接口称为比较器。描述的是比较策略，与对象(类)无关。
+
+5. 但是本人想不通这个接口里设立这个`equals`方法的意义是什么。实际使用的时候不需要实现equal方法。
+
+    `Collections.sort()`这个容器排序方法就可以传入一个比较策略(策略设计模式)来比较集合元素。
+    同理`Collections.binarySearch`方法也是。
 
 
 
 ------
-# 继承和多态
+## 继承和多态
 
-`Father one = new Son();` 
-此处引用one是用其子类构造，但是被**向上转型**成父类的类型了
-向下变型(父类转子类)类型转换会有个类型转换异常,因而常常使用`(one instanceof Father)`判断
+1. `Father one = new Son();` 
+
+    此处引用one是用其子类构造，但是被**向上转型**成父类的类型了
+
+    向下变型(父类转子类)类型转换会有个类型转换异常,因而常常使用`(one instanceof Father)`判断
+
+2. overload和override是Java多态性的不同表现，前者称为重载后者称为重写，覆盖。
+
+3. override可以让改变返回值的类型——这称为可协变的返回类型
+
+4. 多态可以是使用一个父类型(接口)可以初始化不同行为(不同派生类)的对象
+    多态可以是同一个方法拥有不同的类型
+
+5. 可协变的返回类型
+
+    子类方法覆盖父类方法，子类方法返回类型可以和父类方法不一致
+    但是返回类型限定为父类方法返回类型的子类型 参考`<? extends Type>`
+    因而这个限于引用类型，如果返回值是基本类型的话还是得保持一致的
 
 
-###### 多态
-overload和override是Java多态性的不同表现，前者称为重载后者称为重写，覆盖。
-override可以让改变返回值的类型——这称为可协变的返回类型
-多态可以是使用一个父类型(接口)可以初始化不同行为(不同派生类)的对象
-多态可以是同一个方法拥有不同的类型
+6. 内联
+    早期java中，如果一个方法没有被覆盖且很短，编译器会对其优化处理，即内联
 
-###### 可协变的返回类型
-子类方法覆盖父类方法，子类方法返回类型可以和父类方法不一致
-但是返回类型限定为父类方法返回类型的子类型 参考<? extends Type>
-因而这个限于引用类型，如果返回值是基本类型的话还是得保持一致的
+7. final类不能被覆盖,final方法不能覆盖
 
+8. 接口中的default方法不需要被实现,相当于普通父类的普通方法。
 
+9. 如果一个类S继承了一个类F并实现了一个接口I，而其父类F中有个和接口I中默认方法同名(当然也同参)的普通方法。
+    那么编译器要求实现该方法。当然两个接口也适用。
 
-###### 内联
-> 早期java中，如果一个方法没有被覆盖且很短，编译器会对其优化处理，即内联
+10. 父类throws的异常是子类throws异常的超集,子类方法的访问权限不能少于父类
 
-- final类不能被覆盖,final方法不能覆盖
-- 接口中的default方法不需要被实现,相当于普通父类的普通方法。
-  如果一个类继承了一个类并实现了一个接口，而其父类中有个和接口中默认方法同名(当然也同参)的普通方法。
-  那么编译器要求实现该方法。当然两个接口也适用。
-- 父类throws的异常是子类throws异常的超集,子类方法的访问权限不能少于父类
-- 静态内部类可以去继承别的静态内部类，但是其父类的静态方法不能被重载。
-- 因为方法覆盖是基于运行时动态绑定的
+11. 静态内部类可以去继承别的静态内部类，但是其父类的静态方法不能被重载。
+    因为方法覆盖是基于运行时动态绑定的
 ---
+## 接口和抽象类
 
+1. 声明方法而不去实现它的类被称为抽象类。
 
-# 接口和抽象类
-声明方法而不去实现它的类被称为抽象类。
-接口所有普通方法都不能自己实现，可以有default,statc方法(Java8)这些被实现的方法，
-抽象类没有default关键字,有staic方法。
-接口的域自动设为静态常量。
-接口默认是default，一般设为public
+2. 接口所有普通方法都不能自己实现，可以有default,statc方法(Java8)这些被实现的方法，
 
-###### 接口和抽象类的区别
-> 首先在意义上，接口是一种规范，定义了类的标准，而抽象类是类的高度抽象化。
-用法上，接口的一般方法(defalut,static)都不能自己实现。抽象类可以有可实现的方法。
-抽象类可以implements接口，继续抽象。抽象类的中的main入口可以被调用。
+3. 抽象类没有default关键字,有staic方法。
 
-**标记接口** 没有方法，唯一目的是可以用instanceof进行类型检查。如`xx instanceof Cloneable`
+4. 接口的域自动设为静态常量。
 
-abstract不能与final同时修饰一个类。
+5. 接口默认是default，一般手动设为public
+
+6. 接口和抽象类的区别
+
+    首先在意义上，接口是一种规范，定义了类的标准，而抽象类是类的高度抽象化。
+    
+    用法上，接口的一般方法(defalut,static)都不能自己实现。抽象类可以有可实现的方法。
+    
+    抽象类可以implements接口，继续抽象。抽象类的中的main入口可以被调用。
+
+7. **标记接口** 没有方法，唯一目的是可以用instanceof进行类型检查。如`xx instanceof Cloneable`
+
+8. abstract不能与final同时修饰一个类。
 
 ---
-# 枚举类
-- 一个java源文件只能定义一个public访问权限的枚举类
-- 默认继承了 java.lang.Enum 因此不能显示继承其他父类
-- Enum实现了Serializable Comparable接口
-- enum默认的定义的非抽象类默认是final修饰，因此不能派生出子类
-- 构造器只能是private
-- 枚举类实例必须在第一行声明列出
->如 `enum XXEnum{ A,B,C,D;}`
-- 使用某个实例  XXEnum.A
-对于switch而言，若switch的控制表达式使用的枚举类型时，
-case表达式中的值直接使用枚举值的名称，无需枚举类限定。如直接输入A
-- Eunm的常用方法
-```
-int compareTo(E o)和另一个枚举类实例比较
-int ordinal() 	返回枚举类实例的索引值
-valueOf(enumType,Stirng) 返回指定名称的枚举值
-```
-- 枚举类实现接口时，给所有声明的实例通过匿名内部类去实现接口定义的方法。这样可以让不同的枚举实例实现不同的行为。
+## 枚举类
+
+1. 一个java源文件只能定义一个public访问权限的枚举类
+
+2. 默认继承了 `java.lang.Enum` 因此不能显示继承其他父类
+
+3. Enum实现了Serializable Comparable接口
+
+4. enum默认的定义的非抽象类默认是final修饰，因此不能派生出子类
+
+5. 构造器只能是private
+
+6. 枚举类实例必须在第一行声明列出
+
+    如 `enum XXEnum{ A,B,C,D;}`
+
+7. 使用某个实例  XXEnum.A
+
+    对于switch而言，若switch的控制表达式使用的枚举类型时，
+    case表达式中的值直接使用枚举值的名称，无需枚举类限定。如直接输入A
+8. Eunm的常用方法
+    
+    `int compareTo(E o)`和另一个枚举类实例比较
+    
+    `int ordinal()`返回枚举类实例的索引值
+    
+    `valueOf(enumType,Stirng)` 返回指定名称的枚举值
+
+9. 枚举类实现接口时，给所有声明的实例通过匿名内部类去实现接口定义的方法。这样可以让不同的枚举实例实现不同的行为。
   同样，可以给枚举类安排一个抽象方法，让枚举实例通过匿名内部类分别实现。
 
 ---
-# 内部类
-内部类可以访问所在外部类的数据(这个概念叫**闭包**)，包括私有。但对同一个包下其他类隐藏。通常的内部类需要在外部类实例化后才能实例化。
-内部类有个隐式引用，指向创建它的外部类对象,一般是Outer.this.xx引用外部类的域
-外部类访问内部类 this.new Inner();
+## 内部类
 
-普通类只有public和默认不修饰，内部类可以是static,protect,private
-内部类拥有独立的名称空间，当外部类被其他类继承的时候，内部类没有被继承。 
+1. 内部类可以访问所在外部类的数据(这个概念叫**闭包**)，包括私有。但对同一个包下其他类隐藏。
+    通常的内部类需要在外部类实例化后才能实例化。
 
-###### 局部内部类
-在局部作用域内的内部类，如方法体内。
-不能被public、private,只能在局部内访问。
-局部内部类可以访问局部变量，但是该局部变量必须是final的。可以不声明，但是这个局部变量的值一定不能改变。
-###### 匿名内部类  
-不命名直接创建类对象
-常用定义实现某接口的类，如Comparator接口
-###### 静态内部类  
-为了单纯地隐藏该类到另一个类内部，并不需要内部类引用外部类。当然，外部类的静态域还是正常访问的。
-static修饰类的话，只能是静态内部类。
+2. 内部类有个隐式引用，指向创建它的外部类对象,一般是Outer.this.xx引用外部类的域
 
----
-# 异常类
-```
-Throwable(基类)
-	Error		运行时系统内部错误
-	Exception
-		RuntimeException 程序错误导致的异常
-		 	错误的类型转换、数组访问越界、访问空指针
-		其他异常 程序本身没问题
-			如I/O错误这些 文件结尾读取数据、打开错误格式的URL、用不存在的class查找Class错误
-```
->Error和RuntimeException称为为未检查异常。
-	其他为已检查异常，拥有异常处理器。
-	未检查异常要么不可控制(Error)，要么应该避免发生(RuntimeException)。
+3. 外部类访问内部类 this.new Inner();
 
+4. 普通类只有public和默认不修饰，内部类可以是static,protect,private
 
-###### 堆栈跟踪
->stack trace   一个方法调用的列表, 包含程序执行过程中方法调用的特定位置。
+5. 内部类拥有独立的名称空间，当外部类被其他类继承的时候，内部类没有被继承。 
 
-###### 断言
->声称(断言)某个东西是某东西(符合某个要求)，若不是则抛出异常。
+6. 局部内部类
+    
+    在局部作用域内的内部类，如方法体内。
+    不能被public、private,只能在局部内访问。
+    局部内部类可以访问局部变量，但是该局部变量必须是final的。
+    可以不声明，但是这个局部变量的值一定不能改变。
 
+7. 匿名内部类  
 
+    不命名直接创建类对象
+    常用定义实现某接口的类，如Comparator接口
 
+8. 静态内部类  
 
-- 父类throws的异常是子类throws异常的超集
-
-- 一般捕获那些知道如何处理的异常，抛出那些不知道怎么处理的异常。
-
-- 在catch中抛出异常(抛出异常链)
-如 catch(XXException e){throw new BBExceptiom..}
-
-- finally  即使return也得先执行finally
-	throws 提前声明了可能会发生什么异常，那么运行时，将不会正常执行，构造器将会抛出异常对象，runtime就会开始搜索异常处理器。
-
-
+    为了单纯地隐藏该类到另一个类内部，并不需要内部类引用外部类。当然，外部类的静态域还是正常访问的。
+    static修饰类的话，只能是静态内部类。
 
 ---
-# 反射：获取Runtime类型信息的途径
+## 异常类
 
-###### 常用功能：	
-- 能够分析类能力的程序
-- 在运行中分析类的能力
-- 在运行中查看对象
-- 实现数组的操作代码
+1. Throwable(基类)
+    - Error(运行时系统内部错误)
+    - Exception
+        - RuntimeException(程序错误导致的异常)
+        (错误的类型转换、数组访问越界、访问空指针)
+        - 其他异常 程序本身没问题
+        (如I/O错误这些 文件结尾读取数据、打开错误格式的URL、用不存在的class查找Class错误)
 
-程序运行期间，Java Runtime系统为所有对象维护一个runtime，保存着对象所属的类足迹。
-虚拟机利用runtime信息选择相应的方法执行。
+2. Error和RuntimeException称为为未检查异常。
 
-Class类用于访问这些信息
+    其他为已检查异常，拥有异常处理器。
+    未检查异常要么不可控制(Error)，要么应该避免发生(RuntimeException)。
 
 
+3. 堆栈跟踪
+    
+    stack trace   一个方法调用的列表, 包含程序执行过程中方法调用的特定位置。
 
-反射机制的内容
-1. 检查类的结构
-	`Field、Method、Constructor`
-	用以获取类的域，方法，构造器的相关信息。
-	在java.lang.Class中，
-	分别对应着`getFields() getDeclaredFields getMethods()`
-2. 查看编译时还不清楚的对象作用域
-	反射机制的默认行为受限于java的访问控制权限。
-	即private等静态域，通过getField.getName之类的访问会产生异常
-3. 使用反射编写泛型数组
-	如，数组扩展，扩展的新数组需要确定类型。通过Array.newInstance
+4. 断言
 
-`method.invoke(object this,Object...args) `
-第一个参数是对应对象句柄，静态方法可省略，可设置为null，第二个方法是对应方法参数，返回值是Object
+    声称(断言)某个东西是某东西(符合某个要求)，若不是则抛出异常。
 
-`getConstructor()`方法获得构造器对象，配合`newInstance()`方法可以创建对象
+5. 父类throws的异常是子类throws异常的超集
+
+6. 一般捕获那些知道如何处理的异常，抛出那些不知道怎么处理的异常。
+
+7. 在catch中抛出异常(抛出异常链)
+    
+    如 catch(XXException e){throw new BBExceptiom..}
+
+8. finally  即使return也得先执行finally
+
+    throws 提前声明了可能会发生什么异常，那么运行时，将不会正常执行，构造器将会抛出异常对象，runtime就会开始搜索异常处理器。
 
 ---
-# 泛型 
->泛型程序设计 generic programming
-泛型类看作普通类的工厂。
+## 反射：获取Runtime类型信息的途径
 
+1. 常用功能：	
+    - 能够分析类能力的程序
+    - 在运行中分析类的能力
+    - 在运行中查看对象
+    - 实现数组的操作代码
 
-###### 泛型类
-```
-public class XX<T>{ 
-	public XX(){} 
-	public T getA(){};
-	public void setA(T xx){};
-}
+2. 程序运行期间，Java Runtime系统为所有对象维护一个runtime，保存着对象所属的类足迹。
+    虚拟机利用runtime信息选择相应的方法执行。
 
-/*普通类中的泛型方法*/
-class XX{
-	public <T> T getA(T[] xx){
-		return xx[0];
-	}
-}
-/*类型变量放在修饰符和返回类型之间
-```
+3. Class类用于访问这些信息
 
-`XX.<String>getA();`这里返回一个String类型的值，其实String可以省略,因为编译器可以推断出所调用的方法。
+4. 反射机制的内容
 
+    a. 检查类的结构 `Field、Method、Constructor`
+    
+    b. 用以获取类的域，方法，构造器的相关信息。
+    
+    c. 在java.lang.Class中，
+    
+    
+    d. 分别对应着`getFields() getDeclaredFields getMethods()`
 
+5. 查看编译时还不清楚的对象作用域
 
+    a. 反射机制的默认行为受限于java的访问控制权限。
+    
+    b. 即private等静态域，通过getField.getName之类的访问会产生异常
+    
+6. 使用反射编写泛型数组
 
-###### 泛型类型变量的限定
-假如在一个泛型方法中，泛型变量的类型是限定的。
-比如是实现某个接口的类型，这个类型的范围就缩小了，
-这时候就需要在方法声明处修改,如：
-`public static <T extends Comparable> T fun(){..}`
-此时，这个T表示的是所有实现Comparable接口的类型，
-限定多个事，用&隔开。如`T extends Comparable & Serializable>`
+    如，数组扩展，扩展的新数组需要确定类型。通过Array.newInstance
 
+7. `method.invoke(object this,Object...args) `
 
-###### 擦除：删除类型参数后的泛型类型名。
-如XX<T>的原始类型是XX,类定义其中的T用Object替换
-因为T是一个无限定的变量，所以直接用Object替换。
-如果是<T extends Comparable & Serialiizable>, 则用Comparable替换
+    第一个参数是对应对象句柄，静态方法可省略，可设置为null，第二个方法是对应方法参数，返回值是Object
 
-- 当程序调用泛型方法的时候，如果擦除返回类型，编译器将插入强制类型转换符。
-```
-Pair<XX> xxs = ...;
-XX xx = xx.getFirst();
-```
-这里getFirst()返回的XX被擦除成Object，编译器自动插入强制转换成XX.
+8. `getConstructor()`方法获得构造器对象，配合`newInstance()`方法可以创建对象
 
+---
+## 泛型 
 
-- 虚拟机里没有泛型，只有普通的方法和类；
-所有类型参数都用他们的限定类型替换；
-为保持类型安全性，必要时插入强制类型转换。
+1. 泛型程序设计 generic programming
 
-- 泛型仅仅是java的一颗语法糖，它不会影响Java虚拟机生成的汇编代码。
-在编译阶段，虚拟机就会把泛型的类型擦除，还原成没有泛型的代码，
-顶多编译速度稍微慢一些，执行速度是完全没有什么区别的。
+    泛型类看作普通类的工厂。
 
-
-
-###### 类型变量的限定
-```
-/*此处泛型限定为实现所有Comparable接口的类型*/
-    public static <T extends  Comparable> Pair<T> minMax(T[] a){
-        if(a == null || a.length == 0) return null;
-        T min = a[0];
-        T max = a[0];
-        for(int i = 0; i < a.length; i++){
-            if(min.compareTo(a[i]) > 0) min = a[i];
-            if(max.compareTo(a[i]) < 0) max = a[i];
-        }
-        return new Pair<T>(min,max);
+2. 泛型类
+    ```Java
+    public class XX<T>{ 
+        public XX(){} 
+        public T getA(){};
+        public void setA(T xx){};
     }
-```
+    /*普通类中的泛型方法*/
+    class XX{
+        public <T> T getA(T[] xx){
+            return xx[0];
+        }
+    }/*类型变量放在修饰符和返回类型之间
+    ```
+
+
+    `XX.<String>.getA()`这里返回一个String类型的值, 其实String可以省略,因为编译器可以推断出所调用的方法。
+
+
+3. 泛型类型变量的限定
+
+    假如在一个泛型方法中，泛型变量的类型是限定的。比如是实现某个接口的类型，这个类型的范围就缩小了，
+    
+    这时候就需要在方法声明处修改,如：
+
+    `public static <T extends Comparable> T fun(){..}`
+    
+    此时，这个T表示的是所有实现Comparable接口的类型，限定多个事，用&隔开。如`T extends Comparable & Serializable>`
+
+
+4. 擦除：删除类型参数后的泛型类型名。
+
+    如XX<T>的原始类型是XX,类定义其中的T用Object替换,因为T是一个无限定的变量，所以直接用Object替换。
+
+    如果是<T extends Comparable & Serialiizable>, 则用Comparable替换
+
+5. 当程序调用泛型方法的时候，如果擦除返回类型，编译器将插入强制类型转换符。
+    
+    ```java
+    Pair<XX> xxs = ...;
+    XX xx = xx.getFirst();
+    ```
+    
+    
+    这里getFirst()返回的XX被擦除成Object，编译器自动插入强制转换成XX.
+
+
+6. 虚拟机里没有泛型，只有普通的方法和类；
+
+        所有类型参数都用他们的限定类型替换；
+        
+        为保持类型安全性，必要时插入强制类型转换。
+    
+
+7. 泛型仅仅是java的一颗语法糖，它不会影响Java虚拟机生成的汇编代码。
+
+    在编译阶段，虚拟机就会把泛型的类型擦除，还原成没有泛型的代码，顶多编译速度稍微慢一些，执行速度是完全没有什么区别的。
 
 
 
-###### 泛型类型的继承规则和通配符类型
-```
-<？ extends Employee>  可能是Employee也可能是其派生类
-<XX<？ super Employee>  可能是Employee也可能是其超类
-```
+8. 类型变量的限定
 
-- Manager是Employee的子类
-那么`XX<Manager>` 和 `XX<Employee>`可以看做是`XX<？ extends Employee>`的子类型，
-`XX<？ extends Employee>`看做是`XX<raw>`的子类型
-使用：`XX<？ extends Employee> xx = new XX<Manager>();`
-注意：拿List作例子，对于`List<? extends Manager>`，不能使用add(T t)这样的方法，但get可以。
->可以这么理解：这个容器存放的是所有实现Manager的类(包括自己)。我们不知道add的是什么类型，但是get方法却可以，因为我传出去的对象无论如何都能被Manager接收。可以add(null)
-
-
-
-- 同理，对于`XX<? super Manager>`, `XX<Employee>`和`XX<Object>`是`XX<? super Manager>`的子类
-是`XX<?>`的子类型，这里`XX<?>是XX<raw>`的子类型。
-使用：`<XX<？ super Employee> xx = new XX<Object>();`
-注意：拿List作例子，对于`List<? super Manager>`类型不能使用get()这样的方法，add可以。
->可以这么理解：这个通配符类型代表的是所有Manager的超类(包括自己)。要是传入一个Manager的派生类(Manager的超类不行)，肯定都是能被Manager或者Manager的超类接收的，但是get方法却不可以，除了Object，其他都接收不了。
+    ```java
+    /*此处泛型限定为实现所有Comparable接口的类型*/
+        public static <T extends  Comparable> Pair<T> minMax(T[] a){
+            if(a == null || a.length == 0) return null;
+            T min = a[0];
+            T max = a[0];
+            for(int i = 0; i < a.length; i++){
+                if(min.compareTo(a[i]) > 0) min = a[i];
+                if(max.compareTo(a[i]) < 0) max = a[i];
+            }
+            return new Pair<T>(min,max);
+        }
+    ```
 
 
-- 总言之，带有超类型限定的通配符可以向泛型对象写入，
+9. 泛型类型的继承规则和通配符类型
+
+    ```java
+    <？ extends Employee>  可能是Employee也可能是其派生类
+    <XX<？ super Employee>  可能是Employee也可能是其超类
+    ```
+
+10. Manager是Employee的子类,那么`XX<Manager>` 和 `XX<Employee>`可以看做是`XX<？ extends Employee>`的子类型，`XX<? extends Employee>`看做是`XX<raw>`的子类型
+        
+    使用：`XX<? extends Employee> xx = new XX<Manager>();`
+    
+    注意：拿List作例子，对于`List<? extends Manager>`，不能使用add(T t)这样的方法，但get可以。
+
+    可以这么理解：这个容器存放的是所有实现Manager的类(包括自己)。我们不知道add的是什么类型，但是get方法却可以，因为我传出去的对象无论如何都能被Manager接收。可以add(null)
+
+
+
+11. 同理，对于`XX<? super Manager>`, `XX<Employee>`和`XX<Object>`是`XX<? super Manager>`的子类,XX<? super Manager>的子类 是XX<?>的子类型，这里`XX<?>是XX<raw>`的子类型。
+
+    使用：`<XX<？ super Employee> xx = new XX<Object>();`
+
+    注意：拿List作例子，对于`List<? super Manager>`类型不能使用get()这样的方法，add可以。
+
+    可以这么理解：这个通配符类型代表的是所有Manager的超类(包括自己)。要是传入一个Manager的派生类(Manager的超类不行)，肯定都是能被Manager或者Manager的超类接收的，但是get方法却不可以，除了Object，其他都接收不了。
+
+
+12. 总言之，带有超类型限定的通配符可以向泛型对象写入，
 带有子类型限定的通配符可以从泛型对象读取。
 
-- 无限通配符 XX<?>
-
-
-###### 其他
-- 泛型不能用基本类型的原因是擦除之后Object不能存储基本类型。
-- 运行时类型查询只适用于原始类型,泛型当做原始类型处理。
-- 泛型类拓展Throwable不合法,但throws异常可以使用类型变量，例如：
-```
-	public static <T extends Throwable> void doWork(T t) throws T{
-		try{
-			do work
-		}catch (Throwable realCause){
-			t.initCause(realCause);
-			throw t;
-		}	
-	}
-```
+13. 无限通配符 XX<?>
 
 
 
-- 禁止使用参数化类型的数组，不合法。
-因为数组会记住元素的存储类型，如果可行，擦除之后数组只能记住擦除之后类型，强转不方便。
-- 不能再静态域和静态方法中使用泛型变量
-- 泛型类不支持内部类型的
-- Class类是泛型的，`String.class`实际上是`Class<String>`类的对象
+14. 泛型不能用基本类型的原因是擦除之后Object不能存储基本类型。
+        
+15. 运行时类型查询只适用于原始类型,泛型当做原始类型处理。
+        
+16. 泛型类拓展Throwable不合法,但throws异常可以使用类型变量，例如：
+        
+    ```java
+    public static <T extends Throwable> void doWork(T t) throws T{
+        try{
+            do work
+        }catch (Throwable realCause){
+            t.initCause(realCause);
+            throw t;
+        }
+    }
+    ```
 
+17. 禁止使用参数化类型的数组，不合法。因为数组会记住元素的存储类型，如果可行，擦除之后数组只能记住擦除之后类型，强转不方便。
+
+18. 不能再静态域和静态方法中使用泛型变量
+
+19. 泛型类不支持内部类型的
+        
+20. Class类是泛型的，`String.class`实际上是`Class<String>`类的对象
 
 ---
-# 集合框架
->基本接口 Colllection,Map
+## 集合框架
+        
+1. 基本接口 Colllection,Map
 
-###### 迭代器
-- iterator.remove()  删除上次调用next返回的元素，在之前没用next的话就不合法，就会抛出异常
-- ListIterator
->	add(E)
-	previous()   对应next()方法
-	hasPrivious()
+2. 迭代器
 
+    iterator.remove()  删除上次调用next返回的元素，在之前没用next的话就不合法，就会抛出异常
 
+    ListIterator
+    . add(E)
+    . previous()   对应next()方法
+    . hasPrivious()
 
+#### Set
 
-###### Set
+3. 对于TreeSet的使用
 
-- 对于TreeSet的使用
->通过实现Comparable<T>接口的compareTo方法来比较类的先后
->>如果要实现不同set实例不同的比较策略：
-  实现Comparator接口的compare(T a,T b)方法
-  然后将这个类的对象传给TreeSet的构造器，那么该TreeSet实例的的排序策略就定了
-  常常是通过匿名内部类实现，对应对象常常被称为函数对象。
+    通过实现Comparable<T>接口的compareTo方法来比较类的先后
 
-
-
-
-- 集合子范围 subrange
-```
-List group = staff.subList(10,20)   [10,20)
-group.clear()  清除子范围
-SortedSet<E> subSet(E from, E to)
-SortedSet<E> headSet(E to)
-SOrtedSet<E> headSet(E from)  返回大于等于from，小于to的所有元素子集
-```
-- 相应的，map也有相似的方法
-```
-SortedMap<K,V> subMap(K from,K to)
-SortedMap<K,V> headMap(K to)
-SortedMap<K,V> tailMap(K from)  返回键落在指定范围内的所有元素
-```
-- 交集
-```
-Set<String> result = new HashSet<String>(a);
-result.retainAll(b); //此时result便是ab的交集
-```
+    如果要实现不同set实例不同的比较策略：
+    实现Comparator接口的compare(T a,T b)方法
+    然后将这个类的对象传给TreeSet的构造器，那么该TreeSet实例的的排序策略就定了
+    常常是通过匿名内部类实现，对应对象常常被称为函数对象。
 
 
-视图：可以获得其他实现[集合接口和映射表接口]对象的对象  (可以结合数据库的视图理解)
+4. 集合子范围 subrange
 
-例如keySet()返回的集合。 它是返回实现Set接口的类对象，这个类的方法对原映射表进行操作。
-Array.asList(xx[]) 返回的对象不算ArrayList实例，而是一个视图对象，带有访问底层数组的get和set方法，改变数组大小的方法。
+    ```
+    List group = staff.subList(10,20)   [10,20)
+    group.clear()  清除子范围
+    SortedSet<E> subSet(E from, E to)
+    SortedSet<E> headSet(E to)
+    SOrtedSet<E> headSet(E from)  返回大于等于from，小于to的所有元素子集
+    ```
+        
+5. 相应的，map也有相似的方法
+        
+    ```
+    SortedMap<K,V> subMap(K from,K to)
+    SortedMap<K,V> headMap(K to)
+    SortedMap<K,V> tailMap(K from)  返回键落在指定范围内的所有元素
+    ```
+        
+6. 交集
 
-通过视图删除原映射表的内容
-比如 view 为 map key的集合子范围,map.keySet().removeAll(view);
+    ```
+    Set<String> result = new HashSet<String>(a);
+    result.retainAll(b); //此时result便是ab的交集
+    ```
 
 
-###### Map
-Map接口有四个实现类，HashMap,HashTable,LinkedHashMap,TreeMap
-- HashMap 
-允许一条记录的键为null,多条记录的值为null；
-需要支持同步时可以用Collections的synchronizedMap方法使HashMap具有同步的能力，或者使用ConcurrentHashMap。遍历速度更容量有关。
-- HashTable 线程安全，继承Dictionary类，不运行键或值为null
-- LinkedHashMap	保存了记录的插入顺序，使用iterator遍历时按照插入顺序遍历。也可以在构造是用参数，按照指定规则排序。遍历速度跟实际数据有关。
-- TreeMap 实现了SortMap接口，基于红黑树的NabigableMap实现，能够将保存的记录根据键排序，默认按键值升序，也可以指定排序比较器`Comparator`。
+7. 视图：可以获得其他实现[集合接口和映射表接口]对象的对象  (可以结合数据库的视图理解)
 
-###### Collections
-Collections里有许多静态方法
-```
-Collections.sort(list)
-Collections.sort(list,new Comparator);
-Collections.sort(list, Collections.reverseOrder(new Comparator))   逆序排序
-```
+    例如keySet()返回的集合。 它是返回实现Set接口的类对象，这个类的方法对原映射表进行操作。
+        
+    Array.asList(xx[]) 返回的对象不算ArrayList实例，而是一个视图对象，带有访问底层数组的get和set方法，改变数组大小的方法。
 
-Java的排序，基本类型使用快排，引用类型使用归并排序，是一个稳定排序
+    通过视图删除原映射表的内容
+    比如 view 为 map key的集合子范围,map.keySet().removeAll(view);
+
+
+##### Map
+        
+
+8. HashMap 允许一条记录的键为null,多条记录的值为null；
+
+    需要支持同步时可以用Collections的synchronizedMap方法使HashMap具有同步的能力，或者使用ConcurrentHashMap。遍历速度更容量有关。
+        
+9. HashTable 线程安全，继承Dictionary类，不运行键或值为null
+        
+10. LinkedHashMap 保存了记录的插入顺序，使用iterator遍历时按照插入顺序遍历。也可以在构造是用参数，按照指定规则排序。遍历速度跟实际数据有关。
+        
+11. TreeMap 实现了SortMap接口，基于红黑树的NabigableMap实现，能够将保存的记录根据键排序，默认按键值升序，也可以指定排序比较器`Comparator`。
+
+12. Collections
+        
+    Collections里有许多静态方法
+        
+    ```java
+    Collections.sort(list)
+    Collections.sort(list,new Comparator);
+    Collections.sort(list, Collections.reverseOrder(new Comparator))   逆序排序
+    ```
+
+13. Java的排序，基本类型使用快排，引用类型使用归并排序，是一个稳定排序
 先将元素转成数组并使用归并排序的变体进行排序，然后再复制回列表。
 
 
-对于已排序的集合，可用Collections.binarySearch(容器,key/element) 也可以添加一个compartor对象的参数
-```
-	Collections.min、Collections.max
-	Collectuons.copy(to,from)
-	Collections.fill(con,value)
-	Collections.addAll(con,valuel,value2...)
-	Collections.replaceAll(con,oldValue,newValue)
-```
-###### 其他
-- Hsahtable   小写table 与Vector一样同步
-- Enumeration  hasMoreElements nextElement  与迭代器相似
-- Properties 属性映射表  键值对都是字符串 可以保存在文件中，也可以从文件中加载
-- Stack push pop 栈
-- BitSet	位集	 存放一个位序列 进行 and or运算
-- ArrayList list = new ArrayList()  默认创建大小为10的数组，一次扩容1.5倍
-ArrayList list = new ArrayList(15) 这样的话就直接指定
+14. 对于已排序的集合，可用Collections.binarySearch(容器,key/element) 也可以添加一个compartor对象的参数
+        
+    ```
+    Collections.min、Collections.max
+    Collectuons.copy(to,from)
+    Collections.fill(con,value)
+    Collections.addAll(con,valuel,value2...)
+    Collections.replaceAll(con,oldValue,newValue)
+    ```
+        
+15. Hsahtable   小写table 与Vector一样同步
+16. Enumeration  hasMoreElements nextElement  与迭代器相似
+17. Properties 属性映射表  键值对都是字符串 可以保存在文件中，也可以从文件中加载
+18. Stack push pop 栈
+19. BitSet 位集 存放一个位序列 进行 and or运算
+20. ArrayList list = new ArrayList()  默认创建大小为10的数组，一次扩容1.5倍
 
-- 堆是一个可以经过自我调整的二叉树
+        ArrayList list = new ArrayList(15) 这样的话就直接指定
 
-- EnumSet 枚举集
-EnumMap 键类型为枚举类型
-- NavigatableSet接口
+21. 堆是一个可以经过自我调整的二叉树
 
-- Vector使用数组方式存储数据，相比链表插入删除比较慢。线程安全(添加了synchronized),性能比ArrayList差
-- LinkedList 使用双向链表实现存储。比ArrayList更吃内存。
+22. EnumSet 枚举集
+23. EnumMap 键类型为枚举类型
+24. NavigatableSet接口
 
-
-
-
-# 垃圾回收
-强制开始垃圾回收
->System.gc()
-Runtime.getRuntime().gc()
-
-垃圾回收器调用finalize()
-finalize()方法返回后，对象消失，垃圾回收机制开始执行。
-可以重写finlize方法实现复活该被清理的对象。
-
-强引用：一个对象赋给一个引用就是强引用，比如new一个对象，一个对象被赋值一个对象。
-软引用：用SoftReference类实现，一般不会轻易回收，只有内存不够才会回收。
-弱引用：用WeekReference类实现，一旦垃圾回收已启动，就会回收。
-虚引用：不能单独存在，必须和引用队列联合使用。主要作用是跟踪对象被回收的状态。
+25. Vector使用数组方式存储数据，相比链表插入删除比较慢。线程安全(添加了synchronized),性能比ArrayList差
+26. LinkedList 使用双向链表实现存储。比ArrayList更吃内存。
 
 
-# String
-不可变对象是指一个对象的状态在对象被创建之后就不再变化。
-String是一个final类，String底层是char[] 实现的，实现时char[]是final的
-
-不可变的好处：
-节省堆空间。
-不可变可保证安全性，比如数据库账户密码等，没有办法在不修改地址的情况下修改其值。
-线程安全。因为不可变，不可写，读一致。
-不可变保证了HashCode码的唯一性，不需要重新计算，适合作为字典的key
 
 
-# 数组
-数组由JVM在运行时生成，直接存储在堆中，数组的"类名"为[+元素类型
-如：
-`int[]` 对应的类名是 `[I`
-`int[][]` 对应的类名是 `[[I`
-`Object[]` 对应的类名是 `[Ljava/lang/Object`
-普通对象由new 指令创建 然后由构造函数初始化
-基本类型的数组由 newarray指令创建
-引用类型的数组由 anewarray指令创建
-多维数组由 multianewarray指令创建
+## 垃圾回收
+1. 强制开始垃圾回收
+        
+    System.gc()
+    Runtime.getRuntime().gc()
+
+2. 垃圾回收器调用finalize()
+        
+    finalize()方法返回后，对象消失，垃圾回收机制开始执行。
+    可以重写finlize方法实现复活该被清理的对象。
+3. 引用分类
+        
+    强引用：一个对象赋给一个引用就是强引用，比如new一个对象，一个对象被赋值一个对象。
+    
+    软引用：用SoftReference类实现，一般不会轻易回收，只有内存不够才会回收。
+        
+    弱引用：用WeekReference类实现，一旦垃圾回收已启动，就会回收。
+        
+    虚引用：不能单独存在，必须和引用队列联合使用。主要作用是跟踪对象被回收的状态。
+
+
+## String
+1. 不可变对象是指一个对象的状态在对象被创建之后就不再变化。
+
+2. String是一个final类，String底层是char[] 实现的，实现时char[]是final的
+
+    不可变的好处：节省堆空间。
+        
+    不可变可保证安全性，比如数据库账户密码等，没有办法在不修改地址的情况下修改其值。
+    线程安全。因为不可变，不可写，读一致。
+    不可变保证了HashCode码的唯一性，不需要重新计算，适合作为字典的key
+
+
+## 数组
+1. 数组由JVM在运行时生成，直接存储在堆中，数组的"类名"为[+元素类型,如：
+        
+    `int[]` 对应的类名是 `[I`
+        
+    `int[][]` 对应的类名是 `[[I`
+        
+    `Object[]` 对应的类名是 `[Ljava/lang/Object`
+        
+2. 普通对象由new 指令创建 然后由构造函数初始化
+        
+    基本类型的数组由 newarray指令创建
+        
+    引用类型的数组由 anewarray指令创建
+        
+    多维数组由 multianewarray指令创建
+        

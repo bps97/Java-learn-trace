@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>../spring-configuration-classes</module>
-        <module>../spring-bean-getter</module>
+        <module>../spring-bean-inject</module>
         <module>../spring-DI</module>
         <module>../spring-aop</module>
     </modules>
