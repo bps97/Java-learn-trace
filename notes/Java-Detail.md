@@ -1,6 +1,8 @@
 最近在看集合框架里的一些东西。
 
 ## 关于toArray的一些想法
+> [interactive demo](https://github.com/bps97/Java-learn-trace/blob/master/jupyter-notebook/Java%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B.ipynb)
+
 `AbstractCollection`有转换成对应数组的方法，即`toArray()`
 
 
@@ -74,7 +76,7 @@ transient Object[] elementData;
 首先定义一个可序列化类
 ```
 class Person implements Serializable{
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
     String name;
     Person(String name){this.name = name;}
 }
@@ -91,7 +93,7 @@ private static void output(String fileName, Person person) throws IOException {
 }
 ```
 这里创建了一个`ObjectOutputStream`流，带有一个`wirteObject`方法，传入一个对象。
-这个writeObject就是序化的关键方法。
+这个writeObject就是序列化的关键方法。
 
 反序列化(**Deserialize**)的过程如下：
 ```
@@ -105,4 +107,7 @@ private static void input(String fileName) throws IOException {
 ```
 
 序列化的过程也可是说是一个浅拷贝的过程。
+
 对于关键的数据，我们必须对类重写writeObject方法和readObject方法
+
+在此之前先得对关键数据标记transient
