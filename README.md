@@ -3,21 +3,16 @@
 
 ---
 #### 目录
-- / SpringMVC
-
-- / spring
-
-- / Training   
-
-- / notes
-
+- [**/**Spring](https://github.com/bps97/Java-learn-trace/tree/master/Spring)
+- [**/**SpringMVC](https://github.com/bps97/Java-learn-trace/tree/master/SpringMVC)
+- [**/**Training](https://github.com/bps97/Java-learn-trace/tree/master/Training)
+- [**/**jupyter-notebook](https://github.com/bps97/Java-learn-trace/tree/master/jupyter-notebook)
+- [**/**notes](https://github.com/bps97/Java-learn-trace/tree/master/notes)
   - **[JVM.md](https://github.com/bps97/bps-Java/blob/master/notes/JVM.md "JVM.md")**
-  
+  - **[Java-Collector.md](https://github.com/bps97/bps-Java/blob/master/notes/Java-Collector.md "Java-Collector.md")**
+  - **[Java-Deatail.md](https://github.com/bps97/bps-Java/blob/master/notes/Java-Detail.md "Java-Detail.md")**
+  - **[Java-GenericClasses.md](https://github.com/bps97/bps-Java/blob/master/notes/Java-GenericClasses.md "Java-GenericClasses.md")**
   - **[Java-Thread&Lock.md](https://github.com/bps97/bps-Java/blob/master/notes/Java-Thread&Lock.md "Java-Thread&Lock.md")**
-  
-  - **[Java-learn.md](https://github.com/bps97/bps-Java/blob/master/notes/Java-learn.md "Java-learn.md")**
-  
-  - **[Java集合框架的学习.md](https://github.com/bps97/Java-learn-trace/blob/master/notes/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E7%9A%84%E5%AD%A6%E4%B9%A0.md)**
-  
+  - **[Java-Start.md](https://github.com/bps97/bps-Java/blob/master/notes/Java-Start.md "Java-Start.md")**
   - **[lambad & FunctionInterface.md](https://github.com/bps97/Java-learn-trace/blob/master/notes/lambad%20%26%20FunctionInterface.md)**
   - **[srping.md](https://github.com/bps97/Java-learn-trace/blob/master/notes/spring.md)**
