@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bps.hea.mapper.PortalCategoryMapper">
+  <insert id="insert" parameterType="cn.bps.hea.domain.model.PortalCategory">
+    insert into portal_category (id, ref_category_id, portal_index
+      )
+    values (#{id,jdbcType=CHAR}, #{refCategoryId,jdbcType=CHAR}, #{portalIndex,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.bps.hea.domain.model.PortalCategory">
+    insert into portal_category
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="refCategoryId != null">
+        ref_category_id,
+      </if>
+      <if test="portalIndex != null">
+        portal_index,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="refCategoryId != null">
+        #{refCategoryId,jdbcType=CHAR},
+      </if>
+      <if test="portalIndex != null">
+        #{portalIndex,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>
