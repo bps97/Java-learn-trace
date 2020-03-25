@@ -131,7 +131,7 @@ long l1 = 1L + Integer.MAX_VALUE;
     `Collections.sort()`这个容器排序方法就可以传入一个比较策略(策略设计模式)来比较集合元素。  
     同理`Collections.binarySearch`方法也是。
 
-
+4. 注意`equals`方法的参数是Object, 否则方法就变成了重载了
 
 ------
 ## 继承和多态
@@ -215,7 +215,7 @@ long l1 = 1L + Integer.MAX_VALUE;
     case表达式中的值直接使用枚举值的名称，无需枚举类限定。如直接输入A
     
 8. Eunm的常用方法
-    
+   
     `int compareTo(E o)`和另一个枚举类实例比较  
     `int ordinal()`返回枚举类实例的索引值  
     `valueOf(enumType,Stirng)` 返回指定名称的枚举值
@@ -238,7 +238,7 @@ long l1 = 1L + Integer.MAX_VALUE;
 5. 内部类拥有独立的名称空间，当外部类被其他类继承的时候，内部类没有被继承。 
 
 6. 局部内部类
-    
+   
     在局部作用域内的内部类，如方法体内。  
     不能被public、private,只能在局部内访问。  
     局部内部类可以访问局部变量，但是该局部变量必须是final的。  
@@ -272,7 +272,7 @@ long l1 = 1L + Integer.MAX_VALUE;
 
 
 3. 堆栈跟踪
-    
+   
     stack trace   一个方法调用的列表, 包含程序执行过程中方法调用的特定位置。
 
 4. 断言
@@ -284,7 +284,7 @@ long l1 = 1L + Integer.MAX_VALUE;
 6. 一般捕获那些知道如何处理的异常，抛出那些不知道怎么处理的异常。
 
 7. 在catch中抛出异常(抛出异常链)
-    
+   
     如 catch(XXException e){throw new BBExceptiom..}
 
 8. finally  即使return也得先执行finally
@@ -349,7 +349,7 @@ long l1 = 1L + Integer.MAX_VALUE;
 
 
 ## String
-        
+
 1. 不可变对象是指一个对象的状态在对象被创建之后就不再变化。
 
 2. String是一个final类，String底层是char[] 实现的，实现时char[]是final的
@@ -365,7 +365,7 @@ long l1 = 1L + Integer.MAX_VALUE;
     `int[]` 对应的类名是 `[I`  
     `int[][]` 对应的类名是 `[[I`  
     `Object[]` 对应的类名是 `[Ljava/lang/Object`  
-        
+    
 2. 普通对象由new 指令创建 然后由构造函数初始化
         
     基本类型的数组由 newarray指令创建  
