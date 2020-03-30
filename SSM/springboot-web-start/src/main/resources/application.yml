@@ -1,0 +1,12 @@
+server:
+  port: 8080
+name: bps
+age: 20
+student:
+  name: yalishanda
+  age: 31
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
