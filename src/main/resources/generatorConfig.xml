@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <!-- 除去自动生成的注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- 数据源信息-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+            connectionURL="jdbc:mysql://localhost:3306/heam?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false"
+            userId="bps"
+            password="123456">
+        </jdbcConnection>
+
+        <!-- 生成代码数据库内类型转化为java中类型-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+
+        <!-- 生成model类的位置-->
+        <javaModelGenerator targetPackage="cn.bps.heam.domain.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成xml映射文件的位置-->
+        <sqlMapGenerator targetPackage="mappers" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 生成mapper类的位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.bps.heam.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+
+
+
+        <!-- 表和对象的映射-->
+
+        <table  tableName="account" domainObjectName="Account"
+                enableInsert="true"
+                enableDeleteByExample="true"
+                enableDeleteByPrimaryKey="true"
+                enableUpdateByExample="true"
+                enableUpdateByPrimaryKey="true"
+                enableSelectByPrimaryKey="true"
+                enableSelectByExample="true"
+                selectByExampleQueryId="true"
+                enableCountByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="my.isgen.usekeys" value="true"/>
+        </table>
+
+        <table  tableName="address" domainObjectName="Address"
+                enableInsert="true"
+                enableDeleteByExample="true"
+                enableDeleteByPrimaryKey="true"
+                enableUpdateByExample="true"
+                enableUpdateByPrimaryKey="true"
+                enableSelectByPrimaryKey="true"
+                enableSelectByExample="true"
+                selectByExampleQueryId="true"
+                enableCountByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="my.isgen.usekeys" value="true"/>
+        </table>
+
+        <table  tableName="area" domainObjectName="Area"
+                enableInsert="true"
+                enableDeleteByExample="true"
+                enableDeleteByPrimaryKey="true"
+                enableUpdateByExample="true"
+                enableUpdateByPrimaryKey="true"
+                enableSelectByPrimaryKey="true"
+                enableSelectByExample="true"
+                selectByExampleQueryId="true"
+                enableCountByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="my.isgen.usekeys" value="true"/>
+        </table>
+
+        <table  tableName="order" domainObjectName="Order"
+                enableInsert="true"
+                enableDeleteByExample="true"
+                enableDeleteByPrimaryKey="true"
+                enableUpdateByExample="true"
+                enableUpdateByPrimaryKey="true"
+                enableSelectByPrimaryKey="true"
+                enableSelectByExample="true"
+                selectByExampleQueryId="true"
+                enableCountByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="my.isgen.usekeys" value="true"/>
+        </table>
+
+        <table  tableName="portal_category" domainObjectName="PortalCategory"
+                enableInsert="true"
+                enableDeleteByExample="false"
+                enableDeleteByPrimaryKey="false"
+                enableUpdateByExample="false"
+                enableUpdateByPrimaryKey="false"
+                enableSelectByPrimaryKey="false"
+                enableSelectByExample="false"
+                selectByExampleQueryId="false"
+                enableCountByExample="false">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="my.isgen.usekeys" value="true"/>
+        </table>
+
+        <table  tableName="price" domainObjectName="Price"
+                enableInsert="true"
+                enableDeleteByExample="true"
+                enableDeleteByPrimaryKey="true"
+                enableUpdateByExample="true"
+                enableUpdateByPrimaryKey="true"
+                enableSelectByPrimaryKey="true"
+                enableSelectByExample="true"
+                selectByExampleQueryId="true"
+                enableCountByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="my.isgen.usekeys" value="true"/>
+        </table>
+
+        <table tableName="product" domainObjectName="Product"
+               enableInsert="true"
+               enableDeleteByExample="false"
+               enableDeleteByPrimaryKey="false"
+               enableUpdateByExample="false"
+               enableUpdateByPrimaryKey="true"
+               enableSelectByPrimaryKey="false"
+               enableSelectByExample="true"
+               selectByExampleQueryId="false"
+               enableCountByExample="false">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="my.isgen.usekeys" value="true"/>
+        </table>
+
+        <table tableName="product_attribute" domainObjectName="ProductAttribute"
+               enableInsert="true"
+               enableDeleteByExample="false"
+               enableDeleteByPrimaryKey="false"
+               enableUpdateByExample="false"
+               enableUpdateByPrimaryKey="true"
+               enableSelectByPrimaryKey="false"
+               enableSelectByExample="true"
+               selectByExampleQueryId="false"
+               enableCountByExample="false">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="my.isgen.usekeys" value="true"/>
+        </table>
+
+        <table tableName="product_attribute_dict" domainObjectName="ProductAttributeDict"
+               enableInsert="true"
+               enableDeleteByExample="false"
+               enableDeleteByPrimaryKey="false"
+               enableUpdateByExample="false"
+               enableUpdateByPrimaryKey="true"
+               enableSelectByPrimaryKey="false"
+               enableSelectByExample="true"
+               selectByExampleQueryId="false"
+               enableCountByExample="false">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="my.isgen.usekeys" value="true"/>
+        </table>
+
+        <table  tableName="product_category" domainObjectName="ProductCategory"
+                enableInsert="true"
+                enableDeleteByExample="false"
+                enableDeleteByPrimaryKey="false"
+                enableUpdateByExample="false"
+                enableUpdateByPrimaryKey="true"
+                enableSelectByPrimaryKey="true"
+                enableSelectByExample="true"
+                selectByExampleQueryId="false"
+                enableCountByExample="false">
+
+            <property name="useActualColumnNames" value="false"/>
+            <property name="my.isgen.usekeys" value="true"/>
+        </table>
+
+        <table tableName="product_instance" domainObjectName="ProductInstance"
+               enableInsert="true"
+               enableDeleteByExample="false"
+               enableDeleteByPrimaryKey="false"
+               enableUpdateByExample="false"
+               enableUpdateByPrimaryKey="true"
+               enableSelectByPrimaryKey="false"
+               enableSelectByExample="true"
+               selectByExampleQueryId="false"
+               enableCountByExample="false">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="my.isgen.usekeys" value="true"/>
+        </table>
+
+        <table tableName="product_package" domainObjectName="ProductPackage"
+               enableInsert="true"
+               enableDeleteByExample="false"
+               enableDeleteByPrimaryKey="false"
+               enableUpdateByExample="false"
+               enableUpdateByPrimaryKey="true"
+               enableSelectByPrimaryKey="false"
+               enableSelectByExample="true"
+               selectByExampleQueryId="false"
+               enableCountByExample="false">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="my.isgen.usekeys" value="true"/>
+        </table>
+
+        <table  tableName="resource_uri" domainObjectName="ResourceUri"
+                enableInsert="true"
+                enableDeleteByExample="true"
+                enableDeleteByPrimaryKey="true"
+                enableUpdateByExample="true"
+                enableUpdateByPrimaryKey="true"
+                enableSelectByPrimaryKey="true"
+                enableSelectByExample="true"
+                selectByExampleQueryId="true"
+                enableCountByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="my.isgen.usekeys" value="true"/>
+        </table>
+
+        <table  tableName="shopping_cart" domainObjectName="ShoppingCart"
+                enableInsert="true"
+                enableDeleteByExample="true"
+                enableDeleteByPrimaryKey="true"
+                enableUpdateByExample="true"
+                enableUpdateByPrimaryKey="true"
+                enableSelectByPrimaryKey="true"
+                enableSelectByExample="true"
+                selectByExampleQueryId="true"
+                enableCountByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="my.isgen.usekeys" value="true"/>
+        </table>
+        <!--增值服务-->
+        <table  tableName="value_added_service" domainObjectName="ValueAddedService"
+                enableInsert="true"
+                enableDeleteByExample="true"
+                enableDeleteByPrimaryKey="true"
+                enableUpdateByExample="true"
+                enableUpdateByPrimaryKey="true"
+                enableSelectByPrimaryKey="true"
+                enableSelectByExample="true"
+                selectByExampleQueryId="true"
+                enableCountByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="my.isgen.usekeys" value="true"/>
+        </table>
+    </context>
+</generatorConfiguration>

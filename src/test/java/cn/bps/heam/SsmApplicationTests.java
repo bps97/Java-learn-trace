@@ -1,10 +1,10 @@
-package cn.bps.springboot.ssm.heam;
+package cn.bps.heam;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SsmHeamApplicationTests {
+class SsmApplicationTests {
 
     @Test
     void contextLoads() {
