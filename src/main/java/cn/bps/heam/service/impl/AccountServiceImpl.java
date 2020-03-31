@@ -5,7 +5,6 @@ import cn.bps.heam.domain.model.Account;
 import cn.bps.heam.domain.model.AccountExample;
 import cn.bps.heam.mapper.AccountMapper;
 import cn.bps.heam.service.AccountService;
-import org.springframework.util.DigestUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -18,18 +17,8 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void userRegister(UserForm userForm) {
-        if(!checkUsername(userForm)){
-            // 这里需要写一个注册失败相关的返回对象
-        } else {
-            Account account = new Account();
-            String md5Password = DigestUtils.md5DigestAsHex(userForm.getPassword().getBytes());// 加密密码
-            account.setUsername(userForm.getUsername());
-            account.setPassword(md5Password);
-            accountMapper.insert(account);
-        }
+        // 这里需要写一个注册成功失败相关的返回对象
     }
-
-
 
     @Override
     public boolean checkUsername(UserForm userForm) {
