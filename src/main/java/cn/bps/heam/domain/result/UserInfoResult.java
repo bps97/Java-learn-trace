@@ -1,8 +1,6 @@
-package cn.bps.heam.domain.model;
+package cn.bps.heam.domain.result;
 
-import java.util.Date;
-
-public class Account {
+public class UserInfoResult {
     private String id;
 
     private String username;
@@ -11,17 +9,13 @@ public class Account {
 
     private String nickname;
 
-    private String avatar;
+    private ResourceUriResult avatar;
 
     private String userSex;
 
     private String cellphoneNum;
 
     private String userEmail;
-
-    private Boolean available;
-
-    private Date createTime;
 
     public String getId() {
         return id;
@@ -55,12 +49,12 @@ public class Account {
         this.nickname = nickname == null ? null : nickname.trim();
     }
 
-    public String getAvatar() {
+    public ResourceUriResult getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar == null ? null : avatar.trim();
+    public void setAvatar(ResourceUriResult avatar) {
+        this.avatar = avatar;
     }
 
     public String getUserSex() {
@@ -85,21 +79,5 @@ public class Account {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail == null ? null : userEmail.trim();
-    }
-
-    public Boolean getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(Boolean available) {
-        this.available = available;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
     }
 }

@@ -1,12 +1,6 @@
-package cn.bps.heam.domain.model;
+package cn.bps.heam.domain.form;
 
-import java.util.Date;
-
-public class Account {
-    private String id;
-
-    private String username;
-
+public class UserInfoForm {
     private String password;
 
     private String nickname;
@@ -18,26 +12,6 @@ public class Account {
     private String cellphoneNum;
 
     private String userEmail;
-
-    private Boolean available;
-
-    private Date createTime;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
-    }
 
     public String getPassword() {
         return password;
@@ -85,21 +59,5 @@ public class Account {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail == null ? null : userEmail.trim();
-    }
-
-    public Boolean getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(Boolean available) {
-        this.available = available;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
     }
 }

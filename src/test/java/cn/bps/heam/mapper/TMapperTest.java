@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.util.DigestUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -33,6 +34,14 @@ public class TMapperTest {
         System.out.println(categories.size());
         System.out.println(JSON.toJSONString(categories));
 
+    }
+
+    @Test
+    public void md5Test(){
+        String str = "abc1998";
+        String md5Password = DigestUtils.md5DigestAsHex(str.getBytes());
+        System.out.println(md5Password);
+        System.out.println(DigestUtils.md5DigestAsHex("abc1998".getBytes()).equals(md5Password));
     }
 
 }

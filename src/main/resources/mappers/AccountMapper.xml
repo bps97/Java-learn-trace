@@ -3,10 +3,13 @@
 <mapper namespace="cn.bps.heam.mapper.AccountMapper">
   <resultMap id="BaseResultMap" type="cn.bps.heam.domain.model.Account">
     <id column="id" jdbcType="CHAR" property="id" />
-    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="nickname" jdbcType="VARCHAR" property="nickname" />
     <result column="avatar" jdbcType="CHAR" property="avatar" />
+    <result column="user_sex" jdbcType="VARCHAR" property="userSex" />
+    <result column="cellphone_num" jdbcType="VARCHAR" property="cellphoneNum" />
+    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
     <result column="available" jdbcType="BIT" property="available" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
@@ -69,7 +72,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, login_name, password, nickname, avatar, available, create_time
+    id, username, password, nickname, avatar, user_sex, cellphone_num, user_email, available,
+    create_time
   </sql>
   <select id="selectByExample" parameterType="cn.bps.heam.domain.model.AccountExample" resultMap="BaseResultMap">
     select
@@ -87,7 +91,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from account
     where id = #{id,jdbcType=CHAR}
@@ -103,11 +107,13 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.bps.heam.domain.model.Account">
-    insert into account (id, login_name, password, 
-      nickname, avatar, available, 
+    insert into account (id, username, password,
+      nickname, avatar, user_sex,
+      cellphone_num, user_email, available,
       create_time)
-    values (#{id,jdbcType=CHAR}, #{loginName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{nickname,jdbcType=VARCHAR}, #{avatar,jdbcType=CHAR}, #{available,jdbcType=BIT}, 
+    values (#{id,jdbcType=CHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{nickname,jdbcType=VARCHAR}, #{avatar,jdbcType=CHAR}, #{userSex,jdbcType=VARCHAR},
+      #{cellphoneNum,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR}, #{available,jdbcType=BIT},
       #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.bps.heam.domain.model.Account">
@@ -116,8 +122,8 @@
       <if test="id != null">
         id,
       </if>
-      <if test="loginName != null">
-        login_name,
+      <if test="username != null">
+        username,
       </if>
       <if test="password != null">
         password,
@@ -127,6 +133,15 @@
       </if>
       <if test="avatar != null">
         avatar,
+      </if>
+      <if test="userSex != null">
+        user_sex,
+      </if>
+      <if test="cellphoneNum != null">
+        cellphone_num,
+      </if>
+      <if test="userEmail != null">
+        user_email,
       </if>
       <if test="available != null">
         available,
@@ -139,8 +154,8 @@
       <if test="id != null">
         #{id,jdbcType=CHAR},
       </if>
-      <if test="loginName != null">
-        #{loginName,jdbcType=VARCHAR},
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
@@ -150,6 +165,15 @@
       </if>
       <if test="avatar != null">
         #{avatar,jdbcType=CHAR},
+      </if>
+      <if test="userSex != null">
+        #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="cellphoneNum != null">
+        #{cellphoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null">
+        #{userEmail,jdbcType=VARCHAR},
       </if>
       <if test="available != null">
         #{available,jdbcType=BIT},
@@ -171,8 +195,8 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=CHAR},
       </if>
-      <if test="record.loginName != null">
-        login_name = #{record.loginName,jdbcType=VARCHAR},
+      <if test="record.username != null">
+        username = #{record.username,jdbcType=VARCHAR},
       </if>
       <if test="record.password != null">
         password = #{record.password,jdbcType=VARCHAR},
@@ -182,6 +206,15 @@
       </if>
       <if test="record.avatar != null">
         avatar = #{record.avatar,jdbcType=CHAR},
+      </if>
+      <if test="record.userSex != null">
+        user_sex = #{record.userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cellphoneNum != null">
+        cellphone_num = #{record.cellphoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userEmail != null">
+        user_email = #{record.userEmail,jdbcType=VARCHAR},
       </if>
       <if test="record.available != null">
         available = #{record.available,jdbcType=BIT},
@@ -197,12 +230,15 @@
   <update id="updateByExample" parameterType="map">
     update account
     set id = #{record.id,jdbcType=CHAR},
-      login_name = #{record.loginName,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=VARCHAR},
-      nickname = #{record.nickname,jdbcType=VARCHAR},
-      avatar = #{record.avatar,jdbcType=CHAR},
-      available = #{record.available,jdbcType=BIT},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+    username = #{record.username,jdbcType=VARCHAR},
+    password = #{record.password,jdbcType=VARCHAR},
+    nickname = #{record.nickname,jdbcType=VARCHAR},
+    avatar = #{record.avatar,jdbcType=CHAR},
+    user_sex = #{record.userSex,jdbcType=VARCHAR},
+    cellphone_num = #{record.cellphoneNum,jdbcType=VARCHAR},
+    user_email = #{record.userEmail,jdbcType=VARCHAR},
+    available = #{record.available,jdbcType=BIT},
+    create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -210,8 +246,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.bps.heam.domain.model.Account">
     update account
     <set>
-      <if test="loginName != null">
-        login_name = #{loginName,jdbcType=VARCHAR},
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
@@ -221,6 +257,15 @@
       </if>
       <if test="avatar != null">
         avatar = #{avatar,jdbcType=CHAR},
+      </if>
+      <if test="userSex != null">
+        user_sex = #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="cellphoneNum != null">
+        cellphone_num = #{cellphoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null">
+        user_email = #{userEmail,jdbcType=VARCHAR},
       </if>
       <if test="available != null">
         available = #{available,jdbcType=BIT},
@@ -233,10 +278,13 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.bps.heam.domain.model.Account">
     update account
-    set login_name = #{loginName,jdbcType=VARCHAR},
+    set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       nickname = #{nickname,jdbcType=VARCHAR},
       avatar = #{avatar,jdbcType=CHAR},
+      user_sex = #{userSex,jdbcType=VARCHAR},
+      cellphone_num = #{cellphoneNum,jdbcType=VARCHAR},
+      user_email = #{userEmail,jdbcType=VARCHAR},
       available = #{available,jdbcType=BIT},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=CHAR}

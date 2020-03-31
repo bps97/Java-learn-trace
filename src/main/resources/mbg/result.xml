@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <!-- 除去自动生成的注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- 数据源信息-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+            connectionURL="jdbc:mysql://localhost:3306/heam-bak?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false"
+            userId="bps"
+            password="123456">
+        </jdbcConnection>
+
+        <!-- 生成代码数据库内类型转化为java中类型-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+
+        <!-- 生成model类的位置-->
+        <javaModelGenerator targetPackage="cn.bps.heam.domain.result" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <table tableName="resource_uri_result" domainObjectName="ResourceUriResult"
+               enableInsert="true"
+               enableDeleteByExample="true"
+               enableDeleteByPrimaryKey="true">
+            <property name="userActualColumnNames" value="false"/>
+            <property name="my.isgen.usekeys" value="true"/>
+        </table>
+
+        <table  tableName="user_info_result" domainObjectName="UserInfoResult"
+                enableInsert="true"
+                enableDeleteByExample="true"
+                enableDeleteByPrimaryKey="true"
+                enableUpdateByExample="true"
+                enableUpdateByPrimaryKey="true"
+                enableSelectByPrimaryKey="true"
+                enableSelectByExample="true"
+                selectByExampleQueryId="true"
+                enableCountByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="my.isgen.usekeys" value="true"/>
+            <columnOverride column="avatar" jdbcType="VARCHAR" javaType="ResourceUriResult"/>
+        </table>
+
+
+    </context>
+</generatorConfiguration>
