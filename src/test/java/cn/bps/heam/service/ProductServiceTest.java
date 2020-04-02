@@ -3,7 +3,7 @@ package cn.bps.heam.service;
 import cn.bps.heam.domain.model.Product;
 import cn.bps.heam.domain.model.ProductAttribute;
 import cn.bps.heam.domain.model.ProductCategory;
-import cn.bps.heam.util.UtilGenerator;
+import cn.bps.common.lang.util.Generator;
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +17,7 @@ import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class TServiceTest {
+public class ProductServiceTest {
 
     @Autowired
     private ProductCategoryService productCategoryService;
@@ -72,7 +72,7 @@ public class TServiceTest {
             System.out.println(category.getCategoryName()+","+category.getCreateTime()+","+category.getId());
         }
 
-        String uuid = UtilGenerator.getUUID();
+        String uuid = Generator.getUUID();
 
 //        System.out.println(Generator.now());
 

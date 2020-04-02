@@ -5,7 +5,7 @@ import cn.bps.heam.domain.model.ProductAttributeDict;
 import cn.bps.heam.domain.model.ProductAttributeDictExample;
 import cn.bps.heam.mapper.ProductAttributeDictMapper;
 import cn.bps.heam.service.ProductAttributeDictService;
-import cn.bps.heam.util.UtilGenerator;
+import cn.bps.common.lang.util.Generator;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -48,7 +48,7 @@ public class ProductAttributeDictServiceImpl implements ProductAttributeDictServ
             String newUUID;
             List<String> uuidList = listProductAttributeDicts().stream().map(ProductAttributeDict::getId).collect(Collectors.toList());
             do {
-                newUUID = UtilGenerator.getUUID();
+                newUUID = Generator.getUUID();
             }while (uuidList.contains(newUUID));
             dict.setId(newUUID);
             result = attributeDictMapper.insert(dict);

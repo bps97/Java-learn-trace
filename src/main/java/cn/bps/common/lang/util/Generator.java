@@ -1,4 +1,4 @@
-package cn.bps.heam.util;
+package cn.bps.common.lang.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,9 +8,9 @@ import java.util.UUID;
 /**
  * 工具生成器
  */
-public class UtilGenerator {
+public class Generator {
 
-    private UtilGenerator(){} /*工具类屏蔽构造函数*/
+    private Generator(){} /*工具类屏蔽构造函数*/
 
     public static String  getUUID(){
         String uuid = UUID.randomUUID().toString();
@@ -23,4 +23,9 @@ public class UtilGenerator {
         return simpleDateFormat.format(now);
     }
 
+    public static String getActionName(){
+        StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[2];
+        String className = stackTraceElement.getFileName();
+        return className.substring(0,className.lastIndexOf(".")) + "@" + stackTraceElement.getMethodName();
+    }
 }

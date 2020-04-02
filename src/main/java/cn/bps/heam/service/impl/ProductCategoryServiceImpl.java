@@ -4,7 +4,7 @@ import cn.bps.heam.domain.model.ProductCategory;
 import cn.bps.heam.domain.model.ProductCategoryExample;
 import cn.bps.heam.mapper.ProductCategoryMapper;
 import cn.bps.heam.service.ProductCategoryService;
-import cn.bps.heam.util.UtilGenerator;
+import cn.bps.common.lang.util.Generator;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -36,7 +36,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
             String newUUID;
             List<String> uuidList = listProductCategories().stream().map(ProductCategory::getId).collect(Collectors.toList());
             do {
-                newUUID = UtilGenerator.getUUID();
+                newUUID = Generator.getUUID();
             }while (uuidList.contains(newUUID));
             category.setId(newUUID);
             result = categoryMapper.insertSelective(category);

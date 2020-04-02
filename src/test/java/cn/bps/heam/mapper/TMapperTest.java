@@ -36,12 +36,5 @@ public class TMapperTest {
 
     }
 
-    @Test
-    public void md5Test(){
-        String str = "abc1998";
-        String md5Password = DigestUtils.md5DigestAsHex(str.getBytes());
-        System.out.println(md5Password);
-        System.out.println(DigestUtils.md5DigestAsHex("abc1998".getBytes()).equals(md5Password));
-    }
 
 }

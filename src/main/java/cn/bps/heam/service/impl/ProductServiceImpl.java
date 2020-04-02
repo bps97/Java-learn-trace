@@ -7,7 +7,7 @@ import cn.bps.heam.mapper.ProductMapper;
 import cn.bps.heam.service.ProductAttributeDictService;
 import cn.bps.heam.service.ProductAttributeService;
 import cn.bps.heam.service.ProductService;
-import cn.bps.heam.util.UtilGenerator;
+import cn.bps.common.lang.util.Generator;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -73,7 +73,7 @@ public class ProductServiceImpl implements ProductService {
             String newUUID;
             List<String> uuidList = listProducts().stream().map(Product::getId).collect(Collectors.toList());
             do {
-                newUUID = UtilGenerator.getUUID();
+                newUUID = Generator.getUUID();
             }while (uuidList.contains(newUUID));
             product.setId(newUUID);
             result = productMapper.insert(product);
