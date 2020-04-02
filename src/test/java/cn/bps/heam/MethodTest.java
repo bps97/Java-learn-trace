@@ -1,6 +1,5 @@
 package cn.bps.heam;
 
-import cn.bps.common.lang.domain.Success;
 import cn.bps.common.lang.util.Generator;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.support.spring.PropertyPreFilters;
@@ -27,9 +26,9 @@ public class MethodTest {
 
     @Test
     public void getSuccessResp() {
-        Success success = new Success.Builder(Generator.getActionName()).code("403").failure().info("该账户已存在").build();
-        PropertyPreFilters propertyPreFilters = new PropertyPreFilters();
-        System.out.println(JSON.toJSONString(success));
+//        Ret success = new Ret.Builder(Generator.getActionName()).code("403").failure().info("该账户已存在").build();
+//        PropertyPreFilters propertyPreFilters = new PropertyPreFilters();
+//        System.out.println(JSON.toJSONString(success));
     }
 
     @Test

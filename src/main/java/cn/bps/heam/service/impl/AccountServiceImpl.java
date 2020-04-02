@@ -5,10 +5,8 @@ import cn.bps.common.lang.LocalBizServiceException;
 import cn.bps.heam.domain.form.UserForm;
 import cn.bps.heam.domain.model.Account;
 import cn.bps.heam.domain.model.AccountExample;
-import cn.bps.common.lang.domain.Success;
 import cn.bps.heam.mapper.AccountMapper;
 import cn.bps.heam.service.AccountService;
-import cn.bps.common.lang.util.Generator;
 import org.springframework.util.DigestUtils;
 
 import javax.annotation.Resource;

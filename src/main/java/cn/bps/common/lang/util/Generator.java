@@ -24,7 +24,7 @@ public class Generator {
     }
 
     public static String getActionName(){
-        StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[2];
+        StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[5];    /*这个 5 根据的是方法调用的引用链*/
         String className = stackTraceElement.getFileName();
         return className.substring(0,className.lastIndexOf(".")) + "@" + stackTraceElement.getMethodName();
     }

@@ -1,5 +1,6 @@
 package cn.bps.heam.service;
 
+import cn.bps.common.lang.domain.Ret;
 import cn.bps.heam.domain.model.Product;
 import cn.bps.heam.domain.model.ProductAttribute;
 import cn.bps.heam.domain.model.ProductCategory;
@@ -60,7 +61,9 @@ public class ProductServiceTest {
     public void  listProductAttributes(){
 
         List<ProductAttribute> productAttributes = productAttributeService.listProductAttributes();
-        productAttributes.stream().map(JSON::toJSONString).forEach(System.out::println);
+        Ret<List<ProductAttribute>> ret = Ret.ok(productAttributes);
+        System.out.println(JSON.toJSONString(ret));
+//        System.out.println(JSON.toJSONString(Ret.error()));
 
     }
 
