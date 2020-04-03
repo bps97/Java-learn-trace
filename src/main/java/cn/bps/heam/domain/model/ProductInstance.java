@@ -93,4 +93,23 @@ public class ProductInstance {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", productId=").append(productId);
+        sb.append(", productName=").append(productName);
+        sb.append(", price=").append(price);
+        sb.append(", categoryId=").append(categoryId);
+        sb.append(", imgUriId=").append(imgUriId);
+        sb.append(", available=").append(available);
+        sb.append(", createTime=").append(createTime);
+        sb.append(", updateTime=").append(updateTime);
+        sb.append("]");
+        return sb.toString();
+    }
 }

@@ -52,4 +52,19 @@ public class ResourceUri {
     public void setUri(String uri) {
         this.uri = uri == null ? null : uri.trim();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", available=").append(available);
+        sb.append(", createTime=").append(createTime);
+        sb.append(", updateTime=").append(updateTime);
+        sb.append(", uri=").append(uri);
+        sb.append("]");
+        return sb.toString();
+    }
 }

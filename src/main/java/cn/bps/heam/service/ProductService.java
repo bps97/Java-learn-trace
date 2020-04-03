@@ -1,6 +1,8 @@
 package cn.bps.heam.service;
 
 
+import cn.bps.common.lang.api.Page;
+import cn.bps.heam.domain.PageRequest;
 import cn.bps.heam.domain.model.Product;
 
 import java.util.List;
@@ -21,6 +23,8 @@ public interface ProductService {
     List<Product> listProducts(List<String> productIds);
 
     List<Product> listProducts();
+
+    Page<Product> pageProducts(PageRequest pageRequest);
 
     int saveProduct(Product product);
 

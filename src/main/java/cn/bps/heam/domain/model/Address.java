@@ -1,5 +1,7 @@
 package cn.bps.heam.domain.model;
 
+import java.util.Date;
+
 public class Address {
     private String id;
 
@@ -18,6 +20,8 @@ public class Address {
     private String userId;
 
     private Boolean addressIsDefault;
+
+    private Date createTime;
 
     public String getId() {
         return id;
@@ -89,5 +93,33 @@ public class Address {
 
     public void setAddressIsDefault(Boolean addressIsDefault) {
         this.addressIsDefault = addressIsDefault;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", receiver=").append(receiver);
+        sb.append(", cellphoneNum=").append(cellphoneNum);
+        sb.append(", provinceCode=").append(provinceCode);
+        sb.append(", prefectureCode=").append(prefectureCode);
+        sb.append(", countyCode=").append(countyCode);
+        sb.append(", address=").append(address);
+        sb.append(", userId=").append(userId);
+        sb.append(", addressIsDefault=").append(addressIsDefault);
+        sb.append(", createTime=").append(createTime);
+        sb.append("]");
+        return sb.toString();
     }
 }

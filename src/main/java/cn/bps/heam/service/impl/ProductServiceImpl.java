@@ -1,5 +1,8 @@
 package cn.bps.heam.service.impl;
 
+import cn.bps.common.lang.api.Page;
+import cn.bps.common.lang.api.Sort;
+import cn.bps.heam.domain.PageRequest;
 import cn.bps.heam.domain.model.Product;
 import cn.bps.heam.domain.model.ProductAttribute;
 import cn.bps.heam.domain.model.ProductExample;
@@ -8,6 +11,7 @@ import cn.bps.heam.service.ProductAttributeDictService;
 import cn.bps.heam.service.ProductAttributeService;
 import cn.bps.heam.service.ProductService;
 import cn.bps.common.lang.util.Generator;
+import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -89,6 +93,24 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> listProducts() {
         return productMapper.selectByExample(new ProductExample());
+    }
+
+    @Override
+    public Page<Product> pageProducts(PageRequest pageRequest) {
+
+        ProductExample example = new ProductExample();
+        example.createCriteria().andAvailableEqualTo(true);
+        example.setOrderByClause("create_time");
+        List<Product> products = productMapper.selectByExampleWithRowbounds(example, pageRequest.rowBounds());
+        long elementCount = productMapper.countByExample(example);
+        Page<Product> pageProducts = new Page<>(products);
+        pageProducts.setPage(pageRequest.getPage());
+        pageProducts.setSize(pageRequest.getSize());
+        pageProducts.setTotalElements(elementCount);
+        pageProducts.setSort(Sort.condition().orderByAsc("create_time"));
+        System.out.println(JSON.toJSONString(pageProducts));
+
+        return pageProducts;
     }
 }
 

@@ -30,4 +30,17 @@ public class PortalCategory {
     public void setPortalIndex(Byte portalIndex) {
         this.portalIndex = portalIndex;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", refCategoryId=").append(refCategoryId);
+        sb.append(", portalIndex=").append(portalIndex);
+        sb.append("]");
+        return sb.toString();
+    }
 }

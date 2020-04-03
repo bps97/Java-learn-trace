@@ -11,6 +11,7 @@
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="user_id" jdbcType="CHAR" property="userId" />
     <result column="address_is_default" jdbcType="BIT" property="addressIsDefault" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -72,7 +73,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, receiver, cellphone_num, province_code, prefecture_code, county_code, address, 
-    user_id, address_is_default
+    user_id, address_is_default, create_time
   </sql>
   <select id="selectByExample" parameterType="cn.bps.heam.domain.model.AddressExample" resultMap="BaseResultMap">
     select
@@ -108,12 +109,12 @@
   <insert id="insert" parameterType="cn.bps.heam.domain.model.Address">
     insert into address (id, receiver, cellphone_num, 
       province_code, prefecture_code, county_code, 
-      address, user_id, address_is_default
-      )
+      address, user_id, address_is_default, 
+      create_time)
     values (#{id,jdbcType=CHAR}, #{receiver,jdbcType=VARCHAR}, #{cellphoneNum,jdbcType=VARCHAR}, 
       #{provinceCode,jdbcType=CHAR}, #{prefectureCode,jdbcType=CHAR}, #{countyCode,jdbcType=CHAR}, 
-      #{address,jdbcType=VARCHAR}, #{userId,jdbcType=CHAR}, #{addressIsDefault,jdbcType=BIT}
-      )
+      #{address,jdbcType=VARCHAR}, #{userId,jdbcType=CHAR}, #{addressIsDefault,jdbcType=BIT}, 
+      #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.bps.heam.domain.model.Address">
     insert into address
@@ -145,6 +146,9 @@
       <if test="addressIsDefault != null">
         address_is_default,
       </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -173,6 +177,9 @@
       </if>
       <if test="addressIsDefault != null">
         #{addressIsDefault,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -212,6 +219,9 @@
       <if test="record.addressIsDefault != null">
         address_is_default = #{record.addressIsDefault,jdbcType=BIT},
       </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -227,7 +237,8 @@
       county_code = #{record.countyCode,jdbcType=CHAR},
       address = #{record.address,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=CHAR},
-      address_is_default = #{record.addressIsDefault,jdbcType=BIT}
+      address_is_default = #{record.addressIsDefault,jdbcType=BIT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -259,6 +270,9 @@
       <if test="addressIsDefault != null">
         address_is_default = #{addressIsDefault,jdbcType=BIT},
       </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=CHAR}
   </update>
@@ -271,7 +285,8 @@
       county_code = #{countyCode,jdbcType=CHAR},
       address = #{address,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=CHAR},
-      address_is_default = #{addressIsDefault,jdbcType=BIT}
+      address_is_default = #{addressIsDefault,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=CHAR}
   </update>
   <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.AddressExample" resultMap="BaseResultMap">

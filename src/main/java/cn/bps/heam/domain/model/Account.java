@@ -102,4 +102,24 @@ public class Account {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", username=").append(username);
+        sb.append(", password=").append(password);
+        sb.append(", nickname=").append(nickname);
+        sb.append(", avatar=").append(avatar);
+        sb.append(", userSex=").append(userSex);
+        sb.append(", cellphoneNum=").append(cellphoneNum);
+        sb.append(", userEmail=").append(userEmail);
+        sb.append(", available=").append(available);
+        sb.append(", createTime=").append(createTime);
+        sb.append("]");
+        return sb.toString();
+    }
 }

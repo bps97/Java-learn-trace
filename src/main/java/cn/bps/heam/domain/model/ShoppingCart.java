@@ -73,4 +73,21 @@ public class ShoppingCart {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", productPackageId=").append(productPackageId);
+        sb.append(", price=").append(price);
+        sb.append(", accountId=").append(accountId);
+        sb.append(", available=").append(available);
+        sb.append(", createTime=").append(createTime);
+        sb.append(", updateTime=").append(updateTime);
+        sb.append("]");
+        return sb.toString();
+    }
 }

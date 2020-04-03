@@ -1,6 +1,8 @@
 package cn.bps.common.lang.api;
 
 
+import cn.bps.common.lang.annotation.Label;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -9,9 +11,9 @@ import java.util.Objects;
 public class Page<T> implements Iterable<T> {
 
     private List<T> content;
-    private long totalElements;
-    private int size;
-    private int page;
+    @Label("总元素个数") private long totalElements;
+    @Label("页大小")private int size;
+    @Label("当前页码") private int page;
     private Sort sort;
 
     public Page() {
@@ -19,16 +21,16 @@ public class Page<T> implements Iterable<T> {
     }
 
     public Page(List<T> content) {
-        this(content, Objects.isNull(content) ? 0L : (long)content.size(), 0, 0, (Sort)null);
+        this(content, Objects.isNull(content) ? content.size() : -1L, 0, content.size(), (Sort)null);
     }
 
     public Page(int page, int size) {
-        this((List)null ,0L, page, size, (Sort)null);
+        this((List)null ,-1L, page, size, (Sort)null);
     }
 
     public Page(List<T> content, long totalElements, int page, int size, Sort sort) {
         this.content = new ArrayList<>();
-        if(Objects.isNull(content)) {
+        if(Objects.nonNull(content)) {
             this.content.addAll(content);
         }
         this.totalElements = totalElements;
@@ -36,8 +38,6 @@ public class Page<T> implements Iterable<T> {
         this.page = page;
         this.sort = sort;
     }
-
-
 
     public int getTotalPages() {
         int ceil = (int)Math.ceil((double)this.totalElements / (double)this.getSize());

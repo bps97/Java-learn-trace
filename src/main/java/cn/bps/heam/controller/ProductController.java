@@ -2,6 +2,7 @@ package cn.bps.heam.controller;
 
 import cn.bps.common.lang.api.Page;
 import cn.bps.common.lang.domain.Ret;
+import cn.bps.heam.domain.PageRequest;
 import cn.bps.heam.domain.model.Product;
 import cn.bps.heam.domain.model.ProductAttribute;
 import cn.bps.heam.service.ProductAttributeService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 public class ProductController {
@@ -23,15 +25,12 @@ public class ProductController {
 
     @PostMapping("/attrs")
     public Ret<List<ProductAttribute>> listProductAttributes(){
-
         List<ProductAttribute> productAttributes = productAttributeService.listProductAttributes();
         return Ret.ok(productAttributes);
     }
 
-    @PostMapping("products/")
-    public Ret<Page<Product>> pageProduct(){
-
-        List<Product> products = productService.listProducts();
-        return Ret.ok();
+    @PostMapping("/products")
+    public Ret<Page<Product>> pageProduct(PageRequest pageRequest){
+        return Ret.ok(productService.pageProducts(pageRequest));
     }
 }

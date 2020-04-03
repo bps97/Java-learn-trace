@@ -120,4 +120,26 @@ public class Area {
     public void setPinyin(String pinyin) {
         this.pinyin = pinyin == null ? null : pinyin.trim();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", code=").append(code);
+        sb.append(", name=").append(name);
+        sb.append(", parentId=").append(parentId);
+        sb.append(", shortName=").append(shortName);
+        sb.append(", levelType=").append(levelType);
+        sb.append(", cityCode=").append(cityCode);
+        sb.append(", zipCode=").append(zipCode);
+        sb.append(", mergeName=").append(mergeName);
+        sb.append(", ing=").append(ing);
+        sb.append(", lat=").append(lat);
+        sb.append(", pinyin=").append(pinyin);
+        sb.append("]");
+        return sb.toString();
+    }
 }
