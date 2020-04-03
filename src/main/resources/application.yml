@@ -12,9 +12,13 @@ spring:
     minPoolSize: 5
     maxPoolSize: 20
 
-#server:
-#  servlet:
-#    context-path: .
+server:
+  port: 8080
+  tomcat:
+    max-threads: 6
+    min-spare-threads: 3
+    accept-count: 10
+    max-connections: 1000
 
 mybatis:
   type-aliases-package: cn.bps.heam.domain.model

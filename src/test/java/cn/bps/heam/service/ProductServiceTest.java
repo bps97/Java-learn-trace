@@ -57,7 +57,6 @@ public class ProductServiceTest {
 
 
     @Test
-
     public void  listProductAttributes(){
 
         List<ProductAttribute> productAttributes = productAttributeService.listProductAttributes();

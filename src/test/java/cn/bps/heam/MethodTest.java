@@ -1,10 +1,14 @@
 package cn.bps.heam;
 
+import cn.bps.common.lang.domain.Ret;
 import cn.bps.common.lang.util.Generator;
+import cn.bps.heam.domain.model.Product;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.support.spring.PropertyPreFilters;
 import org.junit.Test;
 import org.springframework.util.DigestUtils;
+
+import java.util.Date;
 
 public class MethodTest {
 
@@ -33,5 +37,6 @@ public class MethodTest {
 
     @Test
     public void temporaryTest(){
+        System.out.println(JSON.toJSONString(Ret.ok(Date::new)));
     }
 }
