@@ -37,10 +37,10 @@ public class Ret<D> {
         return ok(supplier.get());
     }
 
-   /* public static Ret<Void> ok(Callback callback){
+    public static Ret<Void> ok(Callback callback){
         callback.execute();
         return ok();
-    }*/
+    }
 
 
    /**
