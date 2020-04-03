@@ -4,6 +4,7 @@ import cn.bps.heam.domain.model.ShoppingCart;
 import cn.bps.heam.domain.model.ShoppingCartExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 public interface ShoppingCartMapper {
     long countByExample(ShoppingCartExample example);
@@ -15,6 +16,8 @@ public interface ShoppingCartMapper {
     int insert(ShoppingCart record);
 
     int insertSelective(ShoppingCart record);
+
+    List<ShoppingCart> selectByExampleWithRowbounds(ShoppingCartExample example, RowBounds rowBounds);
 
     List<ShoppingCart> selectByExample(ShoppingCartExample example);
 

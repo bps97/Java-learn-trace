@@ -274,4 +274,19 @@
       address_is_default = #{addressIsDefault,jdbcType=BIT}
     where id = #{id,jdbcType=CHAR}
   </update>
+  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.AddressExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from address
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
 </mapper>

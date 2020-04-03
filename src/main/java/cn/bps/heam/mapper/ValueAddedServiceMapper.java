@@ -4,6 +4,7 @@ import cn.bps.heam.domain.model.ValueAddedService;
 import cn.bps.heam.domain.model.ValueAddedServiceExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 public interface ValueAddedServiceMapper {
     long countByExample(ValueAddedServiceExample example);
@@ -15,6 +16,8 @@ public interface ValueAddedServiceMapper {
     int insert(ValueAddedService record);
 
     int insertSelective(ValueAddedService record);
+
+    List<ValueAddedService> selectByExampleWithRowbounds(ValueAddedServiceExample example, RowBounds rowBounds);
 
     List<ValueAddedService> selectByExample(ValueAddedServiceExample example);
 

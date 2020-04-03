@@ -4,6 +4,7 @@ import cn.bps.heam.domain.model.Address;
 import cn.bps.heam.domain.model.AddressExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 public interface AddressMapper {
     long countByExample(AddressExample example);
@@ -15,6 +16,8 @@ public interface AddressMapper {
     int insert(Address record);
 
     int insertSelective(Address record);
+
+    List<Address> selectByExampleWithRowbounds(AddressExample example, RowBounds rowBounds);
 
     List<Address> selectByExample(AddressExample example);
 

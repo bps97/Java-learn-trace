@@ -4,6 +4,7 @@ import cn.bps.heam.domain.model.Account;
 import cn.bps.heam.domain.model.AccountExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 public interface AccountMapper {
     long countByExample(AccountExample example);
@@ -15,6 +16,8 @@ public interface AccountMapper {
     int insert(Account record);
 
     int insertSelective(Account record);
+
+    List<Account> selectByExampleWithRowbounds(AccountExample example, RowBounds rowBounds);
 
     List<Account> selectByExample(AccountExample example);
 

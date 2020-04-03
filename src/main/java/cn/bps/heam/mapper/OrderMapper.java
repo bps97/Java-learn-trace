@@ -4,6 +4,7 @@ import cn.bps.heam.domain.model.Order;
 import cn.bps.heam.domain.model.OrderExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 public interface OrderMapper {
     long countByExample(OrderExample example);
@@ -15,6 +16,8 @@ public interface OrderMapper {
     int insert(Order record);
 
     int insertSelective(Order record);
+
+    List<Order> selectByExampleWithRowbounds(OrderExample example, RowBounds rowBounds);
 
     List<Order> selectByExample(OrderExample example);
 

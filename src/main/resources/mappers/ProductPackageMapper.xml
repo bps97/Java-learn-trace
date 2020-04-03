@@ -111,4 +111,19 @@
     where id = #{id,jdbcType=CHAR}
       and product_instance_id = #{productInstanceId,jdbcType=CHAR}
   </update>
+  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.ProductPackageExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from product_package
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
 </mapper>

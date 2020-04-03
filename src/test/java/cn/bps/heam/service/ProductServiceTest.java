@@ -62,7 +62,7 @@ public class ProductServiceTest {
         List<ProductAttribute> productAttributes = productAttributeService.listProductAttributes();
         Ret<List<ProductAttribute>> ret = Ret.ok(productAttributes);
         System.out.println(JSON.toJSONString(ret));
-//        System.out.println(JSON.toJSONString(Ret.error()));
+        System.out.println(JSON.toJSONString(Ret.error()));
 
     }
 

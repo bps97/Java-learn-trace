@@ -72,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, username, password, nickname, avatar, user_sex, cellphone_num, user_email, available,
+    id, username, password, nickname, avatar, user_sex, cellphone_num, user_email, available, 
     create_time
   </sql>
   <select id="selectByExample" parameterType="cn.bps.heam.domain.model.AccountExample" resultMap="BaseResultMap">
@@ -91,7 +91,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select
+    select 
     <include refid="Base_Column_List" />
     from account
     where id = #{id,jdbcType=CHAR}
@@ -107,13 +107,13 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.bps.heam.domain.model.Account">
-    insert into account (id, username, password,
-      nickname, avatar, user_sex,
-      cellphone_num, user_email, available,
+    insert into account (id, username, password, 
+      nickname, avatar, user_sex, 
+      cellphone_num, user_email, available, 
       create_time)
-    values (#{id,jdbcType=CHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
-      #{nickname,jdbcType=VARCHAR}, #{avatar,jdbcType=CHAR}, #{userSex,jdbcType=VARCHAR},
-      #{cellphoneNum,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR}, #{available,jdbcType=BIT},
+    values (#{id,jdbcType=CHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR}, #{avatar,jdbcType=CHAR}, #{userSex,jdbcType=VARCHAR}, 
+      #{cellphoneNum,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR}, #{available,jdbcType=BIT}, 
       #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.bps.heam.domain.model.Account">
@@ -230,15 +230,15 @@
   <update id="updateByExample" parameterType="map">
     update account
     set id = #{record.id,jdbcType=CHAR},
-    username = #{record.username,jdbcType=VARCHAR},
-    password = #{record.password,jdbcType=VARCHAR},
-    nickname = #{record.nickname,jdbcType=VARCHAR},
-    avatar = #{record.avatar,jdbcType=CHAR},
-    user_sex = #{record.userSex,jdbcType=VARCHAR},
-    cellphone_num = #{record.cellphoneNum,jdbcType=VARCHAR},
-    user_email = #{record.userEmail,jdbcType=VARCHAR},
-    available = #{record.available,jdbcType=BIT},
-    create_time = #{record.createTime,jdbcType=TIMESTAMP}
+      username = #{record.username,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      nickname = #{record.nickname,jdbcType=VARCHAR},
+      avatar = #{record.avatar,jdbcType=CHAR},
+      user_sex = #{record.userSex,jdbcType=VARCHAR},
+      cellphone_num = #{record.cellphoneNum,jdbcType=VARCHAR},
+      user_email = #{record.userEmail,jdbcType=VARCHAR},
+      available = #{record.available,jdbcType=BIT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -289,4 +289,19 @@
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=CHAR}
   </update>
+  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.AccountExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from account
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
 </mapper>

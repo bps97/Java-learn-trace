@@ -4,6 +4,7 @@ import cn.bps.heam.domain.model.ResourceUri;
 import cn.bps.heam.domain.model.ResourceUriExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 public interface ResourceUriMapper {
     long countByExample(ResourceUriExample example);
@@ -16,7 +17,11 @@ public interface ResourceUriMapper {
 
     int insertSelective(ResourceUri record);
 
+    List<ResourceUri> selectByExampleWithBLOBsWithRowbounds(ResourceUriExample example, RowBounds rowBounds);
+
     List<ResourceUri> selectByExampleWithBLOBs(ResourceUriExample example);
+
+    List<ResourceUri> selectByExampleWithRowbounds(ResourceUriExample example, RowBounds rowBounds);
 
     List<ResourceUri> selectByExample(ResourceUriExample example);
 
