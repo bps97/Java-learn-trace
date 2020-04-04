@@ -22,7 +22,7 @@ import java.util.Set;
 
 @Controller
 @RequestMapping("/admin/product")
-public class AdminProductController {
+public class 2AdminProductController {
 
 
     @Autowired
