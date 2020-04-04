@@ -2,6 +2,7 @@ package cn.bps.heam.service.impl;
 
 import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
+import cn.bps.common.lang.util.EncryptUtils;
 import cn.bps.heam.domain.form.UserForm;
 import cn.bps.heam.domain.model.Account;
 import cn.bps.heam.domain.model.AccountExample;
@@ -27,7 +28,7 @@ public class AccountServiceImpl implements AccountService {
             throw new LocalBizServiceException(CustomizeExceptionCode.NAME_ALREADY_EXIST, userForm.getUsername());
         } else {
             Account account = new Account();
-            String md5Password = DigestUtils.md5DigestAsHex(userForm.getPassword().getBytes());// 加密密码
+            String md5Password = EncryptUtils.md5Encrypt(userForm.getPassword()); // 加密密码
             account.setUsername(userForm.getUsername());
             account.setPassword(md5Password);
             accountMapper.insert(account);

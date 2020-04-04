@@ -6,6 +6,12 @@
 <generatorConfiguration>
     <context id="DB2Tables" targetRuntime="MyBatis3">
 
+        <!-- RowBoundsPlugin分页插件   -->
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
+
+        <!-- RowBoundsPlugin toString插件   -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>
+
         <!-- 除去自动生成的注释-->
         <commentGenerator>
             <property name="suppressDate" value="true"/>
@@ -31,7 +37,7 @@
         </javaModelGenerator>
 
         <!-- 生成xml映射文件的位置-->
-        <sqlMapGenerator targetPackage="mappers" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="mappers2" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
@@ -57,6 +63,7 @@
                 enableCountByExample="true">
             <property name="useActualColumnNames" value="false"/>
             <property name="my.isgen.usekeys" value="true"/>
+            <columnOverride column="create_time" jdbcType="TIMESTAMP"/>
         </table>
 
         <table  tableName="address" domainObjectName="Address"
@@ -71,17 +78,18 @@
                 enableCountByExample="true">
             <property name="useActualColumnNames" value="false"/>
             <property name="my.isgen.usekeys" value="true"/>
+            <columnOverride column="create_time" jdbcType="TIMESTAMP"/>
         </table>
 
         <table  tableName="area" domainObjectName="Area"
-                enableInsert="true"
-                enableDeleteByExample="true"
-                enableDeleteByPrimaryKey="true"
-                enableUpdateByExample="true"
-                enableUpdateByPrimaryKey="true"
+                enableInsert="false"
+                enableDeleteByExample="false"
+                enableDeleteByPrimaryKey="false"
+                enableUpdateByExample="false"
+                enableUpdateByPrimaryKey="false"
                 enableSelectByPrimaryKey="true"
                 enableSelectByExample="true"
-                selectByExampleQueryId="true"
+                selectByExampleQueryId="false"
                 enableCountByExample="true">
             <property name="useActualColumnNames" value="false"/>
             <property name="my.isgen.usekeys" value="true"/>
@@ -99,6 +107,7 @@
                 enableCountByExample="true">
             <property name="useActualColumnNames" value="false"/>
             <property name="my.isgen.usekeys" value="true"/>
+            <columnOverride column="create_time" jdbcType="TIMESTAMP"/>
         </table>
 
         <table  tableName="portal_category" domainObjectName="PortalCategory"
@@ -138,9 +147,10 @@
                enableSelectByPrimaryKey="false"
                enableSelectByExample="true"
                selectByExampleQueryId="false"
-               enableCountByExample="false">
+               enableCountByExample="true">
             <property name="useActualColumnNames" value="false"/>
             <property name="my.isgen.usekeys" value="true"/>
+            <columnOverride column="create_time" jdbcType="TIMESTAMP"/>
         </table>
 
         <table tableName="product_attribute" domainObjectName="ProductAttribute"
@@ -155,6 +165,7 @@
                enableCountByExample="false">
             <property name="useActualColumnNames" value="false"/>
             <property name="my.isgen.usekeys" value="true"/>
+            <columnOverride column="create_time" jdbcType="TIMESTAMP"/>
         </table>
 
         <table tableName="product_attribute_dict" domainObjectName="ProductAttributeDict"
@@ -169,6 +180,7 @@
                enableCountByExample="false">
             <property name="useActualColumnNames" value="false"/>
             <property name="my.isgen.usekeys" value="true"/>
+            <columnOverride column="create_time" jdbcType="TIMESTAMP"/>
         </table>
 
         <table  tableName="product_category" domainObjectName="ProductCategory"
@@ -181,9 +193,9 @@
                 enableSelectByExample="true"
                 selectByExampleQueryId="false"
                 enableCountByExample="false">
-
             <property name="useActualColumnNames" value="false"/>
             <property name="my.isgen.usekeys" value="true"/>
+            <columnOverride column="create_time" jdbcType="TIMESTAMP"/>
         </table>
 
         <table tableName="product_instance" domainObjectName="ProductInstance"
@@ -198,6 +210,7 @@
                enableCountByExample="false">
             <property name="useActualColumnNames" value="false"/>
             <property name="my.isgen.usekeys" value="true"/>
+            <columnOverride column="create_time" jdbcType="TIMESTAMP"/>
         </table>
 
         <table tableName="product_package" domainObjectName="ProductPackage"
@@ -212,6 +225,7 @@
                enableCountByExample="false">
             <property name="useActualColumnNames" value="false"/>
             <property name="my.isgen.usekeys" value="true"/>
+            <columnOverride column="create_time" jdbcType="TIMESTAMP"/>
         </table>
 
         <table  tableName="resource_uri" domainObjectName="ResourceUri"
@@ -226,6 +240,7 @@
                 enableCountByExample="true">
             <property name="useActualColumnNames" value="false"/>
             <property name="my.isgen.usekeys" value="true"/>
+            <columnOverride column="create_time" jdbcType="TIMESTAMP"/>
         </table>
 
         <table  tableName="shopping_cart" domainObjectName="ShoppingCart"
@@ -240,6 +255,7 @@
                 enableCountByExample="true">
             <property name="useActualColumnNames" value="false"/>
             <property name="my.isgen.usekeys" value="true"/>
+            <columnOverride column="create_time" jdbcType="TIMESTAMP"/>
         </table>
         <!--增值服务-->
         <table  tableName="value_added_service" domainObjectName="ValueAddedService"
@@ -254,6 +270,7 @@
                 enableCountByExample="true">
             <property name="useActualColumnNames" value="false"/>
             <property name="my.isgen.usekeys" value="true"/>
+            <columnOverride column="create_time" jdbcType="TIMESTAMP"/>
         </table>
     </context>
 </generatorConfiguration>
