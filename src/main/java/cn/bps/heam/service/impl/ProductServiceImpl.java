@@ -2,22 +2,25 @@ package cn.bps.heam.service.impl;
 
 import cn.bps.common.lang.api.Page;
 import cn.bps.common.lang.api.Sort;
+import cn.bps.heam.dict.Column;
+import cn.bps.common.lang.api.Filter;
 import cn.bps.heam.domain.PageRequest;
-import cn.bps.heam.domain.model.Product;
-import cn.bps.heam.domain.model.ProductAttribute;
-import cn.bps.heam.domain.model.ProductExample;
+import cn.bps.heam.domain.model.*;
 import cn.bps.heam.mapper.ProductMapper;
 import cn.bps.heam.service.ProductAttributeDictService;
 import cn.bps.heam.service.ProductAttributeService;
+import cn.bps.heam.service.ProductCategoryService;
 import cn.bps.heam.service.ProductService;
 import cn.bps.common.lang.util.Generator;
-import com.alibaba.fastjson.JSON;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import org.junit.platform.commons.util.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
+
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -30,6 +33,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Resource
     private ProductAttributeService attributeService;
+
+    @Resource
+    private ProductCategoryService categoryService;
 
 /**********************************************************************/
 
@@ -101,6 +107,10 @@ public class ProductServiceImpl implements ProductService {
         ProductExample example = new ProductExample();
         example.createCriteria().andAvailableEqualTo(true);
         example.setOrderByClause("create_time");
+        return getProducts(pageRequest, example);
+    }
+
+    private Page<Product> getProducts(PageRequest pageRequest, ProductExample example) {
         List<Product> products = productMapper.selectByExampleWithRowbounds(example, pageRequest.rowBounds());
         long elementCount = productMapper.countByExample(example);
         Page<Product> pageProducts = new Page<>(products);
@@ -108,9 +118,77 @@ public class ProductServiceImpl implements ProductService {
         pageProducts.setSize(pageRequest.getSize());
         pageProducts.setTotalElements(elementCount);
         pageProducts.setSort(Sort.condition().orderByAsc("create_time"));
-        System.out.println(JSON.toJSONString(pageProducts));
 
         return pageProducts;
+    }
+
+    @Override
+    public Page<Product> pageProducts(PageRequest pageRequest, Filter filter) {
+
+
+        ProductExample example = new ProductExample();
+        ProductExample.Criteria criteria = example.createCriteria().andAvailableEqualTo(true);
+
+
+        Set<String> productIdSet = Sets.newHashSet();
+        boolean init = false; /*表示productIdSet是否初始化--即被填充*/
+        String categoryId = "";
+        for(Filter.Property property : filter ){
+            String value = property.getValue();
+            String secondValue = property.getSecondValue();
+            System.out.println(productIdSet.size());
+
+
+            /* 成文规定 诸如category=value price>=<value */
+            if(Objects.equals(value, Column.category.name())){
+                categoryId = categoryService.getId(secondValue);
+                criteria.andCategoryIdEqualTo(categoryId);
+                continue;
+            }else{  /*属性键值对同上*/
+
+                List<ProductAttribute> attrList = Lists.newArrayList();
+
+                if(StringUtils.isNotBlank(categoryId)){
+
+                    /* 指定分类的属性 */
+                    attrList = attributeService.listProductAttributes(categoryId);
+                    Optional<String> optional = attrList.stream()
+                            .filter(e->e.getAttributeName().equals(value))
+                            .map(ProductAttribute::getId)
+                            .findFirst();
+                    String attrId = optional.get();
+
+                    /*包含指定属性的产品*/
+                    List<ProductAttributeDict> attrDictList = attributeDictService.listAttrDictByIdDict(attrId,secondValue);
+                    Set<String> ids = attrDictList.stream()
+                            .map(ProductAttributeDict::getProductId)
+                            .collect(Collectors.toSet());
+
+                    if (Boolean.FALSE.equals(init)){
+                        productIdSet.addAll(ids);
+                        init = true;
+                    } else {
+                        productIdSet.retainAll(ids);
+                    }
+
+                } else { /*如果没安排分类 那就是逻辑错误*/
+                    List<ProductAttributeDict> attrDictList = attributeDictService.listAttrDictByDict(value,secondValue);
+                    Set<String> ids = attrDictList.stream()
+                            .map(ProductAttributeDict::getProductId)
+                            .collect(Collectors.toSet());
+
+                    if (Boolean.FALSE.equals(init)){
+                        productIdSet.addAll(ids);
+                    } else {
+                        productIdSet.retainAll(ids);
+                    }
+                }
+
+            }
+
+        }
+        criteria.andIdIn(Lists.newArrayList(productIdSet));
+        return getProducts(pageRequest, example);
     }
 }
 

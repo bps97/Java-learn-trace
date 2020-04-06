@@ -1,6 +1,9 @@
 package cn.bps.heam.service;
 
+import cn.bps.common.lang.api.Filter;
+import cn.bps.common.lang.api.Page;
 import cn.bps.common.lang.domain.Ret;
+import cn.bps.heam.domain.PageRequest;
 import cn.bps.heam.domain.model.Product;
 import cn.bps.heam.domain.model.ProductAttribute;
 import cn.bps.heam.domain.model.ProductCategory;
@@ -88,6 +91,18 @@ public class ProductServiceTest {
         System.out.println(category.getCategoryName()+","+category.getCreateTime()+","+category.getId());
         int result = productCategoryService.saveProductCategory(category);
         System.out.println(result);
+    }
+
+
+    @Test
+    public void productFilter(){
+        Filter filter = Filter.condition();
+        filter.add(new Filter.Property("category","冰箱"));
+        filter.add(new Filter.Property("制冷方式", "风冷"));
+        filter.addEndWith("压缩机", "变频");
+        filter.addEndWith("箱门结构","对开门");
+        Page<Product> productPage = productService.pageProducts(new PageRequest(1, 100), filter);
+        System.out.println(JSON.toJSONString(productPage));
     }
 
 }

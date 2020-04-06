@@ -10,6 +10,9 @@ public interface ProductCategoryService {
 
     List<ProductCategory> listProductCategories();
 
+    String getId(String categoryName);
+
+    ProductCategory getCategoryByName(String categoryName);
 
     int saveProductCategory(ProductCategory category);
 

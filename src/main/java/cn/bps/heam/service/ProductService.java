@@ -2,6 +2,7 @@ package cn.bps.heam.service;
 
 
 import cn.bps.common.lang.api.Page;
+import cn.bps.common.lang.api.Filter;
 import cn.bps.heam.domain.PageRequest;
 import cn.bps.heam.domain.model.Product;
 
@@ -25,6 +26,8 @@ public interface ProductService {
     List<Product> listProducts();
 
     Page<Product> pageProducts(PageRequest pageRequest);
+
+    Page<Product> pageProducts(PageRequest pageRequest, Filter filter);
 
     int saveProduct(Product product);
 
