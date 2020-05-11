@@ -187,6 +187,12 @@ public class ProductServiceImpl implements ProductService {
             }
 
         }
+        if (Boolean.FALSE.equals(init)){
+
+            List<Product> onlyByCategory = productMapper.selectByExample(example);
+            productIdSet.addAll(onlyByCategory.stream().map(Product::getId).collect(Collectors.toSet()));
+            init = true;
+        }
         criteria.andIdIn(Lists.newArrayList(productIdSet));
         return getProducts(pageRequest, example);
     }

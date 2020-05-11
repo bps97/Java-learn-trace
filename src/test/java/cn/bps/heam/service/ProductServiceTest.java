@@ -35,6 +35,12 @@ public class ProductServiceTest {
     @Autowired
     private ProductService productService;
 
+    @Test
+    public void getProductCategoryName(){
+        ProductCategory result = productCategoryService.getCategoryByName("电视");
+        System.out.println(result.getCategoryName());
+    }
+
 
     @Test
     public void getProductAttributes(){

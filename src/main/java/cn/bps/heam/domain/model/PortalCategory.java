@@ -5,7 +5,9 @@ public class PortalCategory {
 
     private String refCategoryId;
 
-    private Byte portalIndex;
+    private Integer portalIndex;
+
+    private String categoryName;
 
     public String getId() {
         return id;
@@ -23,12 +25,20 @@ public class PortalCategory {
         this.refCategoryId = refCategoryId == null ? null : refCategoryId.trim();
     }
 
-    public Byte getPortalIndex() {
+    public Integer getPortalIndex() {
         return portalIndex;
     }
 
-    public void setPortalIndex(Byte portalIndex) {
+    public void setPortalIndex(Integer portalIndex) {
         this.portalIndex = portalIndex;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName == null ? null : categoryName.trim();
     }
 
     @Override
@@ -40,6 +50,7 @@ public class PortalCategory {
         sb.append(", id=").append(id);
         sb.append(", refCategoryId=").append(refCategoryId);
         sb.append(", portalIndex=").append(portalIndex);
+        sb.append(", categoryName=").append(categoryName);
         sb.append("]");
         return sb.toString();
     }

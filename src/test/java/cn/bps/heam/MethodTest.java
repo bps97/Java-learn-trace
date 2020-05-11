@@ -1,5 +1,6 @@
 package cn.bps.heam;
 
+import cn.bps.common.lang.util.EncryptUtils;
 import cn.bps.heam.dict.Column;
 import cn.bps.common.lang.api.Filter;
 import com.alibaba.fastjson.JSON;
@@ -16,6 +17,14 @@ public class MethodTest {
         String md5Password = DigestUtils.md5DigestAsHex(str.getBytes());
         System.out.println(md5Password);
         System.out.println(DigestUtils.md5DigestAsHex("abc1998".getBytes()).equals(md5Password));
+    }
+
+    @Test
+    public void sha1Test(){
+        String str = "abc1998";
+        String sha1Password = EncryptUtils.sha1Encrypt(str);
+        System.out.println(sha1Password);
+//        System.out.println(DigestUtils.md5DigestAsHex("abc1998".getBytes()).equals(sha1Password));
     }
 
     @Test
