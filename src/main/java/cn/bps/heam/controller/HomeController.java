@@ -8,6 +8,8 @@ import cn.bps.heam.domain.PageRequest;
 import cn.bps.heam.domain.model.PortalCategory;
 import cn.bps.heam.domain.model.Product;
 import cn.bps.heam.domain.model.ProductAttribute;
+import cn.bps.heam.domain.result.HomeProductResult;
+import cn.bps.heam.domain.result.ProductResult;
 import cn.bps.heam.service.PortalCategoryService;
 import cn.bps.heam.service.ProductAttributeService;
 import cn.bps.heam.service.ProductService;
@@ -40,19 +42,16 @@ public class HomeController {
 
     // 主页一些产品  建议延迟加载
     @PostMapping("/products")
-    public Ret<Page<Product>> homeProduct(){
+    public Ret<HomeProductResult> homeProduct(String categoryName){
 
-        PageRequest pageRequest = new PageRequest();
-        pageRequest.setPage(1);
-        pageRequest.setSize(5);
+
 
 //        List<PortalCategory> portalCategories = portalCategoryService.listPortalCategories();
 
         Filter filter = Filter.condition();
-//        for(PortalCategory category : portalCategories){
-            filter.addEqualTo(Column.category.name(), "冰箱");
-//        }
-        return Ret.ok(productService.pageProducts(pageRequest,filter));
+        filter.addEqualTo(Column.category.name(), categoryName);
+
+        return Ret.ok(productService.getHomeProduct(filter));
     }
 
 }

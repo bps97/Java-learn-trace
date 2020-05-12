@@ -117,11 +117,12 @@
                 enableUpdateByExample="false"
                 enableUpdateByPrimaryKey="false"
                 enableSelectByPrimaryKey="false"
-                enableSelectByExample="false"
+                enableSelectByExample="true"
                 selectByExampleQueryId="false"
-                enableCountByExample="false">
+                enableCountByExample="true">
             <property name="useActualColumnNames" value="false"/>
             <property name="my.isgen.usekeys" value="true"/>
+            <columnOverride column="portal_index" javaType="Integer"/>
         </table>
 
         <table  tableName="price" domainObjectName="Price"

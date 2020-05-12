@@ -6,11 +6,10 @@ import cn.bps.heam.dict.Column;
 import cn.bps.common.lang.api.Filter;
 import cn.bps.heam.domain.PageRequest;
 import cn.bps.heam.domain.model.*;
+import cn.bps.heam.domain.result.HomeProductResult;
+import cn.bps.heam.domain.result.ProductResult;
 import cn.bps.heam.mapper.ProductMapper;
-import cn.bps.heam.service.ProductAttributeDictService;
-import cn.bps.heam.service.ProductAttributeService;
-import cn.bps.heam.service.ProductCategoryService;
-import cn.bps.heam.service.ProductService;
+import cn.bps.heam.service.*;
 import cn.bps.common.lang.util.Generator;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -36,6 +35,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Resource
     private ProductCategoryService categoryService;
+
+    @Resource
+    private ResourceUriService resourceUriService;
 
 /**********************************************************************/
 
@@ -102,7 +104,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<Product> pageProducts(PageRequest pageRequest) {
+    public Page<ProductResult> pageProducts(PageRequest pageRequest) {
 
         ProductExample example = new ProductExample();
         example.createCriteria().andAvailableEqualTo(true);
@@ -110,10 +112,15 @@ public class ProductServiceImpl implements ProductService {
         return getProducts(pageRequest, example);
     }
 
-    private Page<Product> getProducts(PageRequest pageRequest, ProductExample example) {
+
+    private Page<ProductResult> getProducts(PageRequest pageRequest, ProductExample example) {
         List<Product> products = productMapper.selectByExampleWithRowbounds(example, pageRequest.rowBounds());
         long elementCount = productMapper.countByExample(example);
-        Page<Product> pageProducts = new Page<>(products);
+
+        // product ==> productResult
+        List<ProductResult> results = products.stream().map(e -> model2Result(e)).collect(Collectors.toList());
+
+        Page<ProductResult> pageProducts = new Page<>(results);
         pageProducts.setPage(pageRequest.getPage());
         pageProducts.setSize(pageRequest.getSize());
         pageProducts.setTotalElements(elementCount);
@@ -122,8 +129,16 @@ public class ProductServiceImpl implements ProductService {
         return pageProducts;
     }
 
+    private ProductResult model2Result(Product product) {
+        ProductResult result = new ProductResult();
+        result.setName(product.getProductName());
+        String imgUri = resourceUriService.getUri(product.getImgUriId());
+        result.setImg(imgUri);
+        return result;
+    }
+
     @Override
-    public Page<Product> pageProducts(PageRequest pageRequest, Filter filter) {
+    public Page<ProductResult> pageProducts(PageRequest pageRequest, Filter filter) {
 
 
         ProductExample example = new ProductExample();
@@ -195,6 +210,20 @@ public class ProductServiceImpl implements ProductService {
         }
         criteria.andIdIn(Lists.newArrayList(productIdSet));
         return getProducts(pageRequest, example);
+    }
+
+    @Override
+    public HomeProductResult getHomeProduct(Filter filter) {
+        PageRequest pageRequest = new PageRequest();
+        pageRequest.setPage(1);
+        pageRequest.setSize(5);
+
+        Page<ProductResult> pageProducts = pageProducts(pageRequest, filter);
+        HomeProductResult homeProductResult = new HomeProductResult();
+        String categoryName = filter.get(0).getSecondValue();
+        homeProductResult.setCategoryName(categoryName);
+        homeProductResult.setProducts(pageProducts.getContent());
+        return homeProductResult;
     }
 }
 
