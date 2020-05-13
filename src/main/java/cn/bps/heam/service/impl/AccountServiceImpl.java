@@ -9,7 +9,6 @@ import cn.bps.heam.domain.model.AccountExample;
 import cn.bps.heam.mapper.AccountMapper;
 import cn.bps.heam.service.AccountService;
 import org.springframework.stereotype.Service;
-import org.springframework.util.DigestUtils;
 
 import javax.annotation.Resource;
 import java.util.List;

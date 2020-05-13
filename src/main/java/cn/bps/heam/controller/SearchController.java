@@ -5,6 +5,7 @@ import cn.bps.common.lang.domain.Ret;
 import cn.bps.heam.domain.PageRequest;
 import cn.bps.heam.domain.model.Product;
 import cn.bps.heam.domain.result.ProductResult;
+import cn.bps.heam.service.ProductInstanceService;
 import cn.bps.heam.service.ProductService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,11 +18,11 @@ import javax.annotation.Resource;
 public class SearchController {
 
     @Resource
-    private ProductService productService;
+    private ProductInstanceService productInstanceService;
 
     @PostMapping("/products")
     public Ret<Page<ProductResult>> pageProduct(PageRequest pageRequest){
-        return Ret.ok(productService.pageProducts(pageRequest));
+        return Ret.ok(productInstanceService.pageProducts(pageRequest));
     }
 
 }

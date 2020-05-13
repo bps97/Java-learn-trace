@@ -1,10 +1,8 @@
 package cn.bps.heam.service.impl;
 
 
-import cn.bps.heam.domain.model.ProductAttribute;
 import cn.bps.heam.domain.model.ProductAttributeDict;
 import cn.bps.heam.domain.model.ProductAttributeDictExample;
-import cn.bps.heam.domain.model.ProductAttributeExample;
 import cn.bps.heam.mapper.ProductAttributeDictMapper;
 import cn.bps.heam.service.ProductAttributeDictService;
 import cn.bps.common.lang.util.Generator;
@@ -12,7 +10,6 @@ import com.google.common.collect.Lists;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;

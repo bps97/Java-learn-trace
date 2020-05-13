@@ -9,16 +9,14 @@ import cn.bps.heam.domain.model.PortalCategory;
 import cn.bps.heam.domain.model.Product;
 import cn.bps.heam.domain.model.ProductAttribute;
 import cn.bps.heam.domain.result.HomeProductResult;
-import cn.bps.heam.domain.result.ProductResult;
 import cn.bps.heam.service.PortalCategoryService;
 import cn.bps.heam.service.ProductAttributeService;
-import cn.bps.heam.service.ProductService;
+import cn.bps.heam.service.ProductInstanceService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 public class HomeController {
@@ -27,7 +25,7 @@ public class HomeController {
     private ProductAttributeService productAttributeService;
 
     @Resource
-    private ProductService productService;
+    private ProductInstanceService productInstanceService;
 
     @Resource
     private PortalCategoryService portalCategoryService;
@@ -51,7 +49,7 @@ public class HomeController {
         Filter filter = Filter.condition();
         filter.addEqualTo(Column.category.name(), categoryName);
 
-        return Ret.ok(productService.getHomeProduct(filter));
+        return Ret.ok(productInstanceService.getHomeProduct(filter));
     }
 
 }

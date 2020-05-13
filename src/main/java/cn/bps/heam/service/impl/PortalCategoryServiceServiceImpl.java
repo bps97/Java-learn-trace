@@ -3,7 +3,6 @@ package cn.bps.heam.service.impl;
 import cn.bps.common.lang.util.Generator;
 import cn.bps.heam.domain.model.PortalCategory;
 import cn.bps.heam.domain.model.PortalCategoryExample;
-import cn.bps.heam.domain.model.Product;
 import cn.bps.heam.domain.model.ProductCategory;
 import cn.bps.heam.mapper.PortalCategoryMapper;
 import cn.bps.heam.service.PortalCategoryService;

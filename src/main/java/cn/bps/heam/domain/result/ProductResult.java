@@ -7,12 +7,15 @@ import java.math.BigDecimal;
 public class ProductResult {
     private String name;
 
+    @Label("USP(Unique Selling Proposition)")private String usp;
+
     private BigDecimal price;
 
-    @Label("产品ID对应uri")
-    private String uri;
+    @Label("产品ID对应uri")private String uri;
 
     private String img;
+
+
 
     public String getName() {
         return name;
@@ -20,6 +23,14 @@ public class ProductResult {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUsp() {
+        return usp;
+    }
+
+    public void setUsp(String usp) {
+        this.usp = usp;
     }
 
     public BigDecimal getPrice() {

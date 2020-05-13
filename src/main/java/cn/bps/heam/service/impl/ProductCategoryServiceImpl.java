@@ -1,6 +1,5 @@
 package cn.bps.heam.service.impl;
 
-import cn.bps.heam.domain.model.Product;
 import cn.bps.heam.domain.model.ProductCategory;
 import cn.bps.heam.domain.model.ProductCategoryExample;
 import cn.bps.heam.mapper.ProductCategoryMapper;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
