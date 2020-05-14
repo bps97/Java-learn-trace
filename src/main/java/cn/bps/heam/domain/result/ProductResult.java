@@ -11,7 +11,7 @@ public class ProductResult {
 
     private BigDecimal price;
 
-    @Label("产品ID对应uri")private String uri;
+    private String productId;
 
     private String img;
 
@@ -41,12 +41,12 @@ public class ProductResult {
         this.price = price;
     }
 
-    public String getUri() {
-        return uri;
+    public String getProductId() {
+        return productId;
     }
 
-    public void setUri(String uri) {
-        this.uri = uri;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public String getImg() {

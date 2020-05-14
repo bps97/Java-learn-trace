@@ -1,8 +1,13 @@
 package cn.bps.heam.domain.form;
 
+import javax.validation.constraints.NotEmpty;
+
 public class UserForm {
+
+    @NotEmpty
     private String username;
 
+    @NotEmpty
     private String password;
 
     public String getUsername() {

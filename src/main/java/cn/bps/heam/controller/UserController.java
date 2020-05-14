@@ -8,17 +8,23 @@ import cn.bps.heam.domain.result.UserInfoResult;
 import cn.bps.heam.service.AccountService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 @Label("用户模块")
 @RestController
+@RequestMapping("/search")
 public class UserController {
 
     @Resource
     private AccountService accountService;
 
-    @Label("用户注册")
+    /**
+     * @Label("用户注册")
+     * @param userForm  用户表单
+     * @return
+     */
     @PostMapping("/reg")
     public Ret userRegister(UserForm userForm){
         accountService.userRegister(userForm);
@@ -37,7 +43,7 @@ public class UserController {
 
 
     @Label("获取用户信息")
-    @GetMapping
+    @PostMapping("/info")
     public Ret<UserInfoResult> getUserInfo(UserInfoForm userInfoForm) {
         return Ret.ok();
     }

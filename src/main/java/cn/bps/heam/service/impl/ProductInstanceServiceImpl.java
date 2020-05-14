@@ -32,13 +32,10 @@ public class ProductInstanceServiceImpl implements ProductInstanceService {
     private ProductInstanceMapper productInstanceMapper;
 
     @Resource
-    private ProductAttributeDictService attributeDictService;
+    private AttributeService attributeService;
 
     @Resource
-    private ProductAttributeService attributeService;
-
-    @Resource
-    private ProductCategoryService categoryService;
+    private CategoryService categoryService;
 
     @Resource
     private ResourceUriService resourceUriService;
@@ -113,10 +110,11 @@ public class ProductInstanceServiceImpl implements ProductInstanceService {
 
     private ProductResult model2Result(ProductInstance productInstance) {
         ProductResult result = new ProductResult();
-        result.setName(productInstance.getProductName());
-        result.setPrice(productInstance.getPrice());
         String imgUri = resourceUriService.getUri(productInstance.getImgUriId());
         result.setImg(imgUri);
+        result.setName(productInstance.getProductName());
+        result.setPrice(productInstance.getPrice());
+        result.setProductId(productInstance.getProductId());
         return result;
     }
 
@@ -142,7 +140,7 @@ public class ProductInstanceServiceImpl implements ProductInstanceService {
 
             /* 成文规定 诸如category=value price>=<value */
             if(Objects.equals(value, Column.category.name())){
-                categoryId = categoryService.getId(secondValue);
+                categoryId = categoryService.getCategoryId(secondValue);
                 criteria.andCategoryIdEqualTo(categoryId);
                 classify = true;
                 continue;
@@ -162,7 +160,7 @@ public class ProductInstanceServiceImpl implements ProductInstanceService {
                     String attrId = optional.get();
 
                     /*包含指定属性的产品*/
-                    List<ProductAttributeDict> attrDictList = attributeDictService.listAttrDictByIdDict(attrId,secondValue);
+                    List<ProductAttributeDict> attrDictList = attributeService.listAttrDictByIdDict(attrId,secondValue);
                     Set<String> ids = attrDictList.stream()
                             .map(ProductAttributeDict::getProductId)
                             .collect(Collectors.toSet());
@@ -175,7 +173,7 @@ public class ProductInstanceServiceImpl implements ProductInstanceService {
                     }
 
                 } else { /*如果没安排分类 那就是逻辑错误*/
-                    List<ProductAttributeDict> attrDictList = attributeDictService.listAttrDictByDict(value,secondValue);
+                    List<ProductAttributeDict> attrDictList = attributeService.listAttrDictByDict(value,secondValue);
                     Set<String> ids = attrDictList.stream()
                             .map(ProductAttributeDict::getProductId)
                             .collect(Collectors.toSet());

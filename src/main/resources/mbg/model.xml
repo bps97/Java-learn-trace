@@ -273,5 +273,22 @@
             <property name="my.isgen.usekeys" value="true"/>
             <columnOverride column="create_time" jdbcType="TIMESTAMP"/>
         </table>
+        <!--商业广告-->
+        <table  tableName="commercial" domainObjectName="Commercial"
+                enableInsert="true"
+                enableDeleteByExample="true"
+                enableDeleteByPrimaryKey="false"
+                enableUpdateByExample="true"
+                enableUpdateByPrimaryKey="false"
+                enableSelectByPrimaryKey="true"
+                enableSelectByExample="true"
+                selectByExampleQueryId="false"
+                enableCountByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <property name="my.isgen.usekeys" value="true"/>
+            <columnOverride column="create_time" jdbcType="TIMESTAMP"/>
+            <columnOverride column="portal_index" javaType="Integer"/>
+        </table>
+
     </context>
 </generatorConfiguration>

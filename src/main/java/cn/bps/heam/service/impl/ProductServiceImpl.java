@@ -28,13 +28,10 @@ public class ProductServiceImpl implements ProductService {
     private ProductMapper productMapper;
 
     @Resource
-    private ProductAttributeDictService attributeDictService;
+    private AttributeService attributeService;
 
     @Resource
-    private ProductAttributeService attributeService;
-
-    @Resource
-    private ProductCategoryService categoryService;
+    private CategoryService categoryService;
 
     @Resource
     private ResourceUriService resourceUriService;
@@ -50,7 +47,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Map<String, String> getAttributeDict(String productId) {
-        return attributeDictService.getAttributeDict(productId);
+        return attributeService.getAttributeDict(productId);
     }
 
     @Override
@@ -156,7 +153,7 @@ public class ProductServiceImpl implements ProductService {
 
             /* 成文规定 诸如category=value price>=<value */
             if(Objects.equals(value, Column.category.name())){
-                categoryId = categoryService.getId(secondValue);
+                categoryId = categoryService.getCategoryId(secondValue);
                 criteria.andCategoryIdEqualTo(categoryId);
                 continue;
             }else{  /*属性键值对同上*/
@@ -174,7 +171,7 @@ public class ProductServiceImpl implements ProductService {
                     String attrId = optional.get();
 
                     /*包含指定属性的产品*/
-                    List<ProductAttributeDict> attrDictList = attributeDictService.listAttrDictByIdDict(attrId,secondValue);
+                    List<ProductAttributeDict> attrDictList = attributeService.listAttrDictByIdDict(attrId,secondValue);
                     Set<String> ids = attrDictList.stream()
                             .map(ProductAttributeDict::getProductId)
                             .collect(Collectors.toSet());
@@ -187,7 +184,7 @@ public class ProductServiceImpl implements ProductService {
                     }
 
                 } else { /*如果没安排分类 那就是逻辑错误*/
-                    List<ProductAttributeDict> attrDictList = attributeDictService.listAttrDictByDict(value,secondValue);
+                    List<ProductAttributeDict> attrDictList = attributeService.listAttrDictByDict(value,secondValue);
                     Set<String> ids = attrDictList.stream()
                             .map(ProductAttributeDict::getProductId)
                             .collect(Collectors.toSet());

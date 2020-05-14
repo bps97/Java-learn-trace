@@ -1,0 +1,255 @@
+{
+  "info" : {
+    "name" : "ssm-heam",
+    "_postman_id" : "ssm-heam",
+    "description" : "接口文档",
+    "schema" : "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item" : [ {
+    "name" : " 运营端 ",
+    "item" : [ {
+      "id" : "37cf6762-2431-42df-8e5b-89568f079b35",
+      "name" : "addPortalCategory",
+      "request" : {
+        "url" : {
+          "protocol" : "http",
+          "host" : "{{host}}",
+          "path" : "/admin/portal/add",
+          "query" : [ ]
+        },
+        "method" : "POST",
+        "header" : [ ],
+        "body" : {
+          "urlencoded" : [ ],
+          "formdata" : [ ]
+        }
+      },
+      "response" : [ {
+        "name" : "200 OK",
+        "originalRequest" : {
+          "url" : {
+            "protocol" : "http",
+            "host" : "{{host}}",
+            "path" : "/admin/portal/add",
+            "query" : [ ]
+          },
+          "method" : "POST",
+          "header" : [ ],
+          "body" : {
+            "urlencoded" : [ ],
+            "formdata" : [ ]
+          }
+        },
+        "header" : [ ],
+        "body" : "{\r\n  \"code\" : 0,\r\n  \"message\" : \"\",\r\n  \"timestamp\" : \"\",\r\n  \"action\" : \"\"\r\n}",
+        "status" : "OK",
+        "code" : 200,
+        "_postman_previewlanguage" : "json"
+      } ]
+    } ]
+  }, {
+    "name" : " 门户首页 ",
+    "item" : [ {
+      "id" : "0ba00723-a7c5-4895-9bae-32ff67b232a9",
+      "name" : "listProductAttributes",
+      "request" : {
+        "url" : {
+          "protocol" : "http",
+          "host" : "{{host}}",
+          "path" : "/attrs",
+          "query" : [ ]
+        },
+        "method" : "POST",
+        "header" : [ ],
+        "body" : {
+          "urlencoded" : [ ],
+          "formdata" : [ ]
+        }
+      },
+      "response" : [ {
+        "name" : "200 OK",
+        "originalRequest" : {
+          "url" : {
+            "protocol" : "http",
+            "host" : "{{host}}",
+            "path" : "/attrs",
+            "query" : [ ]
+          },
+          "method" : "POST",
+          "header" : [ ],
+          "body" : {
+            "urlencoded" : [ ],
+            "formdata" : [ ]
+          }
+        },
+        "header" : [ ],
+        "body" : "{\r\n  \"code\" : 0,\r\n  \"message\" : \"\",\r\n  \"content\" : [ {\r\n    \"id\" : \"\",\r\n    \"attributeName\" : \"\",\r\n    \"categoryId\" : \"\",\r\n    \"createTime\" : \"\",\r\n    \"updateTime\" : \"\"\r\n  } ],\r\n  \"timestamp\" : \"\",\r\n  \"action\" : \"\"\r\n}",
+        "status" : "OK",
+        "code" : 200,
+        "_postman_previewlanguage" : "json"
+      } ]
+    }, {
+      "id" : "21bd7152-ff16-4f02-b414-e97ad323aeca",
+      "name" : "homeProduct",
+      "request" : {
+        "url" : {
+          "protocol" : "http",
+          "host" : "{{host}}",
+          "path" : "/products",
+          "query" : [ ]
+        },
+        "method" : "POST",
+        "header" : [ ],
+        "body" : {
+          "urlencoded" : [ ],
+          "formdata" : [ ]
+        }
+      },
+      "response" : [ {
+        "name" : "200 OK",
+        "originalRequest" : {
+          "url" : {
+            "protocol" : "http",
+            "host" : "{{host}}",
+            "path" : "/products",
+            "query" : [ ]
+          },
+          "method" : "POST",
+          "header" : [ ],
+          "body" : {
+            "urlencoded" : [ ],
+            "formdata" : [ ]
+          }
+        },
+        "header" : [ ],
+        "body" : "{\r\n  \"code\" : 0,\r\n  \"message\" : \"\",\r\n  \"content\" : {\r\n    \"categoryName\" : \"\",\r\n    \"products\" : [ {\r\n      \"name\" : \"\",\r\n      \"usp\" : \"\",\r\n      \"price\" : 0,\r\n      \"productId\" : \"\",\r\n      \"img\" : \"\"\r\n    } ]\r\n  },\r\n  \"timestamp\" : \"\",\r\n  \"action\" : \"\"\r\n}",
+        "status" : "OK",
+        "code" : 200,
+        "_postman_previewlanguage" : "json"
+      } ]
+    } ]
+  }, {
+    "name" : "检索页",
+    "item" : [ {
+      "id" : "fc0ad745-c912-42a3-8539-fb5ce42aa3b4",
+      "name" : "pageProduct",
+      "request" : {
+        "url" : {
+          "protocol" : "http",
+          "host" : "{{host}}",
+          "path" : "/search/products",
+          "query" : [ ]
+        },
+        "method" : "POST",
+        "header" : [ ],
+        "body" : {
+          "urlencoded" : [ ],
+          "formdata" : [ ]
+        }
+      },
+      "response" : [ {
+        "name" : "200 OK",
+        "originalRequest" : {
+          "url" : {
+            "protocol" : "http",
+            "host" : "{{host}}",
+            "path" : "/search/products",
+            "query" : [ ]
+          },
+          "method" : "POST",
+          "header" : [ ],
+          "body" : {
+            "urlencoded" : [ ],
+            "formdata" : [ ]
+          }
+        },
+        "header" : [ ],
+        "body" : "{\r\n  \"code\" : 0,\r\n  \"message\" : \"\",\r\n  \"content\" : {\r\n    \"content\" : [ ],\r\n    \"totalElements\" : 0,\r\n    \"size\" : 0,\r\n    \"page\" : 0,\r\n    \"sort\" : {\r\n      \"orderList\" : \"new ArrayList<>()\"\r\n    }\r\n  },\r\n  \"timestamp\" : \"\",\r\n  \"action\" : \"\"\r\n}",
+        "status" : "OK",
+        "code" : 200,
+        "_postman_previewlanguage" : "json"
+      } ]
+    } ]
+  }, {
+    "name" : "UserController",
+    "item" : [ {
+      "id" : "40132730-d2a7-4e34-b528-908e9adef2c5",
+      "name" : "userRegister",
+      "request" : {
+        "url" : {
+          "protocol" : "http",
+          "host" : "{{host}}",
+          "path" : "/search/reg",
+          "query" : [ ]
+        },
+        "method" : "POST",
+        "header" : [ ],
+        "body" : {
+          "urlencoded" : [ ],
+          "formdata" : [ ]
+        }
+      },
+      "response" : [ {
+        "name" : "200 OK",
+        "originalRequest" : {
+          "url" : {
+            "protocol" : "http",
+            "host" : "{{host}}",
+            "path" : "/search/reg",
+            "query" : [ ]
+          },
+          "method" : "POST",
+          "header" : [ ],
+          "body" : {
+            "urlencoded" : [ ],
+            "formdata" : [ ]
+          }
+        },
+        "header" : [ ],
+        "body" : "{\r\n  \"code\" : 0,\r\n  \"message\" : \"\",\r\n  \"timestamp\" : \"\",\r\n  \"action\" : \"\"\r\n}",
+        "status" : "OK",
+        "code" : 200,
+        "_postman_previewlanguage" : "json"
+      } ]
+    }, {
+      "id" : "05d7d87f-1d4d-4271-924b-5286e810682d",
+      "name" : "getUserInfo",
+      "request" : {
+        "url" : {
+          "protocol" : "http",
+          "host" : "{{host}}",
+          "path" : "/search/info",
+          "query" : [ ]
+        },
+        "method" : "POST",
+        "header" : [ ],
+        "body" : {
+          "urlencoded" : [ ],
+          "formdata" : [ ]
+        }
+      },
+      "response" : [ {
+        "name" : "200 OK",
+        "originalRequest" : {
+          "url" : {
+            "protocol" : "http",
+            "host" : "{{host}}",
+            "path" : "/search/info",
+            "query" : [ ]
+          },
+          "method" : "POST",
+          "header" : [ ],
+          "body" : {
+            "urlencoded" : [ ],
+            "formdata" : [ ]
+          }
+        },
+        "header" : [ ],
+        "body" : "{\r\n  \"code\" : 0,\r\n  \"message\" : \"\",\r\n  \"content\" : {\r\n    \"id\" : \"\",\r\n    \"username\" : \"\",\r\n    \"password\" : \"\",\r\n    \"nickname\" : \"\",\r\n    \"avatar\" : {\r\n      \"id\" : \"\",\r\n      \"uri\" : \"\"\r\n    },\r\n    \"userSex\" : \"\",\r\n    \"cellphoneNum\" : \"\",\r\n    \"userEmail\" : \"\"\r\n  },\r\n  \"timestamp\" : \"\",\r\n  \"action\" : \"\"\r\n}",
+        "status" : "OK",
+        "code" : 200,
+        "_postman_previewlanguage" : "json"
+      } ]
+    } ]
+  } ]
+}

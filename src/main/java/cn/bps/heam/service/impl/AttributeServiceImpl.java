@@ -1,10 +1,10 @@
 package cn.bps.heam.service.impl;
 
 
-import cn.bps.heam.domain.model.ProductAttributeDict;
-import cn.bps.heam.domain.model.ProductAttributeDictExample;
+import cn.bps.heam.domain.model.*;
 import cn.bps.heam.mapper.ProductAttributeDictMapper;
-import cn.bps.heam.service.ProductAttributeDictService;
+import cn.bps.heam.mapper.ProductAttributeMapper;
+import cn.bps.heam.service.AttributeService;
 import cn.bps.common.lang.util.Generator;
 import com.google.common.collect.Lists;
 import org.springframework.stereotype.Service;
@@ -15,16 +15,62 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-@Service
-public class ProductAttributeDictServiceImpl implements ProductAttributeDictService {
 
+@Service
+public class AttributeServiceImpl implements AttributeService {
+
+    @Resource
+    private ProductAttributeMapper productAttributeMapper;
 
     @Resource
     private ProductAttributeDictMapper attributeDictMapper;
 
-
 /**********************************************************************/
 
+
+    @Override
+    public List<ProductAttribute> listProductAttributes() {
+        return productAttributeMapper.selectByExample(new ProductAttributeExample());
+    }
+
+    @Override
+    public List<ProductAttribute> listProductAttributes(ProductCategory category) {
+        return listProductAttributes(category.getId());
+    }
+
+    @Override
+    public List<ProductAttribute> listProductAttributes(String categoryId) {
+        ProductAttributeExample productAttributeExample = new ProductAttributeExample();
+        productAttributeExample.createCriteria().andAvailableEqualTo(true).andCategoryIdEqualTo(categoryId);
+        return productAttributeMapper.selectByExample(productAttributeExample);
+
+    }
+
+
+    @Override
+    public int saveProductAttribute(ProductAttribute attribute) {
+        int result; // default=0
+        try{
+            result = productAttributeMapper.insert(attribute);
+        }catch (org.springframework.dao.DuplicateKeyException e){ // 如果key重复
+            String newUUID;
+            List<String> uuidList = listProductAttributes().stream().map(ProductAttribute::getId).collect(Collectors.toList());
+            do {
+                newUUID = Generator.getUUID();
+            }while (uuidList.contains(newUUID));
+            attribute.setId(newUUID);
+            result = productAttributeMapper.insert(attribute);
+        }
+        return result;
+    }
+
+
+    @Override
+    public int updateProductAttribute(ProductAttribute attribute) {
+        return productAttributeMapper.updateByPrimaryKeySelective(attribute);
+    }
+
+    /**************************************************************************/
 
     @Override
     public Map<String, String> getAttributeDict(String productId) {
@@ -95,4 +141,3 @@ public class ProductAttributeDictServiceImpl implements ProductAttributeDictServ
         return 0;
     }
 }
-

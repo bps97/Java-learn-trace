@@ -25,20 +25,17 @@ import java.util.Map;
 public class ProductServiceTest {
 
     @Autowired
-    private ProductCategoryService productCategoryService;
+    private CategoryService categoryService;
 
     @Autowired
-    private ProductAttributeService productAttributeService;
-
-    @Autowired
-    private ProductAttributeDictService productAttributeDictService;
+    private AttributeService attributeService;
 
     @Autowired
     private ProductService productService;
 
     @Test
     public void getProductCategoryName(){
-        ProductCategory result = productCategoryService.getCategoryByName("电视");
+        ProductCategory result = categoryService.getCategoryByName("电视");
         System.out.println(result.getCategoryName());
     }
 
@@ -69,7 +66,7 @@ public class ProductServiceTest {
     @Test
     public void  listProductAttributes(){
 
-        List<ProductAttribute> productAttributes = productAttributeService.listProductAttributes();
+        List<ProductAttribute> productAttributes = attributeService.listProductAttributes();
         Ret<List<ProductAttribute>> ret = Ret.ok(productAttributes);
         System.out.println(JSON.toJSONString(ret));
         System.out.println(JSON.toJSONString(Ret.error()));
@@ -79,7 +76,7 @@ public class ProductServiceTest {
     @Test
     public void categoryTest(){
 
-        List<ProductCategory> categories = productCategoryService.listProductCategories();
+        List<ProductCategory> categories = categoryService.listProductCategories();
         for(ProductCategory category : categories){
             System.out.println(category.getCategoryName()+","+category.getCreateTime()+","+category.getId());
         }
@@ -89,15 +86,15 @@ public class ProductServiceTest {
 //        System.out.println(Generator.now());
 
         ProductCategory category = new ProductCategory();
-        category.setId("2b0e6a5c54b848d6a315d3ab");
+        category.setId(uuid);
         category.setCategoryName("吹风机");
         category.setAvailable(true);
         category.setCreateTime(new Date());
         category.setUpdateTime(new Date());
 
         System.out.println(category.getCategoryName()+","+category.getCreateTime()+","+category.getId());
-        int result = productCategoryService.saveProductCategory(category);
-        System.out.println(result);
+//        int result = categoryService.saveProductCategory(category);
+//        System.out.println(result);
     }
 
 

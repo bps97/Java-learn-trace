@@ -185,6 +185,26 @@
                     </resources>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>com.github.apiggs</groupId>
+                <artifactId>apiggs-maven-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>apiggs</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <production>api</production>
+                    <out>src/main/resources/static</out>
+                    <description>接口文档</description>
+                </configuration>
+            </plugin>
+
         </plugins>
         <resources>
             <resource>
