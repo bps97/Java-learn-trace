@@ -1,11 +1,13 @@
 package cn.bps.heam.controller;
 
+import cn.bps.common.lang.LocalBizServiceException;
 import cn.bps.common.lang.annotation.Label;
 import cn.bps.common.lang.domain.Ret;
 import cn.bps.heam.domain.form.UserForm;
 import cn.bps.heam.domain.form.UserInfoForm;
 import cn.bps.heam.domain.result.UserInfoResult;
 import cn.bps.heam.service.AccountService;
+import org.apache.tomcat.util.buf.UEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +29,11 @@ public class UserController {
      */
     @PostMapping("/reg")
     public Ret userRegister(UserForm userForm){
-        accountService.userRegister(userForm);
-        return Ret.ok();
+        try {
+            return Ret.ok();
+        }catch (LocalBizServiceException e){
+            return Ret.error().message(e.getCustomizeExceptionCode().getName());
+        }
     }
 
     @Label("修改用户密码")
@@ -41,6 +46,15 @@ public class UserController {
         return Ret.ok();
     }
 
+    @Label("登录")
+    public Ret login(UserForm userForm) {
+        try {
+            accountService.login(userForm);
+            return Ret.ok();
+        }catch (LocalBizServiceException e){
+            return Ret.error().message(e.getCustomizeExceptionCode().getName());
+        }
+    }
 
     @Label("获取用户信息")
     @PostMapping("/info")

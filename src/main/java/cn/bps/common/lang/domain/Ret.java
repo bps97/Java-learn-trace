@@ -65,6 +65,10 @@ public class Ret<D> {
         return result;
     }
 
+    public <T> Ret<T> message(String message){
+       this.message = message;
+       return (Ret<T>) this;
+    }
 
     public Integer getCode() {
         return code;

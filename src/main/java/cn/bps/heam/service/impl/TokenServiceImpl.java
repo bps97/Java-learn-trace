@@ -1,9 +1,10 @@
-package cn.bps.security.server.service.impl;
+package cn.bps.heam.service.impl;
 
 import cn.bps.common.lang.security.Subject;
 import cn.bps.security.server.service.TokenService;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public class TokenServiceImpl implements TokenService{
 
     private int accessTokenExpSeconds;
