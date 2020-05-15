@@ -193,7 +193,7 @@
                 enableSelectByPrimaryKey="true"
                 enableSelectByExample="true"
                 selectByExampleQueryId="false"
-                enableCountByExample="false">
+                enableCountByExample="true">
             <property name="useActualColumnNames" value="false"/>
             <property name="my.isgen.usekeys" value="true"/>
             <columnOverride column="create_time" jdbcType="TIMESTAMP"/>

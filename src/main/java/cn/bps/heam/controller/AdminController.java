@@ -26,8 +26,7 @@ public class AdminController {
      */
     @PostMapping("/portal/add")
     public Ret addPortalCategory(@NotEmpty String categoryName){
-        ProductCategory productCategory = categoryService.getCategoryByName(categoryName);
-        categoryService.savePortalCategory(productCategory);
+        categoryService.savePortalCategory(categoryName);
         return Ret.ok();
     }
 

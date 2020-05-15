@@ -66,6 +66,6 @@ public class AccountServiceImpl implements AccountService {
         AccountExample accountExample = new AccountExample();
         accountExample.createCriteria().andUsernameEqualTo(username);
         List<Account> list = accountMapper.selectByExample(accountExample);
-        return Objects.nonNull(list) ? list.get(0) : null;
+        return Objects.nonNull(list) && list.isEmpty() == false ? list.get(0) : null;
     }
 }

@@ -6,7 +6,9 @@ public enum CustomizeExceptionCode {
     COMMERCIAL_NOT_EXIST("commercial not exist","广告不存在"),
     CATEGORY_NOT_EXIST("category not exist","分类不存在"),
     ACCOUNT_NOT_EXIST("account not exit", "账户不存在"),
-    PASSWORD_NOT_INCORRECT("password not incorrect", "密码错误");
+    PASSWORD_NOT_INCORRECT("password not incorrect", "密码错误"),
+    INSERT_DATA_FAIL("insert data fail", "插入数据失败"),
+    UPDATE_FAIL("update data fail", "更新数据失败");
 
     private final String name;
     private final String info;

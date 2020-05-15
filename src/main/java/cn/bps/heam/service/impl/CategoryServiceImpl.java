@@ -27,7 +27,7 @@ public class CategoryServiceImpl implements CategoryService {
     private PortalCategoryMapper portalCategoryMapper;
 
 
-/**********************************************************************/
+    /**********************************************************************/
 
 
     public List<ProductCategory> listProductCategories() {
@@ -44,33 +44,44 @@ public class CategoryServiceImpl implements CategoryService {
         ProductCategoryExample example = new ProductCategoryExample();
         example.createCriteria().andCategoryNameEqualTo(categoryName);
         List<ProductCategory> list = productCategoryMapper.selectByExample(example);
-        if(Objects.isNull(list) || list.isEmpty())
-            throw new LocalBizServiceException(CustomizeExceptionCode.CATEGORY_NOT_EXIST,categoryName);
+        if (Objects.isNull(list) || list.isEmpty())
+            throw new LocalBizServiceException(CustomizeExceptionCode.CATEGORY_NOT_EXIST, categoryName);
         return list.get(0);
     }
 
 
     @Override
-    public int saveProductCategory(ProductCategory category) {
+    public void saveProductCategory(ProductCategory category) {
 
         int result;
-        try{
+        try {
             result = productCategoryMapper.insertSelective(category);
-        }catch (org.springframework.dao.DuplicateKeyException e){ // 如果key重复
-            String newUUID;
-            List<String> uuidList = listProductCategories().stream().map(ProductCategory::getId).collect(Collectors.toList());
-            do {
-                newUUID = Generator.getUUID();
-            }while (uuidList.contains(newUUID));
+        } catch (org.springframework.dao.DuplicateKeyException e) { // 如果key重复
+            String newUUID = getNewUuid();
             category.setId(newUUID);
             result = productCategoryMapper.insertSelective(category);
         }
-        return result;
+        if (result != 1)
+            throw new LocalBizServiceException(CustomizeExceptionCode.INSERT_DATA_FAIL);;
+    }
+
+    private String getNewUuid() {
+        String newUUID;
+        long count = 0L;
+        do {
+            newUUID = Generator.getUUID();
+            ProductCategoryExample productCategoryExample = new ProductCategoryExample();
+            productCategoryExample.createCriteria().andIdEqualTo(newUUID);
+            count = countProductCategory(productCategoryExample);
+        } while (count == 1);
+        return newUUID;
     }
 
     @Override
-    public int updateProductCategory(ProductCategory category) {
-        return productCategoryMapper.updateByPrimaryKeySelective(category);
+    public void updateProductCategory(ProductCategory category) {
+        int result = productCategoryMapper.updateByPrimaryKeySelective(category);
+        if (result != 1)
+            throw new LocalBizServiceException(CustomizeExceptionCode.UPDATE_FAIL);
     }
 
 
@@ -82,36 +93,56 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public int savePortalCategory(PortalCategory portalCategory) {
+    public void savePortalCategory(PortalCategory portalCategory) {
         int result;
-        try{
+        try {
             result = portalCategoryMapper.insert(portalCategory);
-        }catch (org.springframework.dao.DuplicateKeyException e){ // 如果key重复
+        } catch (org.springframework.dao.DuplicateKeyException e) { // 如果key重复
             String newUUID;
             List<String> uuidList = listPortalCategories().stream().map(PortalCategory::getId).collect(Collectors.toList());
             do {
                 newUUID = Generator.getUUID();
-            }while (uuidList.contains(newUUID));
+            } while (uuidList.contains(newUUID));
             portalCategory.setId(newUUID);
             result = portalCategoryMapper.insert(portalCategory);
         }
-        return result;
+        if (result != 1)
+            throw new LocalBizServiceException(CustomizeExceptionCode.INSERT_DATA_FAIL);
     }
 
     @Override
-    public int savePortalCategory(ProductCategory productCategory) {
+    public void savePortalCategory(ProductCategory productCategory) {
+        savePortalCategory(product2Portal(productCategory));
+    }
+
+    private PortalCategory product2Portal(ProductCategory productCategory) {
         PortalCategory portalCategory = new PortalCategory();
         portalCategory.setCategoryName(productCategory.getCategoryName());
-        portalCategory.setPortalIndex((int)count()+1);
+        portalCategory.setPortalIndex((int) countPortalCategory() + 1);
         portalCategory.setRefCategoryId(productCategory.getId());
         portalCategory.setId(Generator.getUUID());
-        return savePortalCategory(portalCategory);
+        return portalCategory;
     }
 
     @Override
-    public long count() {
+    public void savePortalCategory(String categoryName) {
+        ProductCategory productCategory = getCategoryByName(categoryName);
+        savePortalCategory(productCategory);
+    }
 
+    @Override
+    public long countPortalCategory() {
         return portalCategoryMapper.countByExample(new PortalCategoryExample());
+    }
+
+    @Override
+    public long countProductCategory() {
+        return countProductCategory(new ProductCategoryExample());
+    }
+
+    @Override
+    public long countProductCategory(ProductCategoryExample example) {
+        return productCategoryMapper.countByExample(example);
     }
 
 

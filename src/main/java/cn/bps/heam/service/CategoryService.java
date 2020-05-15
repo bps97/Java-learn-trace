@@ -3,6 +3,8 @@ package cn.bps.heam.service;
 
 import cn.bps.heam.domain.model.PortalCategory;
 import cn.bps.heam.domain.model.ProductCategory;
+import cn.bps.heam.domain.model.ProductCategoryExample;
+import cn.bps.heam.domain.model.ProductExample;
 
 import java.util.List;
 
@@ -16,18 +18,25 @@ public interface CategoryService {
 
     ProductCategory getCategoryByName(String categoryName);
 
-    int saveProductCategory(ProductCategory category);
+    void saveProductCategory(ProductCategory category);
 
-    int updateProductCategory(ProductCategory category);
+    void updateProductCategory(ProductCategory category);
 
     /*portal*/
 
     List<PortalCategory> listPortalCategories();
 
-    int savePortalCategory(PortalCategory portalCategory);
+    void savePortalCategory(PortalCategory portalCategory);
 
-    int savePortalCategory(ProductCategory productCategory);
+    void savePortalCategory(ProductCategory productCategory);
 
-    long count();
+    void savePortalCategory(String categoryName);
+
+    long countPortalCategory();
+
+    long countProductCategory();
+
+    long countProductCategory(ProductCategoryExample example);
+
 
 }

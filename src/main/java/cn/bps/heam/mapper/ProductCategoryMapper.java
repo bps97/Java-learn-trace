@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.ibatis.session.RowBounds;
 
 public interface ProductCategoryMapper {
+    long countByExample(ProductCategoryExample example);
+
     int insert(ProductCategory record);
 
     int insertSelective(ProductCategory record);

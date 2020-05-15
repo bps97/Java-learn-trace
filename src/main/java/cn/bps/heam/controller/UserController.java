@@ -1,43 +1,37 @@
 package cn.bps.heam.controller;
 
-import cn.bps.common.lang.LocalBizServiceException;
 import cn.bps.common.lang.annotation.Label;
 import cn.bps.common.lang.domain.Ret;
 import cn.bps.heam.domain.form.UserForm;
 import cn.bps.heam.domain.form.UserInfoForm;
 import cn.bps.heam.domain.result.UserInfoResult;
 import cn.bps.heam.service.AccountService;
-import org.apache.tomcat.util.buf.UEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import javax.annotation.Resource;
 
 @Label("用户模块")
 @RestController
-@RequestMapping("/search")
+@RequestMapping("/user")
 public class UserController {
 
     @Resource
     private AccountService accountService;
 
     /**
-     * @Label("用户注册")
-     * @param userForm  用户表单
+     * @param userForm 用户表单
      * @return
+     * @Label("用户注册")
      */
     @PostMapping("/reg")
-    public Ret userRegister(UserForm userForm){
-        try {
-            return Ret.ok();
-        }catch (LocalBizServiceException e){
-            return Ret.error().message(e.getCustomizeExceptionCode().getName());
-        }
+    public Ret userRegister(UserForm userForm) {
+        return Ret.ok(() -> accountService.userRegister(userForm));
     }
 
     @Label("修改用户密码")
-    public Ret changePassword(UserForm userForm){
+    public Ret changePassword(UserForm userForm) {
         return Ret.ok();
     }
 
@@ -47,13 +41,9 @@ public class UserController {
     }
 
     @Label("登录")
+    @PostMapping("/login")
     public Ret login(UserForm userForm) {
-        try {
-            accountService.login(userForm);
-            return Ret.ok();
-        }catch (LocalBizServiceException e){
-            return Ret.error().message(e.getCustomizeExceptionCode().getName());
-        }
+        return Ret.ok(() -> accountService.login(userForm));
     }
 
     @Label("获取用户信息")
@@ -73,14 +63,17 @@ public class UserController {
      */
 
     @Label("重置密码")
-    public void resetPassword(UserForm userForm){ }
+    public void resetPassword(UserForm userForm) {
+    }
 
     @Label("忘记密码")
-    public void forgetPassword() {}
+    public void forgetPassword() {
+    }
 
     @Label("实名认证")
-    public void realNameCertification() {}
+    public void realNameCertification() {
 
+    }
 
 
 }
