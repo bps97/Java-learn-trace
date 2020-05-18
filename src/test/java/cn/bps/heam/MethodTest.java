@@ -1,6 +1,7 @@
 package cn.bps.heam;
 
 import cn.bps.common.lang.util.EncryptUtils;
+import cn.bps.common.lang.util.TimeUtils;
 import cn.bps.heam.dict.Column;
 import cn.bps.common.lang.api.Filter;
 import com.alibaba.fastjson.JSON;
@@ -10,6 +11,11 @@ import org.springframework.util.DigestUtils;
 import java.util.Objects;
 
 public class MethodTest {
+
+    @Test
+    public void timeFormatTest(){
+        System.out.println(TimeUtils.now());
+    }
 
     @Test
     public void md5Test(){

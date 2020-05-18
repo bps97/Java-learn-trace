@@ -38,7 +38,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void login(UserForm userForm) {
+    public String login(UserForm userForm) {
         String username = userForm.getUsername();
         String password = userForm.getPassword();
         Account account = getAccountByUsername(username);
@@ -47,7 +47,8 @@ public class AccountServiceImpl implements AccountService {
         }else{
             String md5Password = EncryptUtils.md5Encrypt(password);
             if(Objects.equals(md5Password, account.getPassword())) {
-                return;
+                String xx = tokenService.getAccessTokenByUser(username);
+                return xx;
             }else { /*密码错误*/
                 throw new LocalBizServiceException(CustomizeExceptionCode.PASSWORD_NOT_INCORRECT, userForm.getUsername());
             }

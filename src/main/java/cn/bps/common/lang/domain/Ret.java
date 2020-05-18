@@ -2,7 +2,7 @@ package cn.bps.common.lang.domain;
 
 import cn.bps.common.lang.ResponseCode;
 import cn.bps.common.lang.annotation.Label;
-import cn.bps.common.lang.util.Generator;
+import cn.bps.common.lang.util.TimeUtils;
 
 import java.util.function.Supplier;
 
@@ -18,8 +18,7 @@ public class Ret<D> {
 
     public Ret(D content){
         this.content = content;
-        this.timestamp = Generator.now();
-        this.action = Generator.getActionName();
+        this.timestamp = TimeUtils.now();
     }
 
     /**
@@ -89,4 +88,5 @@ public class Ret<D> {
     public String getAction() {
         return action;
     }
+
 }

@@ -1,5 +1,6 @@
 package cn.bps.security.server.service;
 
+import cn.bps.common.lang.api.Token;
 import cn.bps.common.lang.security.Subject;
 
 public interface TokenService {
@@ -13,7 +14,7 @@ public interface TokenService {
 
     void removeToken(String accessToken);
 
-    String getAccessTokenByUser(String username);
+    Token getAccessTokenByUser(String username);
 
     Subject getSubjectByAccessToken(String accessToken);
 

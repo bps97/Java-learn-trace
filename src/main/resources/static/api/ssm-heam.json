@@ -8,7 +8,7 @@
   "item" : [ {
     "name" : " 运营端 ",
     "item" : [ {
-      "id" : "37cf6762-2431-42df-8e5b-89568f079b35",
+      "id" : "7696afd8-d13b-421f-9c3b-e6898bc35ae6",
       "name" : "addPortalCategory",
       "request" : {
         "url" : {
@@ -50,7 +50,7 @@
   }, {
     "name" : " 门户首页 ",
     "item" : [ {
-      "id" : "0ba00723-a7c5-4895-9bae-32ff67b232a9",
+      "id" : "c74c8662-8936-4547-b2d6-b3121c2e18a9",
       "name" : "listProductAttributes",
       "request" : {
         "url" : {
@@ -89,8 +89,8 @@
         "_postman_previewlanguage" : "json"
       } ]
     }, {
-      "id" : "21bd7152-ff16-4f02-b414-e97ad323aeca",
-      "name" : "homeProduct",
+      "id" : "1de0c7fa-9588-4737-8a3c-2ad692e8fb1a",
+      "name" : "homeProducts",
       "request" : {
         "url" : {
           "protocol" : "http",
@@ -127,11 +127,50 @@
         "code" : 200,
         "_postman_previewlanguage" : "json"
       } ]
+    }, {
+      "id" : "a16a2dff-4c23-4191-bdfa-8771c1d5a738",
+      "name" : "commercials",
+      "request" : {
+        "url" : {
+          "protocol" : "http",
+          "host" : "{{host}}",
+          "path" : "/commercial",
+          "query" : [ ]
+        },
+        "method" : "POST",
+        "header" : [ ],
+        "body" : {
+          "urlencoded" : [ ],
+          "formdata" : [ ]
+        }
+      },
+      "response" : [ {
+        "name" : "200 OK",
+        "originalRequest" : {
+          "url" : {
+            "protocol" : "http",
+            "host" : "{{host}}",
+            "path" : "/commercial",
+            "query" : [ ]
+          },
+          "method" : "POST",
+          "header" : [ ],
+          "body" : {
+            "urlencoded" : [ ],
+            "formdata" : [ ]
+          }
+        },
+        "header" : [ ],
+        "body" : "{\r\n  \"code\" : 0,\r\n  \"message\" : \"\",\r\n  \"content\" : [ {\r\n    \"portalIndex\" : 0,\r\n    \"info\" : \"\",\r\n    \"imgUri\" : \"\",\r\n    \"point\" : \"\"\r\n  } ],\r\n  \"timestamp\" : \"\",\r\n  \"action\" : \"\"\r\n}",
+        "status" : "OK",
+        "code" : 200,
+        "_postman_previewlanguage" : "json"
+      } ]
     } ]
   }, {
     "name" : "检索页",
     "item" : [ {
-      "id" : "fc0ad745-c912-42a3-8539-fb5ce42aa3b4",
+      "id" : "fd53624e-1211-480e-bfdd-63d809875763",
       "name" : "pageProduct",
       "request" : {
         "url" : {
@@ -169,17 +208,14 @@
         "code" : 200,
         "_postman_previewlanguage" : "json"
       } ]
-    } ]
-  }, {
-    "name" : "UserController",
-    "item" : [ {
-      "id" : "40132730-d2a7-4e34-b528-908e9adef2c5",
-      "name" : "userRegister",
+    }, {
+      "id" : "fe41b82d-9fff-44af-9e4c-386b02158a41",
+      "name" : "listCategories",
       "request" : {
         "url" : {
           "protocol" : "http",
           "host" : "{{host}}",
-          "path" : "/search/reg",
+          "path" : "/search/categories",
           "query" : [ ]
         },
         "method" : "POST",
@@ -195,7 +231,88 @@
           "url" : {
             "protocol" : "http",
             "host" : "{{host}}",
-            "path" : "/search/reg",
+            "path" : "/search/categories",
+            "query" : [ ]
+          },
+          "method" : "POST",
+          "header" : [ ],
+          "body" : {
+            "urlencoded" : [ ],
+            "formdata" : [ ]
+          }
+        },
+        "header" : [ ],
+        "body" : "{\r\n  \"code\" : 0,\r\n  \"message\" : \"\",\r\n  \"content\" : [ {\r\n    \"id\" : \"\",\r\n    \"refCategoryId\" : \"\",\r\n    \"portalIndex\" : 0,\r\n    \"categoryName\" : \"\"\r\n  } ],\r\n  \"timestamp\" : \"\",\r\n  \"action\" : \"\"\r\n}",
+        "status" : "OK",
+        "code" : 200,
+        "_postman_previewlanguage" : "json"
+      } ]
+    }, {
+      "id" : "be7f80d2-089b-4540-9869-a78f0c65478e",
+      "name" : "显示指定分离绑定的属性列表",
+      "request" : {
+        "url" : {
+          "protocol" : "http",
+          "host" : "{{host}}",
+          "path" : "/search/attrs",
+          "query" : [ ]
+        },
+        "method" : "POST",
+        "header" : [ ],
+        "body" : {
+          "urlencoded" : [ ],
+          "formdata" : [ ]
+        }
+      },
+      "response" : [ {
+        "name" : "200 OK",
+        "originalRequest" : {
+          "url" : {
+            "protocol" : "http",
+            "host" : "{{host}}",
+            "path" : "/search/attrs",
+            "query" : [ ]
+          },
+          "method" : "POST",
+          "header" : [ ],
+          "body" : {
+            "urlencoded" : [ ],
+            "formdata" : [ ]
+          }
+        },
+        "header" : [ ],
+        "body" : "{\r\n  \"code\" : 0,\r\n  \"message\" : \"\",\r\n  \"content\" : [ {\r\n    \"id\" : \"\",\r\n    \"attributeName\" : \"\",\r\n    \"categoryId\" : \"\",\r\n    \"createTime\" : \"\",\r\n    \"updateTime\" : \"\"\r\n  } ],\r\n  \"timestamp\" : \"\",\r\n  \"action\" : \"\"\r\n}",
+        "status" : "OK",
+        "code" : 200,
+        "_postman_previewlanguage" : "json"
+      } ]
+    } ]
+  }, {
+    "name" : "UserController",
+    "item" : [ {
+      "id" : "757446aa-5e12-42fa-b325-e26b171440a6",
+      "name" : "userRegister",
+      "request" : {
+        "url" : {
+          "protocol" : "http",
+          "host" : "{{host}}",
+          "path" : "/user/reg",
+          "query" : [ ]
+        },
+        "method" : "POST",
+        "header" : [ ],
+        "body" : {
+          "urlencoded" : [ ],
+          "formdata" : [ ]
+        }
+      },
+      "response" : [ {
+        "name" : "200 OK",
+        "originalRequest" : {
+          "url" : {
+            "protocol" : "http",
+            "host" : "{{host}}",
+            "path" : "/user/reg",
             "query" : [ ]
           },
           "method" : "POST",
@@ -212,13 +329,62 @@
         "_postman_previewlanguage" : "json"
       } ]
     }, {
-      "id" : "05d7d87f-1d4d-4271-924b-5286e810682d",
+      "id" : "f04b65f3-c14e-4a48-8bee-9d8269961d20",
+      "name" : "login",
+      "request" : {
+        "url" : {
+          "protocol" : "http",
+          "host" : "{{host}}",
+          "path" : "/user/login",
+          "query" : [ ]
+        },
+        "method" : "POST",
+        "header" : [ {
+          "key" : "Content-Type",
+          "value" : "application/json"
+        } ],
+        "body" : {
+          "mode" : "raw",
+          "raw" : "{\r\n  \"username\" : \"\",\r\n  \"password\" : \"\"\r\n}",
+          "urlencoded" : [ ],
+          "formdata" : [ ]
+        }
+      },
+      "response" : [ {
+        "name" : "200 OK",
+        "originalRequest" : {
+          "url" : {
+            "protocol" : "http",
+            "host" : "{{host}}",
+            "path" : "/user/login",
+            "query" : [ ]
+          },
+          "method" : "POST",
+          "header" : [ {
+            "key" : "Content-Type",
+            "value" : "application/json"
+          } ],
+          "body" : {
+            "mode" : "raw",
+            "raw" : "{\r\n  \"username\" : \"\",\r\n  \"password\" : \"\"\r\n}",
+            "urlencoded" : [ ],
+            "formdata" : [ ]
+          }
+        },
+        "header" : [ ],
+        "body" : "{\r\n  \"code\" : 0,\r\n  \"message\" : \"\",\r\n  \"timestamp\" : \"\",\r\n  \"action\" : \"\"\r\n}",
+        "status" : "OK",
+        "code" : 200,
+        "_postman_previewlanguage" : "json"
+      } ]
+    }, {
+      "id" : "834ce7eb-72be-4ed7-9810-ac7a10d00b1d",
       "name" : "getUserInfo",
       "request" : {
         "url" : {
           "protocol" : "http",
           "host" : "{{host}}",
-          "path" : "/search/info",
+          "path" : "/user/info",
           "query" : [ ]
         },
         "method" : "POST",
@@ -234,7 +400,7 @@
           "url" : {
             "protocol" : "http",
             "host" : "{{host}}",
-            "path" : "/search/info",
+            "path" : "/user/info",
             "query" : [ ]
           },
           "method" : "POST",

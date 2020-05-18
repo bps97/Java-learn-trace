@@ -6,9 +6,7 @@ import cn.bps.heam.domain.form.UserForm;
 import cn.bps.heam.domain.form.UserInfoForm;
 import cn.bps.heam.domain.result.UserInfoResult;
 import cn.bps.heam.service.AccountService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -42,8 +40,8 @@ public class UserController {
 
     @Label("登录")
     @PostMapping("/login")
-    public Ret login(UserForm userForm) {
-        return Ret.ok(() -> accountService.login(userForm));
+    public Ret login(@RequestBody UserForm loginForm) {
+        return Ret.ok(() -> accountService.login(loginForm));
     }
 
     @Label("获取用户信息")

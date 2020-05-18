@@ -83,7 +83,7 @@ public class ProductServiceTest {
 
         String uuid = Generator.getUUID();
 
-//        System.out.println(Generator.now());
+//        System.out.println(TimeUtils.now());
 
         ProductCategory category = new ProductCategory();
         category.setId(uuid);

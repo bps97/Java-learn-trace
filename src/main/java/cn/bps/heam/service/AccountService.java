@@ -7,7 +7,7 @@ public interface AccountService {
 
     void userRegister(UserForm userForm);
 
-    void login(UserForm userForm);
+    String login(UserForm userForm);
 
     boolean checkUsername(UserForm userForm);
 

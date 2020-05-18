@@ -1,7 +1,5 @@
 package cn.bps.common.lang.util;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.UUID;
 
 
@@ -17,11 +15,6 @@ public class Generator {
         return uuid.replaceAll("-","").substring(0,24);
     }
 
-    public static String now(){
-        Date now = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        return simpleDateFormat.format(now);
-    }
 
     public static String getActionName(){
         StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[5];    /*这个 5 根据的是方法调用的引用链*/

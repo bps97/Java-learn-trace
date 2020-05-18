@@ -4,10 +4,13 @@ import org.springframework.util.DigestUtils;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 
 public class EncryptUtils {
 
     private static final char[] hexDigits = "0123456789joker".toCharArray();
+
+    private EncryptUtils(){}
 
     public static String md5Encrypt(String str){
         return DigestUtils.md5DigestAsHex(str.getBytes());
@@ -33,4 +36,11 @@ public class EncryptUtils {
         }
     }
 
+    public static String base64Encrypt(String str){
+        return Base64.getEncoder().encodeToString(str.getBytes());
+    }
+
+    public static String base64Decrypt(String str){
+        return new String(Base64.getDecoder().decode(str));
+    }
 }
