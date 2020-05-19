@@ -9,6 +9,7 @@ import cn.bps.security.server.service.TokenService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Objects;
 
 @Service
 public class TokenServiceImpl implements TokenService{
@@ -58,13 +59,30 @@ public class TokenServiceImpl implements TokenService{
         return token;
     }
 
-    public static Token parse(String value) {
+    public Token parse(String value) {
+        if(Objects.nonNull(value)){
+            value = EncryptUtils.base64Decrypt(value);
+            String[] val = value.split(SEPARATOR);
+            if( val.length == 3){
+                Token token = new Token();
+                token.setUserId(val[0]);
+                token.setExpireTime(Long.parseLong(val[1]));
+                token.setSignature(val[1]);
+                token.setValue(value);
+
+                /*生成的数字签名*/
+                String generatedSignature = generateSignature(token.getUserId(),token.getExpireTime());
+                if(Objects.equals(generatedSignature, token.getSignature())){
+                    return token;
+                }
+            }
+        }
         // 未写
         return null;
     }
 
     private String generateTokenValue(String id, long expireTime, String signature) {
-        return EncryptUtils.md5Encrypt(id + SEPARATOR + expireTime + SEPARATOR + signature);
+        return EncryptUtils.base64Encrypt(id + SEPARATOR + expireTime + SEPARATOR + signature);
     }
 
     private String generateSignature(String id, long expireTime) {

@@ -2,6 +2,7 @@ package cn.bps.heam.service.impl;
 
 import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
+import cn.bps.common.lang.api.Token;
 import cn.bps.common.lang.util.EncryptUtils;
 import cn.bps.heam.domain.form.UserForm;
 import cn.bps.heam.domain.model.Account;
@@ -38,7 +39,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public String login(UserForm userForm) {
+    public Token login(UserForm userForm) {
         String username = userForm.getUsername();
         String password = userForm.getPassword();
         Account account = getAccountByUsername(username);
@@ -47,7 +48,7 @@ public class AccountServiceImpl implements AccountService {
         }else{
             String md5Password = EncryptUtils.md5Encrypt(password);
             if(Objects.equals(md5Password, account.getPassword())) {
-                String xx = tokenService.getAccessTokenByUser(username);
+                Token xx = tokenService.getAccessTokenByUser(username);
                 return xx;
             }else { /*密码错误*/
                 throw new LocalBizServiceException(CustomizeExceptionCode.PASSWORD_NOT_INCORRECT, userForm.getUsername());

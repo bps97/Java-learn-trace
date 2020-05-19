@@ -64,6 +64,7 @@
             <property name="useActualColumnNames" value="false"/>
             <property name="my.isgen.usekeys" value="true"/>
             <columnOverride column="create_time" jdbcType="TIMESTAMP"/>
+
         </table>
 
         <table  tableName="address" domainObjectName="Address"
@@ -285,6 +286,21 @@
                 selectByExampleQueryId="false"
                 enableCountByExample="true">
             <property name="useActualColumnNames" value="false"/>
+            <property name="my.isgen.usekeys" value="true"/>
+            <columnOverride column="create_time" jdbcType="TIMESTAMP"/>
+            <columnOverride column="portal_index" javaType="Integer"/>
+        </table>
+
+        <table  tableName="authentication" domainObjectName="Authentication"
+                enableInsert="true"
+                enableDeleteByExample="false"
+                enableDeleteByPrimaryKey="false"
+                enableUpdateByExample="false"
+                enableUpdateByPrimaryKey="false"
+                enableSelectByPrimaryKey="true"
+                enableSelectByExample="true"
+                selectByExampleQueryId="false"
+                enableCountByExample="true">
             <property name="my.isgen.usekeys" value="true"/>
             <columnOverride column="create_time" jdbcType="TIMESTAMP"/>
             <columnOverride column="portal_index" javaType="Integer"/>

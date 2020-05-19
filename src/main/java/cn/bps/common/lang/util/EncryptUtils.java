@@ -8,7 +8,7 @@ import java.util.Base64;
 
 public class EncryptUtils {
 
-    private static final char[] hexDigits = "0123456789joker".toCharArray();
+    private static final char[] hexDigits = "0123456789joker!".toCharArray();/*十六位*/
 
     private EncryptUtils(){}
 
@@ -18,7 +18,7 @@ public class EncryptUtils {
 
     public static String sha1Encrypt(String str){
         try {
-            MessageDigest mdTemp = MessageDigest.getInstance("sha1");
+            MessageDigest mdTemp = MessageDigest.getInstance("SHA1");
             mdTemp.update(str.getBytes("UTF-8"));
 
             byte[] md = mdTemp.digest();

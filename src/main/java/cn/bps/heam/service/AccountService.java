@@ -1,5 +1,6 @@
 package cn.bps.heam.service;
 
+import cn.bps.common.lang.api.Token;
 import cn.bps.heam.domain.form.UserForm;
 import cn.bps.heam.domain.model.Account;
 
@@ -7,7 +8,7 @@ public interface AccountService {
 
     void userRegister(UserForm userForm);
 
-    String login(UserForm userForm);
+    Token login(UserForm userForm);
 
     boolean checkUsername(UserForm userForm);
 

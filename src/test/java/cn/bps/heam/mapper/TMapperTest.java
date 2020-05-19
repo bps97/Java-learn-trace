@@ -4,10 +4,7 @@ import cn.bps.common.lang.api.Page;
 import cn.bps.common.lang.api.Sort;
 import cn.bps.heam.SsmApplication;
 import cn.bps.heam.domain.PageRequest;
-import cn.bps.heam.domain.model.Product;
-import cn.bps.heam.domain.model.ProductCategory;
-import cn.bps.heam.domain.model.ProductCategoryExample;
-import cn.bps.heam.domain.model.ProductExample;
+import cn.bps.heam.domain.model.*;
 import com.alibaba.fastjson.JSON;
 import org.apache.ibatis.session.RowBounds;
 import org.junit.Test;
@@ -29,6 +26,15 @@ public class TMapperTest {
 
     @Resource
     private ProductMapper productMapper;
+
+    @Resource AuthenticationMapper authenticationMapper;
+
+    @Test
+    public void authenticationTest(){
+        long xx = authenticationMapper.countByExample(new AuthenticationExample());
+        authenticationMapper.selectByExample(new AuthenticationExample());
+        System.out.println(xx);
+    }
 
     @Test
     public void categoryTest(){
