@@ -2,19 +2,24 @@ package cn.bps.heam.service.impl;
 
 import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
+import cn.bps.common.lang.api.Page;
 import cn.bps.common.lang.api.Token;
 import cn.bps.common.lang.util.EncryptUtils;
+import cn.bps.heam.domain.PageRequest;
 import cn.bps.heam.domain.form.UserForm;
 import cn.bps.heam.domain.model.Account;
 import cn.bps.heam.domain.model.AccountExample;
+import cn.bps.heam.domain.result.UserResult;
 import cn.bps.heam.mapper.AccountMapper;
 import cn.bps.heam.service.AccountService;
+import cn.bps.heam.service.ResourceUriService;
 import cn.bps.security.server.service.TokenService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -24,6 +29,9 @@ public class AccountServiceImpl implements AccountService {
 
     @Resource
     private TokenService tokenService;
+
+    @Resource
+    private ResourceUriService resourceUriService;
 
     @Override
     public void userRegister(UserForm userForm) {
@@ -69,5 +77,36 @@ public class AccountServiceImpl implements AccountService {
         accountExample.createCriteria().andUsernameEqualTo(username);
         List<Account> list = accountMapper.selectByExample(accountExample);
         return Objects.nonNull(list) && list.isEmpty() == false ? list.get(0) : null;
+    }
+
+    @Override
+    public List<UserResult> listUsers(PageRequest pageRequest) {
+        AccountExample accountExample = new AccountExample();
+        List<Account> accountList = accountMapper.selectByExampleWithRowbounds(accountExample, pageRequest.rowBounds());
+        return accountList.stream().map(this::model2Result).collect(Collectors.toList());
+    }
+
+    public UserResult model2Result(Account account) {
+        UserResult userResult = new UserResult();
+        userResult.setId(account.getId());
+        userResult.setCellphoneNum(account.getCellphoneNum());
+        userResult.setNickname(account.getNickname());
+        userResult.setUserSex(account.getUserSex());
+        userResult.setUserEmail(account.getUserEmail());
+        userResult.setUsername(account.getUsername());
+        String avatar = resourceUriService.getUri(account.getAvatar());
+        userResult.setAvatar(avatar);
+        return userResult;
+    }
+
+    @Override
+    public Page<UserResult> pageUsers(PageRequest pageRequest) {
+        List<UserResult> content = listUsers(pageRequest);
+        Page page = new Page(content);
+        page.setTotalElements(content.size());
+        page.setSize(pageRequest.getSize());
+        page.setPage(pageRequest.getPage());
+
+        return page;
     }
 }

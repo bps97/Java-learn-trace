@@ -15,7 +15,7 @@ public class PageRequest {
     @Label("页大小")private int size;
 
     public PageRequest() {
-        this(0, 0);
+        this(0, 10);
     }
 
     public PageRequest(int page, int size) {

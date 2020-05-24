@@ -88,5 +88,5 @@ public class Ret<D> {
     public String getAction() {
         return action;
     }
-
+    /*省略getter&setter和重写型方法等方法*/
 }

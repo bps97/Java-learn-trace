@@ -65,6 +65,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public List<Authentication> rootsAuthentications() {
         AuthenticationExample authenticationExample = new AuthenticationExample();
         authenticationExample.createCriteria().andAvailableEqualTo(true).andParentIdIsNull();
+        authenticationExample.setOrderByClause("portal_index");
         List<Authentication> rootAuthentications =authenticationMapper.selectByExample(authenticationExample);
         if(Objects.isNull(rootAuthentications) || rootAuthentications.isEmpty()){
             throw new LocalBizServiceException(CustomizeExceptionCode.AUTHENTICATION_NOT_EXIST);

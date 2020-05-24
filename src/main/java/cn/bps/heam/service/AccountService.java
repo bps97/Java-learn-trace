@@ -1,8 +1,13 @@
 package cn.bps.heam.service;
 
+import cn.bps.common.lang.api.Page;
 import cn.bps.common.lang.api.Token;
+import cn.bps.heam.domain.PageRequest;
 import cn.bps.heam.domain.form.UserForm;
 import cn.bps.heam.domain.model.Account;
+import cn.bps.heam.domain.result.UserResult;
+
+import java.util.List;
 
 public interface AccountService {
 
@@ -13,6 +18,10 @@ public interface AccountService {
     boolean checkUsername(UserForm userForm);
 
     Account getAccountByUsername(String username);
+
+    List<UserResult> listUsers(PageRequest pageRequest);
+
+    Page<UserResult> pageUsers(PageRequest pageRequest);
 
 
     /**
