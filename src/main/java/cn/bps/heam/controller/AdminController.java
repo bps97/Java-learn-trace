@@ -2,6 +2,7 @@ package cn.bps.heam.controller;
 
 
 import cn.bps.common.lang.domain.Ret;
+import cn.bps.enums.CompositeMode;
 import cn.bps.heam.domain.PageRequest;
 import cn.bps.heam.domain.model.ProductCategory;
 import cn.bps.heam.service.AccountService;
@@ -11,10 +12,11 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.NotEmpty;
+import java.util.Objects;
 
 /* 运营端 */
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/")
 public class AdminController {
 
     @Resource
@@ -41,9 +43,14 @@ public class AdminController {
         return Ret.ok(authenticationService.listAuthentications());
     }
 
-    @GetMapping("/users")
-    public Ret listUsers(PageRequest pageRequest){
-        return Ret.ok(accountService.listUsers(pageRequest));
+
+    @GetMapping("/rights/list")
+    public Ret listAllAuthentications(){
+        return Ret.ok(authenticationService.listAuthentications(CompositeMode.horizontal));
     }
+
+
+
+
 
 }

@@ -80,33 +80,71 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public List<UserResult> listUsers(PageRequest pageRequest) {
+    public UserResult getUserById(String id) {
+        return model2Result(getAccountById(id));
+    }
+
+    @Override
+    public Account getAccountById(String id) {
+        return accountMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public void deleteAccount(String id) {
+        int res = accountMapper.deleteByPrimaryKey(id);
+        if(res != 1){
+            throw new LocalBizServiceException(CustomizeExceptionCode.DELETE_FAIL);
+        }
+        return;
+    }
+
+    @Override
+    public List<UserResult> listUsers(PageRequest pageRequest, String key) {
         AccountExample accountExample = new AccountExample();
+        if(Objects.equals(key,"") == false){
+            accountExample.or().andNicknameLike("%" + key + "%")
+                    .andUserEmailLike("%" + key + "%");
+        }
         List<Account> accountList = accountMapper.selectByExampleWithRowbounds(accountExample, pageRequest.rowBounds());
         return accountList.stream().map(this::model2Result).collect(Collectors.toList());
     }
 
     public UserResult model2Result(Account account) {
-        UserResult userResult = new UserResult();
-        userResult.setId(account.getId());
-        userResult.setCellphoneNum(account.getCellphoneNum());
-        userResult.setNickname(account.getNickname());
-        userResult.setUserSex(account.getUserSex());
-        userResult.setUserEmail(account.getUserEmail());
-        userResult.setUsername(account.getUsername());
+        UserResult result = new UserResult();
+        result.setId(account.getId());
+        result.setMobile(account.getCellphoneNum());
+        result.setNickname(account.getNickname());
+        result.setSex(account.getUserSex());
+        result.setEmail(account.getUserEmail());
+        result.setUsername(account.getUsername());
+        result.setAvailable(account.getAvailable());
         String avatar = resourceUriService.getUri(account.getAvatar());
-        userResult.setAvatar(avatar);
-        return userResult;
+        result.setAvatar(avatar);
+        return result;
     }
 
     @Override
-    public Page<UserResult> pageUsers(PageRequest pageRequest) {
-        List<UserResult> content = listUsers(pageRequest);
+    public Page<UserResult> pageUsers(PageRequest pageRequest, String key) {
+        List<UserResult> content = listUsers(pageRequest, key);
         Page page = new Page(content);
         page.setTotalElements(content.size());
         page.setSize(pageRequest.getSize());
         page.setPage(pageRequest.getPage());
 
         return page;
+    }
+
+    @Override
+    public UserResult changeAvailable(String id, boolean available) {
+        Account account = new Account();
+        account.setAvailable(available);
+        AccountExample accountExample = new AccountExample();
+        accountExample.createCriteria().andIdEqualTo(id);
+        int res = accountMapper.updateByExampleSelective(account, accountExample);
+        if(res != 1){
+            throw new LocalBizServiceException(CustomizeExceptionCode.UPDATE_FAIL);
+        }
+        account = accountMapper.selectByPrimaryKey(id);
+        return model2Result(account);
     }
 }

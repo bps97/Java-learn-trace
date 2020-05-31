@@ -9,11 +9,13 @@ public class UserResult {
 
     private String avatar;
 
-    private String userSex;
+    private String sex;
 
-    private String cellphoneNum;
+    private String mobile;
 
-    private String userEmail;
+    private String email;
+
+    private Boolean available;
 
     public String getId() {
         return id;
@@ -47,27 +49,35 @@ public class UserResult {
         this.avatar = avatar;
     }
 
-    public String getUserSex() {
-        return userSex;
+    public String getSex() {
+        return sex;
     }
 
-    public void setUserSex(String userSex) {
-        this.userSex = userSex;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
-    public String getCellphoneNum() {
-        return cellphoneNum;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setCellphoneNum(String cellphoneNum) {
-        this.cellphoneNum = cellphoneNum;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
     }
 }

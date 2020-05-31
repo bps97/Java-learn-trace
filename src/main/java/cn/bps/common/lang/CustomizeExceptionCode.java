@@ -9,7 +9,8 @@ public enum CustomizeExceptionCode {
     AUTHENTICATION_NOT_EXIST("authentication not exit", "权限不存在"),
     PASSWORD_NOT_INCORRECT("password not incorrect", "密码错误"),
     INSERT_DATA_FAIL("insert data fail", "插入数据失败"),
-    UPDATE_FAIL("update data fail", "更新数据失败");
+    UPDATE_FAIL("update data fail", "更新数据失败"),
+    DELETE_FAIL("delete data fail", "删除数据失败");
 
     private final String name;
     private final String info;

@@ -2,6 +2,7 @@ package cn.bps.heam.service;
 
 import cn.bps.common.lang.api.Page;
 import cn.bps.common.lang.api.Token;
+import cn.bps.common.lang.domain.Callback;
 import cn.bps.heam.domain.PageRequest;
 import cn.bps.heam.domain.form.UserForm;
 import cn.bps.heam.domain.model.Account;
@@ -19,9 +20,17 @@ public interface AccountService {
 
     Account getAccountByUsername(String username);
 
-    List<UserResult> listUsers(PageRequest pageRequest);
+    UserResult getUserById(String id);
 
-    Page<UserResult> pageUsers(PageRequest pageRequest);
+    Account getAccountById(String id);
+
+    void deleteAccount(String id);
+
+    List<UserResult> listUsers(PageRequest pageRequest, String key);
+
+    Page<UserResult> pageUsers(PageRequest pageRequest, String key);
+
+    UserResult changeAvailable(String id, boolean available);
 
 
     /**

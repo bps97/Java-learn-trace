@@ -10,14 +10,13 @@ import java.util.function.Supplier;
 public class Ret<D> {
 
 
-    @Label("状态码") private Integer code;
-    @Label("响应信息") private String message;
-    @Label("数据内容") private D content;
+    @Label("状态码") private Meta meta;
+    @Label("数据内容") private D data;
     @Label("响应时间") private String timestamp;
     @Label("动作(方法名)") private String action;
 
-    public Ret(D content){
-        this.content = content;
+    public Ret(D data){
+        this.data = data;
         this.timestamp = TimeUtils.now();
     }
 
@@ -57,28 +56,26 @@ public class Ret<D> {
         return ok(supplier.get());
     }
 
-    private static <T> Ret<T> build(int code, String message, T content) {
+    private static <T> Ret<T> build(int status, String message, T content) {
         Ret<T> result = new Ret<>(content);
-        result.code = code;
-        result.message = message;
+        result.meta = new Ret.Meta(status,message);
         return result;
     }
 
     public <T> Ret<T> message(String message){
-       this.message = message;
+       this.meta.message = message;
        return (Ret<T>) this;
     }
 
-    public Integer getCode() {
-        return code;
+
+
+    public Meta getMeta() {
+        return meta;
     }
 
-    public String getMessage() {
-        return message;
-    }
 
-    public D getContent() {
-        return content;
+    public D getData() {
+        return data;
     }
 
     public String getTimestamp() {
@@ -89,4 +86,22 @@ public class Ret<D> {
         return action;
     }
     /*省略getter&setter和重写型方法等方法*/
+
+    static class Meta{
+        @Label("状态码") private Integer status;
+        @Label("响应信息") private String message;
+
+        public Meta(Integer status, String message) {
+            this.status = status;
+            this.message = message;
+        }
+
+        public Integer getStatus() {
+            return status;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+    }
 }

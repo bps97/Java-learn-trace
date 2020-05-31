@@ -2,6 +2,7 @@ package cn.bps.heam.service.impl;
 
 import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
+import cn.bps.enums.CompositeMode;
 import cn.bps.heam.domain.model.Authentication;
 import cn.bps.heam.domain.model.AuthenticationExample;
 import cn.bps.heam.domain.result.AuthenticationResult;
@@ -22,11 +23,27 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public List<AuthenticationResult> listAuthentications() {
+        return listAuthentications(CompositeMode.vertical);
+    }
 
-        List<Authentication> rootAuthentications = rootsAuthentications();
-        List<AuthenticationResult> listAuthentications = model2Result(rootAuthentications);
+    public List<AuthenticationResult> listAuthentications(CompositeMode mode) {
 
-        return listAuthentications;
+        if(mode == CompositeMode.vertical){
+            List<Authentication> rootAuthentications = rootsAuthentications();
+            List<AuthenticationResult> listAuthentications = model2Result(rootAuthentications);
+            return listAuthentications;
+        } else if(mode == CompositeMode.horizontal){
+            return listAllAuthentication();
+        }
+        throw new LocalBizServiceException(CustomizeExceptionCode.AUTHENTICATION_NOT_EXIST);
+    }
+
+    public List<AuthenticationResult> listAllAuthentication() {
+        AuthenticationExample example = new AuthenticationExample();
+        example.createCriteria().andAvailableEqualTo(true);
+        example.setOrderByClause("portal_index");
+        List<Authentication> authentications = authenticationMapper.selectByExample(example);
+        return model2Result(authentications);
     }
 
     @Override
