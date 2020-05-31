@@ -41,7 +41,16 @@ public class Ret<D> {
     }
 
 
-   /**
+    /**
+     * 201, "Created"
+     */
+    public static <T> Ret<T> create(Callback callback){
+        callback.execute();
+        return build(ResponseCode.CREATED.code(), ResponseCode.CREATED.reason(), null);
+    }
+
+
+    /**
    * internal_server_error 500
    */
    public static <T> Ret<T> error(){
@@ -69,10 +78,10 @@ public class Ret<D> {
 
 
 
+
     public Meta getMeta() {
         return meta;
     }
-
 
     public D getData() {
         return data;

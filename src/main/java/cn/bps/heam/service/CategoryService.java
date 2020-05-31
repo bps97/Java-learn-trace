@@ -1,14 +1,23 @@
 package cn.bps.heam.service;
 
 
+import cn.bps.common.lang.api.Page;
+import cn.bps.heam.domain.PageRequest;
 import cn.bps.heam.domain.model.PortalCategory;
 import cn.bps.heam.domain.model.ProductCategory;
 import cn.bps.heam.domain.model.ProductCategoryExample;
-import cn.bps.heam.domain.model.ProductExample;
+import cn.bps.heam.domain.result.CategoryResult;
 
 import java.util.List;
 
 public interface CategoryService {
+
+
+    /*result*/
+
+    Page<CategoryResult> pageCategories(PageRequest pageRequest);
+
+    List<CategoryResult> listCategories();
 
     /*product*/
 
@@ -20,7 +29,11 @@ public interface CategoryService {
 
     void saveProductCategory(ProductCategory category);
 
+    void saveProductCategory(String categoryName);
+
     void updateProductCategory(ProductCategory category);
+
+    void removeProductCategory(String id);
 
     /*portal*/
 

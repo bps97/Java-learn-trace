@@ -1,6 +1,7 @@
 package cn.bps.heam.service;
 
 
+import cn.bps.heam.biz.UserBiz;
 import cn.bps.heam.domain.form.UserForm;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,13 +15,13 @@ import javax.annotation.Resource;
 public class AccountServiceTest {
 
     @Resource
-    private AccountService accountService;
+    private UserBiz userBiz;
 
 
     @Test
     public void regTest(){
 
-        accountService.userRegister(new UserForm());
+        userBiz.userRegister(new UserForm());
 
     }
 

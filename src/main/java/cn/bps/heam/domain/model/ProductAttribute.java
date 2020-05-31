@@ -9,6 +9,8 @@ public class ProductAttribute {
 
     private String categoryId;
 
+    private Boolean dynamic;
+
     private Boolean available;
 
     private Date createTime;
@@ -37,6 +39,14 @@ public class ProductAttribute {
 
     public void setCategoryId(String categoryId) {
         this.categoryId = categoryId == null ? null : categoryId.trim();
+    }
+
+    public Boolean getDynamic() {
+        return dynamic;
+    }
+
+    public void setDynamic(Boolean dynamic) {
+        this.dynamic = dynamic;
     }
 
     public Boolean getAvailable() {
@@ -72,6 +82,7 @@ public class ProductAttribute {
         sb.append(", id=").append(id);
         sb.append(", attributeName=").append(attributeName);
         sb.append(", categoryId=").append(categoryId);
+        sb.append(", dynamic=").append(dynamic);
         sb.append(", available=").append(available);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);

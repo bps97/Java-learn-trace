@@ -1,6 +1,9 @@
 package cn.bps.heam.service.impl;
 
 
+import cn.bps.heam.domain.form.AttributeForm;
+import cn.bps.heam.domain.result.AttributeResult;
+import cn.bps.heam.domain.result.AttributeTupleResult;
 import cn.bps.heam.domain.model.*;
 import cn.bps.heam.mapper.ProductAttributeDictMapper;
 import cn.bps.heam.mapper.ProductAttributeMapper;
@@ -25,7 +28,9 @@ public class AttributeServiceImpl implements AttributeService {
     @Resource
     private ProductAttributeDictMapper attributeDictMapper;
 
-/**********************************************************************/
+
+
+    /**********************************************************************/
 
 
     @Override

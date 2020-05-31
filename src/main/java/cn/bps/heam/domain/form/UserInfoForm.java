@@ -9,9 +9,9 @@ public class UserInfoForm {
 
     private String userSex;
 
-    private String cellphoneNum;
+    private String mobile;
 
-    private String userEmail;
+    private String email;
 
     public String getPassword() {
         return password;
@@ -45,19 +45,19 @@ public class UserInfoForm {
         this.userSex = userSex == null ? null : userSex.trim();
     }
 
-    public String getCellphoneNum() {
-        return cellphoneNum;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setCellphoneNum(String cellphoneNum) {
-        this.cellphoneNum = cellphoneNum == null ? null : cellphoneNum.trim();
+    public void setMobile(String mobile) {
+        this.mobile = mobile == null ? null : mobile.trim();
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail == null ? null : userEmail.trim();
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
     }
 }

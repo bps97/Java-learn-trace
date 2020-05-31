@@ -16,7 +16,6 @@ import java.util.Objects;
 
 /* 运营端 */
 @RestController
-@RequestMapping("/")
 public class AdminController {
 
     @Resource

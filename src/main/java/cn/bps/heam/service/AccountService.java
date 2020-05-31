@@ -1,36 +1,25 @@
 package cn.bps.heam.service;
 
-import cn.bps.common.lang.api.Page;
-import cn.bps.common.lang.api.Token;
-import cn.bps.common.lang.domain.Callback;
+
 import cn.bps.heam.domain.PageRequest;
-import cn.bps.heam.domain.form.UserForm;
 import cn.bps.heam.domain.model.Account;
-import cn.bps.heam.domain.result.UserResult;
 
 import java.util.List;
 
 public interface AccountService {
 
-    void userRegister(UserForm userForm);
-
-    Token login(UserForm userForm);
-
-    boolean checkUsername(UserForm userForm);
+    List<Account> listUsers(PageRequest pageRequest, String key);
 
     Account getAccountByUsername(String username);
-
-    UserResult getUserById(String id);
 
     Account getAccountById(String id);
 
     void deleteAccount(String id);
 
-    List<UserResult> listUsers(PageRequest pageRequest, String key);
+    void updateAccount(Account account);
 
-    Page<UserResult> pageUsers(PageRequest pageRequest, String key);
+    Account changeAvailable(String id, boolean available);
 
-    UserResult changeAvailable(String id, boolean available);
 
 
     /**

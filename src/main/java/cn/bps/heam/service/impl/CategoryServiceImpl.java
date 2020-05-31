@@ -2,10 +2,12 @@ package cn.bps.heam.service.impl;
 
 import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
-import cn.bps.heam.domain.model.PortalCategory;
-import cn.bps.heam.domain.model.PortalCategoryExample;
-import cn.bps.heam.domain.model.ProductCategory;
-import cn.bps.heam.domain.model.ProductCategoryExample;
+import cn.bps.common.lang.api.Page;
+import cn.bps.common.lang.util.TimeUtils;
+import cn.bps.heam.domain.PageRequest;
+import cn.bps.heam.domain.model.*;
+import cn.bps.heam.domain.result.CategoryResult;
+import cn.bps.heam.domain.result.ProductResult;
 import cn.bps.heam.mapper.PortalCategoryMapper;
 import cn.bps.heam.mapper.ProductCategoryMapper;
 import cn.bps.heam.service.CategoryService;
@@ -13,7 +15,9 @@ import cn.bps.common.lang.util.Generator;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -26,12 +30,38 @@ public class CategoryServiceImpl implements CategoryService {
     @Resource
     private PortalCategoryMapper portalCategoryMapper;
 
+    @Override
+    public Page<CategoryResult> pageCategories(PageRequest pageRequest) {
+        List<CategoryResult> categoryResults = listProductCategories().stream().map(this::model2Result).collect(Collectors.toList());
+        Page page = new Page(categoryResults);
+        page.setPage(pageRequest.getPage());
+        page.setSize(pageRequest.getSize());
+        page.setTotalElements(countProductCategory());
+        return page;
+    }
+
+    @Override
+    public List<CategoryResult> listCategories() {
+        return listProductCategories().stream().map(this::model2Result).collect(Collectors.toList());
+    }
+
 
     /**********************************************************************/
 
 
+
     public List<ProductCategory> listProductCategories() {
         return productCategoryMapper.selectByExample(new ProductCategoryExample());
+    }
+
+
+
+    private CategoryResult model2Result(ProductCategory category){
+        CategoryResult result = new CategoryResult();
+        result.setName(category.getCategoryName());
+        result.setAvailable(category.getAvailable());
+        result.setId(category.getId());
+        return result;
     }
 
     @Override
@@ -65,6 +95,20 @@ public class CategoryServiceImpl implements CategoryService {
             throw new LocalBizServiceException(CustomizeExceptionCode.INSERT_DATA_FAIL);;
     }
 
+    @Override
+    public void saveProductCategory(String categoryName) {
+        ProductCategory old = getCategoryByName(categoryName);
+        if(Objects.isNull(old))
+            throw new LocalBizServiceException(CustomizeExceptionCode.NAME_ALREADY_EXIST);
+        ProductCategory category = new ProductCategory();
+        category.setCategoryName(categoryName);
+        category.setId(Generator.getUUID());
+        category.setAvailable(Boolean.TRUE);
+        category.setCreateTime(new Date());
+        category.setUpdateTime(new Date());
+        saveProductCategory(category);
+    }
+
     private String getNewUuid() {
         String newUUID;
         long count = 0L;
@@ -82,6 +126,13 @@ public class CategoryServiceImpl implements CategoryService {
         int result = productCategoryMapper.updateByPrimaryKeySelective(category);
         if (result != 1)
             throw new LocalBizServiceException(CustomizeExceptionCode.UPDATE_FAIL);
+    }
+
+    @Override
+    public void removeProductCategory(String id) {
+        int result = productCategoryMapper.deleteByPrimaryKey(id);
+        if (result != 1)
+            throw new LocalBizServiceException(CustomizeExceptionCode.DELETE_FAIL);
     }
 
 

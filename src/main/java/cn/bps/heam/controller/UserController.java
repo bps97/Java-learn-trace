@@ -2,6 +2,7 @@ package cn.bps.heam.controller;
 
 import cn.bps.common.lang.annotation.Label;
 import cn.bps.common.lang.domain.Ret;
+import cn.bps.heam.biz.UserBiz;
 import cn.bps.heam.domain.PageRequest;
 import cn.bps.heam.domain.form.UserForm;
 import cn.bps.heam.domain.form.UserInfoForm;
@@ -18,6 +19,9 @@ import javax.annotation.Resource;
 public class UserController {
 
     @Resource
+    private UserBiz userBiz;
+
+    @Resource
     private AccountService accountService;
 
     /**
@@ -27,7 +31,7 @@ public class UserController {
      */
     @PostMapping("/reg")
     public Ret userRegister(UserForm userForm) {
-        return Ret.ok(() -> accountService.userRegister(userForm));
+        return Ret.ok(() -> userBiz.userRegister(userForm));
     }
 
     @Label("修改用户密码")
@@ -43,34 +47,35 @@ public class UserController {
     @Label("登录")
     @PostMapping("/login")
     public Ret login(@RequestBody UserForm loginForm) {
-        return Ret.ok(() -> accountService.login(loginForm));
+        return Ret.ok(() -> userBiz.login(loginForm));
     }
 
     @GetMapping("")
     public Ret pageUsers(PageRequest pageRequest, String key){
-        return Ret.ok(accountService.pageUsers(pageRequest, key));
+        return Ret.ok(userBiz.pageUsers(pageRequest, key));
     }
 
-    @Label("添加指定")
+    @Label("修改有效性")
     @PutMapping("/{id}/available/{available}")
     public Ret changeAccountAvailability(@PathVariable String id,@PathVariable Boolean available){
-        return Ret.ok(accountService.changeAvailable(id,available));
+        return Ret.ok(userBiz.changeAvailable(id,available));
     }
     @Label("获取指定用户信息")
     @GetMapping("/{id}")
     public Ret<UserResult> getUserInfo(@PathVariable String id) {
-        return Ret.ok(()->accountService.getUserById(id));
+        return Ret.ok(()->userBiz.getUserById(id));
     }
 
-    @Label("修改用戶信息")
+    @Label("删除用戶信息")
     @DeleteMapping("/{id}")
     public Ret deleteUser(@PathVariable String id) {
         return Ret.ok(()->accountService.deleteAccount(id));
     }
 
     @Label("修改用戶信息")
-    public Ret<UserInfoResult> modifyUserInfo(UserInfoForm userInfoForm) {
-        return Ret.ok();
+    @PutMapping("/{id}")
+    public Ret modifyUserInfo(@PathVariable String id, @RequestBody UserInfoForm userInfoForm) {
+        return Ret.ok(()->userBiz.updateUserInfo(id,userInfoForm));
     }
 
 

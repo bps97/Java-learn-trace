@@ -54,6 +54,10 @@
       order by ${orderByClause}
     </if>
   </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from portal_category
+    where id = #{id,jdbcType=CHAR}
+  </delete>
   <insert id="insert" parameterType="cn.bps.heam.domain.model.PortalCategory">
     insert into portal_category (id, ref_category_id, portal_index, 
       category_name)

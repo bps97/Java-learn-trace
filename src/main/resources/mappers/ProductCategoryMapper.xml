@@ -61,6 +61,10 @@
     from product_category
     where id = #{id,jdbcType=CHAR}
   </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from product_category
+    where id = #{id,jdbcType=CHAR}
+  </delete>
   <insert id="insert" parameterType="cn.bps.heam.domain.model.ProductCategory">
     insert into product_category (id, category_name, available, 
       create_time, update_time)

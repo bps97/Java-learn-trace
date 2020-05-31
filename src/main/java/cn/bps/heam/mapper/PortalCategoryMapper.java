@@ -8,6 +8,8 @@ import org.apache.ibatis.session.RowBounds;
 public interface PortalCategoryMapper {
     long countByExample(PortalCategoryExample example);
 
+    int deleteByPrimaryKey(String id);
+
     int insert(PortalCategory record);
 
     int insertSelective(PortalCategory record);

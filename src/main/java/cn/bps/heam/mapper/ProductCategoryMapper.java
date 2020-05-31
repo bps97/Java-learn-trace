@@ -8,6 +8,8 @@ import org.apache.ibatis.session.RowBounds;
 public interface ProductCategoryMapper {
     long countByExample(ProductCategoryExample example);
 
+    int deleteByPrimaryKey(String id);
+
     int insert(ProductCategory record);
 
     int insertSelective(ProductCategory record);
