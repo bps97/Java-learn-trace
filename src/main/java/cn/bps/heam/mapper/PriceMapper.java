@@ -21,6 +21,11 @@ public interface PriceMapper {
 
     List<Price> selectByExample(PriceExample example);
 
+    default Price selectOneByExample(PriceExample example) {
+        List<Price> prices = selectByExample(example);
+        return !prices.isEmpty() ? prices.get(0) : null;
+    }
+
     Price selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") Price record, @Param("example") PriceExample example);

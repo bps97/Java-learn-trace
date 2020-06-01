@@ -2,8 +2,24 @@ package cn.bps.heam.domain.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class AreaExample {
+
+    public static AreaExample parentId(String parentId) {
+        return generator(criteria -> criteria.andParentIdEqualTo(parentId));
+    }
+
+    public static AreaExample levelType(int levelType) {
+        return generator(criteria -> criteria.andLevelTypeEqualTo(levelType));
+    }
+
+    private static AreaExample generator(Consumer<Criteria> criteriaConsumer) {
+        AreaExample ret = new AreaExample();
+        criteriaConsumer.accept(ret.createCriteria());
+        return ret;
+    }
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -454,7 +470,7 @@ public class AreaExample {
             return (Criteria) this;
         }
 
-        public Criteria andLevelTypeEqualTo(Boolean value) {
+        public Criteria andLevelTypeEqualTo(Integer value) {
             addCriterion("level_type =", value, "levelType");
             return (Criteria) this;
         }

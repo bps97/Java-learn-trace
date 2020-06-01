@@ -3,8 +3,20 @@ package cn.bps.heam.domain.model;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class ProductPackageExample {
+
+    public static ProductPackageExample productInstanceId(String id) {
+        return generator(criteria -> criteria.andProductInstanceIdEqualTo(id));
+    }
+
+    private static ProductPackageExample generator(Consumer<Criteria> criteriaConsumer) {
+        ProductPackageExample ret = new ProductPackageExample();
+        criteriaConsumer.accept(ret.createCriteria());
+        return ret;
+    }
+
     protected String orderByClause;
 
     protected boolean distinct;

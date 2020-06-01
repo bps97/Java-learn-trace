@@ -1,6 +1,9 @@
 package cn.bps.heam.domain.model;
 
+import java.util.HashMap;
+
 public class Area {
+
     private Integer id;
 
     private String code;
@@ -11,7 +14,7 @@ public class Area {
 
     private String shortName;
 
-    private Boolean levelType;
+    private Integer levelType;
 
     private String cityCode;
 
@@ -65,11 +68,11 @@ public class Area {
         this.shortName = shortName == null ? null : shortName.trim();
     }
 
-    public Boolean getLevelType() {
+    public Integer getLevelType() {
         return levelType;
     }
 
-    public void setLevelType(Boolean levelType) {
+    public void setLevelType(Integer levelType) {
         this.levelType = levelType;
     }
 
@@ -142,4 +145,32 @@ public class Area {
         sb.append("]");
         return sb.toString();
     }
+
+    public enum Level {
+        COUNTRY("国家", 0),
+        PROVINCE("省", 1),
+        CITY("市", 2),
+        DISTRICT("区县", 3);
+        private static HashMap<Integer, Level> VALUES = new HashMap<>();
+        static {
+            for (Level l : Level.values()) {
+                VALUES.put(l.val, l);
+            }
+        }
+        public static Level resolve(int val) {
+            return VALUES.get(val);
+        }
+        private String desc;
+        private int val;
+        Level(String desc, int val) {
+            this.desc = desc;
+        }
+        public String getDesc() {
+            return desc;
+        }
+        public int getVal() {
+            return val;
+        }
+    }
+
 }

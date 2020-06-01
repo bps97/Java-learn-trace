@@ -10,7 +10,8 @@ public enum CustomizeExceptionCode {
     PASSWORD_NOT_INCORRECT("password not incorrect", "密码错误"),
     INSERT_DATA_FAIL("insert data fail", "插入数据失败"),
     UPDATE_FAIL("update data fail", "更新数据失败"),
-    DELETE_FAIL("delete data fail", "删除数据失败");
+    DELETE_FAIL("delete data fail", "删除数据失败"),
+    AREA_REGION_TYPE_DOES_NOT_EXIST("Area region type does not exist.","区域级别类型不存在.");
 
     private final String name;
     private final String info;

@@ -3,8 +3,24 @@ package cn.bps.heam.domain.model;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class PriceExample {
+
+    public static PriceExample productId(String productId) {
+        return generator(criteria -> criteria.andProductIdEqualTo(productId));
+    }
+
+    public static PriceExample serviceId(String serviceId) {
+        return generator(criteria -> criteria.andServiceIdEqualTo(serviceId));
+    }
+
+    private static PriceExample generator(Consumer<Criteria> criteriaConsumer) {
+        PriceExample ret = new PriceExample();
+        criteriaConsumer.accept(ret.createCriteria());
+        return ret;
+    }
+
     protected String orderByClause;
 
     protected boolean distinct;

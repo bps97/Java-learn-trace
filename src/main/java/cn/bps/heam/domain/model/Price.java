@@ -3,9 +3,10 @@ package cn.bps.heam.domain.model;
 import java.math.BigDecimal;
 
 public class Price {
+
     private String id;
 
-    private String type;
+    private Integer type;
 
     private BigDecimal price;
 
@@ -21,12 +22,12 @@ public class Price {
         this.id = id == null ? null : id.trim();
     }
 
-    public String getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type == null ? null : type.trim();
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     public BigDecimal getPrice() {
@@ -67,4 +68,21 @@ public class Price {
         sb.append("]");
         return sb.toString();
     }
+
+    public enum Type {
+        PRODUCT(0),
+        SERVICE(1);
+        static Type[] TYPES = { PRODUCT, SERVICE };
+        private int value;
+        Type(int value) {
+            this.value = value;
+        }
+        public int getValue() {
+            return value;
+        }
+        public Type resolve(int value) {
+            return value >= 0 && value < TYPES.length ? TYPES[value] : null;
+        }
+    }
+
 }
