@@ -1,9 +1,6 @@
 package cn.bps.heam.service.impl;
 
 
-import cn.bps.heam.domain.form.AttributeForm;
-import cn.bps.heam.domain.result.AttributeResult;
-import cn.bps.heam.domain.result.AttributeTupleResult;
 import cn.bps.heam.domain.model.*;
 import cn.bps.heam.mapper.ProductAttributeDictMapper;
 import cn.bps.heam.mapper.ProductAttributeMapper;
@@ -144,5 +141,20 @@ public class AttributeServiceImpl implements AttributeService {
     @Override
     public int updateAttributeDict(ProductAttributeDict dict) {
         return 0;
+    }
+
+    @Override
+    public ProductAttribute getAttributeById(String attrId) {
+        return productAttributeMapper.selectByPrimaryKey(attrId);
+    }
+
+    @Override
+    public void updateAttribute(ProductAttribute attribute) {
+        productAttributeMapper.updateByPrimaryKeySelective(attribute);
+    }
+
+    @Override
+    public void deleteAttribute(String id) {
+        productAttributeMapper.deleteByPrimaryKey(id);
     }
 }

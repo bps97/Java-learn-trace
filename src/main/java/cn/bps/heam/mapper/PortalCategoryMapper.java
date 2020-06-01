@@ -17,4 +17,10 @@ public interface PortalCategoryMapper {
     List<PortalCategory> selectByExampleWithRowbounds(PortalCategoryExample example, RowBounds rowBounds);
 
     List<PortalCategory> selectByExample(PortalCategoryExample example);
+
+    PortalCategory selectByPrimaryKey(String id);
+
+    int updateByPrimaryKeySelective(PortalCategory record);
+
+    int updateByPrimaryKey(PortalCategory record);
 }

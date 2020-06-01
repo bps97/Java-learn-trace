@@ -24,4 +24,8 @@ public interface CommercialMapper {
     int updateByExampleSelective(@Param("record") Commercial record, @Param("example") CommercialExample example);
 
     int updateByExample(@Param("record") Commercial record, @Param("example") CommercialExample example);
+
+    int updateByPrimaryKeySelective(Commercial record);
+
+    int updateByPrimaryKey(Commercial record);
 }

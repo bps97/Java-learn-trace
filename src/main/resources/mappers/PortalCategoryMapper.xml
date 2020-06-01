@@ -54,6 +54,12 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from portal_category
+    where id = #{id,jdbcType=CHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from portal_category
     where id = #{id,jdbcType=CHAR}
@@ -101,6 +107,28 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.bps.heam.domain.model.PortalCategory">
+    update portal_category
+    <set>
+      <if test="refCategoryId != null">
+        ref_category_id = #{refCategoryId,jdbcType=CHAR},
+      </if>
+      <if test="portalIndex != null">
+        portal_index = #{portalIndex,jdbcType=TINYINT},
+      </if>
+      <if test="categoryName != null">
+        category_name = #{categoryName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.bps.heam.domain.model.PortalCategory">
+    update portal_category
+    set ref_category_id = #{refCategoryId,jdbcType=CHAR},
+      portal_index = #{portalIndex,jdbcType=TINYINT},
+      category_name = #{categoryName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
   <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.PortalCategoryExample" resultMap="BaseResultMap">
     select
     <if test="distinct">

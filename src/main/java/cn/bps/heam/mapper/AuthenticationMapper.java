@@ -17,4 +17,8 @@ public interface AuthenticationMapper {
     List<Authentication> selectByExample(AuthenticationExample example);
 
     Authentication selectByPrimaryKey(String id);
+
+    int updateByPrimaryKeySelective(Authentication record);
+
+    int updateByPrimaryKey(Authentication record);
 }

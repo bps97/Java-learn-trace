@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.ibatis.session.RowBounds;
 
 public interface ProductAttributeMapper {
+    int deleteByPrimaryKey(String id);
+
     int insert(ProductAttribute record);
 
     int insertSelective(ProductAttribute record);
@@ -13,6 +15,8 @@ public interface ProductAttributeMapper {
     List<ProductAttribute> selectByExampleWithRowbounds(ProductAttributeExample example, RowBounds rowBounds);
 
     List<ProductAttribute> selectByExample(ProductAttributeExample example);
+
+    ProductAttribute selectByPrimaryKey(String id);
 
     int updateByPrimaryKeySelective(ProductAttribute record);
 

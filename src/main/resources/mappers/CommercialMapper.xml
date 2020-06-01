@@ -214,6 +214,44 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.bps.heam.domain.model.Commercial">
+    update commercial
+    <set>
+      <if test="info != null">
+        info = #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUriId != null">
+        img_uri_id = #{imgUriId,jdbcType=CHAR},
+      </if>
+      <if test="portalIndex != null">
+        portal_index = #{portalIndex,jdbcType=TINYINT},
+      </if>
+      <if test="point != null">
+        point = #{point,jdbcType=VARCHAR},
+      </if>
+      <if test="available != null">
+        available = #{available,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.bps.heam.domain.model.Commercial">
+    update commercial
+    set info = #{info,jdbcType=VARCHAR},
+      img_uri_id = #{imgUriId,jdbcType=CHAR},
+      portal_index = #{portalIndex,jdbcType=TINYINT},
+      point = #{point,jdbcType=VARCHAR},
+      available = #{available,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=CHAR}
+  </update>
   <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.CommercialExample" resultMap="BaseResultMap">
     select
     <if test="distinct">

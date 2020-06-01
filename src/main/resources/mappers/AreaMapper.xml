@@ -69,6 +69,10 @@
     from area
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from area
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
   <select id="countByExample" parameterType="cn.bps.heam.domain.model.AreaExample" resultType="java.lang.Long">
     select count(*) from area
     <if test="_parameter != null">

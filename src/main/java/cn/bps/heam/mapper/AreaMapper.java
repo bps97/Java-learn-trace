@@ -8,6 +8,8 @@ import org.apache.ibatis.session.RowBounds;
 public interface AreaMapper {
     long countByExample(AreaExample example);
 
+    int deleteByPrimaryKey(Integer id);
+
     List<Area> selectByExampleWithRowbounds(AreaExample example, RowBounds rowBounds);
 
     List<Area> selectByExample(AreaExample example);

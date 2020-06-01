@@ -57,6 +57,12 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where id = #{id,jdbcType=CHAR}
+  </select>
   <insert id="insert" parameterType="cn.bps.heam.domain.model.Product">
     insert into product (id, product_name, category_id, 
       img_uri_id, available, create_time, 

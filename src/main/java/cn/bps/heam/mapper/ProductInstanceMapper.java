@@ -16,6 +16,8 @@ public interface ProductInstanceMapper {
 
     List<ProductInstance> selectByExample(ProductInstanceExample example);
 
+    ProductInstance selectByPrimaryKey(String id);
+
     int updateByPrimaryKeySelective(ProductInstance record);
 
     int updateByPrimaryKey(ProductInstance record);

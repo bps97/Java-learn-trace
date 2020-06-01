@@ -15,4 +15,10 @@ public interface AttributeBiz {
     List<AttributeResult> listAttributes(String categoryId);
 
     void saveAttribute(AttributeForm form);
+
+    AttributeResult queryAttributeById(String id);
+
+    void updateAttribute(AttributeForm attributeForm);
+
+    void removeAttribute(String id);
 }

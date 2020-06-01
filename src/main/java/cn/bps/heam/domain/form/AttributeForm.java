@@ -1,11 +1,21 @@
 package cn.bps.heam.domain.form;
 
 public class AttributeForm {
+    private String id;
+
     private String attributeName;
 
     private String categoryId;
 
     private Boolean dynamic;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getAttributeName() {
         return attributeName;

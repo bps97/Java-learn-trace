@@ -126,6 +126,40 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.bps.heam.domain.model.Authentication">
+    update authentication
+    <set>
+      <if test="authName != null">
+        auth_name = #{authName,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=CHAR},
+      </if>
+      <if test="portalIndex != null">
+        portal_index = #{portalIndex,jdbcType=TINYINT},
+      </if>
+      <if test="available != null">
+        available = #{available,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.bps.heam.domain.model.Authentication">
+    update authentication
+    set auth_name = #{authName,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=CHAR},
+      portal_index = #{portalIndex,jdbcType=TINYINT},
+      available = #{available,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=CHAR}
+  </update>
   <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.AuthenticationExample" resultMap="BaseResultMap">
     select
     <if test="distinct">

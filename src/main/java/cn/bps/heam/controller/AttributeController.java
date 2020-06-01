@@ -21,9 +21,26 @@ public class AttributeController {
         return Ret.ok(attributeBiz.tupleAttributes(categoryId));
     }
 
-    @PostMapping("/")
-    public Ret addAttribute(AttributeForm attributeForm){
-        return Ret.create(()->{});
+    @PostMapping("/category/{categoryId}")
+    public Ret addAttribute(@PathVariable String categoryId, @RequestBody AttributeForm attributeForm){
+        attributeForm.setCategoryId(categoryId);
+        return Ret.create(()->{attributeBiz.saveAttribute(attributeForm);});
+    }
+
+    @DeleteMapping("/{id}")
+    public Ret removeAttribute(@PathVariable String id){
+        return Ret.ok(()->attributeBiz.removeAttribute(id));
+    }
+
+    @PutMapping("/{id}")
+    public Ret updateAttribute(@PathVariable String id, @RequestBody AttributeForm attributeForm){
+        attributeForm.setId(id);
+        return Ret.ok(()->attributeBiz.updateAttribute(attributeForm));
+    }
+
+    @GetMapping("/{id}")
+    public Ret queryAttribute(@PathVariable String id){
+        return Ret.ok(attributeBiz.queryAttributeById(id));
     }
 
 }

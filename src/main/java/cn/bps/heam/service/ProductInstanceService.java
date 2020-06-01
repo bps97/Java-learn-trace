@@ -20,7 +20,6 @@ public interface ProductInstanceService {
 
     Page<ProductResult> pageProducts(PageRequest pageRequest);
 
-
     Page<ProductResult> pageProducts(PageRequest pageRequest, Filter filter);
 
     HomeProductResult getHomeProduct(Filter filter);

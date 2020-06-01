@@ -43,4 +43,9 @@ public interface AttributeService {
 
     int updateAttributeDict(ProductAttributeDict dict);
 
+    ProductAttribute getAttributeById(String attrId);
+
+    void updateAttribute(ProductAttribute attribute);
+
+    void deleteAttribute(String id);
 }

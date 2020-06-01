@@ -54,6 +54,13 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByPrimaryKey" parameterType="cn.bps.heam.domain.model.ProductPackageKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product_package
+    where id = #{id,jdbcType=CHAR}
+      and product_instance_id = #{productInstanceId,jdbcType=CHAR}
+  </select>
   <insert id="insert" parameterType="cn.bps.heam.domain.model.ProductPackage">
     insert into product_package (id, product_instance_id, service_id, 
       price)
