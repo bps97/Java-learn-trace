@@ -35,7 +35,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void deleteAccount(String id) {
+    public void delete(String id) {
         int res = accountMapper.deleteByPrimaryKey(id);
         if(res != 1){
             throw new LocalBizServiceException(CustomizeExceptionCode.DELETE_FAIL);
@@ -44,7 +44,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void updateAccount(Account account) {
+    public void update(Account account) {
         accountMapper.updateByPrimaryKeySelective(account);
     }
 

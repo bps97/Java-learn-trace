@@ -3,6 +3,7 @@ package cn.bps.heam.controller;
 import cn.bps.common.lang.LocalBizServiceException;
 import cn.bps.common.lang.api.Page;
 import cn.bps.common.lang.domain.Ret;
+import cn.bps.heam.biz.ProductBiz;
 import cn.bps.heam.domain.PageRequest;
 import cn.bps.heam.domain.model.PortalCategory;
 import cn.bps.heam.domain.model.ProductAttribute;
@@ -24,7 +25,7 @@ import java.util.List;
 public class SearchController {
 
     @Resource
-    private ProductInstanceService productInstanceService;
+    private ProductBiz productBiz;
 
     @Resource
     private CategoryService categoryService;
@@ -39,7 +40,7 @@ public class SearchController {
      */
     @PostMapping("/products")
     public Ret<Page<ProductResult>> pageProduct(PageRequest pageRequest){
-        return Ret.ok(productInstanceService.pageProducts(pageRequest));
+        return Ret.ok(productBiz.pageProducts(pageRequest));
     }
 
     @PostMapping("/categories")

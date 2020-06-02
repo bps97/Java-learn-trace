@@ -38,7 +38,7 @@ public class PageRequest {
      */
     public RowBounds rowBounds(){
         int first = this.getIndex() - 1; /* (first, first+size ] */
-        return new RowBounds(first, first + this.size);
+        return new RowBounds(first, this.size);
     }
 
 

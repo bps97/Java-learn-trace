@@ -21,4 +21,6 @@ public interface AttributeBiz {
     void updateAttribute(AttributeForm attributeForm);
 
     void removeAttribute(String id);
+
+
 }

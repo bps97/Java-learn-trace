@@ -6,5 +6,9 @@ public enum Column {
     @Label("分类")
     category,
     @Label("价格")
-    price;
+    price,
+    @Label("属性值")
+    attributeValue,
+    @Label("商品名称")
+    productName;
 }

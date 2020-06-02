@@ -14,9 +14,9 @@ public interface AccountService {
 
     Account getAccountById(String id);
 
-    void deleteAccount(String id);
+    void delete(String id);
 
-    void updateAccount(Account account);
+    void update(Account account);
 
     Account changeAvailable(String id, boolean available);
 

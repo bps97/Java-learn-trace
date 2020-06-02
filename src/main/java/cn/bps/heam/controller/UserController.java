@@ -6,7 +6,6 @@ import cn.bps.heam.biz.UserBiz;
 import cn.bps.heam.domain.PageRequest;
 import cn.bps.heam.domain.form.UserForm;
 import cn.bps.heam.domain.form.UserInfoForm;
-import cn.bps.heam.domain.result.UserInfoResult;
 import cn.bps.heam.domain.result.UserResult;
 import cn.bps.heam.service.AccountService;
 import org.springframework.web.bind.annotation.*;
@@ -69,7 +68,7 @@ public class UserController {
     @Label("删除用戶信息")
     @DeleteMapping("/{id}")
     public Ret deleteUser(@PathVariable String id) {
-        return Ret.ok(()->accountService.deleteAccount(id));
+        return Ret.ok(()->accountService.delete(id));
     }
 
     @Label("修改用戶信息")

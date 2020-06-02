@@ -2,6 +2,7 @@ package cn.bps.heam.controller;
 
 import cn.bps.common.lang.api.Filter;
 import cn.bps.common.lang.domain.Ret;
+import cn.bps.heam.biz.ProductBiz;
 import cn.bps.heam.dict.Column;
 import cn.bps.heam.domain.model.ProductAttribute;
 import cn.bps.heam.domain.result.CommercialResult;
@@ -23,7 +24,7 @@ public class HomeController {
     private AttributeService attributeService;
 
     @Resource
-    private ProductInstanceService productInstanceService;
+    private ProductBiz productBiz;
 
     @Resource
     private CommercialService commercialService;
@@ -50,7 +51,7 @@ public class HomeController {
         Filter filter = Filter.condition();
         filter.addEqualTo(Column.category.name(), categoryName);
 
-        return Ret.ok(productInstanceService.getHomeProduct(filter));
+        return Ret.ok(productBiz.getHomeProduct(filter));
     }
 
     /**

@@ -31,6 +31,8 @@ public interface AttributeService {
 
     List<ProductAttributeDict> listAttrDicts();
 
+    List<ProductAttributeDict> listAttrDictsByCategoryId(String categoryId);
+
     List<ProductAttributeDict> listAttrDictByAttrIds(List<String> attrIds);
 
     List<ProductAttributeDict> listAttrDictByAttrId(String attrId);

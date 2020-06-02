@@ -53,7 +53,7 @@ public class UserBizImpl implements UserBiz {
         account.setCellphoneNum(userInfoForm.getMobile());
         account.setId(id);
 
-        accountService.updateAccount(account);
+        accountService.update(account);
     }
 
     @Override

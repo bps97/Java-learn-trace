@@ -25,6 +25,10 @@ public class Filter extends AbstractList<Filter.Property> {
         return new Filter();
     }
 
+    public boolean isEmpty(){
+        return propertyList.isEmpty();
+    }
+
     public Filter addEqualTo(String value, String secondValue) {
         add(new Property(value, secondValue));
         return this;

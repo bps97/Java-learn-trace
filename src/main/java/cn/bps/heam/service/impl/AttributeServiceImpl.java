@@ -15,6 +15,7 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -89,6 +90,15 @@ public class AttributeServiceImpl implements AttributeService {
     @Override
     public List<ProductAttributeDict> listAttrDicts() {
         return attributeDictMapper.selectByExample(new ProductAttributeDictExample());
+    }
+
+    @Override
+    public List<ProductAttributeDict> listAttrDictsByCategoryId(String categoryId) {
+        List<ProductAttribute> attributes = listProductAttributes(categoryId);
+        List<String> attrIds = attributes.stream().map(ProductAttribute::getId).collect(Collectors.toList());
+        ProductAttributeDictExample attributeDictExample = new ProductAttributeDictExample();
+        attributeDictExample.createCriteria().andAttributeIdIn(attrIds);
+        return attributeDictMapper.selectByExample(attributeDictExample);
     }
 
     @Override
