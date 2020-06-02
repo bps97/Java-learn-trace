@@ -72,7 +72,7 @@
   <sql id="Base_Column_List">
     id, status, price, account_id, address_id, available, create_time, update_time
   </sql>
-  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.OrderExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.template.OrderExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -97,7 +97,7 @@
     delete from order
     where id = #{id,jdbcType=CHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.bps.heam.domain.model.OrderExample">
+  <delete id="deleteByExample" parameterType="cn.bps.heam.domain.model.template.OrderExample">
     delete from order
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -166,7 +166,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.bps.heam.domain.model.OrderExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="cn.bps.heam.domain.model.template.OrderExample" resultType="java.lang.Long">
     select count(*) from order
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -256,7 +256,7 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=CHAR}
   </update>
-  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.OrderExample" resultMap="BaseResultMap">
+  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.template.OrderExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct

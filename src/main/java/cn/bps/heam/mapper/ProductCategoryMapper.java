@@ -1,7 +1,7 @@
 package cn.bps.heam.mapper;
 
 import cn.bps.heam.domain.model.ProductCategory;
-import cn.bps.heam.domain.model.ProductCategoryExample;
+import cn.bps.heam.domain.model.template.ProductCategoryExample;
 import java.util.List;
 import org.apache.ibatis.session.RowBounds;
 

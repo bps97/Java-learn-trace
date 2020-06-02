@@ -74,7 +74,7 @@
   <sql id="Blob_Column_List">
     uri
   </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="cn.bps.heam.domain.model.ResourceUriExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBs" parameterType="cn.bps.heam.domain.model.template.ResourceUriExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
@@ -91,7 +91,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.ResourceUriExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.template.ResourceUriExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -118,7 +118,7 @@
     delete from resource_uri
     where id = #{id,jdbcType=CHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.bps.heam.domain.model.ResourceUriExample">
+  <delete id="deleteByExample" parameterType="cn.bps.heam.domain.model.template.ResourceUriExample">
     delete from resource_uri
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -167,7 +167,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.bps.heam.domain.model.ResourceUriExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="cn.bps.heam.domain.model.template.ResourceUriExample" resultType="java.lang.Long">
     select count(*) from resource_uri
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -250,7 +250,7 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=CHAR}
   </update>
-  <select id="selectByExampleWithBLOBsWithRowbounds" parameterType="cn.bps.heam.domain.model.ResourceUriExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBsWithRowbounds" parameterType="cn.bps.heam.domain.model.template.ResourceUriExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
@@ -267,7 +267,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.ResourceUriExample" resultMap="BaseResultMap">
+  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.template.ResourceUriExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct

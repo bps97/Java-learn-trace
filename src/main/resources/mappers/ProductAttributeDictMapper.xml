@@ -44,7 +44,7 @@
     id, product_id, attribute_id, attribute_key, attribute_value, available, create_time, 
     update_time
   </sql>
-  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.ProductAttributeDictExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.template.ProductAttributeDictExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -170,7 +170,7 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=CHAR}
   </update>
-  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.ProductAttributeDictExample" resultMap="BaseResultMap">
+  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.template.ProductAttributeDictExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct

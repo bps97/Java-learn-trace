@@ -39,7 +39,7 @@
   <sql id="Base_Column_List">
     id, product_instance_id, service_id, price
   </sql>
-  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.ProductPackageExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.template.ProductPackageExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -118,7 +118,7 @@
     where id = #{id,jdbcType=CHAR}
       and product_instance_id = #{productInstanceId,jdbcType=CHAR}
   </update>
-  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.ProductPackageExample" resultMap="BaseResultMap">
+  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.template.ProductPackageExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct

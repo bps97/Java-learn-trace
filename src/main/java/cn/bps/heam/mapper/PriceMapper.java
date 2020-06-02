@@ -1,7 +1,7 @@
 package cn.bps.heam.mapper;
 
 import cn.bps.heam.domain.model.Price;
-import cn.bps.heam.domain.model.PriceExample;
+import cn.bps.heam.domain.model.template.PriceExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;

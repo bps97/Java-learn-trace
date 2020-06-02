@@ -1,7 +1,7 @@
 package cn.bps.heam.mapper;
 
 import cn.bps.heam.domain.model.Area;
-import cn.bps.heam.domain.model.AreaExample;
+import cn.bps.heam.domain.model.template.AreaExample;
 import java.util.List;
 import org.apache.ibatis.session.RowBounds;
 

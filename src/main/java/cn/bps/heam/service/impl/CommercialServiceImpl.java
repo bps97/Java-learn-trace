@@ -3,7 +3,7 @@ package cn.bps.heam.service.impl;
 import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
 import cn.bps.heam.domain.model.Commercial;
-import cn.bps.heam.domain.model.CommercialExample;
+import cn.bps.heam.domain.model.template.CommercialExample;
 import cn.bps.heam.domain.result.CommercialResult;
 import cn.bps.heam.mapper.CommercialMapper;
 import cn.bps.heam.service.CommercialService;

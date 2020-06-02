@@ -1,7 +1,7 @@
 package cn.bps.heam.service.impl;
 
 import cn.bps.heam.domain.model.Price;
-import cn.bps.heam.domain.model.PriceExample;
+import cn.bps.heam.domain.model.template.PriceExample;
 import cn.bps.heam.mapper.PriceMapper;
 import cn.bps.heam.service.PriceService;
 import org.springframework.beans.factory.annotation.Autowired;

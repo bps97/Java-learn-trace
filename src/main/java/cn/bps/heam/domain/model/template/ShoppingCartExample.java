@@ -1,4 +1,4 @@
-package cn.bps.heam.domain.model;
+package cn.bps.heam.domain.model.template;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

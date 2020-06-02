@@ -2,6 +2,8 @@ package cn.bps.heam.service.impl;
 
 
 import cn.bps.heam.domain.model.*;
+import cn.bps.heam.domain.model.template.ProductAttributeDictExample;
+import cn.bps.heam.domain.model.template.ProductAttributeExample;
 import cn.bps.heam.mapper.ProductAttributeDictMapper;
 import cn.bps.heam.mapper.ProductAttributeMapper;
 import cn.bps.heam.service.AttributeService;

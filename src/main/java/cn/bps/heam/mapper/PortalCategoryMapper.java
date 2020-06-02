@@ -1,7 +1,7 @@
 package cn.bps.heam.mapper;
 
 import cn.bps.heam.domain.model.PortalCategory;
-import cn.bps.heam.domain.model.PortalCategoryExample;
+import cn.bps.heam.domain.model.template.PortalCategoryExample;
 import java.util.List;
 import org.apache.ibatis.session.RowBounds;
 

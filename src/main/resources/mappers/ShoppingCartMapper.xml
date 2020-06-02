@@ -71,7 +71,7 @@
   <sql id="Base_Column_List">
     id, product_package_id, price, account_id, available, create_time, update_time
   </sql>
-  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.ShoppingCartExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.template.ShoppingCartExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -96,7 +96,7 @@
     delete from shopping_cart
     where id = #{id,jdbcType=CHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.bps.heam.domain.model.ShoppingCartExample">
+  <delete id="deleteByExample" parameterType="cn.bps.heam.domain.model.template.ShoppingCartExample">
     delete from shopping_cart
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -159,7 +159,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.bps.heam.domain.model.ShoppingCartExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="cn.bps.heam.domain.model.template.ShoppingCartExample" resultType="java.lang.Long">
     select count(*) from shopping_cart
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -241,7 +241,7 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=CHAR}
   </update>
-  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.ShoppingCartExample" resultMap="BaseResultMap">
+  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.template.ShoppingCartExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct

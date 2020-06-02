@@ -5,7 +5,7 @@ import cn.bps.common.lang.api.Page;
 import cn.bps.heam.domain.PageRequest;
 import cn.bps.heam.domain.model.PortalCategory;
 import cn.bps.heam.domain.model.ProductCategory;
-import cn.bps.heam.domain.model.ProductCategoryExample;
+import cn.bps.heam.domain.model.template.ProductCategoryExample;
 import cn.bps.heam.domain.result.CategoryResult;
 
 import java.util.List;

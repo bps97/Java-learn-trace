@@ -42,7 +42,7 @@
   <sql id="Base_Column_List">
     id, attribute_name, category_id, dynamic, available, create_time, update_time
   </sql>
-  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.ProductAttributeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.template.ProductAttributeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -158,7 +158,7 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=CHAR}
   </update>
-  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.ProductAttributeExample" resultMap="BaseResultMap">
+  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.template.ProductAttributeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct

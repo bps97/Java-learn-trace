@@ -39,7 +39,7 @@
   <sql id="Base_Column_List">
     id, ref_category_id, portal_index, category_name
   </sql>
-  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.PortalCategoryExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.template.PortalCategoryExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -101,7 +101,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.bps.heam.domain.model.PortalCategoryExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="cn.bps.heam.domain.model.template.PortalCategoryExample" resultType="java.lang.Long">
     select count(*) from portal_category
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -129,7 +129,7 @@
       category_name = #{categoryName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
-  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.PortalCategoryExample" resultMap="BaseResultMap">
+  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.template.PortalCategoryExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct

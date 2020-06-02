@@ -1,7 +1,7 @@
 package cn.bps.heam.mapper;
 
 import cn.bps.heam.domain.model.ProductAttribute;
-import cn.bps.heam.domain.model.ProductAttributeExample;
+import cn.bps.heam.domain.model.template.ProductAttributeExample;
 import java.util.List;
 import org.apache.ibatis.session.RowBounds;
 

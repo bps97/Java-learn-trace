@@ -1,7 +1,7 @@
 package cn.bps.heam.mapper;
 
 import cn.bps.heam.domain.model.Commercial;
-import cn.bps.heam.domain.model.CommercialExample;
+import cn.bps.heam.domain.model.template.CommercialExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;

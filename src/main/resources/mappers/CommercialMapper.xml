@@ -72,7 +72,7 @@
   <sql id="Base_Column_List">
     id, info, img_uri_id, portal_index, point, available, create_time, update_time
   </sql>
-  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.CommercialExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.template.CommercialExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -93,7 +93,7 @@
     from commercial
     where id = #{id,jdbcType=CHAR}
   </select>
-  <delete id="deleteByExample" parameterType="cn.bps.heam.domain.model.CommercialExample">
+  <delete id="deleteByExample" parameterType="cn.bps.heam.domain.model.template.CommercialExample">
     delete from commercial
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -162,7 +162,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.bps.heam.domain.model.CommercialExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="cn.bps.heam.domain.model.template.CommercialExample" resultType="java.lang.Long">
     select count(*) from commercial
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -252,7 +252,7 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=CHAR}
   </update>
-  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.CommercialExample" resultMap="BaseResultMap">
+  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.template.CommercialExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct

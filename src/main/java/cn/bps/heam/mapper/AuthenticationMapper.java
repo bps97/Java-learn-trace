@@ -1,7 +1,7 @@
 package cn.bps.heam.mapper;
 
 import cn.bps.heam.domain.model.Authentication;
-import cn.bps.heam.domain.model.AuthenticationExample;
+import cn.bps.heam.domain.model.template.AuthenticationExample;
 import java.util.List;
 import org.apache.ibatis.session.RowBounds;
 

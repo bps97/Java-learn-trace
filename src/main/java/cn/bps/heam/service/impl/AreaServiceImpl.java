@@ -4,7 +4,7 @@ import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
 import cn.bps.common.utils.ModelUtils;
 import cn.bps.heam.domain.model.Area;
-import cn.bps.heam.domain.model.AreaExample;
+import cn.bps.heam.domain.model.template.AreaExample;
 import cn.bps.heam.domain.result.area.AreaVo;
 import cn.bps.heam.mapper.AreaMapper;
 import cn.bps.heam.service.AreaService;

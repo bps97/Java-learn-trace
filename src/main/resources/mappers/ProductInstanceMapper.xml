@@ -45,7 +45,7 @@
     id, product_id, product_name, price, category_id, img_uri_id, available, create_time, 
     update_time
   </sql>
-  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.ProductInstanceExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.template.ProductInstanceExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -137,7 +137,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.bps.heam.domain.model.ProductInstanceExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="cn.bps.heam.domain.model.template.ProductInstanceExample" resultType="java.lang.Long">
     select count(*) from product_instance
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -185,7 +185,7 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=CHAR}
   </update>
-  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.ProductInstanceExample" resultMap="BaseResultMap">
+  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.template.ProductInstanceExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct

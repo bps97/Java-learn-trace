@@ -1,7 +1,7 @@
 package cn.bps.heam.mapper;
 
 import cn.bps.heam.domain.model.ShoppingCart;
-import cn.bps.heam.domain.model.ShoppingCartExample;
+import cn.bps.heam.domain.model.template.ShoppingCartExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;

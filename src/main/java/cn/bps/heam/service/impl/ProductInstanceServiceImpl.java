@@ -7,6 +7,7 @@ import cn.bps.common.lang.util.Generator;
 import cn.bps.heam.dict.Column;
 import cn.bps.heam.domain.PageRequest;
 import cn.bps.heam.domain.model.*;
+import cn.bps.heam.domain.model.template.ProductInstanceExample;
 import cn.bps.heam.domain.result.HomeProductResult;
 import cn.bps.heam.domain.result.ProductResult;
 import cn.bps.heam.mapper.ProductInstanceMapper;

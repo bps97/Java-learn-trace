@@ -48,7 +48,7 @@
     id, code, name, parent_id, short_name, level_type, city_code, zip_code, merge_name, 
     ing, lat, pinyin
   </sql>
-  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.AreaExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.template.AreaExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -73,13 +73,13 @@
     delete from area
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <select id="countByExample" parameterType="cn.bps.heam.domain.model.AreaExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="cn.bps.heam.domain.model.template.AreaExample" resultType="java.lang.Long">
     select count(*) from area
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.AreaExample" resultMap="BaseResultMap">
+  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.template.AreaExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct

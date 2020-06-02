@@ -1,17 +1,17 @@
-package cn.bps.heam.domain.model;
+package cn.bps.heam.domain.model.template;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ValueAddedServiceExample {
+public class CommercialExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public ValueAddedServiceExample() {
+    public CommercialExample() {
         oredCriteria = new ArrayList<>();
     }
 
@@ -175,143 +175,273 @@ public class ValueAddedServiceExample {
             return (Criteria) this;
         }
 
-        public Criteria andServiceNameIsNull() {
-            addCriterion("service_name is null");
+        public Criteria andInfoIsNull() {
+            addCriterion("info is null");
             return (Criteria) this;
         }
 
-        public Criteria andServiceNameIsNotNull() {
-            addCriterion("service_name is not null");
+        public Criteria andInfoIsNotNull() {
+            addCriterion("info is not null");
             return (Criteria) this;
         }
 
-        public Criteria andServiceNameEqualTo(String value) {
-            addCriterion("service_name =", value, "serviceName");
+        public Criteria andInfoEqualTo(String value) {
+            addCriterion("info =", value, "info");
             return (Criteria) this;
         }
 
-        public Criteria andServiceNameNotEqualTo(String value) {
-            addCriterion("service_name <>", value, "serviceName");
+        public Criteria andInfoNotEqualTo(String value) {
+            addCriterion("info <>", value, "info");
             return (Criteria) this;
         }
 
-        public Criteria andServiceNameGreaterThan(String value) {
-            addCriterion("service_name >", value, "serviceName");
+        public Criteria andInfoGreaterThan(String value) {
+            addCriterion("info >", value, "info");
             return (Criteria) this;
         }
 
-        public Criteria andServiceNameGreaterThanOrEqualTo(String value) {
-            addCriterion("service_name >=", value, "serviceName");
+        public Criteria andInfoGreaterThanOrEqualTo(String value) {
+            addCriterion("info >=", value, "info");
             return (Criteria) this;
         }
 
-        public Criteria andServiceNameLessThan(String value) {
-            addCriterion("service_name <", value, "serviceName");
+        public Criteria andInfoLessThan(String value) {
+            addCriterion("info <", value, "info");
             return (Criteria) this;
         }
 
-        public Criteria andServiceNameLessThanOrEqualTo(String value) {
-            addCriterion("service_name <=", value, "serviceName");
+        public Criteria andInfoLessThanOrEqualTo(String value) {
+            addCriterion("info <=", value, "info");
             return (Criteria) this;
         }
 
-        public Criteria andServiceNameLike(String value) {
-            addCriterion("service_name like", value, "serviceName");
+        public Criteria andInfoLike(String value) {
+            addCriterion("info like", value, "info");
             return (Criteria) this;
         }
 
-        public Criteria andServiceNameNotLike(String value) {
-            addCriterion("service_name not like", value, "serviceName");
+        public Criteria andInfoNotLike(String value) {
+            addCriterion("info not like", value, "info");
             return (Criteria) this;
         }
 
-        public Criteria andServiceNameIn(List<String> values) {
-            addCriterion("service_name in", values, "serviceName");
+        public Criteria andInfoIn(List<String> values) {
+            addCriterion("info in", values, "info");
             return (Criteria) this;
         }
 
-        public Criteria andServiceNameNotIn(List<String> values) {
-            addCriterion("service_name not in", values, "serviceName");
+        public Criteria andInfoNotIn(List<String> values) {
+            addCriterion("info not in", values, "info");
             return (Criteria) this;
         }
 
-        public Criteria andServiceNameBetween(String value1, String value2) {
-            addCriterion("service_name between", value1, value2, "serviceName");
+        public Criteria andInfoBetween(String value1, String value2) {
+            addCriterion("info between", value1, value2, "info");
             return (Criteria) this;
         }
 
-        public Criteria andServiceNameNotBetween(String value1, String value2) {
-            addCriterion("service_name not between", value1, value2, "serviceName");
+        public Criteria andInfoNotBetween(String value1, String value2) {
+            addCriterion("info not between", value1, value2, "info");
             return (Criteria) this;
         }
 
-        public Criteria andServiceInfoIsNull() {
-            addCriterion("service_info is null");
+        public Criteria andImgUriIdIsNull() {
+            addCriterion("img_uri_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andServiceInfoIsNotNull() {
-            addCriterion("service_info is not null");
+        public Criteria andImgUriIdIsNotNull() {
+            addCriterion("img_uri_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andServiceInfoEqualTo(String value) {
-            addCriterion("service_info =", value, "serviceInfo");
+        public Criteria andImgUriIdEqualTo(String value) {
+            addCriterion("img_uri_id =", value, "imgUriId");
             return (Criteria) this;
         }
 
-        public Criteria andServiceInfoNotEqualTo(String value) {
-            addCriterion("service_info <>", value, "serviceInfo");
+        public Criteria andImgUriIdNotEqualTo(String value) {
+            addCriterion("img_uri_id <>", value, "imgUriId");
             return (Criteria) this;
         }
 
-        public Criteria andServiceInfoGreaterThan(String value) {
-            addCriterion("service_info >", value, "serviceInfo");
+        public Criteria andImgUriIdGreaterThan(String value) {
+            addCriterion("img_uri_id >", value, "imgUriId");
             return (Criteria) this;
         }
 
-        public Criteria andServiceInfoGreaterThanOrEqualTo(String value) {
-            addCriterion("service_info >=", value, "serviceInfo");
+        public Criteria andImgUriIdGreaterThanOrEqualTo(String value) {
+            addCriterion("img_uri_id >=", value, "imgUriId");
             return (Criteria) this;
         }
 
-        public Criteria andServiceInfoLessThan(String value) {
-            addCriterion("service_info <", value, "serviceInfo");
+        public Criteria andImgUriIdLessThan(String value) {
+            addCriterion("img_uri_id <", value, "imgUriId");
             return (Criteria) this;
         }
 
-        public Criteria andServiceInfoLessThanOrEqualTo(String value) {
-            addCriterion("service_info <=", value, "serviceInfo");
+        public Criteria andImgUriIdLessThanOrEqualTo(String value) {
+            addCriterion("img_uri_id <=", value, "imgUriId");
             return (Criteria) this;
         }
 
-        public Criteria andServiceInfoLike(String value) {
-            addCriterion("service_info like", value, "serviceInfo");
+        public Criteria andImgUriIdLike(String value) {
+            addCriterion("img_uri_id like", value, "imgUriId");
             return (Criteria) this;
         }
 
-        public Criteria andServiceInfoNotLike(String value) {
-            addCriterion("service_info not like", value, "serviceInfo");
+        public Criteria andImgUriIdNotLike(String value) {
+            addCriterion("img_uri_id not like", value, "imgUriId");
             return (Criteria) this;
         }
 
-        public Criteria andServiceInfoIn(List<String> values) {
-            addCriterion("service_info in", values, "serviceInfo");
+        public Criteria andImgUriIdIn(List<String> values) {
+            addCriterion("img_uri_id in", values, "imgUriId");
             return (Criteria) this;
         }
 
-        public Criteria andServiceInfoNotIn(List<String> values) {
-            addCriterion("service_info not in", values, "serviceInfo");
+        public Criteria andImgUriIdNotIn(List<String> values) {
+            addCriterion("img_uri_id not in", values, "imgUriId");
             return (Criteria) this;
         }
 
-        public Criteria andServiceInfoBetween(String value1, String value2) {
-            addCriterion("service_info between", value1, value2, "serviceInfo");
+        public Criteria andImgUriIdBetween(String value1, String value2) {
+            addCriterion("img_uri_id between", value1, value2, "imgUriId");
             return (Criteria) this;
         }
 
-        public Criteria andServiceInfoNotBetween(String value1, String value2) {
-            addCriterion("service_info not between", value1, value2, "serviceInfo");
+        public Criteria andImgUriIdNotBetween(String value1, String value2) {
+            addCriterion("img_uri_id not between", value1, value2, "imgUriId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortalIndexIsNull() {
+            addCriterion("portal_index is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortalIndexIsNotNull() {
+            addCriterion("portal_index is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortalIndexEqualTo(Integer value) {
+            addCriterion("portal_index =", value, "portalIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortalIndexNotEqualTo(Integer value) {
+            addCriterion("portal_index <>", value, "portalIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortalIndexGreaterThan(Integer value) {
+            addCriterion("portal_index >", value, "portalIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortalIndexGreaterThanOrEqualTo(Integer value) {
+            addCriterion("portal_index >=", value, "portalIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortalIndexLessThan(Integer value) {
+            addCriterion("portal_index <", value, "portalIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortalIndexLessThanOrEqualTo(Integer value) {
+            addCriterion("portal_index <=", value, "portalIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortalIndexIn(List<Integer> values) {
+            addCriterion("portal_index in", values, "portalIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortalIndexNotIn(List<Integer> values) {
+            addCriterion("portal_index not in", values, "portalIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortalIndexBetween(Integer value1, Integer value2) {
+            addCriterion("portal_index between", value1, value2, "portalIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortalIndexNotBetween(Integer value1, Integer value2) {
+            addCriterion("portal_index not between", value1, value2, "portalIndex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointIsNull() {
+            addCriterion("point is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointIsNotNull() {
+            addCriterion("point is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointEqualTo(String value) {
+            addCriterion("point =", value, "point");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointNotEqualTo(String value) {
+            addCriterion("point <>", value, "point");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointGreaterThan(String value) {
+            addCriterion("point >", value, "point");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointGreaterThanOrEqualTo(String value) {
+            addCriterion("point >=", value, "point");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointLessThan(String value) {
+            addCriterion("point <", value, "point");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointLessThanOrEqualTo(String value) {
+            addCriterion("point <=", value, "point");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointLike(String value) {
+            addCriterion("point like", value, "point");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointNotLike(String value) {
+            addCriterion("point not like", value, "point");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointIn(List<String> values) {
+            addCriterion("point in", values, "point");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointNotIn(List<String> values) {
+            addCriterion("point not in", values, "point");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointBetween(String value1, String value2) {
+            addCriterion("point between", value1, value2, "point");
+            return (Criteria) this;
+        }
+
+        public Criteria andPointNotBetween(String value1, String value2) {
+            addCriterion("point not between", value1, value2, "point");
             return (Criteria) this;
         }
 

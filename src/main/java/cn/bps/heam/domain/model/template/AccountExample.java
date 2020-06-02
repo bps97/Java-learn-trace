@@ -1,4 +1,4 @@
-package cn.bps.heam.domain.model;
+package cn.bps.heam.domain.model.template;
 
 import java.util.ArrayList;
 import java.util.Date;

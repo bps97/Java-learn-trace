@@ -4,7 +4,7 @@ import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
 import cn.bps.enums.CompositeMode;
 import cn.bps.heam.domain.model.Authentication;
-import cn.bps.heam.domain.model.AuthenticationExample;
+import cn.bps.heam.domain.model.template.AuthenticationExample;
 import cn.bps.heam.domain.result.AuthenticationResult;
 import cn.bps.heam.mapper.AuthenticationMapper;
 import cn.bps.heam.service.AuthenticationService;
