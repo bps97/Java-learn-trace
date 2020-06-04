@@ -5,12 +5,14 @@ import cn.bps.common.lang.domain.Ret;
 import cn.bps.heam.biz.ProductBiz;
 import cn.bps.heam.dict.Column;
 import cn.bps.heam.domain.PageRequest;
+import cn.bps.heam.domain.result.HomeProductResult;
+import com.google.common.collect.Lists;
 import org.junit.platform.commons.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @RestController
 @RequestMapping("/goods")
@@ -31,4 +33,19 @@ public class ProductController {
         return Ret.ok(productBiz.pageProducts(pageRequest,filter));
     }
 
+
+    /**
+     * @Label("主页推送的热门产品")
+     * @param categoryNames 分类名称(中文)
+     * @return 同一分类的产品列表
+     */
+    @GetMapping("/products")
+    public Ret<List<HomeProductResult>> homeProducts(@RequestParam(required = false) List<String> categoryNames){
+        return Ret.ok(productBiz.getHomeProduct(categoryNames));
+    }
+
+    @PostMapping("/{id}")
+    public Ret getProductDetail(@PathVariable String id){
+        return Ret.ok(productBiz.getProduct(id));
+    }
 }

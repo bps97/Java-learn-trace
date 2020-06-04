@@ -8,6 +8,7 @@ import cn.bps.heam.domain.PageRequest;
 import cn.bps.heam.domain.model.*;
 import cn.bps.heam.domain.result.HomeProductResult;
 import cn.bps.heam.domain.result.ProductResult;
+import cn.bps.heam.mapper.ProductInstanceMapper;
 import cn.bps.heam.mapper.ProductMapper;
 import cn.bps.heam.service.*;
 import cn.bps.common.lang.util.Generator;
@@ -64,9 +65,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getProduct(String productId) {
-
-        return null;
+        return productMapper.selectByPrimaryKey(productId);
     }
+
+
 
     @Override
     public List<Product> listProducts(List<String> productIds) {

@@ -5,6 +5,7 @@ import cn.bps.common.lang.api.Page;
 import cn.bps.common.lang.api.Filter;
 import cn.bps.heam.domain.PageRequest;
 import cn.bps.heam.domain.model.Product;
+import cn.bps.heam.domain.model.ProductInstance;
 import cn.bps.heam.domain.result.HomeProductResult;
 import cn.bps.heam.domain.result.ProductResult;
 
@@ -22,6 +23,7 @@ public interface ProductService {
     List<String> listAttributes(Product product);
 
     Product getProduct(String productId);
+
 
     List<Product> listProducts(List<String> productIds);
 

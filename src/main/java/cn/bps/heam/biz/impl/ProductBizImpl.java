@@ -12,14 +12,12 @@ import cn.bps.heam.domain.model.ProductInstance;
 import cn.bps.heam.domain.model.template.ProductInstanceExample;
 import cn.bps.heam.domain.result.HomeProductResult;
 import cn.bps.heam.domain.result.ProductResult;
-import cn.bps.heam.service.AttributeService;
-import cn.bps.heam.service.CategoryService;
-import cn.bps.heam.service.ProductInstanceService;
-import cn.bps.heam.service.ResourceUriService;
+import cn.bps.heam.service.*;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import org.junit.platform.commons.util.StringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -42,6 +40,9 @@ public class ProductBizImpl implements ProductBiz {
 
     @Resource
     private ResourceUriService resourceUriService;
+
+    @Resource
+    private ProductService productService;
 
     @Override
     public Page<ProductResult> pageProducts(PageRequest pageRequest) {
@@ -167,17 +168,34 @@ public class ProductBizImpl implements ProductBiz {
     }
 
     @Override
-    public HomeProductResult getHomeProduct(Filter filter) {
+    public HomeProductResult getHomeProduct(String categoryName) {
+
+        Filter filter = Filter.condition();
+        filter.addEqualTo(Column.category.name(), categoryName);
+
         PageRequest pageRequest = new PageRequest();
         pageRequest.setPage(1);
         pageRequest.setSize(5);
 
         Page<ProductResult> pageProducts = pageProducts(pageRequest, filter);
         HomeProductResult homeProductResult = new HomeProductResult();
-        String categoryName = filter.get(0).getSecondValue();
         homeProductResult.setCategoryName(categoryName);
         homeProductResult.setProducts(pageProducts.getContent());
         return homeProductResult;
+    }
+
+    @Override
+    public List<HomeProductResult> getHomeProduct(List<String> categoryNames) {
+        List<HomeProductResult> homeProductResults = Lists.newArrayList();
+        for(String categoryName : categoryNames){
+            homeProductResults.add(getHomeProduct(categoryName));
+        }
+        return homeProductResults;
+    }
+
+    @Override
+    public ProductResult getProduct(String id) {
+        return model2Result(instanceService.getProductInstance(id));
     }
 
 
@@ -207,4 +225,5 @@ public class ProductBizImpl implements ProductBiz {
         result.setProductId(productInstance.getProductId());
         return result;
     }
+
 }

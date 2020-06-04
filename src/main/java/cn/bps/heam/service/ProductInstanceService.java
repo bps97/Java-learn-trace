@@ -25,4 +25,6 @@ public interface ProductInstanceService {
 
     List<ProductInstance> listProductInstances(ProductInstanceExample example);
 
+    ProductInstance getProductInstance(String productId);
+
 }

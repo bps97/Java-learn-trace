@@ -80,6 +80,15 @@ public class ProductInstanceServiceImpl implements ProductInstanceService {
         return productInstanceMapper.selectByExample(example);
     }
 
+    @Override
+    public ProductInstance getProductInstance(String productId) {
+        ProductInstanceExample example = new ProductInstanceExample();
+        example.createCriteria().andProductIdEqualTo(productId);
+        List<ProductInstance> instances = productInstanceMapper.selectByExample(example);
+
+        return instances.isEmpty() ? null : instances.get(0);
+    }
+
 
     @Override
     public List<Product> listProducts() {

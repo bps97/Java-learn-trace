@@ -10,6 +10,7 @@ import cn.bps.heam.domain.result.HomeProductResult;
 import cn.bps.heam.service.CommercialService;
 import cn.bps.heam.service.AttributeService;
 import cn.bps.heam.service.ProductInstanceService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,23 +37,7 @@ public class HomeController {
     }
 
 
-    /**
-     * @Label("主页推送的热门产品")
-     * @param categoryName 分类名称(中文)
-     * @return 同一分类的产品列表
-     */
-    @PostMapping("/products")
-    public Ret<HomeProductResult> homeProducts(String categoryName){
 
-
-
-//        List<PortalCategory> portalCategories = portalCategoryService.listPortalCategories();
-
-        Filter filter = Filter.condition();
-        filter.addEqualTo(Column.category.name(), categoryName);
-
-        return Ret.ok(productBiz.getHomeProduct(filter));
-    }
 
     /**
      * @Label("主页推送的广告")
