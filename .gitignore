@@ -33,3 +33,6 @@ build/
 ### bps add
 **/.mvn/**
 mvnw*
+
+### test classes
+src/test/java/mapper/*
