@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
 import com.baomidou.mybatisplus.generator.config.GlobalConfig;
 import com.baomidou.mybatisplus.generator.config.PackageConfig;
 import com.baomidou.mybatisplus.generator.config.StrategyConfig;
+import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
 public class MybatisPlusGenerator {
@@ -40,16 +41,17 @@ public class MybatisPlusGenerator {
         StrategyConfig strategyConfig = new StrategyConfig();
         strategyConfig
                 .setCapitalMode(true)
-                .setEntityLombokModel(false)
+                .setEntityLombokModel(true)
                 // .setDbColumnUnderline(true)
                 .setNaming(NamingStrategy.underline_to_camel);
         config.setActiveRecord(false)
                 .setEnableCache(false)
-                .setAuthor("admin")
+                .setAuthor("bps")
                 //指定输出文件夹位置
                 .setOutputDir("E:\\Workspace\\Java\\ssm-mms\\src\\main\\java")
                 .setFileOverride(true)
-                .setServiceName("%sService");
+                .setServiceName("%sService")
+                .setDateType(DateType.ONLY_DATE);
         new AutoGenerator().setGlobalConfig(config)
                 .setDataSource(dataSourceConfig)
                 .setStrategy(strategyConfig)

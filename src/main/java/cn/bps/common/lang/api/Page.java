@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Page<T> implements Iterable<T> {
 
     private List<T> content;
-    @Label("总元素个数") private long totalElements;
+    @Label("总元素个数") private long total;
     @Label("页大小")private int size;
     @Label("当前页码") private int page;
     private Sort sort;
@@ -21,26 +21,26 @@ public class Page<T> implements Iterable<T> {
     }
 
     public Page(List<T> content) {
-        this(content, Objects.isNull(content) ? content.size() : -1L, 0, content.size(), (Sort)null);
+        this(content, Objects.nonNull(content) ? content.size() : -1L, 0, content.size(), (Sort)null);
     }
 
     public Page(int page, int size) {
         this((List)null ,-1L, page, size, (Sort)null);
     }
 
-    public Page(List<T> content, long totalElements, int page, int size, Sort sort) {
+    public Page(List<T> content, long total, int page, int size, Sort sort) {
         this.content = new ArrayList<>();
         if(Objects.nonNull(content)) {
             this.content.addAll(content);
         }
-        this.totalElements = totalElements;
+        this.total = total;
         this.size = size;
         this.page = page;
         this.sort = sort;
     }
 
     public int getTotalPages() {
-        int ceil = (int)Math.ceil((double)this.totalElements / (double)this.getSize());
+        int ceil = (int)Math.ceil((double)this.total / (double)this.getSize());
         return this.getSize() == 0 ? 0 : ceil;
     }
 
@@ -57,7 +57,7 @@ public class Page<T> implements Iterable<T> {
     }
 
     public boolean hasNextPage() {
-        return (long)(this.getPage() * this.getSize()) < this.totalElements;
+        return (long)(this.getPage() * this.getSize()) < this.total;
     }
 
     public boolean isLastPage() {
@@ -87,14 +87,15 @@ public class Page<T> implements Iterable<T> {
 
     public void setContent(List<T> content) {
         this.content = content;
+        this.total = content.size();
     }
 
-    public long getTotalElements() {
-        return totalElements;
+    public long getTotal() {
+        return total;
     }
 
-    public void setTotalElements(long totalElements) {
-        this.totalElements = totalElements;
+    public void setTotal(long total) {
+        this.total = total;
     }
 
     public int getSize() {

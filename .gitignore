@@ -36,3 +36,4 @@ mvnw*
 
 ### test classes
 src/test/java/mapper/*
+src/test/java/service/*
