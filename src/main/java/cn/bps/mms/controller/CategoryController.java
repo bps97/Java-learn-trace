@@ -30,12 +30,17 @@ public class CategoryController {
 
     @GetMapping("/menus")
     public Ret<List<CategoryVo>> categoryMenus(){
-        return Ret.ok(categoryService.listCategories());
+        return Ret.ok(categoryService.listCategories(true));
     }
 
     @GetMapping("")
     public Ret<Page<CategoryVo>> Categories(PageRequest request, Integer level){
         return Ret.ok(categoryService.pageCategories(request, level));
+    }
+
+    @PutMapping("/{id}/available/{available}")
+    public Ret changeCategoryAvailability(@PathVariable String id,@PathVariable Boolean available){
+        return Ret.ok(()->categoryService.changeAvailable(id, available));
     }
 
     @GetMapping("/{id}")

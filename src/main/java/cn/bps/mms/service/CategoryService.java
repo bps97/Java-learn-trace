@@ -26,6 +26,8 @@ public interface CategoryService extends IService<Category> {
 
     List<CategoryVo> listCategories(Integer level);
 
+    List<CategoryVo> listCategories(boolean available);
+
     List<Category> rootCategories();
 
     String getId(String categoryName);
@@ -38,4 +40,5 @@ public interface CategoryService extends IService<Category> {
 
     CategoryVo getVoById(String id);
 
+    void changeAvailable(String id, Boolean available);
 }

@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author bps
- * @since 2020-06-09
+ * @since 2020-06-11
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -38,11 +38,6 @@ public class Category implements Serializable {
     private String name;
 
     /**
-     * 专业线编号(接入、无线、传输)
-     */
-    private String specialLineId;
-
-    /**
      * 等级
      */
     private Integer level;
@@ -51,6 +46,11 @@ public class Category implements Serializable {
      * 父分类ID
      */
     private String parentId;
+
+    /**
+     * 物料类型(消耗型物料,设备型物料)
+     */
+    private String type;
 
     /**
      * 是否有效

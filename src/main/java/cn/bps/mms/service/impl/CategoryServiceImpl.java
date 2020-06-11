@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -40,6 +41,9 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
 
     @Override
     public Page<CategoryVo> pageCategories(PageRequest pageRequest, Integer level) {
+        if(Objects.isNull(level)){
+            level = Integer.MAX_VALUE;
+        }
         List<CategoryVo> categories = listCategories(level);
         Page<CategoryVo> page = new Page(categories);
         pageRequest.initPage(page);
@@ -51,6 +55,13 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
     public List<CategoryVo> listCategories() {
         List<Category> rootCategories = rootCategories();
         List<CategoryVo> categories = model2Vo(rootCategories);
+        return categories;
+    }
+
+    @Override
+    public List<CategoryVo> listCategories(boolean available) {
+        List<Category> rootCategories = rootCategories();
+        List<CategoryVo> categories = model2Vo(rootCategories ,available);
         return categories;
     }
 
@@ -93,14 +104,21 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         // 得修改
     }
 
-    @Override
-    public List<Category> getChildren(String parentId) {
+    public List<Category> getChildren(String parentId, boolean available) {
         QueryWrapper<Category> wrapper = new QueryWrapper<>();
         wrapper
-        //      .eq("available", true)
                 .eq("parent_id", parentId);
+        if(available == true){ // 要求有效的
+            wrapper.
+                    eq("available", true);
+        }
         List<Category> authentications = this.list(wrapper);
         return authentications;
+    }
+
+    @Override
+    public List<Category> getChildren(String parentId) {
+        return getChildren(parentId, false);
     }
 
     @Override
@@ -109,21 +127,45 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
 
     }
 
+    @Override
+    public void changeAvailable(String id, Boolean available) {
+        Category category = new Category();
+        category.setId(id);
+        if(available == false){
+            List<Category> children = getChildren(id);
+            children.stream().forEach(this::closeCategory);
+        }
+        category.setAvailable(available);
+        this.updateById(category);
+    }
+
+    private void closeCategory(Category category){
+        category.setAvailable(false);
+        this.updateById(category);
+    }
 
     private List<CategoryVo> model2Vo(List<Category> categories) {
-        return model2Vo(categories, Integer.MAX_VALUE);
+        return model2Vo(categories, Integer.MAX_VALUE, false);
+    }
+
+    private List<CategoryVo> model2Vo(List<Category> categories, boolean available) {
+        return model2Vo(categories, Integer.MAX_VALUE, available);
     }
 
     private List<CategoryVo> model2Vo(List<Category> categories, Integer level) {
+        return model2Vo(categories, Integer.MAX_VALUE, false);
+    }
+
+    private List<CategoryVo> model2Vo(List<Category> categories, Integer level, boolean available) {
 
         List<CategoryVo> lists = Lists.newArrayList();
 
         for(Category parent: categories){
             CategoryVo vo = model2Vo(parent);
-            List<Category> children = getChildren(parent.getId());
+            List<Category> children = getChildren(parent.getId(), available);
 
             if(Objects.equals(0, level) == false) {
-                vo.setChildren(model2Vo(children,level-1));
+                vo.setChildren(model2Vo(children,level-1, available));
             }
             lists.add(vo);
         }
@@ -141,12 +183,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         vo.setLevel(category.getLevel());
         vo.setChildren(null);
         //    这个后期可以考虑改成Redis
-        if("7829b530990f11eabc3b00gg".equals(category.getSpecialLineId()))
-            vo.setSpecialLine("无线网");
-        else if("7829b530990f11eabc3b00gg".equals(category.getSpecialLineId()))
-            vo.setSpecialLine("接入网");
-        else
-            vo.setSpecialLine("装维专业");
+
         return vo;
     }
 }
