@@ -66,7 +66,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         QueryWrapper<Category> wrapper = new QueryWrapper<>();
         wrapper
                 .eq("available",true)
-                .eq("level",1);
+                .eq("level",0);
         return this.list(wrapper);
     }
 
@@ -120,7 +120,13 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
             vo.setCreateTime(parent.getCreateTime());
             vo.setUpdateTime(parent.getUpdateTime());
             vo.setLevel(parent.getLevel());
-            //    vo.setSpecialLine()
+            //    这个后期可以考虑改成Redis
+            if("7829b530990f11eabc3b00gg".equals(parent.getSpecialLineId()))
+                vo.setSpecialLine("无线网");
+            else if("7829b530990f11eabc3b00gg".equals(parent.getSpecialLineId()))
+                vo.setSpecialLine("接入网");
+            else
+                vo.setSpecialLine("装维专业");
             if(Objects.equals(0, level) == false) {
                 vo.setChildren(model2Vo(children,level-1));
             }

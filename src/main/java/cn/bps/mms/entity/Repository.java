@@ -1,18 +1,25 @@
-package cn.bps.mms.vo;
+package cn.bps.mms.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import java.util.Date;
+import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-import java.util.Date;
-import java.util.List;
-
+/**
+ * <p>
+ * 收货地址
+ * </p>
+ *
+ * @author bps
+ * @since 2020-06-09
+ */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class CategoryVo {
+public class Repository implements Serializable {
+
+    private static final long serialVersionUID=1L;
 
     /**
      * 编号
@@ -25,19 +32,14 @@ public class CategoryVo {
     private String name;
 
     /**
-     * 专业线编号(接入、无线、传输)
+     * 具体住址
      */
-    private String specialLine;
-
-    /**
-     * 等级
-     */
-    private Integer level;
+    private String address;
 
     /**
      * 父分类ID
      */
-    private List<CategoryVo> children;
+    private String parentId;
 
     /**
      * 是否有效
@@ -47,12 +49,12 @@ public class CategoryVo {
     /**
      * 创建时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createTime;
 
     /**
      * 最后修改时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date updateTime;
+
+
 }

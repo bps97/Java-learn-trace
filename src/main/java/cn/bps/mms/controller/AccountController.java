@@ -1,7 +1,11 @@
 package cn.bps.mms.controller;
 
 
+import cn.bps.common.lang.annotation.Label;
+import cn.bps.common.lang.api.Page;
+import cn.bps.common.lang.api.Token;
 import cn.bps.common.lang.domain.Ret;
+import cn.bps.mms.domain.PageRequest;
 import cn.bps.mms.entity.Account;
 import cn.bps.mms.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +32,7 @@ public class AccountController {
     private AccountService accountService;
 
     @PostMapping("/login")
-    public Ret login(@RequestBody Account loginForm) {
+    public Ret<Token> login(@RequestBody Account loginForm) {
         return Ret.ok(accountService.login(loginForm));
     }
 
@@ -38,10 +42,28 @@ public class AccountController {
     }
 
     @GetMapping("")
-    public Ret test(){
-        return Ret.ok("123");
+    public Ret<Page<Account>> pageUsers(PageRequest pageRequest, String key){
+        return Ret.ok(accountService.pageUsers(pageRequest, key));
     }
 
+    @PutMapping("/{id}/available/{available}")
+    public Ret changeAccountAvailability(@PathVariable String id,@PathVariable Boolean available){
+        return Ret.ok(()->accountService.changeAvailable(id, available));
+    }
 
+    @GetMapping("/{id}")
+    public Ret<Account> getUserInfo(@PathVariable String id) {
+        return Ret.ok(()->accountService.getById(id));
+    }
+
+    @DeleteMapping("/{id}")
+    public Ret deleteUser(@PathVariable String id) {
+        return Ret.ok(()->accountService.removeById(id));
+    }
+
+//    @PutMapping("/{id}")
+//    public Ret modifyUserInfo(@PathVariable String id, @RequestBody Account account) {
+//        return Ret.ok(()->accountService.updateUserInfo(id,userInfoForm));
+//    }
 }
 

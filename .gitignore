@@ -37,3 +37,4 @@ mvnw*
 ### test classes
 src/test/java/mapper/*
 src/test/java/service/*
+src/main/java/cn/bps/mms/mapper/*

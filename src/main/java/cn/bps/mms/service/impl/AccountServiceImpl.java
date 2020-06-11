@@ -2,8 +2,10 @@ package cn.bps.mms.service.impl;
 
 import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
+import cn.bps.common.lang.api.Page;
 import cn.bps.common.lang.api.Token;
 import cn.bps.common.lang.util.EncryptUtils;
+import cn.bps.mms.domain.PageRequest;
 import cn.bps.mms.entity.Account;
 import cn.bps.mms.mapper.AccountMapper;
 import cn.bps.mms.service.AccountService;
@@ -14,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -75,6 +78,30 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
 
         return this.getOne(wrapper);
     }
+
+    @Override
+    public Page<Account> pageUsers(PageRequest pageRequest, String key) {
+        QueryWrapper<Account> wrapper = new QueryWrapper<>();
+        if(key.isEmpty() == false){
+            wrapper.like("name", key);
+        }
+        List<Account> accounts = this.list(wrapper);
+        Page<Account> page = new Page<>(accounts);
+        pageRequest.initPage(page);
+        return page;
+    }
+
+    @Override
+    public void changeAvailable(String id, Boolean available) {
+        Account account = new Account();
+        account.setId(id);
+        account.setAvailable(available);
+        if(this.updateById(account) == false){
+            throw new LocalBizServiceException(CustomizeExceptionCode.UPDATE_FAIL);
+        }
+    }
+
+
 
 
 }
