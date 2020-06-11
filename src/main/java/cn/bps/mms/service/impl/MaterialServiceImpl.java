@@ -11,6 +11,7 @@ import cn.bps.mms.vo.KeyValue;
 import cn.bps.mms.vo.MaterialVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +38,12 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
 
     @Override
     public Page<MaterialVo> pageMaterials(PageRequest pageRequest, String categoryId, String key) {
-        List<Material> materials = listMaterials(categoryId);
+        List<Material> materials = Lists.newArrayList();
+        if(key.isEmpty() ==false){
+            materials = listMaterials(categoryId, key);
+        } else{
+            materials = listMaterials(categoryId);
+        }
         List<MaterialVo> materialVos = materials.stream().map(this::model2Vo).collect(Collectors.toList());
         Page<MaterialVo> page = new Page<>(materialVos);
         pageRequest.initPage(page);
@@ -47,12 +53,11 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
     @Override
     public List<Material> listMaterials(String categoryId, String key) {
     // 需要考虑优化
-//        QueryWrapper<Material> wrapper = new QueryWrapper<>();
-//        wrapper
-//                .eq("categoryId",categoryId)
-//                .like("")
-
-        return null;
+        QueryWrapper<Material> wrapper = new QueryWrapper<>();
+        wrapper
+                .eq("category_id",categoryId)
+                .like("name",key);
+        return this.list(wrapper);
     }
 
     @Override

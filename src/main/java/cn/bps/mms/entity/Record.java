@@ -1,8 +1,7 @@
 package cn.bps.mms.entity;
 
-import java.time.LocalDateTime;
-import java.io.Serializable;
 import java.util.Date;
+import java.io.Serializable;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -18,12 +17,12 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author bps
- * @since 2020-06-09
+ * @since 2020-06-11
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Account implements Serializable {
+public class Record implements Serializable {
 
     private static final long serialVersionUID=1L;
 
@@ -34,29 +33,54 @@ public class Account implements Serializable {
     private String id;
 
     /**
-     * 用户名(常用登陆名)
+     * 物料使用人员
      */
-    private String username;
+    private String userName;
 
     /**
-     * 密码
+     * 物料名称
      */
-    private String password;
+    private String materialName;
 
     /**
-     * 姓名
+     * 分类名称
      */
-    private String name;
+    private String categoryName;
 
     /**
-     * 邮箱地址
+     * 仓库名称
      */
-    private String email;
+    private String repositoryName;
 
     /**
-     * 手机号码
+     * 编号
      */
-    private String mobile;
+    private String userId;
+
+    /**
+     * 物料ID
+     */
+    private String materialId;
+
+    /**
+     * 仓库ID
+     */
+    private String repositoryId;
+
+    /**
+     * 分离ID
+     */
+    private String categoryId;
+
+    /**
+     * 类型(领用，归还，新品录入)
+     */
+    private String type;
+
+    /**
+     * 备注信息
+     */
+    private String message;
 
     /**
      * 是否有效
@@ -74,6 +98,5 @@ public class Account implements Serializable {
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
-
 
 }

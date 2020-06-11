@@ -103,6 +103,13 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         return authentications;
     }
 
+    @Override
+    public CategoryVo getVoById(String id) {
+        return model2Vo(getById(id));
+
+    }
+
+
     private List<CategoryVo> model2Vo(List<Category> categories) {
         return model2Vo(categories, Integer.MAX_VALUE);
     }
@@ -112,21 +119,9 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         List<CategoryVo> lists = Lists.newArrayList();
 
         for(Category parent: categories){
+            CategoryVo vo = model2Vo(parent);
             List<Category> children = getChildren(parent.getId());
-            CategoryVo vo = new CategoryVo();
-            vo.setName(parent.getName());
-            vo.setId(parent.getId());
-            vo.setAvailable(parent.getAvailable());
-            vo.setCreateTime(parent.getCreateTime());
-            vo.setUpdateTime(parent.getUpdateTime());
-            vo.setLevel(parent.getLevel());
-            //    这个后期可以考虑改成Redis
-            if("7829b530990f11eabc3b00gg".equals(parent.getSpecialLineId()))
-                vo.setSpecialLine("无线网");
-            else if("7829b530990f11eabc3b00gg".equals(parent.getSpecialLineId()))
-                vo.setSpecialLine("接入网");
-            else
-                vo.setSpecialLine("装维专业");
+
             if(Objects.equals(0, level) == false) {
                 vo.setChildren(model2Vo(children,level-1));
             }
@@ -134,5 +129,24 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         }
         return lists.isEmpty() ? null: lists;
 
+    }
+
+    private CategoryVo model2Vo(Category category){
+        CategoryVo vo = new CategoryVo();
+        vo.setName(category.getName());
+        vo.setId(category.getId());
+        vo.setAvailable(category.getAvailable());
+        vo.setCreateTime(category.getCreateTime());
+        vo.setUpdateTime(category.getUpdateTime());
+        vo.setLevel(category.getLevel());
+        vo.setChildren(null);
+        //    这个后期可以考虑改成Redis
+        if("7829b530990f11eabc3b00gg".equals(category.getSpecialLineId()))
+            vo.setSpecialLine("无线网");
+        else if("7829b530990f11eabc3b00gg".equals(category.getSpecialLineId()))
+            vo.setSpecialLine("接入网");
+        else
+            vo.setSpecialLine("装维专业");
+        return vo;
     }
 }

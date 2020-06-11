@@ -36,4 +36,6 @@ public interface CategoryService extends IService<Category> {
 
     List<Category> getChildren(String parentId);
 
+    CategoryVo getVoById(String id);
+
 }

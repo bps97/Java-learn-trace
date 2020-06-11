@@ -83,7 +83,9 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
     public Page<Account> pageUsers(PageRequest pageRequest, String key) {
         QueryWrapper<Account> wrapper = new QueryWrapper<>();
         if(key.isEmpty() == false){
-            wrapper.like("name", key);
+            wrapper
+                    .like("name", key)
+                    .or().like("username",key);
         }
         List<Account> accounts = this.list(wrapper);
         Page<Account> page = new Page<>(accounts);
@@ -101,7 +103,11 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
         }
     }
 
-
+    @Override
+    public void updateById(String id, Account account) {
+        account.setId(id);
+        updateById(account);
+    }
 
 
 }

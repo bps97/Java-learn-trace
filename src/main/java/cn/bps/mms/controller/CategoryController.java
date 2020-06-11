@@ -4,12 +4,11 @@ package cn.bps.mms.controller;
 import cn.bps.common.lang.api.Page;
 import cn.bps.common.lang.domain.Ret;
 import cn.bps.mms.domain.PageRequest;
+import cn.bps.mms.entity.Account;
+import cn.bps.mms.entity.Category;
 import cn.bps.mms.service.CategoryService;
 import cn.bps.mms.vo.CategoryVo;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -38,6 +37,21 @@ public class CategoryController {
     public Ret<Page<CategoryVo>> Categories(PageRequest request, Integer level){
         return Ret.ok(categoryService.pageCategories(request, level));
     }
+
+    @GetMapping("/{id}")
+    public Ret<CategoryVo> getCategoryInfo(@PathVariable String id) {
+        return Ret.ok(categoryService.getVoById(id));
+    }
+
+    @DeleteMapping("/{id}")
+    public Ret deleteUser(@PathVariable String id) {
+        return Ret.ok(()->categoryService.removeById(id));
+    }
+
+//    @PutMapping("/{id}")
+//    public Ret modifyUserInfo(@PathVariable String id, @RequestBody CategoryVo account) {
+//        return Ret.ok(()->categoryService.updateById(id, account));
+//    }
 
 }
 

@@ -1,17 +1,14 @@
 package cn.bps.mms.controller;
 
 
-import cn.bps.common.lang.annotation.Label;
 import cn.bps.common.lang.api.Page;
 import cn.bps.common.lang.api.Token;
 import cn.bps.common.lang.domain.Ret;
 import cn.bps.mms.domain.PageRequest;
 import cn.bps.mms.entity.Account;
 import cn.bps.mms.service.AccountService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.NotEmpty;
@@ -37,7 +34,7 @@ public class AccountController {
     }
 
     @PostMapping("")
-    public Ret insert(@NotEmpty Account regForm){
+    public Ret insert(@RequestBody Account regForm){
         return Ret.ok(()->accountService.register(regForm));
     }
 
@@ -53,7 +50,7 @@ public class AccountController {
 
     @GetMapping("/{id}")
     public Ret<Account> getUserInfo(@PathVariable String id) {
-        return Ret.ok(()->accountService.getById(id));
+        return Ret.ok(accountService.getById(id));
     }
 
     @DeleteMapping("/{id}")
@@ -61,9 +58,11 @@ public class AccountController {
         return Ret.ok(()->accountService.removeById(id));
     }
 
-//    @PutMapping("/{id}")
-//    public Ret modifyUserInfo(@PathVariable String id, @RequestBody Account account) {
-//        return Ret.ok(()->accountService.updateUserInfo(id,userInfoForm));
-//    }
+    @PutMapping("/{id}")
+    public Ret modifyUserInfo(@PathVariable String id, @RequestBody Account account) {
+        return Ret.ok(()->accountService.updateById(id, account));
+    }
+
+
 }
 

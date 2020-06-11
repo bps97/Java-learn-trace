@@ -27,4 +27,5 @@ public interface AccountService extends IService<Account> {
 
     void changeAvailable(String id, Boolean available);
 
+    void updateById(String id, Account account);
 }
