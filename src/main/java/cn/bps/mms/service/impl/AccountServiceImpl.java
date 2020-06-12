@@ -2,17 +2,16 @@ package cn.bps.mms.service.impl;
 
 import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
-import cn.bps.common.lang.api.Page;
 import cn.bps.common.lang.api.Token;
 import cn.bps.common.lang.util.EncryptUtils;
-import cn.bps.mms.domain.PageRequest;
 import cn.bps.mms.entity.Account;
 import cn.bps.mms.mapper.AccountMapper;
 import cn.bps.mms.service.AccountService;
 import cn.bps.security.server.service.TokenService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -80,17 +79,14 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
     }
 
     @Override
-    public Page<Account> pageUsers(PageRequest pageRequest, String key) {
+    public IPage<Account> pageUsers(Page<Account> page, String key) {
         QueryWrapper<Account> wrapper = new QueryWrapper<>();
         if(key.isEmpty() == false){
             wrapper
                     .like("name", key)
                     .or().like("username",key);
         }
-        List<Account> accounts = this.list(wrapper);
-        Page<Account> page = new Page<>(accounts);
-        pageRequest.initPage(page);
-        return page;
+        return accountMapper.selectPage(page,wrapper);
     }
 
     @Override
@@ -108,6 +104,5 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
         account.setId(id);
         updateById(account);
     }
-
 
 }

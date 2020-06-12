@@ -31,9 +31,9 @@ public class PageRequest {
         return offset + 1;
     }
 
-    public void initPage(Page page){
-        page.setPage(this.page);
-        page.setSize(this.size);
+    public void initPage(Page Page){
+        Page.setPage(this.page);
+        Page.setSize(this.size);
     }
 
     public int getPage() {

@@ -1,10 +1,11 @@
 package cn.bps.mms.service;
 
-import cn.bps.common.lang.api.Page;
 import cn.bps.common.lang.api.Token;
 import cn.bps.common.lang.domain.Callback;
 import cn.bps.mms.domain.PageRequest;
 import cn.bps.mms.entity.Account;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -23,7 +24,7 @@ public interface AccountService extends IService<Account> {
 
     Account getByUsername(String username);
 
-    Page<Account> pageUsers(PageRequest pageRequest, String key);
+    IPage<Account> pageUsers(Page<Account> page, String key);
 
     void changeAvailable(String id, Boolean available);
 

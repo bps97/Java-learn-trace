@@ -12,7 +12,6 @@ import cn.bps.mms.vo.MaterialVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -45,9 +44,9 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
             materials = listMaterials(categoryId);
         }
         List<MaterialVo> materialVos = materials.stream().map(this::model2Vo).collect(Collectors.toList());
-        Page<MaterialVo> page = new Page<>(materialVos);
-        pageRequest.initPage(page);
-        return page;
+        Page<MaterialVo> Page = new Page<>(materialVos);
+        pageRequest.initPage(Page);
+        return Page;
     }
 
     @Override

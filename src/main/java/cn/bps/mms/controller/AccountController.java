@@ -1,12 +1,13 @@
 package cn.bps.mms.controller;
 
 
-import cn.bps.common.lang.api.Page;
 import cn.bps.common.lang.api.Token;
 import cn.bps.common.lang.domain.Ret;
 import cn.bps.mms.domain.PageRequest;
 import cn.bps.mms.entity.Account;
 import cn.bps.mms.service.AccountService;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -39,8 +40,8 @@ public class AccountController {
     }
 
     @GetMapping("")
-    public Ret<Page<Account>> pageUsers(PageRequest pageRequest, String key){
-        return Ret.ok(accountService.pageUsers(pageRequest, key));
+    public Ret<IPage<Account>> pageUsers(Page<Account> page, String key){
+        return Ret.ok(accountService.pageUsers(page, key));
     }
 
     @PutMapping("/{id}/available/{available}")

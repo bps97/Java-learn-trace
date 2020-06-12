@@ -4,8 +4,6 @@ package cn.bps.mms.controller;
 import cn.bps.common.lang.api.Page;
 import cn.bps.common.lang.domain.Ret;
 import cn.bps.mms.domain.PageRequest;
-import cn.bps.mms.entity.Account;
-import cn.bps.mms.entity.Category;
 import cn.bps.mms.service.CategoryService;
 import cn.bps.mms.vo.CategoryVo;
 import org.springframework.web.bind.annotation.*;

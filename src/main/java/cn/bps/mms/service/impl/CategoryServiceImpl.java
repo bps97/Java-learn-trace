@@ -2,11 +2,9 @@ package cn.bps.mms.service.impl;
 
 import cn.bps.common.lang.api.Page;
 import cn.bps.mms.domain.PageRequest;
-import cn.bps.mms.entity.Authentication;
 import cn.bps.mms.entity.Category;
 import cn.bps.mms.mapper.CategoryMapper;
 import cn.bps.mms.service.CategoryService;
-import cn.bps.mms.vo.AuthenticationVo;
 import cn.bps.mms.vo.CategoryVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -15,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -32,10 +29,10 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
     @Override
     public Page<CategoryVo> pageCategories(PageRequest pageRequest) {
         List<CategoryVo> categories = listCategories();
-        Page<CategoryVo> page = new Page(categories);
-        pageRequest.initPage(page);
-        page.setTotal(this.count());
-        return page;
+        Page<CategoryVo> Page = new Page(categories);
+        pageRequest.initPage(Page);
+        Page.setTotal(this.count());
+        return Page;
 
     }
 
@@ -45,10 +42,10 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
             level = Integer.MAX_VALUE;
         }
         List<CategoryVo> categories = listCategories(level);
-        Page<CategoryVo> page = new Page(categories);
-        pageRequest.initPage(page);
-        page.setTotal(this.count());
-        return page;
+        Page<CategoryVo> Page = new Page(categories);
+        pageRequest.initPage(Page);
+        Page.setTotal(this.count());
+        return Page;
     }
 
     @Override

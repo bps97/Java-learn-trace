@@ -1,8 +1,9 @@
 package cn.bps.mms.service;
 
-import cn.bps.enums.CompositeMode;
 import cn.bps.mms.entity.Authentication;
 import cn.bps.mms.vo.AuthenticationVo;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
@@ -24,4 +25,6 @@ public interface AuthenticationService extends IService<Authentication> {
     List<AuthenticationVo> listAllAuthentication();
 
     List<Authentication> getChildren(String parentId);
+
+    IPage<Authentication> pageAuthentications(Page<Authentication> page);
 }

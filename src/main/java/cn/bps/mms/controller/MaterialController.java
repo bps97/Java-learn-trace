@@ -1,19 +1,15 @@
 package cn.bps.mms.controller;
 
 
-import cn.bps.common.lang.api.Filter;
 import cn.bps.common.lang.api.Page;
 import cn.bps.common.lang.domain.Ret;
 import cn.bps.mms.domain.PageRequest;
-import cn.bps.mms.entity.Material;
 import cn.bps.mms.service.MaterialService;
 import cn.bps.mms.vo.KeyValue;
 import cn.bps.mms.vo.MaterialVo;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;

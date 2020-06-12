@@ -2,16 +2,18 @@ package cn.bps.mms.service.impl;
 
 import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
-import cn.bps.enums.CompositeMode;
 import cn.bps.mms.entity.Authentication;
 import cn.bps.mms.mapper.AuthenticationMapper;
 import cn.bps.mms.service.AuthenticationService;
 import cn.bps.mms.vo.AuthenticationVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,6 +27,9 @@ import java.util.Objects;
  */
 @Service
 public class AuthenticationServiceImpl extends ServiceImpl<AuthenticationMapper, Authentication> implements AuthenticationService {
+
+    @Resource
+    private AuthenticationMapper authenticationMapper;
 
     @Override
     public List<AuthenticationVo> listAuthentications() {
@@ -71,6 +76,12 @@ public class AuthenticationServiceImpl extends ServiceImpl<AuthenticationMapper,
         List<Authentication> authentications = this.list(wrapper);
         return  authentications;
     }
+
+    @Override
+    public IPage<Authentication> pageAuthentications(Page<Authentication> page) {
+        return authenticationMapper.selectPage(page,new QueryWrapper<>());
+    }
+
 
     private List<AuthenticationVo> model2Vo(List<Authentication> rootAuthentications) {
 

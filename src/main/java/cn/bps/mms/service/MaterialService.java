@@ -1,7 +1,6 @@
 package cn.bps.mms.service;
 
 import cn.bps.common.lang.api.Page;
-import cn.bps.common.lang.domain.Callback;
 import cn.bps.mms.domain.PageRequest;
 import cn.bps.mms.entity.Material;
 import cn.bps.mms.vo.KeyValue;
