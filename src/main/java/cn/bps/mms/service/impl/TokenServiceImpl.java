@@ -59,6 +59,7 @@ public class TokenServiceImpl implements TokenService {
         return token;
     }
 
+    @Override
     public Token parse(String value) {
         if(Objects.nonNull(value)){
             value = EncryptUtils.base64Decrypt(value);
@@ -67,12 +68,13 @@ public class TokenServiceImpl implements TokenService {
                 Token token = new Token();
                 token.setUserId(val[0]);
                 token.setExpireTime(Long.parseLong(val[1]));
-                token.setSignature(val[1]);
+                token.setSignature(val[2]);
                 token.setValue(value);
 
                 /*生成的数字签名*/
                 String generatedSignature = generateSignature(token.getUserId(),token.getExpireTime());
-                if(Objects.equals(generatedSignature, token.getSignature())){
+                if(Objects.equals(generatedSignature,token.getSignature())){
+
                     return token;
                 }
             }

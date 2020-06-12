@@ -20,4 +20,6 @@ public interface TokenService {
 
     int getAccessTokenExpSeconds();
 
+    Token parse(String value);
+
 }
