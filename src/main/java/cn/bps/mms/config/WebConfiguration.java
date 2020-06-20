@@ -1,5 +1,6 @@
 package cn.bps.mms.config;
 
+import cn.bps.mms.handler.MyHandlerInterceptorAdapter;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdScalarDeserializer;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.io.IOException;
@@ -64,4 +66,15 @@ public class WebConfiguration implements WebMvcConfigurer {
         return new CorsFilter(source);
     }
 
+
+    // 拦截器相关配置
+    @Bean
+    public MyHandlerInterceptorAdapter getSecurityInterceptor() {
+        return new MyHandlerInterceptorAdapter();
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(getSecurityInterceptor()).excludePathPatterns("/account/login");
+    }
 }

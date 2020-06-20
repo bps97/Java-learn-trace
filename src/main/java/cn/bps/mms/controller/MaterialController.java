@@ -36,8 +36,8 @@ public class MaterialController {
     }
 
     @GetMapping("/names")
-    public Ret<List<KeyValue>> listMaterialNames(String categoryId){
-        return Ret.ok(materialService.listMaterialNames(categoryId));
+    public Ret<List<KeyValue>> listMaterialNames(String categoryId, String repositoryId){
+        return Ret.ok(materialService.listMaterialNames(categoryId, repositoryId));
     }
 
 }

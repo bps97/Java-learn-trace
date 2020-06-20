@@ -1,5 +1,7 @@
 package cn.bps.mms.service.impl;
 
+import cn.bps.common.lang.CustomizeExceptionCode;
+import cn.bps.common.lang.LocalBizServiceException;
 import cn.bps.common.lang.api.Token;
 import cn.bps.common.lang.security.Subject;
 import cn.bps.common.lang.util.EncryptUtils;
@@ -9,6 +11,7 @@ import cn.bps.security.server.service.TokenService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.Objects;
 
 @Service
@@ -74,13 +77,16 @@ public class TokenServiceImpl implements TokenService {
                 /*生成的数字签名*/
                 String generatedSignature = generateSignature(token.getUserId(),token.getExpireTime());
                 if(Objects.equals(generatedSignature,token.getSignature())){
-
-                    return token;
+                    if(token.getExpireTime() > (new Date().getTime())){
+                        return token;
+                    }
+                    throw new LocalBizServiceException(CustomizeExceptionCode.TOKEN_EXPIRED);
                 }
             }
         }
-        // 未写
-        return null;
+        // token过期
+        // return null
+        throw new LocalBizServiceException(CustomizeExceptionCode.TOKEN_IS_INVALID);
     }
 
     private String generateTokenValue(String id, long expireTime, String signature) {

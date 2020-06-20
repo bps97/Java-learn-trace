@@ -68,8 +68,26 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
     }
 
     @Override
-    public List<KeyValue> listMaterialNames(String categoryId) {
-        return listMaterials(categoryId).stream().map(e->{
+    public List<Material> listMaterialsByRepositoryId(String repositoryId) {
+        QueryWrapper<Material> wrapper = new QueryWrapper<>();
+        wrapper
+                .eq("repository_id", repositoryId);
+        return this.list(wrapper);
+    }
+
+    @Override
+    public List<Material> listMaterialsByRepositoryId(String categoryId, String repositoryId) {
+        QueryWrapper<Material> wrapper = new QueryWrapper<>();
+        wrapper
+                .eq("repository_id", repositoryId)
+                .eq("category_id",categoryId);
+        return this.list(wrapper);
+    }
+
+    @Override
+    public List<KeyValue> listMaterialNames(String categoryId, String repositoryId) {
+        List<Material> materials = repositoryId.isEmpty() ? listMaterials(categoryId) : listMaterialsByRepositoryId(categoryId, repositoryId);
+        return materials.stream().map(e->{
             KeyValue keyValue = new KeyValue();
             keyValue.setKey(e.getId());
             keyValue.setValue(e.getName());

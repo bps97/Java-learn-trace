@@ -30,7 +30,6 @@ public class RecordController {
 
     @PostMapping("")
     public Ret add(@RequestBody Record record, @RequestHeader String token){
-//        tokenService.parse(token);
         return Ret.create(()->recordService.record(record));
     }
 

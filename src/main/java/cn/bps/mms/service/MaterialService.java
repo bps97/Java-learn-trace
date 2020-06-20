@@ -25,5 +25,9 @@ public interface MaterialService extends IService<Material> {
 
     List<Material> listMaterials(String categoryId);
 
-    List<KeyValue> listMaterialNames(String categoryId);
+    List<Material> listMaterialsByRepositoryId(String repositoryId);
+
+    List<Material> listMaterialsByRepositoryId(String categoryId, String repositoryId);
+
+    List<KeyValue> listMaterialNames(String categoryId, String repositoryId);
 }
