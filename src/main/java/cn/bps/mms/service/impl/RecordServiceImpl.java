@@ -1,5 +1,6 @@
 package cn.bps.mms.service.impl;
 
+import cn.bps.mms.entity.Account;
 import cn.bps.mms.entity.Category;
 import cn.bps.mms.entity.Record;
 import cn.bps.mms.entity.Repository;
@@ -8,6 +9,7 @@ import cn.bps.mms.service.CategoryService;
 import cn.bps.mms.service.MaterialService;
 import cn.bps.mms.service.RecordService;
 import cn.bps.mms.service.RepositoryService;
+import cn.bps.security.server.service.TokenService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
@@ -34,8 +36,16 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> impleme
     @Resource
     private RepositoryService repositoryService;
 
+    @Resource
+    private TokenService tokenService;
+
     @Override
-    public void record(Record record) {
+    public void record(Record record, String tokenValue) {
+
+        Account account = tokenService.getAccount(tokenValue);
+        record.setUserId(account.getId());
+        record.setUserName(account.getName());
+
         String categoryId = record.getCategoryId();
         String categoryName = categoryService.getById(categoryId).getName();
         record.setCategoryName(categoryName);

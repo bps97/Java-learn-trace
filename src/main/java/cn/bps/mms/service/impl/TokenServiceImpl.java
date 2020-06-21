@@ -6,6 +6,7 @@ import cn.bps.common.lang.api.Token;
 import cn.bps.common.lang.security.Subject;
 import cn.bps.common.lang.util.EncryptUtils;
 import cn.bps.common.lang.util.TimeUtils;
+import cn.bps.mms.entity.Account;
 import cn.bps.mms.service.AccountService;
 import cn.bps.security.server.service.TokenService;
 import org.springframework.stereotype.Service;
@@ -31,18 +32,25 @@ public class TokenServiceImpl implements TokenService {
     }
 
     @Override
-    public void addSubject(String accessToken, Subject subject) {
-
+    public Account getAccount(String value){
+        if(Objects.nonNull(value)){
+            value = EncryptUtils.base64Decrypt(value);
+            String[] val = value.split(SEPARATOR);
+            if( val.length == 3) {
+                Token token = new Token();
+                String accountId = val[0];
+                return accountService.getById(accountId);
+            }
+        }
+        return null;
     }
 
-    @Override
     public void addAccessToken(String username, String accessToken) {
-
+        // 没卵用
     }
 
-    @Override
     public void removeToken(String accessToken) {
-
+        // 说实话我也不知道怎么清除token，本身服务端也没存储token，除非记录黑名单
     }
 
     @Override

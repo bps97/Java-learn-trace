@@ -22,7 +22,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Record implements Serializable {
+public class Application implements Serializable {
 
     private static final long serialVersionUID=1L;
 
@@ -38,49 +38,9 @@ public class Record implements Serializable {
     private String userName;
 
     /**
-     * 物料名称
-     */
-    private String materialName;
-
-    /**
-     * 分类名称
-     */
-    private String categoryName;
-
-    /**
-     * 仓库名称
-     */
-    private String repositoryName;
-
-    /**
      * 编号
      */
     private String userId;
-
-    /**
-     * 物料ID
-     */
-    private String materialId;
-
-    /**
-     * 仓库ID
-     */
-    private String repositoryId;
-
-    /**
-     * 分离ID
-     */
-    private String categoryId;
-
-    /**
-     * 数量
-     */
-    private Integer count;
-
-    /**
-     * 类型(领用，归还，新品录入)
-     */
-    private String type;
 
     /**
      * 备注信息

@@ -28,10 +28,10 @@ public class RecordController {
     @Resource
     private TokenService tokenService;
 
-    @PostMapping("")
-    public Ret add(@RequestBody Record record, @RequestHeader String token){
-        return Ret.create(()->recordService.record(record));
-    }
+//    @PostMapping("")
+//    public Ret add(@RequestBody Record record, @RequestHeader String token){
+//        return Ret.create(()->recordService.record(record, token));
+//    }
 
 }
 

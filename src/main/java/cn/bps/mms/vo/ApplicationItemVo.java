@@ -1,7 +1,4 @@
-package cn.bps.mms.entity;
-
-import java.util.Date;
-import java.io.Serializable;
+package cn.bps.mms.vo;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -11,31 +8,17 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-/**
- * <p>
- * 账户基本信息
- * </p>
- *
- * @author bps
- * @since 2020-06-21
- */
+import java.util.Date;
+
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Record implements Serializable {
-
-    private static final long serialVersionUID=1L;
-
+public class ApplicationItemVo {
     /**
      * 编号
      */
     @TableId(type = IdType.ID_WORKER_STR)
     private String id;
-
-    /**
-     * 物料使用人员
-     */
-    private String userName;
 
     /**
      * 物料名称
@@ -53,24 +36,9 @@ public class Record implements Serializable {
     private String repositoryName;
 
     /**
-     * 编号
+     * 专业线编号(接入、无线、传输)
      */
-    private String userId;
-
-    /**
-     * 物料ID
-     */
-    private String materialId;
-
-    /**
-     * 仓库ID
-     */
-    private String repositoryId;
-
-    /**
-     * 分离ID
-     */
-    private String categoryId;
+    private String specialLine;
 
     /**
      * 数量
@@ -81,11 +49,6 @@ public class Record implements Serializable {
      * 类型(领用，归还，新品录入)
      */
     private String type;
-
-    /**
-     * 备注信息
-     */
-    private String message;
 
     /**
      * 是否有效
@@ -103,6 +66,4 @@ public class Record implements Serializable {
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
-
-
 }

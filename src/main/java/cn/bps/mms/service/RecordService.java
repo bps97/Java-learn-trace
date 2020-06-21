@@ -14,5 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface RecordService extends IService<Record> {
 
-    void record(Record record);
+    void record(Record record, String tokenValue);
 }

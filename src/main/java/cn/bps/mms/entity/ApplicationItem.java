@@ -22,7 +22,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Record implements Serializable {
+public class ApplicationItem implements Serializable {
 
     private static final long serialVersionUID=1L;
 
@@ -31,11 +31,6 @@ public class Record implements Serializable {
      */
     @TableId(type = IdType.ID_WORKER_STR)
     private String id;
-
-    /**
-     * 物料使用人员
-     */
-    private String userName;
 
     /**
      * 物料名称
@@ -53,11 +48,6 @@ public class Record implements Serializable {
     private String repositoryName;
 
     /**
-     * 编号
-     */
-    private String userId;
-
-    /**
      * 物料ID
      */
     private String materialId;
@@ -73,6 +63,11 @@ public class Record implements Serializable {
     private String categoryId;
 
     /**
+     * 申请单ID
+     */
+    private String applicationId;
+
+    /**
      * 数量
      */
     private Integer count;
@@ -81,11 +76,6 @@ public class Record implements Serializable {
      * 类型(领用，归还，新品录入)
      */
     private String type;
-
-    /**
-     * 备注信息
-     */
-    private String message;
 
     /**
      * 是否有效
@@ -103,6 +93,5 @@ public class Record implements Serializable {
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
-
 
 }
