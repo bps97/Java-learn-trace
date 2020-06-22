@@ -1,12 +1,10 @@
 package cn.bps.mms.service.impl;
 
-import cn.bps.mms.entity.Account;
-import cn.bps.mms.entity.Application;
-import cn.bps.mms.entity.ApplicationItem;
-import cn.bps.mms.mapper.ApplicationItemMapper;
+import cn.bps.mms.entity.ApplicationForm;
+import cn.bps.mms.entity.ApplicationFormItem;
+import cn.bps.mms.mapper.ApplicationFormItemMapper;
 import cn.bps.mms.service.*;
 import cn.bps.mms.vo.ApplicationItemVo;
-import cn.bps.security.server.service.TokenService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
@@ -24,7 +22,7 @@ import java.util.stream.Collectors;
  * @since 2020-06-21
  */
 @Service
-public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMapper, ApplicationItem> implements ApplicationItemService {
+public class ApplicationFormItemServiceImpl extends ServiceImpl<ApplicationFormItemMapper, ApplicationFormItem> implements ApplicationFormItemService {
 
     @Resource
     private CategoryService categoryService;
@@ -36,17 +34,14 @@ public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMappe
     private RepositoryService repositoryService;
 
     @Resource
-    private TokenService tokenService;
-
-    @Resource
-    private ApplicationService applicationService;
+    private ApplicationFormService applicationFormService;
 
 
     @Override
-    public void addItem(ApplicationItem item, String tokenValue) {
+    public void addItem(ApplicationFormItem item, String tokenValue) {
 
-        Application application = applicationService.getApplication(tokenValue);
-        item.setApplicationId(application.getId());
+        ApplicationForm applicationForm = applicationFormService.getApplication(tokenValue);
+        item.setApplicationFormId(applicationForm.getId());
 
         String categoryId = item.getCategoryId();
         String categoryName = categoryService.getById(categoryId).getName();
@@ -66,30 +61,39 @@ public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMappe
     @Override
     public List<ApplicationItemVo> list(String tokenValue) {
 
-        Application application = applicationService.getApplication(tokenValue);
+        ApplicationForm applicationForm = applicationFormService.getApplication(tokenValue);
 
-        QueryWrapper<ApplicationItem> wrapper = new QueryWrapper<>();
+        QueryWrapper<ApplicationFormItem> wrapper = new QueryWrapper<>();
         wrapper
                 .eq("available", true)
-                .eq("application_id",application.getId());
-        List<ApplicationItem> items = this.list(wrapper);
+                .eq("application_form_id", applicationForm.getId());
+        List<ApplicationFormItem> items = this.list(wrapper);
 
         return items.stream().map(this::model2Vo).collect(Collectors.toList());
     }
 
     @Override
-    public void closeItems(Application application) {
-        ApplicationItem item = new ApplicationItem();
+    public void closeItems(ApplicationForm applicationForm) {
+        ApplicationFormItem item = new ApplicationFormItem();
         item.setAvailable(false);
-        QueryWrapper<ApplicationItem> wrapper = new QueryWrapper<>();
+        QueryWrapper<ApplicationFormItem> wrapper = new QueryWrapper<>();
         wrapper
                 .eq("available", true)
-                .eq("application_id", application.getId());
+                .eq("application_form_id", applicationForm.getId());
         this.update(item,wrapper);
     }
 
-    private ApplicationItemVo model2Vo(ApplicationItem item){
+    @Override
+    public List<ApplicationFormItem> list(ApplicationForm applicationForm) {
+        QueryWrapper<ApplicationFormItem> wrapper = new QueryWrapper<>();
+        wrapper
+                .eq("application_form_id", applicationForm.getId());
+        return this.list(wrapper);
+    }
+
+    private ApplicationItemVo model2Vo(ApplicationFormItem item){
         ApplicationItemVo vo = new ApplicationItemVo();
+        vo.setId(item.getId());
         vo.setMaterialName(item.getMaterialName());
         vo.setCategoryName(item.getCategoryName());
         vo.setRepositoryName(item.getRepositoryName());

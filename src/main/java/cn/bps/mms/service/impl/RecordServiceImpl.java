@@ -1,20 +1,14 @@
 package cn.bps.mms.service.impl;
 
-import cn.bps.mms.entity.Account;
-import cn.bps.mms.entity.Category;
-import cn.bps.mms.entity.Record;
-import cn.bps.mms.entity.Repository;
+import cn.bps.mms.entity.*;
 import cn.bps.mms.mapper.RecordMapper;
-import cn.bps.mms.service.CategoryService;
-import cn.bps.mms.service.MaterialService;
-import cn.bps.mms.service.RecordService;
-import cn.bps.mms.service.RepositoryService;
-import cn.bps.security.server.service.TokenService;
+import cn.bps.mms.service.*;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -28,39 +22,35 @@ import javax.annotation.Resource;
 public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> implements RecordService {
 
     @Resource
-    private CategoryService categoryService;
-
-    @Resource
-    private MaterialService materialService;
-
-    @Resource
-    private RepositoryService repositoryService;
-
-    @Resource
-    private TokenService tokenService;
+    private ApplicationFormItemService applicationFormItemService;
 
     @Override
-    public void record(Record record, String tokenValue) {
+    public void record(ApplicationForm applicationForm) {
 
-        Account account = tokenService.getAccount(tokenValue);
-        record.setUserId(account.getId());
-        record.setUserName(account.getName());
+        List<ApplicationFormItem> applicationFormItems = applicationFormItemService.list(applicationForm);
+        List<Record> records = applicationFormItems
+                .stream()
+                .map(e -> generateRecord(applicationForm, e))
+                .collect(Collectors.toList());
+        this.saveBatch(records);
+    }
 
-        String categoryId = record.getCategoryId();
-        String categoryName = categoryService.getById(categoryId).getName();
-        record.setCategoryName(categoryName);
+    private Record generateRecord(ApplicationForm applicationForm, ApplicationFormItem item){
 
-        String materialId = record.getMaterialId();
-        String materialName = materialService.getById(materialId).getName();
-        record.setMaterialName(materialName);
+        Record record = new Record();
+        record.setUserName(applicationForm.getUserName());
+        record.setUserId(applicationForm.getUserId());
+        record.setMessage(applicationForm.getMessage());
+        record.setType(applicationForm.getType());
 
-        String repositoryId  = record.getRepositoryId();
-        String repositoryName = repositoryService.getById(repositoryId).getName();
-        record.setRepositoryName(repositoryName);
+        record.setRepositoryName(item.getRepositoryName());
+        record.setRepositoryId(item.getRepositoryId());
+        record.setCategoryName(item.getCategoryName());
+        record.setCategoryId(item.getCategoryId());
+        record.setMaterialName(item.getMaterialName());
+        record.setMaterialId(item.getMaterialId());
+        record.setCount(item.getCount());
 
-        this.save(record);
-
-
-        return;
+        return record;
     }
 }

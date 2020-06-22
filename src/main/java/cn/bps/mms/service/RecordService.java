@@ -1,6 +1,6 @@
 package cn.bps.mms.service;
 
-import cn.bps.common.lang.domain.Callback;
+import cn.bps.mms.entity.ApplicationForm;
 import cn.bps.mms.entity.Record;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -14,5 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface RecordService extends IService<Record> {
 
-    void record(Record record, String tokenValue);
+    void record(ApplicationForm applicationForm);
 }

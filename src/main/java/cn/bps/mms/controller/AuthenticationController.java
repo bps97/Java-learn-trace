@@ -5,12 +5,9 @@ import cn.bps.common.lang.domain.Ret;
 import cn.bps.mms.entity.Authentication;
 import cn.bps.mms.service.AuthenticationService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.annotation.Resource;
 
 /**

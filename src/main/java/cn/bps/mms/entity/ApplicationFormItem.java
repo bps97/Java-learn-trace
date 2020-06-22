@@ -22,7 +22,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class ApplicationItem implements Serializable {
+public class ApplicationFormItem implements Serializable {
 
     private static final long serialVersionUID=1L;
 
@@ -65,17 +65,12 @@ public class ApplicationItem implements Serializable {
     /**
      * 申请单ID
      */
-    private String applicationId;
+    private String applicationFormId;
 
     /**
      * 数量
      */
     private Integer count;
-
-    /**
-     * 类型(领用，归还，新品录入)
-     */
-    private String type;
 
     /**
      * 是否有效
