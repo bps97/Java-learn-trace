@@ -5,7 +5,7 @@ import cn.bps.mms.domain.PageRequest;
 import cn.bps.mms.entity.Category;
 import cn.bps.mms.mapper.CategoryMapper;
 import cn.bps.mms.service.CategoryService;
-import cn.bps.mms.vo.CategoryVo;
+import cn.bps.mms.domian.vo.CategoryVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
@@ -134,6 +134,15 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         }
         category.setAvailable(available);
         this.updateById(category);
+    }
+
+    @Override
+    public String getRootCategoryName(String categoryId) {
+        Category category = this.getById(categoryId);
+        if(Objects.nonNull(category.getParentId())){
+            return getRootCategoryName(category.getParentId());
+        }
+        return category.getName();
     }
 
     private void closeCategory(Category category){

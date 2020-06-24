@@ -3,7 +3,7 @@ package cn.bps.mms.service;
 import cn.bps.common.lang.api.Page;
 import cn.bps.mms.domain.PageRequest;
 import cn.bps.mms.entity.Category;
-import cn.bps.mms.vo.CategoryVo;
+import cn.bps.mms.domian.vo.CategoryVo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
@@ -41,4 +41,6 @@ public interface CategoryService extends IService<Category> {
     CategoryVo getVoById(String id);
 
     void changeAvailable(String id, Boolean available);
+
+    String getRootCategoryName(String categoryId);
 }

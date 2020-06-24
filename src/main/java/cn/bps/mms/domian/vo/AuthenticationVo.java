@@ -1,17 +1,17 @@
-package cn.bps.mms.vo;
+package cn.bps.mms.domian.vo;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
+
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class MaterialVo {
+public class AuthenticationVo {
 
     /**
      * 编号
@@ -19,39 +19,24 @@ public class MaterialVo {
     private String id;
 
     /**
-     * 名称
+     * 权限名称
      */
-    private String name;
+    private String authName;
 
     /**
-     * 分类编号
+     * UI界面应用路径
      */
-    private String categoryId;
+    private String path;
 
     /**
-     * 分类名称
+     * 子权限
      */
-    private String categoryName;
+    private List<AuthenticationVo> children;
 
     /**
-     * 仓库编号
+     * 序号
      */
-    private String repositoryId;
-
-    /**
-     * 仓库名称
-     */
-    private String repositoryName;
-
-    /**
-     * 专业线名称(接入、无线、传输)
-     */
-    private String specialLine;
-
-    /**
-     * 数量
-     */
-    private Integer count;
+    private Integer index;
 
     /**
      * 是否有效

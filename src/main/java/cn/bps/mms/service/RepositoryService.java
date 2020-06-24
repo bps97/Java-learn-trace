@@ -1,8 +1,7 @@
 package cn.bps.mms.service;
 
-import cn.bps.common.lang.domain.Callback;
 import cn.bps.mms.entity.Repository;
-import cn.bps.mms.vo.KeyValue;
+import cn.bps.mms.domian.vo.KeyValue;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;

@@ -4,7 +4,7 @@ package cn.bps.mms.controller;
 import cn.bps.common.lang.domain.Ret;
 import cn.bps.mms.entity.ApplicationFormItem;
 import cn.bps.mms.service.ApplicationFormItemService;
-import cn.bps.mms.vo.ApplicationItemVo;
+import cn.bps.mms.domian.vo.ApplicationItemVo;
 import org.springframework.web.bind.annotation.*;
 
 

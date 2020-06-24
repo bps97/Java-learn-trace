@@ -3,7 +3,7 @@ package cn.bps.mms.service.impl;
 import cn.bps.mms.entity.Repository;
 import cn.bps.mms.mapper.RepositoryMapper;
 import cn.bps.mms.service.RepositoryService;
-import cn.bps.mms.vo.KeyValue;
+import cn.bps.mms.domian.vo.KeyValue;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

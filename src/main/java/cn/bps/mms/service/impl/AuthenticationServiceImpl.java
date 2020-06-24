@@ -5,7 +5,7 @@ import cn.bps.common.lang.LocalBizServiceException;
 import cn.bps.mms.entity.Authentication;
 import cn.bps.mms.mapper.AuthenticationMapper;
 import cn.bps.mms.service.AuthenticationService;
-import cn.bps.mms.vo.AuthenticationVo;
+import cn.bps.mms.domian.vo.AuthenticationVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;

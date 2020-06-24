@@ -1,6 +1,5 @@
-package cn.bps.mms.vo;
+package cn.bps.mms.domian.vo;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

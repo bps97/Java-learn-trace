@@ -1,7 +1,7 @@
 package cn.bps.mms.service;
 
 import cn.bps.mms.entity.Authentication;
-import cn.bps.mms.vo.AuthenticationVo;
+import cn.bps.mms.domian.vo.AuthenticationVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;

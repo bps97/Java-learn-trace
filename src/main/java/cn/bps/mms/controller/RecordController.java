@@ -1,6 +1,15 @@
 package cn.bps.mms.controller;
 
+import cn.bps.common.lang.domain.Ret;
+import cn.bps.mms.domian.ao.RecordAo;
+import cn.bps.mms.entity.Record;
+import cn.bps.mms.service.RecordService;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 
 /**
@@ -14,6 +23,18 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/record")
 public class RecordController {
+
+    @Resource
+    private RecordService recordService;
+
+    @GetMapping("")
+    public Ret<IPage<Record>> pageRecords(Page<Record> page,
+                                          RecordAo ao){
+        return Ret.ok(recordService.pageRecords(page,ao));
+    }
+
+
+
 
 }
 

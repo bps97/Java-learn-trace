@@ -4,7 +4,7 @@ import cn.bps.mms.entity.ApplicationForm;
 import cn.bps.mms.entity.ApplicationFormItem;
 import cn.bps.mms.mapper.ApplicationFormItemMapper;
 import cn.bps.mms.service.*;
-import cn.bps.mms.vo.ApplicationItemVo;
+import cn.bps.mms.domian.vo.ApplicationItemVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

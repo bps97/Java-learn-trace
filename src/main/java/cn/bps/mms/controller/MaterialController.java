@@ -5,8 +5,8 @@ import cn.bps.common.lang.api.Page;
 import cn.bps.common.lang.domain.Ret;
 import cn.bps.mms.domain.PageRequest;
 import cn.bps.mms.service.MaterialService;
-import cn.bps.mms.vo.KeyValue;
-import cn.bps.mms.vo.MaterialVo;
+import cn.bps.mms.domian.vo.KeyValue;
+import cn.bps.mms.domian.vo.MaterialVo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 

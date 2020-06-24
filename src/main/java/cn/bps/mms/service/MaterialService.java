@@ -3,8 +3,8 @@ package cn.bps.mms.service;
 import cn.bps.common.lang.api.Page;
 import cn.bps.mms.domain.PageRequest;
 import cn.bps.mms.entity.Material;
-import cn.bps.mms.vo.KeyValue;
-import cn.bps.mms.vo.MaterialVo;
+import cn.bps.mms.domian.vo.KeyValue;
+import cn.bps.mms.domian.vo.MaterialVo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;

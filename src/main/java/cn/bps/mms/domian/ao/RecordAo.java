@@ -1,4 +1,4 @@
-package cn.bps.mms.vo;
+package cn.bps.mms.domian.ao;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -7,7 +7,8 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class KeyValue {
-    private String key;
-    private String value;
+public class RecordAo {
+    private String repositoryId;
+    private String specialLines;
+
 }

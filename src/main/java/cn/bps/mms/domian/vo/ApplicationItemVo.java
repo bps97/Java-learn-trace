@@ -1,4 +1,4 @@
-package cn.bps.mms.vo;
+package cn.bps.mms.domian.vo;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
