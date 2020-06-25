@@ -1,12 +1,12 @@
 package cn.bps.mms.service.impl;
 
-import cn.bps.common.lang.api.Page;
-import cn.bps.mms.domain.PageRequest;
 import cn.bps.mms.entity.Category;
 import cn.bps.mms.mapper.CategoryMapper;
 import cn.bps.mms.service.CategoryService;
 import cn.bps.mms.domian.vo.CategoryVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
 import org.springframework.stereotype.Service;
@@ -27,26 +27,17 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
 
 
     @Override
-    public Page<CategoryVo> pageCategories(PageRequest pageRequest) {
-        List<CategoryVo> categories = listCategories();
-        Page<CategoryVo> Page = new Page(categories);
-        pageRequest.initPage(Page);
-        Page.setTotal(this.count());
-        return Page;
-
+    public IPage<CategoryVo> pageCategories(Page page) {
+        QueryWrapper<Category> wrapper = new QueryWrapper<>();
+        wrapper
+                .eq("available",true)
+                .eq("level",0);
+        Page pageCategories = (Page) this.page(page,wrapper);
+        List vos = model2Vo(pageCategories.getRecords());
+        IPage<CategoryVo> iPage = pageCategories.setRecords(vos);
+        return iPage;
     }
 
-    @Override
-    public Page<CategoryVo> pageCategories(PageRequest pageRequest, Integer level) {
-        if(Objects.isNull(level)){
-            level = Integer.MAX_VALUE;
-        }
-        List<CategoryVo> categories = listCategories(level);
-        Page<CategoryVo> Page = new Page(categories);
-        pageRequest.initPage(Page);
-        Page.setTotal(this.count());
-        return Page;
-    }
 
     @Override
     public List<CategoryVo> listCategories() {
@@ -79,7 +70,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
     }
 
     @Override
-    public String getId(String categoryName) {
+    public String getIdByCategoryName(String categoryName) {
         Category category  = getByName(categoryName);
         return Objects.isNull(category) ? null : category.getId();
     }
@@ -120,7 +111,9 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
 
     @Override
     public CategoryVo getVoById(String id) {
-        return model2Vo(getById(id));
+        CategoryVo vo = model2Vo(getById(id));
+        vo.setSpecialLine(getRootCategoryName(id));
+        return vo;
 
     }
 
@@ -143,6 +136,30 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
             return getRootCategoryName(category.getParentId());
         }
         return category.getName();
+    }
+
+    @Override
+    public void updateById(String id, Category category) {
+        category.setId(id);
+        this.updateById(category);
+    }
+
+    @Override
+    public void addCategory(Category category) {
+        int parentLevel = getLevel(category.getParentId());
+        category.setLevel(parentLevel+1);
+        this.save(category);
+    }
+
+    private int getLevel(String categoryId){
+        Category category = this.getById(categoryId);
+        int level = 0;
+        String parentId = category.getParentId();
+        while (Objects.nonNull(category.getParentId())){
+            level++;
+            category = this.getById(parentId);
+        }
+        return level;
     }
 
     private void closeCategory(Category category){

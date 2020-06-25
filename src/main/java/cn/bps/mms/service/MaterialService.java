@@ -1,10 +1,11 @@
 package cn.bps.mms.service;
 
-import cn.bps.common.lang.api.Page;
-import cn.bps.mms.domain.PageRequest;
+import cn.bps.mms.domian.ao.MaterialAo;
 import cn.bps.mms.entity.Material;
 import cn.bps.mms.domian.vo.KeyValue;
 import cn.bps.mms.domian.vo.MaterialVo;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
@@ -19,9 +20,6 @@ import java.util.List;
  */
 public interface MaterialService extends IService<Material> {
 
-    Page<MaterialVo> pageMaterials(PageRequest pageRequest, String categoryId, String key);
-
-    List<Material> listMaterials(String categoryId, String key);
 
     List<Material> listMaterials(String categoryId);
 
@@ -30,4 +28,6 @@ public interface MaterialService extends IService<Material> {
     List<Material> listMaterialsByRepositoryId(String categoryId, String repositoryId);
 
     List<KeyValue> listMaterialNames(String categoryId, String repositoryId);
+
+    IPage<MaterialVo> pageMaterials(Page<Material> page, MaterialAo ao);
 }
