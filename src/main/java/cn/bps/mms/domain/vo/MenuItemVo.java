@@ -1,4 +1,4 @@
-package cn.bps.mms.domian.vo;
+package cn.bps.mms.domain.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class CategoryVo {
+public class MenuItemVo {
 
     /**
      * 编号
@@ -19,24 +19,24 @@ public class CategoryVo {
     private String id;
 
     /**
-     * 名称
+     * 权限名称
      */
-    private String name;
+    private String authName;
 
     /**
-     * 专业线编号(接入、无线、传输)
+     * UI界面应用路径
      */
-    private String specialLine;
+    private String path;
 
     /**
-     * 等级
+     * 子权限
      */
-    private Integer level;
+    private List<MenuItemVo> children;
 
     /**
-     * 父分类ID
+     * 序号
      */
-    private List<CategoryVo> children;
+    private Integer index;
 
     /**
      * 是否有效
@@ -54,4 +54,5 @@ public class CategoryVo {
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date updateTime;
+
 }

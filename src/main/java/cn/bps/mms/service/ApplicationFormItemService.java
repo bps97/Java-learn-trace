@@ -2,7 +2,7 @@ package cn.bps.mms.service;
 
 import cn.bps.mms.entity.ApplicationForm;
 import cn.bps.mms.entity.ApplicationFormItem;
-import cn.bps.mms.domian.vo.ApplicationItemVo;
+import cn.bps.mms.domain.vo.ApplicationItemVo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;

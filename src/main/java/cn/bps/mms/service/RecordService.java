@@ -1,6 +1,6 @@
 package cn.bps.mms.service;
 
-import cn.bps.mms.domian.ao.RecordAo;
+import cn.bps.mms.domain.ao.RecordAo;
 import cn.bps.mms.entity.ApplicationForm;
 import cn.bps.mms.entity.Record;
 import com.baomidou.mybatisplus.core.metadata.IPage;

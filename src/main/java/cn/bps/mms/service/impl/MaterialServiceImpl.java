@@ -1,25 +1,20 @@
 package cn.bps.mms.service.impl;
 
-import cn.bps.common.lang.api.Page;
-import cn.bps.mms.domain.PageRequest;
-import cn.bps.mms.domian.ao.MaterialAo;
+import cn.bps.mms.domain.ao.MaterialAo;
 import cn.bps.mms.entity.Category;
 import cn.bps.mms.entity.Material;
 import cn.bps.mms.mapper.MaterialMapper;
 import cn.bps.mms.service.CategoryService;
 import cn.bps.mms.service.MaterialService;
-import cn.bps.mms.domian.vo.KeyValue;
-import cn.bps.mms.domian.vo.MaterialVo;
+import cn.bps.mms.domain.vo.KeyValue;
+import cn.bps.mms.domain.vo.MaterialVo;
 import cn.bps.mms.service.RepositoryService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;

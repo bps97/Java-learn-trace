@@ -2,8 +2,8 @@ package cn.bps.mms.controller;
 
 
 import cn.bps.common.lang.domain.Ret;
-import cn.bps.mms.entity.Authentication;
-import cn.bps.mms.service.AuthenticationService;
+import cn.bps.mms.entity.Menu;
+import cn.bps.mms.service.MenuService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,20 +19,20 @@ import javax.annotation.Resource;
  * @since 2020-06-09
  */
 @RestController
-@RequestMapping("/auth")
-public class AuthenticationController {
+@RequestMapping("/menu")
+public class MenusController {
 
     @Resource
-    private AuthenticationService authenticationService;
+    private MenuService menuService;
 
     @GetMapping("/menus")
     public Ret listAuthentications(){
-        return Ret.ok(authenticationService.listAuthentications());
+        return Ret.ok(menuService.listAuthentications());
     }
 
     @GetMapping("")
-    public Ret pageAuthentications(Page<Authentication> page) {
-        return Ret.ok(authenticationService.pageAuthentications(page));
+    public Ret pageAuthentications(Page<Menu> page) {
+        return Ret.ok(menuService.pageAuthentications(page));
     }
 }
 

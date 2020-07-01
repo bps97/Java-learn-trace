@@ -22,7 +22,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Authentication implements Serializable {
+public class Menu implements Serializable {
 
     private static final long serialVersionUID=1L;
 

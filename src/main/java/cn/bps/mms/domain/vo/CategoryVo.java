@@ -1,4 +1,4 @@
-package cn.bps.mms.domian.vo;
+package cn.bps.mms.domain.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -6,10 +6,12 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.util.Date;
+import java.util.List;
+
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class MaterialVo {
+public class CategoryVo {
 
     /**
      * 编号
@@ -22,34 +24,19 @@ public class MaterialVo {
     private String name;
 
     /**
-     * 分类编号
-     */
-    private String categoryId;
-
-    /**
-     * 分类名称
-     */
-    private String categoryName;
-
-    /**
-     * 仓库编号
-     */
-    private String repositoryId;
-
-    /**
-     * 仓库名称
-     */
-    private String repositoryName;
-
-    /**
-     * 专业线名称(接入、无线、传输)
+     * 专业线编号(接入、无线、传输)
      */
     private String specialLine;
 
     /**
-     * 数量
+     * 等级
      */
-    private Integer count;
+    private Integer level;
+
+    /**
+     * 父分类ID
+     */
+    private List<CategoryVo> children;
 
     /**
      * 是否有效
@@ -67,5 +54,4 @@ public class MaterialVo {
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date updateTime;
-
 }

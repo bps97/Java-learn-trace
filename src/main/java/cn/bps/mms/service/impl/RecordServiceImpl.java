@@ -1,6 +1,6 @@
 package cn.bps.mms.service.impl;
 
-import cn.bps.mms.domian.ao.RecordAo;
+import cn.bps.mms.domain.ao.RecordAo;
 import cn.bps.mms.entity.*;
 import cn.bps.mms.mapper.RecordMapper;
 import cn.bps.mms.service.*;

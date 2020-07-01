@@ -1,4 +1,4 @@
-package cn.bps.mms.domian.vo;
+package cn.bps.mms.domain.vo;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
