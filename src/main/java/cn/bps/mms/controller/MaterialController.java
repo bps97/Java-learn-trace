@@ -4,18 +4,17 @@ package cn.bps.mms.controller;
 import cn.bps.common.lang.domain.Ret;
 import cn.bps.mms.domain.PageRequest;
 import cn.bps.mms.domian.ao.MaterialAo;
+import cn.bps.mms.entity.Category;
 import cn.bps.mms.entity.Material;
 import cn.bps.mms.service.MaterialService;
 import cn.bps.mms.domian.vo.KeyValue;
 import cn.bps.mms.domian.vo.MaterialVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -55,5 +54,30 @@ public class MaterialController {
         return Ret.ok(materialService.listMaterialNames(categoryId, repositoryId));
     }
 
+    @PostMapping("/add")
+    public Ret add(@RequestBody Material material){
+        return Ret.create(()->materialService.saveMaterial(material));
+    }
+
+    /**
+     * 移除指定实例
+     * @param id
+     * @return
+     */
+    @DeleteMapping("/{id}")
+    public Ret remove(@PathVariable String id) {
+        return Ret.ok(()->materialService.removeById(id));
+    }
+
+    /**
+     * 修改指定实例
+     * @param id
+     * @param material
+     * @return
+     */
+    @PutMapping("/{id}")
+    public Ret modify(@PathVariable String id, @RequestBody Material material) {
+        return Ret.ok(()->materialService.updateById(id, material));
+    }
 }
 

@@ -2,6 +2,7 @@ package cn.bps.mms.controller;
 
 
 import cn.bps.common.lang.domain.Ret;
+import cn.bps.mms.domian.vo.KeyValue;
 import cn.bps.mms.entity.Category;
 import cn.bps.mms.service.CategoryService;
 import cn.bps.mms.domian.vo.CategoryVo;
@@ -42,8 +43,17 @@ public class CategoryController {
      * @return
      */
     @GetMapping("")
-    public Ret<IPage<CategoryVo>> pageCategories(Page<Category> page){
-        return Ret.ok(categoryService.pageCategories(page));
+    public Ret<IPage<CategoryVo>> pageCategories(Page<Category> page,String specialLineId){
+        return Ret.ok(categoryService.pageCategories(page,specialLineId));
+    }
+
+    /**
+     * 获取专业线列表
+     * @return
+     */
+    @GetMapping("/specialLine")
+    public Ret<List<KeyValue>> listSpecialLines(){
+        return Ret.ok(categoryService.listSpecialLines());
     }
 
     /**

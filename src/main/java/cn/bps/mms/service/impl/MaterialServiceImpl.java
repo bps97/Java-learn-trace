@@ -108,6 +108,19 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
         return iPage;
     }
 
+    @Override
+    public void saveMaterial(Material material) {
+        String specialLine = categoryService.getRootCategoryName(material.getCategoryId());
+        material.setSpecialLine(specialLine);
+        this.save(material);
+    }
+
+    @Override
+    public void updateById(String id, Material material) {
+        material.setId(id);
+        this.updateById(material);
+    }
+
     private MaterialVo model2Vo(Material material){
         MaterialVo vo = new MaterialVo();
         vo.setName(material.getName());

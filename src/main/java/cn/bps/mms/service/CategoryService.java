@@ -1,10 +1,11 @@
 package cn.bps.mms.service;
 
-import cn.bps.common.lang.api.Page;
-import cn.bps.mms.domain.PageRequest;
+import cn.bps.common.lang.domain.Callback;
+import cn.bps.mms.domian.vo.KeyValue;
 import cn.bps.mms.entity.Category;
 import cn.bps.mms.domian.vo.CategoryVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
@@ -19,11 +20,7 @@ import java.util.List;
  */
 public interface CategoryService extends IService<Category> {
 
-    IPage<CategoryVo> pageCategories(com.baomidou.mybatisplus.extension.plugins.pagination.Page page);
-
-//    Page<CategoryVo> pageCategories(PageRequest pageRequest);
-
-//    Page<CategoryVo> pageCategories(PageRequest pageRequest, Integer level);
+    IPage<CategoryVo> pageCategories(Page<Category> page, String specialLineId);
 
     List<CategoryVo> listCategories();
 
@@ -50,5 +47,7 @@ public interface CategoryService extends IService<Category> {
     void updateById(String id, Category category);
 
     void addCategory(Category category);
+
+    List<KeyValue> listSpecialLines();
 
 }

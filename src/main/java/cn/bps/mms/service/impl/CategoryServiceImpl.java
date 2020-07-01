@@ -1,5 +1,6 @@
 package cn.bps.mms.service.impl;
 
+import cn.bps.mms.domian.vo.KeyValue;
 import cn.bps.mms.entity.Category;
 import cn.bps.mms.mapper.CategoryMapper;
 import cn.bps.mms.service.CategoryService;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -25,13 +27,11 @@ import java.util.Objects;
 @Service
 public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> implements CategoryService {
 
-
     @Override
-    public IPage<CategoryVo> pageCategories(Page page) {
+    public IPage<CategoryVo> pageCategories(Page<Category> page, String specialLineId) {
         QueryWrapper<Category> wrapper = new QueryWrapper<>();
         wrapper
-                .eq("available",true)
-                .eq("level",0);
+                .eq("parent_id", specialLineId);
         Page pageCategories = (Page) this.page(page,wrapper);
         List vos = model2Vo(pageCategories.getRecords());
         IPage<CategoryVo> iPage = pageCategories.setRecords(vos);
@@ -149,6 +149,16 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         int parentLevel = getLevel(category.getParentId());
         category.setLevel(parentLevel+1);
         this.save(category);
+    }
+
+    @Override
+    public List<KeyValue> listSpecialLines() {
+        return this.rootCategories().stream().map(e->{
+            KeyValue keyValue = new KeyValue();
+            keyValue.setKey(e.getId());
+            keyValue.setValue(e.getName());
+            return keyValue;
+        }).collect(Collectors.toList());
     }
 
     private int getLevel(String categoryId){

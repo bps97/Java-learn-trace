@@ -30,4 +30,8 @@ public interface MaterialService extends IService<Material> {
     List<KeyValue> listMaterialNames(String categoryId, String repositoryId);
 
     IPage<MaterialVo> pageMaterials(Page<Material> page, MaterialAo ao);
+
+    void saveMaterial(Material material);
+
+    void updateById(String id, Material material);
 }
