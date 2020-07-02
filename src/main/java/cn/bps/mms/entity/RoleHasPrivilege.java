@@ -13,16 +13,16 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 仓库
+ * 角色所拥有的的权限
  * </p>
  *
  * @author bps
- * @since 2020-06-09
+ * @since 2020-07-01
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Repository implements Serializable {
+public class RoleHasPrivilege implements Serializable {
 
     private static final long serialVersionUID=1L;
 
@@ -33,19 +33,19 @@ public class Repository implements Serializable {
     private String id;
 
     /**
-     * 名称
+     * 权限解释
      */
     private String name;
 
     /**
-     * 具体住址
+     * 角色ID
      */
-    private String address;
+    private String roleId;
 
     /**
-     * 父分类ID
+     * 权限ID
      */
-    private String parentId;
+    private String privilegeId;
 
     /**
      * 是否有效
@@ -63,6 +63,5 @@ public class Repository implements Serializable {
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
-
 
 }

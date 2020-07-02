@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 产品
+ * 物料
  * </p>
  *
  * @author bps

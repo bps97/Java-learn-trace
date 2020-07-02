@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 /**
  * <p>
- * 产品 服务实现类
+ * 物料 服务实现类
  * </p>
  *
  * @author bps

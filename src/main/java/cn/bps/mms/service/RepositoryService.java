@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * <p>
- * 收货地址 服务类
+ * 仓库 服务类
  * </p>
  *
  * @author bps

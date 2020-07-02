@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 账户基本信息
+ * 申请单项
  * </p>
  *
  * @author bps

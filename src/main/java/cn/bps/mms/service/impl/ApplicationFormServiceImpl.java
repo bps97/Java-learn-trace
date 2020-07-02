@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * <p>
- * 账户基本信息 服务实现类
+ * 申请单 服务实现类
  * </p>
  *
  * @author bps

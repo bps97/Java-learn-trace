@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * <p>
- * 产品 服务类
+ * 物料 服务类
  * </p>
  *
  * @author bps

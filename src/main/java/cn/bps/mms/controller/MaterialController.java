@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * <p>
- * 产品 前端控制器
+ * 物料 前端控制器
  * </p>
  *
  * @author bps

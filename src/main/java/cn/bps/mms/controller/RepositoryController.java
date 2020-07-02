@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * <p>
- * 收货地址 前端控制器
+ * 仓库 前端控制器
  * </p>
  *
  * @author bps

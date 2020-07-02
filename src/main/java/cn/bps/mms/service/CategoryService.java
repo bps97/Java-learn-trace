@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * <p>
- * 分类项 服务类
+ * 分类 服务类
  * </p>
  *
  * @author bps

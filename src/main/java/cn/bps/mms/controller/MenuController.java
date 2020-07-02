@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 
 /**
  * <p>
- * 账户基本信息 前端控制器
+ * 菜单 前端控制器
  * </p>
  *
  * @author bps
@@ -20,7 +20,7 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("/menu")
-public class MenusController {
+public class MenuController {
 
     @Resource
     private MenuService menuService;

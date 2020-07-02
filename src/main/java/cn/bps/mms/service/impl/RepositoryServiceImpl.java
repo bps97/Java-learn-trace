@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 /**
  * <p>
- * 收货地址 服务实现类
+ * 仓库 服务实现类
  * </p>
  *
  * @author bps

@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * <p>
- * 账户基本信息 服务类
+ * 申请单项 服务类
  * </p>
  *
  * @author bps

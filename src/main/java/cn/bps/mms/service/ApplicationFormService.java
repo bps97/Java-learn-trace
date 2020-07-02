@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>
- * 账户基本信息 服务类
+ * 申请单 服务类
  * </p>
  *
  * @author bps
@@ -19,6 +19,5 @@ public interface ApplicationFormService extends IService<ApplicationForm> {
     ApplicationForm getApplication(String tokenValue);
 
     void addMessage(ApplicationForm applicationForm, String token);
-
 
 }

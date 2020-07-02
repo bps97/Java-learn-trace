@@ -14,7 +14,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 账户基本信息
+ * 记录信息
  * </p>
  *
  * @author bps

@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>
- * 账户基本信息 服务类
+ * 记录信息 服务类
  * </p>
  *
  * @author bps

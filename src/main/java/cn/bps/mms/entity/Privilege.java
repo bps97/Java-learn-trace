@@ -7,22 +7,23 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 仓库
+ * 权限
  * </p>
  *
  * @author bps
- * @since 2020-06-09
+ * @since 2020-07-01
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Repository implements Serializable {
+public class Privilege implements Serializable {
 
     private static final long serialVersionUID=1L;
 
@@ -33,19 +34,14 @@ public class Repository implements Serializable {
     private String id;
 
     /**
-     * 名称
+     * 权限解释
      */
     private String name;
 
     /**
-     * 具体住址
+     * 描述
      */
-    private String address;
-
-    /**
-     * 父分类ID
-     */
-    private String parentId;
+    private String description;
 
     /**
      * 是否有效
@@ -55,12 +51,14 @@ public class Repository implements Serializable {
     /**
      * 创建时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;
 
     /**
      * 最后修改时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
 

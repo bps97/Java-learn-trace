@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 
 /**
  * <p>
- * 账户基本信息 前端控制器
+ * 申请单 前端控制器
  * </p>
  *
  * @author bps
