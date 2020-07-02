@@ -3,6 +3,7 @@ package cn.bps.mms.controller;
 
 import cn.bps.common.lang.api.Token;
 import cn.bps.common.lang.domain.Ret;
+import cn.bps.mms.domain.vo.AccountVo;
 import cn.bps.mms.entity.Account;
 import cn.bps.mms.service.AccountService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -38,13 +39,18 @@ public class AccountController {
     }
 
     @GetMapping("")
-    public Ret<IPage<Account>> pageUsers(Page<Account> page, String key){
+    public Ret<IPage<AccountVo>> pageUsers(Page<Account> page, String key){
         return Ret.ok(accountService.pageUsers(page, key));
     }
 
     @PutMapping("/{id}/available/{available}")
     public Ret changeAccountAvailability(@PathVariable String id,@PathVariable Boolean available){
         return Ret.ok(()->accountService.changeAvailable(id, available));
+    }
+
+    @PutMapping("/{id}/roleId/{roleId}")
+    public Ret changeAccountRoleId(@PathVariable String id,@PathVariable String roleId){
+        return Ret.ok(()->accountService.changeRoleId(id, roleId));
     }
 
     @GetMapping("/{id}")

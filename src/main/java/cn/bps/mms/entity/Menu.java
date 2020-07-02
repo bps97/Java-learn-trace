@@ -53,6 +53,11 @@ public class Menu implements Serializable {
     private Integer portalIndex;
 
     /**
+     * 权限级别
+     */
+    private Boolean privilegeLevel;
+
+    /**
      * 是否有效
      */
     private Boolean available;

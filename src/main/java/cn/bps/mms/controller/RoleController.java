@@ -1,9 +1,16 @@
 package cn.bps.mms.controller;
 
 
+import cn.bps.common.lang.domain.Ret;
+import cn.bps.mms.entity.Role;
+import cn.bps.mms.service.RoleService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import org.springframework.stereotype.Controller;
+import javax.annotation.Resource;
+import java.util.List;
+
 
 /**
  * <p>
@@ -13,9 +20,17 @@ import org.springframework.stereotype.Controller;
  * @author bps
  * @since 2020-06-11
  */
-@Controller
+@RestController
 @RequestMapping("/role")
 public class RoleController {
+
+    @Resource
+    private RoleService roleService;
+
+    @GetMapping("/roles")
+    public Ret<List<Role>> listRoles(){
+        return Ret.ok(roleService.list());
+    }
 
 }
 

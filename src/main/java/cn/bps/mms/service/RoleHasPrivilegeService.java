@@ -1,7 +1,11 @@
 package cn.bps.mms.service;
 
+import cn.bps.mms.entity.Privilege;
+import cn.bps.mms.entity.Role;
 import cn.bps.mms.entity.RoleHasPrivilege;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +17,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface RoleHasPrivilegeService extends IService<RoleHasPrivilege> {
 
+    Privilege getMenuPrivilege(Role role);
+    
 }

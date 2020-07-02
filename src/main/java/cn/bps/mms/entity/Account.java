@@ -58,6 +58,11 @@ public class Account implements Serializable {
     private String mobile;
 
     /**
+     * 角色ID
+     */
+    private String roleId;
+
+    /**
      * 是否有效
      */
     private Boolean available;

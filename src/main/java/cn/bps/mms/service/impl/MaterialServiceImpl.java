@@ -96,7 +96,7 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
         IPage<Material> pageMaterial = this.page(page, wrapper);
         List vos = (List) pageMaterial.getRecords()
                 .stream()
-                .map(e->{return model2Vo((Material)e);})
+                .map(this::model2Vo)
                 .collect(Collectors.toList());
         IPage<MaterialVo> iPage =  pageMaterial.setRecords(vos);
 
@@ -130,5 +130,9 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
         vo.setSpecialLine(material.getSpecialLine());
         vo.setCategoryName(categoryService.getById(material.getCategoryId()).getName());
         return vo;
+    }
+    private MaterialVo model2Vo(Object obj){
+        obj = (Material)obj;
+        return model2Vo(obj);
     }
 }

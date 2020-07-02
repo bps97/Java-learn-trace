@@ -33,11 +33,6 @@ public class RoleHasPrivilege implements Serializable {
     private String id;
 
     /**
-     * 权限解释
-     */
-    private String name;
-
-    /**
      * 角色ID
      */
     private String roleId;

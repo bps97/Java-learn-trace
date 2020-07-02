@@ -32,7 +32,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         QueryWrapper<Category> wrapper = new QueryWrapper<>();
         wrapper
                 .eq("parent_id", specialLineId);
-        Page pageCategories = (Page) this.page(page,wrapper);
+        IPage pageCategories = (IPage) this.page(page,wrapper);
         List vos = model2Vo(pageCategories.getRecords());
         IPage<CategoryVo> iPage = pageCategories.setRecords(vos);
         return iPage;

@@ -13,4 +13,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface RoleService extends IService<Role> {
 
+    String getDefaultRoleId();
+
+    String getRoleName(String roleId);
+
 }

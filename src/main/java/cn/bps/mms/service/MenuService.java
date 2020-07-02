@@ -18,7 +18,7 @@ import java.util.List;
  */
 public interface MenuService extends IService<Menu> {
 
-    List<MenuItemVo> listAuthentications();
+    List<MenuItemVo> listAuthentications(String token);
 
     List<Menu> rootsAuthentications();
 

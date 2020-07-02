@@ -2,10 +2,16 @@ package cn.bps.mms.service.impl;
 
 import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
+import cn.bps.mms.entity.Account;
 import cn.bps.mms.entity.Menu;
+import cn.bps.mms.entity.Privilege;
+import cn.bps.mms.entity.Role;
 import cn.bps.mms.mapper.MenuMapper;
 import cn.bps.mms.service.MenuService;
 import cn.bps.mms.domain.vo.MenuItemVo;
+import cn.bps.mms.service.RoleHasPrivilegeService;
+import cn.bps.mms.service.RoleService;
+import cn.bps.security.server.service.TokenService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -31,9 +37,22 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
     @Resource
     private MenuMapper menuMapper;
 
+    @Resource
+    private TokenService tokenService;
+
+    @Resource
+    private RoleService roleService;
+
+    @Resource
+    private RoleHasPrivilegeService roleHasPrivilegeService;
+
     @Override
-    public List<MenuItemVo> listAuthentications() {
-        List<Menu> rootMenus = rootsAuthentications();
+    public List<MenuItemVo> listAuthentications(String token) {
+        Account account = tokenService.getAccount(token);
+        Role role = roleService.getById(account.getRoleId());
+        Privilege privilege = roleHasPrivilegeService.getMenuPrivilege(role);
+        Integer privilegeLevel = Objects.isNull(privilege) ? Integer.MAX_VALUE : privilege.getPrivilegeLevel();
+        List<Menu> rootMenus = rootsAuthentications(privilegeLevel);
         List<MenuItemVo> listAuthentications = model2Vo(rootMenus);
         return listAuthentications;
     }
@@ -41,11 +60,16 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
 
     @Override
     public List<Menu> rootsAuthentications() {
+        return rootsAuthentications(0);
+    }
+
+    public List<Menu> rootsAuthentications(Integer privilegeLevel) {
         QueryWrapper<Menu> wrapper = new QueryWrapper<>();
         wrapper
-                .eq("available", true)
+                .eq("available",true)
                 .isNull("parent_id")
-                .orderByAsc("portal_index");
+                .orderByAsc("portal_index")
+                .ge("privilege_level", privilegeLevel);
 
         List<Menu> rootMenus = this.list(wrapper);
 

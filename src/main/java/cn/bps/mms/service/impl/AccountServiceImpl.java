@@ -4,9 +4,11 @@ import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
 import cn.bps.common.lang.api.Token;
 import cn.bps.common.lang.util.EncryptUtils;
+import cn.bps.mms.domain.vo.AccountVo;
 import cn.bps.mms.entity.Account;
 import cn.bps.mms.mapper.AccountMapper;
 import cn.bps.mms.service.AccountService;
+import cn.bps.mms.service.RoleService;
 import cn.bps.security.server.service.TokenService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -34,6 +37,9 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
 
     @Resource
     private TokenService tokenService;
+
+    @Resource
+    private RoleService roleService;
 
     @Override
     public Token login(Account loginForm) {
@@ -64,6 +70,7 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
             String md5Password = EncryptUtils.md5Encrypt(regForm.getPassword()); // 加密密码
             account = regForm;
             account.setPassword(md5Password);
+            account.setRoleId(roleService.getDefaultRoleId());
             this.save(account);
         }
     }
@@ -79,14 +86,19 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
     }
 
     @Override
-    public IPage<Account> pageUsers(Page<Account> page, String key) {
+    public IPage<AccountVo> pageUsers(Page<Account> page, String key) {
         QueryWrapper<Account> wrapper = new QueryWrapper<>();
         if(key.isEmpty() == false){
             wrapper
                     .like("name", key)
                     .or().like("username",key);
         }
-        return accountMapper.selectPage(page,wrapper);
+        IPage<Account> pageAccounts = this.page(page, wrapper);
+        List vos = (List) pageAccounts.getRecords()
+                .stream()
+                .map(this::model2Vo).collect(Collectors.toList());
+        IPage<AccountVo> iPage = pageAccounts.setRecords(vos);
+        return iPage;
     }
 
     @Override
@@ -103,6 +115,35 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
     public void updateById(String id, Account account) {
         account.setId(id);
         updateById(account);
+    }
+
+    @Override
+    public void changeRoleId(String id, String roleId) {
+        Account account = new Account();
+        account.setId(id);
+        account.setRoleId(roleId);
+        updateById(account);
+    }
+
+    private AccountVo model2Vo(Account account){
+        AccountVo vo = new AccountVo();
+        vo.setId(account.getId());
+        vo.setAvailable(account.getAvailable());
+        vo.setCreateTime(account.getCreateTime());
+        vo.setUpdateTime(account.getUpdateTime());
+        vo.setEmail(account.getEmail());
+        vo.setMobile(account.getMobile());
+        vo.setName(account.getName());
+        vo.setUsername(account.getUsername());
+        vo.setPassword(account.getPassword());
+        String roleName = roleService.getRoleName(account.getRoleId());
+        vo.setRoleName(roleName);
+        return vo;
+    }
+
+    private AccountVo model2Vo(Object obj){
+        obj = (Account)obj;
+        return model2Vo(obj);
     }
 
 }

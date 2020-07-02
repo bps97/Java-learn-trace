@@ -17,4 +17,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements RoleService {
 
+    @Override
+    public String getDefaultRoleId() {
+        return "default_role_id";
+    }
+
+    @Override
+    public String getRoleName(String roleId) {
+        return this.getById(roleId).getName();
+    }
+
+
 }

@@ -1,31 +1,19 @@
-package cn.bps.mms.entity;
-
-import java.util.Date;
-import java.io.Serializable;
+package cn.bps.mms.domain.vo;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-/**
- * <p>
- * 权限
- * </p>
- *
- * @author bps
- * @since 2020-07-01
- */
+import java.util.Date;
+
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Privilege implements Serializable {
-
-    private static final long serialVersionUID=1L;
+public class AccountVo {
 
     /**
      * 编号
@@ -34,19 +22,34 @@ public class Privilege implements Serializable {
     private String id;
 
     /**
-     * 描述
+     * 用户名(常用登陆名)
      */
-    private String description;
+    private String username;
 
     /**
-     * 权限级别
+     * 密码
      */
-    private Integer privilegeLevel;
+    private String password;
 
     /**
-     * 类型
+     * 姓名
      */
-    private String type;
+    private String name;
+
+    /**
+     * 邮箱地址
+     */
+    private String email;
+
+    /**
+     * 手机号码
+     */
+    private String mobile;
+
+    /**
+     * 角色ID
+     */
+    private String roleName;
 
     /**
      * 是否有效
@@ -56,16 +59,13 @@ public class Privilege implements Serializable {
     /**
      * 创建时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;
 
     /**
      * 最后修改时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
-
 
 }
