@@ -21,11 +21,7 @@ public interface CategoryService extends IService<Category> {
 
     IPage<CategoryVo> pageCategories(Page<Category> page, String specialLineId);
 
-    List<CategoryVo> listCategories();
-
-    List<CategoryVo> listCategories(Integer level);
-
-    List<CategoryVo> listCategories(boolean available);
+    List<CategoryVo> menuCategories();
 
     List<Category> rootCategories();
 

@@ -3,6 +3,8 @@ package cn.bps.mms.service;
 import cn.bps.mms.entity.Privilege;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  * 权限 服务类
@@ -14,4 +16,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface PrivilegeService extends IService<Privilege> {
 
 
+    List<Privilege> listPrivileges();
 }

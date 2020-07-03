@@ -33,32 +33,18 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         wrapper
                 .eq("parent_id", specialLineId);
         IPage pageCategories = (IPage) this.page(page,wrapper);
-        List vos = model2Vo(pageCategories.getRecords());
+        List vos = model2Vo(pageCategories.getRecords(),false);
         IPage<CategoryVo> iPage = pageCategories.setRecords(vos);
         return iPage;
     }
 
-
     @Override
-    public List<CategoryVo> listCategories() {
-        List<Category> rootCategories = rootCategories();
-        List<CategoryVo> categories = model2Vo(rootCategories);
+    public List<CategoryVo> menuCategories() {
+        List<Category> rootCategories = rootCategories();   /*获取根分类*/
+        List<CategoryVo> categories = model2Vo(rootCategories,true);
         return categories;
     }
 
-    @Override
-    public List<CategoryVo> listCategories(boolean available) {
-        List<Category> rootCategories = rootCategories();
-        List<CategoryVo> categories = model2Vo(rootCategories ,available);
-        return categories;
-    }
-
-    @Override
-    public List<CategoryVo> listCategories(Integer level) {
-        List<Category> rootCategories = rootCategories();
-        List<CategoryVo> categories = model2Vo(rootCategories, level);
-        return categories;
-    }
 
     @Override
     public List<Category> rootCategories() {
@@ -104,6 +90,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         return authentications;
     }
 
+    /*默认是全部*/
     @Override
     public List<Category> getChildren(String parentId) {
         return getChildren(parentId, false);
@@ -111,7 +98,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
 
     @Override
     public CategoryVo getVoById(String id) {
-        CategoryVo vo = model2Vo(getById(id));
+        CategoryVo vo = model2VoInit(getById(id));
         vo.setSpecialLine(getRootCategoryName(id));
         return vo;
 
@@ -165,9 +152,10 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         Category category = this.getById(categoryId);
         int level = 0;
         String parentId = category.getParentId();
-        while (Objects.nonNull(category.getParentId())){
+        while (Objects.nonNull(parentId)){
             level++;
             category = this.getById(parentId);
+            parentId = category.getParentId();
         }
         return level;
     }
@@ -177,36 +165,20 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         this.updateById(category);
     }
 
-    private List<CategoryVo> model2Vo(List<Category> categories) {
-        return model2Vo(categories, Integer.MAX_VALUE, false);
-    }
 
-    private List<CategoryVo> model2Vo(List<Category> categories, boolean available) {
-        return model2Vo(categories, Integer.MAX_VALUE, available);
-    }
-
-    private List<CategoryVo> model2Vo(List<Category> categories, Integer level) {
-        return model2Vo(categories, Integer.MAX_VALUE, false);
-    }
-
-    private List<CategoryVo> model2Vo(List<Category> categories, Integer level, boolean available) {
-
+    private List<CategoryVo> model2Vo(List<Category> categories, boolean available){
         List<CategoryVo> lists = Lists.newArrayList();
-
         for(Category parent: categories){
-            CategoryVo vo = model2Vo(parent);
-            List<Category> children = getChildren(parent.getId(), available);
-
-            if(Objects.equals(0, level) == false) {
-                vo.setChildren(model2Vo(children,level-1, available));
-            }
+            CategoryVo vo = model2VoInit(parent);
+            List<Category> children = this.getChildren(parent.getId(), available); /*获取有效的子分类*/
+            vo.setChildren(model2Vo(children, available));
             lists.add(vo);
         }
         return lists.isEmpty() ? null: lists;
-
     }
 
-    private CategoryVo model2Vo(Category category){
+
+    private CategoryVo model2VoInit(Category category){
         CategoryVo vo = new CategoryVo();
         vo.setName(category.getName());
         vo.setId(category.getId());

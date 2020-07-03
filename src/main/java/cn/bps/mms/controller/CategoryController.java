@@ -34,7 +34,7 @@ public class CategoryController {
      */
     @GetMapping("/menus")
     public Ret<List<CategoryVo>> menus(){
-        return Ret.ok(categoryService.listCategories(true));
+        return Ret.ok(categoryService.menuCategories());
     }
 
     /**

@@ -34,7 +34,7 @@ public class CategoryVo {
     private Integer level;
 
     /**
-     * 父分类ID
+     * 子分类列表
      */
     private List<CategoryVo> children;
 
