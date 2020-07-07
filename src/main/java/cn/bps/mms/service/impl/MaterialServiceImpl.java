@@ -116,6 +116,11 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
         this.updateById(material);
     }
 
+    @Override
+    public MaterialVo getVoById(String id) {
+        return model2Vo(this.getById(id));
+    }
+
     private MaterialVo model2Vo(Material material){
         MaterialVo vo = new MaterialVo();
         vo.setName(material.getName());

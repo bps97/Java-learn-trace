@@ -76,5 +76,10 @@ public class MaterialController {
     public Ret modify(@PathVariable String id, @RequestBody Material material) {
         return Ret.ok(()->materialService.updateById(id, material));
     }
+
+    @GetMapping("/{id}")
+    public Ret get(@PathVariable String id) {
+        return Ret.ok(materialService.getVoById(id));
+    }
 }
 

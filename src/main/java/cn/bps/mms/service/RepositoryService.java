@@ -17,4 +17,7 @@ import java.util.List;
 public interface RepositoryService extends IService<Repository> {
 
     List<KeyValue> listAllRepoNames();
+
+    String getIdByName(String name);
+
 }

@@ -65,7 +65,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
     public Category getByName(String categoryName) {
         QueryWrapper<Category> wrapper = new QueryWrapper<>();
         wrapper
-                .eq("available",true)
+//                .eq("available",true)
                 .eq("name",categoryName);
         return this.getOne(wrapper);
     }

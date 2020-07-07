@@ -4,11 +4,14 @@ import cn.bps.mms.entity.Repository;
 import cn.bps.mms.mapper.RepositoryMapper;
 import cn.bps.mms.service.RepositoryService;
 import cn.bps.mms.domain.vo.KeyValue;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static org.apache.logging.log4j.ThreadContext.isEmpty;
 
 /**
  * <p>
@@ -29,5 +32,14 @@ public class RepositoryServiceImpl extends ServiceImpl<RepositoryMapper, Reposit
             keyValue.setKey(e.getId());
             return keyValue;
         }).collect(Collectors.toList());
+    }
+
+    @Override
+    public String getIdByName(String name) {
+        QueryWrapper<Repository> wrapper = new QueryWrapper<>();
+        wrapper
+                .eq("name", name);
+        List<Repository> repositories = this.list(wrapper);
+        return repositories.isEmpty() ? null : repositories.get(0).getId();
     }
 }
