@@ -1,17 +1,16 @@
 package cn.bps.mms.domain;
 
-import cn.bps.mms.entity.Material;
-import cn.bps.mms.service.UploadBiz;
+import cn.bps.mms.entity.Account;
+import cn.bps.mms.entity.ApplicationForm;
+import cn.bps.mms.entity.ApplicationFormItem;
+import cn.bps.mms.service.ApplicationFormItemService;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
-import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
 public class MaterialUploadDataListener extends AnalysisEventListener<MaterialEo> {
 
     /**
@@ -23,8 +22,11 @@ public class MaterialUploadDataListener extends AnalysisEventListener<MaterialEo
      * 假设这个是一个DAO，当然有业务逻辑这个也可以是一个service。当然如果不用存储这个对象没用。
      */
 
-    @Resource
-    private UploadBiz uploadBiz;
+    private ApplicationFormItemService applicationFormItemService;
+
+    private Account account;
+
+    private ApplicationForm applicationForm;
 
     
 
@@ -35,11 +37,19 @@ public class MaterialUploadDataListener extends AnalysisEventListener<MaterialEo
     /**
      * 如果使用了spring,请使用这个构造方法。每次创建Listener的时候需要把spring管理的类传进来
      *
-     * @param uploadBiz
+     * @param applicationFormItemService
      */
-    public MaterialUploadDataListener(UploadBiz uploadBiz) {
-        this.uploadBiz = uploadBiz;
+    public MaterialUploadDataListener(ApplicationFormItemService applicationFormItemService) {
+        this.applicationFormItemService = applicationFormItemService;
     }
+
+
+    public MaterialUploadDataListener(ApplicationFormItemService applicationFormItemService, Account account) {
+        this.applicationFormItemService = applicationFormItemService;
+        this.account = account;
+        this.applicationForm = applicationFormItemService.initBatchImport(account);
+    }
+
     @Override
     public void invoke(MaterialEo material, AnalysisContext analysisContext) {
         list.add(material);
@@ -66,19 +76,21 @@ public class MaterialUploadDataListener extends AnalysisEventListener<MaterialEo
      * 加上存储数据库
      */
     private void saveData() {
-
-        uploadBiz.saveBatch(list.stream().map(this::eo2Model).collect(Collectors.toList()));
+        applicationFormItemService.saveBatch(list.stream().map(this::eo2Model).collect(Collectors.toList()));
     }
-    private Material eo2Model(MaterialEo ao){
-        Material material = new Material();
-        material.setName(ao.getName());
-        String categoryId = uploadBiz.getIdByCategoryName(ao.getCategory());
-        material.setCategoryId(categoryId);
-        String repositoryId = uploadBiz.getIdByName(ao.getRepository());
-        material.setRepositoryId(repositoryId);
-        material.setCount(ao.getCount());
-        material.setSpecialLine(ao.getSpecialLine());
-        material.setStatus(ao.getStatus());
-        return material;
+
+
+    private ApplicationFormItem eo2Model(MaterialEo eo){
+        ApplicationFormItem item = new ApplicationFormItem();
+        item.setMaterialName(eo.getName());
+        item.setCategoryName(eo.getCategory());
+        item.setRepositoryName(eo.getRepository());
+        item.setCount(eo.getCount());
+        item.setSpecialLine(eo.getSpecialLine());
+        item.setStatus(eo.getStatus());
+        item = applicationFormItemService.initName2Id(item);
+        if(applicationForm != null)
+            item.setApplicationFormId(applicationForm.getId());
+        return item;
     }
 }

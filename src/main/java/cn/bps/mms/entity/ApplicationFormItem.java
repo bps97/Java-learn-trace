@@ -68,6 +68,16 @@ public class ApplicationFormItem implements Serializable {
     private String applicationFormId;
 
     /**
+     * 使用状态(正常|损坏)
+     */
+    private String status;
+
+    /**
+     * 专业线编号(接入、无线、传输)
+     */
+    private String specialLine;
+
+    /**
      * 数量
      */
     private Integer count;
@@ -88,5 +98,6 @@ public class ApplicationFormItem implements Serializable {
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
+
 
 }

@@ -31,6 +31,8 @@ public interface MaterialService extends IService<Material> {
 
     IPage<MaterialVo> pageMaterials(Page<Material> page, MaterialAo ao);
 
+    String getIdByName(String materialName);
+
     void saveMaterial(Material material);
 
     void updateById(String id, Material material);

@@ -108,7 +108,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
     public void changeAvailable(String id, Boolean available) {
         Category category = new Category();
         category.setId(id);
-        if(available == false){
+        if(available == Boolean.FALSE){
             List<Category> children = getChildren(id);
             children.stream().forEach(this::closeCategory);
         }

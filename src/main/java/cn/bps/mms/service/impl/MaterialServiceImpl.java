@@ -98,7 +98,7 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
         QueryWrapper<Material> wrapper = new QueryWrapper<>();
         wrapper.in("category_id",children);
         String key = ao.getKey();
-        if(key.isEmpty() == false){
+        if(key.isEmpty() == Boolean.FALSE){
             wrapper.like("name",key);
         }
         wrapper.orderByAsc("name").orderByAsc("update_time");
@@ -111,6 +111,15 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
         IPage<MaterialVo> iPage =  pageMaterial.setRecords(vos);
 
         return iPage;
+    }
+
+    @Override
+    public String getIdByName(String materialName) {
+        QueryWrapper<Material> wrapper = new QueryWrapper<>();
+        wrapper
+                .eq("name", materialName);
+        Material material = this.getOne(wrapper);
+        return Objects.isNull(material) ? null : material.getName();
     }
 
     @Override

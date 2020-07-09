@@ -88,7 +88,7 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
     @Override
     public IPage<AccountVo> pageUsers(Page<Account> page, String key) {
         QueryWrapper<Account> wrapper = new QueryWrapper<>();
-        if(key.isEmpty() == false){
+        if(key.isEmpty() == Boolean.FALSE){
             wrapper
                     .like("name", key)
                     .or().like("username",key);
@@ -106,7 +106,7 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
         Account account = new Account();
         account.setId(id);
         account.setAvailable(available);
-        if(this.updateById(account) == false){
+        if(this.updateById(account) == Boolean.FALSE){
             throw new LocalBizServiceException(CustomizeExceptionCode.UPDATE_FAIL);
         }
     }

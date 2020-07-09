@@ -37,7 +37,7 @@ public class RoleHasPrivilegeServiceImpl extends ServiceImpl<RoleHasPrivilegeMap
                 .eq("role_id",role.getId())
                 .eq("available", true);
         List<RoleHasPrivilege> roleHasPrivileges = this.list(wrapper);
-        if(roleHasPrivileges.isEmpty() == false){
+        if(roleHasPrivileges.isEmpty() == Boolean.FALSE){
             Optional<Privilege> optional = roleHasPrivileges.stream()
                     .map(e -> privilegeService.getById(e.getPrivilegeId()))
                     .filter(e -> Objects.equals("menu", e.getType())).findFirst();
