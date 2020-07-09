@@ -42,9 +42,14 @@ public class MaterialVo {
     private String repositoryName;
 
     /**
-     * 专业线名称(接入、无线、传输)
+     * 专业线编号(接入、无线、传输)
      */
     private String specialLine;
+
+    /**
+     * 使用状态(正常|损坏)
+     */
+    private String status;
 
     /**
      * 数量

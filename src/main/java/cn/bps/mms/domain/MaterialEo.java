@@ -37,6 +37,11 @@ public class MaterialEo {
     @ExcelProperty("数量")
     private Integer count;
 
+    /**
+     * 状态
+     */
+    @ExcelProperty("状态")
+    private String status;
 
 
 }

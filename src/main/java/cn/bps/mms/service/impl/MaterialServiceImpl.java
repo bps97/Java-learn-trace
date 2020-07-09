@@ -1,5 +1,7 @@
 package cn.bps.mms.service.impl;
 
+import cn.bps.common.lang.CustomizeExceptionCode;
+import cn.bps.common.lang.LocalBizServiceException;
 import cn.bps.mms.domain.ao.MaterialAo;
 import cn.bps.mms.entity.Category;
 import cn.bps.mms.entity.Material;
@@ -11,11 +13,16 @@ import cn.bps.mms.domain.vo.MaterialVo;
 import cn.bps.mms.service.RepositoryService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.google.common.collect.Lists;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import javax.jws.Oneway;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -76,22 +83,25 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
     }
 
     @Override
-    public IPage<MaterialVo> pageMaterials(com.baomidou.mybatisplus.extension.plugins.pagination.Page<Material> page, MaterialAo ao) {
+    public IPage<MaterialVo> pageMaterials(Page<Material> page, MaterialAo ao) {
+
 
         String categoryId = ao.getCategoryId();
+        if(Objects.equals(categoryId,"")){
+            throw new LocalBizServiceException(CustomizeExceptionCode.REQUEST_PARAMS_IS_EMPTY);
+        }
         Set<String> children = categoryService.getChildren(categoryId)
                 .stream()
                 .map(Category::getId)
                 .collect(Collectors.toSet());
         children.add(categoryId);
-
         QueryWrapper<Material> wrapper = new QueryWrapper<>();
         wrapper.in("category_id",children);
-
         String key = ao.getKey();
         if(key.isEmpty() == false){
             wrapper.like("name",key);
         }
+        wrapper.orderByAsc("name").orderByAsc("update_time");
 
         IPage<Material> pageMaterial = this.page(page, wrapper);
         List vos = (List) pageMaterial.getRecords()
@@ -105,9 +115,18 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
 
     @Override
     public void saveMaterial(Material material) {
-        String specialLine = categoryService.getRootCategoryName(material.getCategoryId());
-        material.setSpecialLine(specialLine);
-        this.save(material);
+        if(StringUtils.isEmpty(material.getStatus())){
+            material.setStatus("正常");
+        }
+        Material old = validateExist(material);
+        if(Objects.isNull(old)){
+            String specialLine = categoryService.getRootCategoryName(material.getCategoryId());
+            material.setSpecialLine(specialLine);
+            this.save(material);
+        }else {
+            old.setCount(material.getCount()+old.getCount());
+            this.updateById(old);
+        }
     }
 
     @Override
@@ -119,6 +138,16 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
     @Override
     public MaterialVo getVoById(String id) {
         return model2Vo(this.getById(id));
+    }
+
+    @Override
+    public Material validateExist(Material material) {
+        QueryWrapper<Material> wrapper = new QueryWrapper<>();
+        wrapper
+                .eq("name", material.getName())
+                .eq("repository_id", material.getCategoryId())
+                .eq("status", material.getStatus());
+        return this.getOne(wrapper);
     }
 
     private MaterialVo model2Vo(Material material){
@@ -134,10 +163,12 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
         vo.setRepositoryName(repositoryService.getById(material.getRepositoryId()).getName());
         vo.setSpecialLine(material.getSpecialLine());
         vo.setCategoryName(categoryService.getById(material.getCategoryId()).getName());
+        vo.setStatus(material.getStatus());
         return vo;
     }
     private MaterialVo model2Vo(Object obj){
         obj = (Material)obj;
         return model2Vo(obj);
     }
+
 }

@@ -53,6 +53,11 @@ public class Material implements Serializable {
     private String specialLine;
 
     /**
+     * 使用状态(正常|损坏)
+     */
+    private String status;
+
+    /**
      * 数量
      */
     private Integer count;

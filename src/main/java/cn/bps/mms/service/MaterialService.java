@@ -36,4 +36,6 @@ public interface MaterialService extends IService<Material> {
     void updateById(String id, Material material);
 
     MaterialVo getVoById(String id);
+
+    Material validateExist(Material material);
 }

@@ -78,6 +78,7 @@ public class MaterialUploadDataListener extends AnalysisEventListener<MaterialEo
         material.setRepositoryId(repositoryId);
         material.setCount(ao.getCount());
         material.setSpecialLine(ao.getSpecialLine());
+        material.setStatus(ao.getStatus());
         return material;
     }
 }
