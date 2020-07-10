@@ -1,14 +1,13 @@
 package cn.bps.mms.service.impl;
 
+import cn.bps.common.lang.CustomizeExceptionCode;
+import cn.bps.common.lang.LocalBizServiceException;
 import cn.bps.mms.entity.Account;
 import cn.bps.mms.entity.ApplicationForm;
 import cn.bps.mms.entity.ApplicationFormItem;
 import cn.bps.mms.entity.Material;
 import cn.bps.mms.mapper.ApplicationFormMapper;
-import cn.bps.mms.service.ApplicationFormItemService;
-import cn.bps.mms.service.ApplicationFormService;
-import cn.bps.mms.service.MaterialService;
-import cn.bps.mms.service.RecordService;
+import cn.bps.mms.service.*;
 import cn.bps.security.server.service.TokenService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -20,8 +19,8 @@ import javax.annotation.Resource;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * <p>
@@ -45,6 +44,7 @@ public class ApplicationFormServiceImpl extends ServiceImpl<ApplicationFormMappe
 
     @Resource
     private MaterialService materialService;
+
 
     @Override
     public ApplicationForm getApplication(Account account) {
@@ -78,26 +78,51 @@ public class ApplicationFormServiceImpl extends ServiceImpl<ApplicationFormMappe
         if(Objects.equal(myApplicationForm.getType(),"批量导入")){
             // 同步物料表
             List<ApplicationFormItem> applicationFormItems = applicationFormItemService.list(myApplicationForm);
-            Stream<Material> materials = applicationFormItems.stream().map(this::initMaterial);
-            List<Material> newMaterials = materials.filter(e -> StringUtils.isEmpty(e.getId()) == Boolean.FALSE).collect(Collectors.toList());
+
+            if(applicationFormItems.size() <= 0){
+                throw new LocalBizServiceException(CustomizeExceptionCode.NO_CACHE_DATA,"没有缓存数据");
+            }
+
+            /* 新的物料 */
+            List<Material> newMaterials = applicationFormItems.stream().map(this::initMaterial).filter(e -> StringUtils.isEmpty(e.getId()) == Boolean.TRUE).collect(Collectors.toList());
             materialService.saveBatch(newMaterials);
 
-            List<Material> updateMaterials = materials.filter(e -> StringUtils.isEmpty(e.getId()) == Boolean.FALSE).collect(Collectors.toList());
-            Collection<Material> oldMaterials = materialService.listByIds(updateMaterials.stream().map(Material::getId).collect(Collectors.toSet()));
-            Map<String, List<Material>> xx = updateMaterials.stream().collect(Collectors.groupingBy(Material::getName));
+            /* 仓库中已有的物料 */
+            List<Material> updateMaterials = applicationFormItems.stream().map(this::initMaterial).filter(e -> StringUtils.isEmpty(e.getId()) == Boolean.FALSE).collect(Collectors.toList());
+            if(updateMaterials.size()>0){
+                Collection<Material> materials = materialService.listByIds(updateMaterials.stream()
+                        .map(Material::getId)
+                        .collect(Collectors.toSet()));
+                Map<String, Integer> oldMaterials = materials.stream().collect(Collectors.toMap(Material::getId, Material::getCount));
+                updateMaterials.stream().map(e-> e.setCount(e.getCount()+oldMaterials.get(e.getId()))).collect(Collectors.toList());
+                materialService.updateBatchById(updateMaterials);
+            }
 
-        }else{
-            myApplicationForm.setType("领用");
+
+            /* 同步申请单项 */
+            Set<String> materialNames = applicationFormItems.stream()
+                    .map(ApplicationFormItem::getMaterialName).collect(Collectors.toSet());
+            Map<String, Map<String, String>> nameStatusIdDict = materialService.getNameStatusIdDict(materialNames);
+            applicationFormItems = applicationFormItems.stream().filter(e -> StringUtils.isEmpty(e.getMaterialId())).map(e -> {
+                Map<String, String> statusIdDict = nameStatusIdDict.get(e.getMaterialName());
+                if(statusIdDict != null){
+                    e.setMaterialId(statusIdDict.get(e.getStatus()));
+                }
+                return e;
+            }).collect(Collectors.toList());
+            if(applicationFormItems.size() > 0){
+                applicationFormItemService.updateBatchById(applicationFormItems);
+            }
         }
 
         // 清空清单项
-//        applicationFormItemService.closeItems(myApplicationForm);
+        applicationFormItemService.closeItems(myApplicationForm);
 
         // 记录信息
         recordService.record(myApplicationForm);
 
         // 关闭清单
-//        myApplicationForm.setAvailable(false);
+        myApplicationForm.setAvailable(false);
         this.updateById(myApplicationForm);
 
     }
@@ -107,7 +132,7 @@ public class ApplicationFormServiceImpl extends ServiceImpl<ApplicationFormMappe
 
         String materialId = item.getMaterialId();
 
-        if(StringUtils.isEmpty(material)){
+        if(StringUtils.isEmpty(materialId)){
             material.setName(item.getMaterialName());
             material.setCategoryId(item.getCategoryId());
             material.setRepositoryId(item.getRepositoryId());

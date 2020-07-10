@@ -16,7 +16,7 @@ public class MaterialUploadDataListener extends AnalysisEventListener<MaterialEo
     /**
      * 每隔5条存储数据库，实际使用中可以3000条，然后清理list ，方便内存回收
      */
-    private static final int BATCH_COUNT = 5;
+    private static final int BATCH_COUNT = 50;
     List<MaterialEo> list = new ArrayList<MaterialEo>();
     /**
      * 假设这个是一个DAO，当然有业务逻辑这个也可以是一个service。当然如果不用存储这个对象没用。
@@ -76,7 +76,9 @@ public class MaterialUploadDataListener extends AnalysisEventListener<MaterialEo
      * 加上存储数据库
      */
     private void saveData() {
-        applicationFormItemService.saveBatch(list.stream().map(this::eo2Model).collect(Collectors.toList()));
+        List<ApplicationFormItem> applicationFormItems = list.stream().map(this::eo2Model).collect(Collectors.toList());
+        applicationFormItems = applicationFormItemService.initName2Id(applicationFormItems);
+        applicationFormItemService.saveBatch(applicationFormItems);
     }
 
 
@@ -88,7 +90,7 @@ public class MaterialUploadDataListener extends AnalysisEventListener<MaterialEo
         item.setCount(eo.getCount());
         item.setSpecialLine(eo.getSpecialLine());
         item.setStatus(eo.getStatus());
-        item = applicationFormItemService.initName2Id(item);
+//        item = applicationFormItemService.initName2Id(item);
         if(applicationForm != null)
             item.setApplicationFormId(applicationForm.getId());
         return item;

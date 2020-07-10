@@ -14,7 +14,8 @@ public enum CustomizeExceptionCode {
     AREA_REGION_TYPE_DOES_NOT_EXIST("Area region type does not exist.","区域级别类型不存在."),
     TOKEN_IS_INVALID("token is invalid", "token无效"),
     TOKEN_EXPIRED("token expired","token过期" ),
-    REQUEST_PARAMS_IS_EMPTY("request param is empty","请求参数为空" );
+    REQUEST_PARAMS_IS_EMPTY("request param is empty","请求参数为空" ),
+    NO_CACHE_DATA("no cache data","无缓存数据" );
 
 
     private final String name;

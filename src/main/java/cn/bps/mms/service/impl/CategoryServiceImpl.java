@@ -13,7 +13,9 @@ import com.google.common.collect.Lists;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -147,6 +149,15 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
             return keyValue;
         }).collect(Collectors.toList());
     }
+
+    @Override
+    public Map<String, String>  getNameIdDict(Set<String> categoryNames) {
+        QueryWrapper<Category> wrapper = new QueryWrapper<>();
+        wrapper.in("name",categoryNames);
+        return this.list(wrapper).stream()
+                .collect(Collectors.toMap(Category::getName, Category::getId));
+    }
+
 
     private int getLevel(String categoryId){
         Category category = this.getById(categoryId);

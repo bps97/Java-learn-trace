@@ -9,6 +9,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * <p>
@@ -40,4 +42,6 @@ public interface MaterialService extends IService<Material> {
     MaterialVo getVoById(String id);
 
     Material validateExist(Material material);
+
+    Map<String, Map<String, String>> getNameStatusIdDict(Set<String> materialNames);
 }

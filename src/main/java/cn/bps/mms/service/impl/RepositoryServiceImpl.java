@@ -1,5 +1,6 @@
 package cn.bps.mms.service.impl;
 
+import cn.bps.mms.entity.Category;
 import cn.bps.mms.entity.Repository;
 import cn.bps.mms.mapper.RepositoryMapper;
 import cn.bps.mms.service.RepositoryService;
@@ -9,6 +10,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static org.apache.logging.log4j.ThreadContext.isEmpty;
@@ -41,5 +44,12 @@ public class RepositoryServiceImpl extends ServiceImpl<RepositoryMapper, Reposit
                 .eq("name", name);
         List<Repository> repositories = this.list(wrapper);
         return repositories.isEmpty() ? null : repositories.get(0).getId();
+    }
+
+    @Override
+    public Map<String, String> getNameIdDict() {
+        QueryWrapper<Repository> wrapper = new QueryWrapper<>();
+        return this.list(wrapper).stream()
+                .collect(Collectors.toMap(Repository::getName, Repository::getId));
     }
 }

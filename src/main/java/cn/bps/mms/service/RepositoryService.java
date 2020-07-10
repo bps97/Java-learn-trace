@@ -5,6 +5,8 @@ import cn.bps.mms.domain.vo.KeyValue;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * <p>
@@ -19,5 +21,7 @@ public interface RepositoryService extends IService<Repository> {
     List<KeyValue> listAllRepoNames();
 
     String getIdByName(String name);
+
+    Map<String, String> getNameIdDict();
 
 }

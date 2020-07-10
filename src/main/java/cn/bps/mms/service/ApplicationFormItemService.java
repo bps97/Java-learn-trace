@@ -36,11 +36,12 @@ public interface ApplicationFormItemService extends IService<ApplicationFormItem
 
     ApplicationForm initBatchImport(Account account);
 
-    ApplicationFormItem initName2Id(ApplicationFormItem applicationForm);
+    List<ApplicationFormItem> initName2Id(List<ApplicationFormItem> applicationFormItems);
 
     IPage<ApplicationFormItem> pageMaterials(Page<ApplicationFormItem> page, String token);
 
     IPage<ApplicationFormItem> pageMaterials(Page<ApplicationFormItem> page, Account account);
 
     IPage<ApplicationFormItem> handleExcelStream(MultipartFile file, String token) throws IOException;
+
 }

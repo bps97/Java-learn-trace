@@ -15,13 +15,12 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.google.common.collect.Lists;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
-import javax.jws.Oneway;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -118,7 +117,7 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
         QueryWrapper<Material> wrapper = new QueryWrapper<>();
         wrapper
                 .eq("name", materialName);
-        Material material = this.getOne(wrapper);
+        Material material = this.getOne(wrapper,false);
         return Objects.isNull(material) ? null : material.getName();
     }
 
@@ -157,6 +156,17 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
                 .eq("repository_id", material.getCategoryId())
                 .eq("status", material.getStatus());
         return this.getOne(wrapper);
+    }
+
+    @Override
+    public Map<String, Map<String, String>> getNameStatusIdDict(Set<String> materialNames) {
+        QueryWrapper<Material> wrapper = new QueryWrapper<>();
+        wrapper.in("name",materialNames);
+        List<Material> materials = this.list(wrapper);
+        return materials.stream()
+                .collect(Collectors.groupingBy(
+                        Material::getName,
+                        Collectors.toMap(Material::getStatus, Material::getId)));
     }
 
     private MaterialVo model2Vo(Material material){

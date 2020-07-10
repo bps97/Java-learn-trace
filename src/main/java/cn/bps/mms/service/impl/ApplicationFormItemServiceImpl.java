@@ -15,12 +15,13 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -117,20 +118,36 @@ public class ApplicationFormItemServiceImpl extends ServiceImpl<ApplicationFormI
     }
 
     @Override
-    public ApplicationFormItem initName2Id(ApplicationFormItem applicationForm) {
+    public List<ApplicationFormItem> initName2Id(List<ApplicationFormItem> applicationFormItems) {
 
-        String categoryId = categoryService.getIdByCategoryName(applicationForm.getCategoryName());
-        applicationForm.setCategoryId(categoryId);
-        String repositoryId  = repositoryService.getIdByName(applicationForm.getRepositoryName());
-        applicationForm.setRepositoryId(repositoryId);
 
-        String materialName = applicationForm.getMaterialName();
-        if(StringUtils.isEmpty(materialName) == Boolean.FALSE){
-            String materialId = materialService.getIdByName(materialName);
-            applicationForm.setMaterialId(materialId);
-        }
-        return applicationForm;
+        Set<String> categoryNames = applicationFormItems.stream()
+                .map(ApplicationFormItem::getCategoryName)
+                .collect(Collectors.toSet());
+
+        Set<String> materialNames = applicationFormItems.stream()
+                .map(ApplicationFormItem::getMaterialName)
+                .collect(Collectors.toSet());
+
+        Map<String, String> categoryNameIdDict = categoryService.getNameIdDict(categoryNames);
+        Map<String, String> repositoryNameIdDict = repositoryService.getNameIdDict();
+        Map<String, Map<String, String>> materialNameStatusIdDict = materialService.getNameStatusIdDict(materialNames);
+
+
+        applicationFormItems = applicationFormItems.stream().map(e->{
+                    e.setCategoryId(categoryNameIdDict.get(e.getCategoryName()));
+                    e.setRepositoryId(repositoryNameIdDict.get(e.getRepositoryName()));
+                    Map<String, String> statusIdDict = materialNameStatusIdDict.get(e.getMaterialName());
+                    if(statusIdDict != null){
+                        e.setMaterialId(statusIdDict.get(e.getStatus()));
+                    }
+                    return e;
+                }).collect(Collectors.toList());
+
+
+        return applicationFormItems;
     }
+
 
 
 

@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * <p>
@@ -44,5 +46,7 @@ public interface CategoryService extends IService<Category> {
     void addCategory(Category category);
 
     List<KeyValue> listSpecialLines();
+
+    Map<String, String> getNameIdDict(Set<String> categoryNames);
 
 }
