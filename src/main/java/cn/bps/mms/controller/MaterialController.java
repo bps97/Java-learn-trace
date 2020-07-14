@@ -51,6 +51,11 @@ public class MaterialController {
         return Ret.ok(materialService.listMaterialNames(categoryId, repositoryId));
     }
 
+    /**
+     * 添加物料信息
+     * @param material
+     * @return
+     */
     @PostMapping("/add")
     public Ret add(@RequestBody Material material){
         return Ret.create(()->materialService.saveMaterial(material));
@@ -77,6 +82,11 @@ public class MaterialController {
         return Ret.ok(()->materialService.updateById(id, material));
     }
 
+    /**
+     * 获取指定物料
+     * @param id
+     * @return
+     */
     @GetMapping("/{id}")
     public Ret get(@PathVariable String id) {
         return Ret.ok(materialService.getVoById(id));

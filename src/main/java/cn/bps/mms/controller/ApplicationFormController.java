@@ -23,6 +23,12 @@ public class ApplicationFormController {
     @Resource
     private ApplicationFormService applicationFormService;
 
+    /**
+     * 初始化申请单
+     * @param applicationForm
+     * @param token
+     * @return
+     */
     @PostMapping("/message")
     public Ret add(@RequestBody ApplicationForm applicationForm, @RequestHeader String token){
         return Ret.ok(()-> applicationFormService.addMessage(applicationForm, token));

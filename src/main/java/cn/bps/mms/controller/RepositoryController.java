@@ -27,6 +27,10 @@ public class RepositoryController {
     @Resource
     private RepositoryService repositoryService;
 
+    /**
+     * 获取仓库名KeValue
+     * @return
+     */
     @GetMapping("/names")
     public Ret<List<KeyValue>> getAllRepoNames(){
         return Ret.ok(repositoryService.listAllRepoNames());

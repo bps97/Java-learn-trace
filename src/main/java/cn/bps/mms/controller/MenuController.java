@@ -29,13 +29,23 @@ public class MenuController {
     @Resource
     private MenuService menuService;
 
+    /**
+     * 显示菜单
+     * @param token
+     * @return
+     */
     @GetMapping("/menus")
-    public Ret<List<MenuItemVo>> listAuthentications(@RequestHeader String token){
+    public Ret<List<MenuItemVo>> showMenus(@RequestHeader String token){
         return Ret.ok(menuService.listAuthentications(token));
     }
 
+    /**
+     * 分页展示菜单项
+     * @param page
+     * @return
+     */
     @GetMapping("")
-    public Ret<IPage<Menu>> pageAuthentications(Page<Menu> page) {
+    public Ret<IPage<Menu>> pageMenus(Page<Menu> page) {
         return Ret.ok(menuService.pageAuthentications(page));
     }
 }

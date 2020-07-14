@@ -27,6 +27,10 @@ public class RoleController {
     @Resource
     private RoleService roleService;
 
+    /**
+     * 获取角色列表
+     * @return
+     */
     @GetMapping("/list")
     public Ret<List<Role>> listRoles(){
         return Ret.ok(roleService.list());

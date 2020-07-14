@@ -29,11 +29,20 @@ public class PrivilegeController {
     @Resource
     private PrivilegeService privilegeService;
 
+    /**
+     * 分页展示权限列表
+     * @param page
+     * @return
+     */
     @GetMapping("/page")
     public Ret<IPage<Privilege>> pagePrivileges(Page<Privilege> page){
         return Ret.ok(privilegeService.page(page));
     }
 
+    /**
+     * 获取权限列表
+     * @return
+     */
     @GetMapping("/list")
     public Ret<List<Privilege>> listPrivileges(){
         return Ret.ok(privilegeService.listPrivileges());

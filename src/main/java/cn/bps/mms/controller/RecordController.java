@@ -26,6 +26,12 @@ public class RecordController {
     @Resource
     private RecordService recordService;
 
+    /**
+     * 分页获取记录列表
+     * @param page
+     * @param ao
+     * @return
+     */
     @GetMapping("")
     public Ret<IPage<Record>> pageRecords(Page<Record> page,
                                           RecordAo ao){

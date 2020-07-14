@@ -34,6 +34,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         QueryWrapper<Category> wrapper = new QueryWrapper<>();
         wrapper
                 .eq("parent_id", specialLineId);
+        wrapper.orderByDesc("available");
         IPage pageCategories = (IPage) this.page(page,wrapper);
         List vos = model2Vo(pageCategories.getRecords(),false);
         IPage<CategoryVo> iPage = pageCategories.setRecords(vos);
@@ -87,6 +88,8 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         if(available == true){ // 要求有效的
             wrapper.
                     eq("available", true);
+        }else{
+            wrapper.orderByDesc("available");
         }
         List<Category> authentications = this.list(wrapper);
         return authentications;
