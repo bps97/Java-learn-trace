@@ -56,6 +56,7 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> impleme
         wrapper
                 .eq("repository_id", ao.getRepositoryId())
                 .in("special_line", set);
+        wrapper.orderByDesc("create_time");
         return recordMapper.selectPage(page, wrapper);
     }
 

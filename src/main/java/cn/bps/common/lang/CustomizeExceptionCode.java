@@ -16,7 +16,8 @@ public enum CustomizeExceptionCode {
     TOKEN_EXPIRED("token expired","token过期" ),
     REQUEST_PARAMS_IS_EMPTY("request param is empty","请求参数为空" ),
     NO_CACHE_DATA("no cache data","无缓存数据" ),
-    FOREIGN_KEY_CONSTRAINT_FAILS("foreign key constraint fails","外键引用相关错误" );
+    FOREIGN_KEY_CONSTRAINT_FAILS("foreign key constraint fails","外键引用相关错误" ),
+    LACK_OF_INFORMATION("lack of information", "信息不足");
 
 
     private final String name;

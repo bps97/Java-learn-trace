@@ -42,7 +42,7 @@ public class CategoryController {
      * @param page
      * @return
      */
-    @GetMapping("")
+    @GetMapping("/list")
     public Ret<IPage<CategoryVo>> pageCategories(Page<Category> page,String specialLineId){
         return Ret.ok(categoryService.pageCategories(page,specialLineId));
     }

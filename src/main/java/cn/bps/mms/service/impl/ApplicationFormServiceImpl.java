@@ -75,6 +75,7 @@ public class ApplicationFormServiceImpl extends ServiceImpl<ApplicationFormMappe
     public void addMessage(ApplicationForm applicationForm, String tokenValue) {
         ApplicationForm myApplicationForm = getApplication(tokenValue);
         myApplicationForm.setMessage(applicationForm.getMessage());
+        myApplicationForm.setType(applicationForm.getType());
         if(Objects.equal(myApplicationForm.getType(),"批量导入")){
             // 同步物料表
             List<ApplicationFormItem> applicationFormItems = applicationFormItemService.list(myApplicationForm);

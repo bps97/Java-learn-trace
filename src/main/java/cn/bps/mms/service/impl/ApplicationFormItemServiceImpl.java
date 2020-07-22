@@ -1,5 +1,7 @@
 package cn.bps.mms.service.impl;
 
+import cn.bps.common.lang.CustomizeExceptionCode;
+import cn.bps.common.lang.LocalBizServiceException;
 import cn.bps.mms.domain.MaterialEo;
 import cn.bps.mms.domain.MaterialUploadDataListener;
 import cn.bps.mms.entity.Account;
@@ -15,6 +17,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -112,7 +115,12 @@ public class ApplicationFormItemServiceImpl extends ServiceImpl<ApplicationFormI
         ApplicationForm applicationForm = new ApplicationForm();
         applicationForm.setUserId(account.getId());
         applicationForm.setType("批量导入");
-        applicationForm.setUserName(account.getName());
+        String userName = account.getName();
+        if(StringUtils.isEmpty(userName)){
+            throw new LocalBizServiceException(CustomizeExceptionCode.LACK_OF_INFORMATION,"请补全该账户用户信息");
+        }else{
+            applicationForm.setUserName(account.getName());
+        }
         applicationFormService.save(applicationForm);
         return applicationFormService.getApplication(account);
     }

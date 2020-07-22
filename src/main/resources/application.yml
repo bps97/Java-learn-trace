@@ -4,11 +4,13 @@ spring:
   datasource:
     type: com.mchange.v2.c3p0.ComboPooledDataSource
     driver-class-name: com.mysql.jdbc.Driver
-#    url: jdbc:mysql://bps.cool:3306/mm?userUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
-    url: jdbc:mysql://localhost:3306/mm?userUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
-#    url: jdbc:mysql://172.17.0.1:3306/mm?userUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
+#    url: jdbc:mysql://bps.cool:3306/mm?userUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/mm?userUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC&serverTimezone=Asia/Shanghai
+#    url: jdbc:mysql://172.17.0.1:3306/mm?userUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
+  jackson:
+    time-zone: Asia/Shanghai
 
 server:
   port: 8101
