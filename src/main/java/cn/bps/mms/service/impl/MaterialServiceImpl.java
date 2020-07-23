@@ -89,10 +89,13 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
         if(Objects.equals(categoryId,"")){
             throw new LocalBizServiceException(CustomizeExceptionCode.REQUEST_PARAMS_IS_EMPTY);
         }
-        Set<String> children = categoryService.getChildren(categoryId)
+        Set<String> children = categoryService.getAllChildren(categoryId)
                 .stream()
                 .map(Category::getId)
                 .collect(Collectors.toSet());
+        if(children.size() == 0){
+            throw new LocalBizServiceException(CustomizeExceptionCode.RESOURCE_NOT_FOUND);
+        }
         children.add(categoryId);
         QueryWrapper<Material> wrapper = new QueryWrapper<>();
         wrapper.in("category_id",children);

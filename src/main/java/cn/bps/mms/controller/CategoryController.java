@@ -5,7 +5,7 @@ import cn.bps.common.lang.domain.Ret;
 import cn.bps.mms.domain.vo.KeyValue;
 import cn.bps.mms.entity.Category;
 import cn.bps.mms.service.CategoryService;
-import cn.bps.mms.domain.vo.CategoryVo;
+import cn.bps.mms.domain.vo.CategoryTreeVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +33,7 @@ public class CategoryController {
      * @return
      */
     @GetMapping("/menus")
-    public Ret<List<CategoryVo>> menus(){
+    public Ret<List<CategoryTreeVo>> menus(){
         return Ret.ok(categoryService.menuCategories());
     }
 
@@ -43,7 +43,7 @@ public class CategoryController {
      * @return
      */
     @GetMapping("/list")
-    public Ret<IPage<CategoryVo>> pageCategories(Page<Category> page,String specialLineId){
+    public Ret<IPage<CategoryTreeVo>> pageCategories(Page<Category> page, String specialLineId){
         return Ret.ok(categoryService.pageCategories(page,specialLineId));
     }
 
@@ -73,7 +73,7 @@ public class CategoryController {
      * @return
      */
     @GetMapping("/{id}")
-    public Ret<CategoryVo> getById(@PathVariable String id) {
+    public Ret<CategoryTreeVo> getById(@PathVariable String id) {
         return Ret.ok(categoryService.getVoById(id));
     }
 

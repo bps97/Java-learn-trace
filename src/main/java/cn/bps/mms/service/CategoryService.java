@@ -2,11 +2,12 @@ package cn.bps.mms.service;
 
 import cn.bps.mms.domain.vo.KeyValue;
 import cn.bps.mms.entity.Category;
-import cn.bps.mms.domain.vo.CategoryVo;
+import cn.bps.mms.domain.vo.CategoryTreeVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -21,9 +22,9 @@ import java.util.Set;
  */
 public interface CategoryService extends IService<Category> {
 
-    IPage<CategoryVo> pageCategories(Page<Category> page, String specialLineId);
+    IPage<CategoryTreeVo> pageCategories(Page<Category> page, String specialLineId);
 
-    List<CategoryVo> menuCategories();
+    List<CategoryTreeVo> menuCategories();
 
     List<Category> rootCategories();
 
@@ -35,7 +36,9 @@ public interface CategoryService extends IService<Category> {
 
     List<Category> getChildren(String parentId);
 
-    CategoryVo getVoById(String id);
+    List<Category> getAllChildren(String categoryId);
+
+    CategoryTreeVo getVoById(String id);
 
     void changeAvailable(String id, Boolean available);
 
@@ -48,5 +51,6 @@ public interface CategoryService extends IService<Category> {
     List<KeyValue> listSpecialLines();
 
     Map<String, String> getNameIdDict(Set<String> categoryNames);
+
 
 }

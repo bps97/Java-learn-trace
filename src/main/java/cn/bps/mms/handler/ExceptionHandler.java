@@ -9,7 +9,8 @@ public class ExceptionHandler {
 
     @org.springframework.web.bind.annotation.ExceptionHandler(LocalBizServiceException.class)
     public Ret handleException(LocalBizServiceException bizException) {
-        return Ret.error().message(bizException.getCustomizeExceptionCode().getInfo());
+
+        return Ret.error().message(bizException.getErrorCode());
     }
 
 }

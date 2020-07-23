@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class CategoryVo {
+public class CategoryTreeVo {
 
     /**
      * 编号
@@ -36,7 +36,7 @@ public class CategoryVo {
     /**
      * 子分类列表
      */
-    private List<CategoryVo> children;
+    private List<CategoryTreeVo> children;
 
     /**
      * 是否有效

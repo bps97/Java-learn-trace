@@ -2,6 +2,7 @@ package cn.bps.mms.controller;
 
 import cn.bps.common.lang.domain.Ret;
 import cn.bps.mms.domain.ao.RecordAo;
+import cn.bps.mms.domain.vo.RecordTreeVo;
 import cn.bps.mms.entity.Record;
 import cn.bps.mms.service.RecordService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -33,13 +34,9 @@ public class RecordController {
      * @return
      */
     @GetMapping("")
-    public Ret<IPage<Record>> pageRecords(Page<Record> page,
-                                          RecordAo ao){
+    public Ret<IPage<RecordTreeVo>> pageRecords(Page<Record> page,
+                                                RecordAo ao){
         return Ret.ok(recordService.pageRecords(page,ao));
     }
-
-
-
-
 }
 

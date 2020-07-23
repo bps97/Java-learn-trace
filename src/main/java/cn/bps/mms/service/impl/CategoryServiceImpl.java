@@ -4,7 +4,7 @@ import cn.bps.mms.domain.vo.KeyValue;
 import cn.bps.mms.entity.Category;
 import cn.bps.mms.mapper.CategoryMapper;
 import cn.bps.mms.service.CategoryService;
-import cn.bps.mms.domain.vo.CategoryVo;
+import cn.bps.mms.domain.vo.CategoryTreeVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -30,21 +30,21 @@ import java.util.stream.Collectors;
 public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> implements CategoryService {
 
     @Override
-    public IPage<CategoryVo> pageCategories(Page<Category> page, String specialLineId) {
+    public IPage<CategoryTreeVo> pageCategories(Page<Category> page, String specialLineId) {
         QueryWrapper<Category> wrapper = new QueryWrapper<>();
         wrapper
                 .eq("parent_id", specialLineId);
         wrapper.orderByDesc("available");
         IPage pageCategories = (IPage) this.page(page,wrapper);
         List vos = model2Vo(pageCategories.getRecords(),false);
-        IPage<CategoryVo> iPage = pageCategories.setRecords(vos);
+        IPage<CategoryTreeVo> iPage = pageCategories.setRecords(vos);
         return iPage;
     }
 
     @Override
-    public List<CategoryVo> menuCategories() {
+    public List<CategoryTreeVo> menuCategories() {
         List<Category> rootCategories = rootCategories();   /*获取根分类*/
-        List<CategoryVo> categories = model2Vo(rootCategories,true);
+        List<CategoryTreeVo> categories = model2Vo(rootCategories,true);
         return categories;
     }
 
@@ -102,8 +102,19 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
     }
 
     @Override
-    public CategoryVo getVoById(String id) {
-        CategoryVo vo = model2VoInit(getById(id));
+    public List<Category> getAllChildren(String categoryId) {
+        List<Category> children = this.getChildren(categoryId,true);
+        List<Category> list = children
+                .stream()
+                .flatMap(e -> this.getAllChildren(e.getId()).stream())
+                .collect(Collectors.toList());
+        children.addAll(list);
+        return children;
+    }
+
+    @Override
+    public CategoryTreeVo getVoById(String id) {
+        CategoryTreeVo vo = model2VoInit(getById(id));
         vo.setSpecialLine(getRootCategoryName(id));
         return vo;
 
@@ -180,10 +191,10 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
     }
 
 
-    private List<CategoryVo> model2Vo(List<Category> categories, boolean available){
-        List<CategoryVo> lists = Lists.newArrayList();
+    private List<CategoryTreeVo> model2Vo(List<Category> categories, boolean available){
+        List<CategoryTreeVo> lists = Lists.newArrayList();
         for(Category parent: categories){
-            CategoryVo vo = model2VoInit(parent);
+            CategoryTreeVo vo = model2VoInit(parent);
             List<Category> children = this.getChildren(parent.getId(), available); /*获取有效的子分类*/
             vo.setChildren(model2Vo(children, available));
             lists.add(vo);
@@ -192,8 +203,8 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
     }
 
 
-    private CategoryVo model2VoInit(Category category){
-        CategoryVo vo = new CategoryVo();
+    private CategoryTreeVo model2VoInit(Category category){
+        CategoryTreeVo vo = new CategoryTreeVo();
         vo.setName(category.getName());
         vo.setId(category.getId());
         vo.setAvailable(category.getAvailable());
