@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
 public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> implements RecordService {
 
     @Resource
-    private ApplicationFormItemService applicationFormItemService;
+    private AppFormItemService applicationFormItemService;
 
     @Resource
     private RecordMapper recordMapper;
@@ -41,11 +41,11 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> impleme
     @Resource CategoryService categoryService;
 
     @Override
-    public void record(ApplicationForm applicationForm) {
+    public void record(AppForm appForm) {
 
-        List<ApplicationFormItem> applicationFormItems = applicationFormItemService.list(applicationForm);
+        List<AppFormItem> applicationFormItems = applicationFormItemService.list(appForm);
 
-        Record parentRecord = generateRecord(applicationForm);
+        Record parentRecord = generateRecord(appForm);
 
 
         List<Record> records = applicationFormItems
@@ -121,7 +121,7 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> impleme
         return vo;
     }
 
-    private Record generateRecord(ApplicationForm applicationForm) {
+    private Record generateRecord(AppForm applicationForm) {
         Record record = new Record();
         record.setUserName(applicationForm.getUserName());
         record.setUserId(applicationForm.getUserId());
@@ -138,7 +138,7 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> impleme
         return this.getOne(wrapper,false);
     }
 
-    private Record generateRecord(Record parent, ApplicationFormItem item){
+    private Record generateRecord(Record parent, AppFormItem item){
 
         Record record = new Record();
         record.setParentId(parent.getId());

@@ -2,8 +2,8 @@ package cn.bps.mms.controller;
 
 
 import cn.bps.common.lang.domain.Ret;
-import cn.bps.mms.entity.ApplicationForm;
-import cn.bps.mms.service.ApplicationFormService;
+import cn.bps.mms.entity.AppForm;
+import cn.bps.mms.service.AppFormService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -18,21 +18,20 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("/apply")
-public class ApplicationFormController {
+public class AppFormController {
 
     @Resource
-    private ApplicationFormService applicationFormService;
+    private AppFormService appFormService;
 
     /**
      * 初始化申请单
-     * @param applicationForm
+     * @param appForm
      * @param token
      * @return
      */
     @PostMapping("/message")
-    public Ret add(@RequestBody ApplicationForm applicationForm, @RequestHeader String token){
-        return Ret.ok(()-> applicationFormService.addMessage(applicationForm, token));
+    public Ret add(@RequestBody AppForm appForm, @RequestHeader String token){
+        return Ret.ok(()-> appFormService.addMessage(appForm, token));
     }
 
 }
-

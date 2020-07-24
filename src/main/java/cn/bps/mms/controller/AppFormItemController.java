@@ -2,9 +2,9 @@ package cn.bps.mms.controller;
 
 
 import cn.bps.common.lang.domain.Ret;
-import cn.bps.mms.entity.ApplicationFormItem;
-import cn.bps.mms.service.ApplicationFormItemService;
+import cn.bps.mms.entity.AppFormItem;
 import cn.bps.mms.domain.vo.ApplicationItemVo;
+import cn.bps.mms.service.AppFormItemService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.web.bind.annotation.*;
@@ -25,10 +25,10 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/applyItem")
-public class ApplicationFormItemController {
+public class AppFormItemController {
 
     @Resource
-    private ApplicationFormItemService applicationFormItemService;
+    private AppFormItemService appFormItemService;
 
     /**
      * 添加申请单项
@@ -37,8 +37,8 @@ public class ApplicationFormItemController {
      * @return
      */
     @PostMapping("")
-    public Ret add(@RequestBody ApplicationFormItem item, @RequestHeader String token){
-        return Ret.create(()-> applicationFormItemService.addItem(item, token));
+    public Ret add(@RequestBody AppFormItem item, @RequestHeader String token){
+        return Ret.create(()-> appFormItemService.addItem(item, token));
     }
 
     /**
@@ -48,7 +48,7 @@ public class ApplicationFormItemController {
      */
     @GetMapping("")
     public Ret<List<ApplicationItemVo>> list(@RequestHeader String token){
-        return Ret.ok(applicationFormItemService.list(token));
+        return Ret.ok(appFormItemService.list(token));
     }
 
     /**
@@ -58,8 +58,8 @@ public class ApplicationFormItemController {
      */
     @DeleteMapping("/{id}")
     public Ret remove(@PathVariable String id) {
-        return Ret.ok(()-> applicationFormItemService.removeById(id));
-}
+        return Ret.ok(()-> appFormItemService.removeById(id));
+    }
 
     /**
      * 批量导入物料信息
@@ -70,8 +70,8 @@ public class ApplicationFormItemController {
      */
     @PostMapping("/upload")
     @ResponseBody
-    public Ret<IPage<ApplicationFormItem>> upload(MultipartFile file, @RequestHeader String token) throws IOException {
-        return Ret.ok(applicationFormItemService.handleExcelStream(file, token));
+    public Ret<IPage<AppFormItem>> upload(MultipartFile file, @RequestHeader String token) throws IOException {
+        return Ret.ok(appFormItemService.handleExcelStream(file, token));
     }
 
     /**
@@ -81,8 +81,8 @@ public class ApplicationFormItemController {
      * @return
      */
     @GetMapping("/list")
-    public Ret<IPage<ApplicationFormItem>> pageMaterials(Page<ApplicationFormItem> page, @RequestHeader String token) {
-        return Ret.ok(applicationFormItemService.pageMaterials(page,token));
+    public Ret<IPage<AppFormItem>> pageMaterials(Page<AppFormItem> page, @RequestHeader String token) {
+        return Ret.ok(appFormItemService.pageMaterials(page,token));
     }
 }
 

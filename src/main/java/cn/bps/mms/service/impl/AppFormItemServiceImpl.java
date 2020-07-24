@@ -4,12 +4,12 @@ import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
 import cn.bps.mms.domain.MaterialEo;
 import cn.bps.mms.domain.MaterialUploadDataListener;
-import cn.bps.mms.entity.Account;
-import cn.bps.mms.entity.ApplicationForm;
-import cn.bps.mms.entity.ApplicationFormItem;
-import cn.bps.mms.mapper.ApplicationFormItemMapper;
-import cn.bps.mms.service.*;
 import cn.bps.mms.domain.vo.ApplicationItemVo;
+import cn.bps.mms.entity.Account;
+import cn.bps.mms.entity.AppFormItem;
+import cn.bps.mms.entity.AppForm;
+import cn.bps.mms.mapper.AppFormItemMapper;
+import cn.bps.mms.service.*;
 import cn.bps.security.server.service.TokenService;
 import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -36,7 +36,7 @@ import java.util.stream.Collectors;
  * @since 2020-06-21
  */
 @Service
-public class ApplicationFormItemServiceImpl extends ServiceImpl<ApplicationFormItemMapper, ApplicationFormItem> implements ApplicationFormItemService {
+public class AppFormItemServiceImpl extends ServiceImpl<AppFormItemMapper, AppFormItem> implements AppFormItemService {
 
     @Resource
     private CategoryService categoryService;
@@ -48,19 +48,19 @@ public class ApplicationFormItemServiceImpl extends ServiceImpl<ApplicationFormI
     private RepositoryService repositoryService;
 
     @Resource
-    private ApplicationFormService applicationFormService;
+    private AppFormService AppFormService;
 
     @Resource
     private TokenService tokenService;
 
 
     @Override
-    public void addItem(ApplicationFormItem item, String tokenValue) {
+    public void addItem(AppFormItem item, String tokenValue) {
 
-        
 
-        ApplicationForm applicationForm = applicationFormService.getApplication(tokenValue);
-        item.setApplicationFormId(applicationForm.getId());
+
+        AppForm AppForm = AppFormService.getApplication(tokenValue);
+        item.setAppFormId(AppForm.getId());
 
         String categoryId = item.getCategoryId();
         String categoryName = categoryService.getById(categoryId).getName();
@@ -80,61 +80,61 @@ public class ApplicationFormItemServiceImpl extends ServiceImpl<ApplicationFormI
     @Override
     public List<ApplicationItemVo> list(String tokenValue) {
 
-        ApplicationForm applicationForm = applicationFormService.getApplication(tokenValue);
+        AppForm AppForm = AppFormService.getApplication(tokenValue);
 
-        QueryWrapper<ApplicationFormItem> wrapper = new QueryWrapper<>();
+        QueryWrapper<AppFormItem> wrapper = new QueryWrapper<>();
         wrapper
                 .eq("available", true)
-                .eq("application_form_id", applicationForm.getId());
-        List<ApplicationFormItem> items = this.list(wrapper);
+                .eq("app_form_id", AppForm.getId());
+        List<AppFormItem> items = this.list(wrapper);
 
         return items.stream().map(this::model2Vo).collect(Collectors.toList());
     }
 
     @Override
-    public void closeItems(ApplicationForm applicationForm) {
-        ApplicationFormItem item = new ApplicationFormItem();
+    public void closeItems(AppForm appForm) {
+        AppFormItem item = new AppFormItem();
         item.setAvailable(false);
-        QueryWrapper<ApplicationFormItem> wrapper = new QueryWrapper<>();
+        QueryWrapper<AppFormItem> wrapper = new QueryWrapper<>();
         wrapper
                 .eq("available", true)
-                .eq("application_form_id", applicationForm.getId());
+                .eq("app_form_id", appForm.getId());
         this.update(item,wrapper);
     }
 
     @Override
-    public List<ApplicationFormItem> list(ApplicationForm applicationForm) {
-        QueryWrapper<ApplicationFormItem> wrapper = new QueryWrapper<>();
+    public List<AppFormItem> list(AppForm appForm) {
+        QueryWrapper<AppFormItem> wrapper = new QueryWrapper<>();
         wrapper
-                .eq("application_form_id", applicationForm.getId());
+                .eq("app_form_id", appForm.getId());
         return this.list(wrapper);
     }
 
     @Override
-    public ApplicationForm initBatchImport(Account account) {
-        ApplicationForm applicationForm = new ApplicationForm();
-        applicationForm.setUserId(account.getId());
-        applicationForm.setType("批量导入");
+    public AppForm initBatchImport(Account account) {
+        AppForm AppForm = new AppForm();
+        AppForm.setUserId(account.getId());
+        AppForm.setType("批量导入");
         String userName = account.getName();
         if(StringUtils.isEmpty(userName)){
             throw new LocalBizServiceException(CustomizeExceptionCode.LACK_OF_INFORMATION,"请补全该账户用户信息");
         }else{
-            applicationForm.setUserName(account.getName());
+            AppForm.setUserName(account.getName());
         }
-        applicationFormService.save(applicationForm);
-        return applicationFormService.getApplication(account);
+        AppFormService.save(AppForm);
+        return AppFormService.getApplication(account);
     }
 
     @Override
-    public List<ApplicationFormItem> initName2Id(List<ApplicationFormItem> applicationFormItems) {
+    public List<AppFormItem> initName2Id(List<AppFormItem> appFormItems) {
 
 
-        Set<String> categoryNames = applicationFormItems.stream()
-                .map(ApplicationFormItem::getCategoryName)
+        Set<String> categoryNames = appFormItems.stream()
+                .map(AppFormItem::getCategoryName)
                 .collect(Collectors.toSet());
 
-        Set<String> materialNames = applicationFormItems.stream()
-                .map(ApplicationFormItem::getMaterialName)
+        Set<String> materialNames = appFormItems.stream()
+                .map(AppFormItem::getMaterialName)
                 .collect(Collectors.toSet());
 
         Map<String, String> categoryNameIdDict = categoryService.getNameIdDict(categoryNames);
@@ -142,40 +142,40 @@ public class ApplicationFormItemServiceImpl extends ServiceImpl<ApplicationFormI
         Map<String, Map<String, String>> materialNameStatusIdDict = materialService.getNameStatusIdDict(materialNames);
 
 
-        applicationFormItems = applicationFormItems.stream().map(e->{
-                    e.setCategoryId(categoryNameIdDict.get(e.getCategoryName()));
-                    e.setRepositoryId(repositoryNameIdDict.get(e.getRepositoryName()));
-                    Map<String, String> statusIdDict = materialNameStatusIdDict.get(e.getMaterialName());
-                    if(statusIdDict != null){
-                        e.setMaterialId(statusIdDict.get(e.getStatus()));
-                    }
-                    return e;
-                }).collect(Collectors.toList());
+        appFormItems = appFormItems.stream().map(e->{
+            e.setCategoryId(categoryNameIdDict.get(e.getCategoryName()));
+            e.setRepositoryId(repositoryNameIdDict.get(e.getRepositoryName()));
+            Map<String, String> statusIdDict = materialNameStatusIdDict.get(e.getMaterialName());
+            if(statusIdDict != null){
+                e.setMaterialId(statusIdDict.get(e.getStatus()));
+            }
+            return e;
+        }).collect(Collectors.toList());
 
 
-        return applicationFormItems;
+        return appFormItems;
     }
 
 
 
 
     @Override
-    public IPage<ApplicationFormItem> pageMaterials(Page<ApplicationFormItem> page, String token) {
+    public IPage<AppFormItem> pageMaterials(Page<AppFormItem> page, String token) {
         Account account = tokenService.getAccount(token);
         return pageMaterials(page,account);
     }
 
     @Override
-    public IPage<ApplicationFormItem> pageMaterials(Page<ApplicationFormItem> page, Account account) {
-        ApplicationForm applicationForm = applicationFormService.getApplication(account);
-        QueryWrapper<ApplicationFormItem> wrapper = new QueryWrapper<>();
+    public IPage<AppFormItem> pageMaterials(Page<AppFormItem> page, Account account) {
+        AppForm AppForm = AppFormService.getApplication(account);
+        QueryWrapper<AppFormItem> wrapper = new QueryWrapper<>();
         wrapper.eq("available", true)
-                .eq("application_form_id", applicationForm.getId());
+                .eq("app_form_id", AppForm.getId());
         return this.page(page, wrapper);
     }
 
     @Override
-    public IPage<ApplicationFormItem> handleExcelStream(MultipartFile file, String token) throws IOException {
+    public IPage<AppFormItem> handleExcelStream(MultipartFile file, String token) throws IOException {
         Account account = tokenService.getAccount(token);
         easyExcelRead(file, account);
         return pageMaterials(new Page<>(), account);
@@ -194,10 +194,11 @@ public class ApplicationFormItemServiceImpl extends ServiceImpl<ApplicationFormI
                 .sheet().doRead();
     }
 
-    private ApplicationItemVo model2Vo(ApplicationFormItem item){
+    private ApplicationItemVo model2Vo(AppFormItem item){
         ApplicationItemVo vo = new ApplicationItemVo();
         vo.setId(item.getId());
         vo.setMaterialName(item.getMaterialName());
+        vo.setStatus(item.getStatus());
         vo.setCategoryName(item.getCategoryName());
         vo.setRepositoryName(item.getRepositoryName());
         vo.setCount(item.getCount());

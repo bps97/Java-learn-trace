@@ -26,6 +26,11 @@ public class ApplicationItemVo {
     private String materialName;
 
     /**
+     * 使用状态(正常|损坏)
+     */
+    private String status;
+
+    /**
      * 分类名称
      */
     private String categoryName;
