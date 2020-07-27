@@ -2,8 +2,11 @@ package cn.bps.mms.controller;
 
 
 import cn.bps.common.lang.domain.Ret;
+import cn.bps.mms.domain.ao.AppFormAo;
+import cn.bps.mms.entity.AppForm;
 import cn.bps.mms.entity.AppFormItem;
 import cn.bps.mms.domain.vo.ApplicationItemVo;
+import cn.bps.mms.enums.AppFormType;
 import cn.bps.mms.service.AppFormItemService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -47,8 +50,8 @@ public class AppFormItemController {
      * @return
      */
     @GetMapping("")
-    public Ret<List<ApplicationItemVo>> list(@RequestHeader String token){
-        return Ret.ok(appFormItemService.list(token));
+    public Ret<List<ApplicationItemVo>> list(@RequestHeader String token, AppFormAo appFormAo){
+        return Ret.ok(appFormItemService.list(token, appFormAo.getEnum()));
     }
 
     /**
@@ -70,8 +73,8 @@ public class AppFormItemController {
      */
     @PostMapping("/upload")
     @ResponseBody
-    public Ret<IPage<AppFormItem>> upload(MultipartFile file, @RequestHeader String token) throws IOException {
-        return Ret.ok(appFormItemService.handleExcelStream(file, token));
+    public Ret<IPage<AppFormItem>> upload(MultipartFile file, @RequestHeader String token, AppForm form) throws IOException {
+        return Ret.ok(appFormItemService.handleExcelStream(file, token, form));
     }
 
     /**
@@ -81,8 +84,8 @@ public class AppFormItemController {
      * @return
      */
     @GetMapping("/list")
-    public Ret<IPage<AppFormItem>> pageMaterials(Page<AppFormItem> page, @RequestHeader String token) {
-        return Ret.ok(appFormItemService.pageMaterials(page,token));
+    public Ret<IPage<AppFormItem>> pageMaterials(Page<AppFormItem> page, @RequestHeader String token, AppFormAo appFormAo) {
+        return Ret.ok(appFormItemService.pageMaterials(page, token, appFormAo.getEnum()));
     }
 }
 

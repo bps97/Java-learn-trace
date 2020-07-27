@@ -84,7 +84,6 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
     @Override
     public IPage<MaterialVo> pageMaterials(Page<Material> page, MaterialAo ao) {
 
-
         String categoryId = ao.getCategoryId();
         if(Objects.equals(categoryId,"")){
             throw new LocalBizServiceException(CustomizeExceptionCode.REQUEST_PARAMS_IS_EMPTY);
@@ -94,7 +93,7 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
                 .map(Category::getId)
                 .collect(Collectors.toSet());
         if(children.size() == 0){
-            throw new LocalBizServiceException(CustomizeExceptionCode.RESOURCE_NOT_FOUND);
+            throw new LocalBizServiceException(CustomizeExceptionCode.RESOURCE_NOT_FOUND, "找不到资源");
         }
         children.add(categoryId);
         QueryWrapper<Material> wrapper = new QueryWrapper<>();
@@ -106,6 +105,9 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
         wrapper.orderByAsc("name").orderByAsc("update_time");
 
         IPage<Material> pageMaterial = this.page(page, wrapper);
+        if(pageMaterial.getTotal() == 0){
+            throw new LocalBizServiceException(CustomizeExceptionCode.RESOURCE_NOT_FOUND, "找不到资源");
+        }
         List vos = (List) pageMaterial.getRecords()
                 .stream()
                 .map(this::model2Vo)

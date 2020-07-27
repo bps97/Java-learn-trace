@@ -3,6 +3,7 @@ package cn.bps.mms.service.impl;
 import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
 import cn.bps.mms.entity.*;
+import cn.bps.mms.enums.AppFormType;
 import cn.bps.mms.mapper.AppFormMapper;
 import cn.bps.mms.service.AppFormItemService;
 import cn.bps.mms.service.AppFormService;
@@ -48,27 +49,51 @@ public class AppFormServiceImpl extends ServiceImpl<AppFormMapper, AppForm> impl
 
     @Override
     public AppForm getApplication(Account account) {
+        return getApplication(account, null);
+    }
+
+    @Override
+    public AppForm getApplication(Account account, AppFormType type) {
         QueryWrapper<AppForm> wrapper = new QueryWrapper<>();
         wrapper
                 .eq("available", true)
                 .eq("user_id", account.getId());
-        List<AppForm> AppForms = this.list(wrapper);
-        AppForm AppForm = null;
-        if(AppForms.isEmpty()){
-            AppForm = new AppForm();
-            AppForm.setUserId(account.getId());
-            AppForm.setUserName(account.getName());
-            this.save(AppForm);
-        }else {
-            AppForm = AppForms.get(0);
+
+        if(type != null){
+            wrapper.eq("type", type.getType());
         }
-        return AppForm;
+        wrapper.orderByDesc("create_time");
+        List<AppForm> appForms = this.list(wrapper);
+        AppForm appForm = null;
+        if(appForms.isEmpty()){
+            appForm = new AppForm();
+            appForm.setUserId(account.getId());
+            if(type != null){
+               appForm.setType(type.getType());
+            }
+            if(StringUtils.isEmpty(account.getUsername())){
+                throw new LocalBizServiceException(CustomizeExceptionCode.LACK_OF_INFORMATION,"请补全该账户用户信息");
+            }else{
+                appForm.setUserName(account.getName());
+            }
+            appForm.setUserName(account.getName());
+            this.save(appForm);
+        }else {
+            appForm = appForms.get(0);
+        }
+        return appForm;
     }
 
     @Override
     public AppForm getApplication(String tokenValue) {
         Account account = tokenService.getAccount(tokenValue);
         return getApplication(account);
+    }
+
+    @Override
+    public AppForm getApplication(String tokenValue, AppFormType type) {
+        Account account = tokenService.getAccount(tokenValue);
+        return getApplication(account, type);
     }
 
     @Override

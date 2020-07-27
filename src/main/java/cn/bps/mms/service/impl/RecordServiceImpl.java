@@ -70,7 +70,8 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> impleme
 
         QueryWrapper<Record> wrapper = new QueryWrapper<>();
         wrapper
-                .in("id", parentRecordIds);
+                .in("id", parentRecordIds)
+                .orderByDesc("create_time");
 
         IPage<Record> pageRecords = recordMapper.selectPage(page, wrapper);
         List vos = (List) pageRecords.getRecords()

@@ -47,7 +47,13 @@ public class MaterialUploadDataListener extends AnalysisEventListener<MaterialEo
     public MaterialUploadDataListener(AppFormItemService AppFormItemService, Account account) {
         this.AppFormItemService = AppFormItemService;
         this.account = account;
-        this.appForm = AppFormItemService.initBatchImport(account);
+//        this.appForm = AppFormItemService.initBatchImport(account);
+    }
+
+    public MaterialUploadDataListener(AppFormItemService AppFormItemService, Account account, AppForm appForm) {
+        this.AppFormItemService = AppFormItemService;
+        this.account = account;
+        this.appForm = AppFormItemService.initBatchImport(account, appForm.getType());
     }
 
     @Override

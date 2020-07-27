@@ -1,13 +1,12 @@
 package cn.bps.mms.service.impl;
 
-import cn.bps.common.lang.CustomizeExceptionCode;
-import cn.bps.common.lang.LocalBizServiceException;
 import cn.bps.mms.domain.MaterialEo;
 import cn.bps.mms.domain.MaterialUploadDataListener;
 import cn.bps.mms.domain.vo.ApplicationItemVo;
 import cn.bps.mms.entity.Account;
 import cn.bps.mms.entity.AppFormItem;
 import cn.bps.mms.entity.AppForm;
+import cn.bps.mms.enums.AppFormType;
 import cn.bps.mms.mapper.AppFormItemMapper;
 import cn.bps.mms.service.*;
 import cn.bps.security.server.service.TokenService;
@@ -17,7 +16,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -48,7 +46,7 @@ public class AppFormItemServiceImpl extends ServiceImpl<AppFormItemMapper, AppFo
     private RepositoryService repositoryService;
 
     @Resource
-    private AppFormService AppFormService;
+    private AppFormService appFormService;
 
     @Resource
     private TokenService tokenService;
@@ -59,8 +57,8 @@ public class AppFormItemServiceImpl extends ServiceImpl<AppFormItemMapper, AppFo
 
 
 
-        AppForm AppForm = AppFormService.getApplication(tokenValue);
-        item.setAppFormId(AppForm.getId());
+        AppForm appForm = appFormService.getApplication(tokenValue);
+        item.setAppFormId(appForm.getId());
 
         String categoryId = item.getCategoryId();
         String categoryName = categoryService.getById(categoryId).getName();
@@ -80,12 +78,26 @@ public class AppFormItemServiceImpl extends ServiceImpl<AppFormItemMapper, AppFo
     @Override
     public List<ApplicationItemVo> list(String tokenValue) {
 
-        AppForm AppForm = AppFormService.getApplication(tokenValue);
+        AppForm appForm = appFormService.getApplication(tokenValue);
 
         QueryWrapper<AppFormItem> wrapper = new QueryWrapper<>();
         wrapper
                 .eq("available", true)
-                .eq("app_form_id", AppForm.getId());
+                .eq("app_form_id", appForm.getId());
+        List<AppFormItem> items = this.list(wrapper);
+
+        return items.stream().map(this::model2Vo).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ApplicationItemVo> list(String tokenValue, AppFormType type) {
+
+        AppForm appForm = appFormService.getApplication(tokenValue, type);
+
+        QueryWrapper<AppFormItem> wrapper = new QueryWrapper<>();
+        wrapper
+                .eq("available", true)
+                .eq("app_form_id", appForm.getId());
         List<AppFormItem> items = this.list(wrapper);
 
         return items.stream().map(this::model2Vo).collect(Collectors.toList());
@@ -111,18 +123,10 @@ public class AppFormItemServiceImpl extends ServiceImpl<AppFormItemMapper, AppFo
     }
 
     @Override
-    public AppForm initBatchImport(Account account) {
-        AppForm AppForm = new AppForm();
-        AppForm.setUserId(account.getId());
-        AppForm.setType("批量导入");
-        String userName = account.getName();
-        if(StringUtils.isEmpty(userName)){
-            throw new LocalBizServiceException(CustomizeExceptionCode.LACK_OF_INFORMATION,"请补全该账户用户信息");
-        }else{
-            AppForm.setUserName(account.getName());
-        }
-        AppFormService.save(AppForm);
-        return AppFormService.getApplication(account);
+    public AppForm initBatchImport(Account account, String type) {
+        if(AppFormType.excelImport.getType().equals(type))
+            return appFormService.getApplication(account, AppFormType.excelImport);
+        return appFormService.getApplication(account);
     }
 
     @Override
@@ -157,27 +161,34 @@ public class AppFormItemServiceImpl extends ServiceImpl<AppFormItemMapper, AppFo
     }
 
 
-
-
-    @Override
-    public IPage<AppFormItem> pageMaterials(Page<AppFormItem> page, String token) {
-        Account account = tokenService.getAccount(token);
-        return pageMaterials(page,account);
-    }
-
     @Override
     public IPage<AppFormItem> pageMaterials(Page<AppFormItem> page, Account account) {
-        AppForm AppForm = AppFormService.getApplication(account);
+        AppForm appForm = appFormService.getApplication(account);
         QueryWrapper<AppFormItem> wrapper = new QueryWrapper<>();
         wrapper.eq("available", true)
-                .eq("app_form_id", AppForm.getId());
+                .eq("app_form_id", appForm.getId());
         return this.page(page, wrapper);
     }
 
     @Override
-    public IPage<AppFormItem> handleExcelStream(MultipartFile file, String token) throws IOException {
+    public IPage<AppFormItem> pageMaterials(Page<AppFormItem> page, String token, AppFormType type) {
         Account account = tokenService.getAccount(token);
-        easyExcelRead(file, account);
+        return pageMaterials(page, account, type);
+    }
+
+    @Override
+    public IPage<AppFormItem> pageMaterials(Page<AppFormItem> page, Account account, AppFormType type) {
+        AppForm appForm = appFormService.getApplication(account, type);
+        QueryWrapper<AppFormItem> wrapper = new QueryWrapper<>();
+        wrapper.eq("available", true)
+                .eq("app_form_id", appForm.getId());
+        return this.page(page, wrapper);
+    }
+
+    @Override
+    public IPage<AppFormItem> handleExcelStream(MultipartFile file, String token, AppForm form) throws IOException {
+        Account account = tokenService.getAccount(token);
+        easyExcelRead(file, account, form);
         return pageMaterials(new Page<>(), account);
     }
 
@@ -188,9 +199,9 @@ public class AppFormItemServiceImpl extends ServiceImpl<AppFormItemMapper, AppFo
      * @param account
      * @throws IOException
      */
-    private void easyExcelRead(MultipartFile file, Account account) throws IOException {
+    private void easyExcelRead(MultipartFile file, Account account, AppForm form) throws IOException {
         EasyExcel.read(file.getInputStream(),
-                MaterialEo.class,new MaterialUploadDataListener(this,account))
+                MaterialEo.class,new MaterialUploadDataListener(this,account, form))
                 .sheet().doRead();
     }
 

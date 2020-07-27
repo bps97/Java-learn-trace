@@ -4,6 +4,7 @@ import cn.bps.mms.domain.vo.ApplicationItemVo;
 import cn.bps.mms.entity.Account;
 import cn.bps.mms.entity.AppFormItem;
 import cn.bps.mms.entity.AppForm;
+import cn.bps.mms.enums.AppFormType;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -26,6 +27,8 @@ public interface AppFormItemService extends IService<AppFormItem> {
 
     List<ApplicationItemVo> list(String tokenValue);
 
+    List<ApplicationItemVo> list(String tokenValue, AppFormType type);
+
     void closeItems(AppForm appForm);
 
     List<AppFormItem> list(AppForm appForm);
@@ -34,14 +37,16 @@ public interface AppFormItemService extends IService<AppFormItem> {
 
     /* 导入EXCEL相关 */
 
-    AppForm initBatchImport(Account account);
+    AppForm initBatchImport(Account account, String type);
 
     List<AppFormItem> initName2Id(List<AppFormItem> appFormItems);
 
-    IPage<AppFormItem> pageMaterials(Page<AppFormItem> page, String token);
-
     IPage<AppFormItem> pageMaterials(Page<AppFormItem> page, Account account);
 
-    IPage<AppFormItem> handleExcelStream(MultipartFile file, String token) throws IOException;
+    IPage<AppFormItem> pageMaterials(Page<AppFormItem> page, String token, AppFormType type);
+
+    IPage<AppFormItem> pageMaterials(Page<AppFormItem> page, Account account, AppFormType type);
+
+    IPage<AppFormItem> handleExcelStream(MultipartFile file, String token, AppForm form) throws IOException;
 
 }
