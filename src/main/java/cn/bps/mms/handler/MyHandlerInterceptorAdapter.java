@@ -25,6 +25,7 @@ public class MyHandlerInterceptorAdapter extends HandlerInterceptorAdapter {
         Token token = tokenService.parse(tokenStr);
 
         return Objects.isNull(token) == Boolean.FALSE;
+//        return Boolean.TRUE;
     }
 
 

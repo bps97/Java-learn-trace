@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import javax.annotation.Resource;
+import javax.validation.constraints.NotEmpty;
 import java.io.IOException;
 import java.util.List;
 
@@ -50,7 +51,7 @@ public class AppFormItemController {
      * @return
      */
     @GetMapping("")
-    public Ret<List<ApplicationItemVo>> list(@RequestHeader String token, AppFormAo appFormAo){
+    public Ret<List<ApplicationItemVo>> list(@RequestHeader String token, @NotEmpty AppFormAo appFormAo){
         return Ret.ok(appFormItemService.list(token, appFormAo.getEnum()));
     }
 
@@ -84,7 +85,7 @@ public class AppFormItemController {
      * @return
      */
     @GetMapping("/list")
-    public Ret<IPage<AppFormItem>> pageMaterials(Page<AppFormItem> page, @RequestHeader String token, AppFormAo appFormAo) {
+    public Ret<IPage<AppFormItem>> pageMaterials(Page<AppFormItem> page, @RequestHeader String token, @NotEmpty AppFormAo appFormAo) {
         return Ret.ok(appFormItemService.pageMaterials(page, token, appFormAo.getEnum()));
     }
 }
