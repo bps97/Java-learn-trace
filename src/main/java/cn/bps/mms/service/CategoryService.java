@@ -44,6 +44,8 @@ public interface CategoryService extends IService<Category> {
 
     String getRootCategoryName(String categoryId);
 
+    String getSpecialLine(String categoryId);
+
     void updateById(String id, Category category);
 
     void addCategory(Category category);

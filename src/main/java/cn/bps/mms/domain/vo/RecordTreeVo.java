@@ -43,7 +43,7 @@ public class RecordTreeVo {
     /**
      * 仓库名称
      */
-    private String repositoryName;
+    private String warehouseName;
 
     /**
      * 专业线

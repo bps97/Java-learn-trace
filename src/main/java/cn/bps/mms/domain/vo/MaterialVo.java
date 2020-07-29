@@ -34,12 +34,12 @@ public class MaterialVo {
     /**
      * 仓库编号
      */
-    private String repositoryId;
+    private String warehouseId;
 
     /**
      * 仓库名称
      */
-    private String repositoryName;
+    private String warehouseName;
 
     /**
      * 专业线编号(接入、无线、传输)

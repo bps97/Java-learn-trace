@@ -23,7 +23,7 @@ public class MaterialEo {
      * 仓库
      */
     @ExcelProperty("仓库")
-    private String repository;
+    private String warehouse;
 
     /**
      * 专业线

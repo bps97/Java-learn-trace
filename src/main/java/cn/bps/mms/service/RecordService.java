@@ -2,7 +2,7 @@ package cn.bps.mms.service;
 
 import cn.bps.mms.domain.ao.RecordAo;
 import cn.bps.mms.domain.vo.RecordTreeVo;
-import cn.bps.mms.entity.AppForm;
+import cn.bps.mms.entity.Application;
 import cn.bps.mms.entity.Record;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -18,7 +18,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface RecordService extends IService<Record> {
 
-    void record(AppForm appForm);
+    void record(Application application);
 
     IPage<RecordTreeVo> pageRecords(Page<Record> page, RecordAo ao);
 }

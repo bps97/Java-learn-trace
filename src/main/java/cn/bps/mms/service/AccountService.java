@@ -1,8 +1,7 @@
 package cn.bps.mms.service;
 
 import cn.bps.common.lang.api.Token;
-import cn.bps.common.lang.domain.Callback;
-import cn.bps.mms.domain.PageRequest;
+import cn.bps.mms.domain.ao.ChangePwdAo;
 import cn.bps.mms.domain.vo.AccountVo;
 import cn.bps.mms.entity.Account;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -32,4 +31,8 @@ public interface AccountService extends IService<Account> {
     void updateById(String id, Account account);
 
     void changeRoleId(String id, String roleId);
+
+    void changePassword(String token, ChangePwdAo ao);
+
+    void resetPassword(String id);
 }

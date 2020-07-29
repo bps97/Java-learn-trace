@@ -3,6 +3,7 @@ package cn.bps.mms.controller;
 
 import cn.bps.common.lang.api.Token;
 import cn.bps.common.lang.domain.Ret;
+import cn.bps.mms.domain.ao.ChangePwdAo;
 import cn.bps.mms.domain.vo.AccountVo;
 import cn.bps.mms.entity.Account;
 import cn.bps.mms.service.AccountService;
@@ -112,6 +113,26 @@ public class AccountController {
         return Ret.ok(()->accountService.updateById(id, account));
     }
 
+    /**
+     * 修改密码
+     * @param token
+     * @param ao
+     * @return
+     */
+    @PostMapping("/password")
+    public Ret changePassword(@RequestHeader String token, @RequestBody ChangePwdAo ao){
+        return Ret.ok(()->accountService.changePassword(token,ao));
+    }
+
+    /**
+     * 修改用户密码
+     * @param id
+     * @return
+     */
+    @PutMapping("/{id}/password")
+    public Ret changePassword(@PathVariable String id){
+        return Ret.ok(()->accountService.resetPassword(id));
+    }
 
 }
 

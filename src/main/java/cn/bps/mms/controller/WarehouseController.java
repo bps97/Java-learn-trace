@@ -2,7 +2,7 @@ package cn.bps.mms.controller;
 
 
 import cn.bps.common.lang.domain.Ret;
-import cn.bps.mms.service.RepositoryService;
+import cn.bps.mms.service.WarehouseService;
 import cn.bps.mms.domain.vo.KeyValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,11 +21,11 @@ import java.util.List;
  * @since 2020-06-09
  */
 @RestController
-@RequestMapping("/repository")
-public class RepositoryController {
+@RequestMapping("/warehouse")
+public class WarehouseController {
 
     @Resource
-    private RepositoryService repositoryService;
+    private WarehouseService warehouseService;
 
     /**
      * 获取仓库名KeValue
@@ -33,7 +33,7 @@ public class RepositoryController {
      */
     @GetMapping("/names")
     public Ret<List<KeyValue>> getAllRepoNames(){
-        return Ret.ok(repositoryService.listAllRepoNames());
+        return Ret.ok(warehouseService.listAllRepoNames());
     }
 
 }

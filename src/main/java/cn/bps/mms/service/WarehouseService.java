@@ -1,12 +1,11 @@
 package cn.bps.mms.service;
 
-import cn.bps.mms.entity.Repository;
+import cn.bps.mms.entity.Warehouse;
 import cn.bps.mms.domain.vo.KeyValue;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * <p>
@@ -16,7 +15,7 @@ import java.util.Set;
  * @author bps
  * @since 2020-06-09
  */
-public interface RepositoryService extends IService<Repository> {
+public interface WarehouseService extends IService<Warehouse> {
 
     List<KeyValue> listAllRepoNames();
 

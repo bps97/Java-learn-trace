@@ -45,7 +45,7 @@ public class Material implements Serializable {
     /**
      * 仓库编号
      */
-    private String repositoryId;
+    private String warehouseId;
 
     /**
      * 专业线编号(接入、无线、传输)

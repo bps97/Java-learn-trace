@@ -38,7 +38,7 @@ public class ApplicationItemVo {
     /**
      * 仓库名称
      */
-    private String repositoryName;
+    private String warehouseName;
 
     /**
      * 专业线编号(接入、无线、传输)

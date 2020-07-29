@@ -142,6 +142,11 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
     }
 
     @Override
+    public String getSpecialLine(String categoryId) {
+        return getRootCategoryName(categoryId);
+    }
+
+    @Override
     public void updateById(String id, Category category) {
         category.setId(id);
         this.updateById(category);

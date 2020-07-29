@@ -7,8 +7,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class RecordAo {
-    private String warehouseId;
-    private String specialLines;
-
+public class ChangePwdAo {
+    private String password;
+    private String newPassword;
 }

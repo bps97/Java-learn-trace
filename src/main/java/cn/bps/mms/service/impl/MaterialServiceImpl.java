@@ -10,7 +10,7 @@ import cn.bps.mms.service.CategoryService;
 import cn.bps.mms.service.MaterialService;
 import cn.bps.mms.domain.vo.KeyValue;
 import cn.bps.mms.domain.vo.MaterialVo;
-import cn.bps.mms.service.RepositoryService;
+import cn.bps.mms.service.WarehouseService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -41,7 +41,7 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
     private CategoryService categoryService;
 
     @Resource
-    private RepositoryService repositoryService;
+    private WarehouseService warehouseService;
 
 
 
@@ -54,31 +54,35 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
     }
 
     @Override
-    public List<Material> listMaterialsByRepositoryId(String repositoryId) {
+    public List<Material> listMaterialsByWarehouseId(String warehouseId) {
         QueryWrapper<Material> wrapper = new QueryWrapper<>();
         wrapper
-                .eq("repository_id", repositoryId);
+                .eq("warehouse_id", warehouseId);
         return this.list(wrapper);
     }
 
     @Override
-    public List<Material> listMaterialsByRepositoryId(String categoryId, String repositoryId) {
+    public List<Material> listMaterialsByWarehouseId(String categoryId, String warehouseId) {
         QueryWrapper<Material> wrapper = new QueryWrapper<>();
         wrapper
-                .eq("repository_id", repositoryId)
+                .eq("warehouse_id", warehouseId)
                 .eq("category_id",categoryId);
         return this.list(wrapper);
     }
 
     @Override
-    public List<KeyValue> listMaterialNames(String categoryId, String repositoryId) {
-        List<Material> materials = repositoryId.isEmpty() ? listMaterials(categoryId) : listMaterialsByRepositoryId(categoryId, repositoryId);
-        return materials.stream().map(e->{
-            KeyValue keyValue = new KeyValue();
-            keyValue.setKey(e.getId());
-            keyValue.setValue(e.getName());
-            return keyValue;
-        }).collect(Collectors.toList());
+    public List<KeyValue> listMaterialNames(String categoryId, String warehouseId, String status) {
+        List<Material> materials = warehouseId.isEmpty()
+                ? listMaterials(categoryId)
+                : listMaterialsByWarehouseId(categoryId, warehouseId);
+        return materials.stream()
+                .filter( e-> Objects.equals(status,e.getStatus()))
+                .map(e->{
+                    KeyValue keyValue = new KeyValue();
+                    keyValue.setKey(e.getId());
+                    keyValue.setValue(e.getName());
+                    return keyValue;
+                }).collect(Collectors.toList());
     }
 
     @Override
@@ -158,7 +162,7 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
         QueryWrapper<Material> wrapper = new QueryWrapper<>();
         wrapper
                 .eq("name", material.getName())
-                .eq("repository_id", material.getCategoryId())
+                .eq("warehouse_id", material.getCategoryId())
                 .eq("status", material.getStatus());
         return this.getOne(wrapper);
     }
@@ -183,8 +187,8 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
         vo.setCreateTime(material.getCreateTime());
         vo.setUpdateTime(material.getUpdateTime());
         vo.setId(material.getId());
-        vo.setRepositoryId(material.getRepositoryId());
-        vo.setRepositoryName(repositoryService.getById(material.getRepositoryId()).getName());
+        vo.setWarehouseId(material.getWarehouseId());
+        vo.setWarehouseName(warehouseService.getById(material.getWarehouseId()).getName());
         vo.setSpecialLine(material.getSpecialLine());
         vo.setCategoryName(categoryService.getById(material.getCategoryId()).getName());
         vo.setStatus(material.getStatus());

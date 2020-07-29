@@ -43,12 +43,12 @@ public class MaterialController {
     /**
      * 获取物料名称列表
      * @param categoryId
-     * @param repositoryId
+     * @param warehouseId
      * @return
      */
     @GetMapping("/names")
-    public Ret<List<KeyValue>> listMaterialNames(String categoryId, String repositoryId){
-        return Ret.ok(materialService.listMaterialNames(categoryId, repositoryId));
+    public Ret<List<KeyValue>> listMaterialNames(String categoryId, String warehouseId, String status){
+        return Ret.ok(materialService.listMaterialNames(categoryId, warehouseId, status));
     }
 
     /**

@@ -56,7 +56,7 @@ public class Record implements Serializable {
     /**
      * 仓库名称
      */
-    private String repositoryName;
+    private String warehouseName;
 
     /**
      * 专业线
@@ -76,7 +76,7 @@ public class Record implements Serializable {
     /**
      * 仓库ID
      */
-    private String repositoryId;
+    private String warehouseId;
 
     /**
      * 分离ID

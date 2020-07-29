@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 申请单项
+ * 申请单
  * </p>
  *
  * @author bps
@@ -22,7 +22,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class AppFormItem implements Serializable {
+public class Application implements Serializable {
 
     private static final long serialVersionUID=1L;
 
@@ -33,55 +33,24 @@ public class AppFormItem implements Serializable {
     private String id;
 
     /**
-     * 物料名称
+     * 物料使用人员
      */
-    private String materialName;
+    private String userName;
 
     /**
-     * 分类名称
+     * 编号
      */
-    private String categoryName;
+    private String userId;
 
     /**
-     * 仓库名称
+     * 备注信息
      */
-    private String repositoryName;
+    private String message;
 
     /**
-     * 物料ID
+     * 类型(领用，归还，新品录入)
      */
-    private String materialId;
-
-    /**
-     * 仓库ID
-     */
-    private String repositoryId;
-
-    /**
-     * 分离ID
-     */
-    private String categoryId;
-
-    /**
-     * 申请单ID
-     */
-    private String appFormId;
-
-    /**
-     * 使用状态(正常|损坏)
-     */
-    private String status;
-
-    /**
-     * 专业线编号(接入、无线、传输)
-     */
-    private String specialLine;
-
-    /**
-     * 数量
-     */
-    private Integer count;
-
+    private String type;
     /**
      * 是否有效
      */

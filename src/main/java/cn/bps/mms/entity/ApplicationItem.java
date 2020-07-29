@@ -13,16 +13,16 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 仓库
+ * 申请单项
  * </p>
  *
  * @author bps
- * @since 2020-06-09
+ * @since 2020-06-21
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Repository implements Serializable {
+public class ApplicationItem implements Serializable {
 
     private static final long serialVersionUID=1L;
 
@@ -33,19 +33,54 @@ public class Repository implements Serializable {
     private String id;
 
     /**
-     * 名称
+     * 物料名称
      */
-    private String name;
+    private String materialName;
 
     /**
-     * 具体住址
+     * 分类名称
      */
-    private String address;
+    private String categoryName;
 
     /**
-     * 父分类ID
+     * 仓库名称
      */
-    private String parentId;
+    private String warehouseName;
+
+    /**
+     * 物料ID
+     */
+    private String materialId;
+
+    /**
+     * 仓库ID
+     */
+    private String warehouseId;
+
+    /**
+     * 分离ID
+     */
+    private String categoryId;
+
+    /**
+     * 申请单ID
+     */
+    private String applicationId;
+
+    /**
+     * 使用状态(正常|损坏)
+     */
+    private String status;
+
+    /**
+     * 专业线编号(接入、无线、传输)
+     */
+    private String specialLine;
+
+    /**
+     * 数量
+     */
+    private Integer count;
 
     /**
      * 是否有效

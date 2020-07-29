@@ -4,6 +4,7 @@ import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
 import cn.bps.common.lang.api.Token;
 import cn.bps.common.lang.util.EncryptUtils;
+import cn.bps.mms.domain.ao.ChangePwdAo;
 import cn.bps.mms.domain.vo.AccountVo;
 import cn.bps.mms.entity.Account;
 import cn.bps.mms.mapper.AccountMapper;
@@ -46,14 +47,24 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
         String username = loginForm.getUsername();
         String password = loginForm.getPassword();
         Account account = getByUsername(username);
+        checkAccountToken(username, password, account);
+        Token xx = tokenService.getAccessTokenByUser(username);
+        return xx;
+    }
+
+    /**
+     * 检查账户通信证(有效性)
+     * @param username
+     * @param password
+     * @param account
+     */
+    private void checkAccountToken(String username, String password, Account account) {
         if(Objects.isNull(account)) {  /*如果该账户不存在*/
             throw new LocalBizServiceException(CustomizeExceptionCode.ACCOUNT_NOT_EXIST, username);
         }else{
             String md5Password = EncryptUtils.md5Encrypt(password);
-            if(Objects.equals(md5Password, account.getPassword())) {
-                Token xx = tokenService.getAccessTokenByUser(username);
-                return xx;
-            }else { /*密码错误*/
+            if(Objects.equals(md5Password, account.getPassword()) == Boolean.FALSE) {
+                /*密码错误*/
                 throw new LocalBizServiceException(CustomizeExceptionCode.PASSWORD_NOT_INCORRECT, username);
             }
         }
@@ -67,7 +78,7 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
             // 这里需要写一个注册失败相关的返回对象  划掉 不写了 下面抛异常
             throw new LocalBizServiceException(CustomizeExceptionCode.NAME_ALREADY_EXIST, regForm.getUsername());
         } else {
-            String md5Password = EncryptUtils.md5Encrypt(regForm.getPassword()); // 加密密码
+            String md5Password = EncryptUtils.md5Encrypt("123456"); // 加密密码
             account = regForm;
             account.setPassword(md5Password);
             account.setRoleId(roleService.getDefaultRoleId());
@@ -123,6 +134,24 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
         account.setId(id);
         account.setRoleId(roleId);
         updateById(account);
+    }
+
+    @Override
+    public void changePassword(String token, ChangePwdAo ao) {
+        Account account = tokenService.getAccount(token);
+        checkAccountToken(account.getUsername(), ao.getPassword(), account);
+        String md5Password = EncryptUtils.md5Encrypt(ao.getNewPassword());
+        account.setPassword(md5Password);
+        this.updateById(account);
+        // 去除token有效性（未写）
+    }
+
+    @Override
+    public void resetPassword(String id) {
+        Account account = this.getById(id);
+        String md5Password = EncryptUtils.md5Encrypt("123456");
+        account.setPassword(md5Password);
+        this.updateById(account);
     }
 
     private AccountVo model2Vo(Account account){

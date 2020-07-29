@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
 public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> implements RecordService {
 
     @Resource
-    private AppFormItemService applicationFormItemService;
+    private ApplicationItemService applicationFormItemService;
 
     @Resource
     private RecordMapper recordMapper;
@@ -41,11 +41,11 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> impleme
     @Resource CategoryService categoryService;
 
     @Override
-    public void record(AppForm appForm) {
+    public void record(Application application) {
 
-        List<AppFormItem> applicationFormItems = applicationFormItemService.list(appForm);
+        List<ApplicationItem> applicationFormItems = applicationFormItemService.list(application);
 
-        Record parentRecord = generateRecord(appForm);
+        Record parentRecord = generateRecord(application);
 
 
         List<Record> records = applicationFormItems
@@ -89,7 +89,7 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> impleme
         HashSet<String> set = Sets.newHashSet(specialsLines);
         wrapper
                 .isNotNull("parent_id")
-                .eq("repository_id", ao.getRepositoryId())
+                .eq("warehouse_id", ao.getWarehouseId())
                 .in("special_line", set);
         wrapper.orderByDesc("create_time");
 
@@ -113,7 +113,7 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> impleme
         vo.setId(record.getId());
         vo.setCategoryName(record.getCategoryName());
         vo.setMaterialName(record.getMaterialName());
-        vo.setRepositoryName(record.getRepositoryName());
+        vo.setWarehouseName(record.getWarehouseName());
         vo.setCount(record.getCount());
         vo.setCreateTime(record.getCreateTime());
         vo.setSpecialLine(record.getSpecialLine());
@@ -122,7 +122,7 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> impleme
         return vo;
     }
 
-    private Record generateRecord(AppForm applicationForm) {
+    private Record generateRecord(Application applicationForm) {
         Record record = new Record();
         record.setUserName(applicationForm.getUserName());
         record.setUserId(applicationForm.getUserId());
@@ -139,7 +139,7 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> impleme
         return this.getOne(wrapper,false);
     }
 
-    private Record generateRecord(Record parent, AppFormItem item){
+    private Record generateRecord(Record parent, ApplicationItem item){
 
         Record record = new Record();
         record.setParentId(parent.getId());
@@ -148,8 +148,8 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> impleme
         record.setMessage(parent.getMessage());
         record.setType(parent.getType());
 
-        record.setRepositoryName(item.getRepositoryName());
-        record.setRepositoryId(item.getRepositoryId());
+        record.setWarehouseName(item.getWarehouseName());
+        record.setWarehouseId(item.getWarehouseId());
         record.setCategoryName(item.getCategoryName());
         record.setCategoryId(item.getCategoryId());
         record.setMaterialName(item.getMaterialName());

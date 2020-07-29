@@ -17,6 +17,8 @@ public interface TokenService {
 
     int getAccessTokenExpSeconds();
 
-    Token parse(String value);
+    Token parse(String tokenValue);
+
+    boolean validToken(String tokenValue);
 
 }

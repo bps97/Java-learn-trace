@@ -71,16 +71,16 @@ public class TokenServiceImpl implements TokenService {
     }
 
     @Override
-    public Token parse(String value) {
-        if(Objects.nonNull(value)){
-            value = EncryptUtils.base64Decrypt(value);
-            String[] val = value.split(SEPARATOR);
+    public Token parse(String tokenValue) {
+        if(Objects.nonNull(tokenValue)){
+            tokenValue = EncryptUtils.base64Decrypt(tokenValue);
+            String[] val = tokenValue.split(SEPARATOR);
             if( val.length == 3){
                 Token token = new Token();
                 token.setUserId(val[0]);
                 token.setExpireTime(Long.parseLong(val[1]));
                 token.setSignature(val[2]);
-                token.setValue(value);
+                token.setValue(tokenValue);
 
                 /*生成的数字签名*/
                 String generatedSignature = generateSignature(token.getUserId(),token.getExpireTime());
@@ -95,6 +95,14 @@ public class TokenServiceImpl implements TokenService {
         // token过期
         // return null
         throw new LocalBizServiceException(CustomizeExceptionCode.TOKEN_IS_INVALID);
+    }
+
+    @Override
+    public boolean validToken(String tokenValue) {
+
+        Token token = this.parse(tokenValue);
+
+        return Objects.isNull(token) == Boolean.FALSE;
     }
 
     private String generateTokenValue(String id, long expireTime, String signature) {

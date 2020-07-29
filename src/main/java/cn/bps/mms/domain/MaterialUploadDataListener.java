@@ -1,9 +1,9 @@
 package cn.bps.mms.domain;
 
 import cn.bps.mms.entity.Account;
-import cn.bps.mms.entity.AppForm;
-import cn.bps.mms.entity.AppFormItem;
-import cn.bps.mms.service.AppFormItemService;
+import cn.bps.mms.entity.Application;
+import cn.bps.mms.entity.ApplicationItem;
+import cn.bps.mms.service.ApplicationItemService;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
 
@@ -22,11 +22,11 @@ public class MaterialUploadDataListener extends AnalysisEventListener<MaterialEo
      * 假设这个是一个DAO，当然有业务逻辑这个也可以是一个service。当然如果不用存储这个对象没用。
      */
 
-    private AppFormItemService AppFormItemService;
+    private ApplicationItemService ApplicationItemService;
 
     private Account account;
 
-    private AppForm appForm;
+    private Application application;
 
     
 
@@ -37,23 +37,23 @@ public class MaterialUploadDataListener extends AnalysisEventListener<MaterialEo
     /**
      * 如果使用了spring,请使用这个构造方法。每次创建Listener的时候需要把spring管理的类传进来
      *
-     * @param AppFormItemService
+     * @param ApplicationItemService
      */
-    public MaterialUploadDataListener(AppFormItemService AppFormItemService) {
-        this.AppFormItemService = AppFormItemService;
+    public MaterialUploadDataListener(ApplicationItemService ApplicationItemService) {
+        this.ApplicationItemService = ApplicationItemService;
     }
 
 
-    public MaterialUploadDataListener(AppFormItemService AppFormItemService, Account account) {
-        this.AppFormItemService = AppFormItemService;
+    public MaterialUploadDataListener(ApplicationItemService ApplicationItemService, Account account) {
+        this.ApplicationItemService = ApplicationItemService;
         this.account = account;
 //        this.appForm = AppFormItemService.initBatchImport(account);
     }
 
-    public MaterialUploadDataListener(AppFormItemService AppFormItemService, Account account, AppForm appForm) {
-        this.AppFormItemService = AppFormItemService;
+    public MaterialUploadDataListener(ApplicationItemService ApplicationItemService, Account account, Application application) {
+        this.ApplicationItemService = ApplicationItemService;
         this.account = account;
-        this.appForm = AppFormItemService.initBatchImport(account, appForm.getType());
+        this.application = ApplicationItemService.initBatchImport(account, application.getType());
     }
 
     @Override
@@ -82,23 +82,23 @@ public class MaterialUploadDataListener extends AnalysisEventListener<MaterialEo
      * 加上存储数据库
      */
     private void saveData() {
-        List<AppFormItem> AppFormItems = list.stream().map(this::eo2Model).collect(Collectors.toList());
-        AppFormItems = AppFormItemService.initName2Id(AppFormItems);
-        AppFormItemService.saveBatch(AppFormItems);
+        List<ApplicationItem> applicationItems = list.stream().map(this::eo2Model).collect(Collectors.toList());
+        applicationItems = ApplicationItemService.initName2Id(applicationItems);
+        ApplicationItemService.saveBatch(applicationItems);
     }
 
 
-    private AppFormItem eo2Model(MaterialEo eo){
-        AppFormItem item = new AppFormItem();
+    private ApplicationItem eo2Model(MaterialEo eo){
+        ApplicationItem item = new ApplicationItem();
         item.setMaterialName(eo.getName());
         item.setCategoryName(eo.getCategory());
-        item.setRepositoryName(eo.getRepository());
+        item.setWarehouseName(eo.getWarehouse());
         item.setCount(eo.getCount());
         item.setSpecialLine(eo.getSpecialLine());
         item.setStatus(eo.getStatus());
 //        item = AppFormItemService.initName2Id(item);
-        if(appForm != null)
-            item.setAppFormId(appForm.getId());
+        if(application != null)
+            item.setApplicationId(application.getId());
         return item;
     }
 }
