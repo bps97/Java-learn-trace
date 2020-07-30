@@ -7,6 +7,7 @@ import cn.bps.mms.domain.ao.ApplicationItemAo;
 import cn.bps.mms.entity.Application;
 import cn.bps.mms.entity.ApplicationItem;
 import cn.bps.mms.domain.vo.ApplicationItemVo;
+import cn.bps.mms.entity.Material;
 import cn.bps.mms.service.ApplicationItemService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -89,6 +90,11 @@ public class ApplicationItemController {
     @GetMapping("/list")
     public Ret<IPage<ApplicationItem>> pageMaterials(Page<ApplicationItem> page, @RequestHeader String token, @NotEmpty ApplicationAo applicationAo) {
         return Ret.ok(applicationItemService.pageMaterials(page, token, applicationAo.getEnum()));
+    }
+
+    @GetMapping("/material/check")
+    public Ret checkMaterial(ApplicationItemAo ao){
+        return Ret.ok(applicationItemService.checkMaterial(ao));
     }
 }
 

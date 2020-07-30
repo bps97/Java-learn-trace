@@ -9,5 +9,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class MaterialAo {
     private String categoryId;
+    private String warehouseId;
     private String key;
 }

@@ -43,5 +43,5 @@ public interface MaterialService extends IService<Material> {
 
     Material validateExist(Material material);
 
-    Map<String, Map<String, String>> getNameStatusIdDict(Set<String> materialNames);
+    Material getOneByKey(String materialName, String warehouseId, String status);
 }

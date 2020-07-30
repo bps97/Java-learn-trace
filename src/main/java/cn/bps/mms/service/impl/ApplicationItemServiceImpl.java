@@ -8,6 +8,7 @@ import cn.bps.mms.entity.Account;
 import cn.bps.mms.entity.ApplicationItem;
 import cn.bps.mms.entity.Application;
 import cn.bps.mms.domain.ApplicationType;
+import cn.bps.mms.entity.Material;
 import cn.bps.mms.mapper.ApplicationItemMapper;
 import cn.bps.mms.service.*;
 import cn.bps.security.server.service.TokenService;
@@ -20,9 +21,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.jws.Oneway;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -102,7 +105,8 @@ public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMappe
         QueryWrapper<ApplicationItem> wrapper = new QueryWrapper<>();
         wrapper
                 .eq("available", true)
-                .eq("application_id", application.getId());
+                .eq("application_id", application.getId())
+                .orderByDesc("update_time");
         List<ApplicationItem> items = this.list(wrapper);
 
         return items.stream().map(this::model2Vo).collect(Collectors.toList());
@@ -148,16 +152,13 @@ public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMappe
 
         Map<String, String> categoryNameIdDict = categoryService.getNameIdDict(categoryNames);
         Map<String, String> warehouseNameIdDict = warehouseService.getNameIdDict();
-        Map<String, Map<String, String>> materialNameStatusIdDict = materialService.getNameStatusIdDict(materialNames);
 
 
         applicationItems = applicationItems.stream().map(e->{
             e.setCategoryId(categoryNameIdDict.get(e.getCategoryName()));
             e.setWarehouseId(warehouseNameIdDict.get(e.getWarehouseName()));
-            Map<String, String> statusIdDict = materialNameStatusIdDict.get(e.getMaterialName());
-            if(statusIdDict != null){
-                e.setMaterialId(statusIdDict.get(e.getStatus()));
-            }
+            Material material = materialService.getOneByKey(e.getMaterialName(), e.getWarehouseId(), e.getStatus());
+            e.setMaterialId(material.getId());
             return e;
         }).collect(Collectors.toList());
 
@@ -186,7 +187,8 @@ public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMappe
         Application application = applicationService.getApplication(account, type);
         QueryWrapper<ApplicationItem> wrapper = new QueryWrapper<>();
         wrapper.eq("available", true)
-                .eq("application_id", application.getId());
+                .eq("application_id", application.getId())
+                .orderByDesc("update_time");
         return this.page(page, wrapper);
     }
 
@@ -195,6 +197,22 @@ public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMappe
         Account account = tokenService.getAccount(token);
         easyExcelRead(file, account, form);
         return pageMaterials(new Page<>(), account);
+    }
+
+    @Override
+    public Material checkMaterial(ApplicationItemAo ao) {
+        Material material = materialService.getOneByKey(ao.getMaterialName(), ao.getWarehouseId(), ao.getStatus());
+        if(Objects.isNull(material)){
+            material = new Material();
+            material.setName(ao.getMaterialName());
+            material.setCategoryId(ao.getCategoryId());
+            material.setStatus(ao.getStatus());
+            material.setWarehouseId(ao.getWarehouseId());
+            material.setSpecialLine(categoryService.getSpecialLine(ao.getCategoryId()));
+            materialService.save(material);
+            material = materialService.getOneByKey(ao.getMaterialName(), ao.getWarehouseId(), ao.getStatus());
+        }
+        return material;
     }
 
 

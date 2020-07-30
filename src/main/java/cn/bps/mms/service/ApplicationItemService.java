@@ -6,6 +6,7 @@ import cn.bps.mms.entity.Account;
 import cn.bps.mms.entity.ApplicationItem;
 import cn.bps.mms.entity.Application;
 import cn.bps.mms.domain.ApplicationType;
+import cn.bps.mms.entity.Material;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -50,4 +51,5 @@ public interface ApplicationItemService extends IService<ApplicationItem> {
 
     IPage<ApplicationItem> handleExcelStream(MultipartFile file, String token, Application form) throws IOException;
 
+    Material checkMaterial(ApplicationItemAo ao);
 }

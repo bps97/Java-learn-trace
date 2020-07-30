@@ -34,9 +34,8 @@ public class RecordController {
      * @return
      */
     @GetMapping("")
-    public Ret<IPage<RecordTreeVo>> pageRecords(Page<Record> page,
-                                                RecordAo ao){
-        return Ret.ok(recordService.pageRecords(page,ao));
+    public Ret<IPage<RecordTreeVo>> pageRecords(Page<Record> page, RecordAo ao){
+        return Ret.ok(recordService.pageRecords(page, ao));
     }
 }
 

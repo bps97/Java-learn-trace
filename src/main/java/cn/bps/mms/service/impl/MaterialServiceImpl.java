@@ -20,7 +20,6 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -96,12 +95,10 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
                 .stream()
                 .map(Category::getId)
                 .collect(Collectors.toSet());
-        if(children.size() == 0){
-            throw new LocalBizServiceException(CustomizeExceptionCode.RESOURCE_NOT_FOUND, "找不到资源");
-        }
         children.add(categoryId);
         QueryWrapper<Material> wrapper = new QueryWrapper<>();
-        wrapper.in("category_id",children);
+        wrapper.in("category_id", children)
+                .eq("warehouse_id", ao.getWarehouseId());
         String key = ao.getKey();
         if(key.isEmpty() == Boolean.FALSE){
             wrapper.like("name",key);
@@ -168,6 +165,16 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
     }
 
     @Override
+    public Material getOneByKey(String materialName, String warehouseId, String status) {
+        QueryWrapper<Material> wrapper = new QueryWrapper<>();
+        wrapper
+                .eq("name", materialName)
+                .eq("warehouse_id", warehouseId)
+                .eq("status", status);
+        return this.getOne(wrapper, false);
+    }
+
+    /*@Override
     public Map<String, Map<String, String>> getNameStatusIdDict(Set<String> materialNames) {
         QueryWrapper<Material> wrapper = new QueryWrapper<>();
         wrapper.in("name",materialNames);
@@ -176,7 +183,7 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
                 .collect(Collectors.groupingBy(
                         Material::getName,
                         Collectors.toMap(Material::getStatus, Material::getId)));
-    }
+    }*/
 
     private MaterialVo model2Vo(Material material){
         MaterialVo vo = new MaterialVo();

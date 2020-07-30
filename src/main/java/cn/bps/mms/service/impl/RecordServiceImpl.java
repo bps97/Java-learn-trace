@@ -71,7 +71,7 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> impleme
         QueryWrapper<Record> wrapper = new QueryWrapper<>();
         wrapper
                 .in("id", parentRecordIds)
-                .orderByDesc("create_time");
+                .orderByDesc("update_time");
 
         IPage<Record> pageRecords = recordMapper.selectPage(page, wrapper);
         List vos = (List) pageRecords.getRecords()
@@ -135,7 +135,7 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> impleme
                 .eq("user_name",record.getUserName())
                 .eq("user_id",record.getUserId())
                 .eq("type",record.getType())
-                .orderByDesc("create_time");
+                .orderByDesc("update_time");
         return this.getOne(wrapper,false);
     }
 
@@ -156,6 +156,7 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> impleme
         record.setMaterialId(item.getMaterialId());
         record.setCount(item.getCount());
         record.setStatus(item.getStatus());
+        record.setCreateTime(item.getCreateTime());
 
         record.setSpecialLine(categoryService.getRootCategoryName(record.getCategoryId()));
 
