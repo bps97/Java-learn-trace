@@ -54,5 +54,6 @@ public interface CategoryService extends IService<Category> {
 
     Map<String, String> getNameIdDict(Set<String> categoryNames);
 
+    Category getByCategoryNameAndSpecialLine(String categoryName, String specialLine);
 
 }

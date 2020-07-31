@@ -4,6 +4,7 @@ import cn.bps.mms.domain.ao.MaterialAo;
 import cn.bps.mms.entity.Material;
 import cn.bps.mms.domain.vo.KeyValue;
 import cn.bps.mms.domain.vo.MaterialVo;
+import cn.bps.mms.entity.Record;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -44,4 +45,7 @@ public interface MaterialService extends IService<Material> {
     Material validateExist(Material material);
 
     Material getOneByKey(String materialName, String warehouseId, String status);
+
+    List<Record> getRecords(String id);
+
 }

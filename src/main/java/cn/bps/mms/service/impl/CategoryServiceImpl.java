@@ -12,10 +12,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -175,6 +172,17 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         wrapper.in("name",categoryNames);
         return this.list(wrapper).stream()
                 .collect(Collectors.toMap(Category::getName, Category::getId));
+    }
+
+    @Override
+    public Category getByCategoryNameAndSpecialLine(String categoryName, String specialLine) {
+
+        QueryWrapper<Category> wrapper = new QueryWrapper<>();
+        wrapper
+                .eq("name", categoryName);
+        List<Category> result = this.list(wrapper);
+        result = result.stream().filter(e -> Objects.equals(specialLine, this.getSpecialLine(e.getId()))).collect(Collectors.toList());
+        return result.size() > 0 ? result.get(0) : null;
     }
 
 

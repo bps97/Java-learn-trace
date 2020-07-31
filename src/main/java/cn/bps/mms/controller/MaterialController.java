@@ -4,6 +4,7 @@ package cn.bps.mms.controller;
 import cn.bps.common.lang.domain.Ret;
 import cn.bps.mms.domain.ao.MaterialAo;
 import cn.bps.mms.entity.Material;
+import cn.bps.mms.entity.Record;
 import cn.bps.mms.service.MaterialService;
 import cn.bps.mms.domain.vo.KeyValue;
 import cn.bps.mms.domain.vo.MaterialVo;
@@ -90,6 +91,12 @@ public class MaterialController {
     @GetMapping("/{id}")
     public Ret get(@PathVariable String id) {
         return Ret.ok(materialService.getVoById(id));
+    }
+
+    @GetMapping("/{id}/logs")
+    public Ret listRecords(@PathVariable String id) {
+        List<Record> records  = materialService.getRecords(id);
+        return Ret.ok();
     }
 }
 

@@ -4,11 +4,8 @@ import cn.bps.mms.domain.MaterialEo;
 import cn.bps.mms.domain.MaterialUploadDataListener;
 import cn.bps.mms.domain.ao.ApplicationItemAo;
 import cn.bps.mms.domain.vo.ApplicationItemVo;
-import cn.bps.mms.entity.Account;
-import cn.bps.mms.entity.ApplicationItem;
-import cn.bps.mms.entity.Application;
+import cn.bps.mms.entity.*;
 import cn.bps.mms.domain.ApplicationType;
-import cn.bps.mms.entity.Material;
 import cn.bps.mms.mapper.ApplicationItemMapper;
 import cn.bps.mms.service.*;
 import cn.bps.security.server.service.TokenService;
@@ -141,21 +138,12 @@ public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMappe
     @Override
     public List<ApplicationItem> initName2Id(List<ApplicationItem> applicationItems) {
 
-
-        Set<String> categoryNames = applicationItems.stream()
-                .map(ApplicationItem::getCategoryName)
-                .collect(Collectors.toSet());
-
-        Set<String> materialNames = applicationItems.stream()
-                .map(ApplicationItem::getMaterialName)
-                .collect(Collectors.toSet());
-
-        Map<String, String> categoryNameIdDict = categoryService.getNameIdDict(categoryNames);
         Map<String, String> warehouseNameIdDict = warehouseService.getNameIdDict();
 
 
         applicationItems = applicationItems.stream().map(e->{
-            e.setCategoryId(categoryNameIdDict.get(e.getCategoryName()));
+            Category category = categoryService.getByCategoryNameAndSpecialLine(e.getCategoryName(),e.getSpecialLine());
+            e.setCategoryId(category.getId());
             e.setWarehouseId(warehouseNameIdDict.get(e.getWarehouseName()));
             Material material = materialService.getOneByKey(e.getMaterialName(), e.getWarehouseId(), e.getStatus());
             e.setMaterialId(material.getId());

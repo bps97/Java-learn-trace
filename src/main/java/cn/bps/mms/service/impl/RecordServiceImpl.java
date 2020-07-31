@@ -82,6 +82,14 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> impleme
         return iPage;
     }
 
+    @Override
+    public List<Record> listRecords(String materialId) {
+
+
+
+        return null;
+    }
+
     private List<Record> subRecords(RecordAo ao) {
         QueryWrapper<Record> wrapper = new QueryWrapper<>();
         String specialLine = ao.getSpecialLines();
