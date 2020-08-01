@@ -16,13 +16,13 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ApplicationService extends IService<Application> {
 
-    Application getApplication(Account account);
+    Application getUserApplication(Account account);
 
-    Application getApplication(Account account, ApplicationType type);
+    Application getUserApplication(Account account, ApplicationType type);
 
-    Application getApplication(String tokenValue);
+    Application getUserApplication(String tokenValue);
 
-    Application getApplication(String tokenValue, ApplicationType type);
+    Application getUserApplication(String tokenValue, ApplicationType type);
 
     void addMessage(ApplicationAo ao, String token);
 

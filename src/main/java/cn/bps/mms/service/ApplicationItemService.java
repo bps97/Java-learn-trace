@@ -41,7 +41,7 @@ public interface ApplicationItemService extends IService<ApplicationItem> {
 
     Application initBatchImport(Account account, String type);
 
-    List<ApplicationItem> initName2Id(List<ApplicationItem> applicationItems);
+    List<ApplicationItem> initRelatedInfo(List<ApplicationItem> applicationItems);
 
     IPage<ApplicationItem> pageMaterials(Page<ApplicationItem> page, Account account);
 

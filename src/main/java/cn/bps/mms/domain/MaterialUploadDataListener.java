@@ -3,12 +3,18 @@ package cn.bps.mms.domain;
 import cn.bps.mms.entity.Account;
 import cn.bps.mms.entity.Application;
 import cn.bps.mms.entity.ApplicationItem;
+import cn.bps.mms.entity.Material;
 import cn.bps.mms.service.ApplicationItemService;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class MaterialUploadDataListener extends AnalysisEventListener<MaterialEo> {
@@ -16,7 +22,7 @@ public class MaterialUploadDataListener extends AnalysisEventListener<MaterialEo
     /**
      * 每隔5条存储数据库，实际使用中可以3000条，然后清理list ，方便内存回收
      */
-    private static final int BATCH_COUNT = 50;
+    private static final int BATCH_COUNT = 200;
     List<MaterialEo> list = new ArrayList<MaterialEo>();
     /**
      * 假设这个是一个DAO，当然有业务逻辑这个也可以是一个service。当然如果不用存储这个对象没用。
@@ -78,27 +84,44 @@ public class MaterialUploadDataListener extends AnalysisEventListener<MaterialEo
         saveData();
     }
 
+
+    static <T> Predicate<T> distinctByKey(Function<? super T, ?> keyExtractor) {
+        Map<Object,Boolean> seen = new ConcurrentHashMap<>();
+        return t -> seen.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
+    }
+
     /**
      * 加上存储数据库
      */
     private void saveData() {
-        List<ApplicationItem> applicationItems = list.stream().map(this::eo2Model).collect(Collectors.toList());
-        applicationItems = ApplicationItemService.initName2Id(applicationItems);
+        Set<MaterialEo> newMaterialEos = this.list.stream().map(this::generateKey).collect(Collectors.toSet());
+        Map<String, Integer> countMap =  newMaterialEos.stream().collect(Collectors.groupingBy(MaterialEo::getKey, Collectors.summingInt(MaterialEo::getCount)));
+        List<MaterialEo> mergedMaterialEos = newMaterialEos.stream()
+                .filter(distinctByKey(MaterialEo::getKey)).map(e->{
+                    e.setCount(countMap.get(e.getKey()));
+                    return e;
+                }).collect(Collectors.toList());
+
+        List<ApplicationItem> applicationItems = mergedMaterialEos.stream().map(this::eo2Model).collect(Collectors.toList());
+        applicationItems = ApplicationItemService.initRelatedInfo(applicationItems);
         ApplicationItemService.saveBatch(applicationItems);
     }
 
+    private MaterialEo generateKey(MaterialEo eo){
+        eo.setKey(String.format("%s%s%s%S", eo.getName(), eo.getStatus(), eo.getWarehouse(), eo.getCategory()));
+        return eo;
+    }
 
     private ApplicationItem eo2Model(MaterialEo eo){
         ApplicationItem item = new ApplicationItem();
         item.setMaterialName(eo.getName());
         item.setCategoryName(eo.getCategory());
         item.setWarehouseName(eo.getWarehouse());
-        item.setCount(eo.getCount());
         item.setSpecialLine(eo.getSpecialLine());
+        item.setCount(eo.getCount());
         item.setStatus(eo.getStatus());
-//        item = AppFormItemService.initName2Id(item);
-        if(application != null)
-            item.setApplicationId(application.getId());
+        if(this.application != null)
+            item.setApplicationId(this.application.getId());
         return item;
     }
 }

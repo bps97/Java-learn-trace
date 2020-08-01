@@ -181,6 +181,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         wrapper
                 .eq("name", categoryName);
         List<Category> result = this.list(wrapper);
+
         result = result.stream().filter(e -> Objects.equals(specialLine, this.getSpecialLine(e.getId()))).collect(Collectors.toList());
         return result.size() > 0 ? result.get(0) : null;
     }

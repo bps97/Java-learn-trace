@@ -49,12 +49,12 @@ public class ApplicationServiceImpl extends ServiceImpl<ApplicationMapper, Appli
 
 
     @Override
-    public Application getApplication(Account account) {
-        return getApplication(account, null);
+    public Application getUserApplication(Account account) {
+        return getUserApplication(account, null);
     }
 
     @Override
-    public Application getApplication(Account account, ApplicationType type) {
+    public Application getUserApplication(Account account, ApplicationType type) {
         QueryWrapper<Application> wrapper = new QueryWrapper<>();
         wrapper
                 .eq("available", true)
@@ -86,49 +86,41 @@ public class ApplicationServiceImpl extends ServiceImpl<ApplicationMapper, Appli
     }
 
     @Override
-    public Application getApplication(String tokenValue) {
+    public Application getUserApplication(String tokenValue) {
         Account account = tokenService.getAccount(tokenValue);
-        return getApplication(account);
+        return getUserApplication(account);
     }
 
     @Override
-    public Application getApplication(String tokenValue, ApplicationType type) {
+    public Application getUserApplication(String tokenValue, ApplicationType type) {
         Account account = tokenService.getAccount(tokenValue);
-        return getApplication(account, type);
+        return getUserApplication(account, type);
     }
 
     @Override
     public void addMessage(ApplicationAo ao, String tokenValue) {
-        Application myApplication = getApplication(tokenValue, ao.getEnum());
+        Application myApplication = getUserApplication(tokenValue, ao.getEnum());
         myApplication.setMessage(ao.getMessage());
         myApplication.setType(ao.getType());
+
+
         List<ApplicationItem> applicationItems = ApplicationItemService.list(myApplication);
+        if(applicationItems.size() <= 0){
+            throw new LocalBizServiceException(CustomizeExceptionCode.NO_CACHE_DATA,"没有缓存数据");
+        }
+
+
+
         if(Objects.equal(myApplication.getType(), ApplicationType.excelImport.getType())){
-            // 同步物料表
 
-            if(applicationItems.size() <= 0){
-                throw new LocalBizServiceException(CustomizeExceptionCode.NO_CACHE_DATA,"没有缓存数据");
-            }
-
-            /* 新的物料 */
-            List<Material> newMaterials = applicationItems.stream().map(this::initMaterial).filter(e -> StringUtils.isEmpty(e.getId()) == Boolean.TRUE).collect(Collectors.toList());
-            materialService.saveBatch(newMaterials);
-
-            /* 仓库中已有的物料 */
+            /* 新增未被系统记录的物料 */
+            saveNewMaterials(applicationItems);
+            /* 更新仓库中已有的物料 */
             updateMaterials(applicationItems);
+            /* 同步申请单项信息，例如materialId */
+            synApplicationItemNewInfo(applicationItems);
 
-            /* 同步申请单项 */
-            Set<String> materialNames = applicationItems.stream()
-                    .map(ApplicationItem::getMaterialName).collect(Collectors.toSet());
-            applicationItems = applicationItems.stream().filter(e -> StringUtils.isEmpty(e.getMaterialId())).map(e -> {
-                Material material = materialService.getOneByKey(e.getMaterialName(), e.getWarehouseId(), e.getStatus());
-                e.setMaterialId(material.getId());
-                return e;
-            }).collect(Collectors.toList());
-            if(applicationItems.size() > 0){
-                ApplicationItemService.updateBatchById(applicationItems);
-            }
-        }else {
+        }else if(Objects.equal(myApplication.getType(), ApplicationType.warehouseEntry.getType())) {
             /*逐项录入的数据是完整的*/
             updateMaterials(applicationItems);
         }
@@ -145,14 +137,41 @@ public class ApplicationServiceImpl extends ServiceImpl<ApplicationMapper, Appli
 
     }
 
+    private void synApplicationItemNewInfo(List<ApplicationItem> applicationItems) {
+        applicationItems = applicationItems.stream()
+                .filter(e -> StringUtils.isEmpty(e.getMaterialId()))
+                .map(e -> {
+                    Material material = materialService.getOneByKey(e.getMaterialName(), e.getWarehouseId(), e.getStatus());
+                    e.setMaterialId(material.getId());
+                    return e;
+                }).collect(Collectors.toList());
+        ApplicationItemService.updateBatchById(applicationItems);
+    }
+
+    private void saveNewMaterials(List<ApplicationItem> applicationItems) {
+        /* 未被系统记录的物料,因为该物料在系统中未导入所以没有其ID信息 */
+        List<Material> newMaterials = applicationItems.stream()
+                .filter(e -> StringUtils.isEmpty(e.getMaterialId()) == Boolean.TRUE)
+                .map(this::initMaterial)
+                .collect(Collectors.toList());
+        materialService.saveBatch(newMaterials);
+    }
+
     private void updateMaterials(List<ApplicationItem> applicationItems) {
-        List<Material> updateMaterials = applicationItems.stream().map(this::initMaterial).collect(Collectors.toList());
+        /* 仓库中已有的物料 */
+        List<Material> updateMaterials = applicationItems.stream()
+                .filter(e -> StringUtils.isEmpty(e.getMaterialId())  == Boolean.FALSE)
+                .map(this::initMaterial).collect(Collectors.toList());
+
         if(updateMaterials.size() > 0){
-            Collection<Material> materials = materialService.listByIds(updateMaterials.stream()
+            Set<String> ids = updateMaterials.stream()
                     .map(Material::getId)
-                    .collect(Collectors.toSet()));
-            Map<String, Integer> oldMaterials = materials.stream().collect(Collectors.toMap(Material::getId, Material::getCount));
-            updateMaterials.stream().map(e-> e.setCount(e.getCount()+ oldMaterials.get(e.getId()))).collect(Collectors.toList());
+                    .collect(Collectors.toSet());
+            Collection<Material> materials = materialService.listByIds(ids);
+            Map<String, Integer> oldMaterials = materials.stream()
+                    .collect(Collectors.toMap(Material::getId, Material::getCount));
+            updateMaterials.stream()
+                    .map(e-> e.setCount(e.getCount()+ oldMaterials.get(e.getId()))).collect(Collectors.toList());
             materialService.updateBatchById(updateMaterials);
         }
     }

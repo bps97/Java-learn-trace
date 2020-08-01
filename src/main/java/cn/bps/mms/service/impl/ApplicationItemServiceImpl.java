@@ -1,5 +1,7 @@
 package cn.bps.mms.service.impl;
 
+import cn.bps.common.lang.CustomizeExceptionCode;
+import cn.bps.common.lang.LocalBizServiceException;
 import cn.bps.mms.domain.MaterialEo;
 import cn.bps.mms.domain.MaterialUploadDataListener;
 import cn.bps.mms.domain.ao.ApplicationItemAo;
@@ -18,12 +20,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-import javax.jws.Oneway;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -58,7 +58,7 @@ public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMappe
 
         ApplicationItem item = ao2Model(ao);
 
-        Application application = applicationService.getApplication(tokenValue, ao.getEnum());
+        Application application = applicationService.getUserApplication(tokenValue, ao.getEnum());
         item.setApplicationId(application.getId());
 
         String categoryId = item.getCategoryId();
@@ -83,7 +83,7 @@ public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMappe
     @Override
     public List<ApplicationItemVo> list(String tokenValue) {
 
-        Application application = applicationService.getApplication(tokenValue);
+        Application application = applicationService.getUserApplication(tokenValue);
 
         QueryWrapper<ApplicationItem> wrapper = new QueryWrapper<>();
         wrapper
@@ -97,7 +97,7 @@ public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMappe
     @Override
     public List<ApplicationItemVo> list(String tokenValue, ApplicationType type) {
 
-        Application application = applicationService.getApplication(tokenValue, type);
+        Application application = applicationService.getUserApplication(tokenValue, type);
 
         QueryWrapper<ApplicationItem> wrapper = new QueryWrapper<>();
         wrapper
@@ -131,33 +131,39 @@ public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMappe
     @Override
     public Application initBatchImport(Account account, String type) {
         if(ApplicationType.excelImport.getType().equals(type))
-            return applicationService.getApplication(account, ApplicationType.excelImport);
-        return applicationService.getApplication(account);
+            return applicationService.getUserApplication(account, ApplicationType.excelImport);
+        return applicationService.getUserApplication(account);
     }
 
+    /**
+     * 补充关联信息，例如ID
+     * @param applicationItems
+     * @return
+     */
     @Override
-    public List<ApplicationItem> initName2Id(List<ApplicationItem> applicationItems) {
+    public List<ApplicationItem> initRelatedInfo(List<ApplicationItem> applicationItems) {
+        return applicationItems.stream().map(this::initIdInfo).collect(Collectors.toList());
+    }
 
-        Map<String, String> warehouseNameIdDict = warehouseService.getNameIdDict();
-
-
-        applicationItems = applicationItems.stream().map(e->{
-            Category category = categoryService.getByCategoryNameAndSpecialLine(e.getCategoryName(),e.getSpecialLine());
-            e.setCategoryId(category.getId());
-            e.setWarehouseId(warehouseNameIdDict.get(e.getWarehouseName()));
-            Material material = materialService.getOneByKey(e.getMaterialName(), e.getWarehouseId(), e.getStatus());
-            e.setMaterialId(material.getId());
-            return e;
-        }).collect(Collectors.toList());
-
-
-        return applicationItems;
+    private ApplicationItem initIdInfo(ApplicationItem item) {
+        Category category = categoryService.getByCategoryNameAndSpecialLine(item.getCategoryName(),item.getSpecialLine());
+        if(Objects.isNull(category)) {
+            throw new LocalBizServiceException(CustomizeExceptionCode.CATEGORY_NOT_EXIST, String.format("导入的文件中【分类】-%s中不存在", item.getMaterialName()));
+        }
+        item.setCategoryId(category.getId());
+        String warehouseId = warehouseService.getIdByName(item.getWarehouseName());
+        item.setWarehouseId(warehouseId);
+        Material material = materialService.getOneByKey(item.getMaterialName(), item.getWarehouseId(), item.getStatus());
+        if(Objects.nonNull(material)){
+            item.setMaterialId(material.getId());
+        }
+        return item;
     }
 
 
     @Override
     public IPage<ApplicationItem> pageMaterials(Page<ApplicationItem> page, Account account) {
-        Application application = applicationService.getApplication(account);
+        Application application = applicationService.getUserApplication(account);
         QueryWrapper<ApplicationItem> wrapper = new QueryWrapper<>();
         wrapper.eq("available", true)
                 .eq("application_id", application.getId());
@@ -172,7 +178,7 @@ public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMappe
 
     @Override
     public IPage<ApplicationItem> pageMaterials(Page<ApplicationItem> page, Account account, ApplicationType type) {
-        Application application = applicationService.getApplication(account, type);
+        Application application = applicationService.getUserApplication(account, type);
         QueryWrapper<ApplicationItem> wrapper = new QueryWrapper<>();
         wrapper.eq("available", true)
                 .eq("application_id", application.getId())

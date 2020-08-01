@@ -43,5 +43,7 @@ public class MaterialEo {
     @ExcelProperty("状态")
     private String status;
 
+    private String key;
+
 
 }
