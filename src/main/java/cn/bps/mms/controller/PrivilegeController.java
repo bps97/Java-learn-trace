@@ -2,7 +2,7 @@ package cn.bps.mms.controller;
 
 
 import cn.bps.common.lang.domain.Ret;
-import cn.bps.mms.entity.Privilege;
+import cn.bps.mms.model.pojo.Privilege;
 import cn.bps.mms.service.PrivilegeService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;

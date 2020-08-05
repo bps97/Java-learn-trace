@@ -1,9 +1,9 @@
 package cn.bps.mms.service.impl;
 
-import cn.bps.mms.entity.Warehouse;
+import cn.bps.mms.model.pojo.Warehouse;
 import cn.bps.mms.mapper.WarehouseMapper;
 import cn.bps.mms.service.WarehouseService;
-import cn.bps.mms.domain.vo.KeyValue;
+import cn.bps.mms.model.vo.KeyValue;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

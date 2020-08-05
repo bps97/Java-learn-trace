@@ -1,7 +1,7 @@
 package cn.bps.mms.service;
 
-import cn.bps.mms.entity.Warehouse;
-import cn.bps.mms.domain.vo.KeyValue;
+import cn.bps.mms.model.pojo.Warehouse;
+import cn.bps.mms.model.vo.KeyValue;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;

@@ -1,12 +1,12 @@
 package cn.bps.mms.service;
 
-import cn.bps.mms.domain.ao.ApplicationItemAo;
-import cn.bps.mms.domain.vo.ApplicationItemVo;
-import cn.bps.mms.entity.Account;
-import cn.bps.mms.entity.ApplicationItem;
-import cn.bps.mms.entity.Application;
-import cn.bps.mms.domain.ApplicationType;
-import cn.bps.mms.entity.Material;
+import cn.bps.mms.model.ao.ApplicationItemAo;
+import cn.bps.mms.model.vo.ApplicationItemVo;
+import cn.bps.mms.model.pojo.Account;
+import cn.bps.mms.model.pojo.ApplicationItem;
+import cn.bps.mms.model.pojo.Application;
+import cn.bps.mms.model.enums.ApplicationType;
+import cn.bps.mms.model.pojo.Material;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;

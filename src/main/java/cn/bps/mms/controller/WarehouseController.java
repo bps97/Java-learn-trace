@@ -3,7 +3,7 @@ package cn.bps.mms.controller;
 
 import cn.bps.common.lang.domain.Ret;
 import cn.bps.mms.service.WarehouseService;
-import cn.bps.mms.domain.vo.KeyValue;
+import cn.bps.mms.model.vo.KeyValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 

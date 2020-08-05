@@ -2,12 +2,12 @@ package cn.bps.mms.controller;
 
 
 import cn.bps.common.lang.domain.Ret;
-import cn.bps.mms.domain.ao.MaterialAo;
-import cn.bps.mms.entity.Material;
-import cn.bps.mms.entity.Record;
+import cn.bps.mms.model.ao.MaterialAo;
+import cn.bps.mms.model.pojo.Material;
+import cn.bps.mms.model.pojo.Record;
 import cn.bps.mms.service.MaterialService;
-import cn.bps.mms.domain.vo.KeyValue;
-import cn.bps.mms.domain.vo.MaterialVo;
+import cn.bps.mms.model.vo.KeyValue;
+import cn.bps.mms.model.vo.MaterialVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.web.bind.annotation.*;
@@ -50,6 +50,12 @@ public class MaterialController {
     @GetMapping("/names")
     public Ret<List<KeyValue>> listMaterialNames(String categoryId, String warehouseId, String status){
         return Ret.ok(materialService.listMaterialNames(categoryId, warehouseId, status));
+    }
+
+
+    @GetMapping("/options")
+    public Ret<List<Material>> listMaterials(String categoryId, String warehouseId, String status){
+        return Ret.ok(materialService.listMaterial(categoryId, warehouseId, status));
     }
 
     /**

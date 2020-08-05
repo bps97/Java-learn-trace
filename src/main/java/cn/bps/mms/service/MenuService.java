@@ -1,7 +1,7 @@
 package cn.bps.mms.service;
 
-import cn.bps.mms.entity.Menu;
-import cn.bps.mms.domain.vo.MenuItemVo;
+import cn.bps.mms.model.pojo.Menu;
+import cn.bps.mms.model.vo.MenuItemVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;

@@ -2,12 +2,11 @@ package cn.bps.mms.controller;
 
 
 import cn.bps.common.lang.domain.Ret;
-import cn.bps.mms.domain.ao.ApplicationAo;
-import cn.bps.mms.domain.ao.ApplicationItemAo;
-import cn.bps.mms.entity.Application;
-import cn.bps.mms.entity.ApplicationItem;
-import cn.bps.mms.domain.vo.ApplicationItemVo;
-import cn.bps.mms.entity.Material;
+import cn.bps.mms.model.ao.ApplicationAo;
+import cn.bps.mms.model.ao.ApplicationItemAo;
+import cn.bps.mms.model.pojo.Application;
+import cn.bps.mms.model.pojo.ApplicationItem;
+import cn.bps.mms.model.vo.ApplicationItemVo;
 import cn.bps.mms.service.ApplicationItemService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -92,6 +91,11 @@ public class ApplicationItemController {
         return Ret.ok(applicationItemService.pageMaterials(page, token, applicationAo.getEnum()));
     }
 
+    /**
+     * 检查是否有对应物料，没有则创建
+     * @param ao
+     * @return
+     */
     @GetMapping("/material/check")
     public Ret checkMaterial(ApplicationItemAo ao){
         return Ret.ok(applicationItemService.checkMaterial(ao));

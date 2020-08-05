@@ -2,8 +2,8 @@ package cn.bps.mms.controller;
 
 
 import cn.bps.common.lang.domain.Ret;
-import cn.bps.mms.domain.vo.MenuItemVo;
-import cn.bps.mms.entity.Menu;
+import cn.bps.mms.model.vo.MenuItemVo;
+import cn.bps.mms.model.pojo.Menu;
 import cn.bps.mms.service.MenuService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;

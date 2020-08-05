@@ -1,9 +1,9 @@
 package cn.bps.mms.service;
 
-import cn.bps.mms.domain.ao.ApplicationAo;
-import cn.bps.mms.entity.Account;
-import cn.bps.mms.entity.Application;
-import cn.bps.mms.domain.ApplicationType;
+import cn.bps.mms.model.ao.ApplicationAo;
+import cn.bps.mms.model.pojo.Account;
+import cn.bps.mms.model.pojo.Application;
+import cn.bps.mms.model.enums.ApplicationType;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

@@ -2,15 +2,15 @@ package cn.bps.mms.service.impl;
 
 import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
-import cn.bps.mms.domain.ao.MaterialAo;
-import cn.bps.mms.entity.Category;
-import cn.bps.mms.entity.Material;
-import cn.bps.mms.entity.Record;
+import cn.bps.mms.model.ao.MaterialAo;
+import cn.bps.mms.model.pojo.Category;
+import cn.bps.mms.model.pojo.Material;
+import cn.bps.mms.model.pojo.Record;
 import cn.bps.mms.mapper.MaterialMapper;
 import cn.bps.mms.service.CategoryService;
 import cn.bps.mms.service.MaterialService;
-import cn.bps.mms.domain.vo.KeyValue;
-import cn.bps.mms.domain.vo.MaterialVo;
+import cn.bps.mms.model.vo.KeyValue;
+import cn.bps.mms.model.vo.MaterialVo;
 import cn.bps.mms.service.RecordService;
 import cn.bps.mms.service.WarehouseService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -19,7 +19,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -88,6 +87,15 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
                     keyValue.setValue(e.getName());
                     return keyValue;
                 }).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Material> listMaterial(String categoryId, String warehouseId, String status) {
+        QueryWrapper<Material> wrapper = new QueryWrapper<>();
+        wrapper.eq("category_id", categoryId)
+                .eq("warehouse_id", warehouseId)
+                .eq("status", status);
+        return this.list(wrapper);
     }
 
     @Override

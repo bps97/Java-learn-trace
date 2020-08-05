@@ -1,9 +1,9 @@
 package cn.bps.mms.service;
 
 import cn.bps.common.lang.api.Token;
-import cn.bps.mms.domain.ao.ChangePwdAo;
-import cn.bps.mms.domain.vo.AccountVo;
-import cn.bps.mms.entity.Account;
+import cn.bps.mms.model.ao.ChangePwdAo;
+import cn.bps.mms.model.vo.AccountVo;
+import cn.bps.mms.model.pojo.Account;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;

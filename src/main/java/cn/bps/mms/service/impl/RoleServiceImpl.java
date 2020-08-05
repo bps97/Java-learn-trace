@@ -1,6 +1,6 @@
 package cn.bps.mms.service.impl;
 
-import cn.bps.mms.entity.Role;
+import cn.bps.mms.model.pojo.Role;
 import cn.bps.mms.mapper.RoleMapper;
 import cn.bps.mms.service.RoleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

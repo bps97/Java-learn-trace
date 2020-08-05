@@ -2,10 +2,13 @@ package cn.bps.mms.service.impl;
 
 import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
-import cn.bps.mms.domain.ao.ApplicationAo;
-import cn.bps.mms.entity.*;
-import cn.bps.mms.domain.ApplicationType;
+import cn.bps.mms.model.ao.ApplicationAo;
+import cn.bps.mms.model.enums.ApplicationType;
 import cn.bps.mms.mapper.ApplicationMapper;
+import cn.bps.mms.model.pojo.Account;
+import cn.bps.mms.model.pojo.Application;
+import cn.bps.mms.model.pojo.ApplicationItem;
+import cn.bps.mms.model.pojo.Material;
 import cn.bps.mms.service.ApplicationItemService;
 import cn.bps.mms.service.ApplicationService;
 import cn.bps.mms.service.MaterialService;

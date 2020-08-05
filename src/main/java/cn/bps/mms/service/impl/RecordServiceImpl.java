@@ -2,10 +2,12 @@ package cn.bps.mms.service.impl;
 
 import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
-import cn.bps.mms.domain.ao.RecordAo;
-import cn.bps.mms.domain.vo.RecordTreeVo;
-import cn.bps.mms.entity.*;
+import cn.bps.mms.model.ao.RecordAo;
+import cn.bps.mms.model.vo.RecordTreeVo;
 import cn.bps.mms.mapper.RecordMapper;
+import cn.bps.mms.model.pojo.Application;
+import cn.bps.mms.model.pojo.ApplicationItem;
+import cn.bps.mms.model.pojo.Record;
 import cn.bps.mms.service.*;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;

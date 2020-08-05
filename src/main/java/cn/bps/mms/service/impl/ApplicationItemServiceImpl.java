@@ -2,13 +2,13 @@ package cn.bps.mms.service.impl;
 
 import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
-import cn.bps.mms.domain.MaterialEo;
-import cn.bps.mms.domain.MaterialUploadDataListener;
-import cn.bps.mms.domain.ao.ApplicationItemAo;
-import cn.bps.mms.domain.vo.ApplicationItemVo;
-import cn.bps.mms.entity.*;
-import cn.bps.mms.domain.ApplicationType;
+import cn.bps.mms.model.MaterialDto;
+import cn.bps.mms.model.MaterialUploadDataListener;
+import cn.bps.mms.model.ao.ApplicationItemAo;
+import cn.bps.mms.model.vo.ApplicationItemVo;
+import cn.bps.mms.model.enums.ApplicationType;
 import cn.bps.mms.mapper.ApplicationItemMapper;
+import cn.bps.mms.model.pojo.*;
 import cn.bps.mms.service.*;
 import cn.bps.security.server.service.TokenService;
 import com.alibaba.excel.EasyExcel;
@@ -22,7 +22,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -218,7 +217,7 @@ public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMappe
      */
     private void easyExcelRead(MultipartFile file, Account account, Application form) throws IOException {
         EasyExcel.read(file.getInputStream(),
-                MaterialEo.class,new MaterialUploadDataListener(this, account, form))
+                MaterialDto.class,new MaterialUploadDataListener(this, account, form))
                 .sheet().doRead();
     }
 

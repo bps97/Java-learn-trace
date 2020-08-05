@@ -2,13 +2,13 @@ package cn.bps.mms.service.impl;
 
 import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
-import cn.bps.mms.entity.Account;
-import cn.bps.mms.entity.Menu;
-import cn.bps.mms.entity.Privilege;
-import cn.bps.mms.entity.Role;
+import cn.bps.mms.model.pojo.Account;
+import cn.bps.mms.model.pojo.Menu;
+import cn.bps.mms.model.pojo.Privilege;
+import cn.bps.mms.model.pojo.Role;
 import cn.bps.mms.mapper.MenuMapper;
 import cn.bps.mms.service.MenuService;
-import cn.bps.mms.domain.vo.MenuItemVo;
+import cn.bps.mms.model.vo.MenuItemVo;
 import cn.bps.mms.service.RoleHasPrivilegeService;
 import cn.bps.mms.service.RoleService;
 import cn.bps.security.server.service.TokenService;

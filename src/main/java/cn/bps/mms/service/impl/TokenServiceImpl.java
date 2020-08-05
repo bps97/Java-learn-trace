@@ -6,7 +6,7 @@ import cn.bps.common.lang.api.Token;
 import cn.bps.common.lang.security.Subject;
 import cn.bps.common.lang.util.EncryptUtils;
 import cn.bps.common.lang.util.TimeUtils;
-import cn.bps.mms.entity.Account;
+import cn.bps.mms.model.pojo.Account;
 import cn.bps.mms.service.AccountService;
 import cn.bps.security.server.service.TokenService;
 import org.springframework.stereotype.Service;

@@ -2,7 +2,7 @@ package cn.bps.mms.controller;
 
 
 import cn.bps.common.lang.domain.Ret;
-import cn.bps.mms.domain.ao.ApplicationAo;
+import cn.bps.mms.model.ao.ApplicationAo;
 import cn.bps.mms.service.ApplicationService;
 import org.springframework.web.bind.annotation.*;
 

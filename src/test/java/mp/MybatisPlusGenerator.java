@@ -2,10 +2,7 @@ package mp;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
-import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
-import com.baomidou.mybatisplus.generator.config.GlobalConfig;
-import com.baomidou.mybatisplus.generator.config.PackageConfig;
-import com.baomidou.mybatisplus.generator.config.StrategyConfig;
+import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
@@ -29,37 +26,56 @@ public class MybatisPlusGenerator {
         return single;
     }
 
+    public static PackageConfig initPackageConfig() {
+        PackageConfig packageConfig = new PackageConfig();
+        packageConfig.setParent("cn.bps.mms")
+                .setController("controller")
+                .setEntity("model.pojo");
+        return packageConfig;
+    }
+
     public void autoGeneration() {
-        GlobalConfig config = new GlobalConfig();
-        String dbUrl = "jdbc:mysql://localhost:3306/mm?serverTimezone=GMT%2B8";
-        DataSourceConfig dataSourceConfig = new DataSourceConfig();
-        dataSourceConfig.setDbType(DbType.MYSQL)
-                .setUrl(dbUrl)
-                .setUsername("root")
-                .setPassword("123456")
-                .setDriverName("com.mysql.jdbc.Driver");
-        StrategyConfig strategyConfig = new StrategyConfig();
-        strategyConfig
-                .setCapitalMode(true)
-                .setEntityLombokModel(true)
-                // .setDbColumnUnderline(true)
-                .setNaming(NamingStrategy.underline_to_camel);
-        config.setActiveRecord(false)
+
+        // 1.代码生成器
+        AutoGenerator mpg = new AutoGenerator();
+
+        // 2. 全局配置
+        GlobalConfig globalConfig = new GlobalConfig();
+        globalConfig.setAuthor("bps")
+//                .setOpen(false)
+//                .setEntityName("%s")
+//                .setMapperName("%sMapper")
+                .setXmlName("%sMapper")
+                .setDateType(DateType.ONLY_DATE)
+                .setActiveRecord(false)
                 .setEnableCache(false)
-                .setAuthor("bps")
                 //指定输出文件夹位置
                 .setOutputDir("E:\\Workspace\\Java\\ssm-mms\\src\\main\\java")
                 .setFileOverride(true)
-                .setServiceName("%sService")
-                .setDateType(DateType.ONLY_DATE);
-        new AutoGenerator().setGlobalConfig(config)
+                .setServiceName("%sService");
+
+        // 3. 数据源配置
+        DataSourceConfig dataSourceConfig = new DataSourceConfig();
+        dataSourceConfig.setDbType(DbType.MYSQL)
+                .setUrl("jdbc:mysql://localhost:3306/mms?serverTimezone=GMT%2B8")
+                .setDriverName("com.mysql.jdbc.Driver")
+                .setUsername("bps")
+                .setPassword("Pa$$word2020");
+
+        // 4. 策略配置
+        StrategyConfig strategyConfig = new StrategyConfig();
+        strategyConfig.setEntityLombokModel(true)
+                .setCapitalMode(true)
+                // .setDbColumnUnderline(true)
+                .setNaming(NamingStrategy.underline_to_camel);  /*下划线转驼峰*/
+
+        // 5. 模板配置（无）
+        /*TemplateConfig templateConfig = new TemplateConfig();
+        templateConfig.setEntity("/templates/custom.entity.java");*/
+
+        mpg.setGlobalConfig(globalConfig)
                 .setDataSource(dataSourceConfig)
                 .setStrategy(strategyConfig)
-                .setPackageInfo(
-                        new PackageConfig()
-                                .setParent("cn.bps.mms")
-                                .setController("controller")
-                                .setEntity("entity")
-                ).execute();
+                .setPackageInfo(initPackageConfig()).execute();
     }
 }

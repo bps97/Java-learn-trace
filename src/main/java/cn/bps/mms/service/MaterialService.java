@@ -1,17 +1,15 @@
 package cn.bps.mms.service;
 
-import cn.bps.mms.domain.ao.MaterialAo;
-import cn.bps.mms.entity.Material;
-import cn.bps.mms.domain.vo.KeyValue;
-import cn.bps.mms.domain.vo.MaterialVo;
-import cn.bps.mms.entity.Record;
+import cn.bps.mms.model.ao.MaterialAo;
+import cn.bps.mms.model.pojo.Material;
+import cn.bps.mms.model.vo.KeyValue;
+import cn.bps.mms.model.vo.MaterialVo;
+import cn.bps.mms.model.pojo.Record;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * <p>
@@ -31,6 +29,8 @@ public interface MaterialService extends IService<Material> {
     List<Material> listMaterialsByWarehouseId(String categoryId, String warehouseId);
 
     List<KeyValue> listMaterialNames(String categoryId, String warehouseId, String status);
+
+    List<Material> listMaterial(String categoryId, String warehouseId, String status);
 
     IPage<MaterialVo> pageMaterials(Page<Material> page, MaterialAo ao);
 

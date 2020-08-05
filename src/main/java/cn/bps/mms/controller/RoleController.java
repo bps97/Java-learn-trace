@@ -2,7 +2,7 @@ package cn.bps.mms.controller;
 
 
 import cn.bps.common.lang.domain.Ret;
-import cn.bps.mms.entity.Role;
+import cn.bps.mms.model.pojo.Role;
 import cn.bps.mms.service.RoleService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

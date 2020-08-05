@@ -1,6 +1,6 @@
 package cn.bps.mms.service.impl;
 
-import cn.bps.mms.entity.Privilege;
+import cn.bps.mms.model.pojo.Privilege;
 import cn.bps.mms.mapper.PrivilegeMapper;
 import cn.bps.mms.service.PrivilegeService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;

@@ -1,11 +1,9 @@
 package cn.bps.mms.service;
 
-import cn.bps.mms.entity.Privilege;
-import cn.bps.mms.entity.Role;
-import cn.bps.mms.entity.RoleHasPrivilege;
+import cn.bps.mms.model.pojo.Privilege;
+import cn.bps.mms.model.pojo.Role;
+import cn.bps.mms.model.pojo.RoleHasPrivilege;
 import com.baomidou.mybatisplus.extension.service.IService;
-
-import java.util.List;
 
 /**
  * <p>

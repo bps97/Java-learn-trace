@@ -2,7 +2,7 @@ package cn.bps.security.server.service;
 
 import cn.bps.common.lang.api.Token;
 import cn.bps.common.lang.security.Subject;
-import cn.bps.mms.entity.Account;
+import cn.bps.mms.model.pojo.Account;
 
 public interface TokenService {
 

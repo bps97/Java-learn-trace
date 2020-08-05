@@ -1,6 +1,6 @@
 package cn.bps.mms.service;
 
-import cn.bps.mms.entity.Role;
+import cn.bps.mms.model.pojo.Role;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
