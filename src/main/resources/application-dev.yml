@@ -10,9 +10,6 @@ spring:
     password: Pa$$word2020
   jackson:
     time-zone: Asia/Shanghai
-  profiles:
-    active: @profiles.active@
-
 
 server:
   port: 8101
@@ -35,5 +32,7 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
-    ## 标准输出mybatis日志信息
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 标准输出mybatis日志信息
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+swagger:
+  enable: true

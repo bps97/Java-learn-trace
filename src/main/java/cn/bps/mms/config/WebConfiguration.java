@@ -75,6 +75,13 @@ public class WebConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(getSecurityInterceptor()).excludePathPatterns("/account/login").excludePathPatterns("/download/*");
+        registry.addInterceptor(getSecurityInterceptor())
+                .excludePathPatterns("/account/login")
+                .excludePathPatterns("/download/*")
+                .excludePathPatterns("/*.html")
+                .excludePathPatterns("/swagger/**")
+                .excludePathPatterns("/swagger-resources/**")
+                .excludePathPatterns("/v2/**");
+
     }
 }
