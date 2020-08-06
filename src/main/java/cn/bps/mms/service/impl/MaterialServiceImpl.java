@@ -94,7 +94,8 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
         QueryWrapper<Material> wrapper = new QueryWrapper<>();
         wrapper.eq("category_id", categoryId)
                 .eq("warehouse_id", warehouseId)
-                .eq("status", status);
+                .eq("status", status)
+                .gt("count",0);
         return this.list(wrapper);
     }
 

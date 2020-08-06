@@ -12,6 +12,7 @@ import cn.bps.mms.model.pojo.*;
 import cn.bps.mms.service.*;
 import cn.bps.security.server.service.TokenService;
 import com.alibaba.excel.EasyExcel;
+import com.baomidou.mybatisplus.core.conditions.query.Query;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -52,6 +53,7 @@ public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMappe
     private TokenService tokenService;
 
 
+
     @Override
     public void addItem(ApplicationItemAo ao, String tokenValue) {
 
@@ -60,23 +62,47 @@ public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMappe
         Application application = applicationService.getUserApplication(tokenValue, ao.getEnum());
         item.setApplicationId(application.getId());
 
-        String categoryId = item.getCategoryId();
-        String categoryName = categoryService.getById(categoryId).getName();
-        item.setCategoryName(categoryName);
-        String specialLine = categoryService.getSpecialLine(categoryId);
+        String specialLine = categoryService.getById(ao.getSpecialLineId()).getName();
         item.setSpecialLine(specialLine);
 
-        String materialId = item.getMaterialId();
-        String materialName = materialService.getById(materialId).getName();
-        item.setMaterialName(materialName);
+        String categoryName = categoryService.getById(ao.getCategoryId()).getName();
+        item.setCategoryName(categoryName);
 
-        String warehouseId  = item.getWarehouseId();
-        String warehouseName = warehouseService.getById(warehouseId).getName();
-        item.setWarehouseName(warehouseName);
+        /*去重*/
+        ApplicationItem duplicateItem = getDuplicateItem(item);
+        duplicateItem = duplicate(item, duplicateItem);
 
-        this.save(item);
+        if(ao.getEnum().equals(ApplicationType.deliveryOfCargoFromStorage)){
+            Integer stock = materialService.getById(duplicateItem.getMaterialId()).getCount();
+            if(duplicateItem.getCount() + stock < 0) {
+                duplicateItem.setCount(stock*-1);
+                this.updateById(duplicateItem);
+                throw new LocalBizServiceException(CustomizeExceptionCode.INSUFFICIENT_STOCK, "库存不足");
+            }
+        }
+
+        this.saveOrUpdate(duplicateItem);
     }
 
+    private ApplicationItem duplicate(ApplicationItem item, ApplicationItem duplicateItem) {
+        if(Objects.nonNull(duplicateItem)){
+            duplicateItem.setCount(item.getCount()+duplicateItem.getCount());
+            return duplicateItem;
+        }
+        return item;
+    }
+
+    private ApplicationItem getDuplicateItem(ApplicationItem item) {
+
+        QueryWrapper<ApplicationItem> wrapper = new QueryWrapper<>();
+        wrapper.eq("material_id", item.getMaterialId())
+                .eq("status", item.getStatus())
+                .eq("category_id", item.getCategoryId())
+                .eq("warehouse_id", item.getWarehouseId())
+                .eq("application_id", item.getApplicationId());
+
+        return this.getOne(wrapper, false);
+    }
 
 
     @Override
@@ -201,7 +227,7 @@ public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMappe
             material.setCategoryId(ao.getCategoryId());
             material.setStatus(ao.getStatus());
             material.setWarehouseId(ao.getWarehouseId());
-            material.setSpecialLine(categoryService.getSpecialLine(ao.getCategoryId()));
+            material.setSpecialLine(categoryService.getById(ao.getSpecialLineId()).getName());
             materialService.save(material);
             material = materialService.getOneByKey(ao.getMaterialName(), ao.getWarehouseId(), ao.getStatus());
         }
@@ -237,8 +263,11 @@ public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMappe
         ApplicationItem item = new ApplicationItem();
         item.setMaterialId(ao.getMaterialId());
         item.setWarehouseId(ao.getWarehouseId());
+        item.setMaterialName(ao.getMaterialName());
+        item.setWarehouseName(ao.getWarehouseName());
         item.setCategoryId(ao.getCategoryId());
-        item.setCount(ao.getCount());
+        int sign  = ApplicationType.deliveryOfCargoFromStorage.equals(ao.getEnum()) ? -1 : 1;
+        item.setCount(ao.getCount() * sign);
         item.setStatus(ao.getStatus());
         return item;
     }

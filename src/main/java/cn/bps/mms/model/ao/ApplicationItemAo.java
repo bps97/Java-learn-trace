@@ -12,9 +12,10 @@ public class ApplicationItemAo implements IApplication {
     private String materialName;
     private String materialId;
     private String warehouseId;
+    private String warehouseName;
     private String categoryId;
+    private String specialLineId;
     private String status;
-    private String specialLine;
     private Integer count;
     private String type;
 }

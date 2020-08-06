@@ -126,6 +126,9 @@ public class ApplicationServiceImpl extends ServiceImpl<ApplicationMapper, Appli
         }else if(Objects.equal(myApplication.getType(), ApplicationType.warehouseEntry.getType())) {
             /*逐项录入的数据是完整的*/
             updateMaterials(applicationItems);
+        }else if(Objects.equal(myApplication.getType(), ApplicationType.deliveryOfCargoFromStorage.getType())) {
+            /*逐项录出的数据是完整的*/
+            updateMaterials(applicationItems);
         }
 
         // 清空清单项

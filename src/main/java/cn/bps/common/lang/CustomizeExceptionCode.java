@@ -18,7 +18,8 @@ public enum CustomizeExceptionCode {
     NO_CACHE_DATA("no cache data","无缓存数据" ),
     FOREIGN_KEY_CONSTRAINT_FAILS("foreign key constraint fails","外键引用相关错误" ),
     LACK_OF_INFORMATION("lack of information", "信息不足"),
-    RESOURCE_NOT_FOUND("resource not found", "找不到资源" );
+    RESOURCE_NOT_FOUND("resource not found", "找不到资源" ),
+    INSUFFICIENT_STOCK("insufficient stock", "库存不足" );
 
 
     private final String name;

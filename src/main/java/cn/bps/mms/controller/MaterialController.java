@@ -99,10 +99,14 @@ public class MaterialController {
         return Ret.ok(materialService.getVoById(id));
     }
 
+    /**
+     * 获取指定物料的使用记录
+     * @param id
+     * @return
+     */
     @GetMapping("/{id}/logs")
     public Ret listRecords(@PathVariable String id) {
-        List<Record> records  = materialService.getRecords(id);
-        return Ret.ok();
+        return Ret.ok(materialService.getRecords(id));
     }
 }
 

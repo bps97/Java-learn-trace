@@ -88,8 +88,10 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> impleme
     public List<Record> listRecords(String materialId) {
 
 
+        QueryWrapper<Record> wrapper = new QueryWrapper<>();
+        wrapper.eq("material_id", materialId);
 
-        return null;
+        return this.list(wrapper);
     }
 
     private List<Record> subRecords(RecordAo ao) {
