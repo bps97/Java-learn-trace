@@ -1,9 +1,11 @@
 package cn.bps.mms.service;
 
 import cn.bps.mms.model.ao.RecordAo;
+import cn.bps.mms.model.pojo.Material;
 import cn.bps.mms.model.vo.RecordTreeVo;
 import cn.bps.mms.model.pojo.Application;
 import cn.bps.mms.model.pojo.Record;
+import cn.bps.mms.model.vo.RecordVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -24,5 +26,5 @@ public interface RecordService extends IService<Record> {
 
     IPage<RecordTreeVo> pageRecords(Page<Record> page, RecordAo ao);
 
-    List<Record> listRecords(String materialId);
+    List<RecordVo> listRecords(Material material);
 }

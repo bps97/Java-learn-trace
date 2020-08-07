@@ -3,8 +3,10 @@ package cn.bps.mms.controller;
 
 import cn.bps.common.lang.domain.Ret;
 import cn.bps.mms.model.ao.MaterialAo;
+import cn.bps.mms.model.ao.MaterialParams;
 import cn.bps.mms.model.pojo.Material;
 import cn.bps.mms.model.pojo.Record;
+import cn.bps.mms.model.vo.RecordVo;
 import cn.bps.mms.service.MaterialService;
 import cn.bps.mms.model.vo.KeyValue;
 import cn.bps.mms.model.vo.MaterialVo;
@@ -33,12 +35,12 @@ public class MaterialController {
     /**
      * 分页获取物料数据
      * @param page
-     * @param ao
+     * @param params
      * @return
      */
     @GetMapping("")
-    public Ret<IPage<MaterialVo>> pageMaterials(Page<Material> page, MaterialAo ao){
-        return Ret.ok(materialService.pageMaterials(page, ao));
+    public Ret<IPage<MaterialVo>> pageMaterials(Page<Material> page, MaterialParams params){
+        return Ret.ok(materialService.pageMaterials(page, params));
     }
 
     /**
@@ -64,7 +66,7 @@ public class MaterialController {
      * @return
      */
     @PostMapping("/add")
-    public Ret add(@RequestBody Material material){
+    public Ret<Object> add(@RequestBody Material material){
         return Ret.create(()->materialService.saveMaterial(material));
     }
 
@@ -74,19 +76,19 @@ public class MaterialController {
      * @return
      */
     @DeleteMapping("/{id}")
-    public Ret remove(@PathVariable String id) {
+    public Ret<Boolean> remove(@PathVariable String id) {
         return Ret.ok(()->materialService.removeById(id));
     }
 
     /**
      * 修改指定实例
      * @param id
-     * @param material
+     * @param ao
      * @return
      */
     @PutMapping("/{id}")
-    public Ret modify(@PathVariable String id, @RequestBody Material material) {
-        return Ret.ok(()->materialService.updateById(id, material));
+    public Ret modify(@PathVariable String id, @RequestBody MaterialAo ao) {
+        return Ret.ok(()->materialService.updateById(id, ao));
     }
 
     /**
@@ -105,7 +107,7 @@ public class MaterialController {
      * @return
      */
     @GetMapping("/{id}/logs")
-    public Ret listRecords(@PathVariable String id) {
+    public Ret<List<RecordVo>> listRecords(@PathVariable String id) {
         return Ret.ok(materialService.getRecords(id));
     }
 }

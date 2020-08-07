@@ -3,11 +3,14 @@ package cn.bps.mms.service.impl;
 import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
 import cn.bps.mms.model.ao.RecordAo;
+import cn.bps.mms.model.pojo.Material;
+import cn.bps.mms.model.vo.MaterialVo;
 import cn.bps.mms.model.vo.RecordTreeVo;
 import cn.bps.mms.mapper.RecordMapper;
 import cn.bps.mms.model.pojo.Application;
 import cn.bps.mms.model.pojo.ApplicationItem;
 import cn.bps.mms.model.pojo.Record;
+import cn.bps.mms.model.vo.RecordVo;
 import cn.bps.mms.service.*;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -78,21 +81,32 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> impleme
         IPage<Record> pageRecords = recordMapper.selectPage(page, wrapper);
         List vos = (List) pageRecords.getRecords()
                 .stream()
-                .map(e->this.model2Vo(e, parentIdMap.get(e.getId())))
+                .map(e->this.model2TreeVo(e, parentIdMap.get(e.getId())))
                 .collect(Collectors.toList());
         IPage<RecordTreeVo> iPage = pageRecords.setRecords(vos);
         return iPage;
     }
 
     @Override
-    public List<Record> listRecords(String materialId) {
-
+    public List<RecordVo> listRecords(Material material) {
 
         QueryWrapper<Record> wrapper = new QueryWrapper<>();
-        wrapper.eq("material_id", materialId);
-
-        return this.list(wrapper);
+        wrapper.eq("material_id", material.getId());
+        return this.list(wrapper).stream().map(e -> {
+            RecordVo vo = new RecordVo();
+            vo.setId(e.getId());
+            vo.setUserName(e.getUserName());
+            vo.setMessage(e.getMessage());
+            vo.setType(e.getType());
+            vo.setCount(e.getCount() + " " + material.getMeasureWord());
+            vo.setUpdateTime(e.getUpdateTime());
+            return vo;
+        }).collect(Collectors.toList());
     }
+
+
+
+
 
     private List<Record> subRecords(RecordAo ao) {
         QueryWrapper<Record> wrapper = new QueryWrapper<>();
@@ -108,19 +122,19 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> impleme
         return this.list(wrapper);
     }
 
-    private RecordTreeVo model2Vo(Record record, List<Record> records) {
+    private RecordTreeVo model2TreeVo(Record record, List<Record> records) {
         RecordTreeVo vo = new RecordTreeVo();
         vo.setId(record.getId());
         vo.setUserName(record.getUserName());
         vo.setMessage(record.getMessage());
         vo.setType(record.getType());
         vo.setCreateTime(record.getCreateTime());
-        vo.setChildren(records.stream().map(this::model2Vo).collect(Collectors.toList()));
+        vo.setChildren(records.stream().map(this::model2TreeVo).collect(Collectors.toList()));
         return vo;
     }
 
 
-    private RecordTreeVo model2Vo(Record record) {
+    private RecordTreeVo model2TreeVo(Record record) {
         RecordTreeVo vo = new RecordTreeVo();
         vo.setId(record.getId());
         vo.setCategoryName(record.getCategoryName());

@@ -11,7 +11,7 @@ spring:
     time-zone: Asia/Shanghai
 
 server:
-  port: 8999
+  port: 8101
   tomcat:
     accept-count: 10
     max-connections: 1000

@@ -3,10 +3,12 @@ package cn.bps.mms.service.impl;
 import cn.bps.common.lang.CustomizeExceptionCode;
 import cn.bps.common.lang.LocalBizServiceException;
 import cn.bps.mms.model.ao.MaterialAo;
+import cn.bps.mms.model.ao.MaterialParams;
 import cn.bps.mms.model.pojo.Category;
 import cn.bps.mms.model.pojo.Material;
 import cn.bps.mms.model.pojo.Record;
 import cn.bps.mms.mapper.MaterialMapper;
+import cn.bps.mms.model.vo.RecordVo;
 import cn.bps.mms.service.CategoryService;
 import cn.bps.mms.service.MaterialService;
 import cn.bps.mms.model.vo.KeyValue;
@@ -100,9 +102,9 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
     }
 
     @Override
-    public IPage<MaterialVo> pageMaterials(Page<Material> page, MaterialAo ao) {
+    public IPage<MaterialVo> pageMaterials(Page<Material> page, MaterialParams params) {
 
-        String categoryId = ao.getCategoryId();
+        String categoryId = params.getCategoryId();
         if(Objects.equals(categoryId,"")){
             throw new LocalBizServiceException(CustomizeExceptionCode.REQUEST_PARAMS_IS_EMPTY);
         }
@@ -113,8 +115,8 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
         children.add(categoryId);
         QueryWrapper<Material> wrapper = new QueryWrapper<>();
         wrapper.in("category_id", children)
-                .eq("warehouse_id", ao.getWarehouseId());
-        String key = ao.getKey();
+                .eq("warehouse_id", params.getWarehouseId());
+        String key = params.getKey();
         if(key.isEmpty() == Boolean.FALSE){
             wrapper.like("name",key);
         }
@@ -159,7 +161,10 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
     }
 
     @Override
-    public void updateById(String id, Material material) {
+    public void updateById(String id, MaterialAo ao) {
+        Material material = new Material();
+        material.setName(ao.getName());
+        material.setMeasureWord(ao.getMeasureWord());
         material.setId(id);
         this.updateById(material);
     }
@@ -190,8 +195,9 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
     }
 
     @Override
-    public List<Record> getRecords(String materialId) {
-        return recordService.listRecords(materialId);
+    public List<RecordVo> getRecords(String materialId) {
+        Material material = this.getById(materialId);
+        return recordService.listRecords(material);
     }
 
     /*@Override
@@ -219,6 +225,7 @@ public class MaterialServiceImpl extends ServiceImpl<MaterialMapper, Material> i
         vo.setSpecialLine(material.getSpecialLine());
         vo.setCategoryName(categoryService.getById(material.getCategoryId()).getName());
         vo.setStatus(material.getStatus());
+        vo.setMeasureWord(material.getMeasureWord());
         return vo;
     }
     private MaterialVo model2Vo(Object obj){

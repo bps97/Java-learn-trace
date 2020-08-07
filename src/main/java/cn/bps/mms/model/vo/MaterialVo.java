@@ -52,6 +52,11 @@ public class MaterialVo {
     private String status;
 
     /**
+     * 量词
+     */
+    private String measureWord;
+
+    /**
      * 数量
      */
     private Integer count;

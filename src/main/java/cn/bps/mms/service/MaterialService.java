@@ -1,10 +1,12 @@
 package cn.bps.mms.service;
 
 import cn.bps.mms.model.ao.MaterialAo;
+import cn.bps.mms.model.ao.MaterialParams;
 import cn.bps.mms.model.pojo.Material;
 import cn.bps.mms.model.vo.KeyValue;
 import cn.bps.mms.model.vo.MaterialVo;
 import cn.bps.mms.model.pojo.Record;
+import cn.bps.mms.model.vo.RecordVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -32,13 +34,13 @@ public interface MaterialService extends IService<Material> {
 
     List<Material> listMaterial(String categoryId, String warehouseId, String status);
 
-    IPage<MaterialVo> pageMaterials(Page<Material> page, MaterialAo ao);
+    IPage<MaterialVo> pageMaterials(Page<Material> page, MaterialParams params);
 
     String getIdByName(String materialName);
 
     void saveMaterial(Material material);
 
-    void updateById(String id, Material material);
+    void updateById(String id, MaterialAo ao);
 
     MaterialVo getVoById(String id);
 
@@ -46,6 +48,6 @@ public interface MaterialService extends IService<Material> {
 
     Material getOneByKey(String materialName, String warehouseId, String status);
 
-    List<Record> getRecords(String id);
+    List<RecordVo> getRecords(String id);
 
 }

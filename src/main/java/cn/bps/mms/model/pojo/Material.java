@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author bps
- * @since 2020-06-09
+ * @since 2020-08-07
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -61,6 +61,11 @@ public class Material implements Serializable {
      * 数量
      */
     private Integer count;
+
+    /**
+     * 计量单位
+     */
+    private String measureWord;
 
     /**
      * 是否有效
