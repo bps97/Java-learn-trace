@@ -151,7 +151,9 @@ public class ApplicationServiceImpl extends ServiceImpl<ApplicationMapper, Appli
                     e.setMaterialId(material.getId());
                     return e;
                 }).collect(Collectors.toList());
-        ApplicationItemService.updateBatchById(applicationItems);
+        if(applicationItems.size() > 0){
+            ApplicationItemService.updateBatchById(applicationItems);
+        }
     }
 
     private void saveNewMaterials(List<ApplicationItem> applicationItems) {

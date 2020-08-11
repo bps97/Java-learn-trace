@@ -8,9 +8,9 @@
         <version>2.3.0.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>cn.bps.springboot</groupId>
+    <groupId>cn.bps.ssm</groupId>
     <artifactId>ssm-mms</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
     <name>ssm-mms</name>
     <description>Demo project for Spring Boot</description>
 
