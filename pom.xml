@@ -96,10 +96,11 @@
         </dependency>
 
         <!-- 数据库连接池 -->
+        <!-- druid -->
         <dependency>
-            <groupId>com.mchange</groupId>
-            <artifactId>c3p0</artifactId>
-            <version>0.9.5.4</version>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.10</version>
         </dependency>
 
         <!-- google工具库 -->
@@ -140,6 +141,8 @@
             <artifactId>swagger-bootstrap-ui</artifactId>
             <version>1.8.9</version>
           </dependency>
+
+
 
     </dependencies>
     <build>

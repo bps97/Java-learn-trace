@@ -1,39 +1,3 @@
 spring:
-  thymeleaf:
-    cache: false
-  datasource:
-    type: com.mchange.v2.c3p0.ComboPooledDataSource
-    driver-class-name: com.mysql.jdbc.Driver
-#    url: jdbc:mysql://10.22.34.148:3306/mms?userUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC&serverTimezone=Asia/Shanghai
-    url: jdbc:mysql://localhost:3306/mms?userUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC&serverTimezone=Asia/Shanghai
-    username: bps
-    password: Pa$$word2020
-  jackson:
-    time-zone: Asia/Shanghai
   profiles:
     active: @profiles.active@
-
-
-server:
-  port: 8101
-  tomcat:
-    accept-count: 10
-    max-connections: 1000
-
-mybatis-plus:
-  global-config:
-    db-config:
-      id-type: auto
-      field-strategy: not_empty
-      #驼峰下划线转换
-      column-underline: true
-      #逻辑删除配置
-      logic-delete-value: 0
-      logic-not-delete-value: 1
-      db-type: mysql
-    refresh: false
-  configuration:
-    map-underscore-to-camel-case: true
-    cache-enabled: false
-    ## 标准输出mybatis日志信息
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
