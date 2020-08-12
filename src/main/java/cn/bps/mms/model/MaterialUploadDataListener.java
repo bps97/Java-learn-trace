@@ -1,5 +1,6 @@
 package cn.bps.mms.model;
 
+import cn.bps.mms.model.enums.ApplicationType;
 import cn.bps.mms.model.pojo.Account;
 import cn.bps.mms.model.pojo.Application;
 import cn.bps.mms.model.pojo.ApplicationItem;
@@ -55,10 +56,10 @@ public class MaterialUploadDataListener extends AnalysisEventListener<MaterialDt
 //        this.appForm = AppFormItemService.initBatchImport(account);
     }
 
-    public MaterialUploadDataListener(ApplicationItemService ApplicationItemService, Account account, Application application) {
+    public MaterialUploadDataListener(ApplicationItemService ApplicationItemService, Account account, ApplicationType applicationType) {
         this.ApplicationItemService = ApplicationItemService;
         this.account = account;
-        this.application = ApplicationItemService.initBatchImport(account, application.getType());
+        this.application = ApplicationItemService.initBatchImport(account, applicationType);
     }
 
     @Override

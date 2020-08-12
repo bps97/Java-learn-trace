@@ -8,6 +8,7 @@ import cn.bps.mms.service.CategoryService;
 import cn.bps.mms.model.vo.CategoryTreeVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -21,6 +22,7 @@ import java.util.List;
  * @author bps
  * @since 2020-06-09
  */
+@Api(tags = "分类")
 @RestController
 @RequestMapping("/category")
 public class CategoryController {

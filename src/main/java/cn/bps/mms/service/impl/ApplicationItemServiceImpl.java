@@ -12,7 +12,6 @@ import cn.bps.mms.model.pojo.*;
 import cn.bps.mms.service.*;
 import cn.bps.security.server.service.TokenService;
 import com.alibaba.excel.EasyExcel;
-import com.baomidou.mybatisplus.core.conditions.query.Query;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -154,8 +153,8 @@ public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMappe
     }
 
     @Override
-    public Application initBatchImport(Account account, String type) {
-        if(ApplicationType.excelImport.getType().equals(type))
+    public Application initBatchImport(Account account, ApplicationType applicationType) {
+        if(ApplicationType.excelImport.equals(applicationType))
             return applicationService.getUserApplication(account, ApplicationType.excelImport);
         return applicationService.getUserApplication(account);
     }
@@ -212,9 +211,9 @@ public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMappe
     }
 
     @Override
-    public IPage<ApplicationItem> handleExcelStream(MultipartFile file, String token, Application form) throws IOException {
+    public IPage<ApplicationItem> handleExcelStream(MultipartFile file, String token, ApplicationType applicationType) throws IOException {
         Account account = tokenService.getAccount(token);
-        easyExcelRead(file, account, form);
+        easyExcelRead(file, account, applicationType);
         return pageMaterials(new Page<>(), account);
     }
 
@@ -241,9 +240,9 @@ public class ApplicationItemServiceImpl extends ServiceImpl<ApplicationItemMappe
      * @param account
      * @throws IOException
      */
-    private void easyExcelRead(MultipartFile file, Account account, Application form) throws IOException {
+    private void easyExcelRead(MultipartFile file, Account account, ApplicationType applicationType) throws IOException {
         EasyExcel.read(file.getInputStream(),
-                MaterialDto.class,new MaterialUploadDataListener(this, account, form))
+                MaterialDto.class,new MaterialUploadDataListener(this, account, applicationType))
                 .sheet().doRead();
     }
 

@@ -1,5 +1,6 @@
 package cn.bps.mms.service;
 
+import cn.bps.mms.model.ao.ApplicationAo;
 import cn.bps.mms.model.ao.ApplicationItemAo;
 import cn.bps.mms.model.vo.ApplicationItemVo;
 import cn.bps.mms.model.pojo.Account;
@@ -39,7 +40,7 @@ public interface ApplicationItemService extends IService<ApplicationItem> {
 
     /* 导入EXCEL相关 */
 
-    Application initBatchImport(Account account, String type);
+    Application initBatchImport(Account account, ApplicationType applicationType);
 
     List<ApplicationItem> initRelatedInfo(List<ApplicationItem> applicationItems);
 
@@ -49,7 +50,7 @@ public interface ApplicationItemService extends IService<ApplicationItem> {
 
     IPage<ApplicationItem> pageMaterials(Page<ApplicationItem> page, Account account, ApplicationType type);
 
-    IPage<ApplicationItem> handleExcelStream(MultipartFile file, String token, Application form) throws IOException;
+    IPage<ApplicationItem> handleExcelStream(MultipartFile file, String token, ApplicationType applicationType) throws IOException;
 
     Material checkMaterial(ApplicationItemAo ao);
 }

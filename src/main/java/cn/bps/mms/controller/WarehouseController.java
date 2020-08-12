@@ -4,6 +4,7 @@ package cn.bps.mms.controller;
 import cn.bps.common.lang.domain.Ret;
 import cn.bps.mms.service.WarehouseService;
 import cn.bps.mms.model.vo.KeyValue;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,6 +21,7 @@ import java.util.List;
  * @author bps
  * @since 2020-06-09
  */
+@Api(tags = "仓库管理")
 @RestController
 @RequestMapping("/warehouse")
 public class WarehouseController {

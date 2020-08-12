@@ -11,11 +11,9 @@ import javax.validation.constraints.NotNull;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel("申请单Ao")
-public class ApplicationAo implements IApplication {
+@ApiModel("申请单类型")
+public class ApplicationType implements IApplication {
     @NotNull(message = "申请单类型不能为空")
     @ApiModelProperty(value = "申请单类型", required = true)
     private String type;
-    @ApiModelProperty(value = "备注信息")
-    private String message;
 }

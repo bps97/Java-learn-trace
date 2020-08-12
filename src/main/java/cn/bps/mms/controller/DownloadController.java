@@ -1,6 +1,7 @@
 package cn.bps.mms.controller;
 
 
+import io.swagger.annotations.Api;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
 
-
+@Api(tags = "下载器")
 @RestController
 public class DownloadController {
 

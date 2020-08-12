@@ -9,6 +9,7 @@ import cn.bps.mms.model.pojo.Account;
 import cn.bps.mms.service.AccountService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -22,6 +23,7 @@ import javax.annotation.Resource;
  * @author bps
  * @since 2020-06-09
  */
+@Api(tags = "账户基本信息")
 @RestController
 @RequestMapping("/account")
 public class AccountController {

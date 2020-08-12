@@ -4,6 +4,7 @@ package cn.bps.mms.controller;
 import cn.bps.common.lang.domain.Ret;
 import cn.bps.mms.model.pojo.Role;
 import cn.bps.mms.service.RoleService;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,7 @@ import java.util.List;
  * @author bps
  * @since 2020-06-11
  */
+@Api(tags = "角色管理")
 @RestController
 @RequestMapping("/role")
 public class RoleController {

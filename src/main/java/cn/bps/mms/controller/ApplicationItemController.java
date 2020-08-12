@@ -4,12 +4,16 @@ package cn.bps.mms.controller;
 import cn.bps.common.lang.domain.Ret;
 import cn.bps.mms.model.ao.ApplicationAo;
 import cn.bps.mms.model.ao.ApplicationItemAo;
+import cn.bps.mms.model.ao.ApplicationType;
 import cn.bps.mms.model.pojo.Application;
 import cn.bps.mms.model.pojo.ApplicationItem;
 import cn.bps.mms.model.vo.ApplicationItemVo;
 import cn.bps.mms.service.ApplicationItemService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,6 +31,7 @@ import java.util.List;
  * @author bps
  * @since 2020-06-21
  */
+@Api(tags = "申请单项")
 @RestController
 @RequestMapping("/applyItem")
 public class ApplicationItemController {
@@ -34,68 +39,38 @@ public class ApplicationItemController {
     @Resource
     private ApplicationItemService applicationItemService;
 
-    /**
-     * 添加申请单项
-     * @param ao
-     * @param token
-     * @return
-     */
+    @ApiOperation(value = "添加申请单项")
     @PostMapping("")
     public Ret add(@RequestBody ApplicationItemAo ao, @RequestHeader String token){
         return Ret.create(()-> applicationItemService.addItem(ao, token));
     }
 
-
-    /**
-     * 删除指定申请单项
-     * @param id
-     * @return
-     */
+    @ApiOperation(value = "移除指定申请单项")
     @DeleteMapping("/{id}")
-    public Ret remove(@PathVariable String id) {
+    public Ret remove(@PathVariable @Validated String id) {
         return Ret.ok(()-> applicationItemService.removeById(id));
     }
 
-    /**
-     * 批量导入物料信息
-     * @param file
-     * @param token
-     * @return
-     * @throws IOException
-     */
+    @ApiOperation(value = "批量上传生清单列表")
     @PostMapping("/upload")
     @ResponseBody
-    public Ret<IPage<ApplicationItem>> upload(MultipartFile file, @RequestHeader String token, Application form) throws IOException {
-        return Ret.ok(applicationItemService.handleExcelStream(file, token, form));
+    public Ret<IPage<ApplicationItem>> upload(MultipartFile file, @RequestHeader String token, ApplicationType applicationType) throws IOException {
+        return Ret.ok(applicationItemService.handleExcelStream(file, token, applicationType.getEnum()));
     }
 
-
-    /**
-     * 获取登录用户的申请单项列表
-     * @param token
-     * @return
-     */
+    @ApiOperation(value = "查询申请单列表")
     @GetMapping("")
-    public Ret<List<ApplicationItemVo>> list(@RequestHeader String token, @NotEmpty ApplicationAo applicationAo){
-        return Ret.ok(applicationItemService.list(token, applicationAo.getEnum()));
+    public Ret<List<ApplicationItemVo>> list(@RequestHeader String token, @NotEmpty ApplicationType applicationType){
+        return Ret.ok(applicationItemService.list(token, applicationType.getEnum()));
     }
 
-    /**
-     * 获取分页申请单项（导入的物料表）
-     * @param page
-     * @param token
-     * @return
-     */
+    @ApiOperation(value = "分页查询申请单列表")
     @GetMapping("/list")
-    public Ret<IPage<ApplicationItem>> pageMaterials(Page<ApplicationItem> page, @RequestHeader String token, @NotEmpty ApplicationAo applicationAo) {
-        return Ret.ok(applicationItemService.pageMaterials(page, token, applicationAo.getEnum()));
+    public Ret<IPage<ApplicationItem>> pageMaterials(Page<ApplicationItem> page, @RequestHeader String token, @NotEmpty ApplicationType applicationType) {
+        return Ret.ok(applicationItemService.pageMaterials(page, token, applicationType.getEnum()));
     }
 
-    /**
-     * 检查是否有对应物料，没有则创建
-     * @param ao
-     * @return
-     */
+    @ApiOperation(value = "检查指定物料是否存在")
     @GetMapping("/material/check")
     public Ret checkMaterial(ApplicationItemAo ao){
         return Ret.ok(applicationItemService.checkMaterial(ao));

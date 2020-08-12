@@ -7,6 +7,7 @@ import cn.bps.mms.model.pojo.Record;
 import cn.bps.mms.service.RecordService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -20,6 +21,7 @@ import javax.annotation.Resource;
  * @author bps
  * @since 2020-06-11
  */
+@Api(tags = "日志记录管理")
 @RestController
 @RequestMapping("/record")
 public class RecordController {

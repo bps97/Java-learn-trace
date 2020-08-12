@@ -7,6 +7,7 @@ import cn.bps.mms.model.pojo.Menu;
 import cn.bps.mms.service.MenuService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ import java.util.List;
  * @author bps
  * @since 2020-06-09
  */
+@Api(tags = "客户端菜单")
 @RestController
 @RequestMapping("/menu")
 public class MenuController {

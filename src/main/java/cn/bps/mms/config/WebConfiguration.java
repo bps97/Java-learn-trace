@@ -81,6 +81,7 @@ public class WebConfiguration implements WebMvcConfigurer {
                 .excludePathPatterns("/*.html")
                 .excludePathPatterns("/swagger/**")
                 .excludePathPatterns("/swagger-resources/**")
+                .excludePathPatterns("/webjars/**")
                 .excludePathPatterns("/v2/**");
 
     }

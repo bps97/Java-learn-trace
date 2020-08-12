@@ -6,6 +6,7 @@ import cn.bps.mms.model.pojo.Privilege;
 import cn.bps.mms.service.PrivilegeService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,7 @@ import java.util.List;
  * @author bps
  * @since 2020-07-01
  */
+@Api(tags = "权限管理")
 @RestController
 @RequestMapping("/privilege")
 public class PrivilegeController {
