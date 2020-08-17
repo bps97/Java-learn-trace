@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.bps.hea.mapper.ProductPackageMapper">
-  <resultMap id="BaseResultMap" type="cn.bps.hea.domain.model.ProductPackage">
+<mapper namespace="cn.bps.heam.mapper.ProductPackageMapper">
+  <resultMap id="BaseResultMap" type="cn.bps.heam.domain.model.ProductPackage">
     <id column="id" jdbcType="CHAR" property="id" />
     <id column="product_instance_id" jdbcType="CHAR" property="productInstanceId" />
-    <result column="count" jdbcType="BIGINT" property="count" />
+    <result column="service_id" jdbcType="CHAR" property="serviceId" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -36,9 +37,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, product_instance_id, count
+    id, product_instance_id, service_id, price
   </sql>
-  <select id="selectByExample" parameterType="cn.bps.hea.domain.model.ProductPackageExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.template.ProductPackageExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -53,13 +54,20 @@
       order by ${orderByClause}
     </if>
   </select>
-  <insert id="insert" parameterType="cn.bps.hea.domain.model.ProductPackage">
-    insert into product_package (id, product_instance_id, count
-      )
-    values (#{id,jdbcType=CHAR}, #{productInstanceId,jdbcType=CHAR}, #{count,jdbcType=BIGINT}
-      )
+  <select id="selectByPrimaryKey" parameterType="cn.bps.heam.domain.model.ProductPackageKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product_package
+    where id = #{id,jdbcType=CHAR}
+      and product_instance_id = #{productInstanceId,jdbcType=CHAR}
+  </select>
+  <insert id="insert" parameterType="cn.bps.heam.domain.model.ProductPackage">
+    insert into product_package (id, product_instance_id, service_id, 
+      price)
+    values (#{id,jdbcType=CHAR}, #{productInstanceId,jdbcType=CHAR}, #{serviceId,jdbcType=CHAR}, 
+      #{price,jdbcType=DECIMAL})
   </insert>
-  <insert id="insertSelective" parameterType="cn.bps.hea.domain.model.ProductPackage">
+  <insert id="insertSelective" parameterType="cn.bps.heam.domain.model.ProductPackage">
     insert into product_package
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -68,8 +76,11 @@
       <if test="productInstanceId != null">
         product_instance_id,
       </if>
-      <if test="count != null">
-        count,
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="price != null">
+        price,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -79,25 +90,47 @@
       <if test="productInstanceId != null">
         #{productInstanceId,jdbcType=CHAR},
       </if>
-      <if test="count != null">
-        #{count,jdbcType=BIGINT},
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=CHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.bps.hea.domain.model.ProductPackage">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.bps.heam.domain.model.ProductPackage">
     update product_package
     <set>
-      <if test="count != null">
-        count = #{count,jdbcType=BIGINT},
+      <if test="serviceId != null">
+        service_id = #{serviceId,jdbcType=CHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
       </if>
     </set>
     where id = #{id,jdbcType=CHAR}
       and product_instance_id = #{productInstanceId,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.bps.hea.domain.model.ProductPackage">
+  <update id="updateByPrimaryKey" parameterType="cn.bps.heam.domain.model.ProductPackage">
     update product_package
-    set count = #{count,jdbcType=BIGINT}
+    set service_id = #{serviceId,jdbcType=CHAR},
+      price = #{price,jdbcType=DECIMAL}
     where id = #{id,jdbcType=CHAR}
       and product_instance_id = #{productInstanceId,jdbcType=CHAR}
   </update>
+  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.template.ProductPackageExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from product_package
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
 </mapper>

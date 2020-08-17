@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.bps.hea.mapper.ProductCategoryMapper">
-  <resultMap id="BaseResultMap" type="cn.bps.hea.domain.model.ProductCategory">
+<mapper namespace="cn.bps.heam.mapper.ProductCategoryMapper">
+  <resultMap id="BaseResultMap" type="cn.bps.heam.domain.model.ProductCategory">
     <id column="id" jdbcType="CHAR" property="id" />
     <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
     <result column="available" jdbcType="BIT" property="available" />
@@ -40,7 +40,7 @@
   <sql id="Base_Column_List">
     id, category_name, available, create_time, update_time
   </sql>
-  <select id="selectByExample" parameterType="cn.bps.hea.domain.model.ProductCategoryExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.template.ProductCategoryExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -61,13 +61,17 @@
     from product_category
     where id = #{id,jdbcType=CHAR}
   </select>
-  <insert id="insert" parameterType="cn.bps.hea.domain.model.ProductCategory">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from product_category
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.bps.heam.domain.model.ProductCategory">
     insert into product_category (id, category_name, available, 
       create_time, update_time)
     values (#{id,jdbcType=CHAR}, #{categoryName,jdbcType=VARCHAR}, #{available,jdbcType=BIT}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="cn.bps.hea.domain.model.ProductCategory">
+  <insert id="insertSelective" parameterType="cn.bps.heam.domain.model.ProductCategory">
     insert into product_category
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -104,7 +108,13 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.bps.hea.domain.model.ProductCategory">
+  <select id="countByExample" parameterType="cn.bps.heam.domain.model.template.ProductCategoryExample" resultType="java.lang.Long">
+    select count(*) from product_category
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.bps.heam.domain.model.ProductCategory">
     update product_category
     <set>
       <if test="categoryName != null">
@@ -122,7 +132,7 @@
     </set>
     where id = #{id,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.bps.hea.domain.model.ProductCategory">
+  <update id="updateByPrimaryKey" parameterType="cn.bps.heam.domain.model.ProductCategory">
     update product_category
     set category_name = #{categoryName,jdbcType=VARCHAR},
       available = #{available,jdbcType=BIT},
@@ -130,4 +140,19 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=CHAR}
   </update>
+  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.template.ProductCategoryExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from product_category
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
 </mapper>

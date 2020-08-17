@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.bps.hea.mapper.ProductAttributeDictMapper">
-  <resultMap id="BaseResultMap" type="cn.bps.hea.domain.model.ProductAttributeDict">
+<mapper namespace="cn.bps.heam.mapper.ProductAttributeDictMapper">
+  <resultMap id="BaseResultMap" type="cn.bps.heam.domain.model.ProductAttributeDict">
     <id column="id" jdbcType="CHAR" property="id" />
     <result column="product_id" jdbcType="CHAR" property="productId" />
     <result column="attribute_id" jdbcType="CHAR" property="attributeId" />
@@ -44,7 +44,7 @@
     id, product_id, attribute_id, attribute_key, attribute_value, available, create_time, 
     update_time
   </sql>
-  <select id="selectByExample" parameterType="cn.bps.hea.domain.model.ProductAttributeDictExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.bps.heam.domain.model.template.ProductAttributeDictExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -59,7 +59,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <insert id="insert" parameterType="cn.bps.hea.domain.model.ProductAttributeDict">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product_attribute_dict
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from product_attribute_dict
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.bps.heam.domain.model.ProductAttributeDict">
     insert into product_attribute_dict (id, product_id, attribute_id, 
       attribute_key, attribute_value, available, 
       create_time, update_time)
@@ -67,7 +77,7 @@
       #{attributeKey,jdbcType=VARCHAR}, #{attributeValue,jdbcType=VARCHAR}, #{available,jdbcType=BIT}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="cn.bps.hea.domain.model.ProductAttributeDict">
+  <insert id="insertSelective" parameterType="cn.bps.heam.domain.model.ProductAttributeDict">
     insert into product_attribute_dict
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -122,7 +132,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.bps.hea.domain.model.ProductAttributeDict">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.bps.heam.domain.model.ProductAttributeDict">
     update product_attribute_dict
     <set>
       <if test="productId != null">
@@ -149,7 +159,7 @@
     </set>
     where id = #{id,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.bps.hea.domain.model.ProductAttributeDict">
+  <update id="updateByPrimaryKey" parameterType="cn.bps.heam.domain.model.ProductAttributeDict">
     update product_attribute_dict
     set product_id = #{productId,jdbcType=CHAR},
       attribute_id = #{attributeId,jdbcType=CHAR},
@@ -160,4 +170,19 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=CHAR}
   </update>
+  <select id="selectByExampleWithRowbounds" parameterType="cn.bps.heam.domain.model.template.ProductAttributeDictExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from product_attribute_dict
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
 </mapper>

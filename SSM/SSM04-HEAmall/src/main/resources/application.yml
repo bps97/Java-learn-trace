@@ -1,0 +1,26 @@
+spring:
+  thymeleaf:
+    cache: false
+  datasource:
+    type: com.mchange.v2.c3p0.ComboPooledDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://139.9.130.239:3306/heam?userUnicode=true&characterEncoding=utf8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
+    username: root
+    password: Sinabps@1997
+    maxIdleTiem: 60
+    initialPoolSize: 8
+    minPoolSize: 5
+    maxPoolSize: 20
+
+server:
+  port: 8081
+  tomcat:
+    max-threads: 6
+    min-spare-threads: 3
+    accept-count: 10
+    max-connections: 1000
+
+mybatis:
+  type-aliases-package: cn.bps.heam.domain.model
+  mapper-locations: classpath:mappers/*.xml
+
