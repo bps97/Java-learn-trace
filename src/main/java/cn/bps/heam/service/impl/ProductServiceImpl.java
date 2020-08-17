@@ -98,6 +98,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public void insert(Product product) {
+        productMapper.insertSelective(product);
+    }
+
+    @Override
     public List<Product> listProducts() {
         return productMapper.selectByExample(new ProductExample());
     }

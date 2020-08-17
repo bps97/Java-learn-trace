@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 public class Price {
 
+    private BigDecimal wight;
+
     private String id;
 
     private Integer type;
@@ -52,6 +54,14 @@ public class Price {
 
     public void setServiceId(String serviceId) {
         this.serviceId = serviceId == null ? null : serviceId.trim();
+    }
+
+    public BigDecimal getWight() {
+        return wight;
+    }
+
+    public void setWight(BigDecimal wight) {
+        this.wight = wight;
     }
 
     @Override

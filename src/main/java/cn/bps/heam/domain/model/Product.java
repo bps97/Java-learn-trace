@@ -3,6 +3,9 @@ package cn.bps.heam.domain.model;
 import java.util.Date;
 
 public class Product {
+
+    private double Weight;
+
     private String id;
 
     private String productName;
@@ -16,6 +19,14 @@ public class Product {
     private Date createTime;
 
     private Date updateTime;
+
+    public double getWeight() {
+        return Weight;
+    }
+
+    public void setWeight(double weight) {
+        Weight = weight;
+    }
 
     public String getId() {
         return id;

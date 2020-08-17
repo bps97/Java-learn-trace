@@ -40,4 +40,5 @@ public interface ProductService {
 
     int updateProduct(Product product);
 
+    void insert(Product product);
 }

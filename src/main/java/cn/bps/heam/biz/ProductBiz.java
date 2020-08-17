@@ -19,4 +19,6 @@ public interface ProductBiz {
     List<HomeProductResult> getHomeProduct(List<String> categoryNames);
 
     ProductResult getProduct(String id);
+
+    void addProduct(ProductForm2 productForm);
 }

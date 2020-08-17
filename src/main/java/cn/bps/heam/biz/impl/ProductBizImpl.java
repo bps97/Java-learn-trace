@@ -3,9 +3,11 @@ package cn.bps.heam.biz.impl;
 import cn.bps.common.lang.api.Filter;
 import cn.bps.common.lang.api.Page;
 import cn.bps.common.lang.api.Sort;
+import cn.bps.common.lang.util.Generator;
 import cn.bps.heam.biz.ProductBiz;
 import cn.bps.heam.dict.Column;
 import cn.bps.heam.domain.PageRequest;
+import cn.bps.heam.domain.model.Product;
 import cn.bps.heam.domain.model.ProductAttribute;
 import cn.bps.heam.domain.model.ProductAttributeDict;
 import cn.bps.heam.domain.model.ProductInstance;
@@ -17,7 +19,6 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import org.junit.platform.commons.util.StringUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -196,6 +197,26 @@ public class ProductBizImpl implements ProductBiz {
     @Override
     public ProductResult getProduct(String id) {
         return model2Result(instanceService.getProductInstance(id));
+    }
+
+    @Override
+    public void addProduct(ProductForm2 productForm) {
+
+        Product product = new Product();
+        product.setId(product.getId());
+        product.setAvailable(Boolean.TRUE);
+
+
+        Double  weight = productForm.getWeight();
+
+        weight = (weight>10) ? 10F : (weight<5) ? 5 : weight;
+
+        product.setWeight(weight);
+        product.setAvailable(Boolean.TRUE);
+        product.setId(Generator.getUUID());
+        product.setProductName(productForm.getName());
+        productService.insert(product);
+
     }
 
 
