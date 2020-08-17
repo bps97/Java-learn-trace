@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>cn.bps.ssm</groupId>
-    <artifactId>ssm-mms</artifactId>
+    <artifactId>ssm-wms</artifactId>
     <version>1.0.0</version>
-    <name>ssm-mms</name>
+    <name>ssm-wms</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

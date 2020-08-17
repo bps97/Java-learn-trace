@@ -25,7 +25,7 @@ public class DownloadController {
         InputStreamResource resource = new InputStreamResource ( new FileInputStream ( file ) );
 
         HttpHeaders headers = new HttpHeaders();
-        headers.add ( "Content-Disposition",String.format("attachment;filename=\"%s",fileName));
+        headers.add ( "Content-Disposition",String.format("attachment;filename=\"%s\"",fileName));
         headers.add ( "Cache-Control","no-cache,no-store,must-revalidate" );
         headers.add ( "Pragma","no-cache" );
         headers.add ( "Expires","0" );
@@ -33,7 +33,7 @@ public class DownloadController {
         ResponseEntity<Object> responseEntity = ResponseEntity.ok()
                 .headers ( headers )
                 .contentLength ( file.length ())
-                .contentType(MediaType.parseMediaType ( "application/txt" ))
+                .contentType(MediaType.parseMediaType ( "application/octet-stream" ))
                 .body(resource);
 
         return responseEntity;
